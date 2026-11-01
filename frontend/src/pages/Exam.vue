@@ -291,6 +291,15 @@ const pauseLine = computed(() => { const o: any = { ...(ex.value ?? {}), ...(res
   return n > 0 ? `中途暂停 ${n} 次，共 ${Math.max(1, Math.round(sec / 60))} 分钟` : '' })
 const nonCont = computed(() => !!((res.value as any)?.non_continuous ?? (ex.value as any)?.non_continuous))
 const trendItems = ref<any[]>([])
+// 英一总分拆开写，保证加得上：客观 + 主观自评（含字数不够、不进估分的部分）= 总分
+const splitLine = computed(() => {
+  const e: any = ex.value, r: any = res.value; if (!e || !r) return ''
+  const l: any = trendItems.value.find(x => x.id === e.id) ?? {}
+  const g = (k: string) => r[k] ?? e[k] ?? l[k]
+  const o = g('objective_score'), sub = g('subjective_self_score'); if (o == null || sub == null) return ''
+  const xp = g('subjective_excluded_points') ?? 0, n = (v: number) => Math.round(v * 10) / 10
+  return `客观 ${n(o)} + 主观自评 ${n(sub + xp)}${xp ? `（其中 ${n(xp)} 分字数不够，不进估分）` : ''} = ${n(o + sub + xp)}`
+})
 async function loadHist() { api<{ items: any[] }>('/exams?limit=50').then(r => trendItems.value = r.items ?? []).catch(() => {}); try { hist.value = ((await api<{ items: Hist[] }>('/exams?limit=10')).items ?? []).filter(h => h.status === 'submitted' || h.status === 'abandoned') } catch { /* 没有就不显示 */ } }
 onMounted(loadHist)
 async function openHist(h: Hist) { if (h.status !== 'submitted') return; open(await api<Exam>(`/exams/${h.id}`)) }
@@ -437,6 +446,7 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
     <main v-else-if="stage === 'result' && res" class="main summary">
       <div class="cap">{{ ex?.title }} · 成 绩</div>
       <div class="score"><b>{{ res.score }}</b><small>/ {{ res.max_score }}</small></div>
+      <p v-if="splitLine" class="sub splitln">{{ splitLine }}</p>
       <p v-if="pauseLine" class="sub pauseln">{{ pauseLine }}</p>
       <p v-if="nonCont" class="sub noncont">中途暂停较久，这次不计入模考趋势</p>
       <p v-if="coachLine" class="coach"><span class="k">教练说</span>{{ coachLine }}</p>

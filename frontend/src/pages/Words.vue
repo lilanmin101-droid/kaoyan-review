@@ -2,6 +2,8 @@
 import { computed, onMounted, ref } from 'vue'
 import { api } from '../lib/api'
 import { toast } from '../lib/toast'
+import { offline } from '../lib/api'
+import { packStale } from '../lib/offline'
 const emit = defineEmits<{ nav: [string]; passage: [number, string] }>()
 // 真题出现情况：「真题出现 7 次 · 2012、2018、2024」，年份多了只列最近 4 个
 function seen(w: Word) {
@@ -58,6 +60,7 @@ async function rate(r: 'again' | 'good' | 'easy') {
 <template>
   <div class="page col">
     <main class="main words">
+      <p v-if="offline && packStale()" class="stale">这是昨天的单词，联网后会换成今天的。</p>
       <div class="cap">单 词 · {{ !w ? `今日 ${done} / ${total}` : (w as WordR).relearn ? `再过一遍没记住的 · 还剩 ${relearnLeft}` : `今日第 ${Math.min(done + 1, total)} / ${total}` }}</div>
       <p v-if="err" class="sub">{{ err }}</p>
       <p v-else-if="loaded && !w" class="sub">今天的单词背完了。</p>

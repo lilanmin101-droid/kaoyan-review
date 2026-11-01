@@ -88,3 +88,6 @@ export async function flushQueue() {
 addEventListener('kaoyan:online', () => { flushQueue(); refreshPack() })
 setTimeout(() => { flushQueue(); refreshPack() }, 1500)
 setInterval(() => { if (!packFresh()) refreshPack() }, 10 * 60e3)
+
+// 题包过了有效期（学习日次日 04:00）：单词和计划没有自己的 expires_at，跟题包一起算
+export const packStale = () => { const e = pack.value?.expires_at; return !!e && Date.now() > Date.parse(e) }

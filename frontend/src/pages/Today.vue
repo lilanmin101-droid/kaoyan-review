@@ -2,6 +2,8 @@
 import { computed, onMounted, ref } from 'vue'
 import { api, sse, uid } from '../lib/api'
 import { toast } from '../lib/toast'
+import { offline } from '../lib/api'
+import { packStale } from '../lib/offline'
 type Task = { id: string; kind: string; title: string; estimated_minutes?: number; status: string; changed_by_agent?: boolean }
 type Action = { id: string; action_count?: number; summary: string; reason?: string; created_at: string; undoable?: boolean; undone_at?: string | null; trigger?: string }
 type Plan = { date: string; plan: { plan_date?: string; tasks: Task[]; progress: { done: number; total: number } } | null; why_changed: string | null; days_to_exam?: number | null; exam_date?: string | null
@@ -127,6 +129,7 @@ const shownActions = computed(() => showUndone.value ? actions.value : actions.v
 <template>
   <div class="page col">
     <main class="main today">
+      <p v-if="offline && packStale()" class="stale">这是昨天的计划，联网后会换成今天的。</p>
       <div class="cap">今 日 · {{ data?.date ?? '' }}<span v-if="days != null && days >= 0" class="cd">距初试 {{ days }} 天</span><span v-else-if="days == null" class="cd link" @click="emit('nav', 'me')">设个考试日期</span></div>
 
       <div v-if="pendEx" class="pendex" @click="emit('nav', `exam/${pendEx.id}/rate`)">{{ pendEx.title }}还有 {{ pendEx.pts || pendEx.n }} {{ pendEx.pts ? '分' : '道' }}待自评<span class="go">去自评</span></div>
