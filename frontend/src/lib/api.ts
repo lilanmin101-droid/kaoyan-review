@@ -38,6 +38,7 @@ export async function api<T = any>(path: string, init: RequestInit = {}, opts: {
   catch { setOffline(true); throw new ApiError('现在没网，连上再试', 0, undefined, 'offline') }
   if (r.headers.get('x-sw-cache') === '1') setOffline(true); else if (offline.value) setOffline(false)
   if (r.status === 401 && !opts.noReload) { token.set(null); location.reload() }
+  if (r.status === 304) return { not_modified: true } as any
   if (!r.ok) {
     const j = await r.json().catch(() => ({})), m = j.message
     throw new ApiError(Array.isArray(m) ? m.join('；') : m ?? `请求失败 ${r.status}`, r.status, j.field, j.code)

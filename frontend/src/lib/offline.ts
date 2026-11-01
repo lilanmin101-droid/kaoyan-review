@@ -54,7 +54,7 @@ export function answerLocal(q: PQ, ans: string[]) {
   return ok
 }
 
-let flushing = false
+let flushing = false, tries = 0, retryT = 0
 export async function flushQueue() {
   if (flushing || offline.value || !queue.value.length) return
   flushing = true
@@ -69,7 +69,8 @@ export async function flushQueue() {
       queue.value = queue.value.slice(1); save(); n++
     }
     if (n) toast(`离线做的 ${n} 道题已经补传`)
-  } catch { /* 下次联网再传 */ } finally { flushing = false }
+    tries = 0
+  } catch { /* 失败：指数退避重试，2s 起翻倍，最多 5 分钟 */ clearTimeout(retryT); retryT = window.setTimeout(flushQueue, Math.min(300e3, 2000 * 2 ** tries++)) } finally { flushing = false }
 }
 
 addEventListener('kaoyan:online', () => { flushQueue(); refreshPack() })
