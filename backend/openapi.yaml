@@ -1387,6 +1387,9 @@ paths:
                 duration_seconds: 10800
                 elapsed_seconds: 1260
                 remaining_seconds: 9540
+                pause_count: 0
+                paused_seconds: 0
+                auto_submitted: false
                 server_time: '2026-11-01T12:21:00Z'
                 started_at: '2026-11-01T12:00:00Z'
                 submitted_at: null
@@ -1430,6 +1433,9 @@ paths:
                 duration_seconds: 10800
                 elapsed_seconds: 1260
                 remaining_seconds: 9540
+                pause_count: 0
+                paused_seconds: 0
+                auto_submitted: false
                 server_time: '2026-11-01T12:21:00Z'
                 started_at: '2026-11-01T12:00:00Z'
                 submitted_at: null
@@ -1468,6 +1474,9 @@ paths:
                   question_count: 52
                   answered_count: 12
                   remaining_seconds: 8400
+                  pause_count: 0
+                  paused_seconds: 0
+                  auto_submitted: false
                   started_at: '2026-11-01T16:20:00Z'
         '422':
           description: 这一年整卷没核对完（只有 confirmed 的题能进模考），列出缺的题号
@@ -1518,6 +1527,9 @@ paths:
                   duration_seconds: 10800
                   elapsed_seconds: 4020
                   remaining_seconds: 6780
+                  pause_count: 0
+                  paused_seconds: 0
+                  auto_submitted: false
                   server_time: '2026-11-01T14:00:00Z'
                   started_at: '2026-11-01T12:00:00Z'
                   submitted_at: null
@@ -1570,6 +1582,9 @@ paths:
                 duration_seconds: 10800
                 elapsed_seconds: 1260
                 remaining_seconds: 9540
+                pause_count: 0
+                paused_seconds: 0
+                auto_submitted: false
                 server_time: '2026-11-01T12:21:00Z'
                 started_at: '2026-11-01T12:00:00Z'
                 submitted_at: null
@@ -1596,7 +1611,8 @@ paths:
         - 每答一题、切题、暂停/继续时调用；作答中建议至少每 60 秒发一次（可以不带 answers，当心跳）。
         - **幂等**：同一个 `idempotency_key` 重发，返回第一次的结果（`duplicate: true`），不会重复生效。
         - **乱序**：`client_seq` 是客户端单调递增序号；比服务端已收到的小的请求视为旧请求（`stale: true`），不覆盖答案。每道题保留 seq 最大的答案。
-        - **计时在服务端**：`state: paused` 暂停计时，`state: running` 继续；两次保存之间最多计 120 秒，断网或关页面不会一直扣时间。返回 `remaining_seconds`。
+        - **计时在服务端，按墙上时钟**（第 14 轮）：开考后时间一直走，锁屏 / 关 App / 断网照样计时；心跳只同步答案。`state: paused` / `running` = 明确的暂停 / 继续（同 `POST /exams/{id}/pause|resume`，次数不限，记进 `pause_count` / `paused_seconds`）。只有后端停机或这场请求 5xx 的时间补回（`server_credit_seconds`）。返回墙钟算的 `remaining_seconds`，前端以它为准。
+        - **到点自动交卷**：剩余时间到 0 后，任何读取 / 心跳 / 定时扫描都会按最后同步的答案自动交卷（`auto_submitted: true`，`submitted_at` = 到点时刻）；之后再发心跳 / 交卷 / 放弃 / 暂停 → 409 `{code: exam_auto_submitted, exam_id, status: submitted}`，前端转到成绩页。
       parameters:
         - $ref: '#/components/parameters/ExamId'
       requestBody:
@@ -1655,6 +1671,9 @@ paths:
                 duration_seconds: 10800
                 elapsed_seconds: 1475
                 remaining_seconds: 9325
+                pause_count: 0
+                paused_seconds: 0
+                auto_submitted: false
                 server_time: '2026-11-01T12:25:00Z'
                 started_at: '2026-11-01T12:00:00Z'
                 submitted_at: null
@@ -1742,6 +1761,9 @@ paths:
                 duration_seconds: 10800
                 elapsed_seconds: 10260
                 remaining_seconds: 540
+                pause_count: 0
+                paused_seconds: 0
+                auto_submitted: false
                 server_time: '2026-11-01T15:00:00Z'
                 started_at: '2026-11-01T12:00:00Z'
                 submitted_at: '2026-11-01T15:00:00Z'
@@ -1796,6 +1818,100 @@ paths:
                           got: 3
                   pending_self_rating: []
       operationId: postExamsByIdSubmit
+  /exams/{id}/pause:
+    post:
+      summary: 暂停模考（明确暂停，次数不限；暂停期间不计时）
+      description: |
+        已结束 → 409；到点了 → 先自动交卷再 409 `code: exam_auto_submitted`。返回整场 Exam（`status: paused`、`pause_count`、`paused_seconds`、`remaining_seconds`）。
+      parameters:
+        - $ref: '#/components/parameters/ExamId'
+      responses:
+        '200':
+          description: Exam
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exam'
+              example:
+                id: 2c8e4f10-7a3b-4c5d-9e6f-0a1b2c3d4e5f
+                kind: paper
+                title: 2017 数学一
+                exam: math1
+                year: 2017
+                status: paused
+                duration_seconds: 10800
+                elapsed_seconds: 2400
+                remaining_seconds: 8400
+                pause_count: 1
+                paused_seconds: 0
+                server_credit_seconds: 0
+                auto_submitted: false
+                clock: wall
+                server_time: '2026-11-01T14:40:00Z'
+                started_at: '2026-11-01T14:00:00Z'
+                submitted_at: null
+                progress:
+                  answers: {}
+                  current_question_id: math1-2017-01
+                  last_client_seq: 3
+                result: null
+        '409':
+          description: 已结束 / 已自动交卷（code=exam_auto_submitted, exam_id, status）
+          content:
+            application/json:
+              example:
+                statusCode: 409
+                code: exam_auto_submitted
+                message: 时间到了，已经按最后保存的答案自动交卷
+                exam_id: 2c8e4f10-7a3b-4c5d-9e6f-0a1b2c3d4e5f
+                status: submitted
+      operationId: postExamsByIdPause
+  /exams/{id}/resume:
+    post:
+      summary: 继续模考（结束这次暂停）
+      parameters:
+        - $ref: '#/components/parameters/ExamId'
+      responses:
+        '200':
+          description: Exam
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exam'
+              example:
+                id: 2c8e4f10-7a3b-4c5d-9e6f-0a1b2c3d4e5f
+                kind: paper
+                title: 2017 数学一
+                exam: math1
+                year: 2017
+                status: in_progress
+                duration_seconds: 10800
+                elapsed_seconds: 2400
+                remaining_seconds: 8400
+                pause_count: 1
+                paused_seconds: 600
+                server_credit_seconds: 0
+                auto_submitted: false
+                clock: wall
+                server_time: '2026-11-01T14:40:00Z'
+                started_at: '2026-11-01T14:00:00Z'
+                submitted_at: null
+                progress:
+                  answers: {}
+                  current_question_id: math1-2017-01
+                  last_client_seq: 3
+                result: null
+        '409':
+          description: 已结束 / 已自动交卷（code=exam_auto_submitted, exam_id, status）
+          content:
+            application/json:
+              example:
+                statusCode: 409
+                code: exam_auto_submitted
+                message: 时间到了，已经按最后保存的答案自动交卷
+                exam_id: 2c8e4f10-7a3b-4c5d-9e6f-0a1b2c3d4e5f
+                status: submitted
+      operationId: postExamsByIdResume
   /exams/{id}/abandon:
     post:
       tags:
@@ -1829,6 +1945,9 @@ paths:
                     duration_seconds: 10800
                     elapsed_seconds: 1260
                     remaining_seconds: 9540
+                    pause_count: 0
+                    paused_seconds: 0
+                    auto_submitted: false
                     server_time: '2026-11-01T15:00:00Z'
                     started_at: '2026-11-01T14:39:00Z'
                     submitted_at: null
@@ -1919,7 +2038,7 @@ paths:
                     properties:
                       duplicate:
                         type: boolean
-              example: {"id": "2c8e4f10-7a3b-4c5d-9e6f-0a1b2c3d4e5f", "kind": "paper", "title": "2017 数学一", "exam": "math1", "year": 2017, "question_ids": ["math1-2017-01", "math1-2017-18"], "question_count": 23, "max_score": 150, "status": "submitted", "duration_seconds": 10800, "elapsed_seconds": 10260, "remaining_seconds": 540, "server_time": "2026-11-01T17:05:00Z", "started_at": "2026-11-01T14:00:00Z", "submitted_at": "2026-11-01T16:51:00Z", "started_date": "2026-11-01", "submitted_date": "2026-11-01", "timezone": "America/Los_Angeles", "result": {"coach": {"date": "2026-11-01", "kind": "exam_review", "headline": "2017 数学一模考 73/150，线代拖了后腿（得分率 16%，丢 28.5 分），丢分最多的是「化二次型为标准形」（5.5 分），先把它补上。", "message_id": "92c02866-026b-4e31-931b-d3f2cff9aa7b"}, "score": 73, "sections": [{"count": 8, "score": 4, "wrong": 7, "correct": 1, "pending": 0, "section": "选择题", "max_score": 32}, {"count": 6, "score": 4, "wrong": 5, "correct": 1, "pending": 0, "section": "填空题", "max_score": 24}, {"count": 9, "score": 65, "wrong": 5, "correct": 4, "pending": 0, "section": "解答题", "max_score": 94}], "subjects": [{"lost": 31.5, "name": "高数", "rate": 0.616, "score": 50.5, "subject": "calculus", "max_score": 82, "pending_points": 0, "question_count": 13}, {"lost": 28.5, "name": "线代", "rate": 0.162, "score": 5.5, "subject": "linear_algebra", "max_score": 34, "pending_points": 0, "question_count": 5}, {"lost": 17, "name": "概率", "rate": 0.5, "score": 17, "subject": "probability", "max_score": 34, "pending_points": 0, "question_count": 5}], "max_score": 150, "lost_by_kp": [{"lost": 5.5, "name": "化二次型为标准形", "kp_path": "线性代数/二次型/化二次型为标准形", "subject": "linear_algebra", "question_numbers": [21]}, {"lost": 5.5, "name": "实对称矩阵的正交对角化", "kp_path": "线性代数/特征值与特征向量/实对称矩阵的正交对角化", "subject": "linear_algebra", "question_numbers": [21]}, {"lost": 4, "name": "单调性与极值", "kp_path": "高等数学/一元函数微分学/单调性与极值", "subject": "calculus", "question_numbers": [2]}], "score_rate": 0.487, "conclusions": ["得分 73/150，用时 0 分钟。", "线代得分率最低（16%，丢 28.5 分）。"], "per_question": [{"got": 4, "type": "single_choice", "score": 4, "answer": ["A"], "number": 1, "section": "选择题", "subject": "calculus", "answered": true, "objective": true, "is_correct": true, "question_id": "math1-2017-01", "score_by_whole": false, "score_estimated": false, "knowledge_points": ["高等数学/函数、极限、连续/函数的连续性与间断点"], "wrong_question_id": null, "time_spent_seconds": 200}, {"got": 5, "type": "essay", "score": 10, "answer": [], "number": 18, "section": "解答题", "subject": "calculus", "answered": false, "objective": false, "is_correct": false, "question_id": "math1-2017-18", "self_rating": "approach_ok_calc_wrong", "score_by_whole": true, "score_estimated": false, "knowledge_points": ["高等数学/函数、极限、连续/闭区间上连续函数的性质", "高等数学/一元函数微分学/微分中值定理"], "wrong_question_id": "904376ce-a910-4f8f-81ea-ad0228c5f3a1", "time_spent_seconds": 0}], "self_rated_at": "2026-11-01T17:05:00Z", "pending_points": 0, "elapsed_seconds": 0, "duration_seconds": 10800, "wrong_question_ids": ["math1-2017-02", "math1-2017-03"], "pending_self_rating": []}, "duplicate": false}
+              example: {"id": "2c8e4f10-7a3b-4c5d-9e6f-0a1b2c3d4e5f", "kind": "paper", "title": "2017 数学一", "exam": "math1", "year": 2017, "question_ids": ["math1-2017-01", "math1-2017-18"], "question_count": 23, "max_score": 150, "status": "submitted", "duration_seconds": 10800, "elapsed_seconds": 10260, "remaining_seconds": 540, "pause_count": 1, "paused_seconds": 600, "auto_submitted": false, "server_time": "2026-11-01T17:05:00Z", "started_at": "2026-11-01T14:00:00Z", "submitted_at": "2026-11-01T16:51:00Z", "started_date": "2026-11-01", "submitted_date": "2026-11-01", "timezone": "America/Los_Angeles", "result": {"coach": {"date": "2026-11-01", "kind": "exam_review", "headline": "2017 数学一模考 73/150，线代拖了后腿（得分率 16%，丢 28.5 分），丢分最多的是「化二次型为标准形」（5.5 分），先把它补上。", "message_id": "92c02866-026b-4e31-931b-d3f2cff9aa7b"}, "score": 73, "sections": [{"count": 8, "score": 4, "wrong": 7, "correct": 1, "pending": 0, "section": "选择题", "max_score": 32}, {"count": 6, "score": 4, "wrong": 5, "correct": 1, "pending": 0, "section": "填空题", "max_score": 24}, {"count": 9, "score": 65, "wrong": 5, "correct": 4, "pending": 0, "section": "解答题", "max_score": 94}], "subjects": [{"lost": 31.5, "name": "高数", "rate": 0.616, "score": 50.5, "subject": "calculus", "max_score": 82, "pending_points": 0, "question_count": 13}, {"lost": 28.5, "name": "线代", "rate": 0.162, "score": 5.5, "subject": "linear_algebra", "max_score": 34, "pending_points": 0, "question_count": 5}, {"lost": 17, "name": "概率", "rate": 0.5, "score": 17, "subject": "probability", "max_score": 34, "pending_points": 0, "question_count": 5}], "max_score": 150, "lost_by_kp": [{"lost": 5.5, "name": "化二次型为标准形", "kp_path": "线性代数/二次型/化二次型为标准形", "subject": "linear_algebra", "question_numbers": [21]}, {"lost": 5.5, "name": "实对称矩阵的正交对角化", "kp_path": "线性代数/特征值与特征向量/实对称矩阵的正交对角化", "subject": "linear_algebra", "question_numbers": [21]}, {"lost": 4, "name": "单调性与极值", "kp_path": "高等数学/一元函数微分学/单调性与极值", "subject": "calculus", "question_numbers": [2]}], "score_rate": 0.487, "conclusions": ["得分 73/150，用时 0 分钟。", "线代得分率最低（16%，丢 28.5 分）。"], "per_question": [{"got": 4, "type": "single_choice", "score": 4, "answer": ["A"], "number": 1, "section": "选择题", "subject": "calculus", "answered": true, "objective": true, "is_correct": true, "question_id": "math1-2017-01", "score_by_whole": false, "score_estimated": false, "knowledge_points": ["高等数学/函数、极限、连续/函数的连续性与间断点"], "wrong_question_id": null, "time_spent_seconds": 200}, {"got": 5, "type": "essay", "score": 10, "answer": [], "number": 18, "section": "解答题", "subject": "calculus", "answered": false, "objective": false, "is_correct": false, "question_id": "math1-2017-18", "self_rating": "approach_ok_calc_wrong", "score_by_whole": true, "score_estimated": false, "knowledge_points": ["高等数学/函数、极限、连续/闭区间上连续函数的性质", "高等数学/一元函数微分学/微分中值定理"], "wrong_question_id": "904376ce-a910-4f8f-81ea-ad0228c5f3a1", "time_spent_seconds": 0}], "self_rated_at": "2026-11-01T17:05:00Z", "pending_points": 0, "elapsed_seconds": 0, "duration_seconds": 10800, "wrong_question_ids": ["math1-2017-02", "math1-2017-03"], "pending_self_rating": []}, "duplicate": false}
         '400':
           $ref: '#/components/responses/Error'
         '409':
@@ -4680,7 +4799,22 @@ components:
           description: 服务端计的作答时长
         remaining_seconds:
           type: integer
-          description: 服务端算的剩余时间
+          description: 服务端按墙上时钟算的剩余时间（前端以它为准）
+        pause_count:
+          type: integer
+          description: 明确暂停的次数（不限次数）
+        paused_seconds:
+          type: integer
+          description: 暂停累计秒数（不计入作答时长）；成绩页显示「中途暂停 N 次，共 M 分钟」
+        server_credit_seconds:
+          type: integer
+          description: 后端停机 / 这场请求 5xx 补回的秒数（学生自己断网不补）
+        auto_submitted:
+          type: boolean
+          description: 时间到了自动交的卷
+        clock:
+          type: string
+          enum: [wall]
         server_time:
           type: string
           format: date-time
@@ -4754,6 +4888,12 @@ components:
     ExamResult:
       type: object
       properties:
+        pause_count:
+          type: integer
+        paused_seconds:
+          type: integer
+        auto_submitted:
+          type: boolean
         score:
           type: number
         max_score:
@@ -5764,6 +5904,9 @@ components:
         duration_seconds: 10800
         elapsed_seconds: 1260
         remaining_seconds: 9540
+        pause_count: 0
+        paused_seconds: 0
+        auto_submitted: false
         server_time: '2026-11-01T12:21:00Z'
         started_at: '2026-11-01T12:00:00Z'
         submitted_at: null
@@ -5795,6 +5938,9 @@ components:
         duration_seconds: 10800
         elapsed_seconds: 4020
         remaining_seconds: 6780
+        pause_count: 0
+        paused_seconds: 0
+        auto_submitted: false
         server_time: '2026-11-01T14:00:00Z'
         started_at: '2026-11-01T12:00:00Z'
         submitted_at: null
@@ -5833,6 +5979,9 @@ components:
         duration_seconds: 10800
         elapsed_seconds: 1475
         remaining_seconds: 9325
+        pause_count: 0
+        paused_seconds: 0
+        auto_submitted: false
         server_time: '2026-11-01T12:25:00Z'
         started_at: '2026-11-01T12:00:00Z'
         submitted_at: null
@@ -5873,6 +6022,9 @@ components:
         duration_seconds: 10800
         elapsed_seconds: 10260
         remaining_seconds: 540
+        pause_count: 0
+        paused_seconds: 0
+        auto_submitted: false
         server_time: '2026-11-01T15:00:00Z'
         started_at: '2026-11-01T12:00:00Z'
         submitted_at: '2026-11-01T15:00:00Z'

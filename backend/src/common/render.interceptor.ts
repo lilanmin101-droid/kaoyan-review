@@ -18,7 +18,7 @@ export class RenderInterceptor implements NestInterceptor {
     const quotes = /\/api\/v1\/(agent|plans)(\/|\?|$)/.test(req?.originalUrl ?? req?.url ?? '');
     return next.handle().pipe(switchMap((body) => {
       if (!userId || body == null || typeof body !== 'object' || Buffer.isBuffer(body) || typeof (body as any).pipe === 'function') return of(body);
-      if (!quotes && !JSON.stringify(body).includes('{{date:')) return of(body);
+      if (!quotes && !/\{\{(date|week|countdown):/.test(JSON.stringify(body))) return of(body);
       return from(this.time.today(userId).then((today) => renderDeep(body, today, quotes)));
     }));
   }

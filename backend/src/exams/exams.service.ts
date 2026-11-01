@@ -1,7 +1,7 @@
 import { selfGradeCheck, selfGradeFields } from './self-grade-check';
 import { subScoresSql } from '../common/grading';
 import { referenceAnswer } from '../questions/reference-answer';
-import { BadRequestException, ConflictException, Injectable, Logger, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
+import { BadRequestException, ConflictException, Injectable, Logger, NotFoundException, OnModuleDestroy, OnModuleInit, UnprocessableEntityException } from '@nestjs/common';
 import { PoolClient } from 'pg';
 import { DbService } from '../db/db.service';
 import { LearningService } from '../mastery/learning.service';
@@ -10,9 +10,11 @@ import { studyDate } from '../common/time';
 import { clockNow } from '../common/clock';
 import { AgentToolsService } from '../agent/agent-tools.service';
 import { ENGLISH1_COUNT, ENGLISH1_MINUTES } from '../english/english-spec';
+import { examClock, PauseEntry, pauseNote } from './exam-clock';
+import { UptimeService } from './uptime.service';
 import { coachDetails, coachHeadline, PerQuestion, RATINGS, sectionOf, SelfRating, subjectOf, summarize } from './exam-summary';
 
-/** 断网/没发心跳时，两次保存之间最多计这么多秒，避免关掉页面后时间一直在走 */
+/** 旧规则（第 14 轮起不再用于计时，只留给单测 / 老代码参考）：两次保存之间最多计这么多秒 */
 export const HEARTBEAT_CAP_SECONDS = 120;
 /**
  * 模考里所有「现在」都用这一个：开考 started_at、计时 last_tick_at、交卷 / 放弃时间、剩余时间、2 分钟作废窗口。
@@ -57,16 +59,77 @@ export function subKeyOf(k: unknown, subs: string[]): string | null {
 export const DISCARD_WINDOW_SECONDS = 120;
 
 @Injectable()
-export class ExamsService {
+export class ExamsService implements OnModuleInit, OnModuleDestroy {
+  private sweepTimer?: NodeJS.Timeout;
+  onModuleInit() { if (process.env.EXAM_SWEEP !== '0') { this.sweepTimer = setInterval(() => this.sweepExpired().catch(() => undefined), 60_000); this.sweepTimer.unref(); } }
+  onModuleDestroy() { if (this.sweepTimer) clearInterval(this.sweepTimer); }
   private log = new Logger('Exams');
-  constructor(private db: DbService, private learning: LearningService, private time: UserTimeService, private tools: AgentToolsService) {}
+  constructor(private db: DbService, private learning: LearningService, private time: UserTimeService, private tools: AgentToolsService, private uptime: UptimeService) {}
+
+  /** 墙上时钟（进行中 / 暂停中）；交卷 / 放弃后用冻结的 elapsed，暂停统计截到结束那一刻 */
+  private async clockOf(r: any) {
+    const active = r.status === 'in_progress' || r.status === 'paused';
+    const endMs = active ? examNow().getTime() : new Date(r.submitted_at ?? r.abandoned_at ?? examNow()).getTime();
+    const c = examClock(r, endMs, await this.uptime.gaps());
+    return active ? c : { ...c, elapsed_seconds: r.elapsed_seconds ?? c.elapsed_seconds, remaining_seconds: Math.max(r.duration_seconds - (r.elapsed_seconds ?? c.elapsed_seconds), 0), paused_now: false };
+  }
+
+  /** 时间到了：按最后同步的答案自动交卷（读、心跳、定时扫都会触发）。返回 true = 刚刚 / 已经自动交卷 */
+  async expireIfDue(userId: string, examId: string): Promise<boolean> {
+    if (!UUID_RE.test(examId ?? '')) return false;
+    const r = await this.db.one(`SELECT e.*, p.elapsed_seconds FROM exams e JOIN exam_progress p ON p.exam_id=e.id WHERE e.id=$1 AND e.user_id=$2`, [examId, userId]);
+    if (!r) return false;
+    if (r.status === 'submitted') return !!r.auto_submitted;
+    if (r.status !== 'in_progress' && r.status !== 'paused') return false;
+    if ((await this.clockOf(r)).remaining_seconds > 0) return false;
+    await this.submit(userId, examId, {}, undefined, { auto: true });
+    return true;
+  }
+  /** 定时扫（每分钟）：所有到点没交的场次自动交卷 */
+  async sweepExpired() {
+    const rows = (await this.db.query(`SELECT id, user_id FROM exams WHERE status IN ('in_progress','paused')`)).rows;
+    let n = 0;
+    for (const r of rows) { try { if (await this.expireIfDue(r.user_id, r.id)) n++; } catch (e: any) { this.log.warn(`sweep ${r.id}: ${e?.message}`); } }
+    return n;
+  }
+  private autoSubmittedError(examId: string) {
+    return new ConflictException({ code: 'exam_auto_submitted', message: '时间到了，已经按最后保存的答案自动交卷', exam_id: examId, status: 'submitted' });
+  }
+  /** 这场的请求后端出错（5xx）：记下开始出错的时刻，下次成功请求时把中间这段补回来（最多 30 分钟） */
+  async markServerError(userId: string, examId: string) {
+    if (!UUID_RE.test(examId ?? '')) return;
+    await this.db.query(`UPDATE exams SET error_since=COALESCE(error_since,$3) WHERE id=$1 AND user_id=$2 AND status IN ('in_progress','paused')`, [examId, userId, examNow()]).catch(() => undefined);
+  }
+  private async settleErrorCredit(c: { query: PoolClient['query'] } | any, examId: string) {
+    await c.query(`UPDATE exams SET error_credit_seconds = error_credit_seconds + LEAST(GREATEST(EXTRACT(EPOCH FROM $2::timestamptz - error_since)::int, 0), 1800), error_since=NULL
+                    WHERE id=$1 AND error_since IS NOT NULL`, [examId, examNow()]);
+  }
+  /** 明确的暂停 / 继续（次数不限） */
+  async setPaused(userId: string, examId: string, paused: boolean) {
+    checkId(examId);
+    if (await this.expireIfDue(userId, examId)) throw this.autoSubmittedError(examId);
+    await this.db.tx(async (c) => {
+      const e = await this.lockExam(c, examId, userId);
+      if (e.status !== 'in_progress' && e.status !== 'paused') throw new ConflictException({ message: '这场模考已经结束', status: e.status, ...(e.auto_submitted ? { code: 'exam_auto_submitted', exam_id: examId } : {}) });
+      await this.applyPause(c, e, paused);
+    });
+    return this.view(null, examId, userId);
+  }
+  private async applyPause(c: PoolClient, e: any, paused: boolean) {
+    const log: PauseEntry[] = [...(e.pause_log ?? [])];
+    const open = log.find((p) => !p.end), now = examNow().toISOString();
+    if (paused && !open) log.push({ start: now, end: null });
+    if (!paused && open) open.end = now < open.start ? open.start : now;
+    await c.query(`UPDATE exams SET pause_log=$2, status=$3 WHERE id=$1`, [e.id, JSON.stringify(log), paused ? 'paused' : 'in_progress']);
+  }
 
   /**
    * 开考前看有没有没交卷的：同一张卷（同 exam + year + kind，或同一组 question_ids）→ 直接返回那一场（resumed=true，前端直接进考场）；
    * 别的卷没交 → 409 code=other_exam_active，带上那一场是哪张卷
    */
   private async activeFor(userId: string, b: { exam?: string; year?: number; question_ids?: string[]; kind?: string }) {
-    const a = await this.db.one(`SELECT id, kind, title, exam, year, status, question_ids, started_at FROM exams WHERE user_id=$1 AND status IN ('in_progress','paused') ORDER BY started_at DESC LIMIT 1`, [userId]);
+    let a = await this.db.one(`SELECT id, kind, title, exam, year, status, question_ids, started_at FROM exams WHERE user_id=$1 AND status IN ('in_progress','paused') ORDER BY started_at DESC LIMIT 1`, [userId]);
+    if (a && await this.expireIfDue(userId, a.id)) a = null; // 上一场到点了：先自动交卷，不挡新开
     if (!a) return null;
     const ids = b.question_ids ?? [];
     const same = ids.length
@@ -115,7 +178,7 @@ export class ExamsService {
     try {
       return await this.db.tx(async (c) => {
         const e = (await c.query(
-          `INSERT INTO exams(user_id,kind,title,exam,year,question_ids,duration_seconds,started_at) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
+          `INSERT INTO exams(user_id,kind,title,exam,year,question_ids,duration_seconds,started_at,clock_origin) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$8) RETURNING *`,
           [userId, b.kind ?? 'paper', b.title ?? `${b.year ?? ''} ${EXAM_CN[b.exam ?? ''] ?? b.exam ?? '模考'}`.trim(), b.exam ?? 'custom', b.year ?? null, ids, minutes * 60, startedAt])).rows[0];
         await c.query(`INSERT INTO exam_progress(exam_id,current_question_id,last_tick_at) VALUES($1,$2,$3)`, [e.id, ids[0], startedAt]);
         return this.view(c, e.id, userId);
@@ -140,16 +203,17 @@ export class ExamsService {
               (SELECT COALESCE(sum(score),0)::float FROM questions WHERE id = ANY(e.question_ids)) AS max_score
          FROM exams e JOIN exam_progress p ON p.exam_id=e.id WHERE e.id=$1 AND e.user_id=$2`, [examId, userId])).rows[0];
     if (!r) throw new NotFoundException('模考不存在');
-    let elapsed = r.elapsed_seconds;
-    if (r.status === 'in_progress' && r.last_tick_at) elapsed += tickSeconds(r.last_tick_at, examNow().getTime());
+    const ck = await this.clockOf(r);
+    const elapsed = ck.elapsed_seconds;
     const tz = await this.time.tz(userId);
     return {
       id: r.id, kind: r.kind, title: r.title, exam: r.exam, year: r.year, question_ids: r.question_ids, question_count: r.question_ids.length, max_score: r.max_score,
-      status: r.status, duration_seconds: r.duration_seconds, elapsed_seconds: elapsed, remaining_seconds: Math.max(r.duration_seconds - elapsed, 0),
+      status: r.status, duration_seconds: r.duration_seconds, elapsed_seconds: elapsed, remaining_seconds: ck.remaining_seconds,
+      pause_count: ck.pause_count, paused_seconds: ck.paused_seconds, server_credit_seconds: ck.server_credit_seconds, auto_submitted: !!r.auto_submitted, clock: 'wall',
       server_time: examNow().toISOString(), started_at: r.started_at, submitted_at: r.submitted_at, abandoned_at: r.abandoned_at ?? null,
       started_date: studyDate(new Date(r.started_at), tz), submitted_date: r.submitted_at ? studyDate(new Date(r.submitted_at), tz) : null, timezone: tz,
       progress: { answers: r.answers, current_question_id: r.current_question_id, last_client_seq: Number(r.last_client_seq), updated_at: r.progress_updated_at },
-      result: await this.backfillResult(q, r.result, r.answers),
+      result: r.result ? { pause_count: ck.pause_count, paused_seconds: ck.paused_seconds, auto_submitted: !!r.auto_submitted, ...(await this.backfillResult(q, r.result, r.answers)) } : r.result,
     };
   }
 
@@ -176,12 +240,14 @@ export class ExamsService {
 
   async active(userId: string) {
     const e = await this.db.one(`SELECT id FROM exams WHERE user_id=$1 AND status IN ('in_progress','paused') ORDER BY started_at DESC LIMIT 1`, [userId]);
+    if (e && await this.expireIfDue(userId, e.id)) return null; // 到点了：已自动交卷，下次打开看成绩
     return e ? this.view(null, e.id, userId) : null;
   }
 
   /** 模考历史（新的在前），cursor 是上一页最后一条的 next_cursor */
   async history(userId: string, limitRaw?: string, cursor?: string) {
     const limit = Math.min(Math.max(Number(limitRaw) || 20, 1), 100);
+    for (const a of (await this.db.query(`SELECT id FROM exams WHERE user_id=$1 AND status IN ('in_progress','paused')`, [userId])).rows) await this.expireIfDue(userId, a.id);
     const p: any[] = [userId];
     let w = 'e.user_id=$1';
     if (cursor) {
@@ -194,7 +260,7 @@ export class ExamsService {
     const rows = (await this.db.query(
       `SELECT e.id, e.kind, e.title, e.exam, e.year, e.status, e.duration_seconds, e.started_at, e.submitted_at, e.abandoned_at, e.question_ids,
               to_char(e.started_at AT TIME ZONE 'UTC','YYYY-MM-DD"T"HH24:MI:SS.US"Z"') AS started_at_cursor,
-              p.elapsed_seconds, p.last_tick_at, e.result->'score' AS score,
+              p.elapsed_seconds, p.last_tick_at, e.result->'score' AS score, e.clock_origin, e.clock_baseline_seconds, e.pause_log, e.error_credit_seconds, e.auto_submitted,
               (SELECT count(*)::int FROM jsonb_each(p.answers) a WHERE jsonb_array_length(COALESCE(a.value->'answer','[]'::jsonb)) > 0) AS answered_count, e.result->'max_score' AS max_score,
               e.result->'pending_self_rating' AS pending, e.result->'coach' AS coach,
               (SELECT COALESCE(sum(score),0)::float FROM questions WHERE id = ANY(e.question_ids)) AS paper_max
@@ -202,17 +268,18 @@ export class ExamsService {
         ORDER BY e.started_at DESC, e.id DESC LIMIT $${p.length}`, p)).rows;
     const tz = await this.time.tz(userId);
     const page = rows.slice(0, limit);
-    const items = page.map((r: any) => {
-      let elapsed = r.elapsed_seconds;
-      if (r.status === 'in_progress' && r.last_tick_at) elapsed += tickSeconds(r.last_tick_at, examNow().getTime());
+    const items = await Promise.all(page.map(async (r: any) => {
+      const ck = await this.clockOf(r);
+      const elapsed = ck.elapsed_seconds;
       return {
+        pause_count: ck.pause_count, paused_seconds: ck.paused_seconds, auto_submitted: !!r.auto_submitted, remaining_seconds: ck.remaining_seconds,
         id: r.id, kind: r.kind, title: r.title, exam: r.exam, year: r.year, status: r.status, question_count: r.question_ids.length,
         score: r.score ?? null, max_score: r.max_score ?? r.paper_max, pending_self_rating_count: Array.isArray(r.pending) ? r.pending.length : 0,
         elapsed_seconds: elapsed, duration_seconds: r.duration_seconds, started_at: r.started_at, submitted_at: r.submitted_at, abandoned_at: r.abandoned_at ?? null,
         answered_count: r.answered_count ?? 0,
         started_date: studyDate(new Date(r.started_at), tz), coach_headline: r.coach?.headline ?? null,
       };
-    });
+    }));
     const last = page[page.length - 1];
     const next = rows.length > limit && last ? Buffer.from(JSON.stringify({ t: last.started_at_cursor, id: last.id })).toString('base64url') : null;
     return { items, next_cursor: next, timezone: tz };
@@ -229,18 +296,24 @@ export class ExamsService {
     if (!b?.idempotency_key) throw new BadRequestException('缺少 idempotency_key');
     if (typeof b.client_seq !== 'number') throw new BadRequestException('缺少 client_seq（客户端递增序号）');
     if (b.state && !['running', 'paused'].includes(b.state)) throw new BadRequestException('state 只能是 running/paused');
+    // 时间到了：先按最后同步的答案自动交卷，这次心跳的答案不算 → 409 exam_auto_submitted
+    const dupe = await this.db.one('SELECT response FROM exam_progress_ops WHERE exam_id=$1 AND idempotency_key=$2', [examId, b.idempotency_key]);
+    if (!dupe && await this.expireIfDue(userId, examId)) throw this.autoSubmittedError(examId);
     return this.db.tx(async (c) => {
       const e = (await c.query(`SELECT e.*, p.* FROM exams e JOIN exam_progress p ON p.exam_id=e.id WHERE e.id=$1 AND e.user_id=$2 FOR UPDATE`, [examId, userId])).rows[0];
       if (!e) throw new NotFoundException('模考不存在');
       const prev = (await c.query('SELECT response FROM exam_progress_ops WHERE exam_id=$1 AND idempotency_key=$2', [examId, b.idempotency_key])).rows[0];
       if (prev) return { ...prev.response, duplicate: true };
+      if (e.auto_submitted) throw this.autoSubmittedError(examId);
       if (e.status === 'submitted' || e.status === 'abandoned') throw new ConflictException({ message: '这场模考已经结束', status: e.status });
 
-      // 计时
+      // 计时按墙上时钟（examClock）；心跳只同步答案。state=paused/running = 明确的暂停 / 继续，记进 pause_log
       const now = examNow().getTime();
-      let elapsed = e.elapsed_seconds;
-      if (e.status === 'in_progress' && e.last_tick_at) elapsed += tickSeconds(e.last_tick_at, now);
-      const nextStatus = b.state === 'paused' ? 'paused' : b.state === 'running' ? 'in_progress' : e.status;
+      await this.settleErrorCredit(c, examId);
+      if (b.state && (b.state === 'paused') !== (e.status === 'paused')) { await this.applyPause(c, e, b.state === 'paused'); }
+      const e2 = (await c.query(`SELECT e.*, p.elapsed_seconds FROM exams e JOIN exam_progress p ON p.exam_id=e.id WHERE e.id=$1`, [examId])).rows[0];
+      const elapsed = (await this.clockOf(e2)).elapsed_seconds;
+      const nextStatus = e2.status;
 
       // 合并答案
       const answers = { ...(e.answers || {}) };
@@ -256,7 +329,6 @@ export class ExamsService {
         `UPDATE exam_progress SET answers=$2, current_question_id=COALESCE($3,current_question_id), elapsed_seconds=$4,
            last_tick_at=$5, last_client_seq=GREATEST(last_client_seq,$6), updated_at=now() WHERE exam_id=$1`,
         [examId, JSON.stringify(answers), stale ? null : b.current_question_id ?? null, elapsed, nextStatus === 'in_progress' ? new Date(now) : null, b.client_seq]);
-      if (nextStatus !== e.status) await c.query('UPDATE exams SET status=$2 WHERE id=$1', [examId, nextStatus]);
       const view = await this.view(c, examId, userId);
       const response = { ...view, stale };
       await c.query('INSERT INTO exam_progress_ops(exam_id,idempotency_key,client_seq,response) VALUES($1,$2,$3,$4)', [examId, b.idempotency_key, b.client_seq, JSON.stringify(response)]);
@@ -390,13 +462,19 @@ export class ExamsService {
   }
 
   /** 交卷：客观题自动判分，主观题等自评（可以随交卷一起给，也可以交卷后 POST /self-ratings）；出成绩汇总 */
-  async submit(userId: string, examId: string, b: { self_ratings?: RatingInput; idempotency_key?: string }, device?: string) {
+  async submit(userId: string, examId: string, b: { self_ratings?: RatingInput; idempotency_key?: string }, device?: string, opts: { auto?: boolean } = {}) {
+    if (!opts.auto && await this.expireIfDue(userId, examId)) throw this.autoSubmittedError(examId);
     const out = await this.db.tx(async (c) => {
       const e = await this.lockExam(c, examId, userId);
-      if (e.status === 'submitted') return { done: true as const }; // 重复交卷：直接返回结果
+      if (e.status === 'submitted') { if (e.auto_submitted && !opts.auto) throw this.autoSubmittedError(examId); return { done: true as const }; } // 重复交卷：直接返回结果
       if (e.status === 'abandoned') throw new ConflictException({ message: '这场模考已经放弃', status: e.status });
-      let elapsed = e.elapsed_seconds;
-      if (e.status === 'in_progress' && e.last_tick_at) elapsed += tickSeconds(e.last_tick_at, examNow().getTime());
+      if (!opts.auto) await this.settleErrorCredit(c, examId);
+      const e1 = opts.auto ? e : (await c.query(`SELECT e.*, p.elapsed_seconds FROM exams e JOIN exam_progress p ON p.exam_id=e.id WHERE e.id=$1`, [examId])).rows[0];
+      const ck = await this.clockOf(e1);
+      const elapsed = Math.min(ck.elapsed_seconds, e.duration_seconds);
+      // 自动交卷的「交卷时间」= 到点那一刻（不是后来被读到 / 扫到的时刻）
+      const submittedAt = opts.auto ? new Date(examNow().getTime() - Math.max(ck.elapsed_seconds - e.duration_seconds, 0) * 1000) : examNow();
+      if (ck.paused_now) { const log = (e.pause_log ?? []).map((p: PauseEntry) => (p.end ? p : { ...p, end: submittedAt.toISOString() })); await c.query(`UPDATE exams SET pause_log=$2 WHERE id=$1`, [examId, JSON.stringify(log)]); }
       const qs = await this.loadQuestions(c, e.question_ids);
       const per: PerQuestion[] = [...qs.values()].sort((x, y) => x.number - y.number).map((q) => {
         const a = e.answers?.[q.id];
@@ -422,8 +500,9 @@ export class ExamsService {
         p.is_correct = !!rec.is_correct; p.got = rec.points ?? 0; p.wrong_question_id = rec.wrong_question_id ?? null;
       }
       await this.applyRatings(c, userId, examId, per, qs, ratings, 'submit', device);
-      const result = { ...summarize(per, { title: e.title, duration_seconds: e.duration_seconds, elapsed_seconds: elapsed }), coach: null as any, self_rated_at: ratings.size ? examNow().toISOString() : null };
-      await c.query(`UPDATE exams SET status='submitted', submitted_at=$3, result=$2 WHERE id=$1`, [examId, JSON.stringify(result), examNow()]);
+      const result = { ...summarize(per, { title: e.title, duration_seconds: e.duration_seconds, elapsed_seconds: elapsed }), coach: null as any, self_rated_at: ratings.size ? examNow().toISOString() : null,
+        pause_count: ck.pause_count, paused_seconds: ck.paused_seconds, auto_submitted: !!opts.auto };
+      await c.query(`UPDATE exams SET status='submitted', submitted_at=$3, result=$2, auto_submitted=$4 WHERE id=$1`, [examId, JSON.stringify(result), submittedAt, !!opts.auto]);
       await c.query(`UPDATE exam_progress SET elapsed_seconds=$2, last_tick_at=NULL, updated_at=now() WHERE exam_id=$1`, [examId, elapsed]);
       return { done: false as const, result, title: e.title };
     });
@@ -448,7 +527,8 @@ export class ExamsService {
       const summary = summarize(per, { title: e.title, duration_seconds: e.duration_seconds, elapsed_seconds: e.result.elapsed_seconds ?? e.elapsed_seconds });
       // 还有没评的：教练一句话不能出（以前写过的撤掉）
       if (summary.pending_self_rating.length && e.result.coach) await this.dropCoach(c, examId, e.result.coach);
-      const result = { ...summary, coach: summary.pending_self_rating.length ? null : e.result.coach ?? null, self_rated_at: examNow().toISOString() };
+      const result = { ...summary, coach: summary.pending_self_rating.length ? null : e.result.coach ?? null, self_rated_at: examNow().toISOString(),
+        pause_count: e.result.pause_count ?? 0, paused_seconds: e.result.paused_seconds ?? 0, auto_submitted: !!e.auto_submitted };
       await c.query(`UPDATE exams SET result=$2 WHERE id=$1`, [examId, JSON.stringify(result)]);
       return { duplicate: false as const, result, title: e.title };
     });
@@ -473,6 +553,7 @@ export class ExamsService {
    * 历史 / 统计 / 周进度 / 错题 / 教练都看不到），返回 {discarded: true}；否则照旧记 abandoned、保留进度。
    */
   async abandon(userId: string, examId: string) {
+    if (await this.expireIfDue(userId, examId)) throw this.autoSubmittedError(examId);
     const discarded = await this.db.tx(async (c) => {
       const e = await this.lockExam(c, examId, userId);
       if (e.status === 'abandoned') return false; // 重复放弃：幂等
@@ -486,9 +567,10 @@ export class ExamsService {
           return true;
         }
       }
-      let elapsed = e.elapsed_seconds;
-      if (e.status === 'in_progress' && e.last_tick_at) elapsed += tickSeconds(e.last_tick_at, examNow().getTime());
-      await c.query(`UPDATE exams SET status='abandoned', abandoned_at=$2 WHERE id=$1`, [examId, examNow()]);
+      const ck = await this.clockOf(e);
+      const elapsed = Math.min(ck.elapsed_seconds, e.duration_seconds);
+      const log = (e.pause_log ?? []).map((p: PauseEntry) => (p.end ? p : { ...p, end: examNow().toISOString() }));
+      await c.query(`UPDATE exams SET status='abandoned', abandoned_at=$2, pause_log=$3 WHERE id=$1`, [examId, examNow(), JSON.stringify(log)]);
       await c.query(`UPDATE exam_progress SET elapsed_seconds=$2, last_tick_at=NULL, updated_at=now() WHERE exam_id=$1`, [examId, elapsed]);
       return false;
     });
@@ -501,7 +583,7 @@ export class ExamsService {
     if (result.pending_self_rating.length) return; // 没评完不出教练一句话
     try {
       const headline = coachHeadline(result, title);
-      const w = await this.tools.writeDailyTip({ userId, commandId: null, trigger: 'after_exam' }, { text: headline, kind: 'exam_review', details: coachDetails(result), reason: `${title}模考交卷后的复盘` });
+      const w = await this.tools.writeDailyTip({ userId, commandId: null, trigger: 'after_exam' }, { text: headline, kind: 'exam_review', details: [coachDetails(result), pauseNote((result as any).pause_count ?? 0, (result as any).paused_seconds ?? 0), (result as any).auto_submitted ? '时间到了自动交的卷' : null].filter(Boolean).join('\n'), reason: `${title}模考交卷后的复盘` });
       const tip = await this.db.one(`SELECT id, headline FROM daily_tips WHERE user_id=$1 AND tip_date=$2 AND kind='exam_review'`, [userId, w.date]);
       const coach = { message_id: tip?.id ?? null, headline, date: w.date, kind: 'exam_review' };
       await this.db.query(`UPDATE exams SET result = jsonb_set(result, '{coach}', $2::jsonb) WHERE id=$1`, [examId, JSON.stringify(coach)]);

@@ -82,8 +82,17 @@ export function dayLabel(date: string, today: string): string {
   return `${date.slice(5, 10)}（${wd}）`; // 更远：日期在前、星期在括号里「11-02（周一）」
 }
 /** 文字里「今天（11-02）」这类叫法和日子对不对得上（eval / 单测扫描用）：返回对不上的片段 */
-export function badDayLabels(text: string, today: string): string[] {
+export function badDayLabels(text: string, today: string, writtenOn?: string): string[] {
   const out: string[] = [];
+  // 第 14 轮：周的时态——整周已过还写「本周/这周（range）」，或当周写成「那周」
+  for (const m of text.matchAll(/(本周|这周|那周)（(\d{2})-(\d{2})[–-](\d{2})-(\d{2})）/g)) {
+    let y = Number(today.slice(0, 4)); if (today.slice(5, 7) === '01' && m[4] === '12') y--;
+    const to = `${y}-${m[4]}-${m[5]}`, past = to < today;
+    if (past !== (m[1] === '那周')) out.push(m[0]);
+  }
+  // 倒计时时态：文字写在更早的学习日，还写「距考试 N 天」（没加「当时」）
+  if (writtenOn && writtenOn < today) for (const m of text.matchAll(/(?<!当时)(距考试还有|距考试|离考试还有) ?\d+ ?天/g)) out.push(m[0]);
+  for (const m of text.matchAll(/\{\{(week|countdown):[^}]*\}\}/g)) out.push(m[0]);
   const year = today.slice(0, 4);
   for (const m of text.matchAll(/(今天|明天|后天|昨天|前天)（(\d{2})-(\d{2})）/g)) {
     // 跨年：12 月说 01-0x 是明年
@@ -137,12 +146,26 @@ export function toPlaceholders(text: string | null | undefined, ref: string): st
   // 日期后面紧跟「先」（「明天（11-02）先重做…」）是往后看的说法：记成 {{date:…|plan}}，过了那天再读时改成「11-02（周一）当天计划重做…」
   return text
     .replace(TO_PH_RE, (m, m1, d1, m2, d2, off, str) => { const d = withYear(m1 ?? m2, d1 ?? d2, ref); return str[off + m.length] === '先' ? `{{date:${d}|plan}}` : datePh(d); })
-    .replace(/\{\{date:(\d{4}-\d{2}-\d{2})\}\}(?=先)/g, '{{date:$1|plan}}');
+    .replace(/\{\{date:(\d{4}-\d{2}-\d{2})\}\}(?=先)/g, '{{date:$1|plan}}')
+    // 周/倒计时（第 14 轮）：「本周（11-02–11-08）」→ {{week:2026-11-02|本周}}；「距考试 47 天」→ {{countdown:47|asof=ref|距考试}}
+    .replace(WEEK_RE, (m, w, m1, d1) => { const st = withYear(m1, d1, ref); return weekOf(st).from === st ? `{{week:${st}|${w}}}` : m; })
+    .replace(CD_RE, (_m, pre, n) => `{{countdown:${n}|asof=${ref}|${pre}}}`);
+}
+const WEEK_RE = /(本周|这周)（(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])[–-](?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])）/g;
+const CD_RE = /(?<!当时)(距考试还有|距考试|离考试(?:（[^（）]*）)?还有) ?(\d+) ?天/g;
+export const weekPh = (start: string, word = '本周') => `{{week:${start}|${word}}}`;
+export const countdownPh = (n: number, asof: string, pre = '距考试') => `{{countdown:${n}|asof=${asof}|${pre}}}`;
+/** 周 / 倒计时占位符按读者学习日渲染：整周已过 →「那周（range）」；生成日早于今天 →「当时距考试 N 天」 */
+function renderWeekCd(text: string, today: string): string {
+  return text
+    .replace(/\{\{week:(\d{4}-\d{2}-\d{2})\|([^}]*)\}\}/g, (_m, st, w) => { const wk = weekOf(st); return `${wk.to < today ? '那周' : (w || '本周')}（${wk.label}）`; })
+    .replace(/\{\{countdown:(\d+)\|asof=(\d{4}-\d{2}-\d{2})\|?([^}]*)\}\}/g, (_m, n, asof, pre) => `${asof < today ? '当时' : ''}${pre || '距考试'} ${n} 天`);
 }
 /** 读的时候：占位符 → 相对今天（读者当时的学习日）的叫法 */
 /** 占位符还原成存库前的裸日期 MM-DD（快照里本来不存占位符的字段撤回时用：计划任务标题、提醒文字） */
-export const bareDates = <T>(s: T): T => (typeof s === 'string' ? (s.replace(/\{\{date:\d{4}-(\d{2}-\d{2})(?:\|plan)?\}\}/g, '$1') as any) : s);
+export const bareDates = <T>(s: T): T => (typeof s === 'string' ? (s.replace(/\{\{week:(\d{4}-\d{2}-\d{2})\|([^}]*)\}\}/g, (_m: string, st: string, w: string) => `${w || '本周'}（${weekOf(st).label}）`).replace(/\{\{countdown:(\d+)\|asof=[\d-]+\|?([^}]*)\}\}/g, (_m: string, n: string, pre: string) => `${pre || '距考试'} ${n} 天`).replace(/\{\{date:\d{4}-(\d{2}-\d{2})(?:\|plan)?\}\}/g, '$1') as any) : s);
 export function renderDates(text: string, today: string): string {
+  if (text.includes('{{week:') || text.includes('{{countdown:')) text = renderWeekCd(text, today);
   if (!text.includes('{{date:')) return text;
   // 模板里裸日期两边常有空格（「在 11-02 的计划」）：渲染后两边的空格都去掉（「在11-02（周一）的计划」「在明天（11-02）的计划」）
   // |plan：往后看的说法（后面跟「先…」）。读的时候那天已经过去 → 「11-02（周一）当天计划重做…」（去掉「先」）；今天或以后照常「明天（11-02）先重做…」

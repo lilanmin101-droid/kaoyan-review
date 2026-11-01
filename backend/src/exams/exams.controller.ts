@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Headers, HttpCode, Param, Post, Put, Query, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Headers, HttpCode, HttpException, Param, Post, Put, Query, Res, UseGuards } from '@nestjs/common';
 import type { Response } from 'express';
 import { JwtGuard } from '../auth/jwt.guard';
 import { AuthUser, CurrentUser } from '../common/user.decorator';
@@ -31,9 +31,22 @@ export class ExamsController {
   @Get('active')
   async active(@CurrentUser() u: AuthUser) { return { exam: await this.svc.active(u.id) }; }
 
+  /** 这场的请求后端 5xx：记下来，下次成功请求时把出错这段时间补回给学生（学生自己断网不补） */
+  private async guard<T>(userId: string, id: string, p: () => Promise<T>): Promise<T> {
+    try { return await p(); } catch (e) { if (!(e instanceof HttpException)) await this.svc.markServerError(userId, id); throw e; }
+  }
+
+  /** 明确暂停 / 继续（次数不限；成绩页显示「中途暂停 N 次，共 M 分钟」） */
+  @Post(':id/pause')
+  @HttpCode(200)
+  pause(@CurrentUser() u: AuthUser, @Param('id') id: string) { return this.guard(u.id, id, () => this.svc.setPaused(u.id, id, true)); }
+  @Post(':id/resume')
+  @HttpCode(200)
+  resume(@CurrentUser() u: AuthUser, @Param('id') id: string) { return this.guard(u.id, id, () => this.svc.setPaused(u.id, id, false)); }
+
   @Get(':id')
   async get(@CurrentUser() u: AuthUser, @Param('id') id: string) {
-    const v: any = await this.svc.view(null, id, u.id);
+    const v: any = await this.guard(u.id, id, async () => { await this.svc.expireIfDue(u.id, id); return this.svc.view(null, id, u.id); });
     if (v?.result) this.prerender(u.id, id, v.exam);
     return v;
   }
@@ -67,11 +80,11 @@ export class ExamsController {
   }
 
   @Put(':id/progress')
-  progress(@CurrentUser() u: AuthUser, @Param('id') id: string, @Body() b: ProgressBody) { return this.svc.saveProgress(u.id, id, b); }
+  progress(@CurrentUser() u: AuthUser, @Param('id') id: string, @Body() b: ProgressBody) { return this.guard(u.id, id, () => this.svc.saveProgress(u.id, id, b)); }
 
   @Post(':id/submit')
   @HttpCode(200)
-  submit(@CurrentUser() u: AuthUser, @Param('id') id: string, @Body() b: any, @Headers('x-device') device?: string) { return this.withPrerender(u.id, id, this.svc.submit(u.id, id, b ?? {}, device)); }
+  submit(@CurrentUser() u: AuthUser, @Param('id') id: string, @Body() b: any, @Headers('x-device') device?: string) { return this.guard(u.id, id, () => this.withPrerender(u.id, id, this.svc.submit(u.id, id, b ?? {}, device))); }
 
   /** 放弃这场模考（不判分、不进错题本，保留进度；之后可以开新的一场）。重复调用幂等 */
   @Post(':id/abandon')

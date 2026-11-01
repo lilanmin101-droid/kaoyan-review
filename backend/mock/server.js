@@ -300,12 +300,15 @@ const customize = {
     if (!out.discarded) Object.assign(out, { status: 'abandoned', abandoned_at: now(), result: null });
     return out;
   },
+  // 明确暂停 / 继续（第 14 轮：墙上时钟计时；?__status=409 = 到点已自动交卷 code=exam_auto_submitted）
+  'POST /exams/{id}/pause': (body, req) => ({ ...body, id: req.params.id, server_time: now() }),
+  'POST /exams/{id}/resume': (body, req) => ({ ...body, id: req.params.id, server_time: now() }),
   'PUT /exams/{id}/progress': (body, req) => {
     const b = req.body || {};
     const out = JSON.parse(JSON.stringify(body));
     out.id = req.params.id;
     out.server_time = now();
-    if (b.state === 'paused') out.status = 'paused';
+    if (b.state === 'paused' && out.status !== 'paused') { out.status = 'paused'; out.pause_count = (out.pause_count || 0) + 1; }
     if (b.client_seq) out.progress.last_client_seq = b.client_seq;
     if (b.current_question_id) out.progress.current_question_id = b.current_question_id;
     for (const a of b.answers || []) out.progress.answers[a.question_id] = { answer: a.answer || [], time_spent_seconds: a.time_spent_seconds ?? null, flagged: !!a.flagged, client_seq: b.client_seq, saved_at: now() };

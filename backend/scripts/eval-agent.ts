@@ -947,6 +947,51 @@ const BUILTIN: Case[] = [
     },
   },
   {
+    id: 'r14-week-countdown-tense', scenario: '第 14 轮：旧周报 8 天后再读，「本周（range）」→「那周（range）」，「距考试 N 天」→「当时距考试 N 天」；当天读不变',
+    input: 'weekly（force）→ 当天读 → X-Debug-Now +8 天再读', source: 'builtin',
+    expect: ['库里是 {{week}} / {{countdown}} 占位符', '当天读：本周（range）、距考试 N 天', '8 天后读：那周（range）、当时距考试 N 天'], must_not: ['8 天后还写本周 / 距考试（没加当时）'],
+    run: async (s) => {
+      const d = await today(s);
+      await s.send('PATCH', '/me/settings', { exam_date: addDays(d, 47) });
+      await s.send('POST', '/agent/jobs/run', { job: 'weekly', force: true });
+      const raw = (await db.query(`SELECT id, details FROM daily_tips WHERE user_id=$1 AND kind='weekly' ORDER BY created_at DESC LIMIT 1`, [s.userId])).rows[0];
+      const pick = async () => (await s.get('/agent/messages')).items.find((x: any) => x.id === raw?.id)?.details ?? '';
+      const t0 = await pick();
+      s.debugNow = localIso(s, addDays(d, 8), '12:00');
+      const t8 = await pick();
+      s.debugNow = null;
+      const bad8 = badDayLabels(t8, addDays(d, 8), d);
+      return [
+        pass('库里是 {{week}} / {{countdown}} 占位符', 'expect', /\{\{week:\d{4}-\d{2}-\d{2}\|本周\}\}/.test(raw?.details ?? '') && /\{\{countdown:\d+\|asof=/.test(raw?.details ?? ''), raw?.details),
+        pass('当天读：本周（range）、距考试 N 天', 'expect', /^本周（\d{2}-\d{2}–\d{2}-\d{2}）/.test(t0) && /(?<!当时)距考试 \d+ 天/.test(t0) && !badDayLabels(t0, d, d).length, t0),
+        pass('8 天后读：那周（range）、当时距考试 N 天', 'expect', /^那周（\d{2}-\d{2}–\d{2}-\d{2}）/.test(t8) && /当时距考试 \d+ 天/.test(t8), t8),
+        pass('8 天后还写本周 / 距考试（没加当时）', 'must_not', bad8.length === 0, bad8.join(',')),
+      ];
+    },
+  },
+  {
+    id: 'r14-exam-wall-clock', scenario: '第 14 轮：模考按墙上时钟；不发心跳 30 分钟后剩 150 分钟；181 分钟后读 → 自动交卷（auto_submitted），心跳 409 exam_auto_submitted',
+    input: '开考（180 分钟）→ +30 分钟读 → +181 分钟读 → 心跳', source: 'builtin',
+    expect: ['30 分钟后剩 150 分钟', '到点自动交卷', '之后心跳 409 exam_auto_submitted'], must_not: [],
+    run: async (s) => {
+      const d = await today(s);
+      const t0 = new Date(Date.parse(localIso(s, addDays(d, 2), '09:00')));
+      const at = (m: number) => new Date(t0.getTime() + m * 60000).toISOString();
+      s.debugNow = at(0);
+      const e = await s.send('POST', '/exams', { question_ids: ['math1-2024-17'], duration_minutes: 180, include_unreviewed: true, kind: 'paper' });
+      const id = e.body?.id;
+      s.debugNow = at(30); const v30 = await s.get(`/exams/${id}`);
+      s.debugNow = at(181); const v181 = await s.get(`/exams/${id}`);
+      const hb = await s.send('PUT', `/exams/${id}/progress`, { idempotency_key: 'late', client_seq: 1 });
+      s.debugNow = null;
+      return [
+        pass('30 分钟后剩 150 分钟', 'expect', v30?.remaining_seconds === 9000, JSON.stringify({ r: v30?.remaining_seconds })),
+        pass('到点自动交卷', 'expect', v181?.status === 'submitted' && v181?.auto_submitted === true && v181?.result?.auto_submitted === true, `${v181?.status} ${v181?.auto_submitted}`),
+        pass('之后心跳 409 exam_auto_submitted', 'expect', hb.status === 409 && hb.body?.code === 'exam_auto_submitted' && hb.body?.exam_id === id, `${hb.status} ${JSON.stringify(hb.body)}`),
+      ];
+    },
+  },
+  {
     id: 'r11-date-render', scenario: '第 11 轮 M1：存库是 {{date:YYYY-MM-DD}}，读时按读者当时的学习日渲染：建议第二天再读 明天→今天；8 天前的记录显示「MM-DD（周X）」',
     input: 'nightly（先问我）→ 读 → X-Debug-Now +1 天再读 → 确认 → +8 天读改动记录', source: 'builtin',
     expect: ['库里是占位符', '当天读：明天（MM-DD）', '第二天读：今天（MM-DD），不再说明天', '确认后标题按读的那天说', '8 天后改动记录：MM-DD（周X）'], must_not: ['存库的是「明天」这种会过期的叫法'],

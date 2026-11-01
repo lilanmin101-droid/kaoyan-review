@@ -90,7 +90,23 @@ EN=$(curl -sf "${A[@]}" -H "x-debug-now: $T0" -XPOST $B/exams -d '{"question_ids
 curl -sf "${A[@]}" -H "x-debug-now: $T0" $B/exams/$EN | ok "d['started_at'].startswith('$T0'[:19]) and d['remaining_seconds']==1800 and d['server_time'].startswith('$T0'[:19])"
 curl -sf "${A[@]}" -H "x-debug-now: $T60" $B/exams/$EN | ok "d['elapsed_seconds']==60 and d['remaining_seconds']==1740"
 curl -sf "${A[@]}" $B/exams/$EN | ok "d['elapsed_seconds']==0 and d['remaining_seconds']==1800"
-curl -sf "${A[@]}" -H "x-debug-now: $T121" -XPOST $B/exams/$EN/abandon | ok "d['discarded'] is False and d['status']=='abandoned' and d['abandoned_at'].startswith('$T121'[:19]) and d['elapsed_seconds']==120"
+curl -sf "${A[@]}" -H "x-debug-now: $T121" -XPOST $B/exams/$EN/abandon | ok "d['discarded'] is False and d['status']=='abandoned' and d['abandoned_at'].startswith('$T121'[:19]) and d['elapsed_seconds']==121"
+# 第 14 轮：墙上时钟——不发心跳 30 分钟后剩 150 分钟；暂停不计时；181 分钟后读 → 已自动交卷（auto_submitted），再发心跳 → 409 exam_auto_submitted
+echo "== exam wall clock / pause / auto submit"
+TW=$(python3 -c "import datetime;print((datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(days=5)).replace(microsecond=0).isoformat().replace('+00:00','Z'))")
+at() { python3 -c "import datetime;t=datetime.datetime.fromisoformat('$TW'.replace('Z','+00:00'));print((t+datetime.timedelta(minutes=$1)).isoformat().replace('+00:00','Z'))"; }
+EWC=$(curl -sf "${A[@]}" -H "x-debug-now: $TW" -XPOST $B/exams -d '{"question_ids":["'$WQ'"],"duration_minutes":180,"include_unreviewed":true,"kind":"paper"}' | j "d['id']")
+curl -sf "${A[@]}" -H "x-debug-now: $(at 30)" $B/exams/$EWC | ok "d['remaining_seconds']==9000 and d['pause_count']==0 and d['paused_seconds']==0 and d['auto_submitted'] is False"
+curl -sf "${A[@]}" -H "x-debug-now: $(at 40)" -XPOST $B/exams/$EWC/pause | ok "d['status']=='paused' and d['pause_count']==1"
+curl -sf "${A[@]}" -H "x-debug-now: $(at 50)" -XPOST $B/exams/$EWC/resume | ok "d['status']=='in_progress' and d['paused_seconds']==600 and d['remaining_seconds']==8400"
+curl -sf "${A[@]}" -H "x-debug-now: $(at 60)" -XPUT $B/exams/$EWC/progress -d '{"idempotency_key":"w1","client_seq":1,"answers":[{"question_id":"'$WQ'","answer":["wall"]}]}' | ok "d['remaining_seconds']==7800"
+curl -sf "${A[@]}" -H "x-debug-now: $(at 191)" $B/exams/$EWC | ok "d['status']=='submitted' and d['auto_submitted'] is True and d['result']['auto_submitted'] is True and d['result']['pause_count']==1 and d['result']['paused_seconds']==600 and d['elapsed_seconds']==10800 and d['remaining_seconds']==0 and d['progress']['answers']['$WQ']['answer']==['wall']"
+curl -s "${A[@]}" -H "x-debug-now: $(at 192)" -XPUT $B/exams/$EWC/progress -d '{"idempotency_key":"w2","client_seq":2}' | ok "d['code']=='exam_auto_submitted' and d['exam_id']=='$EWC' and d['status']=='submitted'"
+curl -s "${A[@]}" -H "x-debug-now: $(at 192)" -XPOST $B/exams/$EWC/submit -d '{}' | ok "d['code']=='exam_auto_submitted'"
+# 不发心跳、不读，181 分钟后定时扫 / 下次心跳也会自动交
+EWD=$(curl -sf "${A[@]}" -H "x-debug-now: $TW" -XPOST $B/exams -d '{"question_ids":["'$WQ'"],"duration_minutes":180,"include_unreviewed":true}' | j "d['id']")
+curl -s "${A[@]}" -H "x-debug-now: $(at 181)" -XPUT $B/exams/$EWD/progress -d '{"idempotency_key":"w3","client_seq":1,"answers":[{"question_id":"'$WQ'","answer":["late"]}]}' | ok "d['code']=='exam_auto_submitted'"
+curl -sf "${A[@]}" -H "x-debug-now: $(at 182)" $B/exams/$EWD | ok "d['auto_submitted'] is True and d['submitted_at'].startswith('$(at 180)'[:16]) and not d['progress']['answers']"
 echo "== wrong questions"; curl -sf "${A[@]}" $B/wrong-questions | ok "all('images' in i and 'sub_questions' in i and 'score_estimated' in i and 'score_by_whole' in i for i in d['items'])"
 echo "== words"; curl -sf "${A[@]}" $B/words/today | ok "all(w['audio_url_us'].endswith('/audio?accent=us') and w['audio_url_uk'].endswith('/audio?accent=uk') for w in d['new']+d['review']) and {'new_target','new_done_today','reviewed_today'} <= set(d['counts'])"
 W=$(curl -sf "${A[@]}" $B/words/today | j "d['new'][0]['id']");

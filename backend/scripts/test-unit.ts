@@ -250,7 +250,7 @@ export function runUnitTests() {
   eq('dayLabel', [dayLabel('2026-11-02', '2026-11-01'), dayLabel('2026-11-01', '2026-11-01'), dayLabel('2026-11-20', '2026-11-01')], ['明天（11-02）', '今天（11-01）', '11-20（周五）']);
   // 第 11 轮：日期占位符 / 渲染 / 引号层级 / 凌晨说明
   eq('toPlaceholders', toPlaceholders('在 11-02 的计划里加了；今天（11-01）；周三（11-04）；11-20（周五）；本周（10-26–11-01）；凌晨 4 点前还算 11-01 这一天；math1-2024-01；2026-11-01；ab12-05', '2026-11-01'),
-    '在 {{date:2026-11-02}} 的计划里加了；{{date:2026-11-01}}；{{date:2026-11-04}}；{{date:2026-11-20}}；本周（10-26–11-01）；凌晨 4 点前还算 11-01 这一天；math1-2024-01；2026-11-01；ab12-05');
+    '在 {{date:2026-11-02}} 的计划里加了；{{date:2026-11-01}}；{{date:2026-11-04}}；{{date:2026-11-20}}；{{week:2026-10-26|本周}}；凌晨 4 点前还算 11-01 这一天；math1-2024-01；2026-11-01；ab12-05');
   eq('toPlaceholders 跨年', [toPlaceholders('明天（01-01）', '2026-12-31'), toPlaceholders('12-31', '2027-01-01')], ['{{date:2027-01-01}}', '{{date:2026-12-31}}']);
   eq('toPlaceholders 幂等', toPlaceholders('{{date:2026-11-02}}', '2026-11-01'), '{{date:2026-11-02}}');
   eq('renderDates', ['2026-11-02', '2026-11-03', '2026-11-10'].map((d) => renderDates('想在 {{date:2026-11-02}} 的计划里加「x」', d)), ['想在今天（11-02）的计划里加「x」', '想在昨天（11-02）的计划里加「x」', '想在11-02（周一）的计划里加「x」']);
@@ -288,8 +288,28 @@ export function runUnitTests() {
   eq('badDayLabels：跨年', badDayLabels('明天（01-01）', '2026-12-31'), []);
   eq('badDayLabels：括号套括号', badDayLabels('建议的日子（11-03（周二））已经过去了；还有 3 天（从今天（11-02）算）；（2 分待自评）', '2026-11-02'), ['（11-03（周二））', '（从今天（11-02）算）']);
   eq('renderDates 兜底：（{{date}}）去掉外层括号', renderDates('建议的日子（{{date:2026-11-03}}）已经过去了', '2026-11-12'), '建议的日子11-03（周二）已经过去了');
+  // 第 14 轮：周 / 倒计时时态（8 天后读旧周报）
+  { const ph = toPlaceholders('本周（11-02–11-08）做了 3 题，当前阶段：基础，距考试 47 天。这周（11-02–11-08）', '2026-11-08') as string;
+    eq('周/倒计时 占位符', ph, '{{week:2026-11-02|本周}}做了 3 题，当前阶段：基础，{{countdown:47|asof=2026-11-08|距考试}}。{{week:2026-11-02|这周}}');
+    eq('周/倒计时 渲染', ['2026-11-08', '2026-11-16'].map((d) => renderDates(ph, d)), ['本周（11-02–11-08）做了 3 题，当前阶段：基础，距考试 47 天。这周（11-02–11-08）', '那周（11-02–11-08）做了 3 题，当前阶段：基础，当时距考试 47 天。那周（11-02–11-08）']);
+    eq('周/倒计时 幂等', toPlaceholders(ph, '2026-11-16'), ph);
+    eq('离考试（…）还有', renderDates(toPlaceholders('离考试（2026-12-19，周六）还有 47 天', '2026-11-02') as string, '2026-11-10'), '当时离考试（2026-12-19，周六）还有 47 天');
+    eq('扫描：旧周报', badDayLabels('本周（11-02–11-08）…距考试 47 天', '2026-11-16', '2026-11-02'), ['本周（11-02–11-08）', '距考试 47 天']);
+    eq('扫描：当周写那周', badDayLabels('那周（11-02–11-08）', '2026-11-04'), ['那周（11-02–11-08）']); }
   eq('renderDates 兜底：（{{date}}、{{date}}）', renderDates('最近两次复盘（{{date:2026-10-30}}、{{date:2026-10-31}}）你都没打开', '2026-11-12'), '最近两次复盘10-30（周五）、10-31（周六）你都没打开');
   // 模考计时：心跳间隔封顶 120 秒；调试时间往回拨（last_tick_at 在「现在」之后）不倒扣
+  // 第 14 轮：模考按墙上时钟
+  { const { examClock } = require('../src/exams/exam-clock');
+    const st = '2026-11-02T00:00:00Z', base = { duration_seconds: 10800, started_at: st };
+    eq('墙钟：30 分钟不发心跳也走', examClock(base, Date.parse('2026-11-02T00:30:00Z')).remaining_seconds, 9000);
+    eq('墙钟：181 分钟到点', examClock(base, Date.parse('2026-11-02T03:01:00Z')).remaining_seconds, 0);
+    const pl = [{ start: '2026-11-02T00:10:00Z', end: '2026-11-02T00:20:00Z' }, { start: '2026-11-02T00:40:00Z', end: null }];
+    const c = examClock({ ...base, pause_log: pl }, Date.parse('2026-11-02T00:50:00Z'));
+    eq('暂停不计时、次数不限', [c.elapsed_seconds, c.pause_count, c.paused_seconds, c.paused_now], [1800, 2, 1200, true]);
+    const g = examClock(base, Date.parse('2026-11-02T01:00:00Z'), [[Date.parse('2026-11-02T00:50:00Z'), Date.parse('2026-11-02T01:30:00Z')]]);
+    eq('停机补时只算考试期间', g.elapsed_seconds, 3000);
+    eq('老场次：基线 + 从上线起算', examClock({ ...base, clock_origin: '2026-11-02T02:00:00Z', clock_baseline_seconds: 600 }, Date.parse('2026-11-02T02:10:00Z')).elapsed_seconds, 1200);
+    eq('5xx 补时', examClock({ ...base, error_credit_seconds: 60 }, Date.parse('2026-11-02T00:10:00Z')).elapsed_seconds, 540); }
   eq('tickSeconds', [tickSeconds('2026-11-02T00:00:00Z', Date.parse('2026-11-02T00:00:30Z')), tickSeconds('2026-11-02T00:00:00Z', Date.parse('2026-11-02T01:00:00Z')),
     tickSeconds('2026-11-02T00:10:00Z', Date.parse('2026-11-02T00:00:00Z')), tickSeconds(null, Date.now())], [30, HEARTBEAT_CAP_SECONDS, 0, 0]);
   eq('errata 合格', validateErrata([{ printed: 'a', correct: 'b', note: 'n' }]).length, 0);
