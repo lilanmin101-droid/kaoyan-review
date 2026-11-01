@@ -2,6 +2,19 @@
 
 来源优先级：官方原卷 > 官方版式重排本 > 多来源取多数。各科逐年来源说明见 `src/eng1/SOURCES.md`（英一）；本文件列出 src/ 下全部原卷文件的 sha256 和下载地址，src/ 不进 git。
 
+## 逐字段授权层次（2026-11-02 核对；以后新增来源先在这里登记）
+
+| 题库字段 | 来源 | 来源的授权 | 我们能怎么用 |
+|---|---|---|---|
+| 英一 `stem`、`passage`、`options`、`answer`（1–45 客观题字母）、图片 | liziak112 Structured-Kaoyan-English，按原卷扫描件校正 | 第一层「试题数据」：自由使用，不附限制（项目本身也声明不代表公有领域） | 可用。试题著作权属于命题方，各家都按这个惯例使用 |
+| 英一 `answer`（46–52 参考译文、范文） | liziak112 的 `answer` 字段 | 名义上属第一层，实际是有独创性的教辅作品，原作者没有授权 | **待替换**：统筹者定由行业专家全部重写，写好后由资料/仓库搜索者写回题库，`answer_source` 标成 expert |
+| 英一 `explanation` | 不使用 liziak112 的 `explanation`（第二层，CC BY-NC，著作权归第三方） | — | 只用 `explanations/english1_*_expert.jsonl`（行业专家原创） |
+| 英一答案核对 | Echo1LZJY echo-kaoyan-english-skill | 无 LICENSE，保留所有权利 | 只拿来核对，不拷进题库 |
+| 数一 `stem`、`options`、`answer`、图片 | TsekaLuk/Kaoyan-Math1-Papers（`papers/`、`sol_*.md`） | **CC BY-NC-SA 4.0**：署名、非商业、相同方式共享；README 写明「真题来源：网络整理」 | 题面属于试题，按惯例使用；但要在 App 的「关于」里署名 TsekaLuk/Nebutra 并注明 CC BY-NC-SA |
+| 数一 `solution`（2015–2023、2025，约 225 题） | 同上，`sol_*.md` | CC BY-NC-SA 4.0，内容很可能来自网络流传的教辅 | **风险同英一译文**：不能商用，衍生内容要用相同许可，原作者授权也不清楚。建议以行业专家的 `explanations/math1_*_expert` 为主，`solution` 不作为对外展示的讲解；要不要删或重写由统筹者定 |
+| 原卷扫描件、OCR 文本（src/，不进 git） | 见下方清单 | 各站自行发布，不再分发 | 只用来核对 |
+| 行业专家讲解、参考译文、范文 | 行业专家原创 | 随本仓库的许可证 | 可用 |
+
 ## 授权说明（英一翻译/作文参考答案）
 
 - 英一 2015–2025 第 46–52 题（翻译与写作）题库 `answer` 里的参考译文、范文，77 题中 75 题与 liziak112「Structured-Kaoyan-English」的 `answer` 字段逐字相同（例外：2024 第 48、50 题）。按其分层许可证，`explanation` 以外的题目字段属第一层「试题数据，自由使用」，所以目前可以用。
