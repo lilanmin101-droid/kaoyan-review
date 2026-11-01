@@ -239,6 +239,30 @@ function renderMock(v, quotes) {
 }
 const withDue = (i) => { const dd = i.due_at ? studyDate(i.due_at) : null; return { ...i, due_date: dd, due_relative_day: relativeDay(dd) }; };
 
+
+// 第 15 轮：模考的非连续作答 / 暂停超过 24 小时自动交卷 / 趋势字段（example 里没写的按规则补上）
+const EXAM_CN_MOCK = { math1: '数学一', math2: '数学二', math3: '数学三', english1: '英语一', english2: '英语二', politics: '政治' };
+function examR15(e, req) {
+  if (!e || typeof e !== 'object' || !('duration_seconds' in e) || !('status' in e)) return e;
+  const nc = e.non_continuous ?? ((e.paused_seconds || 0) > 900 || (!!e.submitted_date && !!e.started_date && e.submitted_date !== e.started_date));
+  const out = { ...e, exam_name: e.exam_name ?? EXAM_CN_MOCK[e.exam] ?? e.exam, non_continuous: nc, counts_in_trend: e.status === 'submitted' && !nc,
+    auto_submit_reason: e.auto_submitted ? (e.auto_submit_reason ?? 'time_up') : null,
+    paused_at: e.status === 'paused' ? (e.paused_at ?? new Date(Date.now() - Math.max(60, Number(req?.query?.__paused_minutes || 3) * 60) * 1000).toISOString()) : null };
+  if (!('submitted_date' in e)) out.submitted_date = e.submitted_at ? String(e.submitted_at).slice(0, 10) : null;
+  if ('progress' in e || 'question_ids' in e) Object.assign(out, { pause_warn_seconds: 600, non_continuous_pause_seconds: 900 });
+  if (e.result && typeof e.result === 'object') out.result = { ...e.result, non_continuous: nc, counts_in_trend: !nc, auto_submit_reason: out.auto_submit_reason };
+  return out;
+}
+function withExamR15(body, key, req) {
+  if (!/^(GET|POST|PUT) \/exams/.test(key) || !body || typeof body !== 'object') return body;
+  if (Array.isArray(body.items)) {
+    let items = body.items.map((x) => examR15(x, req));
+    if (req.query.trend === '1' || req.query.trend === 'true') items = items.filter((x) => x.counts_in_trend);
+    return { ...body, items };
+  }
+  if (body.exam && typeof body.exam === 'object') return { ...body, exam: examR15(body.exam, req) };
+  return examR15(body, req);
+}
 // 少量「看起来像真的」的定制：把请求里的值回填到 example
 const customize = {
   // 学生看到的日期都带相对叫法（前端不算日界）
@@ -450,6 +474,10 @@ for (const [p, item] of Object.entries(spec.paths)) {
       if (body === undefined) return res.status(code).end();
       body = JSON.parse(JSON.stringify(body));
       if (customize[key] && code < 300) body = customize[key](body, req, op);
+      if (code < 300) body = withExamR15(body, key, req);
+      // 409 exam_auto_submitted：带 auto_submitted / auto_submit_reason（?__reason=paused_too_long 模拟暂停超过 24 小时）
+      if (code === 409 && body && body.code === 'exam_auto_submitted') body = { ...body, auto_submitted: true, auto_submit_reason: req.query.__reason === 'paused_too_long' ? 'paused_too_long' : 'time_up',
+        ...(req.query.__reason === 'paused_too_long' ? { message: '暂停超过 24 小时，已经按暂停那一刻保存的答案自动交卷' } : {}) };
       if (code < 300 && body && typeof body === 'object') body = renderMock(body, /^\/(agent|plans)\b/.test(req.path.replace(/^\/api\/v1/, '')));
       if (code < 300) body = withReferenceAnswers(body); // 模考成绩 per_question.reference_answer
       if (code >= 400 && body && typeof body === 'object' && 'statusCode' in body) {

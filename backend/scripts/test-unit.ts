@@ -325,6 +325,12 @@ export function runUnitTests() {
     eq('停机补时只算考试期间', g.elapsed_seconds, 3000);
     eq('老场次：基线 + 从上线起算', examClock({ ...base, clock_origin: '2026-11-02T02:00:00Z', clock_baseline_seconds: 600 }, Date.parse('2026-11-02T02:10:00Z')).elapsed_seconds, 1200);
     eq('5xx 补时', examClock({ ...base, error_credit_seconds: 60 }, Date.parse('2026-11-02T00:10:00Z')).elapsed_seconds, 540); }
+  // 第 15 轮：非连续作答 / 暂停超过 24 小时
+  { const { nonContinuous, pausedTooLongSince } = require('../src/exams/exam-clock');
+    eq('非连续：暂停 16 分钟 / 15 分钟 / 跨 04:00', [nonContinuous(960, '2026-11-02', '2026-11-02'), nonContinuous(900, '2026-11-02', '2026-11-02'), nonContinuous(0, '2026-11-02', '2026-11-03')], [true, false, true]);
+    const log = [{ start: '2026-11-02T00:10:00Z', end: null }];
+    eq('暂停 25 小时 → 冻结在暂停那一刻', [pausedTooLongSince(log, Date.parse('2026-11-03T01:10:00Z')), pausedTooLongSince(log, Date.parse('2026-11-03T00:00:00Z')), pausedTooLongSince([{ start: '2026-11-02T00:10:00Z', end: '2026-11-02T00:20:00Z' }], Date.parse('2026-11-05T00:00:00Z'))],
+      [Date.parse('2026-11-02T00:10:00Z'), null, null]); }
   eq('tickSeconds', [tickSeconds('2026-11-02T00:00:00Z', Date.parse('2026-11-02T00:00:30Z')), tickSeconds('2026-11-02T00:00:00Z', Date.parse('2026-11-02T01:00:00Z')),
     tickSeconds('2026-11-02T00:10:00Z', Date.parse('2026-11-02T00:00:00Z')), tickSeconds(null, Date.now())], [30, HEARTBEAT_CAP_SECONDS, 0, 0]);
   eq('errata 合格', validateErrata([{ printed: 'a', correct: 'b', note: 'n' }]).length, 0);

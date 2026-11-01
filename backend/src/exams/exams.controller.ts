@@ -23,9 +23,9 @@ export class ExamsController {
     return { ...r, resumed: !!r?.resumed };
   }
 
-  /** 模考历史 */
+  /** 模考历史；trend=1 只给计入模考趋势 / 预测分的场次（已交卷且不是非连续作答） */
   @Get()
-  list(@CurrentUser() u: AuthUser, @Query('limit') limit?: string, @Query('cursor') cursor?: string) { return this.svc.history(u.id, limit, cursor); }
+  list(@CurrentUser() u: AuthUser, @Query('limit') limit?: string, @Query('cursor') cursor?: string, @Query('trend') trend?: string) { return this.svc.history(u.id, limit, cursor, trend); }
 
   /** 有没交卷的模考就返回它（前端弹「继续上次」），没有返回 {exam: null} */
   @Get('active')

@@ -30,3 +30,20 @@ export function examClock(r: ClockInput, nowMs: number, gaps: Interval[] = []) {
   };
 }
 export const pauseNote = (count: number, seconds: number) => (count ? `中途暂停 ${count} 次，共 ${Math.round(seconds / 60)} 分钟` : null);
+
+/** 第 15 轮（统筹者定）：暂停满 10 分钟前端提醒；累计暂停超过 15 分钟或跨了 04:00 学习日 → 非连续作答，不计入模考趋势 / 预测分 */
+export const PAUSE_WARN_SECONDS = 600;
+export const NON_CONTINUOUS_PAUSE_SECONDS = 900;
+/** 一直暂停超过 24 小时 → 按暂停那一刻自动交卷（auto_submit_reason=paused_too_long） */
+export const PAUSE_AUTO_SUBMIT_SECONDS = 86400;
+export type AutoSubmitReason = 'time_up' | 'paused_too_long';
+export function nonContinuous(pausedSeconds: number, startedDay: string, endDay: string) {
+  return pausedSeconds > NON_CONTINUOUS_PAUSE_SECONDS || startedDay !== endDay;
+}
+/** 暂停中、且这次暂停已超过 24 小时 → 返回暂停开始的时刻（毫秒），否则 null */
+export function pausedTooLongSince(log: PauseEntry[] | null | undefined, nowMs: number): number | null {
+  const open = (log ?? []).find((p) => !p.end);
+  if (!open) return null;
+  const st = Date.parse(open.start);
+  return nowMs - st > PAUSE_AUTO_SUBMIT_SECONDS * 1000 ? st : null;
+}
