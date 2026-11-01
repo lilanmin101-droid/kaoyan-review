@@ -272,10 +272,31 @@ const customize = {
     }
     return { ...body, question_id: req.params.id, citation: { ...body.citation, number: num } };
   },
+  // 作答：带 client_id 的重发返回第一次的结果（duplicate=true）；离线补传带 answered_at / source / pack_version，answered_at 夹在 [现在-7 天, 现在]
   'POST /answers': (body, req) => {
-    const one = (a) => ({ ...body, id: uuid(), question_id: a.question_id || body.question_id, answer: a.answer || body.answer, self_rating: a.self_rating || null, client_id: a.client_id || null, answered_at: now() });
-    return Array.isArray(req.body?.items) ? { items: req.body.items.map(one) } : one(req.body || {});
+    const tpl = Array.isArray(body.items) ? body.items[0] : body;
+    const one = (a) => {
+      if (!a || !a.question_id) return { status: 'rejected', duplicate: false, reason: 'missing_question_id', client_id: a?.client_id ?? null, question_id: null, is_correct: null, score: null, wrong_question_id: null };
+      if (a.client_id && MOCK_ANSWERS.has(a.client_id)) return { ...MOCK_ANSWERS.get(a.client_id), status: 'duplicate', duplicate: true };
+      const nowMs = Date.now();
+      let at = a.answered_at ? Date.parse(a.answered_at) : nowMs, clamped = null;
+      if (Number.isNaN(at)) return { status: 'rejected', duplicate: false, reason: 'bad_answered_at', client_id: a.client_id ?? null, question_id: a.question_id, is_correct: null, score: null, wrong_question_id: null };
+      if (at > nowMs) { clamped = { from: a.answered_at, to: new Date(nowMs).toISOString(), reason: 'future' }; at = nowMs; }
+      else if (at < nowMs - 7 * 86400000) { clamped = { from: a.answered_at, to: new Date(nowMs - 7 * 86400000).toISOString(), reason: 'too_old' }; at = nowMs - 7 * 86400000; }
+      const key = bankQuestion(a.question_id)?.answer || tpl.correct_answer || [];
+      const correct = Array.isArray(a.answer) && a.answer.length ? [...a.answer].sort().join('') === [...key].sort().join('') : tpl.is_correct;
+      const r = { ...tpl, id: uuid(), status: 'recorded', duplicate: false, reason: null, question_id: a.question_id, answer: a.answer || tpl.answer, self_rating: a.self_rating || null,
+        client_id: a.client_id || null, source: a.source || 'online', pack_version: a.pack_version ?? null, answered_at: new Date(at).toISOString(), study_date: studyDate(new Date(at).toISOString()),
+        answered_at_clamped: clamped, is_correct: correct, correct_answer: key, wrong_question_id: correct === false ? uuid() : null, wrong_question_status: correct === false ? 'active' : null };
+      if (a.client_id) MOCK_ANSWERS.set(a.client_id, r);
+      return r;
+    };
+    const items = Array.isArray(req.body?.items) ? req.body.items : null;
+    if (items && items.length > 200) return { items: [], error: 'too_many_items' };
+    return items ? { items: items.map(one) } : one(req.body || {});
   },
+  // 离线题包：日期按 mock 的学习日回填（ETag / 304 / since_version 在下面的中间件里）
+  'GET /offline/pack': (body) => (body.not_modified ? body : { ...body, study_date: MOCK_STUDY_DATE, generated_at: now(), words: body.words && { ...body.words, date: MOCK_STUDY_DATE, study_date: MOCK_STUDY_DATE } }),
   // 带 exam/year/question_ids 时用「每题最新」示例，并按 question_ids 回填
   'GET /answers': (body, req, op) => {
     const q = req.query || {};
@@ -351,6 +372,18 @@ app.use(PREFIX + '/assets', (req, res, next) => {
   res.setHeader('Content-Type', type);
   res.setHeader('Cache-Control', 'public, max-age=3600');
   fs.createReadStream(file).pipe(res);
+});
+
+// 离线题包：ETag = "<version>"，If-None-Match 一致 → 304；?since_version 一致 → {not_modified:true,...}
+const MOCK_ANSWERS = new Map();
+app.get(PREFIX + '/offline/pack', (req, res, next) => {
+  const ex = spec.paths['/offline/pack'].get.responses['200'].content['application/json'].examples.pack.value;
+  res.setHeader('ETag', `"${ex.version}"`);
+  res.setHeader('Cache-Control', 'private, no-cache');
+  const inm = String(req.headers['if-none-match'] || '').replace(/^W\//, '').replace(/"/g, '');
+  if (inm && inm === ex.version && !req.query.__status) return res.status(304).end();
+  if (req.query.since_version && req.query.since_version === ex.version && !req.query.__example) req.query.__example = 'not_modified';
+  next();
 });
 
 const routes = [];

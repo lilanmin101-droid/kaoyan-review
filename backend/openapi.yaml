@@ -69,6 +69,8 @@ tags:
     description: 讲给它听
   - name: mastery
     description: 掌握度地图与学习档案
+  - name: offline
+    description: 离线题包（断网刷题）
 paths:
   /health:
     get:
@@ -876,7 +878,15 @@ paths:
       tags:
         - answers
       summary: 提交作答（单条或批量）
-      description: '作答记录只追加。带 `client_id` 的重发会返回第一次的记录（`duplicate: true`）。答错自动进错题本，并更新掌握度、错因和时段习惯。'
+      description: |-
+        作答记录只追加。答错自动进错题本，并更新掌握度、错因、时段习惯（统计 / 教练读的也是这些）。
+        - 幂等：带 `client_id` 的重发（同一用户内唯一）不会重复计分，返回第一次的结果并带 `duplicate: true`、`status: 'duplicate'`。
+        - 离线补传：`source: 'offline_pack'` + `pack_version` + `answered_at`（客户端作答时间）。作答记到 `answered_at` 那个学习日（04:00 换天）；
+          比服务器现在还晚的按现在算，早于 7 天前的按 7 天前算，夹过时返回 `answered_at_clamped: {from, to, reason: 'future' | 'too_old'}`。
+        - 服务器时间：没带 `answered_at` 时作答时间 = 服务器「现在」。非生产环境「现在」跟 `X-Debug-Now`（和模考计时同一个口径），
+          带了 `answered_at` 时也按这个「现在」夹（≤ 现在、≥ 现在−7 天）。例：`X-Debug-Now: 2026-11-04T20:00:00+08:00` 不带 answered_at → 记在学习日 11-04，
+          统计、错题本、计划进度都算 11-04。`NODE_ENV=production` 或 `DEBUG_NOW_DISABLED=1`（隧道）时忽略 X-Debug-Now，用真实时间。
+        - 批量 `{items:[...]}`：一次最多 200 条，每条单独成功 / 失败（`status: recorded | duplicate | rejected`，rejected 带 `reason`），一条失败不影响别的。
       parameters:
         - $ref: '#/components/parameters/Device'
       requestBody:
@@ -902,6 +912,26 @@ paths:
                     - C
                   time_spent_seconds: 95
                   client_id: 01JBX9Q4Z7
+              offline_batch:
+                summary: 离线题包补传（批量，带客户端时间）
+                value:
+                  items:
+                    - client_id: 7d0c1f9e-6a2b-4f3c-9d1e-2b3c4d5e6f70
+                      question_id: english1-2024-01
+                      answer:
+                        - D
+                      answered_at: '2026-11-02T00:40:12.000Z'
+                      time_spent_seconds: 38
+                      source: offline_pack
+                      pack_version: 3f9a1c2e7b4d5a60
+                    - client_id: 7d0c1f9e-6a2b-4f3c-9d1e-2b3c4d5e6f71
+                      question_id: english1-2024-02
+                      answer:
+                        - A
+                      answered_at: '2026-11-02T00:41:05.000Z'
+                      time_spent_seconds: 41
+                      source: offline_pack
+                      pack_version: 3f9a1c2e7b4d5a60
               essay_self_rating:
                 value:
                   question_id: math1-2024-17
@@ -922,20 +952,86 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/AnswerRecord'
-              example:
-                id: 9b6d1c7e-0a1b-4c2d-9e3f-0a1b2c3d4e5f
-                question_id: math1-2024-01
-                exam_id: null
-                answer:
-                  - A
-                is_correct: false
-                self_rating: null
-                time_spent_seconds: 95
-                client_id: 01JBX9Q4Z7
-                answered_at: '2026-11-01T11:50:00Z'
-                wrong_question_id: 3a1f0e22-5b6c-4d7e-8f90-a1b2c3d4e5f6
-                correct_answer:
-                  - C
+              examples:
+                single:
+                  value:
+                    id: 9b6d1c7e-0a1b-4c2d-9e3f-0a1b2c3d4e5f
+                    status: recorded
+                    duplicate: false
+                    question_id: math1-2024-01
+                    exam_id: null
+                    answer:
+                      - A
+                    is_correct: false
+                    points: 0
+                    max_points: 5
+                    score: 0
+                    self_rating: null
+                    time_spent_seconds: 95
+                    client_id: 01JBX9Q4Z7
+                    source: online
+                    pack_version: null
+                    answered_at: '2026-11-01T11:50:00Z'
+                    study_date: '2026-11-01'
+                    answered_at_clamped: null
+                    wrong_question_id: 3a1f0e22-5b6c-4d7e-8f90-a1b2c3d4e5f6
+                    wrong_question_status: active
+                    correct_answer:
+                      - C
+                offline_batch:
+                  summary: 离线补传：第一条新记，第二条是重发，第三条题号不存在
+                  value:
+                    items:
+                      - id: 5c2b7a10-3d4e-4f50-9a6b-7c8d9e0f1a2b
+                        status: recorded
+                        duplicate: false
+                        reason: null
+                        client_id: 7d0c1f9e-6a2b-4f3c-9d1e-2b3c4d5e6f70
+                        question_id: english1-2024-01
+                        answer:
+                          - D
+                        is_correct: true
+                        points: 0.5
+                        max_points: 0.5
+                        score: 0.5
+                        source: offline_pack
+                        pack_version: 3f9a1c2e7b4d5a60
+                        answered_at: '2026-11-02T00:40:12.000Z'
+                        study_date: '2026-11-01'
+                        answered_at_clamped: null
+                        wrong_question_id: null
+                        wrong_question_status: null
+                        correct_answer:
+                          - D
+                      - id: 6d3c8b21-4e5f-4061-8b7c-8d9e0f1a2b3c
+                        status: duplicate
+                        duplicate: true
+                        reason: null
+                        client_id: 7d0c1f9e-6a2b-4f3c-9d1e-2b3c4d5e6f71
+                        question_id: english1-2024-02
+                        answer:
+                          - A
+                        is_correct: false
+                        points: 0
+                        max_points: 0.5
+                        score: 0
+                        source: offline_pack
+                        pack_version: 3f9a1c2e7b4d5a60
+                        answered_at: '2026-11-02T00:41:05.000Z'
+                        study_date: '2026-11-01'
+                        answered_at_clamped: null
+                        wrong_question_id: 0e4d9c32-5f60-4172-9c8d-9e0f1a2b3c4d
+                        wrong_question_status: active
+                        correct_answer:
+                          - C
+                      - status: rejected
+                        duplicate: false
+                        reason: question_not_found
+                        client_id: 7d0c1f9e-6a2b-4f3c-9d1e-2b3c4d5e6f72
+                        question_id: english1-1999-99
+                        is_correct: null
+                        score: null
+                        wrong_question_id: null
       operationId: postAnswers
     get:
       tags:
@@ -1059,6 +1155,199 @@ paths:
                         time_spent_seconds: 600
                         answered_at: '2026-11-01T12:30:00Z'
       operationId: getAnswers
+  /offline/pack:
+    get:
+      tags:
+        - offline
+      summary: 离线题包（今天的阅读 / 完形 + 最多 10 道错题重做 + 今日单词）
+      description: |-
+        联网时预缓存，断网时刷题页直接用。学习日按用户时区 04:00 换天，`expires_at` = 下一个 04:00。
+        - 内容：今日计划里的阅读（reading_a/reading_b）和完形（use_of_english）文章及其全部小题；计划里没有指定英语题时，自动挑一篇还没做过的已核对完形 + 一篇阅读。
+          再加最多 10 道错题重做（错题本里 active 的，和已掌握但到期复习的，到期的排前面）。不含模考，也不是整个题库。
+        - 每道题都带本地判分和看解析要的东西：`correct_answer`（客观题）、`reference_answer`（主观题）、`explanation`（库里已有的讲解：
+          已核对 AI 讲解 / 行业专家 / 官方解析，带步骤，此时 `explanation_status: 'ready'`）；库里没有讲解时 `explanation: null`、`explanation_status: 'pending'`（英语一在接上 Key、跑完 gen:explanations 之前都是 pending）。不会现场生成。
+        - `words` 和 `GET /words/today` 是同一份数据。
+        - `assets`：需要预缓存的图片地址（都在 `/api/v1/assets/` 下，免登录）。
+        - `version`：内容的稳定哈希，内容不变就不变。响应头带 `ETag: "<version>"`，请求带 `If-None-Match` 且没变 → 304；
+          也可以用 `?since_version=<version>`，没变时返回 200 `{not_modified:true, version, study_date, expires_at}`。
+        - 离线作答补传走 `POST /answers`（带 `client_id`、`answered_at`、`source:'offline_pack'`、`pack_version`），可以批量 `{items:[...]}`。
+      operationId: getOfflinePack
+      parameters:
+        - name: since_version
+          in: query
+          description: 本地已有的版本号；没变就只回 not_modified
+          schema:
+            type: string
+        - name: If-None-Match
+          in: header
+          description: 上次的 ETag，没变返回 304
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 题包（或 since_version 没变时的 not_modified）
+          headers:
+            ETag:
+              schema:
+                type: string
+              description: '"<version>"'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflinePack'
+              examples:
+                pack:
+                  summary: 今天的题包
+                  value:
+                    version: 3f9a1c2e7b4d5a60
+                    study_date: '2026-11-02'
+                    relative_day: 今天
+                    timezone: Asia/Shanghai
+                    generated_at: '2026-11-02T01:30:00.000Z'
+                    expires_at: '2026-11-02T20:00:00.000Z'
+                    counts:
+                      passages: 2
+                      questions: 27
+                      plan_questions: 25
+                      wrong_redos: 2
+                      words: 20
+                      assets: 0
+                    passages:
+                      - id: english1-2024-P-cloze
+                        exam: english1
+                        year: 2024
+                        section: use_of_english
+                        section_name: 完形填空
+                        title: Section I Use of English
+                        directions: Read the following text. Choose the best word(s) for each numbered blank and mark A, B, C or D on the ANSWER SHEET.
+                        text: "There’s nothing more welcoming than a door opening for you. {{1}} the need to be touched to open or close, automatic doors are essential in {{2}} disabled access to buildings ..."
+                        paragraphs:
+                          - "There’s nothing more welcoming than a door opening for you. {{1}} the need to be touched to open or close, automatic doors are essential in {{2}} disabled access to buildings ..."
+                        blanks:
+                          - number: 1
+                            question_id: english1-2024-01
+                            start: 60
+                            end: 65
+                        underlines: []
+                        images: []
+                        tables: null
+                        question_ids:
+                          - english1-2024-01
+                        question_numbers:
+                          - 1
+                        asset_base: /api/v1/assets/eng1/
+                    questions:
+                      - id: english1-2024-01
+                        origin: plan
+                        exam: english1
+                        year: 2024
+                        number: 1
+                        section: use_of_english
+                        section_name: 完形填空
+                        type: choice
+                        objective: true
+                        score: 0.5
+                        stem: （1）______ the need to be touched to open or close, automatic doors are essential in （2）______ disabled access to buildings ...
+                        options:
+                          - key: A
+                            content: Through
+                          - key: B
+                            content: Despite
+                          - key: C
+                            content: Besides
+                          - key: D
+                            content: Without
+                        images: []
+                        tables: null
+                        sub_questions: null
+                        passage_id: english1-2024-P-cloze
+                        knowledge_points:
+                          - 英语/完形填空/逻辑关系与连接词
+                        asset_base: /api/v1/assets/eng1/
+                        correct_answer:
+                          - D
+                        answer:
+                          - D
+                        reference_answer: null
+                        explanation_status: ready
+                        explanation:
+                          source: expert
+                          source_label: 行业专家参考解答（非官方解析）
+                          verified: true
+                          steps:
+                            - n: 1
+                              text: 空后是「需要被触碰才能开关」，和自动门的特点相反，选 Without（不需要……）。
+                        wrong_question_id: null
+                      - id: math1-2024-05
+                        origin: wrong_redo
+                        exam: math1
+                        year: 2024
+                        number: 5
+                        section: null
+                        section_name: null
+                        type: single_choice
+                        objective: true
+                        score: 5
+                        stem: 设函数 $f(x)$ 在 $x=0$ 处连续，……
+                        options:
+                          - key: A
+                            content: '$1$'
+                          - key: B
+                            content: '$2$'
+                        images:
+                          - images/math1-2024-05-fig1.png
+                        tables: null
+                        sub_questions: null
+                        passage_id: null
+                        knowledge_points:
+                          - 高数/极限与连续/连续性
+                        asset_base: /api/v1/assets/
+                        correct_answer:
+                          - B
+                        answer:
+                          - B
+                        reference_answer: null
+                        explanation_status: pending
+                        explanation: null
+                        wrong_question_id: 3a1f0e22-5b6c-4d7e-8f90-a1b2c3d4e5f6
+                        wrong_status: active
+                        due_at: '2026-11-01T12:00:00.000Z'
+                    words:
+                      date: '2026-11-02'
+                      study_date: '2026-11-02'
+                      relative_day: 今天
+                      timezone: Asia/Shanghai
+                      review: []
+                      new:
+                        - id: 101
+                          word: abandon
+                          phonetic: /əˈbændən/
+                          meaning: v. 放弃；抛弃
+                      relearn: []
+                      counts:
+                        review: 0
+                        new: 20
+                        relearn: 0
+                        new_target: 20
+                        new_done_today: 0
+                        reviewed_today: 0
+                        done_today: 0
+                        remaining: 20
+                        scheduled_today: 20
+                        position: 1
+                    assets:
+                      - /api/v1/assets/images/math1-2024-05-fig1.png
+                not_modified:
+                  summary: ?since_version= 和当前一致
+                  value:
+                    not_modified: true
+                    version: 3f9a1c2e7b4d5a60
+                    study_date: '2026-11-02'
+                    expires_at: '2026-11-02T20:00:00.000Z'
+        '304':
+          description: If-None-Match 和当前 ETag 一致，没有响应体
+        '401':
+          $ref: '#/components/responses/Error'
   /passages:
     get:
       tags:
@@ -4655,13 +4944,74 @@ components:
             小问号。计算题可按小问分别自评（每问按该小问分值算）；证明题（score_by_whole）只按整题算，带了也会被忽略（返回 sub_number_ignored=true）
         client_id:
           type: string
-          description: 客户端生成的唯一 id，重发去重
+          description: 客户端生成的唯一 id（推荐 uuid；8–64 位字母数字 / - / _），同一用户内唯一，重发去重
         answered_at:
           type: string
           format: date-time
+          description: 客户端作答时间；记到这个时间的学习日。晚于现在按现在，早于 7 天前按 7 天前（见 answered_at_clamped）
+        source:
+          type: string
+          enum:
+            - online
+            - offline_pack
+          default: online
+          description: 作答来源；离线题包补传填 offline_pack
+        pack_version:
+          type: string
+          description: 离线题包的 version（source=offline_pack 时带上）
     AnswerRecord:
       type: object
       properties:
+        status:
+          type: string
+          enum:
+            - recorded
+            - duplicate
+            - rejected
+          description: recorded = 新记一条；duplicate = client_id 重发（返回第一次的结果，不重复计分）；rejected = 这条没记（见 reason）
+        reason:
+          type:
+            - string
+            - 'null'
+          description: rejected 的原因：question_not_found / bad_client_id / bad_answered_at / bad_self_rating / missing_question_id / error
+        score:
+          type:
+            - number
+            - 'null'
+          description: 同 points（这次得分）
+        source:
+          type: string
+          enum:
+            - online
+            - offline_pack
+        pack_version:
+          type:
+            - string
+            - 'null'
+        study_date:
+          type: string
+          format: date
+          description: 这条作答记到的学习日
+        answered_at_clamped:
+          type:
+            - object
+            - 'null'
+          description: answered_at 被夹过才有
+          properties:
+            from:
+              type: string
+            to:
+              type: string
+              format: date-time
+            reason:
+              type: string
+              enum:
+                - future
+                - too_old
+        wrong_question_status:
+          type:
+            - string
+            - 'null'
         id:
           type: string
           format: uuid
@@ -5307,6 +5657,108 @@ components:
           type: string
           const: speech_synthesis
           description: 前端改用浏览器 speechSynthesis 朗读
+    OfflinePack:
+      type: object
+      properties:
+        not_modified:
+          type: boolean
+          description: 只在 ?since_version 和当前一致时出现（此时只有 version / study_date / expires_at）
+        version:
+          type: string
+          description: 内容的稳定哈希（题、答案、讲解、单词变了才变）
+        study_date:
+          type: string
+          format: date
+        relative_day:
+          type: string
+        timezone:
+          type: string
+        generated_at:
+          type: string
+          format: date-time
+        expires_at:
+          type: string
+          format: date-time
+          description: 下一个学习日起点（当地 04:00）
+        counts:
+          type: object
+          properties:
+            passages: {type: integer}
+            questions: {type: integer}
+            plan_questions: {type: integer}
+            wrong_redos: {type: integer}
+            words: {type: integer}
+            assets: {type: integer}
+        passages:
+          type: array
+          description: 文章（同 GET /passages/{id}：text、paragraphs、blanks、underlines、asset_base…）
+          items:
+            $ref: '#/components/schemas/Passage'
+        questions:
+          type: array
+          items:
+            type: object
+            properties:
+              id: {type: string}
+              origin:
+                type: string
+                enum: [plan, wrong_redo]
+              exam: {type: string}
+              year: {type: integer}
+              number: {type: integer}
+              section: {type: ['string', 'null']}
+              section_name: {type: ['string', 'null']}
+              type: {type: string}
+              objective:
+                type: boolean
+                description: true = 本地能直接判对错（比对 correct_answer）
+              score: {type: number}
+              stem: {type: string}
+              options: {type: ['array', 'null'], items: {type: object}}
+              images: {type: ['array', 'null'], items: {type: string}}
+              tables: {type: ['array', 'null'], items: {type: object}}
+              sub_questions: {type: ['array', 'null'], items: {type: object}}
+              passage_id: {type: ['string', 'null']}
+              knowledge_points: {type: array, items: {type: string}}
+              asset_base: {type: string}
+              correct_answer:
+                type: ['array', 'null']
+                items: {type: string}
+                description: 客观题答案；主观题 null
+              answer:
+                type: ['array', 'null']
+                items: {type: string}
+                description: 同 correct_answer（兼容字段）
+              reference_answer:
+                type: ['string', 'null']
+                description: 主观题参考答案（翻译参考译文 / 范文 / 题库答案）
+              explanation_status:
+                type: string
+                enum: [ready, pending]
+                description: ready = explanation 里带着库里已有的讲解（已核对 AI / 行业专家 / 官方解析）；pending = 还没有讲解（英语一在接上 Key、跑完 gen:explanations 之前都是这样），explanation 为 null
+              explanation:
+                type: ['object', 'null']
+                properties:
+                  source: {type: string, enum: [ai, expert, official]}
+                  source_label: {type: string}
+                  verified: {type: boolean}
+                  steps:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        n: {type: integer}
+                        text: {type: string}
+              wrong_question_id: {type: ['string', 'null']}
+              wrong_status: {type: ['string', 'null']}
+              due_at: {type: ['string', 'null'], format: date-time}
+        words:
+          type: object
+          description: 同 GET /words/today
+        assets:
+          type: array
+          items: {type: string}
+          description: 要预缓存的图片地址
     Word:
       type: object
       properties:
