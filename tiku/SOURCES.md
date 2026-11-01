@@ -7,7 +7,7 @@
 | 题库字段 | 来源 | 来源的授权 | 我们能怎么用 |
 |---|---|---|---|
 | 英一 `stem`、`passage`、`options`、`answer`（1–45 客观题字母）、图片 | liziak112 Structured-Kaoyan-English，按原卷扫描件校正 | 第一层「试题数据」：自由使用，不附限制（项目本身也声明不代表公有领域） | 可用。试题著作权属于命题方，各家都按这个惯例使用 |
-| 英一 `answer`（46–52 参考译文、范文） | liziak112 的 `answer` 字段 | 名义上属第一层，实际是有独创性的教辅作品，原作者没有授权 | **待替换**：统筹者定由行业专家全部重写，写好后由资料/仓库搜索者写回题库，`answer_source` 标成 expert |
+| 英一 `answer`（46–52 参考译文、范文） | liziak112 的 `answer` 字段 | 名义上属第一层，实际是有独创性的教辅作品，原作者没有授权 | **逐年替换中**：2020–2025（42 题）已换成行业专家自写版（`explanations/english1_translations_expert.jsonl`，build_eng1.py 最后一步覆盖，`answer_note` 写明自写）；2015–2019 仍是 liziak112 文本，待专家写完替换 |
 | 英一 `explanation` | 不使用 liziak112 的 `explanation`（第二层，CC BY-NC，著作权归第三方） | — | 只用 `explanations/english1_*_expert.jsonl`（行业专家原创） |
 | 英一答案核对 | Echo1LZJY echo-kaoyan-english-skill | 无 LICENSE，保留所有权利 | 只拿来核对，不拷进题库 |
 | 数一 `stem`、`options`、`answer`、图片 | TsekaLuk/Kaoyan-Math1-Papers（`papers/`、`sol_*.md`） | **CC BY-NC-SA 4.0**：署名、非商业、相同方式共享；README 写明「真题来源：网络整理」 | 题面属于试题，按惯例使用；但要在 App 的「关于」里署名 TsekaLuk/Nebutra 并注明 CC BY-NC-SA |

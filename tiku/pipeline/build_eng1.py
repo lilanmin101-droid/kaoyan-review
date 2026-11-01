@@ -236,6 +236,24 @@ _fx = f'{ROOT}/pipeline/fix_english1_{year}.py'
 if '--dry' not in sys.argv and os.path.exists(_fx):   # 原卷核对修正层
     import subprocess; subprocess.run([sys.executable, _fx], check=True)
     questions = json.load(open(f'{ROOT}/english1_{year}.json'))
+# 专家自写参考译文/范文覆盖层（行业专家写在 explanations/english1_translations_expert.jsonl，统筹者定：写完一年就替换题库 answer）
+_tx = f'{ROOT}/explanations/english1_translations_expert.jsonl'
+if '--dry' not in sys.argv and os.path.exists(_tx):
+    _ex = {}
+    for _l in open(_tx, encoding='utf-8'):
+        if _l.strip(): _r = json.loads(_l); _ex[_r['id']] = _r   # 同一 id 以最后一行为准
+    _hit = 0
+    for q in questions:
+        r = _ex.get(q['id'])
+        if not r: continue
+        a = r['answer'] if isinstance(r['answer'], list) else [r['answer']]
+        assert a and all(isinstance(x, str) and x.strip() for x in a), f"{q['id']} 专家答案为空"
+        q['answer'] = a; q['answer_source'] = 'expert'
+        q['source']['answer_note'] = f"参考译文/范文由行业专家自写（{r.get('at','')}），不是考试院标准答案（考试院只公布评分标准）；不再使用 LIziak112 的参考译文/范文"
+        _hit += 1
+    if _hit:
+        json.dump(questions, open(f'{ROOT}/english1_{year}.json', 'w'), ensure_ascii=False, indent=2)
+    print(f'专家译文/范文覆盖: {_hit} 题')
 dis = [(q['number'], q['answer'][0], q['source']['answer_crosscheck']['answer']) for q in questions if 'answer_crosscheck' in q['source'] and not q['source']['answer_crosscheck']['agree']]
 print('逐年 OCR 修正命中:', FIX_HITS, '未命中:', [a for a, _ in YEAR_FIXES.get(year, []) if a not in FIX_HITS])
 print(f'english1_{year}.json: {len(questions)} 题, passages {len(passages)}, 两源答案不一致: {dis}')
