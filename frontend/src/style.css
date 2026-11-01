@@ -499,3 +499,5 @@ html{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 @media (max-width:760px){.trsvg .tk,.trsvg .dx{font-size:22px}.trsvg .on,.trsvg .off{r:6}}
 .offq .offexp .src{font-size:12px;color:var(--sub);margin:0 0 6px}.offq .offexp .step{margin:0 0 10px}.offq .refa{margin:4px 0 12px;line-height:1.8}.offq .rates{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:14px 0 4px}.offq .rates .chip{cursor:pointer;padding:6px 12px;border:1px solid var(--hair);font-size:14px}.offq .rates .chip:hover{border-color:var(--lv,#2F4F3F)}
 .trend .trest .low{color:var(--sub);font-size:12px;margin-left:4px}
+
+.offq .stale { margin: 6px 0 2px; padding: 6px 10px; border-left: 2px solid var(--accent, #c8442e); font-size: 13px; }

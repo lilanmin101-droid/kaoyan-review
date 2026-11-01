@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // 离线刷题：断网时刷题页改用本机题包；对答案在本地判，作答联网后补传
-import { computed, ref, watch } from 'vue'
+import { computed, onUnmounted, ref, watch } from 'vue'
 import { renderStem, renderTex } from '../lib/tex'
 import { pack, queue, done, answerLocal, type PQ, type PExp, type Rating } from '../lib/offline'
 
@@ -46,11 +46,15 @@ const res = computed(() => q.value ? done.value[q.value.id] : undefined)
 const doneN = computed(() => qs.value.filter(x => done.value[x.id]).length)
 const rightN = computed(() => qs.value.filter(x => done.value[x.id]?.ok).length)
 const label = (x: PQ) => x.origin === 'wrong_redo' || x.origin === 'wrong' ? '错题重做' : x.passage_id ? (pmap.value.get(x.passage_id)?.title ?? '阅读') : '今日题'
+// 过了 expires_at（学习日的次日 04:00）还在用这包，就提示是昨天的
+const now = ref(Date.now()); const tk = setInterval(() => { now.value = Date.now() }, 60000); onUnmounted(() => clearInterval(tk))
+const stale = computed(() => { const e = pack.value?.expires_at; return !!e && now.value > Date.parse(e) })
 const ans = (x: PQ) => (x.answer ?? []).join('、')
 </script>
 <template>
   <main class="main offq">
     <div class="cap">离 线 题 包 · {{ pack?.study_date ?? '' }}<span class="cd">做了 {{ doneN }} / {{ qs.length }}<template v-if="queue.length"> · {{ queue.length }} 道等联网补传</template></span></div>
+    <p v-if="stale" class="stale">这是昨天的题包，题照样能做，联网后会换成今天的。</p>
     <p class="sub hint">没网也能做：今天任务里的阅读、完形，加 10 道错题重做。答案在本机判，联网后自动补传。</p>
     <template v-if="q">
       <div class="meta">{{ label(q) }} · 第 {{ q.number ?? idx + 1 }} 题<template v-if="q.year"> · {{ q.year }}</template></div>
