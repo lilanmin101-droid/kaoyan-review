@@ -118,7 +118,7 @@ const INSTRUCTIONS = `你是「考研私教」，帮一位准备考研的同学�
 /** 定时任务给 Agent 的指令 */
 const JOB_PROMPTS: Record<string, (today: string) => string> = {
   nightly: (d) => `现在是 ${d} 晚上 23:00，做当日复盘：1) 看今天的作答和错题；2) 用 writeDailyTip(kind=review)：text 只写一件明天最重要的事（一句话，≤40 字，如「明天先重做 3 道到期错题」），做了多少、错在哪等细节放 details（默认折叠），不要写一屏建议；3) 用 updateDailyPlan 给明天（${addDays(d, 1)}）排任务，优先到期错题和最弱知识点，总时长按以往习惯。`,
-  weekly: (d) => `今天是 ${d}（周日），写周报：1) 看最近 7 天作答、错因和掌握度变化；2) 用 writeDailyTip(kind=weekly)：text 只写下周最重要的一件事（一句话），本周数据、进步、问题放 details（≤200 字，默认折叠）；3) 用 updateDailyPlan 调整下周一（${addDays(d, 1)}）的计划。`,
+  weekly: (d) => `今天是 ${d}（周日），写周报：1) 看最近 7 天作答、错因和掌握度变化；2) 用 writeDailyTip(kind=weekly)：text 只写下周最重要的一件事（一句话，以「下周重点：」开头，例如 下周重点：补「变限积分」。；本周、距考试 N 天照常写，系统会按读的日子改时态），本周数据、进步、问题放 details（≤200 字，默认折叠）；3) 用 updateDailyPlan 调整下周一（${addDays(d, 1)}）的计划。`,
 };
 
 @Injectable()
@@ -373,7 +373,8 @@ export class CoachService {
     const s = await this.dayStats(ctx.userId, wk.from, today);
     const p = await this.tools.getProfile(ctx);
     const weak = p.weakest_kps.slice(0, 2).map((k: any) => k.kp_path.split('/').pop());
-    const head = weak.length ? `下周重点补「${weak[0]}」。` : s.n ? '下周保持节奏，先清到期错题。' : '下周先每天做 5 道题把节奏找回来。';
+    // 「下周重点：…」存成 {{nextweek:…}}（toPlaceholders 自动换），下周开始后读成「当时定的下周重点：…」
+    const head = weak.length ? `下周重点：补「${weak[0]}」。` : s.n ? '下周重点：保持节奏，先清到期错题。' : '下周重点：每天先做 5 道题，把节奏找回来。';
     const text = `本周（${wk.label}）` + (s.n ? `做了 ${s.n} 题，正确率 ${Math.round((100 * s.correct) / s.n)}%，${minutesText(s.minutes)}。` : '还没有作答记录，也还没有学习时长记录。')
       + (weak.length ? `最需要补的：${weak.join('、')}。` : '')
       + `当前阶段：${PHASE_CN[p.user.phase]}${p.user.days_left != null ? `，距考试 ${p.user.days_left} 天` : ''}。`;

@@ -11,7 +11,7 @@ import { validateErrata, cleanErrata } from './import-questions';
 import { normalizeCommand } from '../src/agent/agent.controller';
 import { EXPLICIT_DAY_RE, planDedupeKey, nextQuantity, taskQuantity } from '../src/agent/agent-tools.service';
 import { isValidTz } from '../src/common/user-time.service';
-import { appendNote, earlyNote, nestQuotes, renderDates, toPlaceholders, wantsEarlyNote, withEarlyNote, badDayLabels, dayLabel, DAY_START_HOUR, localDate, relativeDay, startOfLocalDay, startOfStudyDay, studyDate, studyDaySql, weekOf } from '../src/common/time';
+import { appendNote, bareDates, earlyNote, nestQuotes, renderDates, toPlaceholders, wantsEarlyNote, withEarlyNote, badDayLabels, dayLabel, DAY_START_HOUR, localDate, relativeDay, startOfLocalDay, startOfStudyDay, studyDate, studyDaySql, weekOf } from '../src/common/time';
 import { coachFrequency, inQuiet, minutesUntilQuietEnds, quietHours, UserInputError, validateSettingsPatch } from '../src/common/reminders';
 import { streakOf } from '../src/auth/me-stats.service';
 import { intentSummary } from '../src/agent/jobs.service';
@@ -296,6 +296,21 @@ export function runUnitTests() {
     eq('离考试（…）还有', renderDates(toPlaceholders('离考试（2026-12-19，周六）还有 47 天', '2026-11-02') as string, '2026-11-10'), '当时离考试（2026-12-19，周六）还有 47 天');
     eq('扫描：旧周报', badDayLabels('本周（11-02–11-08）…距考试 47 天', '2026-11-16', '2026-11-02'), ['本周（11-02–11-08）', '距考试 47 天']);
     eq('扫描：当周写那周', badDayLabels('那周（11-02–11-08）', '2026-11-04'), ['那周（11-02–11-08）']); }
+  // 第 15 轮（E1/E2）：周报 11-04（周三）生成、考试 12-19；当周读倒计时现算，周过了才「当时」；「下周重点」下周开始后改「当时定的下周重点」
+  { const head = toPlaceholders('下周重点：补「变限积分」。', '2026-11-04') as string;
+    const det = toPlaceholders('本周（11-02–11-08）做了 12 题，正确率 50%。当前阶段：强化，距考试 45 天。', '2026-11-04') as string;
+    eq('E2 下周占位符', head, '{{nextweek:2026-11-09|下周重点}}：补「变限积分」。');
+    eq('E2 旧写法也换', toPlaceholders('下周重点补「变限积分」。', '2026-11-04'), '{{nextweek:2026-11-09|下周重点}}：补「变限积分」。');
+    eq('E2 幂等', toPlaceholders(head, '2026-11-12'), head);
+    const R = (d: string) => [renderDates(head, d), renderDates(det, d)];
+    eq('E1 当周（11-05）', R('2026-11-05'), ['下周重点：补「变限积分」。', '本周（11-02–11-08）做了 12 题，正确率 50%。当前阶段：强化，距考试 44 天。']);
+    eq('E1 周日（11-08）', R('2026-11-08')[1], '本周（11-02–11-08）做了 12 题，正确率 50%。当前阶段：强化，距考试 41 天。');
+    eq('E1 周过了（11-09）', R('2026-11-09'), ['当时定的下周重点：补「变限积分」。', '那周（11-02–11-08）做了 12 题，正确率 50%。当前阶段：强化，当时距考试 45 天。']);
+    eq('E1/E2 8 天后（11-12）', R('2026-11-12'), ['当时定的下周重点：补「变限积分」。', '那周（11-02–11-08）做了 12 题，正确率 50%。当前阶段：强化，当时距考试 45 天。']);
+    eq('扫描：当周现算不报错', badDayLabels(R('2026-11-05')[1], '2026-11-05', '2026-11-04'), []);
+    eq('扫描：没周的旧复盘仍要「当时」', badDayLabels('距考试 45 天', '2026-11-05', '2026-11-04'), ['距考试 45 天']);
+    eq('撤回成裸文字', bareDates(head), '下周重点：补「变限积分」。');
+    for (const d of ['2026-11-05', '2026-11-09', '2026-11-12']) eq(`E1/E2 ${d} 无问题`, R(d).flatMap((t) => badDayLabels(t, d)), []); }
   eq('renderDates 兜底：（{{date}}、{{date}}）', renderDates('最近两次复盘（{{date:2026-10-30}}、{{date:2026-10-31}}）你都没打开', '2026-11-12'), '最近两次复盘10-30（周五）、10-31（周六）你都没打开');
   // 模考计时：心跳间隔封顶 120 秒；调试时间往回拨（last_tick_at 在「现在」之后）不倒扣
   // 第 14 轮：模考按墙上时钟
