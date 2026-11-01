@@ -3,7 +3,7 @@ import { ref } from 'vue'
 // 统一请求层：带登录令牌和设备标记，401 时清掉令牌回到登录
 const BASE = '/api/v1'
 export const device = matchMedia('(max-width: 760px)').matches ? 'phone' : 'desktop'
-export const token = { get: () => localStorage.getItem('token'), set: (t: string | null) => t ? localStorage.setItem('token', t) : localStorage.removeItem('token') }
+export const token = { get: () => localStorage.getItem('token'), set: (t: string | null) => { if (t) localStorage.setItem('token', t); else { localStorage.removeItem('token'); navigator.serviceWorker?.controller?.postMessage('clear-api') } } }
 export class ApiError extends Error { status: number; field?: string; code?: string; constructor(msg: string, status: number, field?: string, code?: string) { super(msg); this.status = status; this.field = field; this.code = code } }
 // 前端不算「今天」，只把浏览器时区报给后端（如 America/Los_Angeles），日期由后端按账号时区算
 const TZ = (() => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone } catch { return '' } })()
@@ -12,8 +12,14 @@ function headers(extra: Record<string, string> = {}) {
   const t = token.get(); if (t) h.authorization = `Bearer ${t}`
   return h
 }
+// 断网提示：浏览器报离线，或接口是 service worker 从缓存给的
+export const offline = ref(!navigator.onLine)
+addEventListener('online', () => { offline.value = false }); addEventListener('offline', () => { offline.value = true })
 export async function api<T = any>(path: string, init: RequestInit = {}, opts: { noReload?: boolean } = {}): Promise<T> {
-  const r = await fetch(BASE + path, { ...init, headers: headers(init.headers as any) })
+  let r: Response
+  try { r = await fetch(BASE + path, { ...init, headers: headers(init.headers as any) }) }
+  catch { throw new ApiError(navigator.onLine ? '连不上服务器，稍后再试' : '现在没网，连上再试', 0, undefined, 'offline') }
+  offline.value = r.headers.get('x-sw-cache') === '1' || !navigator.onLine
   if (r.status === 401 && !opts.noReload) { token.set(null); location.reload() }
   if (!r.ok) {
     const j = await r.json().catch(() => ({})), m = j.message
