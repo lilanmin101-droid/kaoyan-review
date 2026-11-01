@@ -258,17 +258,35 @@ function examR15(e, req) {
     paused_at: e.status === 'paused' ? (e.paused_at ?? new Date(Date.now() - Math.max(60, Number(req?.query?.__paused_minutes || 3) * 60) * 1000).toISOString()) : null };
   out.submitted_date = e.submitted_at ? (e.started_date ?? String(e.started_at ?? e.submitted_at).slice(0, 10)) : null;
   if (e.auto_submitted) out.remaining_seconds = 0;
-  if (!('progress' in e) && !('question_ids' in e)) Object.assign(out, scoreSplitMock(e)); // 只给列表项
+  const split = scoreSplitMock(e);
+  Object.assign(out, split); // 第 17 轮：列表项、详情顶层、result 都带同一份拆分
   if ('progress' in e || 'question_ids' in e) Object.assign(out, { pause_warn_seconds: 600, non_continuous_pause_seconds: 900 });
-  if (e.result && typeof e.result === 'object') out.result = { ...e.result, non_continuous: nc, counts_in_trend: !nc, auto_submit_reason: out.auto_submit_reason };
+  if (e.result && typeof e.result === 'object') out.result = { ...e.result, non_continuous: nc, counts_in_trend: !nc, auto_submit_reason: out.auto_submit_reason, ...split };
   return out;
 }
-/** 列表的分数拆分（同后端 scoreSplit）：英语 objective 60 / subjective 40（example 没有 per_question 时按 6:4 估）；其它科目 objective = 总分、subjective null */
+/** 分数拆分（同后端 scoreSplit，第 17 轮）：机判题（选择 / 填空 / match）vs 自评题（解答题、翻译 / 作文），满分按卷子：
+ * 英一 60 / 40；数一 2015–2020 56 / 94、2021 起 80 / 70；有 result.per_question 就按题算，否则按满分比例估。其它科目拆不了 → 全 null */
+const PAPER_SPLIT = (exam, year) => (/^english1/.test(exam || '') ? [60, 40] : /^math1/.test(exam || '') ? (Number(year) <= 2020 ? [56, 94] : [80, 70]) : null);
 function scoreSplitMock(e) {
-  const base = { objective_score: e.score ?? null, objective_max: e.max_score ?? null, subjective_self_score: null, subjective_max: null, subjective_excluded_count: 0, subjective_ai_score: null };
-  if (!/^english/.test(e.exam || '')) return base;
-  const sub = e.score == null ? null : Math.min(40, Math.round(e.score * 0.4 * 2) / 2);
-  return { ...base, objective_score: e.score == null ? null : Math.round((e.score - sub) * 2) / 2, objective_max: 60, subjective_self_score: sub, subjective_max: 40 };
+  const nul = { objective_score: null, objective_max: null, subjective_self_score: null, subjective_self_raw: null, subjective_excluded_points: null, subjective_excluded_count: null, subjective_max: null, subjective_ai_score: null };
+  const r2 = (x) => Math.round(x * 2) / 2;
+  const per = e.result?.per_question;
+  const score = e.status === 'submitted' ? (e.score ?? e.result?.score ?? null) : null;
+  if (Array.isArray(per) && per.length) {
+    const sum = (xs, f) => r2(xs.reduce((t, p) => t + (Number(f(p)) || 0), 0));
+    const obj = per.filter((p) => p.objective), sub = per.filter((p) => !p.objective), low = (p) => (p.self_grade_flags || []).includes('word_count_low');
+    const g = score != null;
+    return { ...nul,
+      ...(obj.length ? { objective_max: sum(obj, (p) => p.score), objective_score: g ? sum(obj, (p) => p.got) : null } : {}),
+      ...(sub.length ? { subjective_max: sum(sub, (p) => p.score), subjective_self_raw: g ? sum(sub, (p) => p.got) : null, subjective_self_score: g ? sum(sub.filter((p) => !low(p)), (p) => p.got) : null,
+        subjective_excluded_points: g ? sum(sub.filter(low), (p) => p.got) : null, subjective_excluded_count: g ? sub.filter(low).length : null } : {}) };
+  }
+  const sp = PAPER_SPLIT(e.exam, e.year);
+  if (!sp) return nul;
+  const [om, sm] = sp;
+  if (score == null) return { ...nul, objective_max: om, subjective_max: sm };
+  const os = Math.min(om, r2(score * om / (om + sm))), raw = r2(score - os);
+  return { ...nul, objective_score: os, objective_max: om, subjective_self_raw: raw, subjective_self_score: raw, subjective_excluded_points: 0, subjective_excluded_count: 0, subjective_max: sm };
 }
 function withExamR15(body, key, req) {
   if (!/^(GET|POST|PUT) \/exams/.test(key) || !body || typeof body !== 'object') return body;
@@ -284,7 +302,7 @@ function withExamR15(body, key, req) {
 const customize = {
   // 学生看到的日期都带相对叫法（前端不算日界）
   'GET /plans': (body) => ({ ...body, study_date: MOCK_STUDY_DATE, items: (body.items || []).map((p) => ({ ...p, relative_day: relativeDay(p.plan_date) })) }),
-  'GET /plans/today': (body) => ({ ...body, study_date: MOCK_STUDY_DATE, relative_day: '今天', plan: body.plan && { ...body.plan, relative_day: '今天' },
+  'GET /plans/today': (body) => ({ ...body, study_date: MOCK_STUDY_DATE, expires_at: nextStudyDayStart(MOCK_STUDY_DATE, body.timezone || MOCK_TZ), timezone: body.timezone || MOCK_TZ, relative_day: '今天', plan: body.plan && { ...body.plan, relative_day: '今天' },
     ...(body.review_due ? { review_due: { ...body.review_due, items: (body.review_due.items || []).map(withDue) } } : {}) }),
   'GET /checkins': (body) => ({ ...body, study_date: MOCK_STUDY_DATE, items: (body.items || []).map((c) => ({ ...c, relative_day: relativeDay(c.day) })) }),
   'GET /me/settings': (body) => ({ ...body, today: MOCK_STUDY_DATE, effective: { ...body.effective, study_date: MOCK_STUDY_DATE, day_start_hour: DAY_START_HOUR } }),
@@ -294,7 +312,7 @@ const customize = {
   'POST /agent/jobs/{job}/run': (body, req) => ({ ...body, job: req.params.job, actions: (body.actions || []).map((a) => ({ ...a, trigger: req.params.job, id: uuid(), created_at: now() })) }),
   'POST /auth/register': (body, req) => { if (req.body?.username) body.user.username = req.body.username; return body; },
   'POST /auth/login': (body, req) => { if (req.body?.username) body.user.username = req.body.username; return body; },
-  'GET /words/today': (body) => ({ ...body, study_date: MOCK_STUDY_DATE, relative_day: '今天', ...Object.fromEntries(['review', 'new'].map((k) => [k, (body[k] || []).map((w) => ({ ...w, audio_url_us: `/api/v1/words/${w.id}/audio?accent=us`, audio_url_uk: `/api/v1/words/${w.id}/audio?accent=uk` }))])) }),
+  'GET /words/today': (body) => ({ ...body, study_date: MOCK_STUDY_DATE, expires_at: nextStudyDayStart(MOCK_STUDY_DATE, body.timezone || MOCK_TZ), relative_day: '今天', ...Object.fromEntries(['review', 'new'].map((k) => [k, (body[k] || []).map((w) => ({ ...w, audio_url_us: `/api/v1/words/${w.id}/audio?accent=us`, audio_url_uk: `/api/v1/words/${w.id}/audio?accent=uk` }))])) }),
   'GET /wrong-questions': (body) => ({ ...body, items: (body.items || []).map((i) => ({ ...withDue(i), ...scoreFieldsFor(i.question_id), errata: bankQuestion(i.question_id)?.errata ?? i.errata ?? [], explanation: explanationInfoFor(i.question_id), reference_answer: referenceAnswerFor(i.question_id, i.type) })) }),
   // errata：原卷误印说明，和后端一样从题库原样带出（英语一 2025 第 14、39 题有）
   // 顶层 sub_scores：整题计分或没有小问 → null（不返回 [null]），和后端一致
@@ -317,6 +335,7 @@ const customize = {
   'POST /answers': (body, req) => {
     const tpl = Array.isArray(body.items) ? body.items[0] : body;
     const one = (a) => {
+      if (a && a.question_id != null && a.question_id !== '' && typeof a.question_id !== 'string') return { status: 'rejected', duplicate: false, reason: 'bad_question_id', client_id: a?.client_id ?? null, question_id: null, is_correct: null, score: null, wrong_question_id: null };
       if (!a || !a.question_id) return { status: 'rejected', duplicate: false, reason: 'missing_question_id', client_id: a?.client_id ?? null, question_id: null, is_correct: null, score: null, wrong_question_id: null };
       if (a.client_id && MOCK_ANSWERS.has(a.client_id)) return { ...MOCK_ANSWERS.get(a.client_id), status: 'duplicate', duplicate: true };
       const nowMs = Date.now();
@@ -391,6 +410,23 @@ const customize = {
 
 const app = express();
 app.use(express.json({ limit: '5mb' }));
+// 第 17 轮（同后端）：坏 JSON → 400 invalid_json「请求格式不对」；太大 → 413 payload_too_large
+app.use((err, req, res, next) => {
+  if (err?.type === 'entity.parse.failed') return res.status(400).json({ statusCode: 400, error: 'Bad Request', message: '请求格式不对', field: null, code: 'invalid_json' });
+  if (err?.type === 'entity.too.large') return res.status(413).json({ statusCode: 413, error: 'Payload Too Large', message: '请求体太大了，拆成几次再传', field: null, code: 'payload_too_large' });
+  next(err);
+});
+// 第 17 轮（同后端）：POST /answers 单条 question_id 类型错 / items 不是数组 → 400 统一格式
+app.post(`${PREFIX}/answers`, (req, res, next) => {
+  const b = req.body;
+  const bad = (message, field, code) => res.status(400).json({ statusCode: 400, error: 'Bad Request', message, field, code });
+  if (b && typeof b === 'object' && 'items' in b && !Array.isArray(b.items)) return bad('items 应为数组', 'items', 'bad_items');
+  if (b && typeof b === 'object' && !('items' in b)) {
+    if (b.question_id == null || b.question_id === '') return bad('缺少 question_id', 'question_id', 'missing_question_id');
+    if (typeof b.question_id !== 'string') return bad('question_id 应为字符串', 'question_id', 'bad_question_id');
+  }
+  next();
+});
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', req.headers.origin || '*');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type, X-Device, X-Timezone, Idempotency-Key');

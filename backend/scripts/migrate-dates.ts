@@ -1,6 +1,6 @@
 import { Client } from 'pg';
 import { loadEnv } from './env';
-import { placeholdersDeep, studyDate, toPlaceholders } from '../src/common/time';
+import { addDays, datePh, placeholdersDeep, studyDate, toPlaceholders } from '../src/common/time';
 
 /**
  * 存量文字里的日期 → 占位符 {{date:YYYY-MM-DD}}（读时按读者学习日渲染）。幂等：占位符不会再被匹配。
@@ -26,9 +26,11 @@ async function main() {
       await c.query('UPDATE agent_actions SET before=$2, after=$3 WHERE id=$1', [r.id, b == null ? null : JSON.stringify(b), a == null ? null : JSON.stringify(a)]); bump('agent_actions.before_after');
     }
   }
-  for (const r of (await c.query(`SELECT id, user_id, created_at, tip_date::text AS tip_date, text, headline, details, proposal FROM daily_tips`)).rows) {
+  for (const r of (await c.query(`SELECT id, user_id, kind, created_at, tip_date::text AS tip_date, text, headline, details, proposal FROM daily_tips`)).rows) {
     const d = r.tip_date ?? ref(r.user_id, r.created_at); // 消息自己的学习日（调试时间写的也对得上）
-    const v = { text: toPlaceholders(r.text, d), headline: toPlaceholders(r.headline, d), details: toPlaceholders(r.details, d), proposal: r.proposal?.items ? { ...r.proposal, items: placeholdersDeep(r.proposal.items, d) } : r.proposal };
+    // 第 17 轮：很早的每日复盘写的是裸「今天还没有作答记录」「明天从…开始」→ 先换成那条复盘自己的日期，再走占位符（含「还没有」时态）
+    const bare = (t: string | null) => (r.kind === 'review' && r.tip_date && t ? t.replace(/(^|。)今天(?!（)/g, `$1${datePh(r.tip_date)}`).replace(/(^|。)明天(?!（)/g, `$1${datePh(addDays(r.tip_date, 1))}`) : t);
+    const v = { text: toPlaceholders(bare(r.text), d), headline: toPlaceholders(bare(r.headline), d), details: toPlaceholders(bare(r.details), d), proposal: r.proposal?.items ? { ...r.proposal, items: placeholdersDeep(r.proposal.items, d) } : r.proposal };
     if (JSON.stringify(v) !== JSON.stringify({ text: r.text, headline: r.headline, details: r.details, proposal: r.proposal })) {
       await c.query('UPDATE daily_tips SET text=$2, headline=$3, details=$4, proposal=$5 WHERE id=$1', [r.id, v.text, v.headline, v.details, v.proposal == null ? null : JSON.stringify(v.proposal)]); bump('daily_tips');
     }

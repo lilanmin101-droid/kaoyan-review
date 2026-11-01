@@ -49,6 +49,7 @@ export class WordsController {
     const snap = (await this.db.one(`SELECT scheduled FROM word_day_snapshots WHERE user_id=$1 AND day=$2`, [u.id, day.date]))!;
     return {
       date: day.date, study_date: day.date, relative_day: '今天', timezone: day.tz, // 学习日（04:00 换天）
+      expires_at: day.end.toISOString(), // 第 17 轮：这份「今天」的单词到用户时区下一个 04:00 过期（同离线题包）
       review: review.map(wordOut), new: fresh.map(wordOut), relearn: relearn.map(wordOut),
       counts: {
         review: review.length, new: fresh.length, relearn: relearn.length, new_target: newTarget,

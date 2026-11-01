@@ -57,7 +57,7 @@ ok=it['objective_max']==60 and it['subjective_max']==40 and it['subjective_exclu
   and it['objective_score']==obj and it['subjective_self_score']==sub and sub>0 and it['subjective_ai_score'] is None and abs(it['score']-(obj+sub+(per['english1-2024-51']['got'] or 0)))<0.01
 print('ok  ' if ok else 'FAIL','英一拆分：客观 60 / 主观 40、小作文字数太少不计（excluded=1）、subjective_ai_score 预留 null'); sys.exit(0 if ok else 1)
 PY
-c $T3 "$(at 1531)" $B/exams | ok "(lambda x: x['exam']=='math1' and x['objective_score']==x['score'] and x['objective_max']==x['max_score'] and x['subjective_self_score'] is None and x['subjective_max'] is None and x['subjective_excluded_count']==0)(d['items'][0])" "数一：objective=总分，subjective=null"
+c $T3 "$(at 1531)" $B/exams | ok "(lambda x: x['exam']=='math1' and x['objective_max']+x['subjective_max']==x['max_score'] and x['objective_max'] in (56,80) and x['subjective_excluded_count']==0 and x['subjective_excluded_points']==0 and (x['score'] is None or x['objective_score']+x['subjective_self_raw']==x['score']))(d['items'][0])" "数一：第 17 轮起按卷子拆（选择+填空 / 解答题自评），excluded=0"
 
 echo "== 400 统一格式（answers）"
 T6=$(login er)

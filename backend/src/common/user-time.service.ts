@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { DbService } from '../db/db.service';
-import { addDays, earlyNote, localDate, localHour, startOfStudyDay, studyDate } from './time';
+import { earlyNote, localDate, localHour, startOfStudyDay, studyDate, studyDayEnd } from './time';
 import { clockNow } from './clock';
 
 /** 合法的 IANA 时区（Asia/Shanghai、America/Los_Angeles、UTC…），用 Intl 校验 */
@@ -43,7 +43,7 @@ export class UserTimeService {
   async day(userId: string, at = clockNow()) {
     const tz = await this.tz(userId);
     const date = studyDate(at, tz);
-    return { tz, date, start: startOfStudyDay(date, tz), end: startOfStudyDay(addDays(date, 1), tz) };
+    return { tz, date, start: startOfStudyDay(date, tz), end: studyDayEnd(at, tz) };
   }
   async hour(userId: string, headerTz?: string | null) { return localHour(clockNow(), await this.tz(userId, headerTz)); }
   async now(userId: string) {

@@ -114,6 +114,27 @@ export function runUnitTests() {
   eq('409 形状', normalizeHttpError(409, { message: '这条已经撤回过了', code: 'already_undone' }), { message: '这条已经撤回过了', code: 'already_undone', statusCode: 409, error: 'Conflict' , field: null });
   eq('400 只有 message → 补 field/code', normalizeHttpError(400, { message: 'cursor 无效', error: 'Bad Request', statusCode: 400 }), { message: 'cursor 无效', error: 'Bad Request', statusCode: 400, field: null, code: 'bad_request' });
   eq('400 带 field/code 原样', normalizeHttpError(400, { message: '缺少 question_id', field: 'question_id', code: 'missing_question_id' }), { message: '缺少 question_id', field: 'question_id', code: 'missing_question_id', statusCode: 400, error: 'Bad Request' });
+  // 第 17 轮：body-parser 的英文错误 → 中文
+  eq('坏 JSON → 请求格式不对', normalizeHttpError(400, { message: "Expected property name or '}' in JSON at position 1 (line 1 column 2)", error: 'Bad Request', statusCode: 400 }), { statusCode: 400, error: 'Bad Request', message: '请求格式不对', field: null, code: 'invalid_json' });
+  eq('坏 JSON（老 Node 文案）', (normalizeHttpError(400, { message: 'Unexpected token } in JSON at position 9' }) as any).code, 'invalid_json');
+  eq('自己写的中文 400 不被当成坏 JSON', (normalizeHttpError(400, { message: '缺少 question_id', code: 'missing_question_id', field: 'question_id' }) as any).code, 'missing_question_id');
+  { const { normalizeBodyParserError } = require('../src/common/http-error.filter');
+    eq('body-parser 坏 JSON', normalizeBodyParserError({ type: 'entity.parse.failed', status: 400, message: 'Unexpected token' }), { status: 400, body: { statusCode: 400, error: 'Bad Request', message: '请求格式不对', field: null, code: 'invalid_json' } });
+    eq('body-parser 太大', normalizeBodyParserError({ type: 'entity.too.large', status: 413, message: 'request entity too large' })!.body.code, 'payload_too_large');
+    eq('别的异常不管', normalizeBodyParserError(new Error('x')), null); }
+  eq('413 → 中文', normalizeHttpError(413, { statusCode: 413, message: 'request entity too large' }), { statusCode: 413, message: '请求体太大了，拆成几次再传', error: 'Payload Too Large', field: null, code: 'payload_too_large' });
+  { const { checkItem } = require('../src/answers/answers.controller');
+    eq('question_id 类型', [checkItem({}), checkItem({ question_id: '' }), checkItem({ question_id: null }), checkItem({ question_id: 5 }), checkItem({ question_id: ['a'] }), checkItem({ question_id: 'math1-2024-01' })],
+      ['missing_question_id', 'missing_question_id', 'missing_question_id', 'bad_question_id', 'bad_question_id', null]); }
+  // 第 17 轮：每日复盘的「还没有…记录」按那天过没过换时态
+  { const d1 = toPlaceholders('今天（11-04）做了 5 题，对 1 题、错 4 题，还没有学习时长记录。', '2026-11-04')!, d2 = toPlaceholders('今天（11-04）还没有作答记录。', '2026-11-04')!;
+    eq('复盘占位符', [d1, d2], ['{{date:2026-11-04}}做了 5 题，对 1 题、错 4 题，{{dyt:2026-11-04|还没有学习时长记录|没有学习时长记录}}。', '{{date:2026-11-04}}{{dyt:2026-11-04|还没有作答记录|没有作答记录}}。']);
+    eq('复盘占位符幂等', [toPlaceholders(d1, '2026-11-04'), toPlaceholders(d2, '2026-11-05')], [d1, d2]);
+    eq('复盘当天 / 第二天 / 一周后', [renderDates(d2, '2026-11-04'), renderDates(d2, '2026-11-05'), renderDates(d1, '2026-11-05'), renderDates(d1, '2026-11-11')],
+      ['今天（11-04）还没有作答记录。', '昨天（11-04）没有作答记录。', '昨天（11-04）做了 5 题，对 1 题、错 4 题，没有学习时长记录。', '11-04（周三）做了 5 题，对 1 题、错 4 题，没有学习时长记录。']);
+    eq('复盘 bareDates', bareDates(d2), '11-04还没有作答记录。');
+    eq('只有往后看的日期（|plan）不换时态', toPlaceholders('明天（11-05）先做一组 5 道基础题，还没有作答记录。', '2026-11-04'), '{{date:2026-11-05|plan}}先做一组 5 道基础题，还没有作答记录。');
+    eq('扫描：过去那天还写「还没有」', [badDayLabels('昨天（11-04）还没有作答记录。', '2026-11-05').length > 0, badDayLabels('11-04（周三）做了 5 题，还没有学习时长记录。', '2026-11-11').length > 0, badDayLabels(renderDates(d1, '2026-11-11'), '2026-11-11')], [true, true, []]); }
   eq('404 英文 → 中文', (normalizeHttpError(404, { message: 'Cannot GET /x', error: 'Not Found', statusCode: 404 }) as any).code, 'not_found');
   // 修饰错题的时间词 = 筛选（今天 2026-11-01 周日）；排期词不算
   const wf = (t: string) => { const r = parseWrongFilter(t, '2026-11-01'); return r && [r.from, r.to, r.label]; };
@@ -349,9 +370,19 @@ export function runUnitTests() {
   // 第 16 轮：模考列表分数拆分（英语客观 / 主观自评，字数太少的自评不计）
   { const { scoreSplit } = require('../src/exams/exam-summary');
     const per = [{ objective: true, score: 40, got: 30 }, { objective: true, score: 20, got: 10 }, { objective: false, score: 15, got: 9 }, { objective: false, score: 10, got: 6, self_grade_flags: ['word_count_low'] }, { objective: false, score: 15, got: 7.5, self_grade_flags: [] }];
-    eq('英一拆分', scoreSplit('english1', per, 62.5, 100), { objective_score: 40, objective_max: 60, subjective_self_score: 16.5, subjective_max: 40, subjective_excluded_count: 1, subjective_ai_score: null });
-    eq('数一不拆', scoreSplit('math1', [{ objective: false, score: 10, got: 5 }], 88, 150), { objective_score: 88, objective_max: 150, subjective_self_score: null, subjective_max: null, subjective_excluded_count: 0, subjective_ai_score: null });
-    eq('没交卷', scoreSplit('english1', null, null, 100), { objective_score: null, objective_max: 100, subjective_self_score: null, subjective_max: null, subjective_excluded_count: 0, subjective_ai_score: null }); }
+    const N = { subjective_ai_score: null };
+    eq('英一拆分：raw 含字数太少的、score = 客观 + raw', scoreSplit(per, 62.5), { objective_score: 40, objective_max: 60, subjective_self_score: 16.5, subjective_self_raw: 22.5, subjective_excluded_points: 6, subjective_excluded_count: 1, subjective_max: 40, ...N });
+    { const x = scoreSplit(per, 62.5); eq('不变式 objective + raw == score', x.objective_score + x.subjective_self_raw, 62.5); }
+    // 用户复测的那场：客观 0.5、自评 32（两道字数太少共 12）→ score 32.5
+    { const p2 = [{ objective: true, score: 60, got: 0.5 }, { objective: false, score: 10, got: 8 }, { objective: false, score: 20, got: 12 }, { objective: false, score: 10, got: 6, self_grade_flags: ['word_count_low'] }, { objective: false, score: 0, got: 6, self_grade_flags: ['word_count_low'] }];
+      const x = scoreSplit(p2, 32.5); eq('复测样例', [x.objective_score, x.subjective_self_score, x.subjective_self_raw, x.subjective_excluded_points, x.subjective_excluded_count, x.objective_score + x.subjective_self_raw], [0.5, 20, 32, 12, 2, 32.5]); }
+    const math = [...Array(10)].map(() => ({ objective: true, score: 5, got: 5 })).concat([...Array(6)].map(() => ({ objective: true, score: 5, got: 0 })), [...Array(6)].map((_, i) => ({ objective: false, score: [10, 12, 12, 12, 12, 12][i], got: 6 })));
+    eq('数一 2024：客观 80（选择 + 填空）、解答题自评 70，没有字数线', scoreSplit(math, 86), { objective_score: 50, objective_max: 80, subjective_self_score: 36, subjective_self_raw: 36, subjective_excluded_points: 0, subjective_excluded_count: 0, subjective_max: 70, ...N });
+    eq('全是客观题 → subjective_* 全 null', scoreSplit([{ objective: true, score: 2, got: 2 }], 2), { objective_score: 2, objective_max: 2, subjective_self_score: null, subjective_self_raw: null, subjective_excluded_points: null, subjective_excluded_count: null, subjective_max: null, ...N });
+    eq('全是自评题 → objective_* null', scoreSplit([{ objective: false, score: 20, got: 10 }], 10).objective_max, null);
+    eq('没交卷：只给满分', scoreSplit(null, null, { objective_max: 56, subjective_max: 94 }), { objective_score: null, objective_max: 56, subjective_self_score: null, subjective_self_raw: null, subjective_excluded_points: null, subjective_excluded_count: null, subjective_max: 94, ...N });
+    const { isObjectiveType } = require('../src/exams/exam-summary');
+    eq('机判题型', ['single_choice', 'multiple_choice', 'fill_blank', 'match', 'essay', 'translation'].map(isObjectiveType), [true, true, true, true, false, false]); }
   eq('tickSeconds', [tickSeconds('2026-11-02T00:00:00Z', Date.parse('2026-11-02T00:00:30Z')), tickSeconds('2026-11-02T00:00:00Z', Date.parse('2026-11-02T01:00:00Z')),
     tickSeconds('2026-11-02T00:10:00Z', Date.parse('2026-11-02T00:00:00Z')), tickSeconds(null, Date.now())], [30, HEARTBEAT_CAP_SECONDS, 0, 0]);
   eq('errata 合格', validateErrata([{ printed: 'a', correct: 'b', note: 'n' }]).length, 0);

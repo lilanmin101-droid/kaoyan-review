@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { NestFactory } from '@nestjs/core';
+import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { loadEnv } from '../scripts/env';
 loadEnv();
 import { AppModule } from './app.module';
@@ -26,7 +26,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
   app.enableShutdownHooks();
   app.setGlobalPrefix('api/v1');
-  app.useGlobalFilters(new HttpErrorFilter()); // 404 / 409 统一 {statusCode,error,message,field,code}
+  app.useGlobalFilters(new HttpErrorFilter(app.get(HttpAdapterHost).httpAdapter)); // 400 / 404 / 409 / 413 统一 {statusCode,error,message,field,code}；body-parser 的坏 JSON / 太大也在这里转中文
   app.use(clockMiddleware); // 开发/评测：X-Debug-Now 模拟「现在」（生产环境不生效）
   // 题目图片（不需要登录）：/api/v1/assets/images/xxx.png → ASSETS_DIR/images/xxx.png
   app.use('/api/v1/assets', assetsMiddleware);

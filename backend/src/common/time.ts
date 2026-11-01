@@ -96,7 +96,9 @@ export function badDayLabels(text: string, today: string, writtenOn?: string): s
   // 第 15 轮：同一段里「本周（range）」那周还没过完 → 倒计时应是现算的，不算错
   const curWeek = [...text.matchAll(/(本周|这周)（(\d{2})-(\d{2})[–-](\d{2})-(\d{2})）/g)].some((m) => { let y = Number(today.slice(0, 4)); if (today.slice(5, 7) === '01' && m[4] === '12') y--; return `${y}-${m[4]}-${m[5]}` >= today; });
   if (writtenOn && writtenOn < today && !curWeek) for (const m of text.matchAll(/(?<!当时)(距考试还有|距考试|离考试还有) ?\d+ ?天/g)) out.push(m[0]);
-  for (const m of text.matchAll(/\{\{(week|countdown|nextweek|wkt):[^}]*\}\}/g)) out.push(m[0]);
+  for (const m of text.matchAll(/\{\{(week|countdown|nextweek|wkt|dyt):[^}]*\}\}/g)) out.push(m[0]);
+  // 第 17 轮：说的是已经过去的那天（「昨天（11-01）」「10-31（周六）」），还写「还没有…记录」
+  for (const m of text.matchAll(/(?:(?:昨天|前天)（\d{2}-\d{2}）|\d{2}-\d{2}（周[一二三四五六日]）)[^。]*?还没有(?:作答|学习时长)记录/g)) out.push(m[0]);
   // 第 16 轮：那周已经过完（「那周（range）」），还写现在时的「当前阶段」「还没有…记录」
   if (/那周（\d{2}-\d{2}[–-]\d{2}-\d{2}）/.test(text)) for (const m of text.matchAll(/当前阶段|还没有(?:作答|学习时长)记录/g)) out.push(m[0]);
   const year = today.slice(0, 4);
@@ -158,7 +160,23 @@ export function toPlaceholders(text: string | null | undefined, ref: string): st
     .replace(CD_RE, (_m, pre, n) => `{{countdown:${n}|asof=${ref}|${pre}}}`)
     // 第 15 轮：「下周重点补…」「下周最重要的一件事是…」→ {{nextweek:下周一|下周重点}}：…（下周开始后读成「当时定的下周重点：…」）
     .replace(NEXTWEEK_RE, () => `${nextweekPh(addDays(weekOf(ref).to, 1))}：`)
-    .replace(/^[\s\S]*$/, (t) => weekTense(t));
+    .replace(/^[\s\S]*$/, (t) => dayTense(weekTense(t)));
+}
+// 第 17 轮：每日复盘等「某一天」的状态句（「{{date:D}}还没有作答记录」「…，还没有学习时长记录」）按那天过没过换时态：{{dyt:D|现在时|过去时}}
+const DAY_TENSE: [RegExp, string, string][] = [
+  [/还没有作答记录，也还没有学习时长记录/g, '还没有作答记录，也还没有学习时长记录', '没有作答记录，也没有学习时长记录'],
+  [/还没有学习时长记录/g, '还没有学习时长记录', '没有学习时长记录'],
+  [/还没有作答记录/g, '还没有作答记录', '没有作答记录'],
+];
+export const dytPh = (day: string, cur: string, past: string) => `{{dyt:${day}|${cur}|${past}}}`;
+/** 没有周占位符、但有「那一天」的日期占位符（{{date:D}}，不算往后看的 |plan）：以第一个这样的日期为准；已是占位符的部分不动（幂等） */
+function dayTense(text: string): string {
+  if (text.includes('{{week:')) return text;
+  const d = /\{\{date:(\d{4}-\d{2}-\d{2})\}\}/.exec(text)?.[1];
+  if (!d) return text;
+  let out = text;
+  for (const [re, cur, past] of DAY_TENSE) out = out.split(/(\{\{[^}]*\}\})/).map((x) => (x.startsWith('{{') ? x : x.replace(re, dytPh(d, cur, past)))).join('');
+  return out;
 }
 // 第 16 轮：周报里描述「那周状态」的现在时说法，按那周过没过完换时态（{{wkt:那周周一|现在时|过去时}}）
 const WEEK_TENSE: [RegExp, string, string][] = [
@@ -208,9 +226,10 @@ function renderWeekCd(text: string, today: string): string {
 }
 /** 读的时候：占位符 → 相对今天（读者当时的学习日）的叫法 */
 /** 占位符还原成存库前的裸日期 MM-DD（快照里本来不存占位符的字段撤回时用：计划任务标题、提醒文字） */
-export const bareDates = <T>(s: T): T => (typeof s === 'string' ? (s.replace(/\{\{wkt:[\d-]+\|([^|}]*)\|[^}]*\}\}/g, '$1').replace(/\{\{nextweek:[\d-]+\|([^}]*)\}\}/g, (_m: string, w: string) => w || '下周重点').replace(/\{\{week:(\d{4}-\d{2}-\d{2})\|([^}]*)\}\}/g, (_m: string, st: string, w: string) => `${w || '本周'}（${weekOf(st).label}）`).replace(/\{\{countdown:(\d+)\|asof=[\d-]+\|?([^}]*)\}\}/g, (_m: string, n: string, pre: string) => `${pre || '距考试'} ${n} 天`).replace(/\{\{date:\d{4}-(\d{2}-\d{2})(?:\|plan)?\}\}/g, '$1') as any) : s);
+export const bareDates = <T>(s: T): T => (typeof s === 'string' ? (s.replace(/\{\{dyt:[\d-]+\|([^|}]*)\|[^}]*\}\}/g, '$1').replace(/\{\{wkt:[\d-]+\|([^|}]*)\|[^}]*\}\}/g, '$1').replace(/\{\{nextweek:[\d-]+\|([^}]*)\}\}/g, (_m: string, w: string) => w || '下周重点').replace(/\{\{week:(\d{4}-\d{2}-\d{2})\|([^}]*)\}\}/g, (_m: string, st: string, w: string) => `${w || '本周'}（${weekOf(st).label}）`).replace(/\{\{countdown:(\d+)\|asof=[\d-]+\|?([^}]*)\}\}/g, (_m: string, n: string, pre: string) => `${pre || '距考试'} ${n} 天`).replace(/\{\{date:\d{4}-(\d{2}-\d{2})(?:\|plan)?\}\}/g, '$1') as any) : s);
 export function renderDates(text: string, today: string): string {
   if (text.includes('{{week:') || text.includes('{{countdown:') || text.includes('{{nextweek:') || text.includes('{{wkt:')) text = renderWeekCd(text, today);
+  if (text.includes('{{dyt:')) text = text.replace(/\{\{dyt:(\d{4}-\d{2}-\d{2})\|([^|}]*)\|([^}]*)\}\}/g, (_m, d, cur, past) => (d < today ? past : cur));
   if (!text.includes('{{date:')) return text;
   // 模板里裸日期两边常有空格（「在 11-02 的计划」）：渲染后两边的空格都去掉（「在11-02（周一）的计划」「在明天（11-02）的计划」）
   // |plan：往后看的说法（后面跟「先…」）。读的时候那天已经过去 → 「11-02（周一）当天计划重做…」（去掉「先」）；今天或以后照常「明天（11-02）先重做…」

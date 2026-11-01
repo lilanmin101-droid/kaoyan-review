@@ -2606,6 +2606,10 @@ paths:
                     description: 今天的学习日 YYYY-MM-DD（当地 04:00 换天；凌晨 0–4 点还是前一天，快照和「今天已完成」也按这个日界）。另带 `study_date`（同 date）和 `relative_day`（恒为「今天」）
                   timezone:
                     type: string
+                  expires_at:
+                    type: string
+                    format: date-time
+                    description: 第 17 轮：这份「今天」的单词到期时刻 = 用户时区下一个 04:00（和 /plans/today、离线题包同一个算法）
                   counts:
                     type: object
                     properties:
@@ -3008,6 +3012,13 @@ paths:
                     type: string
                     format: date
                     description: 今天的学习日（当地 04:00 换天）；= date
+                  expires_at:
+                    type: string
+                    format: date-time
+                    description: 第 17 轮：这页「今天」到期的时刻 = 用户时区下一个 04:00（和 /words/today、离线题包同一个算法）。例：Asia/Shanghai 学习日 2026-11-01 → 2026-11-01T20:00:00Z
+                  timezone:
+                    type: string
+                    description: 算学习日用的时区
                   relative_day:
                     type: string
                     enum: [今天]
@@ -4455,8 +4466,10 @@ components:
       description: |
         所有 400 / 404 / 409 都是这个形状；message 是可以直接给学生看的一句中文，field 是出错的字段（没有就是 null），code 给前端分支用。
         第 16 轮：所有 400 都带 field 和 code（没单独指定的 code=bad_request、field=null）。POST /answers 单条参数错：code 同批量里 rejected 的 reason——
-        missing_question_id（field=question_id）、bad_self_rating（self_rating）、bad_client_id（client_id）、bad_source（source）、bad_answer（answer）、bad_answered_at（answered_at）；
-        批量 items 为空 empty_items / 超过 200 条 too_many_items（field=items）；GET /answers 的 invalid_year、invalid_question_ids、too_many_question_ids；批改 invalid_id、not_gradable。
+        missing_question_id（field=question_id，没传 / 空）、bad_question_id「question_id 应为字符串」（传了但不是字符串，如数字 5）、bad_self_rating（self_rating）、bad_client_id（client_id）、bad_source（source）、bad_answer（answer）、bad_answered_at（answered_at）；
+        批量 items 为空 empty_items / 超过 200 条 too_many_items / 不是数组 bad_items「items 应为数组」（field=items）；
+        第 17 轮：请求体不是合法 JSON → 400 code=invalid_json、message「请求格式不对」、field=null（所有接口）；请求体超过上限 → 413 code=payload_too_large「请求体太大了，拆成几次再传」。
+        GET /answers 的 invalid_year、invalid_question_ids、too_many_question_ids；批改 invalid_id、not_gradable。
         常见 code：already_undone「这条已经撤回过了」、not_undoable、action_not_found、already_decided「这条建议已经处理过了」、proposal_not_found、message_not_found、username_taken、not_found（未知路由等）。
       properties:
         statusCode:
@@ -4466,8 +4479,9 @@ components:
         error:
           type: string
         field:
-          type: string
-          nullable: true
+          type:
+            - string
+            - 'null'
         code:
           type: string
         detail:
@@ -4989,7 +5003,7 @@ components:
           type:
             - string
             - 'null'
-          description: rejected 的原因：question_not_found / bad_client_id / bad_answered_at / bad_self_rating / bad_source / bad_answer / missing_question_id / error
+          description: rejected 的原因：question_not_found / bad_question_id / bad_client_id / bad_answered_at / bad_self_rating / bad_source / bad_answer / missing_question_id / error
         score:
           type:
             - number
@@ -5272,6 +5286,48 @@ components:
             - 'null'
           format: date-time
           description: status=abandoned 时是放弃的时间
+        objective_score:
+          type:
+            - number
+            - 'null'
+          description: |
+            分数拆分（列表 / 详情顶层 / result 同一份，按这场的题现算，不写死满分）。机判题（选择 / 填空 / 英语阅读 B 的 match）的得分。
+            不变式：没有 AI 分时 objective_score + subjective_self_raw == score。没交卷 null；这场没有机判题 null
+        objective_max:
+          type:
+            - number
+            - 'null'
+          description: 机判题满分：英一 60；数一 2015–2020 为 56（选择 8×4 + 填空 6×4）、2021 起 80（选择 10×5 + 填空 6×5）。自选题按题现算
+        subjective_self_raw:
+          type:
+            - number
+            - 'null'
+          description: 第 17 轮：自评题（数学解答题、英语翻译 / 作文）的全部自评分，含字数太少（word_count_low）的；没评的按 0。这场没有自评题 null
+        subjective_self_score:
+          type:
+            - number
+            - 'null'
+          description: 估分 / 趋势用的自评分 = subjective_self_raw − subjective_excluded_points（去掉 word_count_low 的自评）
+        subjective_excluded_points:
+          type:
+            - number
+            - 'null'
+          description: 第 17 轮：因字数太少（word_count_low）没计入 subjective_self_score 的分。数学没有字数线，恒 0
+        subjective_excluded_count:
+          type:
+            - integer
+            - 'null'
+          description: 因字数太少没计入的自评题数（数学恒 0）
+        subjective_max:
+          type:
+            - number
+            - 'null'
+          description: 自评题满分：英一 40；数一 2015–2020 为 94、2021 起 70（解答题）
+        subjective_ai_score:
+          type:
+            - number
+            - 'null'
+          description: 预留：以后 AI 批改的主观题得分，现在一律 null
         result:
           oneOf:
             - $ref: '#/components/schemas/ExamResult'
@@ -5279,6 +5335,48 @@ components:
     ExamResult:
       type: object
       properties:
+        objective_score:
+          type:
+            - number
+            - 'null'
+          description: |
+            分数拆分（列表 / 详情顶层 / result 同一份，按这场的题现算，不写死满分）。机判题（选择 / 填空 / 英语阅读 B 的 match）的得分。
+            不变式：没有 AI 分时 objective_score + subjective_self_raw == score。没交卷 null；这场没有机判题 null
+        objective_max:
+          type:
+            - number
+            - 'null'
+          description: 机判题满分：英一 60；数一 2015–2020 为 56（选择 8×4 + 填空 6×4）、2021 起 80（选择 10×5 + 填空 6×5）。自选题按题现算
+        subjective_self_raw:
+          type:
+            - number
+            - 'null'
+          description: 第 17 轮：自评题（数学解答题、英语翻译 / 作文）的全部自评分，含字数太少（word_count_low）的；没评的按 0。这场没有自评题 null
+        subjective_self_score:
+          type:
+            - number
+            - 'null'
+          description: 估分 / 趋势用的自评分 = subjective_self_raw − subjective_excluded_points（去掉 word_count_low 的自评）
+        subjective_excluded_points:
+          type:
+            - number
+            - 'null'
+          description: 第 17 轮：因字数太少（word_count_low）没计入 subjective_self_score 的分。数学没有字数线，恒 0
+        subjective_excluded_count:
+          type:
+            - integer
+            - 'null'
+          description: 因字数太少没计入的自评题数（数学恒 0）
+        subjective_max:
+          type:
+            - number
+            - 'null'
+          description: 自评题满分：英一 40；数一 2015–2020 为 94、2021 起 70（解答题）
+        subjective_ai_score:
+          type:
+            - number
+            - 'null'
+          description: 预留：以后 AI 批改的主观题得分，现在一律 null
         pause_count:
           type: integer
         paused_seconds:
@@ -5575,26 +5673,38 @@ components:
             - number
             - 'null'
           description: |
-            第 16 轮：分数拆分（趋势图用）。英语（english1 / english2）= 机器判分的客观题得分（英一满分 60）；
-            其它科目（数学等）= 总分 score（解答题自评已含在里面，不单拆），subjective_* 为 null。没交卷为 null
+            分数拆分（列表 / 详情顶层 / result 同一份，按这场的题现算，不写死满分）。机判题（选择 / 填空 / 英语阅读 B 的 match）的得分。
+            不变式：没有 AI 分时 objective_score + subjective_self_raw == score。没交卷 null；这场没有机判题 null
         objective_max:
           type:
             - number
             - 'null'
-          description: 英语 = 客观题满分（英一 60）；其它科目 = max_score
+          description: 机判题满分：英一 60；数一 2015–2020 为 56（选择 8×4 + 填空 6×4）、2021 起 80（选择 10×5 + 填空 6×5）。自选题按题现算
+        subjective_self_raw:
+          type:
+            - number
+            - 'null'
+          description: 第 17 轮：自评题（数学解答题、英语翻译 / 作文）的全部自评分，含字数太少（word_count_low）的；没评的按 0。这场没有自评题 null
         subjective_self_score:
           type:
             - number
             - 'null'
-          description: 英语 = 翻译 + 作文的自评得分（不含字数太少、self_grade_flags 带 word_count_low 的自评；没评的不计）；其它科目 null
+          description: 估分 / 趋势用的自评分 = subjective_self_raw − subjective_excluded_points（去掉 word_count_low 的自评）
+        subjective_excluded_points:
+          type:
+            - number
+            - 'null'
+          description: 第 17 轮：因字数太少（word_count_low）没计入 subjective_self_score 的分。数学没有字数线，恒 0
+        subjective_excluded_count:
+          type:
+            - integer
+            - 'null'
+          description: 因字数太少没计入的自评题数（数学恒 0）
         subjective_max:
           type:
             - number
             - 'null'
-          description: 英语 = 翻译 + 作文满分（英一 40）；其它科目 null
-        subjective_excluded_count:
-          type: integer
-          description: 因字数太少（word_count_low）没计入 subjective_self_score 的自评题数；其它科目 0
+          description: 自评题满分：英一 40；数一 2015–2020 为 94、2021 起 70（解答题）
         subjective_ai_score:
           type:
             - number

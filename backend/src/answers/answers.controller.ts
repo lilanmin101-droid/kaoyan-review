@@ -8,14 +8,15 @@ import { badRequest } from '../common/http-error.filter';
 
 const RATINGS = ['full', 'approach_ok_calc_wrong', 'no_idea'];
 const BAD_MSG: Record<string, string> = {
-  missing_question_id: '缺少 question_id', bad_self_rating: `self_rating 只能是 ${RATINGS.join('/')}`,
+  missing_question_id: '缺少 question_id', bad_question_id: 'question_id 应为字符串', bad_self_rating: `self_rating 只能是 ${RATINGS.join('/')}`,
   bad_client_id: 'client_id 要 1–128 位字母数字或 _ . : -（推荐 uuid）', bad_source: `source 只能是 ${ANSWER_SOURCES.join('/')}`, bad_answer: 'answer 要是字符串数组', bad_answered_at: 'answered_at 要是 ISO 时间',
 };
 /** 单条 400 的 field（code 就是 reason，和批量里 rejected 的 reason 一致） */
-const BAD_FIELD: Record<string, string> = { missing_question_id: 'question_id', bad_self_rating: 'self_rating', bad_client_id: 'client_id', bad_source: 'source', bad_answer: 'answer', bad_answered_at: 'answered_at' };
+const BAD_FIELD: Record<string, string> = { missing_question_id: 'question_id', bad_question_id: 'question_id', bad_self_rating: 'self_rating', bad_client_id: 'client_id', bad_source: 'source', bad_answer: 'answer', bad_answered_at: 'answered_at' };
 /** 一条作答的参数检查：返回 rejected 的原因，没问题 null */
 export function checkItem(i: any): string | null {
-  if (!i || typeof i !== 'object' || !i.question_id || typeof i.question_id !== 'string') return 'missing_question_id';
+  if (!i || typeof i !== 'object' || i.question_id == null || i.question_id === '') return 'missing_question_id';
+  if (typeof i.question_id !== 'string') return 'bad_question_id'; // 第 17 轮：传了但类型不对（如数字 5）不再说「缺少」
   if (i.self_rating && !RATINGS.includes(i.self_rating)) return 'bad_self_rating';
   if (i.client_id != null && !isValidClientId(i.client_id)) return 'bad_client_id';
   if (i.source != null && !(ANSWER_SOURCES as readonly string[]).includes(i.source)) return 'bad_source';
@@ -38,6 +39,7 @@ export class AnswersController {
    */
   @Post()
   async create(@Body() b: AnswerInput | { items: AnswerInput[] }, @CurrentUser() u: AuthUser, @Headers('x-device') device?: string) {
+    if (b && typeof b === 'object' && 'items' in b && !Array.isArray((b as any).items)) throw badRequest('items 应为数组', 'items', 'bad_items');
     const batch = Array.isArray((b as any)?.items);
     const items: AnswerInput[] = batch ? (b as any).items : [b as AnswerInput];
     if (batch && !items.length) throw badRequest('items 不能为空', 'items', 'empty_items');

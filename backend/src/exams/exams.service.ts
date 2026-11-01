@@ -12,7 +12,7 @@ import { AgentToolsService } from '../agent/agent-tools.service';
 import { ENGLISH1_COUNT, ENGLISH1_MINUTES } from '../english/english-spec';
 import { AutoSubmitReason, examClock, NON_CONTINUOUS_PAUSE_SECONDS, nonContinuous, PAUSE_WARN_SECONDS, PauseEntry, pauseNote, pausedTooLongSince } from './exam-clock';
 import { UptimeService } from './uptime.service';
-import { coachDetails, coachHeadline, PerQuestion, RATINGS, scoreSplit, sectionOf, SelfRating, subjectOf, summarize } from './exam-summary';
+import { coachDetails, coachHeadline, isObjectiveType, PerQuestion, RATINGS, scoreSplit, sectionOf, SelfRating, subjectOf, summarize } from './exam-summary';
 
 /** 旧规则（第 14 轮起不再用于计时，只留给单测 / 老代码参考）：两次保存之间最多计这么多秒 */
 export const HEARTBEAT_CAP_SECONDS = 120;
@@ -212,14 +212,19 @@ export class ExamsService implements OnModuleInit, OnModuleDestroy {
     const q = c ?? this.db.pool;
     const r = (await q.query(
       `SELECT e.*, p.answers, p.current_question_id, p.elapsed_seconds, p.last_tick_at, p.last_client_seq, p.updated_at AS progress_updated_at,
-              (SELECT COALESCE(sum(score),0)::float FROM questions WHERE id = ANY(e.question_ids)) AS max_score
+              (SELECT COALESCE(sum(score),0)::float FROM questions WHERE id = ANY(e.question_ids)) AS max_score,
+              (SELECT COALESCE(sum(score) FILTER (WHERE type ~ '(choice|fill)' OR type = 'match'),0)::float FROM questions WHERE id = ANY(e.question_ids)) AS paper_obj_max
          FROM exams e JOIN exam_progress p ON p.exam_id=e.id WHERE e.id=$1 AND e.user_id=$2`, [examId, userId])).rows[0];
     if (!r) throw new NotFoundException('模考不存在');
     const ck = await this.clockOf(r);
     const elapsed = ck.elapsed_seconds;
     const tz = await this.time.tz(userId);
     const nc = this.nonContinuousOf(r, ck.paused_seconds);
+    const result = r.result ? { pause_count: ck.pause_count, paused_seconds: ck.paused_seconds, auto_submitted: !!r.auto_submitted, auto_submit_reason: r.auto_submitted ? (r.auto_submit_reason ?? 'time_up') : null, non_continuous: nc, counts_in_trend: !nc, ...(await this.backfillResult(q, r.result, r.answers)) } : r.result;
+    // 分数拆分：顶层和 result 里同一份（和 /exams 列表同口径）；没交卷只给 *_max
+    const split = scoreSplit(r.status === 'submitted' ? result?.per_question : null, r.status === 'submitted' ? result?.score ?? null : null, { objective_max: r.paper_obj_max, subjective_max: (r.max_score ?? 0) - (r.paper_obj_max ?? 0) });
     return {
+      ...split,
       id: r.id, kind: r.kind, title: r.title, exam: r.exam, year: r.year, question_ids: r.question_ids, question_count: r.question_ids.length, max_score: r.max_score,
       status: r.status, duration_seconds: r.duration_seconds, elapsed_seconds: elapsed, remaining_seconds: ck.remaining_seconds,
       pause_count: ck.pause_count, paused_seconds: ck.paused_seconds, server_credit_seconds: ck.server_credit_seconds, auto_submitted: !!r.auto_submitted, auto_submit_reason: r.auto_submitted ? (r.auto_submit_reason ?? 'time_up') : null, clock: 'wall',
@@ -228,7 +233,7 @@ export class ExamsService implements OnModuleInit, OnModuleDestroy {
       server_time: examNow().toISOString(), started_at: r.started_at, submitted_at: r.submitted_at, abandoned_at: r.abandoned_at ?? null,
       started_date: studyDate(new Date(r.started_at), tz), submitted_date: r.submitted_at ? studyDate(new Date(r.started_at), tz) : null, timezone: tz, // 整场归开考那天的学习日（03:30 开考、04:10 交卷也算前一天）
       progress: { answers: r.answers, current_question_id: r.current_question_id, last_client_seq: Number(r.last_client_seq), updated_at: r.progress_updated_at },
-      result: r.result ? { pause_count: ck.pause_count, paused_seconds: ck.paused_seconds, auto_submitted: !!r.auto_submitted, auto_submit_reason: r.auto_submitted ? (r.auto_submit_reason ?? 'time_up') : null, non_continuous: nc, counts_in_trend: !nc, ...(await this.backfillResult(q, r.result, r.answers)) } : r.result,
+      result: result ? { ...result, ...split } : result,
     };
   }
 
@@ -280,7 +285,8 @@ export class ExamsService implements OnModuleInit, OnModuleDestroy {
               p.elapsed_seconds, p.last_tick_at, e.result->'score' AS score, e.clock_origin, e.clock_baseline_seconds, e.pause_log, e.error_credit_seconds, e.auto_submitted, e.auto_submit_reason, e.non_continuous,
               (SELECT count(*)::int FROM jsonb_each(p.answers) a WHERE jsonb_array_length(COALESCE(a.value->'answer','[]'::jsonb)) > 0) AS answered_count, e.result->'max_score' AS max_score,
               e.result->'pending_self_rating' AS pending, e.result->'coach' AS coach, e.result->'per_question' AS per,
-              (SELECT COALESCE(sum(score),0)::float FROM questions WHERE id = ANY(e.question_ids)) AS paper_max
+              (SELECT COALESCE(sum(score),0)::float FROM questions WHERE id = ANY(e.question_ids)) AS paper_max,
+              (SELECT COALESCE(sum(score) FILTER (WHERE type ~ '(choice|fill)' OR type = 'match'),0)::float FROM questions WHERE id = ANY(e.question_ids)) AS paper_obj_max
          FROM exams e JOIN exam_progress p ON p.exam_id=e.id WHERE ${w}
         ORDER BY e.started_at DESC, e.id DESC LIMIT $${p.length}`, p)).rows;
     const tz = await this.time.tz(userId);
@@ -298,7 +304,7 @@ export class ExamsService implements OnModuleInit, OnModuleDestroy {
         score: r.score ?? null, max_score: r.max_score ?? r.paper_max, pending_self_rating_count: Array.isArray(r.pending) ? r.pending.length : 0,
         elapsed_seconds: elapsed, duration_seconds: r.duration_seconds, started_at: r.started_at, submitted_at: r.submitted_at, abandoned_at: r.abandoned_at ?? null,
         answered_count: r.answered_count ?? 0,
-        ...scoreSplit(r.exam, r.status === 'submitted' ? r.per : null, r.score ?? null, r.max_score ?? r.paper_max ?? null),
+        ...scoreSplit(r.status === 'submitted' ? r.per : null, r.status === 'submitted' ? r.score ?? null : null, { objective_max: r.paper_obj_max, subjective_max: (r.paper_max ?? 0) - (r.paper_obj_max ?? 0) }),
         started_date: studyDate(new Date(r.started_at), tz), coach_headline: r.coach?.headline ?? null,
       };
     }));
@@ -505,7 +511,7 @@ export class ExamsService implements OnModuleInit, OnModuleDestroy {
       const qs = await this.loadQuestions(c, e.question_ids);
       const per: PerQuestion[] = [...qs.values()].sort((x, y) => x.number - y.number).map((q) => {
         const a = e.answers?.[q.id];
-        const objective = /choice|fill/.test(q.type) || q.type === 'match'; // match：英语阅读 B
+        const objective = isObjectiveType(q.type); // match：英语阅读 B
         const ans: string[] = (a?.answer ?? []).filter((x: any) => String(x ?? '').trim() !== '');
         return {
           question_id: q.id, number: q.number, type: q.type, section: sectionOf(q), objective, score: q.score ?? 0,

@@ -163,25 +163,38 @@ export function coachDetails(s: ReturnType<typeof summarize>) {
   ].filter(Boolean).join('\n');
 }
 
+/** 机判题型（和 submit 判分同一口径）：选择 / 填空 / 英语阅读 B 的 match */
+export const isObjectiveType = (type: string | null | undefined) => /choice|fill/.test(type ?? '') || type === 'match';
+
 /**
- * 模考列表的分数拆分（第 16 轮，统筹者定）：
- * - 英语（english1 / english2）：objective = 机器判分的客观题（英一满分 60）；subjective = 翻译 + 作文自评（英一满分 40），
- *   字数太少（self_grade_flags 含 word_count_low）的自评不计入 subjective_self_score，条数记在 subjective_excluded_count；没评的也不计
- * - 其它科目（数学等）：objective_score = 总分、objective_max = 满分，subjective_* = null（解答题自评已含在总分里，不单拆）
- * - subjective_ai_score：预留给以后 AI 批改的主观题分，现在一律 null
+ * 模考分数拆分（列表 / 详情 / result 同一份），按这场的题现算，不写死满分：
+ * - objective_*：机判题（选择 / 填空 / match）。数一 2015–2020 是 56 分、2021 起 80 分；英一 60 分
+ * - subjective_*：自评题（数学解答题、英语翻译 / 作文）。subjective_max 数一 94 / 70、英一 40
+ *   - subjective_self_raw：全部自评分（含字数太少的），objective_score + subjective_self_raw == score（没有 AI 分时）
+ *   - subjective_self_score：去掉 word_count_low 后的自评分，估分 / 趋势用它
+ *   - subjective_excluded_points / _count：因 word_count_low 没计入的分和题数（数学没有字数线，恒 0）
+ *   - subjective_ai_score：预留给以后 AI 批改，现在 null
+ * 这场没有自评题 → subjective_* 全 null；没有机判题 → objective_* 全 null；没交卷 → 只给 *_max，分数类 null
+ * paper：没交卷时（没有 per_question）用这场题目的机判 / 自评满分
  */
-export function scoreSplit(exam: string, per: any[] | null | undefined, score: number | null, maxScore: number | null) {
-  const base = { objective_score: score ?? null, objective_max: maxScore ?? null, subjective_self_score: null as number | null, subjective_max: null as number | null, subjective_excluded_count: 0, subjective_ai_score: null as number | null };
-  if (!/^english/.test(exam ?? '') || !Array.isArray(per) || !per.length) return base;
+export function scoreSplit(per: any[] | null | undefined, score: number | null, paper?: { objective_max?: number | null; subjective_max?: number | null } | null) {
   const r2 = (x: number) => Math.round(x * 2) / 2;
-  const obj = per.filter((p) => p.objective), sub = per.filter((p) => !p.objective);
+  const sum = (xs: any[], f: (p: any) => number) => r2(xs.reduce((t, p) => t + (Number(f(p)) || 0), 0));
+  const has = Array.isArray(per) && per.length > 0;
+  const obj = has ? per!.filter((p) => p.objective) : [], sub = has ? per!.filter((p) => !p.objective) : [];
+  const objMax = has ? sum(obj, (p) => p.score) : Number(paper?.objective_max ?? 0);
+  const subMax = has ? sum(sub, (p) => p.score) : Number(paper?.subjective_max ?? 0);
+  const graded = has && score != null;
   const low = (p: any) => Array.isArray(p.self_grade_flags) && p.self_grade_flags.includes('word_count_low');
+  const hasObj = has ? obj.length > 0 : objMax > 0, hasSub = has ? sub.length > 0 : subMax > 0;
   return {
-    ...base,
-    objective_score: score == null ? null : r2(obj.reduce((t, p) => t + (Number(p.got) || 0), 0)),
-    objective_max: r2(obj.reduce((t, p) => t + (Number(p.score) || 0), 0)),
-    subjective_self_score: score == null ? null : r2(sub.filter((p) => !low(p)).reduce((t, p) => t + (Number(p.got) || 0), 0)),
-    subjective_max: r2(sub.reduce((t, p) => t + (Number(p.score) || 0), 0)),
-    subjective_excluded_count: sub.filter(low).length,
+    objective_score: hasObj && graded ? sum(obj, (p) => p.got) : null,
+    objective_max: hasObj ? objMax : null,
+    subjective_self_score: hasSub && graded ? sum(sub.filter((p) => !low(p)), (p) => p.got) : null,
+    subjective_self_raw: hasSub && graded ? sum(sub, (p) => p.got) : null,
+    subjective_excluded_points: hasSub && graded ? sum(sub.filter(low), (p) => p.got) : null,
+    subjective_excluded_count: hasSub && graded ? sub.filter(low).length : null,
+    subjective_max: hasSub ? subMax : null,
+    subjective_ai_score: null as number | null,
   };
 }

@@ -4,7 +4,7 @@ import { BadRequestException, Body, Controller, Get, Headers, NotFoundException,
 import { DbService } from '../db/db.service';
 import { JwtGuard } from '../auth/jwt.guard';
 import { AuthUser, CurrentUser } from '../common/user.decorator';
-import { addDays, relativeDay, studyDate, weekOf } from '../common/time';
+import { addDays, relativeDay, studyDate, studyDayEnd, weekOf } from '../common/time';
 import { UserTimeService } from '../common/user-time.service';
 import { PlansService } from './plans.service';
 
@@ -66,7 +66,8 @@ export class PlansController {
         WHERE w.user_id=$1 AND w.status='mastered' AND w.due_at < $2 ORDER BY w.due_at LIMIT 20`, [u.id, (await this.time.day(u.id)).end])).rows;
     const tz = await this.time.tz(u.id);
     const dueItems = due.map((x: any) => { const dd = studyDate(new Date(x.due_at), tz); return { ...x, due_date: dd, due_relative_day: relativeDay(dd, date) }; });
-    return { date, study_date: date, relative_day: '今天', plan: { ...(plan ?? { plan_date: date, tasks: [], progress: { done: 0, total: 0 } }), relative_day: '今天' }, why_changed: plan?.why_changed ?? null, why_changed_latest: plan?.why_changed_latest ?? null, last_agent_action: lastAgent, // 只说今天这页计划的改动；别的日子的改动看 last_agent_action
+    const end = studyDayEnd(clockNow(), tz); // 第 17 轮：expires_at = 用户时区下一个 04:00（和 /words/today、离线题包同一个 helper）
+    return { date, study_date: date, expires_at: end.toISOString(), timezone: tz, relative_day: '今天', plan: { ...(plan ?? { plan_date: date, tasks: [], progress: { done: 0, total: 0 } }), relative_day: '今天' }, why_changed: plan?.why_changed ?? null, why_changed_latest: plan?.why_changed_latest ?? null, last_agent_action: lastAgent, // 只说今天这页计划的改动；别的日子的改动看 last_agent_action
       review_due: { count: due.length, items: dueItems },
       phase, exam_date: examDate, days_to_exam, tips: { tip: pick('tip'), review: pick('review'), weekly: pick('weekly'), nudge: pick('nudge'), proposal: pick('proposal') } };
   }
