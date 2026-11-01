@@ -457,3 +457,9 @@ html{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .en .mopts.fold .mo span{min-width:0}
 .rq .chip.off{opacity:.4}.rq .shortw{font-size:13px;color:var(--sub);margin:4px 0 0;display:flex;gap:10px;align-items:baseline}
 .rq.hot{box-shadow:0 0 0 2px var(--zhu);transition:box-shadow .3s}.rq .noans{font-size:14px;color:var(--sub)}.shortag{font-size:11px;color:var(--sub);margin-left:6px}
+/* 整卷模考卡：年份用小标签，点了只是选中；「开考」单独一行靠右，和年份隔开 */
+.mockcard .mc-r{flex-direction:column;align-items:flex-start;gap:10px}
+.mockcard .yrs{display:flex;flex-wrap:wrap;gap:6px 6px}
+.mockcard .yr{font-size:13px;padding:3px 9px;border:1px solid var(--hair,#ddd);border-radius:12px;cursor:pointer;color:var(--sub);user-select:none}
+.mockcard .yr.on{color:var(--ink);border-color:var(--ink)}
+.mockcard .next.go{align-self:flex-end;margin-top:4px}

@@ -43,8 +43,8 @@ async function start() {
     <div class="mc-h"><b>整卷模考</b><span class="sub">180 分钟 · 满分 {{ INFO[subj].max }} · 跟真考一样限时，交卷出成绩</span></div>
     <div class="mc-r">
       <span class="seg"><span :class="{ on: subj === 'math1' }" @click="setSubj('math1')">数学一</span><span :class="{ on: subj === 'english1' }" @click="setSubj('english1')">英语一</span></span>
-      <select v-model.number="year" aria-label="年份"><option v-for="y in ys" :key="y" :value="y">{{ y }} 年</option></select>
-      <span class="next" @click="start">{{ busy ? '正在开考…' : `开考 · ${year || ''} ${INFO[subj].name}` }}</span>
+      <span class="yrs" role="radiogroup" aria-label="年份"><span v-for="y in ys" :key="y" class="yr" role="radio" :aria-checked="y === year" :class="{ on: y === year }" @click.stop="year = y">{{ y }}</span></span>
+      <span class="next go" role="button" @click.stop="start">{{ busy ? '正在开考…' : `开考 · ${year || ''} ${INFO[subj].name}` }}</span>
     </div>
   </section>
 </template>

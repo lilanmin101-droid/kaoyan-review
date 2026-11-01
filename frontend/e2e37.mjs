@@ -22,10 +22,10 @@ await p.goto('http://localhost:4173/#/quiz');await S(2000);console.log('banner a
 console.log('card',await p.$eval('.mockcard',e=>e.textContent).catch(()=>'NONE'))
 // 教练任务预选：英语一 2022
 await p.evaluate(()=>localStorage.setItem('exam:pre',JSON.stringify({exam:'english1',year:2022})));await p.reload();await S(2500)
-console.log('pre',await p.$eval('.mockcard',e=>e.querySelector('.seg .on').textContent+' '+e.querySelector('select').value+' | '+e.querySelector('.next').textContent))
-await S(2500);console.log('year still',await p.$eval('.mockcard select',e=>e.value))
+console.log('pre',await p.$eval('.mockcard',e=>e.querySelector('.seg .on').textContent+' '+e.querySelector('.yr.on').textContent+' | '+e.querySelector('.next').textContent))
+await S(2500);console.log('year still',await p.$eval('.mockcard .yr.on',e=>e.textContent))
 await p.screenshot({path:`/workspace/kaoyan-ui/r22-card-${W}.png`})
-await click('.mockcard .next');await S(2500);const a=await act();console.log("started",await p.evaluate(()=>location.hash),a?.title)
+await click('.mockcard .yr','2019');await S(1500);console.log('year click started?',!!(await act()),await p.evaluate(()=>location.hash),await p.$eval('.mockcard .yr.on',e=>e.textContent));await click('.mockcard .yr','2022');await click('.mockcard .next');await S(2500);const a=await act();console.log("started",await p.evaluate(()=>location.hash),a?.title)
 await ab()
 await p.goto('http://localhost:4173/#/exam/f0a82f07-f55e-438e-82d6-5d6938ea02b9/result');await p.reload();await S(3000)
 console.log('table shown',!!await p.$('table.each'),'去自评',(await p.$$('table.each .rl')).length)
