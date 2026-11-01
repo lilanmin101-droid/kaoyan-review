@@ -225,9 +225,11 @@ async function submit() {
 const res = computed(() => ex.value?.result)
 // 结论里「得分率最低」「丢分最多」上面的表已经有了，不重复
 const concl = computed(() => ((res.value?.conclusions ?? []) as string[]).filter(c => !/得分率最低|丢分最多的知识点/.test(c)))
-async function rateLater(id?: string) { await toRate(); if (id) { await nextTick(); document.getElementById('rq-' + id)?.scrollIntoView({ block: 'start' }); hotRq.value = id; setTimeout(() => { if (hotRq.value === id) hotRq.value = '' }, 2000) } }
+async function rateLater(id?: string) { await toRate(); if (id) { await nextTick(); await new Promise(r => requestAnimationFrame(() => setTimeout(r, 60))); document.getElementById('rq-' + id)?.scrollIntoView({ block: 'start' }); hotRq.value = id; setTimeout(() => { if (hotRq.value === id) hotRq.value = '' }, 2500) } }
 // 英语自评（统筹者定的线）：没作答直接记 0 分、不出选项；
 // 小作文 <50 词、大作文 <80 词、翻译 < 参考译文词数的 30% 时，选「基本到位」先确认，坚持就照记，成绩页标「自评·字数不足」
+// 成绩页「自评·字数不足」以后端 self_grade_flags 为准（换设备也一样）；只有后端没给这个字段时才看本机记录
+const isShort = (p: any) => Array.isArray(p.self_grade_flags) ? p.self_grade_flags.includes('word_count_low') : shortSet.value.includes(p.question_id)
 const noAns = (x: Q) => isEn.value && !answered(x)
 const refOf = (x: Q) => (x as any).reference_answer ?? x.answer?.[0] ?? ''
 // 英译汉的译文是中文：按汉字数 + 英文词数算「字数」
@@ -287,7 +289,7 @@ const wrongs = computed(() => pq.value.filter(p => did(p) && p.got != null && p.
 const blanksQ = computed(() => pq.value.filter(p => !did(p) && p.is_correct !== null)) // 待自评的另外提示，不算没作答
 // 逐题对照：你的答案 / 正确答案 / 得分
 const showAll = ref(false)
-// 有没自评的题时，逐题对照默认展开，「待评」旁边直接给「去自评」
+// 有没自评的题时，逐题对照默认展开，「待自评」旁边直接给「去自评」
 watch(() => res.value?.pending_self_rating?.length, n => { if (n) showAll.value = true }, { immediate: true })
 const ansOf = (p: any) => ((p.answer?.length ? p.answer : ex.value?.progress?.answers?.[p.question_id]?.answer) ?? []).filter((v: string) => v?.trim?.()).join('、')
 // 标准答案：per_question[].correct_answer（刷新、从历史打开都有）；解答题看自评页
@@ -442,8 +444,8 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
         <tr v-for="p in pq" :key="p.question_id" :class="{ bad: p.got != null && p.got < p.score }"><td><span class="link" @click="showQ(p.question_id); nextTickTop()">{{ p.number }}</span></td>
           <td v-if="refQ(p)" class="dim">{{ ansOf(p) ? '已作答' : '—' }}</td><td v-else-if="ansOf(p)" v-html="tex(ansOf(p))"></td><td v-else>{{ did(p) ? '纸上作答' : '—' }}</td>
           <td v-if="refQ(p)" class="dim"><span class="link" @click="showQ(p.question_id); nextTickTop()">点题号看参考</span></td><td v-else-if="keyOf(p)" v-html="tex(keyOf(p))"></td><td v-else class="dim">{{ p.objective ? '' : '看自评页' }}</td>
-          <td>{{ p.got ?? '待自评' }} / {{ p.score }}<small v-if="(shortSet.includes(p.question_id) || p.self_grade_flags?.includes('word_count_low')) && p.got != null" class="shortag">自评·字数不足</small><span v-if="p.got == null && res.pending_self_rating?.includes(p.question_id)" class="link sm rl" @click="rateLater(p.question_id)">去自评</span></td></tr></table>
-      <div v-if="res.pending_self_rating?.length" class="ratebox"><p>还有 {{ res.pending_self_rating.length }} 道{{ isEn ? '翻译/作文' : '解答题' }}没自评（逐题对照里标「待评」），评完才有最终分和教练点评。</p><span class="bigbtn pri" @click="rateLater()">现在评</span></div>
+          <td>{{ p.got ?? '待自评' }} / {{ p.score }}<small v-if="isShort(p) && p.got != null" class="shortag">自评·字数不足</small><span v-if="p.got == null && res.pending_self_rating?.includes(p.question_id)" class="link sm rl" @click="rateLater(p.question_id)">去自评</span></td></tr></table>
+      <div v-if="res.pending_self_rating?.length" class="ratebox"><p>还有 {{ res.pending_self_rating.length }} 道{{ isEn ? '翻译/作文' : '解答题' }}没自评（逐题对照里标『待自评』），评完才有最终分和教练点评。</p><span class="bigbtn pri" @click="rateLater()">现在评</span></div>
       <p class="sub">做了没拿满的题已经进了错题本。点题号能看这题的作答对照和讲解。</p>
       <p v-if="usedSub" class="estnote">分问自评的小问分值按常见阅卷细则估计，不是官方分值，和别人对分时以整题分为准。</p>
       <div class="btns"><span class="bigbtn" @click="report">{{ downloading?.includes('report.pdf') ? '生成中…' : '成绩单 PDF' }}</span><span class="bigbtn" @click="pdf">{{ downloading?.includes('wrong-questions') ? '生成中…' : '导出错题 PDF' }}</span><span class="bigbtn" @click="emit('nav', 'wrong')">去错题本</span><span class="bigbtn" :class="{ pri: !res.pending_self_rating?.length }" @click="again">再考一场</span></div>
