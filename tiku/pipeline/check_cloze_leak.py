@@ -62,7 +62,7 @@ def check(Y):
                 bad.append((q['id'], k, 'quoted:' + a))
     return bad
 if __name__ == '__main__':
-    ys = sys.argv[1:] or sorted({re.search(r'english1_(\d{4})_expert', f).group(1) for f in glob.glob(f'{T}/explanations/english1_*_expert.jsonl')})
+    ys = sys.argv[1:] or sorted({re.search(r'english1_(\d{4})_expert', f).group(1) for f in glob.glob(f'{T}/explanations/english1_[0-9][0-9][0-9][0-9]_expert.jsonl')})
     allbad = []
     for y in ys:
         b = check(y); allbad += b
