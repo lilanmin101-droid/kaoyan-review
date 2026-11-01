@@ -10,6 +10,19 @@ const emit = defineEmits<{ nav: [string] }>()
 const data = ref<Plan | null>(null), err = ref(''), actions = ref<Action[]>([])
 const tmr = ref<{ tasks: Task[]; why_changed?: string | null; plan_date?: string; relative_day?: string | null } | null>(null)
 const nextDay = (d: string) => { const t = new Date(d + 'T12:00:00Z'); t.setUTCDate(t.getUTCDate() + 1); return t.toISOString().slice(0, 10) }
+// 交了卷还没自评完的场次：今日页最上面放一张卡，「去自评」直接进自评页（不做任何自动跳转）
+const pendEx = ref<{ id: string; title: string; pts: number; n: number } | null>(null)
+async function loadPend() {
+  try {
+    const h = await api<{ items: any[] }>('/exams?limit=20')
+    const x = h.items.find(e => e.status === 'submitted' && e.pending_self_rating_count > 0)
+    if (!x) { pendEx.value = null; return }
+    const d = await api<any>(`/exams/${x.id}`)
+    const pts = ((d.result?.per_question ?? []) as any[]).filter(q => (d.result?.pending_self_rating ?? []).includes(q.question_id)).reduce((s, q) => s + (q.score ?? 0), 0)
+    pendEx.value = { id: x.id, title: x.title, pts, n: x.pending_self_rating_count }
+  } catch { pendEx.value = null }
+}
+loadPend()
 async function load() {
   try {
     const [p, a] = await Promise.all([api<Plan>('/plans/today'), api<{ items: Action[] }>('/agent/actions?limit=8')])
@@ -115,6 +128,7 @@ const shownActions = computed(() => showUndone.value ? actions.value : actions.v
     <main class="main today">
       <div class="cap">今 日 · {{ data?.date ?? '' }}<span v-if="days != null && days >= 0" class="cd">距初试 {{ days }} 天</span><span v-else-if="days == null" class="cd link" @click="emit('nav', 'me')">设个考试日期</span></div>
 
+      <div v-if="pendEx" class="pendex" @click="emit('nav', `exam/${pendEx.id}/rate`)">{{ pendEx.title }}还有 {{ pendEx.pts || pendEx.n }} {{ pendEx.pts ? '分' : '道' }}待自评<span class="go">去自评</span></div>
       <form class="cmd" @submit.prevent="send()">
         <input v-model="cmd" :disabled="running" maxlength="2000" placeholder="想怎么调，跟教练说一句" />
         <button :disabled="running || !cmd.trim()">{{ running ? '在办…' : '交给它' }}</button>

@@ -64,11 +64,11 @@ async function lobby(go = false) {
 }
 // 成绩页有自己的地址 #/exam/<id>/result，刷新也停在这场的成绩
 onMounted(async () => {
-  const m = location.hash.match(/^#\/exam\/([\w-]+)\/result/)
+  const m = location.hash.match(/^#\/exam\/([\w-]+)\/(result|rate)/)
   if (m) {
     // 服务刚重启时会短暂 502：重试几次再放弃，别直接退回考场入口
     for (let k = 0; k < 4; k++) {
-      try { const e = await api<Exam>(`/exams/${m[1]}`); if (e.status === 'submitted') { await open(e); loading.value = false; return } toast('这场还没交卷'); break }
+      try { const e = await api<Exam>(`/exams/${m[1]}`); if (e.status === 'submitted') { await open(e); loading.value = false; if (m[2] === 'rate') await rateLater(e.result?.pending_self_rating?.[0]); return } toast('这场还没交卷'); break }
       catch (e: any) {
         if (e?.status && e.status < 500) { toast('这场成绩没找到'); break }
         if (k === 3) { toast('成绩暂时没加载出来，过会儿刷新一下'); loading.value = false; return }
@@ -416,9 +416,9 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
       <p v-if="coachLine" class="coach"><span class="k">教练说</span>{{ coachLine }}</p>
       <div class="brk">
         <table><tr><th>题型</th><th>得分</th><th>得分率</th></tr>
-          <tr v-for="t in byType" :key="t.k"><td>{{ t.k }}</td><td>{{ t.got }} / {{ t.max }}<small v-if="t.pend" class="pd">（{{ t.pend }} 分待评）</small></td><td><i class="bar"><i :style="{ width: t.rate + '%' }"></i></i>{{ t.rate }}%</td></tr></table>
+          <tr v-for="t in byType" :key="t.k"><td>{{ t.k }}</td><td>{{ t.got }} / {{ t.max }}<small v-if="t.pend" class="pd">（{{ t.pend }} 分待自评）</small></td><td><i class="bar"><i :style="{ width: t.rate + '%' }"></i></i>{{ t.rate }}%</td></tr></table>
         <table><tr><th>科目</th><th>得分</th><th>得分率</th></tr>
-          <tr v-for="t in bySubj" :key="t.k"><td>{{ t.k }}</td><td>{{ t.got }} / {{ t.max }}<small v-if="t.pend" class="pd">（{{ t.pend }} 分待评）</small></td><td><i class="bar"><i :style="{ width: t.rate + '%' }"></i></i>{{ t.rate }}%</td></tr></table>
+          <tr v-for="t in bySubj" :key="t.k"><td>{{ t.k }}</td><td>{{ t.got }} / {{ t.max }}<small v-if="t.pend" class="pd">（{{ t.pend }} 分待自评）</small></td><td><i class="bar"><i :style="{ width: t.rate + '%' }"></i></i>{{ t.rate }}%</td></tr></table>
       </div>
       <div v-if="lossKp.length" class="loss"><span class="k">丢分在哪</span>
         <div v-for="l in lossKp" :key="l.k" class="lrow"><span class="nm">{{ l.k }}</span><span class="pt">−{{ l.lost }}</span><span class="nums">第 {{ l.nums.join('、') }} 题</span></div></div>
@@ -428,7 +428,7 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
       <div v-if="blanksQ.length" class="slist"><span class="k">没作答</span>
         <span v-for="p in blanksQ" :key="p.question_id" class="chip" :class="{ on: tipQ === p.question_id }" @click="showQ(p.question_id)">{{ p.number }}</span></div>
       <div v-if="tipP" class="qpeek">
-        <div class="ph"><b>第 {{ tipP.number }} 题</b>{{ tipP.got == null ? `待评 · 满分 ${tipP.score} 分` : `得 ${tipP.got} / ${tipP.score} 分` }} · 用时 {{ Math.max(1, Math.round((tipP.time_spent_seconds ?? 0) / 60)) }} 分钟<span class="link sm" @click="tipQ = null">收起</span></div>
+        <div class="ph"><b>第 {{ tipP.number }} 题</b>{{ tipP.got == null ? `待自评 · 满分 ${tipP.score} 分` : `得 ${tipP.got} / ${tipP.score} 分` }} · 用时 {{ Math.max(1, Math.round((tipP.time_spent_seconds ?? 0) / 60)) }} 分钟<span class="link sm" @click="tipQ = null">收起</span></div>
         <p class="pa"><span class="k">你的答案</span><span v-if="ansOf(tipP)" v-html="tex(ansOf(tipP))"></span><span v-else>{{ did(tipP) ? '纸上作答' : '没作答' }}</span></p>
         <p v-if="keyOf(tipP)" class="pa" :class="{ ref: refQ(tipP) }"><span class="k">{{ refQ(tipP) ? (qById.get(tipP.question_id)?.section === 'translation' ? '参考译文' : '参考范文') : '正确答案' }}<i v-if="refQ(tipP)" class="xtag">专家</i></span><span v-html="tex(keyOf(tipP))"></span></p>
         <div class="note"><p v-if="exps[tipP.question_id]?.label" class="src">{{ exps[tipP.question_id].label }}</p>
@@ -442,7 +442,7 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
         <tr v-for="p in pq" :key="p.question_id" :class="{ bad: p.got != null && p.got < p.score }"><td><span class="link" @click="showQ(p.question_id); nextTickTop()">{{ p.number }}</span></td>
           <td v-if="refQ(p)" class="dim">{{ ansOf(p) ? '已作答' : '—' }}</td><td v-else-if="ansOf(p)" v-html="tex(ansOf(p))"></td><td v-else>{{ did(p) ? '纸上作答' : '—' }}</td>
           <td v-if="refQ(p)" class="dim"><span class="link" @click="showQ(p.question_id); nextTickTop()">点题号看参考</span></td><td v-else-if="keyOf(p)" v-html="tex(keyOf(p))"></td><td v-else class="dim">{{ p.objective ? '' : '看自评页' }}</td>
-          <td>{{ p.got ?? '待评' }} / {{ p.score }}<small v-if="(shortSet.includes(p.question_id) || p.self_grade_flags?.includes('word_count_low')) && p.got != null" class="shortag">自评·字数不足</small><span v-if="p.got == null && res.pending_self_rating?.includes(p.question_id)" class="link sm rl" @click="rateLater(p.question_id)">去自评</span></td></tr></table>
+          <td>{{ p.got ?? '待自评' }} / {{ p.score }}<small v-if="(shortSet.includes(p.question_id) || p.self_grade_flags?.includes('word_count_low')) && p.got != null" class="shortag">自评·字数不足</small><span v-if="p.got == null && res.pending_self_rating?.includes(p.question_id)" class="link sm rl" @click="rateLater(p.question_id)">去自评</span></td></tr></table>
       <div v-if="res.pending_self_rating?.length" class="ratebox"><p>还有 {{ res.pending_self_rating.length }} 道{{ isEn ? '翻译/作文' : '解答题' }}没自评（逐题对照里标「待评」），评完才有最终分和教练点评。</p><span class="bigbtn pri" @click="rateLater()">现在评</span></div>
       <p class="sub">做了没拿满的题已经进了错题本。点题号能看这题的作答对照和讲解。</p>
       <p v-if="usedSub" class="estnote">分问自评的小问分值按常见阅卷细则估计，不是官方分值，和别人对分时以整题分为准。</p>
