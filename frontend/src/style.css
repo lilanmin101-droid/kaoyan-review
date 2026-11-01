@@ -475,3 +475,4 @@ html{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .me .seg span.on,.seg.subj span.on,.mockcard .seg span.on{color:var(--lv);border-bottom-color:var(--lv)}
 .mockcard .yr.on{color:var(--lv);border-color:var(--lv)}
 .me input:focus,.me select:focus,.en textarea:focus{border-color:var(--lv)}
+.summary .pauseln{margin:-4px 0 10px;font-size:13px;color:var(--sub)}

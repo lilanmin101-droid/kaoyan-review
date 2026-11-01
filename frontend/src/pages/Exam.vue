@@ -42,6 +42,9 @@ const gRange = (g?: EnGroup) => { const a = g?.questions[0]?.number, z = g?.ques
 const focusId = ref<string | null>(null)
 function goG(d: number) { const g = enGroups.value[gIdx.value + d]; if (g) { go(qs.value.findIndex(x => x.id === g.questions[0].id)); focusId.value = null } }
 const qs = ref<Q[]>([]), idx = ref(0), answers = ref<Record<string, Ans>>({})
+// 整卷模考按墙上的时钟走：记下截止时刻，每秒用「截止 - 现在」算剩余；锁屏、切走回来也是准的
+let deadline = 0
+const setRem = (sec: number) => { remaining.value = sec; deadline = Date.now() + sec * 1000 }
 const remaining = ref(0), paused = ref(false), online = ref(navigator.onLine), unsent = ref(0)
 const kind = (x: Q) => x.type.includes('choice') || x.type === 'match' ? 'choice' : x.type === 'fill_blank' ? 'blank' : 'essay'
 const q = computed(() => qs.value[idx.value])
@@ -117,12 +120,12 @@ async function open(e: Exam) {
   // 本机还没交上去的答案盖在服务端进度上面
   for (const rq of queue) for (const a of rq.answers ?? []) answers.value[a.question_id] = { ...answers.value[a.question_id], ...a }
   idx.value = Math.max(0, qs.value.findIndex(x => x.id === e.progress?.current_question_id))
-  remaining.value = e.remaining_seconds; paused.value = e.status === 'paused'; unsent.value = pendingQs()
+  setRem(e.remaining_seconds); paused.value = e.status === 'paused'; unsent.value = pendingQs()
   if (e.status === 'submitted') { stage.value = 'result'; return }
   stage.value = 'run'; qStart = Date.now()
   if (paused.value) push({ state: 'running' }), paused.value = false
   clearInterval(tick); clearInterval(beat)
-  tick = window.setInterval(() => { if (!paused.value && remaining.value > 0 && --remaining.value === 0) toRate(true) }, 1000)
+  tick = window.setInterval(() => { if (paused.value || remaining.value <= 0) return; remaining.value = Math.max(0, Math.ceil((deadline - Date.now()) / 1000)); if (remaining.value === 0) toRate(true) }, 1000)
   beat = window.setInterval(() => { if (!paused.value) push({}) }, 60_000)
   flush()
 }
@@ -137,7 +140,7 @@ async function flush() {
     while (queue.length) {
       const r = await api<Exam & { stale?: boolean }>(`/exams/${ex.value.id}/progress`, { method: 'PUT', body: JSON.stringify(queue[0]) })
       queue.shift(); saveQ(); online.value = true; fails = 0
-      if (r.remaining_seconds != null) remaining.value = r.remaining_seconds
+      if (r.remaining_seconds != null && !paused.value) setRem(r.remaining_seconds)
     }
   } catch (e: any) {
     // 网络断了：留在队列里，联网或下次心跳再发；409 说明考试已结束
@@ -148,7 +151,10 @@ async function flush() {
 }
 const onOnline = () => { online.value = true; flush() }, onOffline = () => { online.value = false }
 addEventListener('online', onOnline); addEventListener('offline', onOffline)
-onBeforeUnmount(() => { clearInterval(tick); clearInterval(beat); removeEventListener('online', onOnline); removeEventListener('offline', onOffline) })
+// 从锁屏/别的 App 回来：立刻按墙上时钟重算，再跟服务端对一次
+const onVis = () => { if (document.visibilityState !== 'visible' || stage.value !== 'run' || paused.value) return; remaining.value = Math.max(0, Math.ceil((deadline - Date.now()) / 1000)); if (remaining.value === 0) toRate(true); else push({}) }
+document.addEventListener('visibilitychange', onVis)
+onBeforeUnmount(() => { clearInterval(tick); clearInterval(beat); removeEventListener('online', onOnline); removeEventListener('offline', onOffline); document.removeEventListener('visibilitychange', onVis) })
 
 function spentOn(x: Q) { return (answers.value[x.id]?.time_spent_seconds ?? 0) + Math.round((Date.now() - qStart) / 1000) }
 function setAns(x: Q, patch: Ans) {
@@ -166,7 +172,7 @@ function go(i: number) {
   idx.value = i; qStart = Date.now(); if (!sameG) scrollTo({ top: 0 }); if (isEn.value) focusId.value = qs.value[i].id; push({ current_question_id: qs.value[i].id })
 }
 function pause() { paused.value = true; push({ state: 'paused' }) }
-function cont() { paused.value = false; qStart = Date.now(); push({ state: 'running' }) }
+function cont() { paused.value = false; setRem(remaining.value); qStart = Date.now(); push({ state: 'running' }) }
 const answered = (x: Q) => !!answers.value[x.id]?.answer?.some(v => v?.trim())
 const flagged = (x: Q) => !!answers.value[x.id]?.flagged
 const doneN = computed(() => qs.value.filter(answered).length)
@@ -271,6 +277,9 @@ type Hist = { id: string; title: string; answered_count?: number; score: number 
 const hist = ref<Hist[]>([])
 // 加载文案：打开成绩页说「正在打开成绩」，只有从「继续」接回进行中的考试才说「接回考场」
 const loadMsg = /^#\/exam\/[\w-]+\/(result|rate)/.test(location.hash) ? '正在打开成绩…' : /^#\/exam\/go/.test(location.hash) ? '正在接回考场…' : '正在加载…'
+// 中途暂停：后端字段 pause_count / paused_seconds（在考试或成绩上都认）
+const pauseLine = computed(() => { const o: any = { ...(ex.value ?? {}), ...(res.value ?? {}) }; const n = o.pause_count ?? 0, sec = o.paused_seconds ?? 0
+  return n > 0 ? `中途暂停 ${n} 次，共 ${Math.max(1, Math.round(sec / 60))} 分钟` : '' })
 async function loadHist() { try { hist.value = ((await api<{ items: Hist[] }>('/exams?limit=10')).items ?? []).filter(h => h.status === 'submitted' || h.status === 'abandoned') } catch { /* 没有就不显示 */ } }
 onMounted(loadHist)
 async function openHist(h: Hist) { if (h.status !== 'submitted') return; open(await api<Exam>(`/exams/${h.id}`)) }
@@ -417,6 +426,7 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
     <main v-else-if="stage === 'result' && res" class="main summary">
       <div class="cap">{{ ex?.title }} · 成 绩</div>
       <div class="score"><b>{{ res.score }}</b><small>/ {{ res.max_score }}</small></div>
+      <p v-if="pauseLine" class="sub pauseln">{{ pauseLine }}</p>
       <p v-if="coachLine" class="coach"><span class="k">教练说</span>{{ coachLine }}</p>
       <div class="brk">
         <table><tr><th>题型</th><th>得分</th><th>得分率</th></tr>
