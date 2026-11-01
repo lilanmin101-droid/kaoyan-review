@@ -30,7 +30,7 @@ async function start() {
   busy.value = true
   try {
     await api('/exams', { method: 'POST', body: JSON.stringify({ exam: subj.value, year: year.value, duration_minutes: 180 }) })
-    emit('nav', 'exam')
+    emit('nav', 'exam/go')
   } catch (e: any) {
     if (e instanceof ApiError && e.status === 409) { toast('有一场考试还没交卷，先接着考完'); emit('nav', 'exam') }
     else if (e instanceof ApiError && e.status === 422) toast(`${year.value} 年这套还没核对完，先换一年`)

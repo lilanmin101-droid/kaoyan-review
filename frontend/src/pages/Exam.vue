@@ -46,7 +46,7 @@ const kind = (x: Q) => x.type.includes('choice') || x.type === 'match' ? 'choice
 const q = computed(() => qs.value[idx.value])
 const clock = (s: number) => { s = Math.max(0, Math.round(s)); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), ss = s % 60; return `${h}:${String(m).padStart(2, '0')}:${String(ss).padStart(2, '0')}` }
 
-async function lobby() {
+async function lobby(go = false) {
   loading.value = true
   // 服务重启或断网时退避重试 3 次；接不上也只给「再试一次」，绝不退回开考表单
   liveErr.value = false
@@ -58,6 +58,7 @@ async function lobby() {
       await new Promise(r => setTimeout(r, 800 * 2 ** k))
     }
   }
+  if (go && active.value) { try { await resume(active.value); return } catch { /* 接不上就停在接着做那页 */ } finally { loading.value = false } }
   loading.value = false
 }
 // 成绩页有自己的地址 #/exam/<id>/result，刷新也停在这场的成绩
@@ -74,7 +75,10 @@ onMounted(async () => {
       }
     }
   }
-  history.replaceState(null, '', '#/exam'); lobby()
+  // 从「开考」或考试条「继续」进来（#/exam/go）：直接进考场，不经过「还没交卷」那页
+  const go = location.hash === '#/exam/go'
+  history.replaceState(null, '', '#/exam')
+  await lobby(go)
 })
 watch([stage, () => ex.value?.id], ([s, id]) => {
   const want = s === 'result' && id ? `#/exam/${id}/result` : '#/exam'
@@ -225,8 +229,10 @@ async function rateLater(id?: string) { await toRate(); if (id) { await nextTick
 // 小作文 <50 词、大作文 <80 词、翻译 < 参考译文词数的 30% 时，选「基本到位」先确认，坚持就照记，成绩页标「自评·字数不足」
 const noAns = (x: Q) => isEn.value && !answered(x)
 const refOf = (x: Q) => (x as any).reference_answer ?? x.answer?.[0] ?? ''
-const mineW = (x: Q) => enWords(answers.value[x.id]?.answer?.[0] ?? '')
-const minW = (x: Q) => x.section === 'writing_a' ? 50 : x.section === 'writing_b' ? 80 : x.section === 'translation' ? Math.ceil(enWords(refOf(x)) * 0.3) : 0
+// 英译汉的译文是中文：按汉字数 + 英文词数算「字数」
+const cnt = (t: string) => (t.match(/[\u4e00-\u9fff]/g)?.length ?? 0) + enWords(t.replace(/[\u4e00-\u9fff]/g, ' '))
+const mineW = (x: Q) => cnt(answers.value[x.id]?.answer?.[0] ?? '')
+const minW = (x: Q) => x.section === 'writing_a' ? 50 : x.section === 'writing_b' ? 80 : x.section === 'translation' ? Math.ceil(cnt(refOf(x)) * 0.3) : 0
 const SHKEY = () => `exam:short:${ex.value?.id}`
 const shortSet = ref<string[]>([])
 watch(() => ex.value?.id, () => { try { shortSet.value = JSON.parse(localStorage.getItem(SHKEY()) ?? '[]') } catch { shortSet.value = [] } }, { immediate: true })
@@ -299,7 +305,7 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
     <main v-if="stage === 'lobby'" class="main">
       <div class="cap">考 场 模 式</div>
       <p v-if="loading" class="sub">正在接回考场…</p>
-      <template v-else-if="liveErr"><p class="big">暂时没接上考场</p><p class="sub">网络或服务器刚才没响应，已经答过的都在，不会丢。</p><div class="acts flat"><span class="next" @click="lobby">再试一次</span></div></template>
+      <template v-else-if="liveErr"><p class="big">暂时没接上考场</p><p class="sub">网络或服务器刚才没响应，已经答过的都在，不会丢。</p><div class="acts flat"><span class="next" @click="lobby(true)">再试一次</span></div></template>
       <template v-else-if="active">
         <p class="big">{{ active.title }}还没交卷</p>
         <p class="sub">做了 {{ Object.values(active.progress?.answers ?? {}).filter(a => a.answer?.length).length }} / {{ active.question_ids.length }} 道，剩 {{ clock(active.remaining_seconds) }}{{ active.status === 'paused' ? '，现在是暂停状态' : '' }}。</p>
@@ -395,7 +401,7 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
         <div v-else class="rate"><span class="k">{{ x.score_by_whole ? '证明题，整题' : '整题' }}</span>
           <span v-if="noAns(x)" class="noans">没作答，记 0 分</span>
           <template v-else><span v-for="(t, r) in ratingText" :key="r" class="chip" :class="{ on: whole[x.id] === r }" @click="pickWhole(x, r as Rating)">{{ t }}</span></template></div>
-        <p v-if="pend?.id === x.id" class="shortw">只写了 {{ pend.n }} 个词，确定按『基本到位』算？<span class="link sm" @click="keepFull(x)">确定</span><span class="link sm" @click="pend = null">算了</span></p>
+        <p v-if="pend?.id === x.id" class="shortw">只写了 {{ pend.n }} 个{{ qs.find(q => q.id === pend!.id)?.section === 'translation' ? '字' : '词' }}，确定按『基本到位』算？<span class="link sm" @click="keepFull(x)">确定</span><span class="link sm" @click="pend = null">算了</span></p>
         <p v-else-if="shortSet.includes(x.id) && whole[x.id] === 'full'" class="shortw">自评·字数不足</p>
       </div>
       <div class="acts flat"><span v-if="remaining > 0 && ex?.status !== 'submitted'" class="link" @click="open(ex!)">回去接着做</span><span v-if="ex?.status === 'submitted'" class="link" @click="stage = 'result'">先不评</span><span class="next" @click="trySubmit">{{ submitting ? '正在交…' : ex?.status === 'submitted' ? '评好了，看成绩' : '交卷，看成绩' }}</span></div>
