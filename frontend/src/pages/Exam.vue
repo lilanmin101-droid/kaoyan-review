@@ -21,6 +21,7 @@ type Rating = 'full' | 'approach_ok_calc_wrong' | 'no_idea'
 const props = defineProps<{ years: number[]; enYears?: number[] }>()
 const emit = defineEmits<{ nav: [string] }>()
 const stage = ref<'lobby' | 'run' | 'rate' | 'result'>('lobby')
+const wanted = localStorage.getItem('exam:wanted'); localStorage.removeItem('exam:wanted') // 开考撞上另一场没交卷（409）时，说清楚是哪两场
 const active = ref<Exam | null>(null), ex = ref<Exam | null>(null), loading = ref(true), liveErr = ref(false)
 // 科目：数学一 / 英语一，各记各的年份
 const subjX = ref<'math1' | 'english1'>(localStorage.getItem('exam:subj') === 'english1' ? 'english1' : 'math1')
@@ -308,6 +309,7 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
       <template v-else-if="liveErr"><p class="big">暂时没接上考场</p><p class="sub">网络或服务器刚才没响应，已经答过的都在，不会丢。</p><div class="acts flat"><span class="next" @click="lobby(true)">再试一次</span></div></template>
       <template v-else-if="active">
         <p class="big">{{ active.title }}还没交卷</p>
+        <p v-if="wanted" class="sub">你刚才点的是 {{ wanted }}。同一时间只能有一场模考，先把 {{ active.title }} 接着做完，或者放弃它，再开新的。</p>
         <p class="sub">做了 {{ Object.values(active.progress?.answers ?? {}).filter(a => a.answer?.length).length }} / {{ active.question_ids.length }} 道，剩 {{ clock(active.remaining_seconds) }}{{ active.status === 'paused' ? '，现在是暂停状态' : '' }}。</p>
         <div class="acts flat"><span class="link danger" @click="ask = 'end'">放弃这场</span><span class="next" @click="resume(active)">接着做</span></div>
       </template>

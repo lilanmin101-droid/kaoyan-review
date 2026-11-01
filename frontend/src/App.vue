@@ -18,7 +18,7 @@ type Tab = typeof tabs[number][0] | 'exam'
 const deskTabs = [tabs[0], tabs[1], ['exam', '模考'], ...tabs.slice(2)] as const
 const authed = ref(!!token.get())
 // 考场不占底部标签：刷题页顶上有「整卷模考」卡；考试进行中时每页顶上挂一条「继续」
-const parse = (): Tab => location.hash.startsWith('#/exam') ? 'exam' : (tabs.find(t => '#/' + t[0] === location.hash)?.[0] ?? 'quiz')
+const parse = (): Tab => location.hash.startsWith('#/exam') ? 'exam' : (tabs.find(t => '#/' + t[0] === location.hash)?.[0] ?? 'today')
 const tab = ref<Tab>(parse())
 addEventListener('hashchange', () => { tab.value = parse(); toastMsg.value = '' })
 function nav(t: string) { location.hash = '/' + t; scrollTo({ top: 0 }) }
