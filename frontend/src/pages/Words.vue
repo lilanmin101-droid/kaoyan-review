@@ -26,10 +26,11 @@ const list = ref<Word[]>([]), i = ref(0), show = ref(false), loaded = ref(false)
 // 计数口径：分母用后端当天第一次打开时冻结的 scheduled_today，分子 = done_today + 1。
 // 今天点过「没记住」的词放在主列表后面再过一遍，不算进分母
 type WordR = Word & { relearn?: boolean }
-const done = ref(0), total = ref(0)
+const done = ref(0), total = ref(0), wExp = ref<string | null>(null)
 onMounted(async () => {
   try {
-    const r = await api<{ review: Word[]; new: Word[]; relearn?: Word[]; counts?: { done_today?: number; scheduled_today?: number } }>('/words/today')
+    const r = await api<{ review: Word[]; new: Word[]; relearn?: Word[]; counts?: { done_today?: number; scheduled_today?: number }; expires_at?: string | null }>('/words/today')
+    wExp.value = r.expires_at ?? null
     list.value = [...r.review, ...r.new, ...(r.relearn ?? []).map(x => ({ ...x, relearn: true }))]
     done.value = r.counts?.done_today ?? 0; total.value = r.counts?.scheduled_today ?? done.value + r.review.length + r.new.length
   } catch (e: any) { err.value = e.message } finally { loaded.value = true }
@@ -60,7 +61,7 @@ async function rate(r: 'again' | 'good' | 'easy') {
 <template>
   <div class="page col">
     <main class="main words">
-      <p v-if="offline && packStale()" class="stale">这是昨天的单词，联网后会换成今天的。</p>
+      <p v-if="offline && packStale(wExp)" class="stale">这是昨天的单词，联网后会换成今天的。</p>
       <div class="cap">单 词 · {{ !w ? `今日 ${done} / ${total}` : (w as WordR).relearn ? `再过一遍没记住的 · 还剩 ${relearnLeft}` : `今日第 ${Math.min(done + 1, total)} / ${total}` }}</div>
       <p v-if="err" class="sub">{{ err }}</p>
       <p v-else-if="loaded && !w" class="sub">今天的单词背完了。</p>

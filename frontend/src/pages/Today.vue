@@ -129,7 +129,7 @@ const shownActions = computed(() => showUndone.value ? actions.value : actions.v
 <template>
   <div class="page col">
     <main class="main today">
-      <p v-if="offline && packStale()" class="stale">这是昨天的计划，联网后会换成今天的。</p>
+      <p v-if="offline && packStale((data as any)?.expires_at)" class="stale">这是昨天的计划，联网后会换成今天的。</p>
       <div class="cap">今 日 · {{ data?.date ?? '' }}<span v-if="days != null && days >= 0" class="cd">距初试 {{ days }} 天</span><span v-else-if="days == null" class="cd link" @click="emit('nav', 'me')">设个考试日期</span></div>
 
       <div v-if="pendEx" class="pendex" @click="emit('nav', `exam/${pendEx.id}/rate`)">{{ pendEx.title }}还有 {{ pendEx.pts || pendEx.n }} {{ pendEx.pts ? '分' : '道' }}待自评<span class="go">去自评</span></div>

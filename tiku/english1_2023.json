@@ -2353,7 +2353,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "人工智能还可以用来识别客户在兴趣爱好、喜爱的名人和时尚等方面的生活方式选择，从而在通过社交媒体发布的营销信息中提供独特的内容。"
+      "人工智能也可用于识别客户的生活方式选择，包括他们的兴趣爱好、最喜爱的名人和时尚风格，进而可以通过社交媒体向客户投放针对性的营销内容。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2368,7 +2368,7 @@
         "data/2023-1/2023-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
     }
   },
   {
@@ -2385,7 +2385,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "有些人认为，人工智能会削弱创造力、减少工作岗位，从而对营销人员的作用产生负面影响；但他们也意识到，人工智能是降低成本、创造新信息的一种手段。"
+      "有些人认为，人工智能通过降低创新能力和取消工作岗位正在对营销人员的角色产生负面影响，但他们也意识到这是一种削减成本和创造新内容的方式。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2400,7 +2400,7 @@
         "data/2023-1/2023-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
     }
   },
   {
@@ -2417,7 +2417,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "用于模拟人际互动的算法正在引发许多此类担忧，尤其是因为没有人能确切知道，用人工智能与客户互动会产生怎样的结果。"
+      "用于模拟人类互动的算法正在引发许多这样的担忧，尤其是因为没有人能十分确定使用人工智能与客户互动会带来什么结果。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2432,7 +2432,7 @@
         "data/2023-1/2023-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
     }
   },
   {
@@ -2449,7 +2449,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "如果客户不愿意分享数据，人工智能就会缺少必需的信息，既无法有效运行，也无法利用机器学习来改进其营销内容和沟通方式。"
+      "如果客户不愿分享数据，人工智能便会缺乏必要信息，以至于无法有效地运作，也无法运用机器学习来改进其营销内容和传播策略。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2464,7 +2464,7 @@
         "data/2023-1/2023-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
     }
   },
   {
@@ -2481,7 +2481,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "以顾及目标客户需求的方式、在不打扰客户的前提下传递营销信息，是数字营销人员面临的关键挑战之一。"
+      "用一种对目标客户的需求保持敏感的方式非侵入性地传递营销信息是数字营销人员面临的关键挑战之一。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2496,7 +2496,7 @@
         "data/2023-1/2023-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
     }
   },
   {
@@ -2513,7 +2513,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "Notice\n\nProfessor Smith of the Physical Education Department is looking for a student assistant for his research project on campus sports activities.\n\nThe assistant will help design questionnaires, interview students about their exercise habits and sort out the data collected. The job will last two months, and about eight hours a week will be needed.\n\nApplicants should be full-time students who are interested in sports research. Good communication skills and basic knowledge of data analysis are required, and experience in organizing sports events will be a plus.\n\nThose interested please send your resume to smith@university.edu before June 10.\n\nLi Ming"
+      "Notice\n\nProfessor Smith is currently looking for an assistant for his research project on campus sports activities, which aims to reveal factors affecting students' sports preferences.\n\nOnce recruited, the assistant will be asked to distribute questionnaires to random students on campus and persuade them to fill it out. After collecting sufficient raw data, the assistant will need to build a database based on them and carry out further analysis of them. Hence, the prospective candidate is expected to exhibit good communication and analytical skills. The research project lasts about a month, during which the assistant can receive an hourly wage of 40 yuan.\n\nThis is a great opportunity to gain invaluable research experience. If the research project matches your academic interest, please feel free to apply by sending your résumé to profsmith@uni.com.\n\nLi Ming"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2528,7 +2528,7 @@
         "data/2023-1/2023-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
     }
   },
   {
@@ -2547,7 +2547,7 @@
     ],
     "options": [],
     "answer": [
-      "In the picture, crowds of villagers line the riverbank and the bridge, cheering loudly as several dragon boats race forward. Watching the exciting scene, an elderly couple smile happily, and the woman says, \"How wonderful! The dragon boat race in our village is getting more and more lively!\"\n\nThe picture vividly shows that traditional festivals and folk activities are flourishing in China's countryside. This revival is significant in several ways. First, it enriches villagers' cultural life and brings people together, strengthening the bonds within the community. Second, such events help pass on traditional culture to younger generations, so that customs like dragon boat racing will not fade away. Third, they attract tourists and promote local economies, contributing to rural revitalization.\n\nIn my view, we should spare no effort to support this trend. Local governments can invest in facilities and organize cultural events, while young people should take an active part in them instead of regarding them as old-fashioned. Only when traditions are truly alive in daily life can our culture remain vigorous."
+      "In the picture, two teams of dragon boat racers are paddling vigorously through the water, with crowds both on the bridge and along the banks cheering them on. Delighted by this scene, an elderly lady says to her spouse, “It is really wonderful that the dragon boat racing in our village is becoming increasingly popular and exciting!”\n\nThe picture demonstrates the public's great interest in traditional Chinese culture and customs. Nowadays, many Chinese people participate in various cultural activities either during special festivals or in daily life, from which they not only derive pleasure but also acquire deeper knowledge about their own history and culture. Moreover, these activities help provide further impetus for rural revitalization. For example, villagers promote intangible cultural heritage through sports events, art performances or craft fairs in an effort to attract visitors from far and wide.\n\nIn summary, holding cultural events in the countryside is a commendable and sustainable way both to keep time-honored cultural traditions alive and to facilitate rural development. We, as the younger generation, are also responsible for doing what we can to preserve Chinese culture and give back to our hometown."
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2562,7 +2562,7 @@
         "data/2023-1/2023-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
     }
   }
 ]
