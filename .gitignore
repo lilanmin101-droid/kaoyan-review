@@ -52,7 +52,12 @@ data/ecdict/ecdict.csv
 *.token
 
 # --- tiku: keep JSON/images/pipeline/vocab/reviews/explanations; drop OCR sources & PDFs ---
-tiku/src/
+tiku/src/**
+!tiku/src/**/
+!tiku/src/eng1/supplements/*.json
+!tiku/src/**/SOURCE.txt
+!tiku/src/**/COMMIT
+!tiku/src/eng1/SOURCES.md
 tiku/img_tmp/
 tiku/**/*.pdf
 user-test/**/*.pdf
