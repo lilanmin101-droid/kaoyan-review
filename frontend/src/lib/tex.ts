@@ -38,3 +38,17 @@ export function renderStem(src: string, tables?: StemTable[] | null, onError?: (
   tables?.forEach((_, i) => { if (!used.has(i)) html += tbl(i) })
   return html
 }
+
+// 英语题：$ 多半是美元符号，不当公式；只认 \( \) 和 \[ \] 这种写法
+export function renderEn(src: string): string {
+  const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\n/g, '<br>').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+  let out = '', last = 0
+  for (const m of src.matchAll(/\\\(([\s\S]+?)\\\)|\\\[([\s\S]+?)\\\]/g)) {
+    out += esc(src.slice(last, m.index)); last = m.index! + m[0].length
+    try { out += katex.renderToString(m[1] ?? m[2], { displayMode: m[2] !== undefined, throwOnError: true }) } catch { out += esc(m[0]) }
+  }
+  return out + esc(src.slice(last))
+}
+export const isEnId = (id?: string | null) => !!id && /^english/i.test(id)
+// 按题目 id 选渲染方式：英语题走 renderEn，其他照常解析 $...$
+export const renderFor = (id: string | null | undefined, src: string) => isEnId(id) ? renderEn(src) : renderTex(src)

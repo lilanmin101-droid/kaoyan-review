@@ -3,7 +3,7 @@
 // 断网时留在本机（localStorage），联网后按顺序补交。暂停时题目遮住、计时停。
 import { computed, nextTick, onBeforeUnmount, onMounted, onUpdated, ref, watch , onUnmounted } from 'vue'
 import { dragHint } from '../lib/draghint'
-import { renderStem, renderTex, type StemTable } from '../lib/tex'
+import { renderStem, renderTex, type StemTable, renderFor } from '../lib/tex'
 import { api, ApiError, download, downloading, sse, uid } from '../lib/api'
 import { enWords } from '../lib/passage'
 import { toast } from '../lib/toast'
@@ -470,7 +470,7 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
         <p v-if="keyOf(tipP)" class="pa" :class="{ ref: refQ(tipP) }"><span class="k">{{ refQ(tipP) ? (qById.get(tipP.question_id)?.section === 'translation' ? '参考译文' : '参考范文') : '正确答案' }}<i v-if="refQ(tipP)" class="xtag">专家</i></span><span v-html="tex(keyOf(tipP))"></span></p>
         <div class="note"><p v-if="exps[tipP.question_id]?.label" class="src">{{ exps[tipP.question_id].label }}</p>
           <Errata :list="qById.get(tipP.question_id)?.errata" />
-          <p v-for="st in exps[tipP.question_id]?.steps ?? []" :key="st.n"><b>{{ st.n }}</b>　<span v-html="renderTex(st.text)"></span></p>
+          <p v-for="st in exps[tipP.question_id]?.steps ?? []" :key="st.n"><b>{{ st.n }}</b>　<span v-html="renderFor(tipP.question_id, st.text)"></span></p>
           <p v-if="exps[tipP.question_id]?.pending" class="pend">{{ exps[tipP.question_id].pending }}</p>
           <p v-if="exps[tipP.question_id]?.loading" class="pend">正在讲…</p></div>
       </div>

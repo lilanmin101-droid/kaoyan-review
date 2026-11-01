@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'
 import Errata, { type Erratum } from '../components/Errata.vue'
 import { api, download, sse } from '../lib/api'
-import { renderTex } from '../lib/tex'
+import { renderFor } from '../lib/tex'
 import { toast } from '../lib/toast'
 type Opt = { key: string; content: string }
 type Sub = { number: number; stem: string; answer?: string[] }
@@ -78,28 +78,28 @@ const isChoice = (w: W) => w.type.includes('choice')
       <div v-if="sec === mastered" class="fold-h">已 掌 握 · {{ mastered.length }} 道　<span class="sub">到期会再出一次，做对归档，做错退回错题本</span></div>
       <div v-for="w in sec" :key="w.id" class="wq" :class="{ ms: sec === mastered }">
         <div class="meta">{{ w.year }} · {{ examName[w.exam] ?? w.exam }} · 第 {{ w.number }} 题 · 错过 {{ w.wrong_count }} 次<span v-if="sec === mastered" class="fixed">已掌握</span><span v-else-if="fixed[w.id]" class="fixed">后来做对了</span></div>
-        <div class="q sm" v-html="renderTex(q(w).stem)"></div>
+        <div class="q sm" v-html="renderFor(w.question_id, q(w).stem)"></div>
         <figure v-for="src in q(w).images ?? []" :key="src" class="fig sm"><img :src="(q(w).asset_base ?? w.asset_base ?? '/api/v1/assets/') + src" :alt="`第 ${w.number} 题配图`" loading="lazy" /></figure>
         <div v-if="isChoice(w) && q(w).options.length" class="opts sm">
           <div v-for="o in q(w).options" :key="o.key" class="o" :class="{ ok: open[w.id] && q(w).answer?.includes(o.key), bad: mine[w.question_id]?.includes(o.key) }">
-            <span class="l">{{ o.key }}</span><span v-html="renderTex(o.content)"></span>
+            <span class="l">{{ o.key }}</span><span v-html="renderFor(w.question_id, o.content)"></span>
             <span v-if="open[w.id] && q(w).answer?.includes(o.key)" class="tick">✓</span>
             <span v-else-if="mine[w.question_id]?.includes(o.key)" class="mark">你当时选的</span>
           </div>
         </div>
-        <p v-else-if="mine[w.question_id]" class="sub">你当时填的：<span v-html="renderTex(mine[w.question_id].join('，'))"></span></p>
+        <p v-else-if="mine[w.question_id]" class="sub">你当时填的：<span v-html="renderFor(w.question_id, mine[w.question_id].join('，'))"></span></p>
         <div v-if="open[w.id]" class="zhu">
           <template v-if="!isChoice(w)">
-            <template v-if="q(w).sub_questions?.some(s => s.answer?.length)"><div v-for="s in q(w).sub_questions" :key="s.number"><b>（{{ s.number }}）</b><span v-html="renderTex((s.answer ?? []).join(''))"></span></div></template>
-            <div v-else-if="q(w).answer?.length">正确答案 <span v-html="renderTex((q(w).answer ?? []).join('，'))"></span></div>
+            <template v-if="q(w).sub_questions?.some(s => s.answer?.length)"><div v-for="s in q(w).sub_questions" :key="s.number"><b>（{{ s.number }}）</b><span v-html="renderFor(w.question_id, (s.answer ?? []).join(''))"></span></div></template>
+            <div v-else-if="q(w).answer?.length">正确答案 <span v-html="renderFor(w.question_id, (q(w).answer ?? []).join('，'))"></span></div>
           </template>
-          <div v-if="q(w).solution" v-html="renderTex(q(w).solution!)"></div>
+          <div v-if="q(w).solution" v-html="renderFor(w.question_id, q(w).solution!)"></div>
         </div>
         <div v-if="exps[w.id]" class="note flat">
           <p v-if="exps[w.id].label" class="src">{{ exps[w.id].label }}</p>
           <Errata :list="w.errata" />
           <p v-if="exps[w.id].pending" class="pend">{{ exps[w.id].pending }}</p>
-          <p v-for="s in exps[w.id].steps" :key="s.n"><b>{{ s.n }}</b>　<span v-html="renderTex(s.text)"></span></p>
+          <p v-for="s in exps[w.id].steps" :key="s.n"><b>{{ s.n }}</b>　<span v-html="renderFor(w.question_id, s.text)"></span></p>
           <p v-if="exps[w.id].loading" class="pend">正在讲…</p>
         </div>
         <div class="etype"><span class="link" @click="open[w.id] = !open[w.id]">{{ open[w.id] ? '收起答案' : '看答案' }}</span>

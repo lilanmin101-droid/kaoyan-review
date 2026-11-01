@@ -2,7 +2,7 @@
 import { computed, onBeforeUnmount, onMounted, onUpdated, ref, watch } from 'vue'
 import Errata, { type Erratum } from '../components/Errata.vue'
 import { dragHint } from '../lib/draghint'
-import { renderStem, renderTex, type StemTable } from '../lib/tex'
+import { renderStem, type StemTable, renderFor, isEnId } from '../lib/tex'
 import { api, sse, uid } from '../lib/api'
 import { toast } from '../lib/toast'
 
@@ -292,8 +292,8 @@ onUpdated(() => { clearTimeout(dhT); dhT = window.setTimeout(() => dragHint(), 3
         <div class="qbody">
           <div class="meta">{{ PAPER.year }} · 数学一 · {{ groups.find(g => g.items.includes(q))?.name }} · 第 {{ q.number }} 题 · {{ q.score }} 分<template v-if="kp"> · {{ kp }}</template>
             <span v-if="q.review.status !== 'confirmed'" class="rv">题目{{ statusText[q.review.status] ?? q.review.status }}</span></div>
-          <div class="q" v-html="renderStem(q.stem, q.tables)"></div>
-          <aside v-if="zhupi" class="zhupi"><span v-html="renderTex(zhupi.text)"></span><a @click="closeZhupi">知道了</a></aside>
+          <div class="q" v-html="renderStem(q.stem, q.tables, undefined, isEnId(q.id))"></div>
+          <aside v-if="zhupi" class="zhupi"><span v-html="renderFor(q.id, zhupi.text)"></span><a @click="closeZhupi">知道了</a></aside>
           <figure v-for="(src, i) in q.images ?? []" :key="src" class="fig">
             <img :src="(q.asset_base ?? '/api/v1/assets/') + src" :alt="`第 ${q.number} 题配图 ${i + 1}`" loading="lazy" />
             <figcaption v-if="(q.images ?? []).length > 1">图 {{ i + 1 }}</figcaption>
@@ -303,7 +303,7 @@ onUpdated(() => { clearTimeout(dhT); dhT = window.setTimeout(() => dragHint(), 3
 
       <div v-if="kind(q) === 'choice'" class="opts">
         <div v-for="o in q.options" :key="o.key" class="o" :class="cls(o.key)" @click="pick(o.key)">
-          <span class="l">{{ o.key }}</span><span v-html="renderTex(o.content)"></span>
+          <span class="l">{{ o.key }}</span><span v-html="renderFor(q.id, o.content)"></span>
           <span v-if="checked && results[q.id].correct.includes(o.key)" class="tick">✓</span>
           <span v-else-if="checked && cls(o.key) === 'bad'" class="mark">你的选择</span>
         </div>
@@ -316,14 +316,14 @@ onUpdated(() => { clearTimeout(dhT); dhT = window.setTimeout(() => dragHint(), 3
           <span v-if="results[q.id].ok === true" class="tick s">✓</span>
           <span v-else-if="results[q.id].ok === false">不对。</span>
           <span v-else>对照一下：</span>
-          正确答案 <span v-html="renderTex(answerOf(q))"></span>
+          正确答案 <span v-html="renderFor(q.id, answerOf(q))"></span>
         </div>
       </div>
 
       <div v-else class="essay">
         <div v-if="q.sub_questions?.length && !inStem(q)" class="subs">
           <div v-for="s in q.sub_questions" :key="s.number" class="subq">
-            <span class="sn">（{{ s.number }}）</span><span v-html="renderTex(s.stem)"></span><span v-if="s.score" class="ss">{{ s.score }} 分<i v-if="s.score_estimated" class="gu" title="按整题分值平均拆分的估计">估</i></span>
+            <span class="sn">（{{ s.number }}）</span><span v-html="renderFor(q.id, s.stem)"></span><span v-if="s.score" class="ss">{{ s.score }} 分<i v-if="s.score_estimated" class="gu" title="按整题分值平均拆分的估计">估</i></span>
           </div>
         </div>
         <p v-if="q.score && (q.score_by_whole || inStem(q))" class="scoreline">本题 {{ q.score }} 分<template v-if="q.score_by_whole">，证明题按整题自评</template><template v-else-if="q.sub_questions?.some(s => s.score_estimated)">：<span v-for="s in q.sub_questions" :key="s.number">（{{ s.number }}）{{ s.score }} 分<i class="gu" title="按整题分值平均拆分的估计">估</i> </span></template></p>
@@ -331,10 +331,10 @@ onUpdated(() => { clearTimeout(dhT); dhT = window.setTimeout(() => dragHint(), 3
         <div v-if="revealed[q.id]" class="ref">
           <div class="cap">参 考 答 案</div>
           <template v-if="q.sub_questions?.some(s => s.answer?.length)">
-            <div v-for="s in q.sub_questions" :key="s.number" class="zhu"><b>（{{ s.number }}）</b><span v-html="renderTex((s.answer ?? []).join(''))"></span></div>
+            <div v-for="s in q.sub_questions" :key="s.number" class="zhu"><b>（{{ s.number }}）</b><span v-html="renderFor(q.id, (s.answer ?? []).join(''))"></span></div>
           </template>
-          <div v-else-if="q.answer?.length" class="zhu" v-html="renderTex(answerOf(q))"></div>
-          <div v-if="q.solution" class="zhu" v-html="renderTex(q.solution)"></div>
+          <div v-else-if="q.answer?.length" class="zhu" v-html="renderFor(q.id, answerOf(q))"></div>
+          <div v-if="q.solution" class="zhu" v-html="renderFor(q.id, q.solution)"></div>
           <template v-if="perSub(q)">
             <div class="rate-k">对照完，每问自评一下{{ ratings[q.id] ? `（之前整题评的是「${ratingText[ratings[q.id]]}」）` : '' }}</div>
             <div v-for="s in q.sub_questions" :key="s.number" class="rate"><span class="k">（{{ s.number }}）{{ s.score }} 分<i v-if="s.score_estimated" class="gu" title="按整题分值平均拆分的估计">估</i></span>
@@ -350,14 +350,14 @@ onUpdated(() => { clearTimeout(dhT); dhT = window.setTimeout(() => dragHint(), 3
       <div v-if="hints[q.id]?.source === 'pending' && !explains[q.id]" class="note"><p class="pend">{{ hints[q.id].text || '思路生成中' }}，好了会出现在这里。</p></div>
       <div v-if="hints[q.id]?.steps.length && !explains[q.id]?.steps.length" class="note">
         <p v-if="hints[q.id].label" class="src">{{ hints[q.id].label }}</p>
-        <p v-for="h in hints[q.id].steps" :key="h.n"><b>思路 {{ h.n }}</b>　<span v-html="renderTex(h.text.replace(/^\s*思路\s*[:：]\s*/, ''))"></span></p>
+        <p v-for="h in hints[q.id].steps" :key="h.n"><b>思路 {{ h.n }}</b>　<span v-html="renderFor(q.id, h.text.replace(/^\s*思路\s*[:：]\s*/, ''))"></span></p>
       </div>
       <div v-if="explains[q.id]" class="note">
         <p v-if="explains[q.id].label" class="src">{{ explains[q.id].label }}</p>
         <Errata :list="q.errata" />
         <p v-if="explains[q.id].source === 'pending'" class="pend">{{ explains[q.id].notice || '讲解生成中' }}，好了会出现在这里。</p>
         <p v-else-if="explains[q.id].status === 'pending_review'" class="pend">这题讲解待核对</p>
-        <p v-for="s in explains[q.id].steps" :key="s.n"><b>{{ s.n }}</b>　<span v-html="renderTex(s.text)"></span></p>
+        <p v-for="s in explains[q.id].steps" :key="s.n"><b>{{ s.n }}</b>　<span v-html="renderFor(q.id, s.text)"></span></p>
         <p v-if="explains[q.id].loading" class="pend">正在讲…</p>
         <p v-if="explains[q.id].err" class="pend">讲解没拿到：{{ explains[q.id].err }}</p>
       </div>

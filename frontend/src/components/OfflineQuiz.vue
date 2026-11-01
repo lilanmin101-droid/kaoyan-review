@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // 离线刷题：断网时刷题页改用本机题包；对答案在本地判，作答联网后补传
 import { computed, onUnmounted, ref, watch } from 'vue'
-import { renderStem, renderTex } from '../lib/tex'
+import { renderStem, renderFor, isEnId } from '../lib/tex'
 import { pack, queue, done, answerLocal, type PQ, type PExp, type Rating } from '../lib/offline'
 
 const qs = computed(() => pack.value?.questions ?? [])
@@ -62,10 +62,10 @@ const ans = (x: PQ) => (x.answer ?? []).join('、')
         <div class="ph"><b>{{ passage.title ?? '原文' }}</b><span class="link" @click="showText = !showText">{{ showText ? '收起原文' : '展开原文' }}</span></div>
         <div v-if="showText" class="pt">{{ passage.text.replace(/\{\{(\d+)\}\}/g, '（$1）____') }}</div>
       </section>
-      <div class="q" v-html="renderStem(q.stem, q.tables as any)"></div>
+      <div class="q" v-html="renderStem(q.stem, q.tables as any, undefined, isEnId(q.id))"></div>
       <div v-if="isChoice(q)" class="opts">
         <div v-for="o in opts(q)" :key="o.key" class="op" :class="{ sel: (res?.answer ?? pick).includes(o.key), ok: res && q.answer?.includes(o.key), bad: res && res.answer.includes(o.key) && !q.answer?.includes(o.key) }" @click="toggle(o.key)">
-          <span class="l">{{ o.key }}</span><span v-html="renderTex(o.content)"></span>
+          <span class="l">{{ o.key }}</span><span v-html="renderFor(q!.id, o.content)"></span>
         </div>
       </div>
       <textarea v-else v-model="text" :disabled="!!res || revealed" rows="4" :placeholder="subj(q) ? '先写写思路（可以不写），再看参考答案' : '写下你的答案，再看参考答案'"></textarea>
@@ -76,17 +76,17 @@ const ans = (x: PQ) => (x.answer ?? []).join('、')
       </div>
       <div v-if="res || revealed" class="verdict offv">
         <template v-if="subj(q)">
-          <p class="ref">参考答案</p><div class="refa" v-html="renderTex(refAns(q))"></div>
+          <p class="ref">参考答案</p><div class="refa" v-html="renderFor(q!.id, refAns(q))"></div>
         </template>
         <p v-else-if="res?.ok === true" class="good">对了</p>
         <p v-else-if="res?.ok === false" class="wrong">错了，正确答案 {{ ans(q) }}</p>
-        <p v-else class="ref">参考答案 <span v-html="renderTex(ans(q))"></span></p>
+        <p v-else class="ref">参考答案 <span v-html="renderFor(q!.id, ans(q))"></span></p>
         <p v-if="q.explanation_status === 'pending'" class="sub">讲解还没出{{ res?.ok === false ? '，先记下这题，联网后在错题本里看' : '' }}</p>
         <div v-else-if="exp(q)?.steps?.length" class="zhu offexp">
           <p v-if="exp(q)!.source_label" class="src">{{ exp(q)!.source_label }}</p>
-          <div v-for="(st, i) in exp(q)!.steps" :key="i" class="step" v-html="renderTex(st.text)"></div>
+          <div v-for="(st, i) in exp(q)!.steps" :key="i" class="step" v-html="renderFor(q!.id, st.text)"></div>
         </div>
-        <div v-else-if="q.solution || (typeof q.explanation === 'string' && q.explanation)" class="zhu" v-html="renderTex((q.solution || q.explanation) as string)"></div>
+        <div v-else-if="q.solution || (typeof q.explanation === 'string' && q.explanation)" class="zhu" v-html="renderFor(q!.id, (q.solution || q.explanation) as string)"></div>
         <div v-if="subj(q) && !res" class="rates"><span class="cap sm">对照着自评</span>
           <span v-for="(t, k) in RT" :key="k" class="chip" @click="rate(k as Rating)">{{ t }}</span></div>
         <p v-if="res?.rating" class="sub">自评：{{ RT[res.rating as Rating] }}</p>
