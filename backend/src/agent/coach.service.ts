@@ -209,7 +209,7 @@ export class CoachService {
     const done = (reply: string | null, steps: number) => {
       const note = notes.join('');
       const sum = ctx.collected.map((a) => a.summary).join('；');
-      return { mode: 'mock' as const, summary: (sum ? `${sum}${note ? `（${note.replace(/。$/, '')}）` : ''}` : '') || reply || '看过了，这次不需要改动',
+      return { mode: 'mock' as const, summary: (sum ? `${sum}${note ? `；${note.replace(/。$/, '')}` : ''}` : '') || reply || '看过了，这次不需要改动',
         reply: reply && note && ctx.collected.length ? `${reply}${note}` : reply, actions: ctx.collected, steps, ...(notes.length ? { adjustments: notes } : {}) };
     };
 

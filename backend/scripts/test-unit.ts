@@ -29,6 +29,7 @@ import { questionKind } from '../src/agent/coach-answers';
 import { selfGradeCheck, selfGradeFields } from '../src/exams/self-grade-check';
 import { countUnits } from '../src/english/ai-grader';
 import { referenceAnswer } from '../src/questions/reference-answer';
+import { tickSeconds, HEARTBEAT_CAP_SECONDS } from '../src/exams/exams.service';
 import { parseGenArgs } from './gen-explanations';
 
 let fail = 0, pass = 0;
@@ -137,6 +138,10 @@ export function runUnitTests() {
     eq('建议 过期 status', v.status, 'expired');
     eq('建议 过期标题', v.headline, '已过期，计划没动。原本想在 {{date:2026-11-05}} 的计划里加「做 5 道基础题热身」。');
     eq('建议 过期不说等你确认', /等你确认|还没执行/.test(`${v.headline}${v.details}`), false);
+    // 第 13 轮：details 不能括号套括号（日期渲染出来自带（），模板再套一层成了「建议的日子（11-03（周二））」）
+    eq('建议 过期详情渲染', ['2026-11-06', '2026-11-08', '2026-11-12'].map((d) => renderDates(v.details!, d).split('，')[0]),
+      ['建议安排在昨天（11-05）', '建议安排在周四（11-05）', '建议安排在11-05（周四）']);
+    eq('建议 过期详情没有括号套括号', ['2026-11-06', '2026-11-12'].map((d) => badDayLabels(renderDates(v.details!, d), d)), [[], []]);
     eq('建议 已确认不判过期', proposalView({ ...pr, status: 'confirmed', applied_items: [0] }, { date: '2026-11-04' }, '2026-11-12').status, 'confirmed');
     eq('建议 不给 today 不判过期', proposalView(pr, { date: '2026-11-04' }).status, 'pending');
   }
@@ -281,6 +286,12 @@ export function runUnitTests() {
     ['已压到 60 分钟。凌晨 4 点前还算 11-01 这一天。', '已压到 60 分钟', '好。']);
   eq('badDayLabels：今天说成明天的日期', badDayLabels('今天（11-02）的计划里已经有「x」；明天（11-02）', '2026-11-01'), ['今天（11-02）']);
   eq('badDayLabels：跨年', badDayLabels('明天（01-01）', '2026-12-31'), []);
+  eq('badDayLabels：括号套括号', badDayLabels('建议的日子（11-03（周二））已经过去了；还有 3 天（从今天（11-02）算）；（2 分待自评）', '2026-11-02'), ['（11-03（周二））', '（从今天（11-02）算）']);
+  eq('renderDates 兜底：（{{date}}）去掉外层括号', renderDates('建议的日子（{{date:2026-11-03}}）已经过去了', '2026-11-12'), '建议的日子11-03（周二）已经过去了');
+  eq('renderDates 兜底：（{{date}}、{{date}}）', renderDates('最近两次复盘（{{date:2026-10-30}}、{{date:2026-10-31}}）你都没打开', '2026-11-12'), '最近两次复盘10-30（周五）、10-31（周六）你都没打开');
+  // 模考计时：心跳间隔封顶 120 秒；调试时间往回拨（last_tick_at 在「现在」之后）不倒扣
+  eq('tickSeconds', [tickSeconds('2026-11-02T00:00:00Z', Date.parse('2026-11-02T00:00:30Z')), tickSeconds('2026-11-02T00:00:00Z', Date.parse('2026-11-02T01:00:00Z')),
+    tickSeconds('2026-11-02T00:10:00Z', Date.parse('2026-11-02T00:00:00Z')), tickSeconds(null, Date.now())], [30, HEARTBEAT_CAP_SECONDS, 0, 0]);
   eq('errata 合格', validateErrata([{ printed: 'a', correct: 'b', note: 'n' }]).length, 0);
   eq('errata 不是数组', validateErrata({}).map((x) => x.type), ['errata_invalid']);
   eq('errata 缺 correct / 多字段', validateErrata([{ printed: 'a' }, { printed: 'a', correct: 'b', x: 1 }]).map((x) => x.field), ['errata[0]', 'errata[1]']);

@@ -14,6 +14,16 @@ import { coachDetails, coachHeadline, PerQuestion, RATINGS, sectionOf, SelfRatin
 
 /** 断网/没发心跳时，两次保存之间最多计这么多秒，避免关掉页面后时间一直在走 */
 export const HEARTBEAT_CAP_SECONDS = 120;
+/**
+ * 模考里所有「现在」都用这一个：开考 started_at、计时 last_tick_at、交卷 / 放弃时间、剩余时间、2 分钟作废窗口。
+ * 非生产环境请求带 X-Debug-Now 时就是那一刻（clockNow），生产环境 = 真实时间。
+ */
+const examNow = () => clockNow();
+/** 上次心跳到现在的秒数：封顶 HEARTBEAT_CAP_SECONDS；调试时间来回拨（last_tick_at 在「现在」之后）不倒扣 */
+export function tickSeconds(lastTick: Date | string | null | undefined, nowMs: number): number {
+  if (!lastTick) return 0;
+  return Math.min(Math.max(Math.floor((nowMs - new Date(lastTick).getTime()) / 1000), 0), HEARTBEAT_CAP_SECONDS);
+}
 /** 整卷题数与时长：数学 180 分钟、150 分；2021 年起 22 题（10 选 6 填 6 解答），之前 23 题（8 选 6 填 9 解答） */
 function paperSpec(exam?: string, year?: number): { count: number | null; minutes: number } | undefined {
   if (exam === 'english1') return { count: ENGLISH1_COUNT, minutes: ENGLISH1_MINUTES }; // 52 题 / 100 分 / 180 分钟
@@ -101,12 +111,13 @@ export class ExamsService {
       ids = all.filter((r) => b.include_unreviewed || r.review_status === 'confirmed').map((r) => r.id);
     }
     const minutes = b.duration_minutes ?? spec?.minutes ?? 180;
+    const startedAt = examNow(); // 开考时间和第一次心跳同一刻：remaining_seconds 从整场时长开始倒数
     try {
       return await this.db.tx(async (c) => {
         const e = (await c.query(
-          `INSERT INTO exams(user_id,kind,title,exam,year,question_ids,duration_seconds) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
-          [userId, b.kind ?? 'paper', b.title ?? `${b.year ?? ''} ${EXAM_CN[b.exam ?? ''] ?? b.exam ?? '模考'}`.trim(), b.exam ?? 'custom', b.year ?? null, ids, minutes * 60])).rows[0];
-        await c.query(`INSERT INTO exam_progress(exam_id,current_question_id,last_tick_at) VALUES($1,$2,now())`, [e.id, ids[0]]);
+          `INSERT INTO exams(user_id,kind,title,exam,year,question_ids,duration_seconds,started_at) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
+          [userId, b.kind ?? 'paper', b.title ?? `${b.year ?? ''} ${EXAM_CN[b.exam ?? ''] ?? b.exam ?? '模考'}`.trim(), b.exam ?? 'custom', b.year ?? null, ids, minutes * 60, startedAt])).rows[0];
+        await c.query(`INSERT INTO exam_progress(exam_id,current_question_id,last_tick_at) VALUES($1,$2,$3)`, [e.id, ids[0], startedAt]);
         return this.view(c, e.id, userId);
       });
     } catch (err: any) {
@@ -130,12 +141,12 @@ export class ExamsService {
          FROM exams e JOIN exam_progress p ON p.exam_id=e.id WHERE e.id=$1 AND e.user_id=$2`, [examId, userId])).rows[0];
     if (!r) throw new NotFoundException('模考不存在');
     let elapsed = r.elapsed_seconds;
-    if (r.status === 'in_progress' && r.last_tick_at) elapsed += Math.min(Math.floor((Date.now() - new Date(r.last_tick_at).getTime()) / 1000), HEARTBEAT_CAP_SECONDS);
+    if (r.status === 'in_progress' && r.last_tick_at) elapsed += tickSeconds(r.last_tick_at, examNow().getTime());
     const tz = await this.time.tz(userId);
     return {
       id: r.id, kind: r.kind, title: r.title, exam: r.exam, year: r.year, question_ids: r.question_ids, question_count: r.question_ids.length, max_score: r.max_score,
       status: r.status, duration_seconds: r.duration_seconds, elapsed_seconds: elapsed, remaining_seconds: Math.max(r.duration_seconds - elapsed, 0),
-      server_time: new Date().toISOString(), started_at: r.started_at, submitted_at: r.submitted_at, abandoned_at: r.abandoned_at ?? null,
+      server_time: examNow().toISOString(), started_at: r.started_at, submitted_at: r.submitted_at, abandoned_at: r.abandoned_at ?? null,
       started_date: studyDate(new Date(r.started_at), tz), submitted_date: r.submitted_at ? studyDate(new Date(r.submitted_at), tz) : null, timezone: tz,
       progress: { answers: r.answers, current_question_id: r.current_question_id, last_client_seq: Number(r.last_client_seq), updated_at: r.progress_updated_at },
       result: await this.backfillResult(q, r.result, r.answers),
@@ -193,7 +204,7 @@ export class ExamsService {
     const page = rows.slice(0, limit);
     const items = page.map((r: any) => {
       let elapsed = r.elapsed_seconds;
-      if (r.status === 'in_progress' && r.last_tick_at) elapsed += Math.min(Math.floor((Date.now() - new Date(r.last_tick_at).getTime()) / 1000), HEARTBEAT_CAP_SECONDS);
+      if (r.status === 'in_progress' && r.last_tick_at) elapsed += tickSeconds(r.last_tick_at, examNow().getTime());
       return {
         id: r.id, kind: r.kind, title: r.title, exam: r.exam, year: r.year, status: r.status, question_count: r.question_ids.length,
         score: r.score ?? null, max_score: r.max_score ?? r.paper_max, pending_self_rating_count: Array.isArray(r.pending) ? r.pending.length : 0,
@@ -226,9 +237,9 @@ export class ExamsService {
       if (e.status === 'submitted' || e.status === 'abandoned') throw new ConflictException({ message: '这场模考已经结束', status: e.status });
 
       // 计时
-      const now = Date.now();
+      const now = examNow().getTime();
       let elapsed = e.elapsed_seconds;
-      if (e.status === 'in_progress' && e.last_tick_at) elapsed += Math.min(Math.floor((now - new Date(e.last_tick_at).getTime()) / 1000), HEARTBEAT_CAP_SECONDS);
+      if (e.status === 'in_progress' && e.last_tick_at) elapsed += tickSeconds(e.last_tick_at, now);
       const nextStatus = b.state === 'paused' ? 'paused' : b.state === 'running' ? 'in_progress' : e.status;
 
       // 合并答案
@@ -385,7 +396,7 @@ export class ExamsService {
       if (e.status === 'submitted') return { done: true as const }; // 重复交卷：直接返回结果
       if (e.status === 'abandoned') throw new ConflictException({ message: '这场模考已经放弃', status: e.status });
       let elapsed = e.elapsed_seconds;
-      if (e.status === 'in_progress' && e.last_tick_at) elapsed += Math.min(Math.floor((Date.now() - new Date(e.last_tick_at).getTime()) / 1000), HEARTBEAT_CAP_SECONDS);
+      if (e.status === 'in_progress' && e.last_tick_at) elapsed += tickSeconds(e.last_tick_at, examNow().getTime());
       const qs = await this.loadQuestions(c, e.question_ids);
       const per: PerQuestion[] = [...qs.values()].sort((x, y) => x.number - y.number).map((q) => {
         const a = e.answers?.[q.id];
@@ -411,8 +422,8 @@ export class ExamsService {
         p.is_correct = !!rec.is_correct; p.got = rec.points ?? 0; p.wrong_question_id = rec.wrong_question_id ?? null;
       }
       await this.applyRatings(c, userId, examId, per, qs, ratings, 'submit', device);
-      const result = { ...summarize(per, { title: e.title, duration_seconds: e.duration_seconds, elapsed_seconds: elapsed }), coach: null as any, self_rated_at: ratings.size ? new Date().toISOString() : null };
-      await c.query(`UPDATE exams SET status='submitted', submitted_at=now(), result=$2 WHERE id=$1`, [examId, JSON.stringify(result)]);
+      const result = { ...summarize(per, { title: e.title, duration_seconds: e.duration_seconds, elapsed_seconds: elapsed }), coach: null as any, self_rated_at: ratings.size ? examNow().toISOString() : null };
+      await c.query(`UPDATE exams SET status='submitted', submitted_at=$3, result=$2 WHERE id=$1`, [examId, JSON.stringify(result), examNow()]);
       await c.query(`UPDATE exam_progress SET elapsed_seconds=$2, last_tick_at=NULL, updated_at=now() WHERE exam_id=$1`, [examId, elapsed]);
       return { done: false as const, result, title: e.title };
     });
@@ -437,7 +448,7 @@ export class ExamsService {
       const summary = summarize(per, { title: e.title, duration_seconds: e.duration_seconds, elapsed_seconds: e.result.elapsed_seconds ?? e.elapsed_seconds });
       // 还有没评的：教练一句话不能出（以前写过的撤掉）
       if (summary.pending_self_rating.length && e.result.coach) await this.dropCoach(c, examId, e.result.coach);
-      const result = { ...summary, coach: summary.pending_self_rating.length ? null : e.result.coach ?? null, self_rated_at: new Date().toISOString() };
+      const result = { ...summary, coach: summary.pending_self_rating.length ? null : e.result.coach ?? null, self_rated_at: examNow().toISOString() };
       await c.query(`UPDATE exams SET result=$2 WHERE id=$1`, [examId, JSON.stringify(result)]);
       return { duplicate: false as const, result, title: e.title };
     });
@@ -467,7 +478,7 @@ export class ExamsService {
       if (e.status === 'abandoned') return false; // 重复放弃：幂等
       if (e.status === 'submitted') throw new ConflictException({ message: '已经交卷，不能放弃', status: e.status });
       const answered = Object.values<any>(e.answers ?? {}).filter((x) => Array.isArray(x?.answer) && x.answer.some((v: any) => String(v ?? '').trim())).length;
-      const ageMs = clockNow().getTime() - new Date(e.started_at).getTime();
+      const ageMs = examNow().getTime() - new Date(e.started_at).getTime();
       if (answered === 0 && ageMs <= DISCARD_WINDOW_SECONDS * 1000) {
         const rec = (await c.query(`SELECT 1 FROM answer_records WHERE exam_id=$1 LIMIT 1`, [examId])).rows[0];
         if (!rec) {
@@ -476,12 +487,12 @@ export class ExamsService {
         }
       }
       let elapsed = e.elapsed_seconds;
-      if (e.status === 'in_progress' && e.last_tick_at) elapsed += Math.min(Math.floor((Date.now() - new Date(e.last_tick_at).getTime()) / 1000), HEARTBEAT_CAP_SECONDS);
-      await c.query(`UPDATE exams SET status='abandoned', abandoned_at=now() WHERE id=$1`, [examId]);
+      if (e.status === 'in_progress' && e.last_tick_at) elapsed += tickSeconds(e.last_tick_at, examNow().getTime());
+      await c.query(`UPDATE exams SET status='abandoned', abandoned_at=$2 WHERE id=$1`, [examId, examNow()]);
       await c.query(`UPDATE exam_progress SET elapsed_seconds=$2, last_tick_at=NULL, updated_at=now() WHERE exam_id=$1`, [examId, elapsed]);
       return false;
     });
-    if (discarded) return { id: examId, status: 'discarded', discarded: true, server_time: new Date().toISOString() };
+    if (discarded) return { id: examId, status: 'discarded', discarded: true, server_time: examNow().toISOString() };
     return { ...(await this.view(null, examId, userId)), discarded: false };
   }
 

@@ -139,7 +139,7 @@ export class CoachAnswers {
       const wd = '日一二三四五六'[new Date(`${u.exam_date}T12:00:00Z`).getUTCDay()];
       if (n < 0) return { steps, reply: `考试日期 ${u.exam_date}（周${wd}）已经过去了，要换成新的考试日期吗？在设置里改一下就行。` };
       const tip = n <= 14 ? '最后两周：每天一套真题限时 + 回看错题，不再开新内容。' : n <= 60 ? '这一段以真题和错题为主，每周至少一套完整模考。' : '时间还够，先把基础和错题清干净，再上真题。';
-      return { steps, reply: `离考试（${u.exam_date}，周${wd}）还有 ${n} 天（从${T}算）。${budget ? `${bText}，就先把${T}的计划做完。` : ''}${tip}` };
+      return { steps, reply: `离考试（${u.exam_date}，周${wd}）还有 ${n} 天，从${T}算。${budget ? `${bText}，就先把${T}的计划做完。` : ''}${tip}` };
     }
 
     if (kind === 'week') {

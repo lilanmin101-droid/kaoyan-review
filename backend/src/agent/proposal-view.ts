@@ -58,7 +58,7 @@ export function proposalView(p: any, fallback: { headline?: string | null; detai
     const items: string[] = p.items.flatMap((it: any) => split(String(it.summary ?? ''))).map(plainSummary);
     return { status: 'expired', target_date: target,
       headline: `已过期，计划没动。${items.length ? `原本想${items.join('；')}。` : ''}`.slice(0, 300),
-      details: `建议的日子（{{date:${target}}}）已经过去了，这些改动没有执行，也不能再确认。还需要的话，直接跟我说一声。` } as { status: string | null; headline: string | null; details: string | null; target_date: string | null };
+      details: `建议安排在{{date:${target}}}，这天已经过去了，这些改动没有执行，也不能再确认。还需要的话，直接跟我说一声。` } as { status: string | null; headline: string | null; details: string | null; target_date: string | null };
   }
   const v = proposalText(p, fallback);
   return { status: p && Array.isArray(p.items) ? (['confirmed', 'dismissed'].includes(p.status) ? p.status : 'pending') : null, target_date: target, ...v } as { status: string | null; headline: string | null; details: string | null; target_date: string | null };

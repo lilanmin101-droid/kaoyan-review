@@ -92,6 +92,9 @@ export function badDayLabels(text: string, today: string): string[] {
   }
   // 渲染后的日期和后面的字之间多了空格：「11-02（周一） 的计划」
   for (const m of text.matchAll(/(\d{2}-\d{2}）|（周[一二三四五六日]）)[ \u3000]+[\u4e00-\u9fff]/g)) out.push(m[0]);
+  // 括号套括号：渲染出来的日期自带（），模板再套一层就成了「建议的日子（11-03（周二））」
+  // （[^（）]*（[^）]*））是紧贴着收尾的那种；内层括号后面还有字（「（从今天（11-02）算）」）也算
+  for (const m of text.matchAll(/（[^（）]*（[^（）]*）[^（）]*）/g)) out.push(m[0]);
   // 没渲染的占位符漏出来
   for (const m of text.matchAll(/\{\{date:[^}]*\}\}/g)) out.push(m[0]);
   return out;
@@ -143,6 +146,10 @@ export function renderDates(text: string, today: string): string {
   if (!text.includes('{{date:')) return text;
   // 模板里裸日期两边常有空格（「在 11-02 的计划」）：渲染后两边的空格都去掉（「在11-02（周一）的计划」「在明天（11-02）的计划」）
   // |plan：往后看的说法（后面跟「先…」）。读的时候那天已经过去 → 「11-02（周一）当天计划重做…」（去掉「先」）；今天或以后照常「明天（11-02）先重做…」
+  // 兜底：老数据 / 模板里括号里只有占位符（一个或用「、」连起来的几个）——渲染结果自带括号，外层去掉
+  // 「建议的日子（{{date:…}}）」→「建议的日子11-03（周二）」；「复盘（{{date:A}}、{{date:B}}）」→「复盘10-30（周五）、10-31（周六）」
+  const PH = '\\{\\{date:\\d{4}-\\d{2}-\\d{2}(?:\\|plan)?\\}\\}';
+  text = text.replace(new RegExp(`（(${PH}(?:[、，和]${PH})*)）`, 'g'), '$1');
   return text.replace(/[ \u3000]*\{\{date:(\d{4}-\d{2}-\d{2})(\|plan)?\}\}[ \u3000]*(先)?/g, (_m, d, plan, xian) => {
     const l = dayLabel(d, today);
     if (plan && d < today) return `${l}当天计划`;

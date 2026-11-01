@@ -3222,7 +3222,7 @@ paths:
                     status: expired
                     target_date: '2026-10-29'
                     headline: 已过期，计划没动。原本想在10-29（周四）的计划里加「做 5 道基础题热身」。
-                    details: 建议的日子（10-29（周四））已经过去了，这些改动没有执行，也不能再确认。还需要的话，直接跟我说一声。
+                    details: 建议安排在10-29（周四），这天已经过去了，这些改动没有执行，也不能再确认。还需要的话，直接跟我说一声。
                     source: agent
                     delivered_at: '2026-10-28T23:00:00-08:00'
                     seen_at: '2026-10-29T08:00:00-08:00'
@@ -5456,7 +5456,7 @@ components:
             只有 kind=proposal 有：待确认 pending → 确认后 confirmed / 忽略后 dismissed（GET /agent/messages、/plans/today tips.proposal、confirm / dismiss 响应的 message 里都有）；其他消息为 null。
             **expired（读时算）**：还没确认、但目标日（target_date）早于读者此刻的学习日（X-Debug-Now 也算）→ 过期。这时顶层 status 和 `proposal.status` 都是 expired，
             headline 以「已」开头，如「已过期，计划没动。原本想在11-05（周四）的计划里加「做 5 道基础题热身」。」，前端原样显示（标「已过期」，不显示确认按钮）；
-            details「建议的日子（…）已经过去了，这些改动没有执行，也不能再确认。…」，不再说「等你确认后才执行」。确认 → 409 proposal_expired，什么都不改；忽略照常可以。
+            details「建议安排在10-29（周四），这天已经过去了，这些改动没有执行，也不能再确认。…」，不再说「等你确认后才执行」。确认 → 409 proposal_expired，什么都不改；忽略照常可以。
         target_date:
           type: [string, 'null']
           format: date

@@ -82,6 +82,14 @@ EL=$(curl -sf "${A[@]}" -XPOST $B/exams -d '{"question_ids":["'$WQ'"],"duration_
 LATER=$(python3 -c "import datetime;print((datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(minutes=3)).isoformat())")
 curl -sf "${A[@]}" -H "x-debug-now: $LATER" -XPOST $B/exams/$EL/abandon | ok "d['discarded'] is False and d['status']=='abandoned'"
 curl -sf "${A[@]}" "$B/exams?limit=50" | ok "{'$EK','$EL'} <= {i['id'] for i in d['items']}"
+# 开考时间也按 X-Debug-Now（第 13 轮）：started_at = 调试时刻；+60 秒读剩余时间少 60 秒；不带调试头（真实时间早于开考）不倒扣；+121 秒不答放弃 → abandoned，abandoned_at 也是调试时刻，单次心跳封顶 120 秒
+T0=$(python3 -c "import datetime;print((datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(days=3)).replace(microsecond=0).isoformat().replace('+00:00','Z'))")
+read T60 T121 <<<"$(python3 -c "import datetime;t=datetime.datetime.fromisoformat('$T0'.replace('Z','+00:00'));print(*[(t+datetime.timedelta(seconds=s)).isoformat().replace('+00:00','Z') for s in (60,121)])")"
+EN=$(curl -sf "${A[@]}" -H "x-debug-now: $T0" -XPOST $B/exams -d '{"question_ids":["'$WQ'"],"duration_minutes":30,"include_unreviewed":true}' | j "d['id']")
+curl -sf "${A[@]}" -H "x-debug-now: $T0" $B/exams/$EN | ok "d['started_at'].startswith('$T0'[:19]) and d['remaining_seconds']==1800 and d['server_time'].startswith('$T0'[:19])"
+curl -sf "${A[@]}" -H "x-debug-now: $T60" $B/exams/$EN | ok "d['elapsed_seconds']==60 and d['remaining_seconds']==1740"
+curl -sf "${A[@]}" $B/exams/$EN | ok "d['elapsed_seconds']==0 and d['remaining_seconds']==1800"
+curl -sf "${A[@]}" -H "x-debug-now: $T121" -XPOST $B/exams/$EN/abandon | ok "d['discarded'] is False and d['status']=='abandoned' and d['abandoned_at'].startswith('$T121'[:19]) and d['elapsed_seconds']==120"
 echo "== wrong questions"; curl -sf "${A[@]}" $B/wrong-questions | ok "all('images' in i and 'sub_questions' in i and 'score_estimated' in i and 'score_by_whole' in i for i in d['items'])"
 echo "== words"; curl -sf "${A[@]}" $B/words/today | ok "all(w['audio_url_us'].endswith('/audio?accent=us') and w['audio_url_uk'].endswith('/audio?accent=uk') for w in d['new']+d['review']) and {'new_target','new_done_today','reviewed_today'} <= set(d['counts'])"
 W=$(curl -sf "${A[@]}" $B/words/today | j "d['new'][0]['id']");

@@ -54,12 +54,12 @@ class Session {
     const evs = raw.split('\n').filter((l) => l.startsWith('data:')).map((l) => JSON.parse(l.slice(5)));
     const run = { text, steps: evs.filter((e) => e.type === 'step').map((e) => e.text as string), actions: evs.filter((e) => e.type === 'action').map((e) => e.action),
       done: evs.find((e) => e.type === 'done') ?? null, error: evs.find((e) => e.type === 'error') ?? null } as any;
-    this.transcript.push(`> ${text}`, ...run.steps.map((s) => `  · ${s}`), ...run.actions.map((a) => `  ✎ ${a.summary}（${a.reason ?? ''}）`), `  = ${run.done?.reply ?? run.error?.message ?? ''}`);
+    this.transcript.push(`> ${text}`, ...run.steps.map((s) => `  · ${s}`), ...run.actions.map((a) => `  ✎ ${a.summary} —— ${a.reason ?? ''}`), `  = ${run.done?.reply ?? run.error?.message ?? ''}`);
     return run;
   }
   async job(job: 'nightly' | 'weekly', respect = true) {
     const r = await this.send('POST', `/agent/jobs/${job}/run${respect ? '?respect_backoff=1' : ''}`);
-    this.transcript.push(`> [定时 ${job}]`, `  = ${r.body?.skipped ? `跳过：${r.body.reason}` : r.body?.reply ?? r.body?.summary ?? ''}`, ...(r.body?.actions ?? []).map((a: any) => `  ✎ ${a.summary}（${a.reason ?? ''}）`));
+    this.transcript.push(`> [定时 ${job}]`, `  = ${r.body?.skipped ? `跳过：${r.body.reason}` : r.body?.reply ?? r.body?.summary ?? ''}`, ...(r.body?.actions ?? []).map((a: any) => `  ✎ ${a.summary} —— ${a.reason ?? ''}`));
     return r.body;
   }
   async wrong(q: string) { // 做错一题（客观题随便选个错的，主观题自评不会）

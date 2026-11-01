@@ -202,7 +202,7 @@ export class JobsService implements OnModuleInit {
     const last = (await this.db.query(
       `SELECT to_char(tip_date,'YYYY-MM-DD') d, seen_at FROM daily_tips WHERE user_id=$1 AND kind='review' AND delivered_at IS NOT NULL ORDER BY tip_date DESC LIMIT 2`, [userId])).rows;
     if (p.mode !== 'reduced' && last.length === 2 && last.every((r: any) => !r.seen_at)) {
-      await this.tools.setProactive(ctx, { mode: 'reduced', every_days: 3, reason: `最近两次复盘（${last.map((r: any) => r.d.slice(5)).reverse().join('、')}）你都没打开，先少打扰：改成每 3 天一次，周报照常`, cause: 'ignored' });
+      await this.tools.setProactive(ctx, { mode: 'reduced', every_days: 3, reason: `${last.map((r: any) => r.d.slice(5)).reverse().join('、')}这两次复盘你都没打开，先少打扰：改成每 3 天一次，周报照常`, cause: 'ignored' });
       p = { mode: 'reduced', nightly_every_days: 3 };
     }
     if (p.mode === 'reduced' && last.length) {
