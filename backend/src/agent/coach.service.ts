@@ -3,7 +3,7 @@ import { randomUUID } from 'crypto';
 import { UserTimeService } from '../common/user-time.service';
 import { Injectable, Logger } from '@nestjs/common';
 import { DbService } from '../db/db.service';
-import { addDays, DAY_START_HOUR, dayLabel as dayLabelOf, studyDaySql } from '../common/time';
+import { addDays, DAY_START_HOUR, dayLabel as dayLabelOf, studyDaySql, weekOf } from '../common/time';
 import { aiMode, mastraModel } from '../ai/llm';
 import { AgentToolsService, PHASE_CN, ToolCtx, Trigger } from './agent-tools.service';
 import { PlansService } from '../plans/plans.service';
@@ -369,11 +369,12 @@ export class CoachService {
   }
 
   private async mockWeekly(ctx: ToolCtx & { collected: any[] }, today: string, reason = '每周日 21:30 自动周报'): Promise<RunResult> {
-    const s = await this.dayStats(ctx.userId, addDays(today, -6), today);
+    const wk = weekOf(today); // 本周 = 自然周（周一–周日），标签写整周范围
+    const s = await this.dayStats(ctx.userId, wk.from, today);
     const p = await this.tools.getProfile(ctx);
     const weak = p.weakest_kps.slice(0, 2).map((k: any) => k.kp_path.split('/').pop());
     const head = weak.length ? `下周重点补「${weak[0]}」。` : s.n ? '下周保持节奏，先清到期错题。' : '下周先每天做 5 道题把节奏找回来。';
-    const text = `本周（${addDays(today, -6).slice(5)}–${today.slice(5)}）` + (s.n ? `做了 ${s.n} 题，正确率 ${Math.round((100 * s.correct) / s.n)}%，${minutesText(s.minutes)}。` : '还没有作答记录，也还没有学习时长记录。')
+    const text = `本周（${wk.label}）` + (s.n ? `做了 ${s.n} 题，正确率 ${Math.round((100 * s.correct) / s.n)}%，${minutesText(s.minutes)}。` : '还没有作答记录，也还没有学习时长记录。')
       + (weak.length ? `最需要补的：${weak.join('、')}。` : '')
       + `当前阶段：${PHASE_CN[p.user.phase]}${p.user.days_left != null ? `，距考试 ${p.user.days_left} 天` : ''}。`;
     await this.tools.writeDailyTip(ctx, { kind: 'weekly', date: today, text: head, details: text, reason, source: 'mock' });

@@ -46,6 +46,12 @@ if ! curl -sf "${A[@]}" "$B/questions/years?exam=math1" | python3 -c "import sys
   echo "SKIP exam：2024 数一卷当前不是 ready（题库数据正在改，见 /questions/years），跳过整卷模考这一段"
 else
 EX=$(curl -sf "${A[@]}" -XPOST $B/exams -d '{"exam":"math1","year":2024,"duration_minutes":180}' | j "d['id']")
+# 同一张卷再点「开考」→ 200 + 同一场（resumed=true），不 409；别的卷 → 409 other_exam_active，写明是哪一场
+RS=$(curl -s -o /tmp/smoke_resume_$$.json -w '%{http_code}' "${A[@]}" -XPOST $B/exams -d '{"exam":"math1","year":2024,"duration_minutes":180}')
+python3 -c "import json,sys;d=json.load(open('/tmp/smoke_resume_$$.json'));ok=sys.argv[1]=='200' and d['id']=='$EX' and d['resumed'] is True and d['status']=='in_progress';print('ok' if ok else 'FAIL', 'same paper -> resumed', sys.argv[1], d.get('id'), d.get('resumed'));sys.exit(0 if ok else 1)" "$RS"
+RS=$(curl -s -o /tmp/smoke_resume_$$.json -w '%{http_code}' "${A[@]}" -XPOST $B/exams -d '{"exam":"english1","year":2020}')
+python3 -c "import json,sys;d=json.load(open('/tmp/smoke_resume_$$.json'));a=d.get('active_exam') or {};ok=sys.argv[1]=='409' and d['code']=='other_exam_active' and d['active_exam_id']=='$EX' and a.get('id')=='$EX' and a.get('exam')=='math1' and a.get('year')==2024 and a.get('title') and a.get('title') in d['message'];print('ok' if ok else 'FAIL', 'other paper -> 409', sys.argv[1], d.get('code'), a.get('title'));sys.exit(0 if ok else 1)" "$RS"
+rm -f /tmp/smoke_resume_$$.json
 curl -sf "${A[@]}" -XPUT $B/exams/$EX/progress -d '{"idempotency_key":"k1","client_seq":1,"answers":[{"question_id":"math1-2024-02","answer":["A"],"time_spent_seconds":200}],"current_question_id":"math1-2024-03"}' | j "(d['duplicate'], d['remaining_seconds'], list(d['progress']['answers']))"
 curl -sf "${A[@]}" -XPUT $B/exams/$EX/progress -d '{"idempotency_key":"k1","client_seq":1,"answers":[{"question_id":"math1-2024-02","answer":["B"]}]}' | j "('dup=',d['duplicate'], d['progress']['answers']['math1-2024-02']['answer'])"
 curl -sf "${A[@]}" -XPUT $B/exams/$EX/progress -d '{"idempotency_key":"k2","client_seq":3,"answers":[{"question_id":"math1-2024-19","answer":[],"time_spent_seconds":2400}],"state":"paused"}' | j "(d['status'], d['remaining_seconds'])"
@@ -61,6 +67,21 @@ fi
 EW=$(curl -sf "${A[@]}" -XPOST $B/exams -d '{"question_ids":["'$WQ'"],"duration_minutes":30,"include_unreviewed":true}' | j "d['id']")
 test "$(curl -s -o /dev/null -w '%{http_code}' "${A[@]}" -XPOST $B/exams/$EW/submit -d '{"self_ratings":{"'$WQ'":{"1":"full"}}}')" = 400 && echo "ok 整题计分的题按小问自评 → 400"
 curl -sf "${A[@]}" -XPOST $B/exams/$EW/submit -d '{"self_ratings":{"'$WQ'":"approach_ok_calc_wrong"}}' | ok "(lambda p: p['got']==$WQS/2 and p['score_by_whole'] and not p.get('sub_scores'))(d['result']['per_question'][0])"
+# 开考 2 分钟内一道没答就放弃 → 整场删除（discarded=true，历史 / 进行中都没有）；答过 / 超过 2 分钟（X-Debug-Now +3 分钟）→ 照旧 abandoned
+echo "== exam abandon discard"
+ED=$(curl -sf "${A[@]}" -XPOST $B/exams -d '{"question_ids":["'$WQ'"],"duration_minutes":30,"include_unreviewed":true}' | j "d['id']")
+curl -sf "${A[@]}" -XPOST $B/exams/$ED/abandon | ok "d['discarded'] is True and d['status']=='discarded' and d['id']=='$ED'"
+test "$(curl -s -o /dev/null -w '%{http_code}' "${A[@]}" $B/exams/$ED)" = 404 && echo "ok discarded exam → 404" || { echo "FAIL discarded exam still readable"; exit 1; }
+curl -sf "${A[@]}" "$B/exams?limit=50" | ok "all(i['id']!='$ED' for i in d['items'])"
+curl -sf "${A[@]}" $B/exams/active | ok "d['exam'] is None"
+test "$(psql "${DATABASE_URL:-$(grep -E '^DATABASE_URL=' .env 2>/dev/null | cut -d= -f2-)}" -Atc "select count(*) from exams where id='$ED'")" = 0 && echo "ok discarded exam row deleted" || { echo "FAIL discarded exam row still there"; exit 1; }
+EK=$(curl -sf "${A[@]}" -XPOST $B/exams -d '{"question_ids":["'$WQ'"],"duration_minutes":30,"include_unreviewed":true}' | j "d['id']")
+curl -sf "${A[@]}" -XPUT $B/exams/$EK/progress -d '{"idempotency_key":"d1","client_seq":1,"answers":[{"question_id":"'$WQ'","answer":["x"]}]}' >/dev/null
+curl -sf "${A[@]}" -XPOST $B/exams/$EK/abandon | ok "d['discarded'] is False and d['status']=='abandoned' and d['id']=='$EK'"
+EL=$(curl -sf "${A[@]}" -XPOST $B/exams -d '{"question_ids":["'$WQ'"],"duration_minutes":30,"include_unreviewed":true}' | j "d['id']")
+LATER=$(python3 -c "import datetime;print((datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(minutes=3)).isoformat())")
+curl -sf "${A[@]}" -H "x-debug-now: $LATER" -XPOST $B/exams/$EL/abandon | ok "d['discarded'] is False and d['status']=='abandoned'"
+curl -sf "${A[@]}" "$B/exams?limit=50" | ok "{'$EK','$EL'} <= {i['id'] for i in d['items']}"
 echo "== wrong questions"; curl -sf "${A[@]}" $B/wrong-questions | ok "all('images' in i and 'sub_questions' in i and 'score_estimated' in i and 'score_by_whole' in i for i in d['items'])"
 echo "== words"; curl -sf "${A[@]}" $B/words/today | ok "all(w['audio_url_us'].endswith('/audio?accent=us') and w['audio_url_uk'].endswith('/audio?accent=uk') for w in d['new']+d['review']) and {'new_target','new_done_today','reviewed_today'} <= set(d['counts'])"
 W=$(curl -sf "${A[@]}" $B/words/today | j "d['new'][0]['id']");

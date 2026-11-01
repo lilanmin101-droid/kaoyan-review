@@ -6,7 +6,8 @@
  * AI_FAKE=1：确定性假模型（测试专用，model=fake-explainer-v1）；AI_FAKE_EXPLAIN_FAULTS="题id:故障,…" 注入故障测质检。
  */
 import { ChatOptions, ChatResult, isConfigured, ProviderId } from './llm';
-import { ChatFn, explainQuestion, ExplainResult, generatorMessages, isChoiceType, isEnglishObjective, isOpenEnded, isProof, normChoice, officialAnswer,
+import { clozeRecurrence, cueHit, cuesInPassage, tokensOf } from './cloze-recurrence';
+import { ChatFn, explainQuestion, ExplainResult, generatorMessages, isChoiceType, isCloze, isEnglishObjective, isOpenEnded, isProof, normChoice, officialAnswer,
   officialSolution, openReviewMessages, proofReviewMessages, PROMPT_VERSION, QuestionRow, verifierMessages } from './explain';
 
 export interface Queryable { query(sql: string, params?: any[]): Promise<{ rows: any[] }> }
@@ -31,7 +32,7 @@ export const LENGTH_BOUNDS = {
 const BAD_TEXT = /(^|[^A-Za-z])(null|undefined|NaN)(?![A-Za-z])|\[object Object\]/;
 /** 证据句比对用的归一化：去完形空位 {{n}} / （n） / 下划线，统一引号和空白，小写 */
 export const normEvidence = (s: string) => String(s ?? '')
-  .replace(/\{\{\d+\}\}|（\d+）|\(\d+\)|_{2,}/g, ' ')
+  .replace(/\{\{\d+\}\}|（\d+）|\(\d+\)|\[\d+\]|_{2,}/g, ' ')
   .replace(/[‘’`´]/g, "'").replace(/[“”]/g, '"').replace(/[—–]/g, '-')
   .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
 const paragraphsOf = (text: string) => String(text ?? '').replace(/\r/g, '').split(/\n\s*\n/).map((x) => x.trim()).filter(Boolean);
@@ -80,19 +81,30 @@ export function qualityCheck(q: QuestionRow, r: Pick<ExplainResult, 'steps' | 'f
     }
   }
   // 4. 英语客观题：证据句必须真在原文里
+  //    完形另外允许「空格所在句」：quote 里空格填了答案 / 写成 ____ 都认（固定搭配、语法题的依据就在本句）；新题型不变（空位本身不算证据，原文里也找不到）
   if (isEnglishObjective(q)) {
     const ev = r.generated?.evidence;
     const src = q.passage?.text ?? q.stem;
     if (!ev || !String(ev.quote ?? '').trim()) fail('evidence_missing', '没有给出原文证据句');
     else {
       const nq = normEvidence(ev.quote);
-      if (nq.length < 8 || !normEvidence(src).includes(nq)) fail('evidence_not_in_passage', `证据句不在原文里：「${String(ev.quote).slice(0, 80)}」`);
+      const verbatim = nq.length >= 8 && normEvidence(src).includes(nq);
+      const gap = !verbatim && isCloze(q) ? gapSentenceMatch(src, ev.quote) : null;
+      if (!verbatim && !gap) fail('evidence_not_in_passage', `证据句不在原文里：「${String(ev.quote).slice(0, 80)}」`);
       else if (ev.paragraph) {
         const paras = paragraphsOf(src);
         const p = Number(ev.paragraph);
-        if (!(p >= 1 && p <= paras.length) || !normEvidence(paras[p - 1]).includes(nq)) warn('evidence_paragraph_mismatch', `证据句不在第 ${ev.paragraph} 段`);
+        const inPara = gap ? gap.paragraph === p : p >= 1 && p <= paras.length && normEvidence(paras[p - 1]).includes(nq);
+        if (!inPara) warn('evidence_paragraph_mismatch', `证据句不在第 ${ev.paragraph} 段`);
       }
       if (!ev.location && !/第\s*\d+\s*段/.test(full)) warn('evidence_location_missing', '讲解里没写证据句位置（第几段第几句）');
+    }
+    // 4b. 完形：行业专家标了「上下文复现」→ 讲解（quote 或步骤）里必须出现复现的词句
+    const rec = isCloze(q) ? clozeRecurrence(q) : null;
+    if (rec) {
+      const cues = cuesInPassage(rec, src);
+      if (!cues.length) warn('recurrence_not_in_passage', `专家标的复现词句在原文里没找到，不核对：${rec.note}`);
+      else if (!cues.some((c) => cueHit(`${ev?.quote ?? ''}\n${full}`.replace(/_{2,}|（\d+）/g, ' {{0}} '), c))) fail('recurrence_missing', `讲解没点出上下文复现（${rec.note}）：应引出 ${cues.map((c) => c.join(' … ')).join(' / ')}`);
     }
   }
   // 5. 原卷误印：讲解提到误印原文时应写「原卷如此」
@@ -100,6 +112,36 @@ export function qualityCheck(q: QuestionRow, r: Pick<ExplainResult, 'steps' | 'f
     if (e?.printed && full.includes(e.printed) && !full.includes('原卷如此')) warn('errata_not_marked', `提到原卷误印「${e.printed}」但没写「原卷如此」`);
   }
   return { ok: failures.length === 0, failures, warnings, checked_at: new Date().toISOString() };
+}
+
+/**
+ * 完形：quote 是不是原文里某个带空格的句子（空格处可以填了词 / 写成 ____ / 留空，每个空最多 4 个词）。
+ * 允许只摘句子中间连续的一段，但至少要有 4 个原文词。返回所在段落（从 1 起）。
+ */
+export function gapSentenceMatch(src: string, quote: string): { paragraph: number; sentence: number } | null {
+  const qt = tokensOf(String(quote ?? '').replace(/（\d+）|\(\d+\)|\[\d+\]|_{2,}/g, ' ')).trim();
+  if (!qt) return null;
+  const qs = `${qt} `;
+  const BL = 'qqgapqq';
+  const paras = paragraphsOf(src);
+  for (let pi = 0; pi < paras.length; pi++) {
+    const ss = sentencesOf(paras[pi]);
+    for (let si = 0; si < ss.length; si++) {
+      if (!/\{\{\d+\}\}/.test(ss[si])) continue;
+      const toks = tokensOf(ss[si].replace(/\{\{\d+\}\}/g, ` ${BL} `)).trim().split(' ');
+      const piece = (t: string) => (t === BL ? '(?:\\S+ ){0,4}' : `${t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')} `);
+      for (let i = 0; i < toks.length; i++) {
+        // 从第 i 个词开始、到任意位置结束：后面的词逐层可选
+        let tail = '';
+        for (let k = toks.length - 1; k > i; k--) tail = `(?:${piece(toks[k])}${tail})?`;
+        if (!new RegExp(`^${piece(toks[i])}${tail}$`).test(qs)) continue;
+        // 至少 4 个原文词（不算填进空格的词）：把 quote 里命中的原文词数一下
+        const words = qt.split(' ').filter((w) => toks.includes(w)).length;
+        if (words >= 4) return { paragraph: pi + 1, sentence: si + 1 };
+      }
+    }
+  }
+  return null;
 }
 
 // ───────────── 生成 + 入库 ─────────────
@@ -223,7 +265,13 @@ function fakeEvidence(q: QuestionRow) {
   }
   if (si < 0) si = ss.findIndex((s) => normEvidence(s).length >= 8);
   if (si < 0) si = 0;
-  return { paragraph: pi + 1, sentence_index: si + 1, location: `第${pi + 1}段第${si + 1}句`, quote: ss[si] ?? paras[pi] ?? '' };
+  let quote = ss[si] ?? paras[pi] ?? '';
+  // 完形：像真模型一样把本空的答案填进句子、别的空写成 ____（走 v3 的「空格所在句」规则）
+  if (isCloze(q) && quote.includes(mark)) {
+    const fill = (q.options ?? []).find((o: any) => normChoice((q.answer ?? []).join('')).includes(o.key)) as any;
+    quote = quote.replace(mark, fill?.content ?? fill?.text ?? '____').replace(/\{\{\d+\}\}/g, '____');
+  }
+  return { paragraph: pi + 1, sentence_index: si + 1, location: `第${pi + 1}段第${si + 1}句`, quote };
 }
 
 export function fakeChatFor(q: QuestionRow): ChatFn {
@@ -238,13 +286,15 @@ export function fakeChatFor(q: QuestionRow): ChatFn {
     const inTok = estimateTokens(o.messages.map((m) => m.content).join('\n'));
     if (fault === 'error' && role === 'generate') throw new Error('AI_FAKE 注入的生成失败');
     if (role === 'generate') {
+      // 提示词里带了专家「上下文复现」就照着点出来（测提示词接线；fault=no_recurrence 故意漏掉）
+      const recLine = o.messages.map((m) => m.content).join('\n').match(/【上下文复现（行业专家标注）】(.+)/)?.[1]?.trim();
       const choice = isChoiceType(q.type) && !!offLetter;
       const ans = choice ? (fault === 'wrong_letter' ? other : offLetter) : off || '（略）';
       const ev = isEnglishObjective(q) ? fakeEvidence(q) : null;
       if (ev && fault === 'bad_evidence') ev.quote = 'This sentence does not appear anywhere in the original passage at all.';
       const steps = fault === 'short' ? [{ n: 1, title: '答案', text: `答案：${ans}` }] : [
         { n: 1, title: '读题', text: `先看题干在问什么：${String(q.stem).replace(/\{\{\d+\}\}/g, '____').slice(0, 60)}……弄清考查点（${(q.knowledge_points ?? []).join('、') || q.section || q.type}）。` },
-        ev ? { n: 2, title: '定位原文', text: `定位：${ev.location}。原文：“${ev.quote}” 这句话直接对应题干。` }
+        ev ? { n: 2, title: '定位原文', text: `定位：${ev.location}。原文：“${ev.quote}” 这句话直接对应题干。${recLine && fault !== 'no_recurrence' ? `上下文复现：${recLine}。` : ''}` }
           : { n: 2, title: '思路', text: '先把条件整理清楚，确定用哪个方法，再一步步推下去，每一步都检查条件是否满足。' },
         { n: 3, title: choice ? '排除干扰项' : '展开', text: choice ? `逐个看选项：${(q.options ?? []).filter((x) => !offLetter.includes(x.key)).map((x) => `${x.key} 与原文不符`).join('；')}。` : '按上一步的思路展开推导 / 分析，注意易错点。' },
         { n: 4, title: '结论', text: fault === 'nan' ? '所以结果是 NaN。' : fault === 'conflict' ? `综上，答案：${other}。` : choice ? `综上，答案：${ans}。` : `综上，参考答案：${ans}`.slice(0, 2000) },

@@ -434,6 +434,34 @@ const BUILTIN: Case[] = [
     },
   },
   {
+    id: 'r13-proposal-expired', scenario: '第 13 轮复测：待确认建议的目标日过了（X-Debug-Now 8 天后）→ 读成 expired、标题「已过期，计划没动。原本想…」，确认 409 proposal_expired 且什么都不改', input: 'nightly(ask) → X-Debug-Now +8 天读消息 → confirm', source: 'builtin',
+    expect: ['当天读还是 pending', '8 天后读 status=expired（顶层和 proposal.status）', '标题以「已过期」开头，不说「等你确认」', '确认 → 409 proposal_expired + 中文 message', '目标日计划没变'], must_not: ['过期后还能确认执行'],
+    run: async (s) => {
+      await s.send('PATCH', '/me/settings', { coach_frequency: 'ask' });
+      const d = await today(s);
+      const n1 = await s.send('POST', '/agent/jobs/run', { job: 'nightly', force: true });
+      const id = n1.body?.proposal?.message_id;
+      const target = n1.body?.proposal?.items?.[0]?.input?.date ?? addDays(d, 1);
+      const now0 = (await s.get('/agent/messages')).items.find((i: any) => i.id === id);
+      const planBefore = (await s.get(`/plans?from=${target}&to=${target}`)).items?.[0];
+      s.debugNow = localIso(s, addDays(d, 8), '10:00');
+      const later = (await s.get('/agent/messages')).items.find((i: any) => i.id === id);
+      const c = await s.send('POST', `/agent/messages/${id}/confirm`, {});
+      s.debugNow = null;
+      const planAfter = (await s.get(`/plans?from=${target}&to=${target}`)).items?.[0];
+      const n = (p: any) => (p?.tasks ?? []).length;
+      const row = (await db.query(`SELECT proposal->>'status' st FROM daily_tips WHERE id=$1`, [id])).rows[0];
+      return [
+        pass('当天读 pending', 'expect', now0?.status === 'pending' && now0?.proposal?.status === 'pending', `${now0?.status}`),
+        pass('8 天后 expired', 'expect', later?.status === 'expired' && later?.proposal?.status === 'expired' && later?.target_date === target, `${later?.status} ${later?.proposal?.status} ${later?.target_date}`),
+        pass('标题「已过期，计划没动。原本想…」', 'expect', /^已过期，计划没动。原本想/.test(later?.headline ?? '') && !/等你确认|还没执行|\{\{/.test(`${later?.headline}${later?.details}`), `${later?.headline} | ${later?.details}`),
+        pass('确认 → 409 proposal_expired', 'expect', c.status === 409 && c.body?.code === 'proposal_expired' && /过期/.test(c.body?.message ?? '') && c.body?.proposal?.status === 'expired', JSON.stringify(c.body).slice(0, 200)),
+        pass('目标日计划没变、库里没改', 'expect', n(planBefore) === n(planAfter) && row?.st === 'pending', `${n(planBefore)} → ${n(planAfter)} ${row?.st}`),
+        pass('过期后不能确认执行', 'must_not', c.status !== 200),
+      ];
+    },
+  },
+  {
     id: 'r8-proposal-dedupe', scenario: '第 8 轮：建议去重——已确认 / 计划里已有的不再提，热身排过一次不再提；老数据读时也显示过去时', input: 'nightly → 确认 → midday → weekly', source: 'builtin',
     expect: ['midday / weekly 不再出建议，结果里说原因', '消息里只有 1 条建议', '库里老的已确认建议读出来是过去时'], must_not: ['再提一次热身'],
     run: async (s) => {

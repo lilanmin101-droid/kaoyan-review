@@ -41,7 +41,9 @@ function deref(v, depth = 0) {
 function pickResponse(op, wantStatus) {
   const responses = op.responses || {};
   const codes = Object.keys(responses);
-  const code = wantStatus && responses[wantStatus] ? wantStatus : codes.find((c) => /^2/.test(c)) || codes[0];
+  // 默认取第一个 2xx（数字键按升序）；接口写了 x-mock-default-status（如开考默认 201 而不是「接着做」的 200）就用它
+  const def = op['x-mock-default-status'] && responses[String(op['x-mock-default-status'])] ? String(op['x-mock-default-status']) : null;
+  const code = wantStatus && responses[wantStatus] ? wantStatus : def || codes.find((c) => /^2/.test(c)) || codes[0];
   let resp = responses[code];
   if (resp?.$ref) resp = resolveRef(resp.$ref);
   return { code: Number(code) || 200, resp };
@@ -286,6 +288,18 @@ const customize = {
     }
     return latest;
   },
+  // 开考：按请求回填 exam / year / title；?__status=200 = 同一张卷已开着（resumed=true），?__status=409 = 别的卷没交（code=other_exam_active）
+  'POST /exams': (body, req) => {
+    const b = req.body || {};
+    const name = { math1: '数学一', english1: '英语一' }[b.exam] || b.exam;
+    return { ...body, ...(b.exam ? { exam: b.exam } : {}), ...(b.year ? { year: Number(b.year), title: b.title || `${b.year} ${name}` } : {}), server_time: now() };
+  },
+  // 放弃：默认正常放弃（discarded=false，status=abandoned）；?__example=discarded = 开考 2 分钟内一道没答 → 整场删除（discarded=true）
+  'POST /exams/{id}/abandon': (body, req) => {
+    const out = { ...body, id: req.params.id, server_time: now() };
+    if (!out.discarded) Object.assign(out, { status: 'abandoned', abandoned_at: now(), result: null });
+    return out;
+  },
   'PUT /exams/{id}/progress': (body, req) => {
     const b = req.body || {};
     const out = JSON.parse(JSON.stringify(body));
@@ -297,7 +311,6 @@ const customize = {
     for (const a of b.answers || []) out.progress.answers[a.question_id] = { answer: a.answer || [], time_spent_seconds: a.time_spent_seconds ?? null, flagged: !!a.flagged, client_seq: b.client_seq, saved_at: now() };
     return out;
   },
-  'POST /exams/{id}/abandon': (body, req) => ({ ...body, id: req.params.id, status: 'abandoned', abandoned_at: now(), server_time: now(), result: null }),
   // 交卷后自评：回填 id，按请求里的 self_ratings 改写示例里对应题的自评
   'POST /exams/{id}/self-ratings': (body, req) => {
     const out = { ...body, id: req.params.id, server_time: now(), duplicate: false };

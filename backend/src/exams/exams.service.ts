@@ -1,4 +1,4 @@
-import { selfGradeCheck } from './self-grade-check';
+import { selfGradeCheck, selfGradeFields } from './self-grade-check';
 import { subScoresSql } from '../common/grading';
 import { referenceAnswer } from '../questions/reference-answer';
 import { BadRequestException, ConflictException, Injectable, Logger, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
@@ -7,6 +7,7 @@ import { DbService } from '../db/db.service';
 import { LearningService } from '../mastery/learning.service';
 import { UserTimeService } from '../common/user-time.service';
 import { studyDate } from '../common/time';
+import { clockNow } from '../common/clock';
 import { AgentToolsService } from '../agent/agent-tools.service';
 import { ENGLISH1_COUNT, ENGLISH1_MINUTES } from '../english/english-spec';
 import { coachDetails, coachHeadline, PerQuestion, RATINGS, sectionOf, SelfRating, subjectOf, summarize } from './exam-summary';
@@ -42,14 +43,40 @@ export function subKeyOf(k: unknown, subs: string[]): string | null {
   return n != null && subs.includes(String(n)) ? String(n) : null;
 }
 
+/** 开考后多少秒内、一道没答就放弃 → 整场删掉（不留记录） */
+export const DISCARD_WINDOW_SECONDS = 120;
+
 @Injectable()
 export class ExamsService {
   private log = new Logger('Exams');
   constructor(private db: DbService, private learning: LearningService, private time: UserTimeService, private tools: AgentToolsService) {}
 
+  /**
+   * 开考前看有没有没交卷的：同一张卷（同 exam + year + kind，或同一组 question_ids）→ 直接返回那一场（resumed=true，前端直接进考场）；
+   * 别的卷没交 → 409 code=other_exam_active，带上那一场是哪张卷
+   */
+  private async activeFor(userId: string, b: { exam?: string; year?: number; question_ids?: string[]; kind?: string }) {
+    const a = await this.db.one(`SELECT id, kind, title, exam, year, status, question_ids, started_at FROM exams WHERE user_id=$1 AND status IN ('in_progress','paused') ORDER BY started_at DESC LIMIT 1`, [userId]);
+    if (!a) return null;
+    const ids = b.question_ids ?? [];
+    const same = ids.length
+      ? ids.length === a.question_ids.length && ids.every((x, i) => x === a.question_ids[i])
+      : !!b.exam && !!b.year && a.exam === b.exam && Number(a.year) === Number(b.year) && a.kind === (b.kind ?? 'paper');
+    if (same) return { ...(await this.view(null, a.id, userId)), resumed: true };
+    const v = await this.view(null, a.id, userId);
+    const answered = Object.values<any>(v.progress.answers ?? {}).filter((x) => Array.isArray(x?.answer) && x.answer.length).length;
+    throw new ConflictException({
+      code: 'other_exam_active',
+      message: `还有一场「${a.title}」模考没交卷，先接着做或放弃那一场，再开新的`,
+      active_exam_id: a.id,
+      active_exam: { id: a.id, kind: a.kind, title: a.title, exam: a.exam, exam_name: EXAM_CN[a.exam] ?? a.exam, year: a.year, status: a.status,
+        question_count: v.question_count, answered_count: answered, remaining_seconds: v.remaining_seconds, started_at: a.started_at },
+    });
+  }
+
   async create(userId: string, b: { exam?: string; year?: number; question_ids?: string[]; duration_minutes?: number; title?: string; kind?: string; include_unreviewed?: boolean }) {
-    const active = await this.db.one(`SELECT id FROM exams WHERE user_id=$1 AND status IN ('in_progress','paused')`, [userId]);
-    if (active) throw new ConflictException({ message: '还有一场没交卷的模考，先继续或交卷', active_exam_id: active.id });
+    const resumed = await this.activeFor(userId, b);
+    if (resumed) return resumed;
     let ids = b.question_ids ?? [];
     const spec = paperSpec(b.exam, b.year ? Number(b.year) : undefined);
     if (!ids.length) {
@@ -85,8 +112,9 @@ export class ExamsService {
     } catch (err: any) {
       // 两端同时开考：唯一索引兜底
       if (err?.code === '23505') {
-        const a = await this.db.one(`SELECT id FROM exams WHERE user_id=$1 AND status IN ('in_progress','paused')`, [userId]);
-        throw new ConflictException({ message: '还有一场没交卷的模考，先继续或交卷', active_exam_id: a?.id ?? null });
+        const again = await this.activeFor(userId, b); // 同一张卷 → 返回先开的那场；别的卷 → 409
+        if (again) return again;
+        throw new ConflictException({ code: 'other_exam_active', message: '还有一场没交卷的模考，先继续或交卷', active_exam_id: null, active_exam: null });
       }
       throw err;
     }
@@ -110,22 +138,24 @@ export class ExamsService {
       server_time: new Date().toISOString(), started_at: r.started_at, submitted_at: r.submitted_at, abandoned_at: r.abandoned_at ?? null,
       started_date: studyDate(new Date(r.started_at), tz), submitted_date: r.submitted_at ? studyDate(new Date(r.submitted_at), tz) : null, timezone: tz,
       progress: { answers: r.answers, current_question_id: r.current_question_id, last_client_seq: Number(r.last_client_seq), updated_at: r.progress_updated_at },
-      result: await this.backfillResult(q, r.result),
+      result: await this.backfillResult(q, r.result, r.answers),
     };
   }
 
   /** 老成绩补字段：per_question.correct_answer（标准答案）、自评过的解答题 answered=true；没评完的不带教练一句话 */
-  private async backfillResult(q: { query: PoolClient['query'] } | any, result: any) {
+  private async backfillResult(q: { query: PoolClient['query'] } | any, result: any, progressAnswers: any = {}) {
     const per: any[] | undefined = result?.per_question;
     if (!per?.length) return result;
+    // 英语翻译 / 作文的 word_count / min_words / unanswered / self_grade_flags：读时按存下的作答 + 自评档重算（老成绩补上；翻译字数以前按英文词算错了，也以重算为准）
+    const gradeFields = (p: any, row: any) => (p.objective || !row ? {} : selfGradeFields(row, p.answer ?? progressAnswers?.[p.question_id]?.answer ?? [], p.self_rating) ?? {});
     // 标准答案只给老成绩补；小问分值来源（sub_scores_source）每次按题库当前值给，行业专家改了 kp_tags 也能跟上
-    const qrows = new Map<string, any>((await q.query('SELECT id, type, answer, sub_scores_source FROM questions WHERE id = ANY($1)', [per.map((p) => p.question_id)])).rows.map((x: any) => [x.id, x]));
+    const qrows = new Map<string, any>((await q.query('SELECT id, exam, section, type, answer, sub_scores_source FROM questions WHERE id = ANY($1)', [per.map((p) => p.question_id)])).rows.map((x: any) => [x.id, x]));
     const rated = (p: any) => !!p.self_rating || (p.sub_scores ?? []).some((x: any) => x.self_rating);
     return {
       ...result,
       coach: result.pending_self_rating?.length ? null : result.coach ?? null,
       per_question: per.map((p) => ({
-        ...p, correct_answer: p.correct_answer ?? qrows.get(p.question_id)?.answer ?? [], answered: !!p.answered || (!p.objective && rated(p)),
+        ...p, ...gradeFields(p, qrows.get(p.question_id)), correct_answer: p.correct_answer ?? qrows.get(p.question_id)?.answer ?? [], answered: !!p.answered || (!p.objective && rated(p)),
         sub_scores_source: qrows.has(p.question_id) ? qrows.get(p.question_id).sub_scores_source ?? null : p.sub_scores_source ?? null,
         // 主观题参考答案（参考译文 / 范文 / 解答题答案）按题库当前值给；客观题为 null（看 correct_answer）
         reference_answer: qrows.has(p.question_id) ? referenceAnswer(qrows.get(p.question_id)) : p.reference_answer ?? null,
@@ -427,17 +457,32 @@ export class ExamsService {
   }
 
   /** 放弃这场：不判分、不进错题本，保留进度；腾出「进行中」的位置 */
+  /**
+   * 放弃：开考 2 分钟内（按「有效的现在」，X-Debug-Now 也算）且一道没答 → 整场删掉（统筹者定：误点开考不留痕迹，
+   * 历史 / 统计 / 周进度 / 错题 / 教练都看不到），返回 {discarded: true}；否则照旧记 abandoned、保留进度。
+   */
   async abandon(userId: string, examId: string) {
-    await this.db.tx(async (c) => {
+    const discarded = await this.db.tx(async (c) => {
       const e = await this.lockExam(c, examId, userId);
-      if (e.status === 'abandoned') return; // 重复放弃：幂等
+      if (e.status === 'abandoned') return false; // 重复放弃：幂等
       if (e.status === 'submitted') throw new ConflictException({ message: '已经交卷，不能放弃', status: e.status });
+      const answered = Object.values<any>(e.answers ?? {}).filter((x) => Array.isArray(x?.answer) && x.answer.some((v: any) => String(v ?? '').trim())).length;
+      const ageMs = clockNow().getTime() - new Date(e.started_at).getTime();
+      if (answered === 0 && ageMs <= DISCARD_WINDOW_SECONDS * 1000) {
+        const rec = (await c.query(`SELECT 1 FROM answer_records WHERE exam_id=$1 LIMIT 1`, [examId])).rows[0];
+        if (!rec) {
+          await c.query(`DELETE FROM exams WHERE id=$1 AND user_id=$2`, [examId, userId]); // exam_progress / 幂等记录级联删除
+          return true;
+        }
+      }
       let elapsed = e.elapsed_seconds;
       if (e.status === 'in_progress' && e.last_tick_at) elapsed += Math.min(Math.floor((Date.now() - new Date(e.last_tick_at).getTime()) / 1000), HEARTBEAT_CAP_SECONDS);
       await c.query(`UPDATE exams SET status='abandoned', abandoned_at=now() WHERE id=$1`, [examId]);
       await c.query(`UPDATE exam_progress SET elapsed_seconds=$2, last_tick_at=NULL, updated_at=now() WHERE exam_id=$1`, [examId, elapsed]);
+      return false;
     });
-    return this.view(null, examId, userId);
+    if (discarded) return { id: examId, status: 'discarded', discarded: true, server_time: new Date().toISOString() };
+    return { ...(await this.view(null, examId, userId)), discarded: false };
   }
 
   /** 教练一句话：写成 kind=exam_review 的主动消息（GET /agent/messages 能看到），id/headline 回填到 result.coach */

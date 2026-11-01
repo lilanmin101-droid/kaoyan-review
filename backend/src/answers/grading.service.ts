@@ -2,7 +2,7 @@ import { BadRequestException, Injectable, NotFoundException } from '@nestjs/comm
 import { DbService } from '../db/db.service';
 import { LearningService } from '../mastery/learning.service';
 import { chat, isConfigured, parseJsonLoose } from '../ai/llm';
-import { buildGradeMessages, countWords, disagrees, FAILED_GRADE_TEXT, fakeGrade, GradeKind, GradeResult, MAX_SCORE, normalizeGrade, PENDING_GRADE_TEXT, BAND_NAMES } from '../english/ai-grader';
+import { buildGradeMessages, countFor, countWords, disagrees, FAILED_GRADE_TEXT, fakeGrade, GradeKind, GradeResult, MAX_SCORE, normalizeGrade, PENDING_GRADE_TEXT, BAND_NAMES } from '../english/ai-grader';
 import { gradingKind } from '../english/english-spec';
 import { withTablesText } from '../common/tables';
 
@@ -51,7 +51,7 @@ export class GradingService {
     // 没有 DeepSeek Key（也不是测试假模型）：只记 pending，不给任何分数
     if (!aiFake() && !isConfigured('deepseek')) return present(await upsert({ status: 'pending' }));
 
-    const words = countWords(text);
+    const words = countFor(kind, text); // 翻译（英译汉）数汉字 + 英文词，作文数英文词
     const prow = a.passage_id ? await this.db.one(`SELECT text, tables FROM passages WHERE id=$1`, [a.passage_id]) : null;
     const passageText = prow ? withTablesText(prow.text, prow.tables) : null;
     const q = { stem: withTablesText(a.stem, a.tables), answer: a.reference ?? [], passage_text: passageText };
@@ -89,7 +89,7 @@ export class GradingService {
 
 /** 单个模型批一份作答（主评/复评、评测脚本 eval:grading 都走这里）；AI_FAKE=1 用确定性假模型 */
 export async function gradeWithModel(p: 'deepseek' | 'qwen', kind: GradeKind, q: { stem: string; answer?: string[]; passage_text?: string | null },
-  text: string, words: number = countWords(text)): Promise<GradeResult> {
+  text: string, words: number = countFor(kind, text)): Promise<GradeResult> {
   if (aiFake()) return normalizeGrade(fakeGrade(kind, q, text, p === 'deepseek' ? 'primary' : 'cross'), kind, p === 'deepseek' ? 'fake-grader-v1' : 'fake-qwen-v1', words);
   const messages = buildGradeMessages(kind, q, text, words);
   let lastErr: any;

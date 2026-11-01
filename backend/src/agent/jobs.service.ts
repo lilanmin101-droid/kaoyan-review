@@ -1,4 +1,4 @@
-import { proposalView } from './proposal-view';
+import { proposalExpired, proposalTargetDate, proposalView } from './proposal-view';
 import { randomUUID } from 'crypto';
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { SchedulerRegistry } from '@nestjs/schedule';
@@ -293,10 +293,12 @@ export class JobsService implements OnModuleInit {
 
   /** 用户确认 / 忽略教练的建议（POST /agent/messages/:id/confirm | dismiss）。confirm 可只选部分 items（下标） */
   async decideProposal(userId: string, messageId: string, decision: 'confirm' | 'dismiss', pick?: number[]) {
-    const row = await this.db.one(`SELECT id, proposal FROM daily_tips WHERE id=$1 AND user_id=$2 AND kind='proposal'`, [messageId, userId]);
+    const row = await this.db.one(`SELECT id, proposal, to_char(tip_date,'YYYY-MM-DD') date FROM daily_tips WHERE id=$1 AND user_id=$2 AND kind='proposal'`, [messageId, userId]);
     if (!row?.proposal) return { status: 404 as const };
     const pr = row.proposal;
     if (pr.status !== 'pending') return { status: 409 as const, proposal: pr };
+    // 目标日已经过了（按读者此刻的学习日，X-Debug-Now 也算）→ 过期：确认返回 409 proposal_expired，什么都不改；忽略照常可以
+    if (decision === 'confirm' && proposalExpired(pr, row.date, await this.time.today(userId))) return { status: 410 as const, proposal: pr, target_date: proposalTargetDate(pr, row.date) };
     const chosen: number[] = decision === 'dismiss' ? [] : pick?.length ? pick : pr.items.map((_: any, k: number) => k);
     if (chosen.some((k) => !Number.isInteger(k) || k < 0 || k >= pr.items.length)) return { status: 400 as const, proposal: pr };
     const collected: any[] = [];

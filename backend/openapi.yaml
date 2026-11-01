@@ -18,6 +18,7 @@ info:
       例：上海 11-02 00:04 跑夜间复盘 → 学习日 11-01，建议排到 11-02，文案「明天（11-02）」。
       **前端不算日界**：学生能看到的日期旁边都带一个相对叫法字段（`relative_day` / `due_relative_day`：今天 / 明天 / 昨天 / 后天 / 前天，更远为 null），直接显示；
       今天的学习日在 `GET /me/settings` 的 `today` / `effective.study_date` 和 `GET /plans/today` 的 `study_date`。
+      **「这周 / 本周 / 上周」一律写整周范围（周一–周日）**：「这周（11-02–11-08）」，不写成「这周（11-02）」。
       文案里的日子一律「相对叫法 + 日期」：±1 天（及后天/前天）「明天（11-02）」；6 天内「周三（11-04）」；更远「11-20（周五）」（日期在前、星期在括号里）。
     - **文字里的日期读时渲染**：存库的文案（建议、确认后的标题、改动记录 summary/reason、计划 why_changed、命令历史 events/result、复盘文案）
       里日期存成占位符 `{{date:2026-11-02}}`，每次读（含 SSE）都按**读者此刻的学习日**渲染成上面的叫法——同一条建议今天读是「明天（11-02）」、
@@ -1320,6 +1321,11 @@ paths:
       tags:
         - exams
       summary: 开始一场模考（整卷或自选题）
+      description: |
+        - 新开一场 → 201，`resumed: false`。
+        - 同一张卷（同 exam + year + kind；自选题按同一组 question_ids）已经开着没交卷（in_progress / paused）→ 200，返回那一场（同一个 id，status 原样），`resumed: true`。前端直接进考场，不要再出「还没交卷」页。
+        - 别的卷没交卷 → 409，`code: other_exam_active`，`active_exam` 写明是哪一场（title / exam / exam_name / year / status / 做了几道 / 剩余秒数），前端出「还有一场没交卷 · 放弃那一场 / 接着做」。
+        - 两端同时开同一张卷：后到的那次也拿到 200 + 先开的那一场。
       requestBody:
         required: true
         content:
@@ -1355,12 +1361,19 @@ paths:
               duration_minutes: 180
       responses:
         '201':
-          description: OK
+          description: 新开了一场（resumed=false）
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Exam'
+                allOf:
+                  - $ref: '#/components/schemas/Exam'
+                  - type: object
+                    properties:
+                      resumed:
+                        type: boolean
+                        description: true = 同一张卷已开着没交卷，返回的是那一场（HTTP 200）；false = 新开（HTTP 201）
               example:
+                resumed: false
                 id: 2c8e4f10-7a3b-4c5d-9e6f-0a1b2c3d4e5f
                 kind: paper
                 title: 2024 数学一
@@ -1390,14 +1403,72 @@ paths:
                   last_client_seq: 3
                   updated_at: '2026-11-01T12:05:00Z'
                 result: null
+        '200':
+          description: 同一张卷已经开着没交卷：返回那一场（同一个 id，status 原样 in_progress / paused），resumed=true，前端直接进考场
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Exam'
+                  - type: object
+                    properties:
+                      resumed:
+                        type: boolean
+              example:
+                resumed: true
+                id: 2c8e4f10-7a3b-4c5d-9e6f-0a1b2c3d4e5f
+                kind: paper
+                title: 2024 数学一
+                exam: math1
+                year: 2024
+                question_ids:
+                  - math1-2024-01
+                  - math1-2024-02
+                  - math1-2024-03
+                question_count: 3
+                status: in_progress
+                duration_seconds: 10800
+                elapsed_seconds: 1260
+                remaining_seconds: 9540
+                server_time: '2026-11-01T12:21:00Z'
+                started_at: '2026-11-01T12:00:00Z'
+                submitted_at: null
+                progress:
+                  answers:
+                    math1-2024-01:
+                      answer:
+                        - C
+                      time_spent_seconds: 300
+                      flagged: false
+                      client_seq: 3
+                      saved_at: '2026-11-01T12:05:00Z'
+                  current_question_id: math1-2024-02
+                  last_client_seq: 3
+                  updated_at: '2026-11-01T12:05:00Z'
+                result: null
         '409':
-          description: 已有没交卷的模考
+          description: 别的卷还有一场没交卷（同一张卷不会 409，见 200）；active_exam 写明是哪一场
           content:
             application/json:
               example:
                 statusCode: 409
-                message: 还有一场没交卷的模考，先继续或交卷
-                active_exam_id: 2c8e4f10-7a3b-4c5d-9e6f-0a1b2c3d4e5f
+                error: Conflict
+                code: other_exam_active
+                field: null
+                message: 还有一场「2020 英语一」模考没交卷，先接着做或放弃那一场，再开新的
+                active_exam_id: 7d1e2f30-1a2b-4c3d-8e9f-001122334455
+                active_exam:
+                  id: 7d1e2f30-1a2b-4c3d-8e9f-001122334455
+                  kind: paper
+                  title: 2020 英语一
+                  exam: english1
+                  exam_name: 英语一
+                  year: 2020
+                  status: in_progress
+                  question_count: 52
+                  answered_count: 12
+                  remaining_seconds: 8400
+                  started_at: '2026-11-01T16:20:00Z'
         '422':
           description: 这一年整卷没核对完（只有 confirmed 的题能进模考），列出缺的题号
           content:
@@ -1414,6 +1485,7 @@ paths:
         '404':
           description: 这一年还没导入
       operationId: postExams
+      x-mock-default-status: 201
   /exams/active:
     get:
       tags:
@@ -1729,7 +1801,8 @@ paths:
       tags:
         - exams
       summary: 放弃这场模考（不判分、不进错题本，保留进度；腾出「进行中」的位置，可以马上开新的一场）
-      description: 进行中 / 暂停的模考 → `status=abandoned`，计时停在放弃那一刻，`result` 保持 null，`progress.answers` 保留。重复调用返回 200（幂等）。已交卷的 → 409。放弃后 progress / submit 都返回 409。`GET /exams` 历史里照常列出（status=abandoned）。不需要请求体。
+      description: |
+        进行中 / 暂停的模考 → `status=abandoned`，计时停在放弃那一刻，`result` 保持 null，`progress.answers` 保留。重复调用返回 200（幂等）。已交卷的 → 409。放弃后 progress / submit 都返回 409。`GET /exams` 历史里照常列出（status=abandoned）。不需要请求体。**例外（统筹者定）**：开考后 2 分钟内（按服务端「有效的现在」，开发环境 X-Debug-Now 也算）且一道题都没作答就放弃 → 整场直接删除，不留任何记录（`GET /exams` 历史、统计、周进度、错题本、教练都看不到），返回 `{id, status: "discarded", discarded: true}`；之后再 GET / 放弃这个 id 都是 404。其余情况照旧返回放弃后的模考，带 `discarded: false`。
       parameters:
         - $ref: '#/components/parameters/ExamId'
       responses:
@@ -1739,38 +1812,49 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Exam'
-              example:
-                id: 2c8e4f10-7a3b-4c5d-9e6f-0a1b2c3d4e5f
-                kind: paper
-                title: 2017 数学一
-                exam: math1
-                year: 2017
-                question_ids: [math1-2017-01, math1-2017-02]
-                question_count: 23
-                max_score: 150
-                status: abandoned
-                duration_seconds: 10800
-                elapsed_seconds: 1260
-                remaining_seconds: 9540
-                server_time: '2026-11-01T15:00:00Z'
-                started_at: '2026-11-01T14:39:00Z'
-                submitted_at: null
-                abandoned_at: '2026-11-01T15:00:00Z'
-                started_date: '2026-11-01'
-                submitted_date: null
-                timezone: America/Los_Angeles
-                progress:
-                  answers:
-                    math1-2017-01:
-                      answer: [B]
-                      time_spent_seconds: 120
-                      flagged: false
-                      client_seq: 1
-                      saved_at: '2026-11-01T14:41:00Z'
-                  current_question_id: math1-2017-02
-                  last_client_seq: 1
-                  updated_at: '2026-11-01T15:00:00Z'
-                result: null
+              examples:
+                abandoned:
+                  summary: 正常放弃（保留记录，status=abandoned）
+                  value:
+                    discarded: false
+                    id: 2c8e4f10-7a3b-4c5d-9e6f-0a1b2c3d4e5f
+                    kind: paper
+                    title: 2017 数学一
+                    exam: math1
+                    year: 2017
+                    question_ids: [math1-2017-01, math1-2017-02]
+                    question_count: 23
+                    max_score: 150
+                    status: abandoned
+                    duration_seconds: 10800
+                    elapsed_seconds: 1260
+                    remaining_seconds: 9540
+                    server_time: '2026-11-01T15:00:00Z'
+                    started_at: '2026-11-01T14:39:00Z'
+                    submitted_at: null
+                    abandoned_at: '2026-11-01T15:00:00Z'
+                    started_date: '2026-11-01'
+                    submitted_date: null
+                    timezone: America/Los_Angeles
+                    progress:
+                      answers:
+                        math1-2017-01:
+                          answer: [B]
+                          time_spent_seconds: 120
+                          flagged: false
+                          client_seq: 1
+                          saved_at: '2026-11-01T14:41:00Z'
+                      current_question_id: math1-2017-02
+                      last_client_seq: 1
+                      updated_at: '2026-11-01T15:00:00Z'
+                    result: null
+                discarded:
+                  summary: 开考 2 分钟内一道没答就放弃 → 整场删除
+                  value:
+                    id: 2c8e4f10-7a3b-4c5d-9e6f-0a1b2c3d4e5f
+                    status: discarded
+                    discarded: true
+                    server_time: '2026-11-01T14:40:30Z'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -1786,7 +1870,7 @@ paths:
         - 每次自评都按作答记录写入（错题本 / 掌握度照常更新）：自评不是 full 的题（含部分得分）进错题本（source=exam）；之后改成 full 会把它从 active 转成 mastered。
         - 英语翻译 / 作文（统筹者定）：没作答（空或只有空白）不管评了哪档都记 0 分（self_rating 改成 no_idea，per_question.unanswered = true，submitted_self_rating = 提交上来的档）；交卷时没作答的这几题直接记 0 分，不用再评。
           字数线：小作文 < 50 词、大作文 < 80 词、翻译 < 参考译文词数的 30%。低于线但评了 full（基本到位）或 approach_ok_calc_wrong（大概一半）照记，per_question 带 `self_grade_flags: ["word_count_low"]`；
-          这几题的 per_question 都带 `word_count`（作答词数）、`min_words`（字数线）、`unanswered`、`self_grade_flags`（没问题是 []）。从模考进错题本的这几题，`GET /wrong-questions` 每项也带 self_grade_flags / word_count / min_words / unanswered。
+          这几题的 per_question 都带 `word_count`（作答词数）、`min_words`（字数线）、`unanswered`、`self_grade_flags`（没问题是 []）；这些字段出现之前交的老成绩，读的时候按存下的作答补算（分数不重算）。从模考进错题本的这几题，`GET /wrong-questions` 每项也带 self_grade_flags / word_count / min_words / unanswered。
         - 重算 result（总分、分题型、分科、丢分知识点、结论、pending_self_rating）。全部自评完时生成教练一句话（result.coach，同时是 GET /agent/messages 里 kind=exam_review 的消息）；之后再改自评会更新这句话。
         - 同一个 idempotency_key 重发返回第一次的结果（duplicate: true）。
         - **只评一部分小问会和之前评过的合并**（先评 (1)、之后再评 (2)，两个都在）；没给的小问保持原样。
@@ -3082,7 +3166,7 @@ paths:
       description: |
         只返回已送达的（delivered_at ≤ 现在）。免打扰时段里产生的消息排队，`queued` = 排队条数，`next_delivery_at` = 最早一条的送达时间（没有为 null）。
         每条带 `date`（学习日）和 `relative_day`（date 相对今天学习日的叫法：今天 / 昨天 / 前天…，更远 null；前端直接显示）。
-        kind=proposal（coach_frequency=ask 时）带 `proposal`：{status: pending|confirmed|dismissed, items:[{tool, input, summary, job}], created_at, decided_at?, applied_items?, action_ids?}；pending 时前端显示「确认 / 不用了」，调 /agent/messages/{id}/confirm 或 /dismiss。其它 kind 的 proposal 为 null。
+        kind=proposal（coach_frequency=ask 时）带 `proposal`：{status: pending|confirmed|dismissed|expired, items:[{tool, input, summary, job}], created_at, decided_at?, applied_items?, action_ids?}；pending 时前端显示「确认 / 不用了」，调 /agent/messages/{id}/confirm 或 /dismiss。其它 kind 的 proposal 为 null。
       parameters:
         - name: limit
           in: query
@@ -3131,6 +3215,30 @@ paths:
                                 estimated_minutes: 8
                                 payload:
                                   question_ids: [math1-2024-01]
+                  - id: 3c5d7e9f-1111-4222-8333-444455556666
+                    kind: proposal
+                    date: '2026-10-28'
+                    relative_day: null
+                    status: expired
+                    target_date: '2026-10-29'
+                    headline: 已过期，计划没动。原本想在10-29（周四）的计划里加「做 5 道基础题热身」。
+                    details: 建议的日子（10-29（周四））已经过去了，这些改动没有执行，也不能再确认。还需要的话，直接跟我说一声。
+                    source: agent
+                    delivered_at: '2026-10-28T23:00:00-08:00'
+                    seen_at: '2026-10-29T08:00:00-08:00'
+                    proposal:
+                      status: expired
+                      created_at: '2026-10-28T23:00:01-08:00'
+                      items:
+                        - job: nightly
+                          tool: updateDailyPlan
+                          summary: 想在10-29（周四）的计划里加「做 5 道基础题热身」
+                          input:
+                            date: '2026-10-29'
+                            add_tasks:
+                              - kind: practice
+                                title: 做 5 道基础题热身
+                                estimated_minutes: 25
                 unseen: 2
                 queued: 0
                 next_delivery_at: null
@@ -3190,18 +3298,37 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
         '409':
-          description: 已经确认或忽略过了（code=already_decided，message「这条建议已经处理过了」，另带 proposal；detail 仅供调试，不要展示）
+          description: |
+            - code=already_decided：已经确认或忽略过了（message「这条建议已经处理过了」，另带 proposal）。
+            - code=proposal_expired：建议的目标日已经过了（见 status=expired），什么都没改；message 是给学生看的中文（前端直接 toast），另带 target_date、proposal（status=expired）。
+            detail 仅供调试，不要展示。
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-              example:
-                statusCode: 409
-                error: Conflict
-                message: 这条建议已经处理过了
-                field: null
-                code: already_decided
-                detail: 之前已经确认了，不会重复执行
+              examples:
+                already_decided:
+                  value:
+                    statusCode: 409
+                    error: Conflict
+                    message: 这条建议已经处理过了
+                    field: null
+                    code: already_decided
+                    detail: 之前已经确认了，不会重复执行
+                proposal_expired:
+                  value:
+                    statusCode: 409
+                    error: Conflict
+                    message: 这条建议已经过期了，计划没动；还需要的话直接跟教练说一声
+                    field: null
+                    code: proposal_expired
+                    detail: 建议的日子已经过去了，不能再确认
+                    target_date: '2026-11-05'
+                    proposal:
+                      status: expired
+                      items:
+                        - tool: updateDailyPlan
+                          summary: 想在11-05（周四）的计划里加「做 5 道基础题热身」
       operationId: postAgentMessageConfirm
   /agent/messages/{id}/dismiss:
     post:
@@ -5324,8 +5451,16 @@ components:
           description: ai（DeepSeek 生成）/ mock（没 Key 时按作答数据的规则文案）/ agent
         status:
           type: [string, 'null']
-          enum: [pending, confirmed, dismissed, null]
-          description: 只有 kind=proposal 有：待确认 pending → 确认后 confirmed / 忽略后 dismissed（GET /agent/messages、/plans/today tips.proposal、confirm / dismiss 响应的 message 里都有）；其他消息为 null
+          enum: [pending, confirmed, dismissed, expired, null]
+          description: |
+            只有 kind=proposal 有：待确认 pending → 确认后 confirmed / 忽略后 dismissed（GET /agent/messages、/plans/today tips.proposal、confirm / dismiss 响应的 message 里都有）；其他消息为 null。
+            **expired（读时算）**：还没确认、但目标日（target_date）早于读者此刻的学习日（X-Debug-Now 也算）→ 过期。这时顶层 status 和 `proposal.status` 都是 expired，
+            headline 以「已」开头，如「已过期，计划没动。原本想在11-05（周四）的计划里加「做 5 道基础题热身」。」，前端原样显示（标「已过期」，不显示确认按钮）；
+            details「建议的日子（…）已经过去了，这些改动没有执行，也不能再确认。…」，不再说「等你确认后才执行」。确认 → 409 proposal_expired，什么都不改；忽略照常可以。
+        target_date:
+          type: [string, 'null']
+          format: date
+          description: 只有 kind=proposal 有：建议改动的目标日（各条里最晚的 input.date；没有日期的改动按生成那天的下一天）。早于今天的学习日 → status=expired
         updated_at:
           type: string
           format: date-time

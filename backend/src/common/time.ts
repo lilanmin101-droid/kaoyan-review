@@ -178,3 +178,10 @@ export function renderDeep(v: any, today: string, quotes = false): any {
   }
   return v;
 }
+
+/** 自然周（周一到周日）：from / to（YYYY-MM-DD）+ 标签「11-02–11-08」。「这周 / 本周」一律写整周范围 */
+export function weekOf(d: string) {
+  const wd = new Date(`${d}T12:00:00Z`).getUTCDay();
+  const from = addDays(d, -((wd + 6) % 7)), to = addDays(from, 6);
+  return { from, to, label: `${from.slice(5)}–${to.slice(5)}` };
+}

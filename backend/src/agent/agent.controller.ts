@@ -1,4 +1,6 @@
 import { proposalView } from './proposal-view';
+/** 过期是读时算的：顶层 status 和 proposal.status 都给 expired（前端看 proposal.status），库里不改 */
+const withView = (i: any, v: any) => ({ ...i, ...v, proposal: v.status === 'expired' ? { ...i.proposal, status: 'expired' } : i.proposal });
 import { clause, parseCount, questionKind } from './coach.service';
 import { BadRequestException, Body, ConflictException, Controller, Get, HttpCode, NotFoundException, Param, Post, Query, Res, UseGuards } from '@nestjs/common';
 import { DbService } from '../db/db.service';
@@ -149,7 +151,7 @@ export class AgentController {
       `SELECT id, kind, to_char(tip_date,'YYYY-MM-DD') date, COALESCE(headline, text) headline, details, source, delivered_at, seen_at, proposal
          FROM daily_tips WHERE user_id=$1 AND kind IN ('review','weekly','exam_review','nudge','proposal') AND delivered_at <= $3
         ORDER BY tip_date DESC, kind, created_at DESC LIMIT $2`, [u.id, Math.min(Number(limit) || 20, 100), clockNow()])).rows
-      .map((i: any) => (i.kind === 'proposal' && i.proposal ? { ...i, ...proposalView(i.proposal, i) } : { ...i, status: null })) // 确认 / 忽略后标题改成过去时（老数据读时也套）
+      .map((i: any) => (i.kind === 'proposal' && i.proposal ? withView(i, proposalView(i.proposal, i, today)) : { ...i, status: null })) // 确认 / 忽略后标题改成过去时（老数据读时也套）
       .map((i: any) => ({ ...i, relative_day: relativeDay(i.date, today) })); // 消息日期相对学习日的叫法
     // 免打扰时段里产生的消息：delivered_at 在将来，先不给，只告诉前端排着几条、几点送达
     const q = await this.db.one(`SELECT count(*)::int n, min(delivered_at) next_at FROM daily_tips WHERE user_id=$1 AND kind IN ('review','weekly','exam_review','nudge','proposal') AND delivered_at > $2`, [u.id, clockNow()]);
@@ -172,6 +174,7 @@ export class AgentController {
     if (items !== undefined && !Array.isArray(items)) throw new BadRequestException({ statusCode: 400, error: 'Bad Request', message: '没选中要执行的改动，请刷新后再试', field: 'items', code: 'invalid_items' });
     const r = await this.jobs.decideProposal(u.id, id, d, items);
     if (r.status === 404) throw new NotFoundException({ message: '没有这条待确认的建议，刷新一下再试', code: 'proposal_not_found' });
+    if (r.status === 410) throw new ConflictException({ message: '这条建议已经过期了，计划没动；还需要的话直接跟教练说一声', detail: '建议的日子已经过去了，不能再确认', code: 'proposal_expired', target_date: r.target_date, proposal: { ...r.proposal, status: 'expired' } });
     if (r.status === 409) throw new ConflictException({ message: '这条建议已经处理过了', detail: `之前已经${r.proposal.status === 'confirmed' ? '确认' : '忽略'}了，不会重复执行`, code: 'already_decided', proposal: r.proposal });
     if (r.status === 400) throw new BadRequestException({ statusCode: 400, error: 'Bad Request', message: '选中的改动不存在，请刷新后再试', field: 'items', code: 'invalid_items' });
     return { proposal: r.proposal, actions: r.actions, message: r.message };

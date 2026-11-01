@@ -7,6 +7,7 @@ import { latestReview } from './explanation-reviews';
  */
 import { chat, ChatMessage, ChatOptions, ChatResult, parseJsonLoose, ProviderId, providers } from './llm';
 import { withTablesText } from '../common/tables';
+import { ClozeRecurrence, clozeRecurrence } from './cloze-recurrence';
 
 export const PENDING_NOTICE = '这题讲解待核对';
 
@@ -19,10 +20,14 @@ export interface QuestionRow {
   passage_id?: string | null;
   /** 英语题所在文章（完形 / 阅读 / 新题型 / 翻译原文）；讲解提示词里带全文，证据句要从这里摘 */
   passage?: { id?: string; title?: string | null; directions?: string | null; text: string; tables?: any } | null;
+  /** 完形「上下文复现」专家标注；不给就按题号读 kp_tags.json 的 evidence（单测可显式注入 / 置 null） */
+  recurrence?: ClozeRecurrence | null;
 }
 
-/** 提示词版本：改了 generatorMessages / questionText 的内容就加一（gen:explanations 按它判断是否已生成） */
-export const PROMPT_VERSION = 'explain-v2';
+/** 提示词版本：改了 generatorMessages / questionText / 质检规则就加一（gen:explanations 按它判断是否已生成）
+ * v3：完形允许以空格所在句为证据；完形提示带行业专家标的「上下文复现」并要求讲解点出（质检核对） */
+export const PROMPT_VERSION = 'explain-v3';
+export const isCloze = (q: Pick<QuestionRow, 'exam' | 'section'>) => q.exam.startsWith('english') && q.section === 'use_of_english';
 
 /** 英语客观题（完形、阅读 A、新题型）：讲解要给出原文证据句位置 */
 export const isEnglishObjective = (q: QuestionRow) => q.exam.startsWith('english') && ['choice', 'match', 'single_choice', 'multi_choice'].includes(q.type);
@@ -134,8 +139,13 @@ export function generatorMessages(q: QuestionRow): ChatMessage[] {
     : isOpenEnded(q)
       ? '输出 JSON：{"steps":[{"n":1,"title":"一句话小目标","text":"这一步的讲解"}],"final_answer":"参考译文 / 范文要点（以【参考答案】为准）","key_points":["易错点"]}'
       : '输出 JSON：{"steps":[{"n":1,"title":"一句话小目标","text":"这一步的讲解"}],"final_answer":"你算出的最终答案（选择题只写字母）","key_points":["易错点"]}';
+  const rec = isCloze(q) ? clozeRecurrence(q) : null;
+  const evRule = isCloze(q)
+    ? '完形：证据句可以就是空格所在的那句（固定搭配、语法题的依据往往就在本句），quote 摘这句时空格写成 ____ 或填入答案都可以；有上下文复现 / 呼应时优先点出复现的词句'
+    : '新题型空位本身不算证据，要摘空位前后的句子';
   const extra = isEnglishObjective(q)
-    ? '英语客观题：必须定位原文证据句（新题型空位本身不算证据，要摘空位前后的句子；evidence.quote 原样摘录，paragraph/sentence_index 按【文章】里的 [第n段] 编号和句号计数）；讲解里写明「定位：第x段第y句」，逐个说明干扰项错在哪；最后一步写「答案：X」，全文不要把其他字母说成答案。'
+    ? `英语客观题：必须定位原文证据句（${evRule}；evidence.quote 原样摘录，paragraph/sentence_index 按【文章】里的 [第n段] 编号和句号计数）；讲解里写明「定位：第x段第y句」，逐个说明干扰项错在哪；最后一步写「答案：X」，全文不要把其他字母说成答案。`
+      + (rec ? `\n\n【上下文复现（行业专家标注）】${rec.note}\n讲解里必须点出这处复现：把原文里复现 / 呼应的词句原样引出来（英文），说明它和答案 ${rec.answer_term || '这个词'} 的关系；可以放在定位那一步，或在 evidence.quote 里摘含复现词句的那句。` : '')
     : isOpenEnded(q)
       ? (q.type === 'translation' ? '翻译题：拆句子结构（主干、从句、非谓语），讲关键词的译法，最后给出参考译文（以【参考答案】为准）。' : '写作题：审题（体裁、对象、要点）、结构与段落安排、可用句型，最后给出范文要点（以【参考答案】为准）。')
       : '';

@@ -3,7 +3,7 @@
  * 也被 npm run eval:agent 先跑一遍。
  */
 import { parseBudgetMinutes, parseCnNumber, parseCount, parseWrongFilter, quantityIntent } from '../src/agent/coach.service';
-import { proposalView } from '../src/agent/proposal-view';
+import { proposalTargetDate, proposalView } from '../src/agent/proposal-view';
 import { badPunct, clause, dayGreeting, hasLeak, laterToday, minutesText, textProblem } from '../src/agent/coach.service';
 import { isDupItem, addSeenTask, addSeenItem, dupSources, newSeen, jobReason, skipReason } from '../src/agent/jobs.service';
 import { composeWhy, whyOf } from '../src/plans/plans.service';
@@ -11,7 +11,7 @@ import { validateErrata, cleanErrata } from './import-questions';
 import { normalizeCommand } from '../src/agent/agent.controller';
 import { EXPLICIT_DAY_RE, planDedupeKey, nextQuantity, taskQuantity } from '../src/agent/agent-tools.service';
 import { isValidTz } from '../src/common/user-time.service';
-import { appendNote, earlyNote, nestQuotes, renderDates, toPlaceholders, wantsEarlyNote, withEarlyNote, badDayLabels, dayLabel, DAY_START_HOUR, localDate, relativeDay, startOfLocalDay, startOfStudyDay, studyDate, studyDaySql } from '../src/common/time';
+import { appendNote, earlyNote, nestQuotes, renderDates, toPlaceholders, wantsEarlyNote, withEarlyNote, badDayLabels, dayLabel, DAY_START_HOUR, localDate, relativeDay, startOfLocalDay, startOfStudyDay, studyDate, studyDaySql, weekOf } from '../src/common/time';
 import { coachFrequency, inQuiet, minutesUntilQuietEnds, quietHours, UserInputError, validateSettingsPatch } from '../src/common/reminders';
 import { streakOf } from '../src/auth/me-stats.service';
 import { intentSummary } from '../src/agent/jobs.service';
@@ -21,9 +21,13 @@ import { fixLemmas, isBasic, mergeExamples } from './import-vocab';
 import { resolveScoreByWhole } from '../src/common/grading';
 import { assertedLetters, estimateTokens, normEvidence, qualityCheck } from '../src/ai/explanation-gen';
 import { questionText } from '../src/ai/explain';
+import { gapSentenceMatch } from '../src/ai/explanation-gen';
+import { hasPhraseInPassage, parseRecurrence } from '../src/ai/cloze-recurrence';
+import { generatorMessages, PROMPT_VERSION } from '../src/ai/explain';
 import { pickModel, resolveDeepseekModel } from '../src/ai/llm';
 import { questionKind } from '../src/agent/coach-answers';
-import { selfGradeCheck } from '../src/exams/self-grade-check';
+import { selfGradeCheck, selfGradeFields } from '../src/exams/self-grade-check';
+import { countUnits } from '../src/english/ai-grader';
 import { referenceAnswer } from '../src/questions/reference-answer';
 import { parseGenArgs } from './gen-explanations';
 
@@ -123,6 +127,22 @@ export function runUnitTests() {
   eq('建议 部分确认', proposalView({ status: 'confirmed', items: [it('想在 11-02 的计划里加「A」'), it('想在 11-02 的计划里加「B」')], applied_items: [1] }).headline,
     '已改 1 处：已在 11-02 的计划里加了「B」；没改 1 处：在 11-02 的计划里加「A」');
   eq('建议 老数据过去时', proposalView({ status: 'confirmed', items: [it('在 10-31 的计划里加了「A」')] }).headline, '已在 10-31 的计划里加了「A」');
+  // 过期建议（读时算）：目标日早于读者的学习日 → expired，标题以「已」开头，不再说「等你确认」
+  {
+    const pr = { status: 'pending', items: [{ tool: 'updateDailyPlan', input: { date: '2026-11-05' }, summary: '想在 {{date:2026-11-05}} 的计划里加「做 5 道基础题热身」' }] };
+    eq('建议 目标日', proposalTargetDate(pr, '2026-11-04'), '2026-11-05');
+    eq('建议 目标日（没日期 → 生成日 +1）', proposalTargetDate({ status: 'pending', items: [{ tool: 'switchPhase', input: {}, summary: '想切到强化阶段' }] }, '2026-11-04'), '2026-11-05');
+    eq('建议 当天还没过期', proposalView(pr, { date: '2026-11-04' }, '2026-11-05').status, 'pending');
+    const v = proposalView(pr, { date: '2026-11-04' }, '2026-11-12');
+    eq('建议 过期 status', v.status, 'expired');
+    eq('建议 过期标题', v.headline, '已过期，计划没动。原本想在 {{date:2026-11-05}} 的计划里加「做 5 道基础题热身」。');
+    eq('建议 过期不说等你确认', /等你确认|还没执行/.test(`${v.headline}${v.details}`), false);
+    eq('建议 已确认不判过期', proposalView({ ...pr, status: 'confirmed', applied_items: [0] }, { date: '2026-11-04' }, '2026-11-12').status, 'confirmed');
+    eq('建议 不给 today 不判过期', proposalView(pr, { date: '2026-11-04' }).status, 'pending');
+  }
+  eq('自然周 周一', weekOf('2026-11-02').label, '11-02–11-08');
+  eq('自然周 周日', weekOf('2026-11-08').label, '11-02–11-08');
+  eq('自然周 跨月', weekOf('2026-11-01').label, '10-26–11-01');
   // 小问分值来源：题目自带 official / kp_tags 补的 estimated（条目可改）/ 平均拆 even_split / 没分值 null
   eq('subScoresSourceOf 默认 estimated', [subScoresSourceOf(), subScoresSourceOf('official'), subScoresSourceOf(undefined, 'official'), subScoresSourceOf('bogus')], ['estimated', 'official', 'official', 'estimated']);
   eq('subScoresSourceFor', [
@@ -240,6 +260,17 @@ export function runUnitTests() {
   eq('selfGradeCheck', [selfGradeCheck({ exam: 'english1', section: 'writing_a', type: 'essay' }, ['  ']), selfGradeCheck({ exam: 'english1', section: 'writing_b', type: 'essay' }, ['I think so.']),
     selfGradeCheck({ exam: 'english1', section: 'translation', type: 'essay', answer: ['one two three four five six seven eight nine ten'] }, ['a b c']), selfGradeCheck({ exam: 'math1', section: null, type: 'essay' }, ['x'])],
     [{ kind: 'writing_a', unanswered: true, word_count: 0, min_words: 50 }, { kind: 'writing_b', unanswered: false, word_count: 3, min_words: 80 }, { kind: 'translation', unanswered: false, word_count: 3, min_words: 3 }, null]);
+  // 英一翻译是英译汉：作答和参考译文都按「汉字 + 英文词」数（和前端一致），参考译文是中文时 min_words 不再是 0
+  eq('countUnits', [countUnits('社会在战后面临问题'), countUnits('The war ended.'), countUnits('GDP 增长了 5%'), countUnits('')], [9, 3, 4, 0]);
+  {
+    const tq = { exam: 'english1', section: 'translation', type: 'essay', answer: ['战争结束后，社会面临着入学率低、教育资源匮乏的问题，政府不得不重新规划整个教育体系并投入大量资金。'] };
+    const c = selfGradeCheck(tq, ['The war ended.'])!;
+    eq('selfGradeCheck 中文参考译文', [c.word_count, c.min_words > 10], [3, true]);
+    eq('selfGradeFields 翻译字数太少评 full → word_count_low', selfGradeFields(tq, ['The war ended.'], 'full')!.self_grade_flags, ['word_count_low']);
+    eq('selfGradeFields 中文译文够字数', selfGradeFields(tq, [tq.answer[0]], 'full')!.self_grade_flags, []);
+    eq('selfGradeFields 没作答', selfGradeFields(tq, [], 'no_idea'), { word_count: 0, min_words: c.min_words, unanswered: true, self_grade_flags: [] });
+    eq('selfGradeFields 作文仍数英文词', selfGradeFields({ exam: 'english1', section: 'writing_a', type: 'essay' }, ['亲爱的 Li Ming'], 'full'), { word_count: 2, min_words: 50, unanswered: false, self_grade_flags: ['word_count_low'] });
+  }
   eq('pickModel', [pickModel('deepseek', 'chat', ['deepseek-v4-flash', 'deepseek-v4-pro'], 'deepseek-chat'), pickModel('deepseek', 'chat', ['deepseek-flash'], 'deepseek-flash'), pickModel('qwen', 'chat', ['qwen-plus', 'qwen-max-latest'], 'qwen-max')],
     ['deepseek-v4-flash', 'deepseek-flash', 'qwen-max-latest']);
   eq('renderDates 周X', [renderDates('{{date:2026-11-04}}', '2026-11-01'), renderDates('{{date:2026-11-03}}', '2026-11-01')], ['周三（11-04）', '后天（11-03）']);
@@ -269,6 +300,26 @@ export function runUnitTests() {
     eq('QC 证据句不在原文', codes(mk('C', '答案：C', { quote: 'Plants never learn anything at all.' })), ['evidence_not_in_passage']);
     eq('QC 没有证据句', codes(mk('C', '答案：C', null)), ['evidence_missing']);
     eq('QC 完形空位 {{n}} 归一化后能匹配', codes(mk('C', '答案：C', { paragraph: 2, quote: 'Second paragraph ____ more detail.' })), []);
+    // v3：完形允许空格所在句（填了答案 / 写成 ____）；新题型不变；完形专家「上下文复现」要点出来
+    {
+      const cp = { text: 'Phones {{2}} on batteries, and batteries can die faster than we realize. You should be able to {{14}} gaps in the tree line due to roads.\n\nHead toward these {{16}} to find a way out. Keep going.' };
+      const rec = parseRecurrence('breaks 复现 gaps in the tree line');
+      const cq: any = { ...q, id: 'english1-2099-16', number: 16, section: 'use_of_english', stem: 'Head toward these （16）______ to find a way out.', answer: ['D'], options: [{ key: 'A', content: 'posts' }, { key: 'B', content: 'links' }, { key: 'C', content: 'shades' }, { key: 'D', content: 'breaks' }], passage: cp, errata: [], recurrence: rec };
+      const cmk = (quote: string, extra = '') => ({ ...mk('D', `综上，答案：D。${extra}`, { paragraph: 2, sentence_index: 1, location: '第2段第1句', quote }), final_answer: { official: 'D', primary: 'D', verifier: 'D' } });
+      const cc = (r: any, qq: any = cq) => qualityCheck(qq, r).failures.map((f) => f.code).filter((c) => c !== 'answer_letter_conflict');
+      eq('QC v3 完形：空格句填了答案 + 点出复现 → 通过', cc(cmk('Head toward these breaks to find a way out.', '上文 “gaps in the tree line” 复现。')), []);
+      eq('QC v3 完形：空格写成 ____ 也行', cc(cmk('Head toward these ____ to find a way out.', 'breaks 复现上文 gaps in the tree line。')), []);
+      eq('QC v3 完形：没点出复现 → recurrence_missing', cc(cmk('Head toward these breaks to find a way out.')), ['recurrence_missing']);
+      eq('QC v3 完形：没有专家标注不查复现', cc(cmk('Head toward these breaks to find a way out.'), { ...cq, recurrence: null }), []);
+      eq('QC v3 完形：编的句子照样不行', cc(cmk('Head toward the big breaks in order to escape.', 'gaps in the tree line')), ['evidence_not_in_passage']);
+      eq('QC v3 新题型：拿空位（选项原文）当证据仍不行', cc(cmk('Head toward these breaks to find a way out.'), { ...cq, section: 'reading_b', type: 'match', recurrence: null }), ['evidence_not_in_passage']);
+      eq('gapSentenceMatch 段落 / 至少 4 个原文词', [gapSentenceMatch(cp.text, 'Head toward these breaks to find a way out.'), gapSentenceMatch(cp.text, 'these breaks to')], [{ paragraph: 2, sentence: 1 }, null]);
+      eq('parseRecurrence', [parseRecurrence('way 呼应 Which ... is downhill / head downhill').cues, parseRecurrence('In contrast 对照 majority were willing vs only five of the 30').cues, rec.answer_term],
+        [[['Which', 'is downhill'], ['head downhill']], [['majority were willing'], ['only five of the 30']], 'breaks']);
+      eq('hasPhraseInPassage 复现词句跨空格', [hasPhraseInPassage('less likely to come {{8}} with a cold', 'come down with a cold'), hasPhraseInPassage('the {{3}} of', 'decide on')], [true, false]);
+      const gm = generatorMessages(cq).map((m) => m.content).join('\n');
+      eq('完形提示词带专家复现 + v3', [PROMPT_VERSION, gm.includes('【上下文复现（行业专家标注）】breaks 复现 gaps in the tree line'), gm.includes('空格所在的那句'), generatorMessages({ ...cq, section: 'reading_b', type: 'match' }).map((m) => m.content).join('').includes('新题型空位本身不算证据')], ['explain-v3', true, true, true]);
+    }
     eq('QC 段落号不对只警告', qualityCheck(q, mk('C', '答案：C', { paragraph: 2, quote: 'The author argues that "plants can learn."' })).warnings.map((w) => w.code), ['evidence_paragraph_mismatch']);
     eq('QC 太短 / 步数', codes({ steps: [{ n: 1, text: '答案：C' }], full_text: '', final_answer: { official: 'C', primary: 'C', verifier: 'C' }, generated: { evidence: mk('C', '').generated.evidence } }), ['step_count', 'too_short']);
     eq('QC 原卷误印没写「原卷如此」→ 警告', qualityCheck(q, mk('C', '原文 leran，答案：C')).warnings.map((w) => w.code), ['errata_not_marked']);

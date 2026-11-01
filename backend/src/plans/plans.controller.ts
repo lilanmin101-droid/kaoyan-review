@@ -49,7 +49,9 @@ export class PlansController {
       const t = tips.find((x) => x.kind === k) ?? null;
       if (!t) return null;
       const { proposal, ...rest } = t;
-      return k === 'proposal' && proposal ? { ...rest, proposal, ...proposalView(proposal, t) } : rest; // 建议确认 / 忽略后显示过去时
+      if (!(k === 'proposal' && proposal)) return rest;
+      const v = proposalView(proposal, t, date); // 建议确认 / 忽略后显示过去时；目标日已过的待确认建议读成 expired
+      return { ...rest, ...v, proposal: v.status === 'expired' ? { ...proposal, status: 'expired' } : proposal };
     };
     const urow = await this.db.one(`SELECT phase, COALESCE(settings->>'exam_date', to_char(exam_date,'YYYY-MM-DD')) exam_date FROM users WHERE id=$1`, [u.id]);
     const phase = urow?.phase ?? 'foundation';

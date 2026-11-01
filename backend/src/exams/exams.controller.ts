@@ -11,9 +11,17 @@ import { ExamsService, ProgressBody } from './exams.service';
 export class ExamsController {
   constructor(private svc: ExamsService) {}
 
-  /** 开考：{exam, year}（整卷须全部 confirmed，否则 422 + missing_numbers）；已有没交卷的 → 409 + active_exam_id */
+  /**
+   * 开考：{exam, year}（整卷须全部 confirmed，否则 422 + missing_numbers）。
+   * 同一张卷已经开着没交 → 200 + 那一场（resumed=true，前端直接进考场）；新开 → 201（resumed=false）；
+   * 别的卷没交 → 409 code=other_exam_active + active_exam_id + active_exam{title, exam, exam_name, year, …}
+   */
   @Post()
-  create(@CurrentUser() u: AuthUser, @Body() b: any) { return this.svc.create(u.id, b ?? {}); }
+  async create(@CurrentUser() u: AuthUser, @Body() b: any, @Res({ passthrough: true }) res: Response) {
+    const r: any = await this.svc.create(u.id, b ?? {});
+    if (r?.resumed) res.status(200);
+    return { ...r, resumed: !!r?.resumed };
+  }
 
   /** 模考历史 */
   @Get()

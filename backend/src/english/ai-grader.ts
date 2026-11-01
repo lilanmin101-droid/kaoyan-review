@@ -103,6 +103,10 @@ export function buildGradeMessages(kind: GradeKind, q: { stem: string; answer?: 
 }
 
 export const countWords = (t: string) => (String(t ?? '').match(/[A-Za-z]+(?:['’-][A-Za-z]+)*/g) ?? []).length;
+/** 汉字个数 + 英文词数（和前端 Exam.vue 的 cnt 一致）：英一翻译是英译汉，作答和参考译文都按这个数；作文只数英文词（countWords） */
+export const countUnits = (t: string) => { const x = String(t ?? ''); return (x.match(/[\u4e00-\u9fff]/g)?.length ?? 0) + countWords(x.replace(/[\u4e00-\u9fff]/g, ' ')); };
+/** 批改 / 自评用的「字数」：翻译 = 汉字 + 英文词，作文 = 英文词 */
+export const countFor = (kind: string, t: string) => (kind === 'translation' ? countUnits(t) : countWords(t));
 
 // ───────────── AI_FAKE=1：确定性假模型（测试专用） ─────────────
 const MISSPELL: Record<string, string> = { recieve: 'receive', becuase: 'because', enviroment: 'environment', definately: 'definitely', beleive: 'believe', goverment: 'government', untill: 'until', freind: 'friend', tommorow: 'tomorrow', seperate: 'separate' };

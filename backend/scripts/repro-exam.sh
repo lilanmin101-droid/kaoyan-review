@@ -46,8 +46,9 @@ J "assert d['stale'] is True and d['progress']['answers']['$(Q 1)']['answer']==[
 echo "== 4. F5：GET /exams/active 接回同一场"
 code=$(req GET /exams/active); J "e=d['exam'];assert e['id']=='$E' and e['status']=='in_progress' and len(e['progress']['answers'])==5 and e['progress']['last_client_seq']==3; print('  remaining', e['remaining_seconds'])" </tmp/exam_body; ok "active 返回同一场、答案都在"
 
-echo "== 5. 再开考 → 409 + active_exam_id"
-code=$(req POST /exams -d '{"exam":"math1","year":2018}'); [ "$code" = 409 ]; J "assert d['active_exam_id']=='$E'" </tmp/exam_body; ok "409 active_exam_id=$E"
+echo "== 5. 再开考：同一张卷 → 200 接回同一场；别的卷 → 409 + active_exam"
+code=$(req POST /exams -d '{"exam":"math1","year":2021}'); [ "$code" = 200 ]; J "assert d['id']=='$E' and d['resumed'] is True" </tmp/exam_body; ok "同一张卷 → 200 resumed，同一个 id"
+code=$(req POST /exams -d '{"exam":"math1","year":2018}'); [ "$code" = 409 ]; J "assert d['active_exam_id']=='$E' and d['code']=='other_exam_active' and d['active_exam']['year']==2021" </tmp/exam_body; ok "409 active_exam_id=$E"
 
 echo "== 6. 交卷（不带自评）"
 code=$(req POST /exams/$E/submit -d '{"idempotency_key":"submit-1"}'); [ "$code" = 200 ]
