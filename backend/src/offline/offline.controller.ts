@@ -4,7 +4,7 @@ import { DbService } from '../db/db.service';
 import { JwtGuard } from '../auth/jwt.guard';
 import { AuthUser, CurrentUser } from '../common/user.decorator';
 import { UserTimeService } from '../common/user-time.service';
-import { addDays, renderDeep, startOfStudyDay } from '../common/time';
+import { renderDeep } from '../common/time';
 import { clockNow } from '../common/clock';
 import { assetBaseFor } from '../common/assets';
 import { ENGLISH_SECTION_NAME } from '../english/english-spec';
@@ -121,7 +121,7 @@ export class OfflineController {
     };
     return {
       version: packVersion(content), study_date: today, relative_day: '今天', timezone: day.tz,
-      generated_at: clockNow().toISOString(), expires_at: startOfStudyDay(addDays(today, 1), day.tz).toISOString(),
+      generated_at: clockNow().toISOString(), expires_at: day.end.toISOString(), // 用户时区下一个 04:00（同 UserTimeService.day().end）
       counts: { passages: passageList.length, questions: questions.length, plan_questions: passageQs.length, wrong_redos: wrongQs.length,
         words: words.review.length + words.new.length + words.relearn.length, assets: assets.length },
       passages: passageList, questions, words, assets,

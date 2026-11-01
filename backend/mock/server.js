@@ -204,6 +204,13 @@ function studyDate(at, tz = MOCK_TZ) {
   const d = new Date(new Date(at).getTime() - DAY_START_HOUR * 3600000);
   return new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(d);
 }
+/** 学习日 date 之后的下一个 04:00（tz 当地），ISO */
+function nextStudyDayStart(date, tz) {
+  const [y, m, d] = date.split('-').map(Number);
+  const asUtc = Date.UTC(y, m - 1, d + 1, DAY_START_HOUR);
+  const off = (ms) => { const p = new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).formatToParts(new Date(ms)); const g = (t) => Number(p.find((x) => x.type === t).value); return Date.UTC(g('year'), g('month') - 1, g('day'), g('hour'), g('minute'), g('second')) - ms; };
+  return new Date(asUtc - off(asUtc - off(asUtc))).toISOString();
+}
 function relativeDay(date, today = MOCK_STUDY_DATE) {
   if (!date) return null;
   const n = Math.round((Date.parse(`${String(date).slice(0, 10)}T12:00:00Z`) - Date.parse(`${today}T12:00:00Z`)) / 86400000);
@@ -244,14 +251,24 @@ const withDue = (i) => { const dd = i.due_at ? studyDate(i.due_at) : null; retur
 const EXAM_CN_MOCK = { math1: '数学一', math2: '数学二', math3: '数学三', english1: '英语一', english2: '英语二', politics: '政治' };
 function examR15(e, req) {
   if (!e || typeof e !== 'object' || !('duration_seconds' in e) || !('status' in e)) return e;
-  const nc = e.non_continuous ?? ((e.paused_seconds || 0) > 900 || (!!e.submitted_date && !!e.started_date && e.submitted_date !== e.started_date));
+  // 第 16 轮：非连续只看累计暂停 > 900 秒；submitted_date = 开考学习日；自动交卷 remaining_seconds = 0
+  const nc = e.non_continuous ?? ((e.paused_seconds || 0) > 900);
   const out = { ...e, exam_name: e.exam_name ?? EXAM_CN_MOCK[e.exam] ?? e.exam, non_continuous: nc, counts_in_trend: e.status === 'submitted' && !nc,
     auto_submit_reason: e.auto_submitted ? (e.auto_submit_reason ?? 'time_up') : null,
     paused_at: e.status === 'paused' ? (e.paused_at ?? new Date(Date.now() - Math.max(60, Number(req?.query?.__paused_minutes || 3) * 60) * 1000).toISOString()) : null };
-  if (!('submitted_date' in e)) out.submitted_date = e.submitted_at ? String(e.submitted_at).slice(0, 10) : null;
+  out.submitted_date = e.submitted_at ? (e.started_date ?? String(e.started_at ?? e.submitted_at).slice(0, 10)) : null;
+  if (e.auto_submitted) out.remaining_seconds = 0;
+  if (!('progress' in e) && !('question_ids' in e)) Object.assign(out, scoreSplitMock(e)); // 只给列表项
   if ('progress' in e || 'question_ids' in e) Object.assign(out, { pause_warn_seconds: 600, non_continuous_pause_seconds: 900 });
   if (e.result && typeof e.result === 'object') out.result = { ...e.result, non_continuous: nc, counts_in_trend: !nc, auto_submit_reason: out.auto_submit_reason };
   return out;
+}
+/** 列表的分数拆分（同后端 scoreSplit）：英语 objective 60 / subjective 40（example 没有 per_question 时按 6:4 估）；其它科目 objective = 总分、subjective null */
+function scoreSplitMock(e) {
+  const base = { objective_score: e.score ?? null, objective_max: e.max_score ?? null, subjective_self_score: null, subjective_max: null, subjective_excluded_count: 0, subjective_ai_score: null };
+  if (!/^english/.test(e.exam || '')) return base;
+  const sub = e.score == null ? null : Math.min(40, Math.round(e.score * 0.4 * 2) / 2);
+  return { ...base, objective_score: e.score == null ? null : Math.round((e.score - sub) * 2) / 2, objective_max: 60, subjective_self_score: sub, subjective_max: 40 };
 }
 function withExamR15(body, key, req) {
   if (!/^(GET|POST|PUT) \/exams/.test(key) || !body || typeof body !== 'object') return body;
@@ -320,7 +337,8 @@ const customize = {
     return items ? { items: items.map(one) } : one(req.body || {});
   },
   // 离线题包：日期按 mock 的学习日回填（ETag / 304 / since_version 在下面的中间件里）
-  'GET /offline/pack': (body) => ({ ...body, study_date: MOCK_STUDY_DATE, generated_at: now(), words: body.words && { ...body.words, date: MOCK_STUDY_DATE, study_date: MOCK_STUDY_DATE } }),
+  // expires_at = 题包时区（example 是 Asia/Shanghai）里 study_date 之后的下一个 04:00（第 16 轮：以前直接用 example 的值，和改过的 study_date 对不上）
+  'GET /offline/pack': (body) => ({ ...body, study_date: MOCK_STUDY_DATE, generated_at: now(), expires_at: nextStudyDayStart(MOCK_STUDY_DATE, body.timezone || MOCK_TZ), words: body.words && { ...body.words, date: MOCK_STUDY_DATE, study_date: MOCK_STUDY_DATE } }),
   // 带 exam/year/question_ids 时用「每题最新」示例，并按 question_ids 回填
   'GET /answers': (body, req, op) => {
     const q = req.query || {};
@@ -476,7 +494,7 @@ for (const [p, item] of Object.entries(spec.paths)) {
       if (customize[key] && code < 300) body = customize[key](body, req, op);
       if (code < 300) body = withExamR15(body, key, req);
       // 409 exam_auto_submitted：带 auto_submitted / auto_submit_reason（?__reason=paused_too_long 模拟暂停超过 24 小时）
-      if (code === 409 && body && body.code === 'exam_auto_submitted') body = { ...body, auto_submitted: true, auto_submit_reason: req.query.__reason === 'paused_too_long' ? 'paused_too_long' : 'time_up',
+      if (code === 409 && body && body.code === 'exam_auto_submitted') body = { ...body, auto_submitted: true, auto_submit_reason: req.query.__reason === 'paused_too_long' ? 'paused_too_long' : 'time_up', remaining_seconds: 0,
         ...(req.query.__reason === 'paused_too_long' ? { message: '暂停超过 24 小时，已经按暂停那一刻保存的答案自动交卷' } : {}) };
       if (code < 300 && body && typeof body === 'object') body = renderMock(body, /^\/(agent|plans)\b/.test(req.path.replace(/^\/api\/v1/, '')));
       if (code < 300) body = withReferenceAnswers(body); // 模考成绩 per_question.reference_answer
@@ -484,7 +502,7 @@ for (const [p, item] of Object.entries(spec.paths)) {
         const msg = { 401: '未登录或登录已过期', 404: '没找到这个内容，可能已经被删掉了，刷新一下再试', 409: '这条已经处理过了，刷新一下看看最新状态' }[code];
         // 404/409 统一 {statusCode,error,message,field,code}（同后端）；example 自带 code 的保留它的 message
         body = { ...body, statusCode: code, ...(msg && !body.code ? { message: msg } : {}), error: { 400: 'Bad Request', 401: 'Unauthorized', 404: 'Not Found', 409: 'Conflict' }[code] || body.error,
-          ...(code === 404 || code === 409 ? { field: body.field ?? null, code: body.code ?? (code === 404 ? 'not_found' : 'conflict') } : {}) };
+          ...(code === 400 || code === 404 || code === 409 ? { field: body.field ?? null, code: body.code ?? (code === 400 ? 'bad_request' : code === 404 ? 'not_found' : 'conflict') } : {}) };
       }
       res.status(code).json(body);
     });

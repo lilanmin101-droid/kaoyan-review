@@ -162,3 +162,26 @@ export function coachDetails(s: ReturnType<typeof summarize>) {
     s.lost_by_kp.length ? `丢分知识点：${s.lost_by_kp.slice(0, 5).map((k) => `${k.name} ${k.lost} 分`).join('，')}` : '',
   ].filter(Boolean).join('\n');
 }
+
+/**
+ * 模考列表的分数拆分（第 16 轮，统筹者定）：
+ * - 英语（english1 / english2）：objective = 机器判分的客观题（英一满分 60）；subjective = 翻译 + 作文自评（英一满分 40），
+ *   字数太少（self_grade_flags 含 word_count_low）的自评不计入 subjective_self_score，条数记在 subjective_excluded_count；没评的也不计
+ * - 其它科目（数学等）：objective_score = 总分、objective_max = 满分，subjective_* = null（解答题自评已含在总分里，不单拆）
+ * - subjective_ai_score：预留给以后 AI 批改的主观题分，现在一律 null
+ */
+export function scoreSplit(exam: string, per: any[] | null | undefined, score: number | null, maxScore: number | null) {
+  const base = { objective_score: score ?? null, objective_max: maxScore ?? null, subjective_self_score: null as number | null, subjective_max: null as number | null, subjective_excluded_count: 0, subjective_ai_score: null as number | null };
+  if (!/^english/.test(exam ?? '') || !Array.isArray(per) || !per.length) return base;
+  const r2 = (x: number) => Math.round(x * 2) / 2;
+  const obj = per.filter((p) => p.objective), sub = per.filter((p) => !p.objective);
+  const low = (p: any) => Array.isArray(p.self_grade_flags) && p.self_grade_flags.includes('word_count_low');
+  return {
+    ...base,
+    objective_score: score == null ? null : r2(obj.reduce((t, p) => t + (Number(p.got) || 0), 0)),
+    objective_max: r2(obj.reduce((t, p) => t + (Number(p.score) || 0), 0)),
+    subjective_self_score: score == null ? null : r2(sub.filter((p) => !low(p)).reduce((t, p) => t + (Number(p.got) || 0), 0)),
+    subjective_max: r2(sub.reduce((t, p) => t + (Number(p.score) || 0), 0)),
+    subjective_excluded_count: sub.filter(low).length,
+  };
+}

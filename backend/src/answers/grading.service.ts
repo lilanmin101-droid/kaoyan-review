@@ -1,4 +1,5 @@
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { badRequest } from '../common/http-error.filter';
 import { DbService } from '../db/db.service';
 import { LearningService } from '../mastery/learning.service';
 import { chat, isConfigured, parseJsonLoose } from '../ai/llm';
@@ -15,13 +16,13 @@ export class GradingService {
   constructor(private db: DbService, private learning: LearningService) {}
 
   async load(userId: string, answerId: string) {
-    if (!/^[0-9a-f-]{36}$/i.test(answerId)) throw new BadRequestException('answer id 格式不对');
+    if (!/^[0-9a-f-]{36}$/i.test(answerId)) throw badRequest('answer id 格式不对', 'id', 'invalid_id');
     const a = await this.db.one(
       `SELECT a.id, a.user_id, a.question_id, a.answer, a.answered_at, a.exam_id, q.exam, q.year, q.number, q.section, q.type, q.stem, q.tables, q.answer AS reference, q.score::float score, q.passage_id
          FROM answer_records a JOIN questions q ON q.id=a.question_id WHERE a.id=$1 AND a.user_id=$2`, [answerId, userId]);
     if (!a) throw new NotFoundException('作答记录不存在');
     const kind = gradingKind(a);
-    if (!kind) throw new BadRequestException({ message: '这道题不需要 AI 批改（只批翻译和作文）', code: 'not_gradable' });
+    if (!kind) throw badRequest('这道题不需要 AI 批改（只批翻译和作文）', 'question_id', 'not_gradable');
     return { a, kind };
   }
 

@@ -1902,9 +1902,9 @@ paths:
         - **幂等**：同一个 `idempotency_key` 重发，返回第一次的结果（`duplicate: true`），不会重复生效。
         - **乱序**：`client_seq` 是客户端单调递增序号；比服务端已收到的小的请求视为旧请求（`stale: true`），不覆盖答案。每道题保留 seq 最大的答案。
         - **计时在服务端，按墙上时钟**（第 14 轮）：开考后时间一直走，锁屏 / 关 App / 断网照样计时；心跳只同步答案。`state: paused` / `running` = 明确的暂停 / 继续（同 `POST /exams/{id}/pause|resume`，次数不限，记进 `pause_count` / `paused_seconds`）。只有后端停机或这场请求 5xx 的时间补回（`server_credit_seconds`）。返回墙钟算的 `remaining_seconds`，前端以它为准。
-        - **到点自动交卷**：剩余时间到 0 后，任何读取 / 心跳 / 定时扫描都会按最后同步的答案自动交卷（`auto_submitted: true`，`submitted_at` = 到点时刻）；之后再发心跳 / 交卷 / 放弃 / 暂停 → 409 `{code: exam_auto_submitted, exam_id, status: submitted, auto_submitted: true, auto_submit_reason}`，前端转到成绩页。
+        - **到点自动交卷**：剩余时间到 0 后，任何读取 / 心跳 / 定时扫描都会按最后同步的答案自动交卷（`auto_submitted: true`，`submitted_at` = 到点时刻）；之后再发心跳 / 交卷 / 放弃 / 暂停 → 409 `{code: exam_auto_submitted, exam_id, status: submitted, auto_submitted: true, auto_submit_reason, remaining_seconds: 0}`，前端转到成绩页。
         - **一直暂停超过 24 小时**（第 15 轮）：同样自动交卷，`auto_submit_reason: paused_too_long`，`submitted_at` = 暂停开始那一刻，用时冻结在那一刻；之后的调用 409 同上。
-        - **非连续作答**（第 15 轮）：累计暂停 > 900 秒或跨了 04:00 学习日 → `non_continuous: true`（分数照常，不计入模考趋势，`GET /exams?trend=1` 不返回）。`pause_warn_seconds: 600` 供前端在暂停满 10 分钟时提醒；正在暂停时带 `paused_at`。
+        - **非连续作答**：累计暂停 > 900 秒 → `non_continuous: true`（第 16 轮起跨 04:00 不再算；整场归开考那天的学习日，`submitted_date` = 开考学习日）（分数照常，不计入模考趋势，`GET /exams?trend=1` 不返回）。`pause_warn_seconds: 600` 供前端在暂停满 10 分钟时提醒；正在暂停时带 `paused_at`。
       parameters:
         - $ref: '#/components/parameters/ExamId'
       requestBody:
@@ -2157,6 +2157,9 @@ paths:
                 message: 时间到了，已经按最后保存的答案自动交卷
                 exam_id: 2c8e4f10-7a3b-4c5d-9e6f-0a1b2c3d4e5f
                 status: submitted
+                auto_submitted: true
+                auto_submit_reason: time_up
+                remaining_seconds: 0
       operationId: postExamsByIdPause
   /exams/{id}/resume:
     post:
@@ -2203,6 +2206,9 @@ paths:
                 message: 时间到了，已经按最后保存的答案自动交卷
                 exam_id: 2c8e4f10-7a3b-4c5d-9e6f-0a1b2c3d4e5f
                 status: submitted
+                auto_submitted: true
+                auto_submit_reason: time_up
+                remaining_seconds: 0
       operationId: postExamsByIdResume
   /exams/{id}/abandon:
     post:
@@ -3042,7 +3048,9 @@ paths:
                       review:
                         $ref: '#/components/schemas/DailyTip'
                       weekly:
-                        $ref: '#/components/schemas/DailyTip'
+                        description: 本周（周一–周日，按 04:00 学习日）写的周报；新的一周还没写周报 → null（上周的周报不再放进今日卡片，去 GET /agent/messages 看）
+                        allOf:
+                          - $ref: '#/components/schemas/DailyTip'
                       nudge:
                         $ref: '#/components/schemas/DailyTip'
                       proposal:
@@ -4172,8 +4180,10 @@ components:
             $ref: '#/components/schemas/Error'
           example:
             statusCode: 400
-            message: 缺少 idempotency_key
+            message: 缺少 question_id
             error: Bad Request
+            field: question_id
+            code: missing_question_id
   schemas:
     QuestionTable:
       type: object
@@ -4444,6 +4454,9 @@ components:
       type: object
       description: |
         所有 400 / 404 / 409 都是这个形状；message 是可以直接给学生看的一句中文，field 是出错的字段（没有就是 null），code 给前端分支用。
+        第 16 轮：所有 400 都带 field 和 code（没单独指定的 code=bad_request、field=null）。POST /answers 单条参数错：code 同批量里 rejected 的 reason——
+        missing_question_id（field=question_id）、bad_self_rating（self_rating）、bad_client_id（client_id）、bad_source（source）、bad_answer（answer）、bad_answered_at（answered_at）；
+        批量 items 为空 empty_items / 超过 200 条 too_many_items（field=items）；GET /answers 的 invalid_year、invalid_question_ids、too_many_question_ids；批改 invalid_id、not_gradable。
         常见 code：already_undone「这条已经撤回过了」、not_undoable、action_not_found、already_decided「这条建议已经处理过了」、proposal_not_found、message_not_found、username_taken、not_found（未知路由等）。
       properties:
         statusCode:
@@ -5152,7 +5165,7 @@ components:
           description: 服务端计的作答时长
         remaining_seconds:
           type: integer
-          description: 服务端按墙上时钟算的剩余时间（前端以它为准）
+          description: 服务端按墙上时钟算的剩余时间（前端以它为准）；自动交卷（time_up / paused_too_long）后一律 0
         pause_count:
           type: integer
           description: 明确暂停的次数（不限次数）
@@ -5167,7 +5180,7 @@ components:
           description: 自动交的卷（原因见 auto_submit_reason）
         non_continuous:
           type: boolean
-          description: 非连续作答（第 15 轮）：累计暂停超过 non_continuous_pause_seconds（900 秒）或跨了 04:00 学习日（开考和交卷不在同一学习日）。分数、错题照常保存，只是不计入模考趋势 / 预测分。进行中就会实时标出
+          description: 非连续作答：只看累计暂停超过 non_continuous_pause_seconds（900 秒）（第 16 轮起跨 04:00 不再算，整场归开考那天的学习日，例：03:30 开考、04:10 交卷、没暂停 → 计入趋势）。分数、错题照常保存，只是不计入模考趋势 / 预测分。进行中就会实时标出
         counts_in_trend:
           type: boolean
           description: 是否计入模考趋势 / 预测分 = 已交卷 且 non_continuous=false
@@ -5249,6 +5262,7 @@ components:
             - string
             - 'null'
           format: date
+          description: 这场归属的学习日 = 开考那天的学习日（第 16 轮起；03:30 开考、04:10 交卷也算前一天）；没交卷为 null
         timezone:
           type: string
           description: 算日期用的用户时区
@@ -5528,10 +5542,10 @@ components:
             - string
             - 'null'
           format: date
-          description: 交卷的学习日（用户时区、04:00 换日），趋势图横轴用
+          description: 这场归属的学习日 = 开考那天的学习日（用户时区、04:00 换日；第 16 轮起 03:30 开考、04:10 交卷也算前一天），趋势图横轴用；没交卷为 null
         non_continuous:
           type: boolean
-          description: 非连续作答（第 15 轮）：累计暂停超过 non_continuous_pause_seconds（900 秒）或跨了 04:00 学习日（开考和交卷不在同一学习日）。分数、错题照常保存，只是不计入模考趋势 / 预测分。进行中就会实时标出
+          description: 非连续作答：只看累计暂停超过 non_continuous_pause_seconds（900 秒）（第 16 轮起跨 04:00 不再算，整场归开考那天的学习日，例：03:30 开考、04:10 交卷、没暂停 → 计入趋势）。分数、错题照常保存，只是不计入模考趋势 / 预测分。进行中就会实时标出
         counts_in_trend:
           type: boolean
           description: 是否计入模考趋势 / 预测分 = 已交卷 且 non_continuous=false
@@ -5555,6 +5569,37 @@ components:
           type: boolean
         remaining_seconds:
           type: integer
+          description: 剩余作答时间；自动交卷（time_up / paused_too_long）的场次一律 0
+        objective_score:
+          type:
+            - number
+            - 'null'
+          description: |
+            第 16 轮：分数拆分（趋势图用）。英语（english1 / english2）= 机器判分的客观题得分（英一满分 60）；
+            其它科目（数学等）= 总分 score（解答题自评已含在里面，不单拆），subjective_* 为 null。没交卷为 null
+        objective_max:
+          type:
+            - number
+            - 'null'
+          description: 英语 = 客观题满分（英一 60）；其它科目 = max_score
+        subjective_self_score:
+          type:
+            - number
+            - 'null'
+          description: 英语 = 翻译 + 作文的自评得分（不含字数太少、self_grade_flags 带 word_count_low 的自评；没评的不计）；其它科目 null
+        subjective_max:
+          type:
+            - number
+            - 'null'
+          description: 英语 = 翻译 + 作文满分（英一 40）；其它科目 null
+        subjective_excluded_count:
+          type: integer
+          description: 因字数太少（word_count_low）没计入 subjective_self_score 的自评题数；其它科目 0
+        subjective_ai_score:
+          type:
+            - number
+            - 'null'
+          description: 预留：以后 AI 批改的主观题得分，现在一律 null
         question_count:
           type: integer
         score:
@@ -5747,7 +5792,7 @@ components:
         expires_at:
           type: string
           format: date-time
-          description: 下一个学习日起点（当地 04:00）
+          description: 下一个学习日起点 = 用户时区（看 timezone 字段：先用「我的」里存的时区，没存才用 X-Timezone）里 study_date 之后的 04:00。例：Asia/Shanghai、study_date 2026-11-01 → 2026-11-01T20:00:00Z；America/Los_Angeles、study_date 2026-11-01 → 2026-11-02T12:00:00Z
         counts:
           type: object
           properties:

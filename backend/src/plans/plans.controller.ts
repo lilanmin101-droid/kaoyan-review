@@ -4,7 +4,7 @@ import { BadRequestException, Body, Controller, Get, Headers, NotFoundException,
 import { DbService } from '../db/db.service';
 import { JwtGuard } from '../auth/jwt.guard';
 import { AuthUser, CurrentUser } from '../common/user.decorator';
-import { addDays, relativeDay, studyDate } from '../common/time';
+import { addDays, relativeDay, studyDate, weekOf } from '../common/time';
 import { UserTimeService } from '../common/user-time.service';
 import { PlansService } from './plans.service';
 
@@ -48,6 +48,8 @@ export class PlansController {
     const pick = (k: string) => {
       const t = tips.find((x) => x.kind === k) ?? null;
       if (!t) return null;
+      // 第 16 轮：周报只在它那周（周一–周日，按 04:00 学习日）里放进今日卡片；新的一周还没写周报 → 不放（旧周报去 /agent/messages 看）
+      if (k === 'weekly' && weekOf(t.date).to < date) return null;
       const { proposal, ...rest } = t;
       if (!(k === 'proposal' && proposal)) return rest;
       const v = proposalView(proposal, t, date); // 建议确认 / 忽略后显示过去时；目标日已过的待确认建议读成 expired

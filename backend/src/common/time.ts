@@ -63,6 +63,8 @@ export function studyDate(at: Date = new Date(), tz?: string | null) {
 }
 /** 学习日 date 的起点（当地 04:00） */
 export const startOfStudyDay = (date: string, tz?: string | null) => startOfLocalDay(date, tz, DAY_START_HOUR);
+/** at 所在学习日结束的时刻 = 用户时区里下一个 04:00（离线题包 expires_at、单词 / 计划「今天」的结束都用它） */
+export const studyDayEnd = (at: Date, tz?: string | null) => startOfStudyDay(addDays(studyDate(at, tz), 1), tz);
 /** SQL：时间戳列按学习日落到哪一天（date 类型）。tz 是 SQL 里的参数 / 表达式，如 '$2' */
 export const studyDaySql = (col: string, tz: string) => `((${col} AT TIME ZONE ${tz}) - interval '${DAY_START_HOUR} hours')::date`;
 /** 相对学习日的叫法：今天 / 明天 / 后天 / 昨天 / 前天；更远 → null（前端不自己算日界，直接显示这个） */
@@ -94,7 +96,9 @@ export function badDayLabels(text: string, today: string, writtenOn?: string): s
   // 第 15 轮：同一段里「本周（range）」那周还没过完 → 倒计时应是现算的，不算错
   const curWeek = [...text.matchAll(/(本周|这周)（(\d{2})-(\d{2})[–-](\d{2})-(\d{2})）/g)].some((m) => { let y = Number(today.slice(0, 4)); if (today.slice(5, 7) === '01' && m[4] === '12') y--; return `${y}-${m[4]}-${m[5]}` >= today; });
   if (writtenOn && writtenOn < today && !curWeek) for (const m of text.matchAll(/(?<!当时)(距考试还有|距考试|离考试还有) ?\d+ ?天/g)) out.push(m[0]);
-  for (const m of text.matchAll(/\{\{(week|countdown|nextweek):[^}]*\}\}/g)) out.push(m[0]);
+  for (const m of text.matchAll(/\{\{(week|countdown|nextweek|wkt):[^}]*\}\}/g)) out.push(m[0]);
+  // 第 16 轮：那周已经过完（「那周（range）」），还写现在时的「当前阶段」「还没有…记录」
+  if (/那周（\d{2}-\d{2}[–-]\d{2}-\d{2}）/.test(text)) for (const m of text.matchAll(/当前阶段|还没有(?:作答|学习时长)记录/g)) out.push(m[0]);
   const year = today.slice(0, 4);
   for (const m of text.matchAll(/(今天|明天|后天|昨天|前天)（(\d{2})-(\d{2})）/g)) {
     // 跨年：12 月说 01-0x 是明年
@@ -153,7 +157,29 @@ export function toPlaceholders(text: string | null | undefined, ref: string): st
     .replace(WEEK_RE, (m, w, m1, d1) => { const st = withYear(m1, d1, ref); return weekOf(st).from === st ? `{{week:${st}|${w}}}` : m; })
     .replace(CD_RE, (_m, pre, n) => `{{countdown:${n}|asof=${ref}|${pre}}}`)
     // 第 15 轮：「下周重点补…」「下周最重要的一件事是…」→ {{nextweek:下周一|下周重点}}：…（下周开始后读成「当时定的下周重点：…」）
-    .replace(NEXTWEEK_RE, () => `${nextweekPh(addDays(weekOf(ref).to, 1))}：`);
+    .replace(NEXTWEEK_RE, () => `${nextweekPh(addDays(weekOf(ref).to, 1))}：`)
+    .replace(/^[\s\S]*$/, (t) => weekTense(t));
+}
+// 第 16 轮：周报里描述「那周状态」的现在时说法，按那周过没过完换时态（{{wkt:那周周一|现在时|过去时}}）
+const WEEK_TENSE: [RegExp, string, string][] = [
+  [/还没有作答记录，也还没有学习时长记录/g, '还没有作答记录，也还没有学习时长记录', '没有作答记录，也没有学习时长记录'],
+  [/还没有学习时长记录/g, '还没有学习时长记录', '没有学习时长记录'],
+  [/还没有作答记录/g, '还没有作答记录', '没有作答记录'],
+  [/当前阶段/g, '当前阶段', '当时阶段'],
+];
+export const wktPh = (start: string, cur: string, past: string) => `{{wkt:${start}|${cur}|${past}}}`;
+/** 同一段文字里有 {{week:START|…}}（周报）：「当前阶段」「还没有…记录」换成按那周时态渲染的占位符；已经是占位符的部分不动（幂等） */
+function weekTense(text: string): string {
+  const st = /\{\{week:(\d{4}-\d{2}-\d{2})\|/.exec(text)?.[1];
+  if (!st) return text;
+  return text.split(/(\{\{[^}]*\}\})/).map((seg) => {
+    if (seg.startsWith('{{')) return seg;
+    let out = seg;
+    for (const [re, cur, past] of WEEK_TENSE) {
+      out = out.split(/(\{\{[^}]*\}\})/).map((x) => (x.startsWith('{{') ? x : x.replace(re, wktPh(st, cur, past)))).join('');
+    }
+    return out;
+  }).join('');
 }
 const NEXTWEEK_RE = /(?<![|\w])下周(?:重点|最重要的(?:一件)?事)(?:是|[：:]\s*)?/g;
 export const nextweekPh = (start: string, word = '下周重点') => `{{nextweek:${start}|${word}}}`;
@@ -177,13 +203,14 @@ function renderWeekCd(text: string, today: string): string {
       if (liveWeek) return `${pre || '距考试'} ${Math.max(0, Number(n) - diff(asof, today))} 天`;
       return `当时${pre || '距考试'} ${n} 天`;
     })
-    .replace(/\{\{nextweek:(\d{4}-\d{2}-\d{2})\|([^}]*)\}\}/g, (_m, st, w) => `${today >= st ? '当时定的' : ''}${w || '下周重点'}`);
+    .replace(/\{\{nextweek:(\d{4}-\d{2}-\d{2})\|([^}]*)\}\}/g, (_m, st, w) => `${today >= st ? '当时定的' : ''}${w || '下周重点'}`)
+    .replace(/\{\{wkt:(\d{4}-\d{2}-\d{2})\|([^|}]*)\|([^}]*)\}\}/g, (_m, st, cur, past) => (weekOf(st).to < today ? past : cur));
 }
 /** 读的时候：占位符 → 相对今天（读者当时的学习日）的叫法 */
 /** 占位符还原成存库前的裸日期 MM-DD（快照里本来不存占位符的字段撤回时用：计划任务标题、提醒文字） */
-export const bareDates = <T>(s: T): T => (typeof s === 'string' ? (s.replace(/\{\{nextweek:[\d-]+\|([^}]*)\}\}/g, (_m: string, w: string) => w || '下周重点').replace(/\{\{week:(\d{4}-\d{2}-\d{2})\|([^}]*)\}\}/g, (_m: string, st: string, w: string) => `${w || '本周'}（${weekOf(st).label}）`).replace(/\{\{countdown:(\d+)\|asof=[\d-]+\|?([^}]*)\}\}/g, (_m: string, n: string, pre: string) => `${pre || '距考试'} ${n} 天`).replace(/\{\{date:\d{4}-(\d{2}-\d{2})(?:\|plan)?\}\}/g, '$1') as any) : s);
+export const bareDates = <T>(s: T): T => (typeof s === 'string' ? (s.replace(/\{\{wkt:[\d-]+\|([^|}]*)\|[^}]*\}\}/g, '$1').replace(/\{\{nextweek:[\d-]+\|([^}]*)\}\}/g, (_m: string, w: string) => w || '下周重点').replace(/\{\{week:(\d{4}-\d{2}-\d{2})\|([^}]*)\}\}/g, (_m: string, st: string, w: string) => `${w || '本周'}（${weekOf(st).label}）`).replace(/\{\{countdown:(\d+)\|asof=[\d-]+\|?([^}]*)\}\}/g, (_m: string, n: string, pre: string) => `${pre || '距考试'} ${n} 天`).replace(/\{\{date:\d{4}-(\d{2}-\d{2})(?:\|plan)?\}\}/g, '$1') as any) : s);
 export function renderDates(text: string, today: string): string {
-  if (text.includes('{{week:') || text.includes('{{countdown:') || text.includes('{{nextweek:')) text = renderWeekCd(text, today);
+  if (text.includes('{{week:') || text.includes('{{countdown:') || text.includes('{{nextweek:') || text.includes('{{wkt:')) text = renderWeekCd(text, today);
   if (!text.includes('{{date:')) return text;
   // 模板里裸日期两边常有空格（「在 11-02 的计划」）：渲染后两边的空格都去掉（「在11-02（周一）的计划」「在明天（11-02）的计划」）
   // |plan：往后看的说法（后面跟「先…」）。读的时候那天已经过去 → 「11-02（周一）当天计划重做…」（去掉「先」）；今天或以后照常「明天（11-02）先重做…」

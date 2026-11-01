@@ -44,22 +44,22 @@ c $T1b "$(at 10)" -XPUT $B/exams/$E/progress -d '{"idempotency_key":"h1","client
  c $T1b "$(at 25)" -XPOST $B/exams/$E/resume >/dev/null
 c $T1b "$(at 40)" -XPOST $B/exams/$E/submit -d '{}' | ok "d['non_continuous'] is False and d['counts_in_trend'] is True" "暂停正好 15 分钟 → 连续、计趋势"
 E15=$E
-# 2) 跨 04:00
-T2=$(login x04); E=$(c $T2 2026-11-03T02:30:00+08:00 -XPOST $B/exams -d '{"exam":"math1","year":2024}' | j "d['id']")
-c $T2 2026-11-03T03:50:00+08:00 $B/exams/$E | ok "d['non_continuous'] is False" "03:50 还没跨"
-c $T2 2026-11-03T04:20:00+08:00 -XPOST $B/exams/$E/submit -d '{}' | ok "d['non_continuous'] is True and d['started_date']!=d['submitted_date']" "02:30 开考 04:20 交卷 → 跨学习日 non_continuous"
+# 2) 跨 04:00（第 16 轮起不算非连续；整场归开考那天的学习日）
+T2=$(login x04); E=$(c $T2 2026-11-03T03:30:00+08:00 -XPOST $B/exams -d '{"exam":"math1","year":2024}' | j "d['id']")
+c $T2 2026-11-03T04:10:00+08:00 -XPOST $B/exams/$E/submit -d '{}' | ok "d['non_continuous'] is False and d['counts_in_trend'] is True and d['started_date']=='2026-11-02' and d['submitted_date']=='2026-11-02'" "03:30 开考 04:10 交卷、没暂停 → 连续、计趋势、归 11-02 学习日"
+c $T2 2026-11-03T04:11:00+08:00 "$B/exams?trend=1" | ok "len(d['items'])==1 and d['items'][0]['submitted_date']=='2026-11-02'" "进 trend=1，submitted_date=开考学习日"
 # 3) 暂停 25 小时 → 按暂停那一刻自动交卷
 T3=$(login p25); E=$(newexam $T3)
 c $T3 "$(at 20)" -XPUT $B/exams/$E/progress -d '{"idempotency_key":"a1","client_seq":1,"answers":[{"question_id":"math1-2024-01","answer":["A"]}]}' >/dev/null
 c $T3 "$(at 30)" -XPOST $B/exams/$E/pause >/dev/null
 c $T3 "$(at 1440)" $B/exams/$E | ok "d['status']=='paused'" "暂停 23.7 小时：还是 paused"
 PAUSE_AT=$(at 30)
-c $T3 "$(at 1530)" $B/exams/$E | ok "d['status']=='submitted' and d['auto_submitted'] is True and d['auto_submit_reason']=='paused_too_long' and d['elapsed_seconds']==1800 and d['non_continuous'] is True and abs(__import__('datetime').datetime.fromisoformat(d['submitted_at'].replace('Z','+00:00')).timestamp()-__import__('datetime').datetime.fromisoformat('$PAUSE_AT').timestamp())<1 and 'math1-2024-01' in d['progress']['answers']" "暂停 25 小时读：自动交卷，submitted_at=暂停那一刻，elapsed 冻结 30 分钟"
+c $T3 "$(at 1530)" $B/exams/$E | ok "d['status']=='submitted' and d['auto_submitted'] is True and d['auto_submit_reason']=='paused_too_long' and d['elapsed_seconds']==1800 and d['remaining_seconds']==0 and d['non_continuous'] is True and abs(__import__('datetime').datetime.fromisoformat(d['submitted_at'].replace('Z','+00:00')).timestamp()-__import__('datetime').datetime.fromisoformat('$PAUSE_AT').timestamp())<1 and 'math1-2024-01' in d['progress']['answers']" "暂停 25 小时读：自动交卷，submitted_at=暂停那一刻，elapsed 冻结 30 分钟"
 for ep in "POST /exams/$E/resume" "POST /exams/$E/pause" "POST /exams/$E/submit" "POST /exams/$E/abandon"; do
   set -- $ep; code=$(cs $T3 "$(at 1531)" -o /tmp/r15_body -w '%{http_code}' -X$1 $B$2 -d '{}')
-  python3 -c "import json,sys;d=json.load(open('/tmp/r15_body'));ok=sys.argv[1]=='409' and d['code']=='exam_auto_submitted' and d['auto_submitted'] is True and d['auto_submit_reason']=='paused_too_long';print('ok  ' if ok else 'FAIL', '$ep →', sys.argv[1], d.get('code'), d.get('auto_submit_reason'));sys.exit(0 if ok else 1)" "$code"; done
+  python3 -c "import json,sys;d=json.load(open('/tmp/r15_body'));ok=sys.argv[1]=='409' and d['code']=='exam_auto_submitted' and d['auto_submitted'] is True and d['auto_submit_reason']=='paused_too_long' and d.get('remaining_seconds')==0;print('ok  ' if ok else 'FAIL', '$ep →', sys.argv[1], d.get('code'), d.get('auto_submit_reason'));sys.exit(0 if ok else 1)" "$code"; done
 code=$(cs $T3 "$(at 1531)" -o /tmp/r15_body -w '%{http_code}' -XPUT $B/exams/$E/progress -d '{"idempotency_key":"a2","client_seq":2,"answers":[]}')
-python3 -c "import json,sys;d=json.load(open('/tmp/r15_body'));ok=sys.argv[1]=='409' and d['auto_submit_reason']=='paused_too_long';print('ok  ' if ok else 'FAIL','心跳 → 409 paused_too_long');sys.exit(0 if ok else 1)" "$code"
+python3 -c "import json,sys;d=json.load(open('/tmp/r15_body'));ok=sys.argv[1]=='409' and d['auto_submit_reason']=='paused_too_long' and d.get('remaining_seconds')==0;print('ok  ' if ok else 'FAIL','心跳 → 409 paused_too_long、remaining_seconds=0');sys.exit(0 if ok else 1)" "$code"
 # 时间到的老规则：auto_submit_reason=time_up
 T4=$(login tu); E=$(newexam $T4)
 code=$(cs $T4 "$(at 181)" -o /tmp/r15_body -w '%{http_code}' -XPOST $B/exams/$E/pause -d '{}')
@@ -68,5 +68,6 @@ python3 -c "import json,sys;d=json.load(open('/tmp/r15_body'));ok=sys.argv[1]=='
 c $T1 "$(at 60)" "$B/exams?trend=1" | ok "len(d['items'])==0" "暂停 16 分钟那场：trend=1 列表里没有"
 c $T1 "$(at 60)" "$B/exams" | ok "len(d['items'])==1 and d['items'][0]['non_continuous'] is True and d['items'][0]['counts_in_trend'] is False and d['items'][0]['score'] is not None and all(k in d['items'][0] and d['items'][0][k] is not None for k in ['score','max_score','submitted_at','submitted_date','title','exam','exam_name','year','status'])" "完整历史里还在（标 non_continuous、分数在）"
 c $T3 "$(at 1531)" "$B/exams?trend=1" | ok "len(d['items'])==0" "暂停 25 小时那场不进趋势"
+c $T3 "$(at 1531)" "$B/exams" | ok "d['items'][0]['remaining_seconds']==0 and d['items'][0]['auto_submit_reason']=='paused_too_long'" "列表：暂停超时自动交卷 remaining_seconds=0"
 c $T1b "$(at 60)" "$B/exams?trend=1" | ok "len(d['items'])==1 and d['items'][0]['id']=='$E15' and d['items'][0]['counts_in_trend'] is True" "连续那场进趋势"
 echo "R15 OK"

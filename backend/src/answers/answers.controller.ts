@@ -1,15 +1,18 @@
-import { BadRequestException, Body, Controller, Get, Headers, Post, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Headers, Post, Query, UseGuards } from '@nestjs/common';
 import { DbService } from '../db/db.service';
 import { JwtGuard } from '../auth/jwt.guard';
 import { AuthUser, CurrentUser } from '../common/user.decorator';
 import { AnswerInput, LearningService } from '../mastery/learning.service';
 import { ANSWER_SOURCES, BATCH_LIMIT, isValidClientId } from '../offline/offline';
+import { badRequest } from '../common/http-error.filter';
 
 const RATINGS = ['full', 'approach_ok_calc_wrong', 'no_idea'];
 const BAD_MSG: Record<string, string> = {
   missing_question_id: '缺少 question_id', bad_self_rating: `self_rating 只能是 ${RATINGS.join('/')}`,
   bad_client_id: 'client_id 要 1–128 位字母数字或 _ . : -（推荐 uuid）', bad_source: `source 只能是 ${ANSWER_SOURCES.join('/')}`, bad_answer: 'answer 要是字符串数组', bad_answered_at: 'answered_at 要是 ISO 时间',
 };
+/** 单条 400 的 field（code 就是 reason，和批量里 rejected 的 reason 一致） */
+const BAD_FIELD: Record<string, string> = { missing_question_id: 'question_id', bad_self_rating: 'self_rating', bad_client_id: 'client_id', bad_source: 'source', bad_answer: 'answer', bad_answered_at: 'answered_at' };
 /** 一条作答的参数检查：返回 rejected 的原因，没问题 null */
 export function checkItem(i: any): string | null {
   if (!i || typeof i !== 'object' || !i.question_id || typeof i.question_id !== 'string') return 'missing_question_id';
@@ -37,12 +40,12 @@ export class AnswersController {
   async create(@Body() b: AnswerInput | { items: AnswerInput[] }, @CurrentUser() u: AuthUser, @Headers('x-device') device?: string) {
     const batch = Array.isArray((b as any)?.items);
     const items: AnswerInput[] = batch ? (b as any).items : [b as AnswerInput];
-    if (batch && !items.length) throw new BadRequestException('items 不能为空');
-    if (items.length > BATCH_LIMIT) throw new BadRequestException(`一次最多 ${BATCH_LIMIT} 条，分几次传`);
+    if (batch && !items.length) throw badRequest('items 不能为空', 'items', 'empty_items');
+    if (items.length > BATCH_LIMIT) throw badRequest(`一次最多 ${BATCH_LIMIT} 条，分几次传`, 'items', 'too_many_items', { limit: BATCH_LIMIT });
     if (!batch) {
       // 单条：参数错直接 400（和以前一样）
       const bad = checkItem(items[0]);
-      if (bad) throw new BadRequestException(BAD_MSG[bad] ?? bad);
+      if (bad) throw badRequest(BAD_MSG[bad] ?? bad, BAD_FIELD[bad] ?? null, bad);
     }
     const results = await this.db.tx(async (c) => {
       const out: any[] = [];
@@ -83,13 +86,13 @@ export class AnswersController {
       const w: string[] = ['a.user_id=$1'];
       if (exam) { p.push(exam); w.push(`q.exam=$${p.length}`); }
       if (year) {
-        if (!/^\d{4}$/.test(year)) throw new BadRequestException('year 格式 YYYY');
+        if (!/^\d{4}$/.test(year)) throw badRequest('year 格式 YYYY', 'year', 'invalid_year');
         p.push(Number(year)); w.push(`q.year=$${p.length}`);
       }
       if (qids) {
         const ids = qids.split(',').map((s) => s.trim()).filter(Boolean);
-        if (!ids.length) throw new BadRequestException('question_ids 不能为空');
-        if (ids.length > 500) throw new BadRequestException('question_ids 一次最多 500 个');
+        if (!ids.length) throw badRequest('question_ids 不能为空', 'question_ids', 'invalid_question_ids');
+        if (ids.length > 500) throw badRequest('question_ids 一次最多 500 个', 'question_ids', 'too_many_question_ids', { limit: 500 });
         p.push(ids); w.push(`a.question_id = ANY($${p.length}::text[])`);
       }
       const rows = (await this.db.query(

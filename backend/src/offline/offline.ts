@@ -50,5 +50,5 @@ export function assetUrls(base: string, images: any, ...texts: any[]): string[] 
   return [...out];
 }
 
-/** 当地下一个 04:00（题包过期时间）由调用方用 startOfStudyDay(addDays(today,1)) 算；这里只把讲解步骤拼成纯文本 */
+/** 题包过期时间 = 用户时区下一个 04:00（UserTimeService.day().end，同 studyDayEnd）；这里只把讲解步骤拼成纯文本 */
 export const stepsText = (steps: { text: string }[] | null | undefined) => (steps?.length ? steps.map((s) => s.text).join('\n\n') : null);
