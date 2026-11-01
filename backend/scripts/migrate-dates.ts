@@ -26,8 +26,8 @@ async function main() {
       await c.query('UPDATE agent_actions SET before=$2, after=$3 WHERE id=$1', [r.id, b == null ? null : JSON.stringify(b), a == null ? null : JSON.stringify(a)]); bump('agent_actions.before_after');
     }
   }
-  for (const r of (await c.query(`SELECT id, user_id, created_at, text, headline, details, proposal FROM daily_tips`)).rows) {
-    const d = ref(r.user_id, r.created_at);
+  for (const r of (await c.query(`SELECT id, user_id, created_at, tip_date::text AS tip_date, text, headline, details, proposal FROM daily_tips`)).rows) {
+    const d = r.tip_date ?? ref(r.user_id, r.created_at); // 消息自己的学习日（调试时间写的也对得上）
     const v = { text: toPlaceholders(r.text, d), headline: toPlaceholders(r.headline, d), details: toPlaceholders(r.details, d), proposal: r.proposal?.items ? { ...r.proposal, items: placeholdersDeep(r.proposal.items, d) } : r.proposal };
     if (JSON.stringify(v) !== JSON.stringify({ text: r.text, headline: r.headline, details: r.details, proposal: r.proposal })) {
       await c.query('UPDATE daily_tips SET text=$2, headline=$3, details=$4, proposal=$5 WHERE id=$1', [r.id, v.text, v.headline, v.details, v.proposal == null ? null : JSON.stringify(v.proposal)]); bump('daily_tips');
@@ -47,6 +47,11 @@ async function main() {
       await c.query('UPDATE agent_commands SET events=$2, result=$3 WHERE id=$1', [r.id, e == null ? null : JSON.stringify(e), x == null ? null : JSON.stringify(x)]); bump('agent_commands');
     }
   }
+  // 第 14 轮：daily_tips 的倒计时「当时」以消息自己的学习日（tip_date）为准
+  const fx = await c.query(`UPDATE daily_tips SET text=regexp_replace(text, '\\|asof=\\d{4}-\\d{2}-\\d{2}', '|asof=' || tip_date::text, 'g'),
+      details=regexp_replace(details, '\\|asof=\\d{4}-\\d{2}-\\d{2}', '|asof=' || tip_date::text, 'g'), headline=regexp_replace(headline, '\\|asof=\\d{4}-\\d{2}-\\d{2}', '|asof=' || tip_date::text, 'g')
+    WHERE (coalesce(text,'') || coalesce(details,'') || coalesce(headline,'')) ~ '\\{\\{countdown:\\d+\\|asof=' AND (coalesce(text,'') || coalesce(details,'') || coalesce(headline,'')) !~ ('asof=' || tip_date::text)`);
+  if (fx.rowCount) n['daily_tips.countdown_asof'] = fx.rowCount;
   await c.query('COMMIT');
   console.log('date placeholders:', JSON.stringify(n));
   await c.end();
