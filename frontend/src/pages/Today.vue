@@ -47,7 +47,7 @@ function openTask(t: { kind: string; title: string; payload?: any }) {
 const days = computed(() => data.value?.days_to_exam ?? null)
 // 教练说：一次只说一句（今日一句 > 昨晚复盘 > 周报），不堆一屏建议
 // 主动消息（夜间复盘/周报）优先：只显示 headline，details 折叠；显示出来就报「看到了」，后端靠它决定要不要少打扰
-type Prop = { status: 'pending' | 'confirmed' | 'dismissed'; items: { summary: string }[] }
+type Prop = { status: 'pending' | 'confirmed' | 'dismissed' | 'expired'; items: { summary: string }[] }
 type Msg = { id: string; kind: string; headline: string; details?: string | null; seen_at?: string | null; proposal?: Prop | null }
 const msg = ref<Msg | null>(null), openMsg = ref(false), openWhy = ref(false)
 async function loadMsg() {
@@ -77,6 +77,7 @@ const pending = computed(() => msg.value?.proposal?.status === 'pending')
 // 提议处理完后标题还是「等你确认后才执行：想…」，前端按状态改成已经发生的说法
 const decided = (m: Msg) => { const its = (m.proposal?.items ?? []).map(x => x.summary.replace(/^想/, '')).filter(Boolean); const applied = (m.proposal as any)?.applied_items as number[] | undefined
   const done = applied ? its.filter((_, i) => applied.includes(i)) : its
+  if (m.proposal?.status === 'expired') return `已过期，计划没动。${its.length ? '原本想' + its.join('；') + '。' : ''}`
   return m.proposal?.status === 'confirmed' ? `按你确认的改好了：${done.join('；') || '计划已更新'}` : `这次没改。${its.length ? '原本想' + its.join('；') + '。' : ''}` }
 const coachSays = computed(() => (msg.value?.proposal && msg.value.proposal.status !== 'pending' ? (/^(已|这次|按你)/.test(msg.value.headline ?? '') ? msg.value.headline : decided(msg.value)) : msg.value?.headline) || data.value?.tips?.tip?.text || data.value?.tips?.review?.text || data.value?.tips?.weekly?.text || '')
 const tasks = computed(() => data.value?.plan?.tasks ?? [])
