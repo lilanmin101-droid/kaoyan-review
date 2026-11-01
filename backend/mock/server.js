@@ -296,7 +296,7 @@ const customize = {
     return items ? { items: items.map(one) } : one(req.body || {});
   },
   // 离线题包：日期按 mock 的学习日回填（ETag / 304 / since_version 在下面的中间件里）
-  'GET /offline/pack': (body) => (body.not_modified ? body : { ...body, study_date: MOCK_STUDY_DATE, generated_at: now(), words: body.words && { ...body.words, date: MOCK_STUDY_DATE, study_date: MOCK_STUDY_DATE } }),
+  'GET /offline/pack': (body) => ({ ...body, study_date: MOCK_STUDY_DATE, generated_at: now(), words: body.words && { ...body.words, date: MOCK_STUDY_DATE, study_date: MOCK_STUDY_DATE } }),
   // 带 exam/year/question_ids 时用「每题最新」示例，并按 question_ids 回填
   'GET /answers': (body, req, op) => {
     const q = req.query || {};
@@ -374,7 +374,7 @@ app.use(PREFIX + '/assets', (req, res, next) => {
   fs.createReadStream(file).pipe(res);
 });
 
-// 离线题包：ETag = "<version>"，If-None-Match 一致 → 304；?since_version 一致 → {not_modified:true,...}
+// 离线题包：ETag = "<version>"，If-None-Match 或 ?since_version 和当前一致 → 304
 const MOCK_ANSWERS = new Map();
 app.get(PREFIX + '/offline/pack', (req, res, next) => {
   const ex = spec.paths['/offline/pack'].get.responses['200'].content['application/json'].examples.pack.value;
@@ -382,7 +382,7 @@ app.get(PREFIX + '/offline/pack', (req, res, next) => {
   res.setHeader('Cache-Control', 'private, no-cache');
   const inm = String(req.headers['if-none-match'] || '').replace(/^W\//, '').replace(/"/g, '');
   if (inm && inm === ex.version && !req.query.__status) return res.status(304).end();
-  if (req.query.since_version && req.query.since_version === ex.version && !req.query.__example) req.query.__example = 'not_modified';
+  if (req.query.since_version && req.query.since_version === ex.version && !req.query.__status) return res.status(304).end();
   next();
 });
 

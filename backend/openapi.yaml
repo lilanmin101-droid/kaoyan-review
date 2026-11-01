@@ -1168,14 +1168,14 @@ paths:
           已核对 AI 讲解 / 行业专家 / 官方解析，带步骤，此时 `explanation_status: 'ready'`）；库里没有讲解时 `explanation: null`、`explanation_status: 'pending'`（英语一在接上 Key、跑完 gen:explanations 之前都是 pending）。不会现场生成。
         - `words` 和 `GET /words/today` 是同一份数据。
         - `assets`：需要预缓存的图片地址（都在 `/api/v1/assets/` 下，免登录）。
-        - `version`：内容的稳定哈希，内容不变就不变。响应头带 `ETag: "<version>"`，请求带 `If-None-Match` 且没变 → 304；
-          也可以用 `?since_version=<version>`，没变时返回 200 `{not_modified:true, version, study_date, expires_at}`。
-        - 离线作答补传走 `POST /answers`（带 `client_id`、`answered_at`、`source:'offline_pack'`、`pack_version`），可以批量 `{items:[...]}`。
+        - `version`：内容的稳定哈希，内容不变就不变。响应头带 `ETag: "<version>"`。`?since_version=<version>` 或 `If-None-Match` 和当前一致 → 304（没有响应体），本地包接着用。
+        - 每题 `solution`：库里已有讲解的纯文本（Markdown，步骤用空行隔开），没有时 null；结构化的在 `explanation`。
+        - 离线作答补传只走 `POST /answers`（每条带 `client_id`、`answered_at`、`source:'offline_pack'`、`pack_version`；也可以 `{items:[...]}` 一次传多条）。没有单独的 batch 接口。
       operationId: getOfflinePack
       parameters:
         - name: since_version
           in: query
-          description: 本地已有的版本号；没变就只回 not_modified
+          description: 本地已有的版本号；和当前一致 → 304
           schema:
             type: string
         - name: If-None-Match
@@ -1185,7 +1185,7 @@ paths:
             type: string
       responses:
         '200':
-          description: 题包（或 since_version 没变时的 not_modified）
+          description: 题包
           headers:
             ETag:
               schema:
@@ -1270,6 +1270,7 @@ paths:
                           - D
                         reference_answer: null
                         explanation_status: ready
+                        solution: 空后是「需要被触碰才能开关」，和自动门的特点相反，选 Without（不需要……）。
                         explanation:
                           source: expert
                           source_label: 行业专家参考解答（非官方解析）
@@ -1308,6 +1309,7 @@ paths:
                           - B
                         reference_answer: null
                         explanation_status: pending
+                        solution: null
                         explanation: null
                         wrong_question_id: 3a1f0e22-5b6c-4d7e-8f90-a1b2c3d4e5f6
                         wrong_status: active
@@ -1337,15 +1339,8 @@ paths:
                         position: 1
                     assets:
                       - /api/v1/assets/images/math1-2024-05-fig1.png
-                not_modified:
-                  summary: ?since_version= 和当前一致
-                  value:
-                    not_modified: true
-                    version: 3f9a1c2e7b4d5a60
-                    study_date: '2026-11-02'
-                    expires_at: '2026-11-02T20:00:00.000Z'
         '304':
-          description: If-None-Match 和当前 ETag 一致，没有响应体
+          description: since_version 或 If-None-Match 和当前 version 一致，没有响应体
         '401':
           $ref: '#/components/responses/Error'
   /passages:
@@ -5660,9 +5655,6 @@ components:
     OfflinePack:
       type: object
       properties:
-        not_modified:
-          type: boolean
-          description: 只在 ?since_version 和当前一致时出现（此时只有 version / study_date / expires_at）
         version:
           type: string
           description: 内容的稳定哈希（题、答案、讲解、单词变了才变）
@@ -5732,6 +5724,9 @@ components:
               reference_answer:
                 type: ['string', 'null']
                 description: 主观题参考答案（翻译参考译文 / 范文 / 题库答案）
+              solution:
+                type: ['string', 'null']
+                description: 库里已有讲解的纯文本（explanation.steps 用空行拼起来）；pending 时 null
               explanation_status:
                 type: string
                 enum: [ready, pending]
