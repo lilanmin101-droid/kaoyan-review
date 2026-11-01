@@ -1,0 +1,3 @@
+[2026-11-01T07:23-08:00] 任务 A（原卷版式）：未找到原卷版式（绝密★启用前 / 科目代码 201）PDF。
+- gw.xztu.edu.cn 只有 2017/2018 的 .doc 文字版（https://gw.xztu.edu.cn/info/1115/1151.htm、/1143.htm），没有 2015/2016。
+- Fantasia1999/kaoyanzhenti 考场版重排 PDF 与 deyideyi（static.zmxiaodao.com/downloads/2015-eng1.pdf）都是重排版，不是原卷扫描；已用 Fantasia 核对 1–40 题选项顺序（与现有数据一致）。

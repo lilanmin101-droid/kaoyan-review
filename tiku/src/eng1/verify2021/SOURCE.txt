@@ -1,0 +1,8 @@
+2021 英语（一）原卷版式扫描件 —— 已找到
+文件：xztu.pdf（15 页，4.99 MB，600 dpi 黑白扫描 + OCR 文字层）
+URL：https://gw.xztu.edu.cn/__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf
+页面：https://gw.xztu.edu.cn/info/1115/1155.htm（公共外语部「2021年考研英语一真题」，栏目 https://gw.xztu.edu.cn/xxyd/kyyy.htm）
+核验：第 1 页封面为「绝密★启用前 / 2021 年全国硕士研究生招生考试 / 英语（一）试题 / （科目代码：201）/ ☆考生注意事项☆ 1–5 条 / 考生编号 考生姓名」，
+      每页页脚「英语（一）试题 .n.（共 14 页）」，与 2024 xztu 原卷版式一致。OCR 文字层丢字严重（双写字母常丢），只能看图核对。
+用途：已据此把 2021 第 1–40 题和 Part B（A–G）选项顺序改回原卷顺序（supplements/2021.json），并修正若干措辞（build_eng1.py YEAR_FIXES 2021）。
+取得时间：2026-11-01T07:23-08:00

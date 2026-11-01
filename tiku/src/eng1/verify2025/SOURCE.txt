@@ -1,0 +1,14 @@
+
+[2026-11-01T07:23-08:00] 任务 A（原卷版式）：
+- gw.xztu.edu.cn 有 2025 卷：https://gw.xztu.edu.cn/info/1115/1259.htm → /__local/1/67/A0/9CCC546CDAB97D34C77B2F27E19_C023C101_187573F.pdf（25.6 MB，疑为扫描件）。服务器很慢，两次下载都在约 20.9 MB 处中断，没拿到完整文件，未核验版式。
+- 已有 tup_2025_eng1.pdf 只有 2 页（封面 + 完形），不是整卷。
+- Fantasia1999/kaoyanzhenti 的 2025（考场版，重排，非原卷扫描）完形与 LIziak 一致。
+
+[2026-11-01T07:26-08:00] 找到 2025 原卷版式完整卷（OCR 文字层 + 前 8 页预览图）：
+- 页面：https://www.yeyulingfeng.com/wendang/539186.html（15 页 PDF，24.5 MB，与 gw.xztu 25,646,911 字节那份大小一致，应是同一扫描件）
+- 预览图：https://static.diaifu.net/ssd/ssd5/wenku/2026-04-24/e383607530670fdecf3c2dc470ceca6c/e383607530670fdecf3c2dc470ceca6c_{1..8}.webp → 存为 yeyulingfeng_p1/p2/p3.webp
+- 文字层存为 yeyulingfeng_ocr.txt（已去掉水印「世纪高教编辑部」；OCR 噪声如 fbr/thafs/9=’ 未改）
+- 核验：封面「绝密★启用前 / 2025年全国硕士研究生招生考试 / 英语（一）试题 / （科目代码：201）/ ☆考生注意事项☆」，页脚「英语（一）试题 第 n 页（共 14 页）」。
+- 原卷完形（p2 图）：「around 3500 B.C. This area」（没有 Mycenaean 那句）、「In 1967, a scientific survey」、「Chrysanthi Gallon」、「__14__ excavation of」（没有 the）；
+  Text 4 没有 Ranganathan 那句，并且是「when digital replace analog」。这些和当前数据（按专家要求）不一致，待定。
+- PDF 本体没下载到（需要登录/下载点数，未尝试）；gw.xztu 那份第三次下载仍未成功。
