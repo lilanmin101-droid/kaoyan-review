@@ -77,7 +77,7 @@ const ans = (x: PQ) => (x.answer ?? []).join('、')
         <p v-else-if="res?.ok === true" class="good">对了</p>
         <p v-else-if="res?.ok === false" class="wrong">错了，正确答案 {{ ans(q) }}</p>
         <p v-else class="ref">参考答案 <span v-html="renderTex(ans(q))"></span></p>
-        <p v-if="q.explanation_status === 'pending'" class="sub">讲解还没出</p>
+        <p v-if="q.explanation_status === 'pending'" class="sub">讲解还没出{{ res?.ok === false ? '，先记下这题，联网后在错题本里看' : '' }}</p>
         <div v-else-if="exp(q)?.steps?.length" class="zhu offexp">
           <p v-if="exp(q)!.source_label" class="src">{{ exp(q)!.source_label }}</p>
           <div v-for="(st, i) in exp(q)!.steps" :key="i" class="step" v-html="renderTex(st.text)"></div>
