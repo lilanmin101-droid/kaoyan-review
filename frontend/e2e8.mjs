@@ -3,7 +3,7 @@ const b=await puppeteer.launch({executablePath:'/usr/bin/google-chrome',args:['-
 const p=await b.newPage();await p.setViewport({width:390,height:844,isMobile:true,hasTouch:true})
 const W=ms=>new Promise(r=>setTimeout(r,ms))
 await p.goto('http://localhost:4173/#/quiz');await W(400)
-if(await p.$('.login input')){const ins=await p.$$('.login input');await ins[0].type('fe_test');await ins[1].type('secret123');await p.click('.login .next')}
+if(await p.$('.login input')){const ins=await p.$$('.login input');await ins[0].type('fe_test');await ins[1].type(process.env.TEST_PW||(await import('fs')).readFileSync('/workspace/.kaoyan_testpw','utf8').trim());await p.click('.login .next')}
 await p.waitForSelector('.sheet .row');await p.evaluate(()=>{const y=[...document.querySelectorAll('.cell.yr')].find(e=>e.textContent==='2024');y&&y.click()});await W(1200)
 await W(700);const r4=(await p.$$('.sheet .row'))[3];const bs=await r4.$$('.b');await bs[1].tap();await W(300)
 await p.goto('http://localhost:4173/#/wrong');await W(800);await p.goto('http://localhost:4173/#/quiz');await W(1200)

@@ -6,7 +6,7 @@ const errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>m.type
 const W=ms=>new Promise(r=>setTimeout(r,ms))
 await p.goto('http://localhost:4173/');await p.evaluate(()=>localStorage.clear());await p.reload()
 await p.waitForSelector('.login input')
-const ins=await p.$$('.login input');await ins[0].type('fe_test');await ins[1].type('secret123')
+const ins=await p.$$('.login input');await ins[0].type('fe_test');await ins[1].type(process.env.TEST_PW||(await import('fs')).readFileSync('/workspace/.kaoyan_testpw','utf8').trim())
 await p.click('.login .next');await p.waitForSelector('.sheet .row',{timeout:8000});await W(500)
 console.log('toast:',await p.$eval('.toast',e=>e.textContent).catch(()=>'none'))
 console.log('rows',(await p.$$('.sheet .row')).length,'cells',(await p.$$('.cell')).length)

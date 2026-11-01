@@ -2,7 +2,7 @@ import puppeteer from 'puppeteer-core'
 const b=await puppeteer.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']})
 const p=await b.newPage();await p.setViewport({width:1280,height:800})
 await p.goto('http://localhost:4173/');await p.waitForSelector('.login input')
-const ins=await p.$$('.login input');await ins[0].type('fe_test');await ins[1].type('secret123')
+const ins=await p.$$('.login input');await ins[0].type('fe_test');await ins[1].type(process.env.TEST_PW||(await import('fs')).readFileSync('/workspace/.kaoyan_testpw','utf8').trim())
 await p.click('.login .next');await p.waitForSelector('.opts .o',{timeout:8000})
 const rows=await p.$$('.sheet .row');await rows[4].click()
 await p.waitForSelector('.fig img');await p.waitForFunction(()=>document.querySelector('.fig img').complete)

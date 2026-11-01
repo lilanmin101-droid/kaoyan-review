@@ -2,6 +2,7 @@
 # 讲解/思路来源 + 讲解核对（verified）测试：另起一个后端（:3002），EXPLANATIONS_DIR 指向临时目录，验证
 #   专家文件里有的题 → expert；没有的 → pending（讲解生成中 / 思路生成中，不出示例内容）；文件追加后不重启即生效
 set -euo pipefail
+PW="${TEST_PW:-$(openssl rand -hex 12)}"  # 测试号密码：TEST_PW 或每次随机生成（不要写死在仓库里）
 cd "$(dirname "$0")/.."
 TMP=$(mktemp -d); PORT=3002; B=http://127.0.0.1:$PORT/api/v1
 grep '"math1-2024-19"' /workspace/kaoyan/tiku/explanations/math1_2024_expert.jsonl > "$TMP/math1_2024_expert.jsonl"
@@ -11,7 +12,7 @@ printf '%s\n' '{"id":"math1-2024-19","verdict":"pass","by":"t","at":"2026-11-01T
 PORT=$PORT JOBS_ENABLED=0 EXPLANATIONS_DIR=$TMP REVIEWS_DIR=$TMP/reviews node dist/src/main.js > /tmp/test-sources.log 2>&1 & PID=$!
 trap 'kill $PID 2>/dev/null; rm -rf "$TMP"' EXIT
 for i in $(seq 1 30); do curl -sf $B/health >/dev/null 2>&1 && break; sleep 0.5; done
-T=$(curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"src$RANDOM$RANDOM\",\"password\":\"pass12345\"}" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>console.log(JSON.parse(s).access_token))')
+T=$(curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"src$RANDOM$RANDOM\",\"password\":\"$PW\"}" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>console.log(JSON.parse(s).access_token))')
 H=(-H "authorization: Bearer $T")
 chk() { echo "$2" | grep -q "$3" && echo "OK  $1" || { echo "FAIL $1: $2"; exit 1; }; }
 chk "explain q19 expert" "$(curl -sfN "${H[@]}" $B/questions/math1-2024-19/explain | grep '"type":"done"')" '"status":"expert","source":"expert","source_label":"行业专家参考解答（非官方解析）"'

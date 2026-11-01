@@ -1,6 +1,7 @@
 B=http://localhost:3000/api/v1; L=api_retest2.md
+PW="${TEST_PW:-$(cat /workspace/.kaoyan_testpw)}"  # 测试号密码在仓库外
 req(){ m=$1; p=$2; d=$3; echo "### $m $p $d" >>$L; if [ -n "$d" ]; then r=$(curl -s -w '\n[HTTP %{http_code}]' -X $m "$B$p" -H "Authorization: Bearer $T" -H 'Content-Type: application/json' -d "$d"); else r=$(curl -s -w '\n[HTTP %{http_code}]' -X $m "$B$p" -H "Authorization: Bearer $T"); fi; echo "$r" >>$L; echo >>$L; echo "$r"; }
-T=$(curl -s -X POST $B/auth/login -H 'Content-Type: application/json' -d '{"username":"kaosheng_r8b","password":"r8test2026"}'|jq -r .access_token)
+T=$(curl -s -X POST $B/auth/login -H 'Content-Type: application/json' -d '{"username":"kaosheng_r8b","password":"'"$PW"'"}'|jq -r .access_token)
 echo ==wq0; req GET /wrong-questions | head -c 300; echo
 echo ==c1; req POST /agent/commands '{"text":"明天加 10 道错题"}' > c1.txt; grep -o '"reply":"[^"]*"\|"summary":"[^"]*"\|data: .*reply.*' c1.txt | head; tail -c 600 c1.txt
 req POST /answers '{"question_id":"english1-2015-03","answer":["A"]}' | tail -c 300

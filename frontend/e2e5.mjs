@@ -3,7 +3,7 @@ const b=await puppeteer.launch({executablePath:'/usr/bin/google-chrome',args:['-
 const p=await b.newPage();await p.setViewport({width:1280,height:800})
 const W=ms=>new Promise(r=>setTimeout(r,ms))
 await p.goto('http://localhost:4173/#/quiz');await W(400)
-if(await p.$('.login input')){const ins=await p.$$('.login input');await ins[0].type('fe_test');await ins[1].type('secret123');await p.click('.login .next')}
+if(await p.$('.login input')){const ins=await p.$$('.login input');await ins[0].type('fe_test');await ins[1].type(process.env.TEST_PW||(await import('fs')).readFileSync('/workspace/.kaoyan_testpw','utf8').trim());await p.click('.login .next')}
 await p.waitForSelector('.cell');await W(800)
 const clk=async t=>p.evaluate(t=>[...document.querySelectorAll('.acts span')].find(s=>s.textContent.includes(t))?.click(),t)
 for(const n of ['17','12']){const cells=await p.$$('.cell');for(const c of cells){if((await c.evaluate(e=>e.textContent))===n){await c.click();break}};await W(300)

@@ -1,10 +1,11 @@
-import { BadRequestException, Body, ConflictException, Controller, Get, Headers, HttpCode, Post, UnauthorizedException, UseGuards } from '@nestjs/common';
+import { BadRequestException, Body, ConflictException, Controller, ForbiddenException, Get, Headers, HttpCode, Post, UnauthorizedException, UseGuards } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 import { DbService } from '../db/db.service';
 import { JwtGuard } from './jwt.guard';
 import { AuthUser, CurrentUser } from '../common/user.decorator';
 import { isValidTz } from '../common/user-time.service';
+import { REGISTRATION_DISABLED_MESSAGE, registrationDisabled, usernameAllowed } from '../common/access-policy';
 
 @Controller('auth')
 export class AuthController {
@@ -21,6 +22,7 @@ export class AuthController {
 
   @Post('register')
   async register(@Body() b: { username?: string; password?: string; display_name?: string; exam_date?: string; timezone?: string }, @Headers('x-timezone') headerTz?: string) {
+    if (registrationDisabled()) throw new ForbiddenException({ statusCode: 403, error: 'Forbidden', message: REGISTRATION_DISABLED_MESSAGE, code: 'registration_disabled' });
     if (!b?.username || !/^[A-Za-z0-9_.\-\u4e00-\u9fa5]{2,32}$/.test(b.username)) throw new BadRequestException({ statusCode: 400, error: 'Bad Request', message: '用户名要 2–32 个字，只能用汉字、字母、数字和 _ . -', field: 'username', code: 'invalid_username' });
     if (!b.password || b.password.length < 6) throw new BadRequestException({ statusCode: 400, error: 'Bad Request', message: '密码至少 6 位', field: 'password', code: 'password_too_short' });
     const exists = await this.db.one('SELECT 1 FROM users WHERE username=$1', [b.username]);
@@ -38,6 +40,8 @@ export class AuthController {
   @Post('login')
   @HttpCode(200)
   async login(@Body() b: { username?: string; password?: string }) {
+    // 隧道 profile：名单外的用户名一律按「用户名或密码不对」处理（不透露账号是否存在）
+    if (!usernameAllowed(b?.username)) throw new UnauthorizedException('用户名或密码不对');
     const u = await this.db.one(`SELECT id,username,password_hash,display_name,to_char(exam_date,'YYYY-MM-DD') exam_date FROM users WHERE username=$1`, [b?.username ?? '']);
     if (!u || !(await bcrypt.compare(b?.password ?? '', u.password_hash))) throw new UnauthorizedException('用户名或密码不对');
     return this.issue(u);

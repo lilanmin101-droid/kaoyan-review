@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 # 冒烟测试：注册/登录 → 题目 → 作答 → 模考进度（幂等、暂停、续考）→ 交卷 → 错题 → 单词 → 计划 → Agent 命令/撤回 → 掌握度 → 同步/埋点/打卡 → 讲解 SSE → 费曼上传 → PDF
 set -euo pipefail
+PW="${TEST_PW:-$(openssl rand -hex 12)}"  # 测试号密码：TEST_PW 或每次随机生成（不要写死在仓库里）
 B=${BASE:-http://localhost:3000/api/v1}
 U="smoke_$(date +%s)"
 j() { python3 -c "import sys,json;d=json.load(sys.stdin);print(eval(sys.argv[1]))" "$1"; }
 # 断言：表达式为假就失败（打印实际数据）
 ok() { python3 -c "import sys,json;d=json.load(sys.stdin);r=eval(sys.argv[1]);print('ok' if r else 'FAIL', sys.argv[1]);sys.exit(0 if r else print(json.dumps(d,ensure_ascii=False)[:800]) or 1)" "$1"; }
 echo "== register/login"
-curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"secret123\"}" >/dev/null
-TOKEN=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"secret123\"}" | j "d['access_token']")
+curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"$PW\"}" >/dev/null
+TOKEN=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"$PW\"}" | j "d['access_token']")
 A=(-H "authorization: Bearer $TOKEN" -H 'content-type: application/json' -H 'x-device: smoke-pc')
 echo "== questions"; curl -sf "${A[@]}" "$B/questions?exam=math1&year=2024&page_size=3" | j "(d['total'], [q['id'] for q in d['items']])"
 curl -sf "${A[@]}" "$B/questions" -G --data-urlencode "kp=高等数学/一元函数积分学" | j "d['total']"
@@ -139,8 +140,8 @@ echo "== 11-01 联调修复（新用户，互不干扰）"
 DBURL=${DATABASE_URL:-$(grep -E '^DATABASE_URL=' .env 2>/dev/null | cut -d= -f2-)}
 PSQL() { psql "$DBURL" -qtAX -c "$1"; }
 U2="smoke2_$(date +%s)"
-curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U2\",\"password\":\"secret123\"}" >/dev/null
-T2=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U2\",\"password\":\"secret123\"}" | j "d['access_token']")
+curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U2\",\"password\":\"$PW\"}" >/dev/null
+T2=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U2\",\"password\":\"$PW\"}" | j "d['access_token']")
 A2=(-H "authorization: Bearer $T2" -H 'content-type: application/json')
 UID2=$(PSQL "SELECT id FROM users WHERE username='$U2'")
 TODAY=$(TZ=${APP_TZ:-Asia/Shanghai} date -d '-4 hours' +%F); TMR=$(date -d "$TODAY +1 day" +%F)  # 学习日：当地 04:00 换天
@@ -224,8 +225,8 @@ curl -sf "${A2[@]}" "$B/agent/actions?limit=3" | ok "d['items'][0]['tool']=='set
 MID=$(curl -sf "${A2[@]}" $B/agent/messages | j "d['items'][0]['id']")
 curl -sf "${A2[@]}" -XPOST $B/agent/messages/$MID/seen | ok "d['seen_at'] and d['proactive_restored'] is True"
 echo "== 我的：目标 / 教练频率 / 免打扰 / 学习统计"
-U3=me$RANDOM; curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U3\",\"password\":\"secret123\"}" >/dev/null
-T3=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U3\",\"password\":\"secret123\"}" | j "d['access_token']")
+U3=me$RANDOM; curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U3\",\"password\":\"$PW\"}" >/dev/null
+T3=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U3\",\"password\":\"$PW\"}" | j "d['access_token']")
 A3=(-H "authorization: Bearer $T3" -H 'content-type: application/json' -H 'X-Timezone: America/Los_Angeles'); UID3=$(PSQL "SELECT id FROM users WHERE username='$U3'")
 curl -sf "${A3[@]}" $B/me/settings | ok "d['effective']['coach_frequency']=='normal' and d['effective']['quiet_hours'] is None and d['effective']['days_to_exam'] is None"
 curl -sf "${A3[@]}" -XPATCH $B/me/settings -d '{"target_school":"浙江大学 计算机","target_score":400,"exam_date":"2026-12-19","coach_frequency":"less","quiet_hours":{"start":"22:30","end":"08:00"}}' \
@@ -268,7 +269,7 @@ curl -s "${A3[@]}" -XPOST $B/agent/messages/$PMID/confirm -d '{}' | ok "d['statu
 P2=$(curl -sf "${A3[@]}" -XPOST $B/agent/jobs/run -d '{"job":"weekly","force":true}' | j "d['proposal']['message_id']")
 curl -sf "${A3[@]}" $B/agent/messages | ok "(lambda p: len(set(x['id'] for x in p))==len(p)>=3 and [x for x in p if x['id']=='$PMID'][0]['proposal']['status']=='confirmed' and [x for x in p if x['id']=='$P2'][0]['proposal']['status']=='pending')([i for i in d['items'] if i['kind']=='proposal'])"
 curl -s "${A3[@]}" -XPOST $B/agent/actions/00000000-0000-0000-0000-000000000000/undo | ok "d['statusCode']==404 and d['code']=='action_not_found' and d['field'] is None"
-curl -sf -XPOST $B/auth/register -H 'Content-Type: application/json' -H 'X-Timezone: America/Los_Angeles' -d "{\"username\":\"tz_$(date +%s%N)\",\"password\":\"secret123\"}" | ok "d['timezone']=='America/Los_Angeles'"
+curl -sf -XPOST $B/auth/register -H 'Content-Type: application/json' -H 'X-Timezone: America/Los_Angeles' -d "{\"username\":\"tz_$(date +%s%N)\",\"password\":\"$PW\"}" | ok "d['timezone']=='America/Los_Angeles'"
 curl -sf "${A3[@]}" $B/agent/messages | ok "(lambda m: m['headline'].startswith('已') and '等你确认' not in m['headline'] and '还没执行' not in (m['details'] or ''))([i for i in d['items'] if i['id']=='$PMID'][0])"
 curl -sf "${A[@]}" $B/questions/english1-2025-14 | ok "d['errata'][0]['printed']=='Chrysanthi Gallon' and set(d['errata'][0])=={'printed','correct','note'}"
 echo "== 主观题参考答案 reference_answer（english1-2022 Q47 翻译 / Q51、Q52 作文；客观题 correct_answer 不变）"

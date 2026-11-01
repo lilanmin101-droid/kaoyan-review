@@ -110,7 +110,7 @@ paths:
               $ref: '#/components/schemas/RegisterRequest'
             example:
               username: tony
-              password: secret123
+              password: your-password
               display_name: Tony
               exam_date: '2027-12-25'
       responses:
@@ -135,7 +135,7 @@ paths:
               $ref: '#/components/schemas/LoginRequest'
             example:
               username: tony
-              password: secret123
+              password: your-password
       responses:
         '200':
           $ref: '#/components/responses/Auth'

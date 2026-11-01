@@ -78,7 +78,7 @@ LINE 1: select why_changed,changed_by_agent from plans where id='481...
 ### PATCH /me/settings {"exam_date":"2026-13-40"}
 {"statusCode":400,"error":"Bad Request","message":"考试日期格式不对","field":"exam_date","code":"invalid_exam_date"} [HTTP 400]
 
-### POST /auth/register {"username":"a","password":"123456"}
+### POST /auth/register {"username":"a","password":"…"}
 {"statusCode":400,"error":"Bad Request","message":"用户名要 2–32 个字，只能用汉字、字母、数字和 _ . -","field":"username","code":"invalid_username"} [HTTP 400]
 
 ### POST /auth/register {"username":"kaosheng_r8x","password":"12"}

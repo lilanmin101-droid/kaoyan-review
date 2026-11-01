@@ -12,6 +12,7 @@ import { Client } from 'pg';
 import { loadEnv } from './env';
 import { runUnitTests } from './test-unit';
 import { badDayLabels, renderDates } from '../src/common/time';
+const TEST_PW = process.env.TEST_PW || require('crypto').randomBytes(12).toString('hex'); // 测试号密码：不写死在仓库里
 /** 学生文字里不该有的标点连用（和 src/agent/coach.service.ts badPunct 一致） */
 const BAD_PUNCT = /[。，；、：][。，；、]|[！？][，；、]|，[！？]/;
 loadEnv();
@@ -37,8 +38,8 @@ class Session {
   h(): Record<string, string> { return { authorization: `Bearer ${this.token}`, 'content-type': 'application/json', 'x-timezone': this.tz, ...(this.debugNow ? { 'x-debug-now': this.debugNow } : {}) }; }
   async init() {
     const username = `eval_${Date.now()}_${Math.floor(Math.random() * 1e6)}`;
-    await fetch(`${BASE}/auth/register`, { method: 'POST', headers: { 'content-type': 'application/json', 'x-timezone': this.tz }, body: JSON.stringify({ username, password: 'secret123' }) });
-    const r: any = await (await fetch(`${BASE}/auth/login`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username, password: 'secret123' }) })).json();
+    await fetch(`${BASE}/auth/register`, { method: 'POST', headers: { 'content-type': 'application/json', 'x-timezone': this.tz }, body: JSON.stringify({ username, password: TEST_PW }) });
+    const r: any = await (await fetch(`${BASE}/auth/login`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username, password: TEST_PW }) })).json();
     this.token = r.access_token; this.userId = r.user.id;
     return this;
   }
@@ -568,7 +569,7 @@ const BUILTIN: Case[] = [
     run: async () => {
       const reg = async (headers: any, body: any) => {
         const username = `eval_tz_${Date.now()}_${Math.floor(Math.random() * 1e6)}`;
-        const r: any = await (await fetch(`${BASE}/auth/register`, { method: 'POST', headers: { 'content-type': 'application/json', ...headers }, body: JSON.stringify({ username, password: 'secret123', ...body }) })).json();
+        const r: any = await (await fetch(`${BASE}/auth/register`, { method: 'POST', headers: { 'content-type': 'application/json', ...headers }, body: JSON.stringify({ username, password: TEST_PW, ...body }) })).json();
         const me: any = await (await fetch(`${BASE}/me/settings`, { headers: { authorization: `Bearer ${r.access_token}` } })).json();
         return me.timezone ?? me.settings?.timezone;
       };

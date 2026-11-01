@@ -31,7 +31,7 @@ async function bootstrap() {
   // 题目图片（不需要登录）：/api/v1/assets/images/xxx.png → ASSETS_DIR/images/xxx.png
   app.use('/api/v1/assets', assetsMiddleware);
   const port = Number(process.env.PORT || 3000);
-  await app.listen(port, '0.0.0.0');
+  await app.listen(port, process.env.HOST || '0.0.0.0'); // 隧道 profile 用 HOST=127.0.0.1，只给本机的 8080 源站转发
   void preflightModels('startup'); // 有 Key 时调提供方 /models 核对模型名（后台，不阻塞启动）
   void warmPdfRenderer(); // 导出 PDF 用的 Chrome 常驻 + 字体预热（后台，不阻塞启动）
   console.log(`kaoyan backend listening on http://localhost:${port}/api/v1 (assets: ${ASSETS_DIR})`);

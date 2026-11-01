@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # 第 6 轮问题 HTTP 复现：时区、命令去重/数量、单词总数（对 :3000）
 set -euo pipefail
+PW="${TEST_PW:-$(openssl rand -hex 12)}"  # 测试号密码：TEST_PW 或每次随机生成（不要写死在仓库里）
 B=${B:-http://localhost:3000/api/v1}
 TZH=${1:-America/Los_Angeles}
 U=r6_$RANDOM$RANDOM
-curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"secret123\"}" >/dev/null
-T=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"secret123\"}" | python3 -c "import sys,json;print(json.load(sys.stdin)['access_token'])")
+curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"$PW\"}" >/dev/null
+T=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"$PW\"}" | python3 -c "import sys,json;print(json.load(sys.stdin)['access_token'])")
 H=(-H "authorization: Bearer $T" -H 'content-type: application/json' -H "X-Timezone: $TZH")
 EXP=$(TZ=$TZH date -d '-4 hours' +%F)  # 学习日：当地 04:00 换天
 echo "== X-Timezone: $TZH  期望今天=$EXP"
@@ -50,8 +51,8 @@ import sys,json;c=json.load(sys.stdin)['counts'];print('  after F5',c['position'
 assert c['scheduled_today']==$S0 and c['position']==3 and c['done_today']==2"
 echo "-- 新用户：「帮我加一道重做错题」→ 1 道；再说一次 → deduped"
 U2=r6b_$RANDOM$RANDOM
-curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U2\",\"password\":\"secret123\"}" >/dev/null
-T2=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U2\",\"password\":\"secret123\"}" | python3 -c "import sys,json;print(json.load(sys.stdin)['access_token'])")
+curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U2\",\"password\":\"$PW\"}" >/dev/null
+T2=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U2\",\"password\":\"$PW\"}" | python3 -c "import sys,json;print(json.load(sys.stdin)['access_token'])")
 H=(-H "authorization: Bearer $T2" -H 'content-type: application/json' -H "X-Timezone: $TZH")
 for q in math1-2024-01 math1-2024-02 math1-2024-03 math1-2024-04; do
   curl -sf "${H[@]}" -XPOST $B/answers -d "{\"question_id\":\"$q\",\"answer\":[\"Z\"]}" >/dev/null || curl -sf "${H[@]}" -XPOST $B/answers -d "{\"question_id\":\"$q\",\"self_rating\":\"no_idea\"}" >/dev/null

@@ -2,11 +2,12 @@
 # PDF 导出计时（对 :3000）：建用户 → 2017 数一整卷交卷 + 全部自评 → 打开成绩页/错题本 → report.pdf / export.pdf 各请求 N 次
 # 服务端 PDF_CACHE=0 可以关掉缓存，测纯渲染耗时
 set -euo pipefail
+PW="${TEST_PW:-$(openssl rand -hex 12)}"  # 测试号密码：TEST_PW 或每次随机生成（不要写死在仓库里）
 B=${B:-http://localhost:3000/api/v1}; N=${N:-5}
 U=bench_$RANDOM$RANDOM
 J() { python3 -c "import sys,json;d=json.load(sys.stdin);$1"; }
-curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"secret123\"}" >/dev/null
-T=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"secret123\"}" | J "print(d['access_token'])")
+curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"$PW\"}" >/dev/null
+T=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"$PW\"}" | J "print(d['access_token'])")
 H=(-H "authorization: Bearer $T" -H 'content-type: application/json' -H "X-Timezone: America/Los_Angeles")
 Q() { printf 'math1-2017-%02d' "$1"; }
 E=$(curl -sf "${H[@]}" -XPOST $B/exams -d '{"exam":"math1","year":2017}' | J "print(d['id'])")

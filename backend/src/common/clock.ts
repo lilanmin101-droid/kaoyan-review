@@ -1,4 +1,5 @@
 import { AsyncLocalStorage } from 'async_hooks';
+import { debugNowDisabledByEnv } from './access-policy';
 
 /**
  * 「现在」：默认就是真实时间。开发/评测时（NODE_ENV≠production）请求可以带 `X-Debug-Now: <ISO 时间>`，
@@ -6,7 +7,7 @@ import { AsyncLocalStorage } from 'async_hooks';
  * （exams.service 的 examNow，计时和 2 分钟作废窗口同一个口径）；其它表的 created_at / updated_at 仍是数据库真实时间。
  */
 const als = new AsyncLocalStorage<{ now?: number }>();
-export const debugNowAllowed = () => process.env.NODE_ENV !== 'production' && process.env.DISABLE_DEBUG_NOW !== '1';
+export const debugNowAllowed = () => process.env.NODE_ENV !== 'production' && !debugNowDisabledByEnv();
 export function clockNow(): Date {
   const n = als.getStore()?.now;
   return n != null ? new Date(n) : new Date();

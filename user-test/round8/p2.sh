@@ -1,5 +1,6 @@
+PW="${TEST_PW:-$(cat /workspace/.kaoyan_testpw)}"  # 测试号密码在仓库外
 . ./r7.sh
-T=$(curl -s -X POST $B/auth/login -H 'Content-Type: application/json' -d '{"username":"kaosheng_r8d","password":"r8test2026"}'|jq -r .access_token)
+T=$(curl -s -X POST $B/auth/login -H 'Content-Type: application/json' -d '{"username":"kaosheng_r8d","password":"'"$PW"'"}'|jq -r .access_token)
 echo "## (r8d cont.) confirm nightly proposal" >>$L
 req POST /agent/messages/20096882-8a7b-48a2-b25a-68663f08ea38/confirm '{}'|head -1|jq -c '{message,status:.status}'
 req GET /agent/messages | head -1 | jq -c '.items[]|select(.id=="20096882-8a7b-48a2-b25a-68663f08ea38")|{status,headline,details}'

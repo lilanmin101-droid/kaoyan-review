@@ -8,6 +8,7 @@ import { bandForScore, disagrees, fakeGrade, normalizeGrade } from '../src/engli
 import { tableMarkers, validateTables, withTablesText } from '../src/common/tables';
 import * as fs from 'fs';
 import * as path from 'path';
+const TEST_PW = process.env.TEST_PW || require('crypto').randomBytes(12).toString('hex'); // 测试号密码：不写死在仓库里
 
 const BASE = process.env.BASE || 'http://127.0.0.1:3100/api/v1';
 let fails = 0, passes = 0;
@@ -94,8 +95,8 @@ function unit() {
 async function http() {
   console.log(`== http ${BASE}`);
   const U = `e1_${Date.now()}`;
-  await fetch(`${BASE}/auth/register`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username: U, password: 'secret123' }) });
-  const tok = (await (await fetch(`${BASE}/auth/login`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username: U, password: 'secret123' }) })).json() as any).access_token;
+  await fetch(`${BASE}/auth/register`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username: U, password: TEST_PW }) });
+  const tok = (await (await fetch(`${BASE}/auth/login`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username: U, password: TEST_PW }) })).json() as any).access_token;
   const H = { authorization: `Bearer ${tok}`, 'content-type': 'application/json' };
   const get = async (p: string) => { const r = await fetch(`${BASE}${p}`, { headers: H }); return { status: r.status, body: await r.json().catch(() => null) as any }; };
   const post = async (p: string, b: any = {}, method = 'POST') => { const r = await fetch(`${BASE}${p}`, { method, headers: H, body: JSON.stringify(b) }); return { status: r.status, body: await r.json().catch(() => null) as any }; };
@@ -220,8 +221,8 @@ async function http() {
 async function phase(kind: string) {
   console.log(`== phase ${kind} ${BASE}`);
   const U = `e1${kind}_${Date.now()}`;
-  await fetch(`${BASE}/auth/register`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username: U, password: 'secret123' }) });
-  const tok = (await (await fetch(`${BASE}/auth/login`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username: U, password: 'secret123' }) })).json() as any).access_token;
+  await fetch(`${BASE}/auth/register`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username: U, password: TEST_PW }) });
+  const tok = (await (await fetch(`${BASE}/auth/login`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username: U, password: TEST_PW }) })).json() as any).access_token;
   const H = { authorization: `Bearer ${tok}`, 'content-type': 'application/json' };
   const post = async (p: string, b: any = {}) => { const r = await fetch(`${BASE}${p}`, { method: 'POST', headers: H, body: JSON.stringify(b) }); return { status: r.status, body: await r.json().catch(() => null) as any }; };
   const essay = 'The table describes how people spend weekends: gardening rose from 12 to 31 percent while shopping fell, and its meaning deserves comments. '.repeat(10);

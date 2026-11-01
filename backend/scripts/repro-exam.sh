@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # 考场模式端到端（对 :3000）：开考 2017 数一 → 作答 → 暂停 → 继续 → 重放 → F5 → 再开考 409 → 交卷 → 自评 → 成绩汇总 → 错题本 → 教练消息 → 历史 → PDF
 set -euo pipefail
+PW="${TEST_PW:-$(openssl rand -hex 12)}"  # 测试号密码：TEST_PW 或每次随机生成（不要写死在仓库里）
 B=${B:-http://localhost:3000/api/v1}
 TZH=${TZH:-America/Los_Angeles}
 U=exam_$RANDOM$RANDOM
 J() { python3 -c "import sys,json;d=json.load(sys.stdin);$1"; }
-curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"secret123\"}" >/dev/null
-T=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"secret123\"}" | J "print(d['access_token'])")
+curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"$PW\"}" >/dev/null
+T=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"$PW\"}" | J "print(d['access_token'])")
 H=(-H "authorization: Bearer $T" -H 'content-type: application/json' -H "X-Timezone: $TZH" -H 'X-Device: repro')
 req() { local m=$1 p=$2; shift 2; curl -s -o /tmp/exam_body -w '%{http_code}' "${H[@]}" -X$m "$B$p" "$@"; }
 ok() { echo "  ✓ $*"; }

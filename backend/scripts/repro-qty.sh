@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # 命令栏数量语义 HTTP 复现（对 :3000）：同句 60 秒内重复 / 「加两道」叠加 / 「今天重做 5 道」设定 / 撤回恢复原数量 / 凌晨日界
 set -euo pipefail
+PW="${TEST_PW:-$(openssl rand -hex 12)}"  # 测试号密码：TEST_PW 或每次随机生成（不要写死在仓库里）
 B=${B:-http://localhost:3000/api/v1}
 TZH=${1:-America/Los_Angeles}
 U=qty_$RANDOM$RANDOM
-curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"secret123\"}" >/dev/null
-T=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"secret123\"}" | python3 -c "import sys,json;print(json.load(sys.stdin)['access_token'])")
+curl -sf -XPOST $B/auth/register -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"$PW\"}" >/dev/null
+T=$(curl -sf -XPOST $B/auth/login -H 'content-type: application/json' -d "{\"username\":\"$U\",\"password\":\"$PW\"}" | python3 -c "import sys,json;print(json.load(sys.stdin)['access_token'])")
 H=(-H "authorization: Bearer $T" -H 'content-type: application/json' -H "X-Timezone: $TZH")
 EXP=$(TZ=$TZH date -d '-4 hours' +%F)  # 学习日：当地 04:00 换天
 echo "== X-Timezone: $TZH  今天=$EXP"

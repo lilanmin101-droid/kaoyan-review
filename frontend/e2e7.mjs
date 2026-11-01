@@ -3,7 +3,7 @@ const b=await puppeteer.launch({executablePath:'/usr/bin/google-chrome',args:['-
 const p=await b.newPage();await p.setViewport({width:1280,height:800})
 const W=ms=>new Promise(r=>setTimeout(r,ms))
 await p.goto('http://localhost:4173/#/quiz');await W(400)
-if(await p.$('.login input')){const ins=await p.$$('.login input');await ins[0].type('fe_test');await ins[1].type('secret123');await p.click('.login .next')}
+if(await p.$('.login input')){const ins=await p.$$('.login input');await ins[0].type('fe_test');await ins[1].type(process.env.TEST_PW||(await import('fs')).readFileSync('/workspace/.kaoyan_testpw','utf8').trim());await p.click('.login .next')}
 await p.waitForSelector('.cell.yr');await W(500)
 await p.evaluate(()=>[...document.querySelectorAll('.cell.yr')].find(e=>e.textContent==='2023').click());await W(1500)
 console.log('sub',await p.$eval('.wm em',e=>e.textContent),'count',await p.$eval('.no small',e=>e.textContent),'err',await p.$$eval('.tex-err',e=>e.length))
