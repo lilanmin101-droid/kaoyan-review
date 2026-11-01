@@ -263,3 +263,4 @@
 - 2026-11-01T09:32:04-08:00 前端：离线题包前端完成（src/lib/offline.ts 题包缓存+本地判分+补传队列，components/OfflineQuiz.vue 离线刷题页）。按后端草案对接 GET /today/pack、POST /answers/batch（client_id+answered_at+pack_version，50 条一批），等 openapi 定稿再对字段。e2e46 390/1280 通过（断网答 5 题→联网补传 1 批 5 条→回到正常刷题）。
 - 2026-11-01T09:37:06-08:00 前端：暂停门槛按 15 分钟做——暂停页提示「已暂停 N 分钟，超过 15 分钟这场就不算进趋势了」，10 分钟弹提醒，超过变红；继续后顶栏显示「停过 N 分」；成绩页 non_continuous 显示「中途暂停较久，这次不计入模考趋势」，考过的列表标「不计入趋势」（前端目前没有趋势图，等有了按 non_continuous 过滤）。离线题包改为 GET /offline/pack，补传逐条走 POST /answers（client_id、answered_at、source:'offline_pack'），explanation_status:'pending' 显示「讲解还没出」。手机考试顶栏不再换行。e2e47 390/1280、e2e46、e2e44 通过。
 - 2026-11-01T09:37:53-08:00 前端：离线补传失败改为指数退避重试（2s 起翻倍，封顶 5 分钟）；api 层把 304 当作「题包没变」。
+- 2026-11-01T09:40:08-08:00 前端：「考过的」顶部加模考趋势图（components/ExamTrend.vue）：数据用 /exams?limit=50，只取整卷已交卷场次，按科目切换；朱笔实心点细线连，non_continuous/counts_in_trend=false 画空心点不连线；下方「按最近 3 次连续作答估：约 N 分」（不足 3 次按实际次数估）；点击圆点打开那场成绩。e2e48 390/1280 通过。

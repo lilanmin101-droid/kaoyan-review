@@ -9,6 +9,7 @@ import { enWords } from '../lib/passage'
 import { toast } from '../lib/toast'
 import EnPaper, { type EnGroup } from '../components/EnPaper.vue'
 import Errata, { type Erratum } from '../components/Errata.vue'
+import ExamTrend from '../components/ExamTrend.vue'
 
 type Sub = { number: number; stem: string; score: number | null; answer?: string[]; score_estimated?: boolean }
 type Q = { errata?: Erratum[] | null; id: string; number: number; type: string; section?: string; stem: string; score: number; options: { key: string; content: string }[]
@@ -289,7 +290,8 @@ const loadMsg = /^#\/exam\/[\w-]+\/(result|rate)/.test(location.hash) ? '正在�
 const pauseLine = computed(() => { const o: any = { ...(ex.value ?? {}), ...(res.value ?? {}) }; const n = o.pause_count ?? 0, sec = o.paused_seconds ?? 0
   return n > 0 ? `中途暂停 ${n} 次，共 ${Math.max(1, Math.round(sec / 60))} 分钟` : '' })
 const nonCont = computed(() => !!((res.value as any)?.non_continuous ?? (ex.value as any)?.non_continuous))
-async function loadHist() { try { hist.value = ((await api<{ items: Hist[] }>('/exams?limit=10')).items ?? []).filter(h => h.status === 'submitted' || h.status === 'abandoned') } catch { /* 没有就不显示 */ } }
+const trendItems = ref<any[]>([])
+async function loadHist() { api<{ items: any[] }>('/exams?limit=50').then(r => trendItems.value = r.items ?? []).catch(() => {}); try { hist.value = ((await api<{ items: Hist[] }>('/exams?limit=10')).items ?? []).filter(h => h.status === 'submitted' || h.status === 'abandoned') } catch { /* 没有就不显示 */ } }
 onMounted(loadHist)
 async function openHist(h: Hist) { if (h.status !== 'submitted') return; open(await api<Exam>(`/exams/${h.id}`)) }
 // —— 成绩拆分（前端按题算；后端给了 by_type / by_subject 就用后端的）——
@@ -346,7 +348,7 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
           <span v-for="m in [180, 120, 60]" :key="m" class="chip" :class="{ on: m === minutes }" @click="minutes = m">{{ m === 180 ? '3 小时' : m + ' 分钟' }}</span></div>
         <div class="acts flat"><span class="link" @click="emit('nav', 'quiz')">回刷题</span><span class="next" @click="start">开考 · {{ pickYear }} {{ subjX === 'english1' ? '英语一' : '数学一' }}</span></div>
       </template>
-      <div v-if="!loading && hist.length" class="hist"><div class="cap sm">考 过 的</div>
+      <div v-if="!loading && hist.length" class="hist"><ExamTrend :items="trendItems" @open="id => openHist({ id, status: 'submitted' } as Hist)" /><div class="cap sm">考 过 的</div>
         <div v-for="h in hist" :key="h.id" class="hrow" @click="openHist(h)">
           <span class="t">{{ h.title }}<i v-if="h.non_continuous" class="nc">不计入趋势</i></span><span class="s">{{ h.status === 'abandoned' ? '—' : h.score ?? '—' }}<small> / {{ h.max_score }}</small></span>
           <span v-if="h.status === 'abandoned'" class="c">已放弃{{ h.answered_count ? ` · 做了 ${h.answered_count} 题` : '' }}</span><span v-else class="c">{{ h.pending_self_rating_count ? `${h.pending_self_rating_count} 道待自评` : (h.coach_headline ?? '') }}</span></div></div>
