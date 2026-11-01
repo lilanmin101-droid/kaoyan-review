@@ -1,6 +1,6 @@
 # 考研复习项目 · 交接文档（HANDOFF）
 
-> **最后更新：2026-11-02 00:55（北京时间，UTC+8）** · 写给零上下文的新接手 agent，换了机器也能用
+> **最后更新：2026-11-02 01:55（北京时间，UTC+8）** · 写给零上下文的新接手 agent，换了机器也能用
 > 仓库：<https://github.com/lilanmin101-droid/kaoyan-review>（私有，分支 `main`）· 写这份文档时的 HEAD：`6158cf6`（不含本文）
 > 本文所有事实都来自仓库文件、运行中的服务和 git 记录；查不到的标了 **【未核实】**。和代码冲突时以代码为准，并顺手把本文改对。
 
@@ -17,7 +17,7 @@
 7. 模型名**不要写死**。key 到手后先调一次 `GET {base}/models`，用实际返回的名字定默认模型。代码里的 `deepseek-flash` 是推测，**【未核实】**。
 8. 团队本来是 6 个 agent 在群里协作，现在由你一个人承担全部角色，详见 §3。协作看板是 `BOARD.md`，只追加、不改旧行，每完成一项记一行。
 9. 提交规则：在 `/workspace/kaoyan` 里用**一句中文说明**提交到 `main`。**不准 force push**，不准提交 `.env`、key 或原卷 PDF。
-10. 未完成事项按优先级列在 §8.3。最重要的几项：PWA 还没配；key 到手后要先跑讲解预生成并实测 Agent；部署。
+10. 未完成事项按优先级列在 §8.3。最重要的几项：PWA v4 已通过（等 HTTPS 真机）；离线题包和墙钟模考已上线；key 到手后要先跑讲解预生成并实测 Agent；部署。
 
 ---
 
@@ -220,9 +220,21 @@
 | 考试条 | 有未交卷的考试时，除考场外每页顶部挂「考试进行中 · 标题 · 剩 xx 分钟 · 继续」（暂停时显示「· 已暂停」）。分钟数**向下取整**，按秒倒计时，和考场共用 `/exams/active` 的 `remaining_seconds` 加本地时钟 |
 | 开考与继续 | 都走 `#/exam/go`，**直接进考场**。只有开考返回 **409**（另一场没交卷）时，才出「还没交卷」页，写明「你刚才点的是 X，先把 Y 接着做完，或者放弃它」 |
 | 接回重试 | 遇到 5xx 或断网时退避重试 3 次，期间显示「正在接回考场…」，还不行就显示「暂时没接上考场 · 再试一次」。**任何情况都不能退回开考表单** |
-| 计时 | 在服务端计时；两次保存之间最多计 120 秒；暂停时遮住题目；断网时本机排队暂存，联网后补交；刷新或重开回到同一场 |
+| 计时（墙上时钟，后端 `6fe6937`/`5475478`，前端 `5562726`/`afa0412`） | **已用 = 现在 − 开考 − 暂停时长 − 服务器容错**。服务器容错只补两段：后端停机超过 30 秒的那段、返回 5xx 的那段（`server_credit_seconds`）；**学生自己断网、锁屏、切走都不补**。旧的「两次保存最多计 120 秒」已取消，心跳只用来同步答案。前端记截止时间，每秒用「截止 − 现在」算剩余，切回前台先按本机时钟重算再以服务端 `remaining_seconds` 为准。断网时答案本机排队，联网后补交；刷新或重开回到同一场。整卷、自定义模考、小测同一套规则 |
+| 时间到 | 按**最后一次同步的答案**自动交卷，`submitted_at` = 到点那一刻，`auto_submitted:true`。之后心跳、作答、交卷、暂停、放弃都返回 **409 `{code:'exam_auto_submitted', exam_id, status:'submitted'}`**；前端提示「时间到了，已经自动交卷」并跳成绩页 |
+| 字段与接口 | 考试对象：`pause_count`、`paused_seconds`、`server_credit_seconds`、`auto_submitted`、`clock:'wall'`、`remaining_seconds`（每次读取/心跳实时算）、`paused_at`（暂停中才有，否则 null）、`non_continuous`；result 上也有 `pause_count`、`paused_seconds`、`auto_submitted`、`non_continuous`。`POST /exams/{id}/pause`、`POST /exams/{id}/resume`，次数不限，重复 pause / 未暂停 resume 不重复计数；心跳带 `state=paused/running` 也记入暂停日志。用户第 11 轮接口复测 A–D 全过（`api_retest11.md`），界面复测通过（s01–s03） |
+| 暂停规则 | 暂停时遮住题目。**累计暂停 > 15 分钟或跨过 04:00 学习日 → `non_continuous:true`**（行业专家把门槛从 30 收到 15）：成绩页写「中途暂停较久，这次不计入模考趋势」，「考过的」列表标「不计入趋势」，分数和错题照常保留，趋势线和预测分排除。暂停旁提示「已暂停 N 分钟，超过 15 分钟这场就不算进趋势了」，10 分钟弹一次提醒，超 15 变红，继续后顶栏显示「停过 N 分」（前端 `0664652`）。**暂停挂超过 24 小时，按暂停前那一刻自动交卷**。成绩页「中途暂停 N 次，共 M 分钟」（向上取整）。**进行中：后端 `non_continuous`、`paused_at`、24 小时上限还在收尾** |
+| 模考趋势图 | 「考过的」页顶部，按科目切换（前端 `fe1c0ec`）：朱笔实心点细线连接，`non_continuous` 场次画空心点、不连线；下一行「按最近 3 次连续作答估：约 N 分」；点任一点进那场成绩。数据直接用 `/exams` 列表 |
 | 误开放弃 | **开考 2 分钟内一道没答就放弃 → 整场删除**，不进历史、统计、错题和教练数据，返回 `{discarded:true}`（`DISCARD_WINDOW_SECONDS=120`）。**进行中：后端已写好，还没提交** |
 | 成绩页 | 有分题型、分科（高数/线代/概率）、丢分知识点前 5、教练一句话、逐题对照（按钮「逐题对照答案（52 题）▾」；有待自评的题时默认展开）、导出 PDF、地址 `#/exam/<id>/result` |
+
+### 6.4.1 离线题包（后端 `7fe2c67` 已上线 :3000，openapi 已推）
+- **拉包**：`GET /api/v1/offline/pack?since_version=`，没变返回 **304**（前端继续用旧包）。内容：今日任务里那篇阅读和完形 + **10 道错题重做**（`origin:'wrong_redo'`）+ 今天要背的单词；带题干、选项、答案、讲解、图片地址和版本号。**每天 04:00 换包**。不出新题，**不缓存模考，不缓存全题库**。
+- **讲解**：`explanation` 是**对象** `{source, source_label, verified, steps}`，纯文本解析在 `solution`。每题带 `explanation_status:'ready'|'pending'`；英语题现在都是 `pending`（讲解要等 key 跑 gen:explanations），界面写「讲解还没出」；数学 248 道离线可看全。
+- **离线作答**：刷题页切到题包，「对答案」本地判对错、看解析；教练点评和学习记录等补传后更新。
+- **补传**：走现有单题作答接口 `POST /answers`，**逐条串行**，每条带 `client_id`、`answered_at`、`source:'offline_pack'`、`pack_version`，有用时再带 `time_spent_seconds`（`local_correct` 不传，后端判分）。重复提交返回 `duplicate:true`，不重复计分。**不开 `/answers/batch`，也不开 `/today/pack`**（曾有草案，已作废）。`answered_at` 早于 7 天或晚于现在会被截断，响应里 `answered_at_clamped` 说明原因。按作答时间计入当天。
+- **重试**：网络错误和 5xx 退避重试（2 秒起翻倍，最长 5 分钟）；201 且 `status:'rejected'` 直接丢弃并记日志；400 不重试。
+- **前端进度**：`0664652`/`40bfa41` 已切新路径，但**还要按后端 4 点修正**：① `explanation` 按对象解析；② 错题重做 `origin` 是 `'wrong_redo'` 不是 `'wrong'`；③ 按响应处理 rejected / 400 / 5xx；④ 带 `time_spent_seconds`，不传 `local_correct`。改完后用户做浏览器测试：打开 `#/quiz`，断网刷 5 道题，联网后核对补传、计分和错题本。
 
 ### 6.5 自评（英一翻译和作文，数一解答题）
 - **没作答的题**：不出自评选项，题卡上写「没作答，记 0 分」，交卷时直接记 0（后端 `unanswered=true`）。
@@ -282,6 +294,8 @@
 - **教练**：命令栏 SSE、计划改动加原因（why_changed）、按组撤回、问答模式、去重、四种提醒频率、proposal 确认和忽略、夜间、周报、午间、阶段任务、凌晨规则、日期占位符渲染。规则版完整可用，**真 AI 还没接**。
 - **题库**：22 卷全部 confirmed，有知识点、小问分值、reviews、专家讲解（数一）、真题词汇、errata。
 - **部署套件**：compose、deploy.sh、smoke-remote、每日备份（保留 7 天，包括 tiku/src）、无 Docker 的备选方案，都写好了，**还没在真机上跑过**。
+- **PWA v4**（前端 `4a3c59d`，用户复测通过 r01–r04）：manifest「研习」、theme `#2F4F3F`、background `#FBF8F1`；墨绿主色已落实。启动和切回前台时发绕过 SW 的 HEAD 请求探测真实网络，断网每 5 秒再探；恢复联网后自动重拉当前页、补传答案，离线提示 5 秒内自动消失（刷题页不重载）；SW 激活和打开页面时清掉不在清单里的旧 js/css；maskable 图标已预缓存；index.html 带 content-length。离线文案「现在没网，连上再试 · 看到的是上次同步的内容」，不出现「服务器」。**还差 HTTPS 真机加到主屏**。
+- **开发环境作答时间跟 `X-Debug-Now` 走**（只在开发环境；tunnel 和生产忽略这个头），可以造过去某天的作答，测周报和离线「按作答时间计入当天」用。
 - **Git**：私有仓库已推，提交记录见 `git log`。
 
 ### 8.2 最近测试结论（`user-test/round9/`）
@@ -293,10 +307,14 @@
 
 ### 8.3 待办（按优先级）
 **P0（马上要做）**
-1. **把工作区里还没提交的后端改动收尾并提交**。写这份文档时 `git status` 显示有：2 分钟内放弃即删除（`exams.service.ts`/`controller`）、过期建议失效（`agent/proposal-view.ts`、`jobs.service.ts`、`agent.controller.ts`、`plans.controller.ts`）、完形证据放宽和复现提示（`ai/explain.ts`、`explanation-gen.ts`、新文件 `ai/cloze-recurrence.ts`），以及 openapi、mock、smoke、test-unit。先跑 `test:unit`、`smoke`、`eval:agent`，全绿再提交。
-2. **PWA 还没配**：`frontend/package.json` 里有 `vite-plugin-pwa`，但 `vite.config.ts` 没启用，`index.html` 没有 manifest，也没有 service worker 和 apple-touch-icon，**现在手机还不能真正「加到主屏」**。需要配好 manifest（名字「研习」、主题色、图标）、SW 缓存策略（API 不缓存，SSE 不拦截），然后在 HTTPS 下验证。
+1. （多半已完成，先 `git status` 核对）**把工作区里还没提交的后端改动收尾并提交**。写这份文档时 `git status` 显示有：2 分钟内放弃即删除（`exams.service.ts`/`controller`）、过期建议失效（`agent/proposal-view.ts`、`jobs.service.ts`、`agent.controller.ts`、`plans.controller.ts`）、完形证据放宽和复现提示（`ai/explain.ts`、`explanation-gen.ts`、新文件 `ai/cloze-recurrence.ts`），以及 openapi、mock、smoke、test-unit。先跑 `test:unit`、`smoke`、`eval:agent`，全绿再提交。
+2. ~~PWA 还没配~~ **已完成（v4，见 §8.1）**，只差 HTTPS 真机验证。原记录：`frontend/package.json` 里有 `vite-plugin-pwa`，但 `vite.config.ts` 没启用，`index.html` 没有 manifest，也没有 service worker 和 apple-touch-icon，**现在手机还不能真正「加到主屏」**。需要配好 manifest（名字「研习」、主题色、图标）、SW 缓存策略（API 不缓存，SSE 不拦截），然后在 HTTPS 下验证。
 3. 把 `tiku/src/eng1/SOURCES.md` 移到或复制到 `tiku/SOURCES.md` 并提交（现在被 gitignore 排除了），补全每份原卷的 sha256、下载链接和大小；数一的来源也一并写进去。
 4. 给 `english1-2024-04` 补知识点标签（导入报告里唯一的错误级问题）。
+
+5a. **周报 E1/E2**（后端在修）：E1 当周的旧周报不要带「当时」，天数实时算，写「距考试 N 天」；E2 过期后标题改成「当时定的下周重点：…」。8 天后看是「那周（11-02–11-08）…当时距考试 47 天」（已上线）。
+5b. **`non_continuous`、`paused_at`、24 小时自动交卷**上线后 @ 用户测（15 分钟门槛、10 分钟提醒、成绩页标注、趋势图空心点）。
+5c. **离线题包**：前端按 §6.4.1 四点修正 → 用户浏览器断网 5 题测试。
 
 **P1（key 或服务器到手后）**
 5. 拿到 key：填进 `.env` → `npm run ai:check` → 看 `/models` 预检日志，确定模型名 → 用真模型发一条教练消息，确认没有 400 → `gen:explanations --dry-run`，然后正式跑 → `eval:grading` 真模型跑 → `eval:agent` 在真 AI 模式下跑一遍，并做人工打分（108 条）。
@@ -314,6 +332,9 @@
 - 本机 PG 没有 pgvector（`/health` 显示 `pgvector:false`），不影响现有功能。
 - 原卷 PDF 只在这台 box 上有（§5.6）。
 - watcher、BOARD 旧记录、reviews 的 `at` 混用了 PT 和北京时间，看时间要注意时区。
+- **测试密码已轮换**（后端 `5bcf161`）：git 历史里泄露过的 5 个旧密码全部失效（旧密码登录 401），1,697 个测试号统一改成新密码。新密码**只在仓库外**：`/workspace/.kaoyan_testpw` 和 `/workspace/.secrets/test-accounts.env` 的 `TEST_PW`；脚本都从这两处读。**不要把值写进仓库、文档或群里**。历史不重写。
+- **开发 `:3000` 的 JWT 密钥仍是 `.env.example` 里的占位串**（只本机访问，换了会登出所有测试号）。**正式部署必须生成新密钥**，`main.ts` 在生产环境会拒绝太短的密钥。
+- **临时 https 隧道已备好但没开**：本机 `127.0.0.1:8080` 是前端，`/api` 转到 `:3001` 的独立后端（关注册、只允许 tony 登录、忽略 `X-Debug-Now`、单独 JWT 密钥；tony 的密码只在本机文件）。准备用 Cloudflare quick tunnel 暴露给 Tony 手机测 PWA。**必须等 Tony 在私聊里亲口同意才开**，URL 和密码只私下发给 Tony，绝不进群。
 - 库里有约 1700 个测试账号（smoke 和复测时注册的），部署时用的是新库，不受影响。
 - 前端 e2e 脚本要先把登录 token 写进 `/tmp/tok`，并依赖本机的 `/usr/bin/google-chrome`。
 
@@ -325,6 +346,7 @@
 |---|---|---|
 | **DeepSeek API key** | `backend/.env` 里 `DEEPSEEK_API_KEY` 是空的 | 请 Tony 在**私聊**里发（不要在群里），收到后只写进 `.env` |
 | **通义千问（DashScope）API key** | `DASHSCOPE_API_KEY` 是空的 | 同上。讲解生成和 `ai:explain` 两个 key 都要有 |
+| **是否开临时 https 隧道** | 已问 Tony（私聊里的「开吧 / 先不开，等服务器」），未回复 | 同意后让后端开，URL/密码私聊发 Tony |
 | **部署服务器** | 还没给 | 需要 Linux 2C4G、40G 硬盘，装好 Docker 和 Compose v2，能 SSH 免密登录，放行 22/80/443；域名可选（有域名才有 HTTPS；大陆服务器要备案）。到手后：`cd deploy && ./deploy.sh user@host --dry-run && ./deploy.sh user@host`；非 22 端口用 `SSH_OPTS="-p 2222 -i ~/.ssh/kaoyan_deploy" ./deploy.sh user@host`；装到别的目录就在后面加路径参数 |
 
 ---
