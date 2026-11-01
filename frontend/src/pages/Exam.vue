@@ -144,7 +144,7 @@ async function flush() {
     }
   } catch (e: any) {
     // 网络断了：留在队列里，联网或下次心跳再发；409 说明考试已结束
-    if (e instanceof ApiError && e.status === 409) { queue = []; saveQ(); toast('这场已经交卷了'); clearInterval(tick); clearInterval(beat); stage.value = 'result'; ex.value = await api<Exam>(`/exams/${ex.value!.id}`) }
+    if (e instanceof ApiError && e.status === 409) { queue = []; saveQ(); toast(e.code === 'exam_auto_submitted' ? '时间到了，已经自动交卷' : '这场已经交卷了'); clearInterval(tick); clearInterval(beat); stage.value = 'result'; ex.value = await api<Exam>(`/exams/${ex.value!.id}`) }
     // 偶发一次请求失败不算离线：浏览器报离线或连续两次失败才提示，3 秒后自己重试
     else { fails++; if (!navigator.onLine || fails >= 2) online.value = false; clearTimeout(retry); retry = window.setTimeout(flush, 3000) }
   } finally { flushing = false }
