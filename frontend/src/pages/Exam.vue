@@ -21,7 +21,7 @@ type Rating = 'full' | 'approach_ok_calc_wrong' | 'no_idea'
 const props = defineProps<{ years: number[]; enYears?: number[] }>()
 const emit = defineEmits<{ nav: [string] }>()
 const stage = ref<'lobby' | 'run' | 'rate' | 'result'>('lobby')
-const active = ref<Exam | null>(null), ex = ref<Exam | null>(null), loading = ref(true)
+const active = ref<Exam | null>(null), ex = ref<Exam | null>(null), loading = ref(true), liveErr = ref(false)
 // 科目：数学一 / 英语一，各记各的年份
 const subjX = ref<'math1' | 'english1'>(localStorage.getItem('exam:subj') === 'english1' ? 'english1' : 'math1')
 const yearsX = computed(() => subjX.value === 'english1' ? props.enYears ?? [] : props.years)
@@ -48,12 +48,14 @@ const clock = (s: number) => { s = Math.max(0, Math.round(s)); const h = Math.fl
 
 async function lobby() {
   loading.value = true
-  // 服务重启那几秒会 502：先重试，别把开考表单闪出来
-  for (let k = 0; k < 5; k++) {
+  // 服务重启或断网时退避重试 3 次；接不上也只给「再试一次」，绝不退回开考表单
+  liveErr.value = false
+  for (let k = 0; k <= 3; k++) {
     try { active.value = (await api<{ exam: Exam | null }>('/exams/active')).exam; break }
     catch (e: any) {
-      if ((e?.status && e.status < 500) || k === 4) { toast('没连上，过会儿刷新一下'); break }
-      await new Promise(r => setTimeout(r, 700 * (k + 1)))
+      if (e?.status && e.status < 500) { toast(e.message); break }
+      if (k === 3) { liveErr.value = true; break }
+      await new Promise(r => setTimeout(r, 800 * 2 ** k))
     }
   }
   loading.value = false
@@ -203,6 +205,7 @@ async function submit() {
   for (const x of essays.value) {
     if (perSub(x) && subs.value[x.id] && Object.keys(subs.value[x.id]).length) self_ratings[x.id] = Object.fromEntries(Object.entries(subs.value[x.id]).map(([k, v]) => [String(k), v]))
     else if (whole.value[x.id]) self_ratings[x.id] = whole.value[x.id]
+    else if (noAns(x)) self_ratings[x.id] = 'no_idea' // 没作答直接记 0 分
   }
   submitting.value = true
   // 已交卷的（交卷后补评/改评）走 self-ratings，可以重复评
@@ -217,12 +220,25 @@ async function submit() {
 const res = computed(() => ex.value?.result)
 // 结论里「得分率最低」「丢分最多」上面的表已经有了，不重复
 const concl = computed(() => ((res.value?.conclusions ?? []) as string[]).filter(c => !/得分率最低|丢分最多的知识点/.test(c)))
-async function rateLater(id?: string) { await toRate(); if (id) { await nextTick(); document.getElementById('rq-' + id)?.scrollIntoView({ block: 'start' }) } }
-// 英语自评的拦截：没作答只能评「没写」；作文字数明显不够时提醒一句（线由统筹者定，先按小作文 50 词、大作文 80 词）
-const MINW: Record<string, number> = { writing_a: 50, writing_b: 80 }
+async function rateLater(id?: string) { await toRate(); if (id) { await nextTick(); document.getElementById('rq-' + id)?.scrollIntoView({ block: 'start' }); hotRq.value = id; setTimeout(() => { if (hotRq.value === id) hotRq.value = '' }, 2000) } }
+// 英语自评（统筹者定的线）：没作答直接记 0 分、不出选项；
+// 小作文 <50 词、大作文 <80 词、翻译 < 参考译文词数的 30% 时，选「基本到位」先确认，坚持就照记，成绩页标「自评·字数不足」
+const noAns = (x: Q) => isEn.value && !answered(x)
+const refOf = (x: Q) => (x as any).reference_answer ?? x.answer?.[0] ?? ''
 const mineW = (x: Q) => enWords(answers.value[x.id]?.answer?.[0] ?? '')
-const shortNote = (x: Q) => { const n = MINW[x.section ?? '']; const r = whole.value[x.id]; return n && r && r !== 'no_idea' && answered(x) && mineW(x) < n ? `只写了 ${mineW(x)} 个词，确定「${ratingEn[r]}」？` : '' }
-function pickWhole(x: Q, r: Rating) { if (isEn.value && !answered(x) && r !== 'no_idea') return toast('这题没作答，只能评「没写或偏得多」'); whole.value[x.id] = r }
+const minW = (x: Q) => x.section === 'writing_a' ? 50 : x.section === 'writing_b' ? 80 : x.section === 'translation' ? Math.ceil(enWords(refOf(x)) * 0.3) : 0
+const SHKEY = () => `exam:short:${ex.value?.id}`
+const shortSet = ref<string[]>([])
+watch(() => ex.value?.id, () => { try { shortSet.value = JSON.parse(localStorage.getItem(SHKEY()) ?? '[]') } catch { shortSet.value = [] } }, { immediate: true })
+function markShort(id: string, on: boolean) { const s = new Set(shortSet.value); on ? s.add(id) : s.delete(id); shortSet.value = [...s]; localStorage.setItem(SHKEY(), JSON.stringify(shortSet.value)) }
+const pend = ref<{ id: string; n: number } | null>(null)
+function pickWhole(x: Q, r: Rating) {
+  if (noAns(x)) return
+  if (isEn.value && r === 'full' && mineW(x) < minW(x)) { pend.value = { id: x.id, n: mineW(x) }; return }
+  pend.value = null; whole.value[x.id] = r; markShort(x.id, false)
+}
+function keepFull(x: Q) { whole.value[x.id] = 'full'; markShort(x.id, true); pend.value = null }
+const hotRq = ref('')
 const tipQ = ref<string | null>(null)
 const tipP = computed(() => tipQ.value ? pq.value.find(p => p.question_id === tipQ.value) : null)
 // 成绩页点题号：就地展开这题的作答对照和讲解
@@ -282,7 +298,8 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
     <!-- 入口：有没交卷的先接着做 -->
     <main v-if="stage === 'lobby'" class="main">
       <div class="cap">考 场 模 式</div>
-      <p v-if="loading" class="sub">正在看看有没有没做完的…</p>
+      <p v-if="loading" class="sub">正在接回考场…</p>
+      <template v-else-if="liveErr"><p class="big">暂时没接上考场</p><p class="sub">网络或服务器刚才没响应，已经答过的都在，不会丢。</p><div class="acts flat"><span class="next" @click="lobby">再试一次</span></div></template>
       <template v-else-if="active">
         <p class="big">{{ active.title }}还没交卷</p>
         <p class="sub">做了 {{ Object.values(active.progress?.answers ?? {}).filter(a => a.answer?.length).length }} / {{ active.question_ids.length }} 道，剩 {{ clock(active.remaining_seconds) }}{{ active.status === 'paused' ? '，现在是暂停状态' : '' }}。</p>
@@ -361,12 +378,12 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
       <div class="cap">{{ isEn ? '交 卷 · 翻译和作文自评' : '交 卷 · 解答题自评' }}</div>
       <p v-if="isEn" class="sub">选择题（含完形、新题型）会自动判分。翻译和作文对照参考答案给自己估个档：基本到位给满分，大概一半给一半。参考答案不是唯一标准，意思对、表达通顺就能得分。没评的先不计分，交卷后可以补评。</p>
       <p v-else class="sub">选择、填空会自动判分。解答题对照参考答案给自己打分：全对算满分，思路对算一半；证明题按整题评，计算题按小问评。没评的先不计分，交卷后可以补评。</p>
-      <div v-for="x in essays" :id="'rq-' + x.id" :key="x.id" class="rq">
+      <div v-for="x in essays" :id="'rq-' + x.id" :key="x.id" class="rq" :class="{ hot: hotRq === x.id }">
         <div class="meta">第 {{ x.number }} 题 · {{ x.score }} 分{{ answered(x) ? '' : ' · 没作答' }}</div>
         <template v-if="isEn">
           <p v-if="x.section === 'translation'" class="ensrc">{{ x.stem }}</p>
           <div class="enmine"><span class="k">你写的</span>{{ answers[x.id]?.answer?.[0]?.trim() || '没作答' }}</div>
-          <div class="enref"><span class="k">{{ x.section === 'translation' ? '参考译文' : '参考范文' }}<i class="xtag">专家</i></span>{{ x.answer?.[0] ?? '还没有参考答案' }}</div>
+          <div class="enref"><span class="k">{{ x.section === 'translation' ? '参考译文' : '参考范文' }}<i class="xtag">专家</i></span>{{ refOf(x) || '还没有参考答案' }}</div>
         </template>
         <div class="zhu" v-else-if="x.sub_questions?.some(s => s.answer?.length)"><div v-for="s in x.sub_questions" :key="s.number"><b>（{{ s.number }}）</b><span v-html="renderTex((s.answer ?? []).join(''))"></span></div></div>
         <div class="zhu" v-else-if="x.answer?.length" v-html="renderTex(x.answer.join('，'))"></div>
@@ -376,8 +393,10 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
           <p v-if="x.sub_scores_source !== 'official'" class="estnote">{{ x.sub_scores_source === 'even_split' ? '小问分值是把整题分平均拆开的，仅供自评参考' : '小问分值按常见阅卷细则估计，不是官方分值' }}；整题 {{ x.score }} 分是官方的。</p>
         </template>
         <div v-else class="rate"><span class="k">{{ x.score_by_whole ? '证明题，整题' : '整题' }}</span>
-          <span v-for="(t, r) in ratingText" :key="r" class="chip" :class="{ on: whole[x.id] === r, off: isEn && !answered(x) && r !== 'no_idea' }" @click="pickWhole(x, r as Rating)">{{ t }}</span></div>
-        <p v-if="isEn && shortNote(x)" class="shortw">{{ shortNote(x) }}<span class="link sm" @click="whole[x.id] = 'no_idea'">改成没写</span></p>
+          <span v-if="noAns(x)" class="noans">没作答，记 0 分</span>
+          <template v-else><span v-for="(t, r) in ratingText" :key="r" class="chip" :class="{ on: whole[x.id] === r }" @click="pickWhole(x, r as Rating)">{{ t }}</span></template></div>
+        <p v-if="pend?.id === x.id" class="shortw">只写了 {{ pend.n }} 个词，确定按『基本到位』算？<span class="link sm" @click="keepFull(x)">确定</span><span class="link sm" @click="pend = null">算了</span></p>
+        <p v-else-if="shortSet.includes(x.id) && whole[x.id] === 'full'" class="shortw">自评·字数不足</p>
       </div>
       <div class="acts flat"><span v-if="remaining > 0 && ex?.status !== 'submitted'" class="link" @click="open(ex!)">回去接着做</span><span v-if="ex?.status === 'submitted'" class="link" @click="stage = 'result'">先不评</span><span class="next" @click="trySubmit">{{ submitting ? '正在交…' : ex?.status === 'submitted' ? '评好了，看成绩' : '交卷，看成绩' }}</span></div>
     </main>
@@ -415,7 +434,7 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
         <tr v-for="p in pq" :key="p.question_id" :class="{ bad: p.got != null && p.got < p.score }"><td><span class="link" @click="showQ(p.question_id); nextTickTop()">{{ p.number }}</span></td>
           <td v-if="refQ(p)" class="dim">{{ ansOf(p) ? '已作答' : '—' }}</td><td v-else-if="ansOf(p)" v-html="tex(ansOf(p))"></td><td v-else>{{ did(p) ? '纸上作答' : '—' }}</td>
           <td v-if="refQ(p)" class="dim"><span class="link" @click="showQ(p.question_id); nextTickTop()">点题号看参考</span></td><td v-else-if="keyOf(p)" v-html="tex(keyOf(p))"></td><td v-else class="dim">{{ p.objective ? '' : '看自评页' }}</td>
-          <td>{{ p.got ?? '待评' }} / {{ p.score }}<span v-if="p.got == null && res.pending_self_rating?.includes(p.question_id)" class="link sm rl" @click="rateLater(p.question_id)">去自评</span></td></tr></table>
+          <td>{{ p.got ?? '待评' }} / {{ p.score }}<small v-if="(shortSet.includes(p.question_id) || p.self_grade_flags?.includes('word_count_low')) && p.got != null" class="shortag">自评·字数不足</small><span v-if="p.got == null && res.pending_self_rating?.includes(p.question_id)" class="link sm rl" @click="rateLater(p.question_id)">去自评</span></td></tr></table>
       <div v-if="res.pending_self_rating?.length" class="ratebox"><p>还有 {{ res.pending_self_rating.length }} 道{{ isEn ? '翻译/作文' : '解答题' }}没自评（逐题对照里标「待评」），评完才有最终分和教练点评。</p><span class="bigbtn pri" @click="rateLater()">现在评</span></div>
       <p class="sub">做了没拿满的题已经进了错题本。点题号能看这题的作答对照和讲解。</p>
       <p v-if="usedSub" class="estnote">分问自评的小问分值按常见阅卷细则估计，不是官方分值，和别人对分时以整题分为准。</p>

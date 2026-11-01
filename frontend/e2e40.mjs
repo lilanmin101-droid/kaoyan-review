@@ -1,0 +1,26 @@
+import puppeteer from 'puppeteer-core'
+import fs from 'fs'
+const W=+process.argv[2],tok=fs.readFileSync('/tmp/tok','utf8').trim(),S=ms=>new Promise(r=>setTimeout(r,ms))
+const API='http://localhost:3000/api/v1',H={Authorization:'Bearer '+tok,'Content-Type':'application/json'}
+const j=async(u,o={})=>(await fetch(API+u,{headers:H,...o})).json()
+const a0=(await j('/exams/active')).exam;if(a0)await j(`/exams/${a0.id}/abandon`,{method:'POST'})
+const e=await j('/exams',{method:'POST',body:JSON.stringify({exam:'english1',year:2022,duration_minutes:180})})
+const q51=e.question_ids.find(x=>x.endsWith('-51'))
+await j(`/exams/${e.id}/progress`,{method:'PUT',body:JSON.stringify({client_seq:1,idempotency_key:'t'+Date.now(),answers:[{question_id:q51,answer:['Dear Sir, abc']}]})})
+const sub=await j(`/exams/${e.id}/submit`,{method:'POST',body:JSON.stringify({self_ratings:{}})});console.log('pending',sub.result?.pending_self_rating?.length)
+const b=await puppeteer.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});const p=await b.newPage()
+p.on('pageerror',e=>console.log('ERR',e.message))
+if(W<500)await p.emulate({viewport:{width:W,height:844,deviceScaleFactor:1,isMobile:true,hasTouch:true},userAgent:'iPhone Mobile'});else await p.setViewport({width:W,height:800})
+await p.goto('http://localhost:4173/');await p.evaluate(t=>{localStorage.clear();localStorage.setItem('token',t)},tok)
+await p.goto(`http://localhost:4173/#/exam/${e.id}/result`);await p.reload();await S(3000)
+const rl=await p.$$('table.each .rl');let t51=null;for(const r of rl)if((await r.evaluate(x=>x.closest('tr').firstElementChild.textContent)).trim()==='51')t51=r
+await t51.evaluate(x=>x.scrollIntoView({block:'center'}));await t51.click();await S(800)
+console.log('hot',await p.$eval('.rq.hot .meta',x=>x.textContent).catch(()=>'none'),'noans',(await p.$$('.rq .noans')).length)
+const ch=await p.$$('.rq.hot .chip');await ch[0].click();await S(300)
+console.log('pend',await p.$eval('.rq.hot .shortw',x=>x.textContent).catch(()=>'none'))
+await p.screenshot({path:`/workspace/kaoyan-ui/r24-short-${W}.png`})
+const ok=await p.$$('.rq.hot .shortw .link');if(!ok.length){const all=await p.$$('#rq-'+q51+' .shortw .link');await all[0].click()}else await ok[0].click();await S(300)
+console.log('after',await p.$eval('#rq-'+q51+' .shortw',x=>x.textContent).catch(()=>'none'))
+await (await p.$$('.acts.flat .next')).at(-1).click();await S(3000)
+console.log('tag',await p.$$eval('table.each .shortag',l=>l.map(x=>x.closest('tr').textContent).join(' | ')),'still pending',await p.$eval('.ratebox',x=>x.textContent).catch(()=>'none'))
+await b.close()

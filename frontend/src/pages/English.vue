@@ -208,7 +208,7 @@ const ERR: Record<string, string> = { spelling: '拼写', grammar: '语法', wor
                 <div class="wbar"><span v-if="q.section !== 'translation'" class="wc" :class="{ low: words(texts[q.id]) < (q.section === 'writing_a' ? 80 : 140) }">{{ words(texts[q.id]) }} 词</span>
                   <span class="link sm" @click="showRef[q.id] = !showRef[q.id]">{{ showRef[q.id] ? '收起' : q.section === 'translation' ? '参考译文' : '参考范文' }}</span>
                   <span class="next" :class="{ dim: !texts[q.id]?.trim() || grades[q.id]?.loading }" @click="grade(q)">{{ grades[q.id]?.loading ? '正在交…' : grades[q.id] ? '改好了，重新批改' : '交给 AI 批改' }}</span></div>
-                <p v-if="showRef[q.id]" class="ref">{{ q.answer?.[0] ?? '还没有参考答案' }}<small>参考答案不是唯一标准，意思对、表达通顺就能得分</small></p>
+                <p v-if="showRef[q.id]" class="ref">{{ (q as any).reference_answer ?? q.answer?.[0] ?? '还没有参考答案' }}<small>参考答案不是唯一标准，意思对、表达通顺就能得分</small></p>
                 <!-- 批改 -->
                 <div v-if="grades[q.id] && !grades[q.id].loading" class="grade">
                   <template v-if="grades[q.id].status === 'done'">

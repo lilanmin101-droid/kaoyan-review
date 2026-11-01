@@ -456,3 +456,4 @@ html{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .en .mopts.fold .mo{padding:3px 0}
 .en .mopts.fold .mo span{min-width:0}
 .rq .chip.off{opacity:.4}.rq .shortw{font-size:13px;color:var(--sub);margin:4px 0 0;display:flex;gap:10px;align-items:baseline}
+.rq.hot{box-shadow:0 0 0 2px var(--zhu);transition:box-shadow .3s}.rq .noans{font-size:14px;color:var(--sub)}.shortag{font-size:11px;color:var(--sub);margin-left:6px}

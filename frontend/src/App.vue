@@ -62,7 +62,7 @@ async function pollLive() {
   try { const r = await api<{ exam: Live | null }>('/exams/active'); live.value = r.exam; liveLeft.value = r.exam?.remaining_seconds ?? 0; liveAt = Date.now() } catch { /* 网络不好就先不挂 */ }
 }
 addEventListener('hashchange', () => { if (tab.value !== 'exam') pollLive() })
-const liveT = setInterval(() => { if (live.value?.status === 'in_progress') liveLeft.value = Math.max(0, (live.value.remaining_seconds ?? 0) - (Date.now() - liveAt) / 1000); if (Date.now() - liveAt > 60000 && tab.value !== 'exam') pollLive() }, 5000)
+const liveT = setInterval(() => { if (live.value?.status === 'in_progress') liveLeft.value = Math.max(0, (live.value.remaining_seconds ?? 0) - (Date.now() - liveAt) / 1000); if (Date.now() - liveAt > 60000 && tab.value !== 'exam') pollLive() }, 1000)
 onUnmounted(() => clearInterval(liveT))
 const sub = computed(() => tab.value === 'quiz' ? `${subj.value === 'english1' ? enYear.value : year.value} 真题` : tab.value === 'exam' ? '考场模式' : '')
 </script>
