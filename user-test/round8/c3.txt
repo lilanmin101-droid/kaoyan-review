@@ -1,0 +1,20 @@
+event: step
+data: {"type":"step","command_id":"17a82c97-e490-4076-992a-f0805ad7f7c4","text":"收到：「昨天的错题帮我排 1 道」"}
+
+event: step
+data: {"type":"step","command_id":"17a82c97-e490-4076-992a-f0805ad7f7c4","text":"正在翻你的错题本","tool":"getWrongQuestions"}
+
+event: step
+data: {"type":"step","command_id":"17a82c97-e490-4076-992a-f0805ad7f7c4","text":"要排 1 道重做错题，对照今天（11-01）的计划","tool":"updateDailyPlan"}
+
+event: action
+data: {"type":"action","command_id":"17a82c97-e490-4076-992a-f0805ad7f7c4","action":{"id":"0b5b262c-8f44-4967-a8a9-9c5a03fcc9f9","command_id":"17a82c97-e490-4076-992a-f0805ad7f7c4","group_id":"17a82c97-e490-4076-992a-f0805ad7f7c4","trigger":"command","tool":"updateDailyPlan","summary":"在 11-01 的计划里加了「重做 1 道错题」","reason":"你说「昨天的错题帮我排 1 道」，按你说的排 1 道错题重做。","target":{"kind":"plan_task","id":"7a4c516b-b2a6-4f38-95fa-a727bf2064ec"},"before":null,"after":{"id":"7a4c516b-b2a6-4f38-95fa-a727bf2064ec","kind":"redo_wrong","title":"重做 1 道错题","status":"todo","payload":{"question_ids":["english1-2015-03"]},"plan_id":"fa72c407-2d31-488c-9473-dccc89d0ef22","sort_order":-1,"updated_at":"2026-11-01T15:29:30.747Z","quantity_to":1,"completed_at":null,"quantity_from":0,"agent_action_id":null,"changed_by_agent":true,"estimated_minutes":8},"undoable":true,"undone_at":null,"created_at":"2026-11-01T15:29:30.747Z"}}
+
+event: action
+data: {"type":"action","command_id":"17a82c97-e490-4076-992a-f0805ad7f7c4","action":{"id":"d911ba0c-d2e2-4326-8255-c28fdb42912f","command_id":"17a82c97-e490-4076-992a-f0805ad7f7c4","group_id":"17a82c97-e490-4076-992a-f0805ad7f7c4","trigger":"command","tool":"updateDailyPlan","summary":"更新了 11-01 计划的说明","reason":"你说「昨天的错题帮我排 1 道」，按你说的排 1 道错题重做。","target":{"kind":"plan","id":"fa72c407-2d31-488c-9473-dccc89d0ef22"},"before":{"why_changed":null,"changed_by_agent":false},"after":{"why_changed":"你说「昨天的错题帮我排 1 道」，按你说的排 1 道错题重做。","changed_by_agent":true},"undoable":true,"undone_at":null,"created_at":"2026-11-01T15:29:30.747Z"}}
+
+event: done
+data: {"type":"done","command_id":"17a82c97-e490-4076-992a-f0805ad7f7c4","summary":"在 11-01 的计划里加了「重做 1 道错题」；更新了 11-01 计划的说明（昨天已经过去了，排到了今天（11-01））","mock":true,"reply":"已改今天（11-01）的计划：重做 1 道错题。昨天已经过去了，排到了今天（11-01）。","action_count":2,"deduped":false,"date":"2026-11-01","quantity_from":0,"quantity_to":1,"question_id":null}
+
+
+[HTTP 200]

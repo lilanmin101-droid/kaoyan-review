@@ -1,0 +1,17 @@
+{
+ "source": "math1_2099.json",
+ "tags": [],
+ "score_by_whole": [
+  "math1-2099-02"
+ ],
+ "sub_scores": {
+  "math1-2099-02": [
+   6,
+   6
+  ],
+  "math1-2099-03": [
+   5,
+   7
+  ]
+ }
+}

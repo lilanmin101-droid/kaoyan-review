@@ -1,0 +1,18 @@
+{"id": "math1-2017-20", "kind": "official_solution", "result": "pass", "note": "（Ⅰ）用相似对角化说明 r(A)≥2、线性相关说明 r(A)<3，完整；（Ⅱ）正确。", "by": "行业专家", "at": "2026-11-01T06:18-08:00"}
+{"id": "math1-2017-01", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2017.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2017-02", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2017.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2017-03", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2017.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2017-04", "kind": "official_solution", "result": "fail", "by": "用户", "note": "原解析写「S1=S2+10」「∫(v1−v2)dt=10」，符号写反了：甲在前，乙追上应是 S2=S1+10，即 ∫_0^{t0}[v2−v1]dt=10。另外它没有用图上面积说明（−10+20=10 所以 t0=25），直接跳到 t0=25。PDF 原图就是这样，不是 OCR 错。（已对照 origin_2017.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2017-05", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2017.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2017-06", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2017.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2017-07", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2017.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2017-08", "kind": "official_solution", "result": "pass", "by": "用户", "note": "只证明了 A、C、D 正确，然后用排除法选 B；建议补一句 X_n−X_1~N(0,2)，所以 (X_n−X_1)²/2~χ²(1)，2(X_n−X_1)² 不服从 χ² 分布。（已对照 origin_2017.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2017-09", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2017.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2017-10", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2017.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2017-11", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2017.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2017-12", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2017.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2017-13", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2017.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2017-14", "kind": "official_solution", "result": "fail", "by": "用户", "note": "方法点评(3)写「标准正态分布的密度函数 φ(x) 为奇函数」，这是错的：φ 是偶函数，x^kφ(x)（k 为奇数）才是奇函数。PDF 原图就是这样。（已对照 origin_2017.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2017-04", "kind": "expert", "result": "fail", "status": "suspect", "by": "用户", "note": "不合格类别6：推导正确（Δ(10)=-10，Δ(25)=10，[10,25] 内单调增），但没有逐项排除。建议在第4步「答案选 C」前补：「t=10 时 Δ=-10，甲仍领先 20 m，排除 A；15~20 s 时 Δ<10 尚未追上，排除 B；t=25 已追上，排除 D。」（题图未对图核，按讲解的面积 10/20/3 推导）", "at": "2026-11-01T06:26-08:00"}
+{"id": "math1-2017-14", "kind": "expert", "result": "pass", "status": "confirmed", "by": "用户", "note": "合格。混合分布期望 0.5×0+0.5×4=2；正确写明 φ 为偶函数、xφ(x) 为奇函数，纠正了官方解析的错误；链式法则的 ½ 已说明。", "at": "2026-11-01T06:26-08:00"}
+{"id": "math1-2017-04", "kind": "expert", "status": "confirmed", "result": "pass", "by": "用户", "at": "2026-11-01T06:27-08:00", "note": "复查：已补逐项排除 A（Δ(10)=−10）、B（15<t<20 时 Δ<10）、D（t=25 已追上），符合标准第 6 条；推导与答案 C 一致。"}

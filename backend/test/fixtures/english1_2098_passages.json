@@ -1,0 +1,75 @@
+[
+ {
+  "id": "english1-2098-P-cloze",
+  "section": "use_of_english",
+  "title": "Section I Use of English",
+  "directions": "Read the following text. Choose the best word(s) for each numbered blank.",
+  "text": "Sentence 1 of the cloze text has a {{1}} in it. Sentence 2 of the cloze text has a {{2}} in it. Sentence 3 of the cloze text has a {{3}} in it. Sentence 4 of the cloze text has a {{4}} in it. Sentence 5 of the cloze text has a {{5}} in it. Sentence 6 of the cloze text has a {{6}} in it. Sentence 7 of the cloze text has a {{7}} in it. Sentence 8 of the cloze text has a {{8}} in it. Sentence 9 of the cloze text has a {{9}} in it. Sentence 10 of the cloze text has a {{10}} in it. Sentence 11 of the cloze text has a {{11}} in it. Sentence 12 of the cloze text has a {{12}} in it. Sentence 13 of the cloze text has a {{13}} in it. Sentence 14 of the cloze text has a {{14}} in it. Sentence 15 of the cloze text has a {{15}} in it. Sentence 16 of the cloze text has a {{16}} in it. Sentence 17 of the cloze text has a {{17}} in it. Sentence 18 of the cloze text has a {{18}} in it. Sentence 19 of the cloze text has a {{19}} in it. Sentence 20 of the cloze text has a {{20}} in it.\n\nThe end of the cloze text.\n\n{{table:0}} Extra blank {{21}}.",
+  "tables": [
+   {
+    "header": [
+     "Word",
+     "Meaning"
+    ],
+    "rows": [
+     [
+      "gap",
+      "space"
+     ]
+    ]
+   }
+  ],
+  "images": []
+ },
+ {
+  "id": "english1-2098-P-text1",
+  "section": "reading_a",
+  "title": "Text 1",
+  "text": "Reading text 1, paragraph one. Gardens in small towns are becoming popular.\n\nParagraph two explains why people like to grow food.",
+  "images": []
+ },
+ {
+  "id": "english1-2098-P-text2",
+  "section": "reading_a",
+  "title": "Text 2",
+  "text": "Reading text 2, paragraph one. Gardens in small towns are becoming popular.\n\nParagraph two explains why people like to grow food.",
+  "images": []
+ },
+ {
+  "id": "english1-2098-P-text3",
+  "section": "reading_a",
+  "title": "Text 3",
+  "text": "Reading text 3, paragraph one. Gardens in small towns are becoming popular.\n\nParagraph two explains why people like to grow food.",
+  "images": []
+ },
+ {
+  "id": "english1-2098-P-text4",
+  "section": "reading_a",
+  "title": "Text 4",
+  "text": "Reading text 4, paragraph one. Gardens in small towns are becoming popular.\n\nParagraph two explains why people like to grow food.",
+  "images": []
+ },
+ {
+  "id": "english1-2098-P-partb",
+  "section": "reading_b",
+  "title": "Part B",
+  "directions": "Choose the most suitable heading from the list A-G for each numbered paragraph. There are two extra headings.",
+  "text": "Five short paragraphs about travelling well, numbered 41 to 45.",
+  "images": []
+ },
+ {
+  "id": "english1-2098-P-translation",
+  "section": "translation",
+  "title": "Part C",
+  "directions": "Translate the underlined segments into Chinese. (10 points)",
+  "text": "Cities are changing fast. <u data-q=\"46\">Many people now work from home, which saves them time.</u> <u data-q=\"47\">Parks have become more important than ever before.</u> <u data-q=\"48\">Children learn best when they are allowed to play outside.</u> <u data-q=\"49\">Good public transport makes a city easier to live in.</u> Planners must listen to the people who live there.",
+  "images": []
+ },
+ {
+  "id": "english1-2098-P-text1",
+  "section": "reading_a",
+  "title": "Text 1",
+  "text": "Reading text 1, paragraph one. Gardens in small towns are becoming popular.\n\nParagraph two explains why people like to grow food.",
+  "images": []
+ }
+]

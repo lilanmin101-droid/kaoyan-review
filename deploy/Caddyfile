@@ -1,0 +1,41 @@
+# SITE_ADDRESS 由 docker-compose 传入：
+#   设置了 DOMAIN → 就是域名，Caddy 自动申请 Let's Encrypt 证书（80/443 要对外开放、域名 A 记录指向服务器）
+#   没设 DOMAIN   → ":80"，只走 http://服务器IP
+# 证书默认 Let's Encrypt，不需要邮箱
+{$SITE_ADDRESS::80} {
+	# ---- 后端 API（含 SSE 流式讲题 / Agent）----
+	handle /api/* {
+		reverse_proxy {$BACKEND_UPSTREAM:backend:3000} {
+			# SSE：每个字节立刻转发，不缓冲
+			flush_interval -1
+			transport http {
+				# 长时间的模型流式输出不要被读超时掐断
+				read_timeout 0
+				write_timeout 0
+			}
+		}
+	}
+
+	# ---- 前端 SPA ----
+	handle {
+		root * {$WEB_ROOT:/srv}
+		encode zstd gzip
+		# Vite 带 hash 的静态资源长期缓存；index.html 每次都重新取
+		@hashed path /assets/*
+		header @hashed Cache-Control "public, max-age=31536000, immutable"
+		@html path / /index.html
+		header @html Cache-Control "no-cache"
+		try_files {path} /index.html
+		file_server
+	}
+
+	# 费曼录音上传等：放宽请求体大小（默认不限，这里显式写 50MB 上限）
+	request_body {
+		max_size 50MB
+	}
+
+	log {
+		output stdout
+		format console
+	}
+}

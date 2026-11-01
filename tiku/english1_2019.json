@@ -1,0 +1,2548 @@
+[
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-01",
+    "exam": "english1",
+    "year": 2019,
+    "number": 1,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "（1）______ of us just walk straight into the woods without a phone.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Some"
+      },
+      {
+        "key": "B",
+        "content": "Most"
+      },
+      {
+        "key": "C",
+        "content": "Few"
+      },
+      {
+        "key": "D",
+        "content": "All"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-02",
+    "exam": "english1",
+    "year": 2019,
+    "number": 2,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "But phones （2）______ on batteries, and batteries can die faster than we realize.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "put"
+      },
+      {
+        "key": "B",
+        "content": "take"
+      },
+      {
+        "key": "C",
+        "content": "run"
+      },
+      {
+        "key": "D",
+        "content": "come"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-03",
+    "exam": "english1",
+    "year": 2019,
+    "number": 3,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "（3）______ you get lost without a phone or a compass, and you （4）______ can’t find north, we have a few tricks to help you navigate （5）______ to civilization, one of which is to follow the land.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Since"
+      },
+      {
+        "key": "B",
+        "content": "If"
+      },
+      {
+        "key": "C",
+        "content": "Though"
+      },
+      {
+        "key": "D",
+        "content": "Until"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-04",
+    "exam": "english1",
+    "year": 2019,
+    "number": 4,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "（3）______ you get lost without a phone or a compass, and you （4）______ can’t find north, we have a few tricks to help you navigate （5）______ to civilization, one of which is to follow the land.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "formally"
+      },
+      {
+        "key": "B",
+        "content": "relatively"
+      },
+      {
+        "key": "C",
+        "content": "gradually"
+      },
+      {
+        "key": "D",
+        "content": "literally"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-05",
+    "exam": "english1",
+    "year": 2019,
+    "number": 5,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "（3）______ you get lost without a phone or a compass, and you （4）______ can’t find north, we have a few tricks to help you navigate （5）______ to civilization, one of which is to follow the land.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "back"
+      },
+      {
+        "key": "B",
+        "content": "next"
+      },
+      {
+        "key": "C",
+        "content": "around"
+      },
+      {
+        "key": "D",
+        "content": "away"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-06",
+    "exam": "english1",
+    "year": 2019,
+    "number": 6,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "When you find yourself well （6）______ a trail, but not in a completely （7）______ area, you have to answer two questions: Which （8）______ is downhill, in this particular area?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "onto"
+      },
+      {
+        "key": "B",
+        "content": "off"
+      },
+      {
+        "key": "C",
+        "content": "across"
+      },
+      {
+        "key": "D",
+        "content": "alone"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-07",
+    "exam": "english1",
+    "year": 2019,
+    "number": 7,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "When you find yourself well （6）______ a trail, but not in a completely （7）______ area, you have to answer two questions: Which （8）______ is downhill, in this particular area?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "unattractive"
+      },
+      {
+        "key": "B",
+        "content": "uncrowded"
+      },
+      {
+        "key": "C",
+        "content": "unchanged"
+      },
+      {
+        "key": "D",
+        "content": "unfamiliar"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-08",
+    "exam": "english1",
+    "year": 2019,
+    "number": 8,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "When you find yourself well （6）______ a trail, but not in a completely （7）______ area, you have to answer two questions: Which （8）______ is downhill, in this particular area?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "site"
+      },
+      {
+        "key": "B",
+        "content": "point"
+      },
+      {
+        "key": "C",
+        "content": "way"
+      },
+      {
+        "key": "D",
+        "content": "place"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-09",
+    "exam": "english1",
+    "year": 2019,
+    "number": 9,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "（9）______ , if you head downhill, and follow any H₂O you find, you should （10）______ see signs of people.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "So"
+      },
+      {
+        "key": "B",
+        "content": "Yet"
+      },
+      {
+        "key": "C",
+        "content": "Instead"
+      },
+      {
+        "key": "D",
+        "content": "Besides"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-10",
+    "exam": "english1",
+    "year": 2019,
+    "number": 10,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "（9）______ , if you head downhill, and follow any H₂O you find, you should （10）______ see signs of people.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "immediately"
+      },
+      {
+        "key": "B",
+        "content": "intentionally"
+      },
+      {
+        "key": "C",
+        "content": "unexpectedly"
+      },
+      {
+        "key": "D",
+        "content": "eventually"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-11",
+    "exam": "english1",
+    "year": 2019,
+    "number": 11,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "If you’ve explored the area before, keep an eye out for familiar sights – you may be （11）______ how quickly identifying a distinctive rock or tree can restore your bearings.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "surprised"
+      },
+      {
+        "key": "B",
+        "content": "annoyed"
+      },
+      {
+        "key": "C",
+        "content": "frightened"
+      },
+      {
+        "key": "D",
+        "content": "confused"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-12",
+    "exam": "english1",
+    "year": 2019,
+    "number": 12,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "Another （12）______ : Climb high and look for signs of human habitation.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "problem"
+      },
+      {
+        "key": "B",
+        "content": "option"
+      },
+      {
+        "key": "C",
+        "content": "view"
+      },
+      {
+        "key": "D",
+        "content": "result"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-13",
+    "exam": "english1",
+    "year": 2019,
+    "number": 13,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "（13）______ , even in dense forest, you should be able to （14）______ gaps in the tree line due to roads, train tracks, and other paths people carve （15）______ the woods.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Above all"
+      },
+      {
+        "key": "B",
+        "content": "In contrast"
+      },
+      {
+        "key": "C",
+        "content": "On average"
+      },
+      {
+        "key": "D",
+        "content": "For example"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-14",
+    "exam": "english1",
+    "year": 2019,
+    "number": 14,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "（13）______ , even in dense forest, you should be able to （14）______ gaps in the tree line due to roads, train tracks, and other paths people carve （15）______ the woods.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "bridge"
+      },
+      {
+        "key": "B",
+        "content": "avoid"
+      },
+      {
+        "key": "C",
+        "content": "spot"
+      },
+      {
+        "key": "D",
+        "content": "separate"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-15",
+    "exam": "english1",
+    "year": 2019,
+    "number": 15,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "（13）______ , even in dense forest, you should be able to （14）______ gaps in the tree line due to roads, train tracks, and other paths people carve （15）______ the woods.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "from"
+      },
+      {
+        "key": "B",
+        "content": "through"
+      },
+      {
+        "key": "C",
+        "content": "beyond"
+      },
+      {
+        "key": "D",
+        "content": "under"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-16",
+    "exam": "english1",
+    "year": 2019,
+    "number": 16,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "Head toward these （16）______ to find a way out.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "posts"
+      },
+      {
+        "key": "B",
+        "content": "links"
+      },
+      {
+        "key": "C",
+        "content": "shades"
+      },
+      {
+        "key": "D",
+        "content": "breaks"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-17",
+    "exam": "english1",
+    "year": 2019,
+    "number": 17,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "At night, scan the horizon for （17）______ light sources, such as fires and streetlights, then walk toward the glow of light pollution.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "artificial"
+      },
+      {
+        "key": "B",
+        "content": "mysterious"
+      },
+      {
+        "key": "C",
+        "content": "hidden"
+      },
+      {
+        "key": "D",
+        "content": "limited"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-18",
+    "exam": "english1",
+    "year": 2019,
+    "number": 18,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "（18）______ , assuming you’re lost in an area humans tend to frequent, look for the （19）______ we leave on the landscape.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Finally"
+      },
+      {
+        "key": "B",
+        "content": "Consequently"
+      },
+      {
+        "key": "C",
+        "content": "Incidentally"
+      },
+      {
+        "key": "D",
+        "content": "Generally"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-19",
+    "exam": "english1",
+    "year": 2019,
+    "number": 19,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "（18）______ , assuming you’re lost in an area humans tend to frequent, look for the （19）______ we leave on the landscape.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "memories"
+      },
+      {
+        "key": "B",
+        "content": "marks"
+      },
+      {
+        "key": "C",
+        "content": "notes"
+      },
+      {
+        "key": "D",
+        "content": "belongings"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-20",
+    "exam": "english1",
+    "year": 2019,
+    "number": 20,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2019-P-cloze",
+    "stem": "Trail blazes, tire tracks, and other features can （20）______ you to civilization.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "restrict"
+      },
+      {
+        "key": "B",
+        "content": "adopt"
+      },
+      {
+        "key": "C",
+        "content": "lead"
+      },
+      {
+        "key": "D",
+        "content": "expose"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-21",
+    "exam": "english1",
+    "year": 2019,
+    "number": 21,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text1",
+    "stem": "According to Paragraph 1, one motive in imposing the new rule is to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "enhance bankers’ sense of responsibility."
+      },
+      {
+        "key": "B",
+        "content": "help corporations achieve larger profits."
+      },
+      {
+        "key": "C",
+        "content": "build a new system of financial regulation."
+      },
+      {
+        "key": "D",
+        "content": "guarantee the bonuses of top executives."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-22",
+    "exam": "english1",
+    "year": 2019,
+    "number": 22,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text1",
+    "stem": "Alfred Marshall is quoted to indicate",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the conditions for generating quick profits."
+      },
+      {
+        "key": "B",
+        "content": "governments’ impatience in decision-making."
+      },
+      {
+        "key": "C",
+        "content": "the solid structure of publicly traded companies."
+      },
+      {
+        "key": "D",
+        "content": "“short-termism” in economic activities."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-23",
+    "exam": "english1",
+    "year": 2019,
+    "number": 23,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text1",
+    "stem": "It is argued that the influence of transient investment on public companies can be",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "indirect."
+      },
+      {
+        "key": "B",
+        "content": "adverse."
+      },
+      {
+        "key": "C",
+        "content": "minimal."
+      },
+      {
+        "key": "D",
+        "content": "temporary."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-24",
+    "exam": "english1",
+    "year": 2019,
+    "number": 24,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text1",
+    "stem": "The US and France examples are used to illustrate",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the obstacles to preventing “short-termism”."
+      },
+      {
+        "key": "B",
+        "content": "the significance of long-term thinking."
+      },
+      {
+        "key": "C",
+        "content": "the approaches to promoting “long-termism”."
+      },
+      {
+        "key": "D",
+        "content": "the prevalence of short-term thinking."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-25",
+    "exam": "english1",
+    "year": 2019,
+    "number": 25,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text1",
+    "stem": "Which of the following would be the best title for the text?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Failure of Quarterly Capitalism"
+      },
+      {
+        "key": "B",
+        "content": "Patience as a Corporate Virtue"
+      },
+      {
+        "key": "C",
+        "content": "Decisiveness Required of Top Executives"
+      },
+      {
+        "key": "D",
+        "content": "Frustration of Risk-taking Bankers"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-26",
+    "exam": "english1",
+    "year": 2019,
+    "number": 26,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text2",
+    "stem": "What is commonly regarded as the cause of grade inflation?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "The change of course catalogs."
+      },
+      {
+        "key": "B",
+        "content": "Students’ indifference to GPAs."
+      },
+      {
+        "key": "C",
+        "content": "Colleges’ neglect of GPAs."
+      },
+      {
+        "key": "D",
+        "content": "The influence of consumer culture."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-27",
+    "exam": "english1",
+    "year": 2019,
+    "number": 27,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text2",
+    "stem": "What was the original purpose of grade forgiveness?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "To help freshmen adapt to college learning."
+      },
+      {
+        "key": "B",
+        "content": "To maintain colleges’ graduation rates."
+      },
+      {
+        "key": "C",
+        "content": "To prepare graduates for a challenging future."
+      },
+      {
+        "key": "D",
+        "content": "To increase universities’ income from tuition."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-28",
+    "exam": "english1",
+    "year": 2019,
+    "number": 28,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text2",
+    "stem": "According to Paragraph 5, grade forgiveness enables colleges to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "obtain more financial support."
+      },
+      {
+        "key": "B",
+        "content": "boost their student enrollments."
+      },
+      {
+        "key": "C",
+        "content": "improve their teaching quality."
+      },
+      {
+        "key": "D",
+        "content": "meet local governments’ needs."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-29",
+    "exam": "english1",
+    "year": 2019,
+    "number": 29,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text2",
+    "stem": "What does the phrase “to be aligned” (Line 5, Para. 6) most probably mean?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "To counterbalance each other."
+      },
+      {
+        "key": "B",
+        "content": "To complement each other."
+      },
+      {
+        "key": "C",
+        "content": "To be identical with each other."
+      },
+      {
+        "key": "D",
+        "content": "To be contradictory to each other."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-30",
+    "exam": "english1",
+    "year": 2019,
+    "number": 30,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text2",
+    "stem": "The author examines the practice of grade forgiveness by",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "assessing its feasibility."
+      },
+      {
+        "key": "B",
+        "content": "analyzing the causes behind it."
+      },
+      {
+        "key": "C",
+        "content": "comparing different views on it."
+      },
+      {
+        "key": "D",
+        "content": "listing its long-run effects."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-31",
+    "exam": "english1",
+    "year": 2019,
+    "number": 31,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text3",
+    "stem": "Mary Shelley’s novel Frankenstein is mentioned because it",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "fascinates AI scientists all over the world."
+      },
+      {
+        "key": "B",
+        "content": "has remained popular for as long as 200 years."
+      },
+      {
+        "key": "C",
+        "content": "involves some concerns raised by AI today."
+      },
+      {
+        "key": "D",
+        "content": "has sparked serious ethical controversies."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-32",
+    "exam": "english1",
+    "year": 2019,
+    "number": 32,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text3",
+    "stem": "In David Eagleman’s opinion, our current knowledge of consciousness",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "helps explain artificial intelligence."
+      },
+      {
+        "key": "B",
+        "content": "can be misleading to robot making."
+      },
+      {
+        "key": "C",
+        "content": "inspires popular sci-fi TV series."
+      },
+      {
+        "key": "D",
+        "content": "is too limited for us to reproduce it."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-33",
+    "exam": "english1",
+    "year": 2019,
+    "number": 33,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text3",
+    "stem": "The solution to the ethical issues brought by autonomous vehicles",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "can hardly ever be found."
+      },
+      {
+        "key": "B",
+        "content": "is still beyond our capacity."
+      },
+      {
+        "key": "C",
+        "content": "causes little public concern."
+      },
+      {
+        "key": "D",
+        "content": "has aroused much curiosity."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-34",
+    "exam": "english1",
+    "year": 2019,
+    "number": 34,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text3",
+    "stem": "The author’s attitude toward Google’s pledges is one of",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "affirmation."
+      },
+      {
+        "key": "B",
+        "content": "skepticism."
+      },
+      {
+        "key": "C",
+        "content": "contempt."
+      },
+      {
+        "key": "D",
+        "content": "respect."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-35",
+    "exam": "english1",
+    "year": 2019,
+    "number": 35,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text3",
+    "stem": "Which of the following would be the best title for the text?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "AI’s Future: In the Hands of Tech Giants"
+      },
+      {
+        "key": "B",
+        "content": "Frankenstein, the Novel Predicting the Age of AI"
+      },
+      {
+        "key": "C",
+        "content": "The Conscience of AI: Complex But Inevitable"
+      },
+      {
+        "key": "D",
+        "content": "AI Shall Be Killers Once Out of Control"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-36",
+    "exam": "english1",
+    "year": 2019,
+    "number": 36,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text4",
+    "stem": "The Supreme Court decision Thursday will",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "better businesses’ relations with states."
+      },
+      {
+        "key": "B",
+        "content": "put most online businesses in a dilemma."
+      },
+      {
+        "key": "C",
+        "content": "make more online shoppers pay sales tax."
+      },
+      {
+        "key": "D",
+        "content": "force some states to cut sales tax."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-37",
+    "exam": "english1",
+    "year": 2019,
+    "number": 37,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text4",
+    "stem": "It can be learned from paragraphs 2 and 3 that the overruled decisions",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "have led to the dominance of e-commerce."
+      },
+      {
+        "key": "B",
+        "content": "have cost consumers a lot over the years."
+      },
+      {
+        "key": "C",
+        "content": "were widely criticized by online purchasers."
+      },
+      {
+        "key": "D",
+        "content": "were considered unfavorable by states."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-38",
+    "exam": "english1",
+    "year": 2019,
+    "number": 38,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text4",
+    "stem": "According to Justice Anthony Kennedy, the physical presence rule has",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "hindered economic development."
+      },
+      {
+        "key": "B",
+        "content": "brought prosperity to the country."
+      },
+      {
+        "key": "C",
+        "content": "harmed fair market competition."
+      },
+      {
+        "key": "D",
+        "content": "boosted growth in states’ revenue."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-39",
+    "exam": "english1",
+    "year": 2019,
+    "number": 39,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text4",
+    "stem": "Who are most likely to welcome the Supreme Court ruling?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Internet entrepreneurs."
+      },
+      {
+        "key": "B",
+        "content": "Big-chain owners."
+      },
+      {
+        "key": "C",
+        "content": "Third-party sellers."
+      },
+      {
+        "key": "D",
+        "content": "Small retailers."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-40",
+    "exam": "english1",
+    "year": 2019,
+    "number": 40,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2019-P-text4",
+    "stem": "In dealing with the Supreme Court decision Thursday, the author",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "gives a factual account of it and discusses its consequences."
+      },
+      {
+        "key": "B",
+        "content": "describes the long and complicated process of its making."
+      },
+      {
+        "key": "C",
+        "content": "presents its main points with conflicting views on them."
+      },
+      {
+        "key": "D",
+        "content": "cites some cases related to it and analyzes their implications."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-41",
+    "exam": "english1",
+    "year": 2019,
+    "number": 41,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2019-P-partb",
+    "stem": "根据段落顺序 (41) → (42) → F → (43) → (44) → C → (45)，选出第（41）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "These tools can help you win every argument – not in the unhelpful sense of beating your opponents but in the better sense of learning about the issues that divide people. Learning why they disagree with us and learning to talk and work together with them. If we readjust our view of arguments – from a verbal fight or tennis game to a reasoned exchange through which we all gain mutual respect, and understanding – then we change the very nature of what it means to “win” an argument."
+      },
+      {
+        "key": "B",
+        "content": "Of course, many discussions are not so successful. Still, we need to be careful not to accuse opponents of bad arguments too quickly. We need to learn how to evaluate them properly. A large part of evaluation is calling out bad arguments, but we also need to admit good arguments by opponents and to apply the same critical standards to ourselves. Humility requires you to recognize weakness in your own arguments and sometimes also to accept reasons on the opposite side."
+      },
+      {
+        "key": "C",
+        "content": "None of these will be easy but you can start even if others refuse to. Next time you state your position, formulate an argument for what you claim and honestly ask yourself whether your argument is any good. Next time you talk with someone who takes a stand, ask them to give you a reason for their view. Spell out their argument fully and charitably. Assess its strength impartially. Raise objections and listen carefully to their replies."
+      },
+      {
+        "key": "D",
+        "content": "Carnegie would be right if arguments were fights, which is how we often think of them. Like physical fights, verbal fights can leave both sides bloodied. Even when you win, you end up no better off. Your prospects would be almost as dismal if arguments were even just competitions – like, say, tennis games. Pairs of opponents hit the ball back and forth until one winner emerges from all who entered. Everybody else loses. This kind of thinking is why so many people try to avoid arguments, especially about politics and religion."
+      },
+      {
+        "key": "E",
+        "content": "In his 1936 work How to Win Friends and Influence People, Dale Carnegie wrote: “There is only one way…to get the best of an argument – and that is to avoid it.” This aversion to arguments is common, but it depends on a mistaken view of arguments that causes profound problems for our personal and social lives – and in many ways misses the point of arguing in the first place."
+      },
+      {
+        "key": "F",
+        "content": "These views of arguments also undermine reason. If you see a conversation as a fight or competition, you can win by cheating as long as you don’t get caught. You will be happy to convince people with bad arguments. You can call their views stupid, or joke about how ignorant they are. None of these tricks will help you understand them, their positions or the issues that divide you, but they can help you win – in one way."
+      },
+      {
+        "key": "G",
+        "content": "There is a better way to win arguments. Imagine that you favor increasing the minimum wage in our state, and I do not. If you yell, “Yes,” and I yell, “No,” neither of us learns anything. We neither understand nor respect each other, and we have no basis for compromise or cooperation. In contrast, suppose you give a reasonable argument: that full-time workers should not have to live in poverty. Then I counter with another reasonable argument: that a higher minimum wage will force businesses to employ fewer people for less time. Now we can understand each other’s positions and recognize our shared values, since we both care about needy workers."
+      }
+    ],
+    "answer": [
+      "E"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "E",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-42",
+    "exam": "english1",
+    "year": 2019,
+    "number": 42,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2019-P-partb",
+    "stem": "根据段落顺序 (41) → (42) → F → (43) → (44) → C → (45)，选出第（42）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "These tools can help you win every argument – not in the unhelpful sense of beating your opponents but in the better sense of learning about the issues that divide people. Learning why they disagree with us and learning to talk and work together with them. If we readjust our view of arguments – from a verbal fight or tennis game to a reasoned exchange through which we all gain mutual respect, and understanding – then we change the very nature of what it means to “win” an argument."
+      },
+      {
+        "key": "B",
+        "content": "Of course, many discussions are not so successful. Still, we need to be careful not to accuse opponents of bad arguments too quickly. We need to learn how to evaluate them properly. A large part of evaluation is calling out bad arguments, but we also need to admit good arguments by opponents and to apply the same critical standards to ourselves. Humility requires you to recognize weakness in your own arguments and sometimes also to accept reasons on the opposite side."
+      },
+      {
+        "key": "C",
+        "content": "None of these will be easy but you can start even if others refuse to. Next time you state your position, formulate an argument for what you claim and honestly ask yourself whether your argument is any good. Next time you talk with someone who takes a stand, ask them to give you a reason for their view. Spell out their argument fully and charitably. Assess its strength impartially. Raise objections and listen carefully to their replies."
+      },
+      {
+        "key": "D",
+        "content": "Carnegie would be right if arguments were fights, which is how we often think of them. Like physical fights, verbal fights can leave both sides bloodied. Even when you win, you end up no better off. Your prospects would be almost as dismal if arguments were even just competitions – like, say, tennis games. Pairs of opponents hit the ball back and forth until one winner emerges from all who entered. Everybody else loses. This kind of thinking is why so many people try to avoid arguments, especially about politics and religion."
+      },
+      {
+        "key": "E",
+        "content": "In his 1936 work How to Win Friends and Influence People, Dale Carnegie wrote: “There is only one way…to get the best of an argument – and that is to avoid it.” This aversion to arguments is common, but it depends on a mistaken view of arguments that causes profound problems for our personal and social lives – and in many ways misses the point of arguing in the first place."
+      },
+      {
+        "key": "F",
+        "content": "These views of arguments also undermine reason. If you see a conversation as a fight or competition, you can win by cheating as long as you don’t get caught. You will be happy to convince people with bad arguments. You can call their views stupid, or joke about how ignorant they are. None of these tricks will help you understand them, their positions or the issues that divide you, but they can help you win – in one way."
+      },
+      {
+        "key": "G",
+        "content": "There is a better way to win arguments. Imagine that you favor increasing the minimum wage in our state, and I do not. If you yell, “Yes,” and I yell, “No,” neither of us learns anything. We neither understand nor respect each other, and we have no basis for compromise or cooperation. In contrast, suppose you give a reasonable argument: that full-time workers should not have to live in poverty. Then I counter with another reasonable argument: that a higher minimum wage will force businesses to employ fewer people for less time. Now we can understand each other’s positions and recognize our shared values, since we both care about needy workers."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-43",
+    "exam": "english1",
+    "year": 2019,
+    "number": 43,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2019-P-partb",
+    "stem": "根据段落顺序 (41) → (42) → F → (43) → (44) → C → (45)，选出第（43）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "These tools can help you win every argument – not in the unhelpful sense of beating your opponents but in the better sense of learning about the issues that divide people. Learning why they disagree with us and learning to talk and work together with them. If we readjust our view of arguments – from a verbal fight or tennis game to a reasoned exchange through which we all gain mutual respect, and understanding – then we change the very nature of what it means to “win” an argument."
+      },
+      {
+        "key": "B",
+        "content": "Of course, many discussions are not so successful. Still, we need to be careful not to accuse opponents of bad arguments too quickly. We need to learn how to evaluate them properly. A large part of evaluation is calling out bad arguments, but we also need to admit good arguments by opponents and to apply the same critical standards to ourselves. Humility requires you to recognize weakness in your own arguments and sometimes also to accept reasons on the opposite side."
+      },
+      {
+        "key": "C",
+        "content": "None of these will be easy but you can start even if others refuse to. Next time you state your position, formulate an argument for what you claim and honestly ask yourself whether your argument is any good. Next time you talk with someone who takes a stand, ask them to give you a reason for their view. Spell out their argument fully and charitably. Assess its strength impartially. Raise objections and listen carefully to their replies."
+      },
+      {
+        "key": "D",
+        "content": "Carnegie would be right if arguments were fights, which is how we often think of them. Like physical fights, verbal fights can leave both sides bloodied. Even when you win, you end up no better off. Your prospects would be almost as dismal if arguments were even just competitions – like, say, tennis games. Pairs of opponents hit the ball back and forth until one winner emerges from all who entered. Everybody else loses. This kind of thinking is why so many people try to avoid arguments, especially about politics and religion."
+      },
+      {
+        "key": "E",
+        "content": "In his 1936 work How to Win Friends and Influence People, Dale Carnegie wrote: “There is only one way…to get the best of an argument – and that is to avoid it.” This aversion to arguments is common, but it depends on a mistaken view of arguments that causes profound problems for our personal and social lives – and in many ways misses the point of arguing in the first place."
+      },
+      {
+        "key": "F",
+        "content": "These views of arguments also undermine reason. If you see a conversation as a fight or competition, you can win by cheating as long as you don’t get caught. You will be happy to convince people with bad arguments. You can call their views stupid, or joke about how ignorant they are. None of these tricks will help you understand them, their positions or the issues that divide you, but they can help you win – in one way."
+      },
+      {
+        "key": "G",
+        "content": "There is a better way to win arguments. Imagine that you favor increasing the minimum wage in our state, and I do not. If you yell, “Yes,” and I yell, “No,” neither of us learns anything. We neither understand nor respect each other, and we have no basis for compromise or cooperation. In contrast, suppose you give a reasonable argument: that full-time workers should not have to live in poverty. Then I counter with another reasonable argument: that a higher minimum wage will force businesses to employ fewer people for less time. Now we can understand each other’s positions and recognize our shared values, since we both care about needy workers."
+      }
+    ],
+    "answer": [
+      "G"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "G",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-44",
+    "exam": "english1",
+    "year": 2019,
+    "number": 44,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2019-P-partb",
+    "stem": "根据段落顺序 (41) → (42) → F → (43) → (44) → C → (45)，选出第（44）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "These tools can help you win every argument – not in the unhelpful sense of beating your opponents but in the better sense of learning about the issues that divide people. Learning why they disagree with us and learning to talk and work together with them. If we readjust our view of arguments – from a verbal fight or tennis game to a reasoned exchange through which we all gain mutual respect, and understanding – then we change the very nature of what it means to “win” an argument."
+      },
+      {
+        "key": "B",
+        "content": "Of course, many discussions are not so successful. Still, we need to be careful not to accuse opponents of bad arguments too quickly. We need to learn how to evaluate them properly. A large part of evaluation is calling out bad arguments, but we also need to admit good arguments by opponents and to apply the same critical standards to ourselves. Humility requires you to recognize weakness in your own arguments and sometimes also to accept reasons on the opposite side."
+      },
+      {
+        "key": "C",
+        "content": "None of these will be easy but you can start even if others refuse to. Next time you state your position, formulate an argument for what you claim and honestly ask yourself whether your argument is any good. Next time you talk with someone who takes a stand, ask them to give you a reason for their view. Spell out their argument fully and charitably. Assess its strength impartially. Raise objections and listen carefully to their replies."
+      },
+      {
+        "key": "D",
+        "content": "Carnegie would be right if arguments were fights, which is how we often think of them. Like physical fights, verbal fights can leave both sides bloodied. Even when you win, you end up no better off. Your prospects would be almost as dismal if arguments were even just competitions – like, say, tennis games. Pairs of opponents hit the ball back and forth until one winner emerges from all who entered. Everybody else loses. This kind of thinking is why so many people try to avoid arguments, especially about politics and religion."
+      },
+      {
+        "key": "E",
+        "content": "In his 1936 work How to Win Friends and Influence People, Dale Carnegie wrote: “There is only one way…to get the best of an argument – and that is to avoid it.” This aversion to arguments is common, but it depends on a mistaken view of arguments that causes profound problems for our personal and social lives – and in many ways misses the point of arguing in the first place."
+      },
+      {
+        "key": "F",
+        "content": "These views of arguments also undermine reason. If you see a conversation as a fight or competition, you can win by cheating as long as you don’t get caught. You will be happy to convince people with bad arguments. You can call their views stupid, or joke about how ignorant they are. None of these tricks will help you understand them, their positions or the issues that divide you, but they can help you win – in one way."
+      },
+      {
+        "key": "G",
+        "content": "There is a better way to win arguments. Imagine that you favor increasing the minimum wage in our state, and I do not. If you yell, “Yes,” and I yell, “No,” neither of us learns anything. We neither understand nor respect each other, and we have no basis for compromise or cooperation. In contrast, suppose you give a reasonable argument: that full-time workers should not have to live in poverty. Then I counter with another reasonable argument: that a higher minimum wage will force businesses to employ fewer people for less time. Now we can understand each other’s positions and recognize our shared values, since we both care about needy workers."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-45",
+    "exam": "english1",
+    "year": 2019,
+    "number": 45,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2019-P-partb",
+    "stem": "根据段落顺序 (41) → (42) → F → (43) → (44) → C → (45)，选出第（45）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "These tools can help you win every argument – not in the unhelpful sense of beating your opponents but in the better sense of learning about the issues that divide people. Learning why they disagree with us and learning to talk and work together with them. If we readjust our view of arguments – from a verbal fight or tennis game to a reasoned exchange through which we all gain mutual respect, and understanding – then we change the very nature of what it means to “win” an argument."
+      },
+      {
+        "key": "B",
+        "content": "Of course, many discussions are not so successful. Still, we need to be careful not to accuse opponents of bad arguments too quickly. We need to learn how to evaluate them properly. A large part of evaluation is calling out bad arguments, but we also need to admit good arguments by opponents and to apply the same critical standards to ourselves. Humility requires you to recognize weakness in your own arguments and sometimes also to accept reasons on the opposite side."
+      },
+      {
+        "key": "C",
+        "content": "None of these will be easy but you can start even if others refuse to. Next time you state your position, formulate an argument for what you claim and honestly ask yourself whether your argument is any good. Next time you talk with someone who takes a stand, ask them to give you a reason for their view. Spell out their argument fully and charitably. Assess its strength impartially. Raise objections and listen carefully to their replies."
+      },
+      {
+        "key": "D",
+        "content": "Carnegie would be right if arguments were fights, which is how we often think of them. Like physical fights, verbal fights can leave both sides bloodied. Even when you win, you end up no better off. Your prospects would be almost as dismal if arguments were even just competitions – like, say, tennis games. Pairs of opponents hit the ball back and forth until one winner emerges from all who entered. Everybody else loses. This kind of thinking is why so many people try to avoid arguments, especially about politics and religion."
+      },
+      {
+        "key": "E",
+        "content": "In his 1936 work How to Win Friends and Influence People, Dale Carnegie wrote: “There is only one way…to get the best of an argument – and that is to avoid it.” This aversion to arguments is common, but it depends on a mistaken view of arguments that causes profound problems for our personal and social lives – and in many ways misses the point of arguing in the first place."
+      },
+      {
+        "key": "F",
+        "content": "These views of arguments also undermine reason. If you see a conversation as a fight or competition, you can win by cheating as long as you don’t get caught. You will be happy to convince people with bad arguments. You can call their views stupid, or joke about how ignorant they are. None of these tricks will help you understand them, their positions or the issues that divide you, but they can help you win – in one way."
+      },
+      {
+        "key": "G",
+        "content": "There is a better way to win arguments. Imagine that you favor increasing the minimum wage in our state, and I do not. If you yell, “Yes,” and I yell, “No,” neither of us learns anything. We neither understand nor respect each other, and we have no basis for compromise or cooperation. In contrast, suppose you give a reasonable argument: that full-time workers should not have to live in poverty. Then I counter with another reasonable argument: that a higher minimum wage will force businesses to employ fewer people for less time. Now we can understand each other’s positions and recognize our shared values, since we both care about needy workers."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-46",
+    "exam": "english1",
+    "year": 2019,
+    "number": 46,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2019-P-translation",
+    "stem": "There is a great deal of this kind of nonsense in the medical journals which, when taken up by broadcasters and the lay press, generates both health scares and short-lived dietary enthusiasms.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "医学期刊中充斥着这类无稽之谈，这些东西一经广播和非专业报刊传播，就会引起健康方面的恐慌和对某些饮食的短暂追捧。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-47",
+    "exam": "english1",
+    "year": 2019,
+    "number": 47,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2019-P-translation",
+    "stem": "nowadays anyone applying for a research post has to have published twice the number of papers that would have been required for the same post only 10 years ago.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "今天，任何一个科研岗位的申请者需要发表文章的数量比短短十年前申报同一岗位时整整翻了一番。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-48",
+    "exam": "english1",
+    "year": 2019,
+    "number": 48,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2019-P-translation",
+    "stem": "Attempts have been made to curb this tendency, for example, by trying to incorporate some measure of quality as well as quantity into the assessment of an applicant’s papers.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "为遏制这一倾向已经采取了若干措施，比如在评定岗位申请者的论文时，尝试引入一项兼顾数量和质量的评估指标。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-49",
+    "exam": "english1",
+    "year": 2019,
+    "number": 49,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2019-P-translation",
+    "stem": "This would be reasonable if it were not for the fact that scientists can easily arrange to cite themselves in their future publications, or get associates to do so for them in return for similar favours.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "要不是因为科研人员轻易就能在将来的论文里自我引用，或找同行引用以回报自己提供的类似好处，这项措施本该是合理的。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-50",
+    "exam": "english1",
+    "year": 2019,
+    "number": 50,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2019-P-translation",
+    "stem": "If we are serious about ensuring that our science is both meaningful and reproducible, we must ensure that our institutions encourage that kind of science.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "如果我们真想保证我们的科研既有意义又可复制，就必须确保我们的体制能激励这样的科研。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-51",
+    "exam": "english1",
+    "year": 2019,
+    "number": 51,
+    "section": "writing_a",
+    "type": "essay",
+    "score": 10.0,
+    "passage_id": null,
+    "stem": "51. Directions:\nSuppose you are working for the “Aiding Rural Primary School” project of your\nuniversity. Write an email to answer the inquiry from an international student\nvolunteer, specifying the details of the project.\nYou should write about 100 words on the ANSWER SHEET.\nDo not use your own name in the email. Use “Li Ming” instead. (10 points)",
+    "images": [],
+    "options": [],
+    "answer": [
+      "Dear Volunteer,\n\nWith the sincere appreciation for your dedication to our project, “Aiding Rural Primary Schools”, I’d like to answer your inquiry regarding the forthcoming voluntary activity.\n\nEach summer holiday, we organize ten volunteers to teach for three weeks in rural primary schools mostly understaffed and seriously lacking in resources. International students are often assigned to teach English and assist local teachers during classes, which will greatly benefit pupils there who often struggle in their English study. Besides, there will be a brief training session before leaving, during which you should decide teaching plans and submit them in advance for overall arrangement. And surely, our university will pay all volunteers' expenses on meals, accommodation and transportation.\n\nIt is hoped that my reply will be of help and please email me if you have any further questions.\n\nYours sincerely,\nLi Ming"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/小作文（书信、通知等）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2019-52",
+    "exam": "english1",
+    "year": 2019,
+    "number": 52,
+    "section": "writing_b",
+    "type": "essay",
+    "score": 20.0,
+    "passage_id": null,
+    "stem": "52. Directions:\nWrite an essay of 160-200 words based on the picture below. In your essay, you\nshould\n1) describe the picture briefly,\n2) interpret the implied meaning, and\n3) give your comments.\nYou should write neatly on the ANSWER SHEET. (20 points)",
+    "images": [
+      "images/english1-2019/q52.jpg"
+    ],
+    "options": [],
+    "answer": [
+      "In the picture, there are two climbers on their way to the top of a mountain. One of them, sitting on a stone step with his backpack aside, says in slight frustration, “I’m too tired to go any further.” His travel companion hands him a bottle of drink and replies encouragingly, “Come on! Take a break and keep climbing.” The picture intends to illustrate the irreplaceable role persistence plays in realizing great ambitions.\n\nJust as mountaineers have to climb up rocky and steep slopes before reaching the peak, we will inevitably encounter numerous obstacles on our way to success. What is needed then is a sustained effort to conquer them rather than an excuse to give up. After all, surrender means all previous efforts come to naught while hanging on certainly brings rewards. High achievers in competitive sports understand that very well and, almost without exception, attribute their glories to their perseverance with intensive training day after day.\n\nAs an old Chinese saying goes, the last leg of a journey marks the halfway point. The closer we get to the finishing line, the more fatigued and lazier we feel. At such tough moments, we can only achieve our goals by being strong-willed and gritting our teeth. In other words, the virtue of persistence is the key to success and thus needs to be cultivated consciously."
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/大作文（图画作文）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2019-1/2019-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  }
+]

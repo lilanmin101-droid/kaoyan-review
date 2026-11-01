@@ -1,0 +1,25 @@
+{"id": "math1-2021-17", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "两种方法都完整。", "at": "2026-11-01T06:18-08:00"}
+{"id": "math1-2021-18", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "正确。", "at": "2026-11-01T06:18-08:00"}
+{"id": "math1-2021-19", "kind": "official_solution", "result": "fail", "by": "行业专家", "note": "方程组解被识别坏了：写成「x=4,y=1,z=12,z=66」，丢了第二个驻点 (−8,−2,66)，也没有比较两点的 |z| 就直接下结论，考生看不懂。已写专家讲解替代。", "at": "2026-11-01T06:18-08:00"}
+{"id": "math1-2021-20", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "正确。", "at": "2026-11-01T06:18-08:00"}
+{"id": "math1-2021-21", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "正确。", "at": "2026-11-01T06:18-08:00"}
+{"id": "math1-2021-22", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "正确。", "at": "2026-11-01T06:18-08:00"}
+{"id": "math1-2021-01", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-02", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-03", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-04", "kind": "official_solution", "result": "fail", "by": "用户", "note": "3/6 跳步：中间写成 ∑f((2k−1)/2n)·1/n = ∑f(2k/2n)·1/n，只有取极限后才相等，原因（[0,1] n 等分、取各小区间中点作介点的定积分定义）没写，容易误读成两个和式相等；也没说 A=½∫、C=2∫、D=4∫ 错在哪。 （已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-05", "kind": "official_solution", "result": "pass", "by": "用户", "note": "行列式第一步做了哪些行列变换没写，小瑕疵。 （已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-06", "kind": "official_solution", "result": "fail", "by": "用户", "note": "3/7：没算 k=1 和 β2=(0,2,0)ᵀ 就直接给出 l2=2/4；方法点评里字母和题目相反（题目 β2=α2−kβ1、β3=α3−l1β1−l2β2，点评写成 β2=α2−l1β1、β3=α3−k1β1−k2β2），条件也写成「β1,β2,β3 线性无关」，应为「两两正交」。原 PDF 就是这样，不是 OCR 问题。 （已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-07", "kind": "official_solution", "result": "pass", "by": "用户", "note": "只证明 A、B、D 成立后用排除法选 C，可接受；「r(…)→行 r(…)」写法不规范。 （已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-08", "kind": "official_solution", "result": "pass", "by": "用户", "note": "D 用排除法，可补反例 A⊂B。 （已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-09", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-10", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-11", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-12", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-13", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-14", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-15", "kind": "official_solution", "result": "pass", "by": "用户", "note": "可补一句「把第 2、3 列加到第 1 列」。 （已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-16", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2021.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-19", "kind": "expert", "result": "pass", "status": "confirmed", "by": "用户", "note": "合格。SymPy 独立解拉格朗日方程组：实解仅 (4,1,12)(λ=8,μ=-16) 与 (-8,-2,66)(λ=-44,μ=-176)；λ=0 分支只有复数解，与讲解「无解」一致。投影 (x+2)²+2(y+1/2)²=81/2 为椭圆，曲线有界闭，最大值 66 正确，补回了官方漏掉的第二驻点。", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2021-04", "kind": "expert", "result": "pass", "status": "confirmed", "by": "用户", "note": "合格。A/B/C/D 分别为 ½∫、∫、2∫、4∫，f≡1 检验得 ½,1,2,4 正确。小建议：「注意：…积分为0时…不能直接用等号连起来」一句读起来绕，可删或改为「f≡1 一个反例就足以排除」。", "at": "2026-11-01T06:26-08:00"}
+{"id": "math1-2021-06", "kind": "expert", "result": "pass", "status": "confirmed", "by": "用户", "note": "合格。SymPy 验算 k=1，β₂=(0,2,0)ᵀ，β₃=(1/2,0,-1/2)ᵀ 与 β₁、β₂ 内积均为 0；l₁=5/2,l₂=1/2 唯一，易错点已点出符号问题（对应 B/C/D）。", "at": "2026-11-01T06:26-08:00"}

@@ -1,0 +1,5 @@
+# 只需要 deploy/Caddyfile 和 frontend/dist
+*
+!deploy/Caddyfile
+!frontend/dist
+!frontend/dist/**

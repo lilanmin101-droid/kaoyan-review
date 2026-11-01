@@ -1,0 +1,64 @@
+{
+  "schema_version": "0.2",
+  "_说明": "题目 JSON 格式 v0.2，公式一律存 LaTeX；answer 统一为数组；solution 只放原卷官方解析，AI 讲解另表存；知识点路径以“高等数学/线性代数/概率论与数理统计/英语”开头",
+  "id": "math1-2024-01",
+  "exam": "math1",
+  "year": 2024,
+  "number": 1,
+  "section": "选择题",
+  "type": "single_choice",
+  "score": 5,
+  "stem": "已知函数 $f(x)=\\int_0^x \\mathrm{e}^{\\cos t}\\,\\mathrm{d}t$，$g(x)=\\int_0^{\\sin x}\\mathrm{e}^{t^2}\\,\\mathrm{d}t$，则",
+  "images": [],
+  "options": [
+    {
+      "key": "A",
+      "content": "$f(x)$ 为奇函数，$g(x)$ 为偶函数"
+    },
+    {
+      "key": "B",
+      "content": "$f(x)$ 为偶函数，$g(x)$ 为奇函数"
+    },
+    {
+      "key": "C",
+      "content": "$f(x)$ 与 $g(x)$ 均为奇函数"
+    },
+    {
+      "key": "D",
+      "content": "$f(x)$ 与 $g(x)$ 均为周期函数"
+    }
+  ],
+  "answer": [
+    "C"
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "knowledge_points": [
+    "高等数学/一元函数积分学/变限积分",
+    "高等数学/函数/奇偶性"
+  ],
+  "source": {
+    "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+    "files": [
+      "papers/2024考研数学一真题+答案.md",
+      "papers/2024年数学(一)真题及参考答案.md"
+    ]
+  },
+  "review": {
+    "status": "suspect",
+    "notes": [
+      "两个来源的 D 选项不一致：一份是“均为周期函数”，另一份是“均为偶函数”，需要对照原卷确认"
+    ],
+    "checked_by": []
+  },
+  "_sub_questions_示例": [
+    {
+      "number": 1,
+      "stem": "...",
+      "score": 6,
+      "answer": [
+        "..."
+      ]
+    }
+  ]
+}

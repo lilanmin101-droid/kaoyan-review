@@ -1,0 +1,11 @@
+import puppeteer from 'puppeteer-core'
+const S=ms=>new Promise(r=>setTimeout(r,ms))
+const b=await puppeteer.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']})
+const p=await b.newPage();await p.setViewport({width:390,height:844,deviceScaleFactor:2});p.on('pageerror',e=>console.log('ERR',e.message))
+await p.goto('http://localhost:4173/');await p.evaluate(t=>localStorage.setItem('token',t),process.env.E2E_TOKEN)
+await p.goto('http://localhost:4173/#/exam');await p.reload();await S(2500)
+await p.evaluate(()=>[...document.querySelectorAll('span')].find(x=>x.textContent.trim()==='放弃这场').click());await S(400)
+await p.evaluate(()=>[...document.querySelectorAll('.cfm span')].find(x=>x.textContent.includes('放弃')&&x.textContent.includes('新')).click());await S(2500)
+console.log((await p.$eval('main',e=>e.innerText)).slice(-400))
+await p.screenshot({path:'/workspace/kaoyan-ui/r14-abandon.png'})
+await b.close()

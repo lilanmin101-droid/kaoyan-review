@@ -1,0 +1,867 @@
+[
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-01",
+    "exam": "math1",
+    "year": 2017,
+    "number": 1,
+    "section": "选择题",
+    "type": "single_choice",
+    "score": 4,
+    "stem": "若函数 $f(x) = \\left\\{ \\begin{array}{ll} \\frac{1 - \\cos \\sqrt{x}}{ax}, & x > 0, \\\\ b, & x \\leqslant 0 \\end{array} \\right.$ ，在 $x = 0$ 处连续，则",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "$ab = \\frac{1}{2}$"
+      },
+      {
+        "key": "B",
+        "content": "$ab = -\\frac{1}{2}$"
+      },
+      {
+        "key": "C",
+        "content": "$ab = 0$"
+      },
+      {
+        "key": "D",
+        "content": "$ab = 2$"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": "**解** $f(0 + 0) = \\lim_{x\\to 0^{+}}\\frac{1 - \\cos\\sqrt{x}}{ax} = \\frac{1}{2a},$ $f(0) = f(0 - 0) = b,$\n\n因为 $f(x)$ 在 $x = 0$ 处连续，所以 $f(0 + 0) = f(0) = f(0 - 0)$\n\n从而 $ab = \\frac{1}{2}$ ，应选（A）.",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-02",
+    "exam": "math1",
+    "year": 2017,
+    "number": 2,
+    "section": "选择题",
+    "type": "single_choice",
+    "score": 4,
+    "stem": "设函数 $f(x)$ 可导, 且 $f(x)f'(x) > 0$ , 则",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "$f(1) > f(-1)$"
+      },
+      {
+        "key": "B",
+        "content": "$f(1) < f(-1)$"
+      },
+      {
+        "key": "C",
+        "content": "$|f(1)| > |f(-1)|$"
+      },
+      {
+        "key": "D",
+        "content": "$|f(1)| < |f(-1)|$"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": "**解** 方法一 若 $f(x) > 0$ ，则 $f^{\\prime}(x) > 0$ ，从而 $f(1) > f(-1) > 0$\n\n若 $f(x) < 0$ ，则 $f^{\\prime}(x) < 0$ ，从而 $f(1) < f(-1) < 0$\n\n故 $|f(1)| > |f(-1)|$ ，应选(C).\n\n方法二 由 $f(x) \\cdot f'(x) = \\left[\\frac{1}{2} f^2(x)\\right]' > 0$ 得 $f^2(x)$ 单调递增，\n\n从而 $f^2 (1) > f^2 (-1)$ ，故 $|f(1)| > |f(-1)|$ ，应选(C).",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-03",
+    "exam": "math1",
+    "year": 2017,
+    "number": 3,
+    "section": "选择题",
+    "type": "single_choice",
+    "score": 4,
+    "stem": "函数 $f(x, y, z) = x^{2}y + z^{2}$ 在点 $(1, 2, 0)$ 处沿向量 $\\mathbf{n} = (1, 2, 2)$ 的方向导数为",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "$12$"
+      },
+      {
+        "key": "B",
+        "content": "$6$"
+      },
+      {
+        "key": "C",
+        "content": "$4$"
+      },
+      {
+        "key": "D",
+        "content": "$2$"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": "**解** $\\frac{\\partial f}{\\partial x} = 2xy,\\quad \\frac{\\partial f}{\\partial y} = x^2,\\quad \\frac{\\partial f}{\\partial z} = 2z,$\n\n$$\n\\left. \\frac {\\partial f}{\\partial x} \\right| _ {(1, 2, 0)} = 4, \\quad \\left. \\frac {\\partial f}{\\partial y} \\right| _ {(1, 2, 0)} = 1, \\quad \\left. \\frac {\\partial f}{\\partial z} \\right| _ {(1, 2, 0)} = 0,\n$$\n\n$$\n\\cos \\alpha = \\frac {1}{3}, \\quad \\cos \\beta = \\frac {2}{3}, \\quad \\cos \\gamma = \\frac {2}{3},\n$$\n\n所求的方向导数为 $\\left.\\frac{\\partial f}{\\partial\\boldsymbol{n}}\\right|_{(1,2,0)} = 4\\times \\frac{1}{3} +1\\times \\frac{2}{3} = 2$ ，应选(D).",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-04",
+    "exam": "math1",
+    "year": 2017,
+    "number": 4,
+    "section": "选择题",
+    "type": "single_choice",
+    "score": 4,
+    "stem": "甲、乙两人赛跑, 计时开始时, 甲在乙前方 10（单位：$\\mathrm{m}$） 处, 图中, 实线表示甲的速度曲线 $v = v_{1}(t)$ (单位: $\\mathrm{m} / \\mathrm{s}$ ), 虚线表示乙的速度曲线 $v = v_{2}(t)$ , 三块阴影部分面积的数值依次是 10, 20, 3. 计时开始后乙追上甲的时刻记为 $t_{0}$ (单位: $\\mathrm{s}$ ),则",
+    "images": [
+      "images/math1-2017/8e8f4df12e914f4ef16f2f4912ebc91d19101c0d902a3618f59ad880069238a3.jpg"
+    ],
+    "options": [
+      {
+        "key": "A",
+        "content": "$t_0 = 10$"
+      },
+      {
+        "key": "B",
+        "content": "$15 < t_{0} < 20$"
+      },
+      {
+        "key": "C",
+        "content": "$t_0 = 25$"
+      },
+      {
+        "key": "D",
+        "content": "$t_{0} > 25$"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": "**解** 从 $t = 0$ 到 $t = t_0$ 的时间段上，甲、乙走过的距离分别为\n\n$$\nS _ {1} = \\int_ {0} ^ {t _ {0}} v _ {1} (t) \\mathrm {d} t, \\quad S _ {2} = \\int_ {0} ^ {t _ {0}} v _ {2} (t) \\mathrm {d} t,\n$$\n\n在 $t = t_0$ 时， $S_{1} = S_{2} + 10$ ，即 $\\int_{0}^{t_0} v_1(t) \\, \\mathrm{d}t = \\int_{0}^{t_0} v_2(t) \\, \\mathrm{d}t + 10$\n\n或 $\\int_0^{t_0}\\left[v_1(t) - v_2(t)\\right]\\mathrm{d}t = 10$ ，故 $t_0 = 25$ ，应选(C).",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-05",
+    "exam": "math1",
+    "year": 2017,
+    "number": 5,
+    "section": "选择题",
+    "type": "single_choice",
+    "score": 4,
+    "stem": "设 $\\alpha$ 为 $n$ 维单位列向量, $\\pmb{E}$ 为 $n$ 阶单位矩阵, 则",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "$E - \\alpha \\alpha^{\\mathrm{T}}$ 不可逆"
+      },
+      {
+        "key": "B",
+        "content": "$E + \\alpha \\alpha^{\\mathrm{T}}$ 不可逆"
+      },
+      {
+        "key": "C",
+        "content": "$E + 2\\alpha \\alpha^{\\mathrm{T}}$ 不可逆"
+      },
+      {
+        "key": "D",
+        "content": "$E - 2\\alpha \\alpha^{\\mathrm{T}}$ 不可逆"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": "**解** 方法一 令 $A = \\alpha \\alpha^{\\mathrm{T}}$ ， $A^2 = A$\n\n令 $AX = \\lambda X$ ，由 $(A^2 - A)X = (\\lambda^2 - \\lambda)X = 0$ 得 $\\lambda^2 - \\lambda = 0, \\lambda = 0$ 或 $\\lambda = 1$\n\n因为 $\\operatorname{tr} \\mathbf{A} = \\boldsymbol{\\alpha}^{\\mathrm{T}} \\boldsymbol{\\alpha} = 1 = \\lambda_{1} + \\dots + \\lambda_{n}$ 得 $\\mathbf{A}$ 的特征值为 $\\lambda_{1} = \\dots = \\lambda_{n-1} = 0, \\lambda_{n} = 1$\n\n$\\mathbf{E} - \\pmb{\\alpha}\\pmb{\\alpha}^{\\mathrm{T}}$ 的特征值为 $\\lambda_{1} = \\dots = \\lambda_{n - 1} = 1,\\lambda_{n} = 0$ ，从而 $|\\textbf{E} -\\pmb {\\alpha}\\pmb{\\alpha}^{\\mathrm{T}}| = 0$\n\n即 $\\pmb {E} - \\pmb{\\alpha}\\pmb{\\alpha}^{\\mathrm{T}}$ 不可逆，应选（A）.\n\n方法二 令 $A = E - \\alpha \\alpha^{\\mathrm{T}}, A^{2} = (E - \\alpha \\alpha^{\\mathrm{T}}) \\cdot (E - \\alpha \\alpha^{\\mathrm{T}}) = E - 2\\alpha \\alpha^{\\mathrm{T}} + \\alpha \\alpha^{\\mathrm{T}} = A$\n\n由 $\\mathbf{A}(\\mathbf{E} - \\mathbf{A}) = \\mathbf{0}$ 得 $r(\\mathbf{A}) + r(\\mathbf{E} - \\mathbf{A})\\leqslant n$\n\n再由 $r(\\mathbf{A}) + r(\\mathbf{E} - \\mathbf{A})\\geqslant r[\\mathbf{A} + (\\mathbf{E} - \\mathbf{A})] = r(\\mathbf{E}) = n$ 得\n\n$$\nr (\\mathbf {A}) + r (\\mathbf {E} - \\mathbf {A}) = n,\n$$\n\n而 $\\pmb {E} - \\pmb {A} = \\pmb {\\alpha}\\pmb{\\alpha}^{\\mathrm{T}},r(\\pmb {E} - \\pmb {A}) = r(\\pmb {\\alpha}\\pmb{\\alpha}^{\\mathrm{T}}) = r(\\pmb {\\alpha}) = 1$\n\n于是 $r(\\mathbf{A}) = n - 1 <   n$ ，即 $\\pmb {E} - \\pmb {\\alpha}\\pmb{\\alpha}^{\\mathrm{T}}$ 不可逆，应选（A）.",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-06",
+    "exam": "math1",
+    "year": 2017,
+    "number": 6,
+    "section": "选择题",
+    "type": "single_choice",
+    "score": 4,
+    "stem": "已知矩阵 $\\mathbf{A} = \\left( \\begin{array}{lll} 2 & 0 & 0 \\\\ 0 & 2 & 1 \\\\ 0 & 0 & 1 \\end{array} \\right), \\mathbf{B} = \\left( \\begin{array}{lll} 2 & 1 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 1 \\end{array} \\right), \\mathbf{C} = \\left( \\begin{array}{lll} 1 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 2 \\end{array} \\right)$ , 则",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "$A$ 与 $C$ 相似, $B$ 与 $C$ 相似"
+      },
+      {
+        "key": "B",
+        "content": "$A$ 与 $C$ 相似, $B$ 与 $C$ 不相似"
+      },
+      {
+        "key": "C",
+        "content": "$A$ 与 $C$ 不相似, $B$ 与 $C$ 相似"
+      },
+      {
+        "key": "D",
+        "content": "$A$ 与 $C$ 不相似, $B$ 与 $C$ 不相似"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": "**解** 显然矩阵 $A, B, C$ 的特征值都是 $\\lambda_{1} = \\lambda_{2} = 2, \\lambda_{3} = 1$\n\n由 $2E - A = \\begin{pmatrix} 0 & 0 & 0\\\\ 0 & 0 & -1\\\\ 0 & 0 & 1 \\end{pmatrix}$ 得 $r(2E - A) = 1$ ，则 $\\mathbf{A}$ 可相似对角化，从而 $A\\sim C$\n\n由 $2\\pmb {E} - \\pmb {B} = \\left( \\begin{array}{lll}0 & -1 & 0\\\\ 0 & 0 & 0\\\\ 0 & 0 & 1 \\end{array} \\right)$ 得 $r(2E - B) = 2$ ，则 $\\pmb{B}$ 不可相似对角化，从而 $\\pmb{B}$ 与 $\\mathbf{A},\\mathbf{C}$ 不相似，应选(B).\n\n方法点评：设 $A, B$ 为 $n$ 阶矩阵，且 $|\\lambda E - A| = |\\lambda E - B|$ ，即 $A, B$ 的特征值相同，则\n\n（1）若矩阵 $\\mathbf{A},\\mathbf{B}$ 都可相似对角化，则 $A\\sim B$   \n（2）若矩阵 $\\mathbf{A},\\mathbf{B}$ 中一个可相似对角化，一个不可相似对角化，则 $\\mathbf{A}$ 与 $\\pmb{B}$ 不相似.",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-07",
+    "exam": "math1",
+    "year": 2017,
+    "number": 7,
+    "section": "选择题",
+    "type": "single_choice",
+    "score": 4,
+    "stem": "设 $A, B$ 为随机事件. 若 $0 < P(A) < 1, 0 < P(B) < 1$ , 则 $P(A \\mid B) > P(A \\mid \\overline{B})$ 的充分必要条件是",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "$P(B \\mid A) > P(B \\mid \\overline{A})$"
+      },
+      {
+        "key": "B",
+        "content": "$P(B \\mid A) < P(B \\mid \\overline{A})$"
+      },
+      {
+        "key": "C",
+        "content": "$P(\\overline{B} \\mid A) > P(B \\mid \\overline{A})$"
+      },
+      {
+        "key": "D",
+        "content": "$P(\\overline{B} \\mid A) < P(B \\mid \\overline{A})$"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": "**解** 由 $P(A|B) > P(A|\\overline{B})$ 得 $\\frac{P(AB)}{P(B)} >\\frac{P(A\\overline{B})}{P(\\overline{B})} = \\frac{P(A) - P(AB)}{1 - P(B)}$\n\n$P(A|B) > P(A|\\overline{B})$ 等价于 $P(AB) > P(A)P(B)$\n\n由 $P(B|A) > P(B|\\overline{A})$ 得 $\\frac{P(AB)}{P(A)} >\\frac{P(B) - P(AB)}{1 - P(A)}$\n\n$P(B|A) > P(B|\\overline{A})$ 等价于 $P(AB) > P(A)P(B)$ ，应选（A）.",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-08",
+    "exam": "math1",
+    "year": 2017,
+    "number": 8,
+    "section": "选择题",
+    "type": "single_choice",
+    "score": 4,
+    "stem": "设 $X_{1}, X_{2}, \\dots, X_{n} (n \\geqslant 2)$ 为来自总体 $N(\\mu, 1)$ 的简单随机样本，记 $\\overline{X} = \\frac{1}{n} \\sum_{i=1}^{n} X_{i}$ ，则下列结论中不正确的是",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "$\\sum_{i=1}^{n}\\left(X_{i}-\\mu\\right)^{2}$ 服从 $\\chi^{2}$ 分布"
+      },
+      {
+        "key": "B",
+        "content": "$2(X_{n} - X_{1})^{2}$ 服从 $\\chi^2$ 分布"
+      },
+      {
+        "key": "C",
+        "content": "$\\sum_{i=1}^{n} (X_i - \\overline{X})^2$ 服从 $\\chi^2$ 分布"
+      },
+      {
+        "key": "D",
+        "content": "$n(\\overline{X} - \\mu)^2$ 服从 $\\chi^2$ 分布"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": "**解** 若总体 $X \\sim N(\\mu, \\sigma^2)$ ，则\n\n$$\n\\frac {1}{\\sigma^ {2}} \\sum_ {i = 1} ^ {n} (X _ {i} - \\mu) ^ {2} \\sim \\chi^ {2} (n), \\quad \\frac {1}{\\sigma^ {2}} \\sum_ {i = 1} ^ {n} (X _ {i} - \\overline {{X}}) ^ {2} \\sim \\chi^ {2} (n - 1),\n$$\n\n因为总体 $X \\sim N(\\mu, 1)$ ，所以 $\\sum_{i=1}^{n}(X_i - \\mu)^2 \\sim \\chi^2(n)$ ， $\\sum_{i=1}^{n}(X_i - \\overline{X})^2 \\sim \\chi^2(n-1)$\n\n再由 $\\overline{X} \\sim N\\left(\\mu, \\frac{1}{n}\\right)$ 得 $\\frac{\\overline{X} - \\mu}{\\frac{1}{\\sqrt{n}}} = \\sqrt{n} (\\overline{X} - \\mu) \\sim N(0, 1)$ ，从而 $n(\\overline{X} - \\mu)^2 \\sim \\chi^2(1)$ ，\n\n不正确的是(B)，应选(B).\n\n**补充** $X_n-X_1\\sim N(0,2)$，所以 $\\frac{(X_n-X_1)^2}{2}\\sim\\chi^2(1)$，而 $2(X_n-X_1)^2$ 不服从 $\\chi^2$ 分布，故选(B).",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-09",
+    "exam": "math1",
+    "year": 2017,
+    "number": 9,
+    "section": "填空题",
+    "type": "fill_blank",
+    "score": 4,
+    "stem": "已知函数 $f(x) = \\frac{1}{1 + x^2}$ ，则 $f^{(3)}(0) =$",
+    "images": [],
+    "options": [],
+    "answer": [
+      "$0$"
+    ],
+    "sub_questions": [],
+    "solution": "**解** 方法一 $f(x) = \\frac{1}{1 + x^2} = 1 - x^2 +x^4 -x^6 +x^8 +o(x^8),$\n\n由 $\\frac{f^{(3)}(0)}{3!} = 0$ 得 $f^{(3)}(0) = 0$ .\n\n方法二 根据求导改变奇偶性的性质，因为 $f(x)$ 为偶函数，所以 $f^{(3)}(x)$ 为奇函数，故 $f^{(3)}(0) = 0$",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-10",
+    "exam": "math1",
+    "year": 2017,
+    "number": 10,
+    "section": "填空题",
+    "type": "fill_blank",
+    "score": 4,
+    "stem": "微分方程 $y'' + 2y' + 3y = 0$ 的通解为 $y =$",
+    "images": [],
+    "options": [],
+    "answer": [
+      "$\\mathrm{e}^{-x}(C_1\\cos \\sqrt{2} x + C_2\\sin \\sqrt{2} x)(C_1,C_2$ 为任意常数)"
+    ],
+    "sub_questions": [],
+    "solution": "**解** 特征方程为 $\\lambda^2 + 2\\lambda + 3 = 0$ ，特征值为 $\\lambda_{1,2} = -1 \\pm \\sqrt{2}\\mathrm{i}$ ，\n\n通解为 $y = \\mathrm{e}^{-x}(C_1\\cos \\sqrt{2} x + C_2\\sin \\sqrt{2} x)(C_1,C_2$ 为任意常数).",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-11",
+    "exam": "math1",
+    "year": 2017,
+    "number": 11,
+    "section": "填空题",
+    "type": "fill_blank",
+    "score": 4,
+    "stem": "若曲线积分 $\\int_{L} \\frac{x \\mathrm{~d} x - a y \\mathrm{~d} y}{x^{2} + y^{2} - 1}$ 在区域 $D = \\{(x, y) \\mid x^{2} + y^{2} < 1\\}$ 内与路径无关, 则 $a =$",
+    "images": [],
+    "options": [],
+    "answer": [
+      "$-1$"
+    ],
+    "sub_questions": [],
+    "solution": "**解** $P = \\frac{x}{x^2 + y^2 - 1},\\quad Q = -\\frac{ay}{x^2 + y^2 - 1},$\n\n$$\n\\frac {\\partial P}{\\partial y} = - \\frac {2 x y}{\\left(x ^ {2} + y ^ {2} - 1\\right) ^ {2}}, \\quad \\frac {\\partial Q}{\\partial x} = \\frac {2 a x y}{\\left(x ^ {2} + y ^ {2} - 1\\right) ^ {2}},\n$$\n\n因为曲线积分与路径无关，所以 $\\frac{\\partial Q}{\\partial x} = \\frac{\\partial P}{\\partial y}$ 故 $a = -1$",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-12",
+    "exam": "math1",
+    "year": 2017,
+    "number": 12,
+    "section": "填空题",
+    "type": "fill_blank",
+    "score": 4,
+    "stem": "幂级数 $\\sum_{n=1}^{\\infty} (-1)^{n-1} n x^{n-1}$ 在区间 $(-1, 1)$ 内的和函数 $S(x) =$",
+    "images": [],
+    "options": [],
+    "answer": [
+      "$\\frac{1}{(1 + x)^2}$"
+    ],
+    "sub_questions": [],
+    "solution": "**解** 方法一 $S(x) = \\sum_{n=1}^{\\infty} (-1)^{n-1} n x^{n-1} = -\\left[\\sum_{n=1}^{\\infty} (-1)^{n} x^{n}\\right]' = -\\left(\\frac{-x}{1+x}\\right)' = \\frac{1}{(1+x)^{2}}.$\n\n方法二 令 $S(x) = \\sum_{n=1}^{\\infty} (-1)^{n-1} n x^{n-1}$ ,\n\n则 $\\int_0^x S(x)\\mathrm{d}x = \\sum_{n = 1}^\\infty \\int_0^x (-1)^{n - 1}nx^{n - 1}\\mathrm{d}x = \\sum_{n = 1}^\\infty (-1)^{n - 1}x^n$\n\n$$\n= - \\sum_ {n = 1} ^ {\\infty} (- x) ^ {n} = - \\frac {- x}{1 + x} = \\frac {x}{1 + x},\n$$\n\n故 $S(x) = \\left(\\frac{x}{1 + x}\\right)' = \\frac{1}{(1 + x)^2}.$",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-13",
+    "exam": "math1",
+    "year": 2017,
+    "number": 13,
+    "section": "填空题",
+    "type": "fill_blank",
+    "score": 4,
+    "stem": "设矩阵 $\\mathbf{A} = \\begin{pmatrix} 1 & 0 & 1 \\\\ 1 & 1 & 2 \\\\ 0 & 1 & 1 \\end{pmatrix}$ , $\\pmb{\\alpha}_{1}, \\pmb{\\alpha}_{2}, \\pmb{\\alpha}_{3}$ 为线性无关的 3 维列向量组, 则向量组 $A\\pmb{\\alpha}_{1}, A\\pmb{\\alpha}_{2}, A\\pmb{\\alpha}_{3}$ 的秩为",
+    "images": [],
+    "options": [],
+    "answer": [
+      "$2$"
+    ],
+    "sub_questions": [],
+    "solution": "**解** $(A\\alpha_{1}, A\\alpha_{2}, A\\alpha_{3}) = A(\\alpha_{1}, \\alpha_{2}, \\alpha_{3})$\n\n因为 $\\alpha_{1},\\alpha_{2},\\alpha_{3}$ 线性无关，所以 $(\\pmb{\\alpha}_{1},\\pmb{\\alpha}_{2},\\pmb{\\alpha}_{3})$ 可逆，从而 $r(A\\pmb{\\alpha}_1,A\\pmb{\\alpha}_2,A\\pmb{\\alpha}_3) = r(\\pmb {A})$\n\n由 $\\mathbf{A}\\rightarrow \\left( \\begin{array}{lll}1 & 0 & 1\\\\ 0 & 1 & 1\\\\ 0 & 0 & 0 \\end{array} \\right)$ 得 $r(\\mathbf{A}) = 2$ ，故向量组 $A\\pmb{\\alpha}_{1},A\\pmb{\\alpha}_{2},A\\pmb{\\alpha}_{3}$ 的秩为2.",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-14",
+    "exam": "math1",
+    "year": 2017,
+    "number": 14,
+    "section": "填空题",
+    "type": "fill_blank",
+    "score": 4,
+    "stem": "设随机变量 $X$ 的分布函数为 $F(x) = 0.5\\Phi(x) + 0.5\\Phi\\left(\\frac{x - 4}{2}\\right)$ , 其中 $\\Phi(x)$ 为标准正态分布函数, 则 $E(X) =$",
+    "images": [],
+    "options": [],
+    "answer": [
+      "$2$"
+    ],
+    "sub_questions": [],
+    "solution": "**解** $X$ 的密度为 $f(x) = 0.5\\varphi (x) + 0.25\\varphi \\left(\\frac{x - 4}{2}\\right)$\n\n$$\n\\begin{array}{l} E (X) = \\int_ {- \\infty} ^ {+ \\infty} x f (x) d x = 0. 5 \\int_ {- \\infty} ^ {+ \\infty} x \\varphi (x) d x + 0. 2 5 \\int_ {- \\infty} ^ {+ \\infty} x \\varphi \\left(\\frac {x - 4}{2}\\right) d x \\\\ = 0 + \\int_ {- \\infty} ^ {+ \\infty} \\left(\\frac {x - 4}{2} + 2\\right) \\varphi \\left(\\frac {x - 4}{2}\\right) \\mathrm {d} \\left(\\frac {x - 4}{2}\\right) \\\\ = \\int_ {- \\infty} ^ {+ \\infty} (x + 2) \\varphi (x) d x = 2 \\int_ {- \\infty} ^ {+ \\infty} \\varphi (x) d x = 2. \\\\ \\end{array}\n$$\n\n方法点评：本题考查连续型随机变量的分布函数、密度函数及数字特征，需要注意以下几点：\n\n（1）若随机变量的分布函数为 $F(x)$ ，则其密度函数为\n\n$$\nf (x) = \\left\\{ \\begin{array}{l l} F ^ {\\prime} (x), & x \\text {为} F (x) \\text {的 可 导 点 ,} \\\\ 0, & x \\text {为} F (x) \\text {的 不 可 导 点 .} \\end{array} \\right.\n$$\n\n(2) 若 $f(x)$ 为随机变量的密度函数, 则 $\\int_{-\\infty}^{+\\infty} f(x) \\mathrm{d}x = 1$ .\n\n（3）标准正态分布的密度函数 $\\varphi (x)$ 为奇函数，即 $\\int_{-\\infty}^{+\\infty}x^k\\varphi (x)\\mathrm{d}x = 0(k$ 为正奇数).",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-15",
+    "exam": "math1",
+    "year": 2017,
+    "number": 15,
+    "section": "解答题",
+    "type": "essay",
+    "score": 10,
+    "stem": "设函数 $f(u,v)$ 具有2阶连续偏导数， $y = f(\\mathrm{e}^x,\\cos x)$ ，求 $\\frac{\\mathrm{dy}}{\\mathrm{dx}}\\Big|_{x=0}, \\frac{\\mathrm{d}^2y}{\\mathrm{dx}^2}\\Big|_{x=0}$ .",
+    "images": [],
+    "options": [],
+    "answer": [
+      "见各小问"
+    ],
+    "sub_questions": [
+      {
+        "number": 1,
+        "stem": "求 $\\frac{dy}{dx}\\big|_{x=0},\\frac{d^2y}{dx^2}\\big|_{x=0}$",
+        "score": 10,
+        "answer": [
+          "$\\frac{\\mathrm dy}{\\mathrm dx}\\big|_{x=0}=f_1'(1,1)$，$\\frac{\\mathrm d^2y}{\\mathrm dx^2}\\big|_{x=0}=f_1'(1,1)+f_{11}''(1,1)-f_2'(1,1)$"
+        ]
+      }
+    ],
+    "solution": "**解** $\\frac{\\mathrm{dy}}{\\mathrm{dx}} = \\mathrm{e}^{x}f_{1}^{\\prime} - \\sin x\\cdot f_{2}^{\\prime},\\quad \\frac{\\mathrm{dy}}{\\mathrm{dx}}\\bigg|_{x = 0} = f_{1}^{\\prime}(1,1);$\n\n$$\n\\frac {\\mathrm {d} ^ {2} y}{\\mathrm {d} x ^ {2}} = \\mathrm {e} ^ {x} f _ {1} ^ {\\prime} + \\mathrm {e} ^ {x} \\left(\\mathrm {e} ^ {x} f _ {1 1} ^ {\\prime \\prime} - \\sin x \\cdot f _ {1 2} ^ {\\prime \\prime}\\right) - \\cos x \\cdot f _ {2} ^ {\\prime} - \\sin x \\left(\\mathrm {e} ^ {x} f _ {2 1} ^ {\\prime \\prime} - \\sin x \\cdot f _ {2 2} ^ {\\prime \\prime}\\right),\n$$\n\n则 $\\frac{\\mathrm{d}^2y}{\\mathrm{d}x^2}\\Big|_{x = 0} = f_1'(1,1) + f_{11}''(1,1) - f_2'(1,1).$",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-16",
+    "exam": "math1",
+    "year": 2017,
+    "number": 16,
+    "section": "解答题",
+    "type": "essay",
+    "score": 10,
+    "stem": "求 $\\lim_{n\\to \\infty}\\sum_{k = 1}^{n}\\frac{k}{n^2}\\ln \\left(1 + \\frac{k}{n}\\right).$",
+    "images": [],
+    "options": [],
+    "answer": [
+      "见各小问"
+    ],
+    "sub_questions": [
+      {
+        "number": 1,
+        "stem": "求极限",
+        "score": 10,
+        "answer": [
+          "$\\frac14$"
+        ]
+      }
+    ],
+    "solution": "**解** $\\lim_{n\\to \\infty}\\sum_{k = 1}^{n}\\frac{k}{n^2}\\ln \\left(1 + \\frac{k}{n}\\right) = \\lim_{n\\to \\infty}\\frac{1}{n}\\sum_{k = 1}^{n}\\frac{k}{n}\\ln \\left(1 + \\frac{k}{n}\\right) = \\int_0^1 x\\ln (1 + x)\\mathrm{d}x$\n\n$$\n\\begin{array}{l} = \\frac {1}{2} \\int_ {0} ^ {1} \\ln (1 + x) d \\left(x ^ {2}\\right) = \\frac {1}{2} x ^ {2} \\ln (1 + x) \\Big | _ {0} ^ {1} - \\frac {1}{2} \\int_ {0} ^ {1} \\frac {\\left(x ^ {2} - 1\\right) + 1}{1 + x} d x \\\\ = \\frac {1}{2} \\ln 2 - \\frac {1}{2} \\int_ {0} ^ {1} (x - 1 + \\frac {1}{1 + x}) d x = \\frac {1}{2} \\ln 2 - \\frac {1}{4} + \\frac {1}{2} - \\frac {1}{2} \\ln 2 = \\frac {1}{4}. \\\\ \\end{array}\n$$\n\n方法点评：本题考查定积分的定义求极限\n\n$n$ 项和求极限一般分为两种类型：\n\n(1) 分子次数齐、分母次数齐，且分母的次数高于分子一次，采用定积分定义求极限，即\n\n$$\n\\lim  _ {n \\rightarrow \\infty} \\frac {1}{n} \\sum_ {k = 1} ^ {n} f \\left(\\frac {k}{n}\\right) = \\int_ {0} ^ {1} f (x) d x.\n$$\n\n（2）若分子次数或分母次数不齐，一般使用迫敛定理",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-17",
+    "exam": "math1",
+    "year": 2017,
+    "number": 17,
+    "section": "解答题",
+    "type": "essay",
+    "score": 10,
+    "stem": "已知函数 $y(x)$ 由方程 $x^{3} + y^{3} - 3x + 3y - 2 = 0$ 确定，求 $y(x)$ 的极值",
+    "images": [],
+    "options": [],
+    "answer": [
+      "见各小问"
+    ],
+    "sub_questions": [
+      {
+        "number": 1,
+        "stem": "求极值",
+        "score": 10,
+        "answer": [
+          "极小值 $y(-1)=0$，极大值 $y(1)=1$"
+        ]
+      }
+    ],
+    "solution": "**解** $x^{3} + y^{3} - 3x + 3y - 2 = 0$ 两边对 $x$ 求导得 $3x^{2} + 3y^{2}y^{\\prime} - 3 + 3y^{\\prime} = 0$\n\n令 $y^\\prime = 0$ 得 $x_{1} = -1,x_{2} = 1$ ，对应的函数值为 $y_{1} = 0,y_{2} = 1$\n\n$3x^{2} + 3y^{2}y^{\\prime} - 3 + 3y^{\\prime} = 0$ 两边再对 $x$ 求导得 $6x + 6yy^{\\prime 2} + 3y^{2}y^{\\prime \\prime} + 3y^{\\prime \\prime} = 0$\n\n由 $y^{\\prime \\prime}(-1) = 2 > 0$ 得 $x = -1$ 为极小值点，极小值为 $y = 0$\n\n由 $y''(1) = -1 < 0$ 得 $x = 1$ 为极大值点，极大值为 $y = 1$",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-18",
+    "exam": "math1",
+    "year": 2017,
+    "number": 18,
+    "section": "解答题",
+    "type": "essay",
+    "score": 10,
+    "stem": "设函数 $f(x)$ 在区间 $[0,1]$ 上具有2阶导数，且 $f(1) > 0, \\lim_{x \\to 0^+} \\frac{f(x)}{x} < 0.$ 证明：\n\n（I）方程 $f(x) = 0$ 在区间 $(0,1)$ 内至少存在一个实根；\n\n（Ⅱ）方程 $f(x)f''(x) + [f'(x)]^2 = 0$ 在区间 $(0,1)$ 内至少存在两个不同实根.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "见各小问"
+    ],
+    "sub_questions": [
+      {
+        "number": 1,
+        "stem": "证明至少一个实根",
+        "score": null,
+        "answer": [
+          "证明题"
+        ]
+      },
+      {
+        "number": 2,
+        "stem": "证明至少两个不同实根",
+        "score": null,
+        "answer": [
+          "证明题"
+        ]
+      }
+    ],
+    "solution": "**证明** （I）根据极限保号性，因为 $\\lim_{x\\to 0^{+}}\\frac{f(x)}{x} < 0$ ，所以存在 $\\delta >0$\n\n当 $x \\in (0, \\delta)$ 时， $\\frac{f(x)}{x} < 0$ ，即当 $x \\in (0, \\delta)$ 时 $f(x) < 0$\n\n于是存在 $c \\in (0, \\delta)$ ，使得 $f(c) < 0$\n\n因为 $f(c)f(1) < 0$ ，所以存在 $x_0 \\in (c,1) \\subset (0,1)$ ，使得 $f(x_0) = 0$\n\n（Ⅱ）令 $F(x) = f(x)f'(x)$ ，则 $F'(x) = f(x)f''(x) + f'^2(x)$ ，\n\n由 $f(0) = f(c) = 0$ ，得存在 $x\\in (0,c)$ ，使得 $f^{\\prime}(\\xi_{1}) = 0$\n\n因 $f(0) = f(c) = 0$ ，所以 $F(0) = F(\\xi_1) = F(c)$\n\n由罗尔定理，存在 $\\eta_1\\in (0,\\xi_1)$ ，存在 $\\eta_{2}\\in (\\xi_{1},c)$ ，使 $F^{\\prime}(\\eta_{1}) = 0,F^{\\prime}(\\eta_{2}) = 0$\n\n即方程 $f(x)f''(x) + f'^2(x) = 0$ 在 $(0,1)$ 内至少有两个不同的实根.",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-19",
+    "exam": "math1",
+    "year": 2017,
+    "number": 19,
+    "section": "解答题",
+    "type": "essay",
+    "score": 10,
+    "stem": "设薄片型物体 $S$ 是圆锥面 $z = \\sqrt{x^2 + y^2}$ 被柱面 $z^2 = 2x$ 割下的有限部分, 其上任一点的密度为 $\\mu(x, y, z) = 9\\sqrt{x^2 + y^2 + z^2}$ . 记圆锥面与柱面的交线为 $C$ .\n\n（I）求 $C$ 在 $xOy$ 平面上的投影曲线的方程；\n\n（Ⅱ）求 $S$ 的质量 $M$ .",
+    "images": [],
+    "options": [],
+    "answer": [
+      "见各小问"
+    ],
+    "sub_questions": [
+      {
+        "number": 1,
+        "stem": "求投影曲线方程",
+        "score": null,
+        "answer": [
+          "$\\begin{cases}(x-1)^2+y^2=1\\\\z=0\\end{cases}$"
+        ]
+      },
+      {
+        "number": 2,
+        "stem": "求质量 $M$",
+        "score": null,
+        "answer": [
+          "$64$"
+        ]
+      }
+    ],
+    "solution": "**解** （I）由 $\\left\\{ \\begin{array}{l} z = \\sqrt{x^2 + y^2}, \\\\ z^2 = 2x, \\end{array} \\right.$ 得 $x^2 + y^2 = 2x$\n\n故 $C$ 在 $xOy$ 平面上的投影曲线为 $L:\\left\\{ \\begin{array}{l}(x - 1)^2 +y^2 = 1,\\\\ z = 0, \\end{array} \\right.$\n\n（Ⅱ） $M = \\iint_{S} 9\\sqrt{x^2 + y^2 + z^2} \\, \\mathrm{d}S$\n\n由 $z_{x}^{\\prime} = \\frac{x}{\\sqrt{x^{2} + y^{2}}}, z_{y}^{\\prime} = \\frac{y}{\\sqrt{x^{2} + y^{2}}}$ 得 $\\mathrm{d}S = \\sqrt{1 + z_{x}^{\\prime 2} + z_{y}^{\\prime 2}}\\mathrm{d}x\\mathrm{d}y = \\sqrt{2}\\mathrm{d}x\\mathrm{d}y,$\n\n则 $M = \\iint_{S} 9\\sqrt{x^2 + y^2 + z^2} \\, \\mathrm{d}S = 9\\sqrt{2} \\iint_{D} \\sqrt{x^2 + y^2} \\cdot \\sqrt{2} \\, \\mathrm{d}x \\, \\mathrm{d}y$\n\n$$\n\\begin{array}{l} = 1 8 \\iint_ {D} \\sqrt {x ^ {2} + y ^ {2}} d x d y = 1 8 \\int_ {- \\frac {\\pi}{2}} ^ {\\frac {\\pi}{2}} d \\theta \\int_ {0} ^ {2 \\cos \\theta} r ^ {2} d r \\\\ = 1 8 \\times \\frac {8}{3} \\int_ {- \\frac {\\pi}{2}} ^ {\\frac {\\pi}{2}} \\cos^ {3} \\theta d \\theta = 1 8 \\times \\frac {1 6}{3} \\int_ {0} ^ {\\frac {\\pi}{2}} \\cos^ {3} \\theta d \\theta = 6 4. \\\\ \\end{array}\n$$",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-20",
+    "exam": "math1",
+    "year": 2017,
+    "number": 20,
+    "section": "解答题",
+    "type": "essay",
+    "score": 11,
+    "stem": "设3阶矩阵 $A = (\\pmb{\\alpha}_1, \\pmb{\\alpha}_2, \\pmb{\\alpha}_3)$ 有3个不同的特征值，且 $\\pmb{\\alpha}_3 = \\pmb{\\alpha}_1 + 2\\pmb{\\alpha}_2$\n\n（I）证明 $r(\\mathbf{A}) = 2$\n\n（Ⅱ）设 $\\pmb {\\beta} = \\pmb{\\alpha}_{1} + \\pmb{\\alpha}_{2} + \\pmb{\\alpha}_{3}$ ，求方程组 $Ax = \\beta$ 的通解",
+    "images": [],
+    "options": [],
+    "answer": [
+      "见各小问"
+    ],
+    "sub_questions": [
+      {
+        "number": 1,
+        "stem": "证明 $r(A)=2$",
+        "score": null,
+        "answer": [
+          "证明题"
+        ]
+      },
+      {
+        "number": 2,
+        "stem": "求 $Ax=\\beta$ 的通解",
+        "score": null,
+        "answer": [
+          "$x=k\\begin{pmatrix}1\\\\2\\\\-1\\end{pmatrix}+\\begin{pmatrix}1\\\\1\\\\1\\end{pmatrix}$，$k$ 为任意常数"
+        ]
+      }
+    ],
+    "solution": "**证明** （I）设 $\\mathbf{A}$ 的特征值为 $\\lambda_1, \\lambda_2, \\lambda_3$\n\n因为 $\\mathbf{A}$ 有三个不同的特征值，所以 $\\mathbf{A}$ 可以相似对角化，即存在可逆矩阵 $\\pmb{P}$ ，使得\n\n$$\n\\boldsymbol {P} ^ {- 1} \\boldsymbol {A} \\boldsymbol {P} = \\left( \\begin{array}{c c c} \\lambda_ {1} & & \\\\ & \\lambda_ {2} & \\\\ & & \\lambda_ {3} \\end{array} \\right),\n$$\n\n因为 $\\lambda_1, \\lambda_2, \\lambda_3$ 两两不同，所以 $r(A) \\geqslant 2$\n\n又因为 $\\pmb{\\alpha}_{3} = \\pmb{\\alpha}_{1} + 2\\pmb{\\alpha}_{2}$ ，所以 $\\alpha_{1},\\alpha_{2},\\alpha_{3}$ 线性相关，从而 $r(A) <   3$ ，于是 $r(A) = 2$\n\n（Ⅱ）因为 $r(\\mathbf{A}) = 2$ ，所以 $\\mathbf{AX} = \\mathbf{0}$ 基础解系含一个线性无关的解向量，\n\n由 $\\left\\{ \\begin{array}{l} \\alpha_{1} + 2\\alpha_{2} - \\alpha_{3} = 0, \\\\ \\alpha_{1} + \\alpha_{2} + \\alpha_{3} = \\beta, \\end{array} \\right.$ 得 $AX = \\beta$ 的通解为\n\n$X=k\\begin{pmatrix}1\\\\2\\\\-1\\end{pmatrix}+\\begin{pmatrix}1\\\\1\\\\1\\end{pmatrix}$ （ $k$ 为任意常数）.",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-21",
+    "exam": "math1",
+    "year": 2017,
+    "number": 21,
+    "section": "解答题",
+    "type": "essay",
+    "score": 11,
+    "stem": "设二次型 $f(x_{1},x_{2},x_{3}) = 2x_{1}^{2} - x_{2}^{2} + ax_{3}^{2} + 2x_{1}x_{2} - 8x_{1}x_{3} + 2x_{2}x_{3}$ 在正交变换 $\\pmb {x} = \\pmb{Q}\\pmb{y}$ 下的标准形为 $\\lambda_1y_1^2 +\\lambda_2y_2^2$ ，求 $a$ 的值及一个正交矩阵 $\\pmb{Q}$",
+    "images": [],
+    "options": [],
+    "answer": [
+      "见各小问"
+    ],
+    "sub_questions": [
+      {
+        "number": 1,
+        "stem": "求 $a$ 及正交矩阵 $Q$",
+        "score": 11,
+        "answer": [
+          "$a=2$，$Q=\\begin{pmatrix}\\frac1{\\sqrt3}&-\\frac1{\\sqrt2}&\\frac1{\\sqrt6}\\\\-\\frac1{\\sqrt3}&0&\\frac2{\\sqrt6}\\\\\\frac1{\\sqrt3}&\\frac1{\\sqrt2}&\\frac1{\\sqrt6}\\end{pmatrix}$，标准形 $-3y_1^2+6y_2^2$（$Q$ 不唯一，满足 $Q^{\\mathrm T}Q=E$ 且 $Q^{\\mathrm T}AQ=\\mathrm{diag}(-3,6,0)$ 即正确）"
+        ]
+      }
+    ],
+    "solution": "**解** $\\mathbf{A} = \\left( \\begin{array}{rrr}2 & 1 & -4\\\\ 1 & -1 & 1\\\\ -4 & 1 & a \\end{array} \\right),\\quad \\mathbf{X} = \\left( \\begin{array}{l}x_{1}\\\\ x_{2}\\\\ x_{3} \\end{array} \\right),\\quad f(x_{1},x_{2},x_{3}) = \\mathbf{X}^{\\mathrm{T}}\\mathbf{A}\\mathbf{X},$\n\n因为 $\\lambda_3 = 0$ ，所以 $|\\mathbf{A}| = 0$\n\n由 $|\\mathbf{A}| = \\left| \\begin{array}{ccc}2 & 1 & -4\\\\ 1 & -1 & 1\\\\ -4 & 1 & a \\end{array} \\right| = -3(a - 2) = 0$ ，得 $a = 2$\n\n由 $|\\lambda E - A| = \\left| \\begin{array}{ccc}\\lambda -2 & -1 & 4\\\\ -1 & \\lambda +1 & -1\\\\ 4 & -1 & \\lambda -2 \\end{array} \\right| = \\lambda (\\lambda +3)(\\lambda -6) = 0$ ，得 $\\lambda_{1} = -3,\\lambda_{2} = 6,\\lambda_{3} = 0.$\n\n由 $-3\\pmb {E} - \\pmb {A}\\rightarrow \\left( \\begin{array}{rrr}5 & 1 & -4\\\\ 1 & 2 & 1\\\\ -4 & 1 & 5 \\end{array} \\right)\\rightarrow \\left( \\begin{array}{rrr}1 & 0 & -1\\\\ 0 & 1 & 1\\\\ 0 & 0 & 0 \\end{array} \\right)$ 得\n\n$\\lambda_{1} = -3$ 对应的线性无关的特征向量为 $\\pmb{\\alpha}_{1} = \\begin{pmatrix} 1 \\\\ -1 \\\\ 1 \\end{pmatrix}$ ;\n\n由 $6\\pmb {E} - \\pmb {A} = \\left( \\begin{array}{rrr}4 & -1 & 4\\\\ -1 & 7 & -1\\\\ 4 & -1 & 4 \\end{array} \\right)\\rightarrow \\left( \\begin{array}{rrr}1 & 0 & 1\\\\ 0 & 1 & 0\\\\ 0 & 0 & 0 \\end{array} \\right)$ 得\n\n$\\lambda_{2} = 6$ 对应的线性无关的特征向量为 $\\pmb{\\alpha}_{2} = \\begin{pmatrix} -1 \\\\ 0 \\\\ 1 \\end{pmatrix}$ ;\n\n由 $0E - A \\rightarrow \\left( \\begin{array}{ccc}1 & 0 & -1\\\\ 0 & 1 & -2\\\\ 0 & 0 & 0 \\end{array} \\right)$ 得 $\\lambda_{3} = 0$ 对应的线性无关的特征向量为 $\\pmb{\\alpha}_{3} = \\binom{1}{2}$ .\n\n规范化得 $\\gamma_{1} = \\frac{1}{\\sqrt{3}}\\binom{1}{-1}$ ， $\\gamma_{2} = \\frac{1}{\\sqrt{2}}\\binom{-1}{0}$ ， $\\gamma_{3} = \\frac{1}{\\sqrt{6}}\\binom{1}{2}$ ，\n\n故正交矩阵为 $Q = \\left[ \\begin{array}{ccc} \\frac{1}{\\sqrt{3}} & -\\frac{1}{\\sqrt{2}} & \\frac{1}{\\sqrt{6}} \\\\ -\\frac{1}{\\sqrt{3}} & 0 & \\frac{2}{\\sqrt{6}} \\\\ \\frac{1}{\\sqrt{3}} & \\frac{1}{\\sqrt{2}} & \\frac{1}{\\sqrt{6}} \\end{array} \\right]$\n\n$$\nf \\left(x _ {1}, x _ {2}, x _ {3}\\right) = \\boldsymbol {X} ^ {\\mathrm {T}} \\boldsymbol {A} \\boldsymbol {X} \\xlongequal {\\boldsymbol {X} = Q \\boldsymbol {Y}} - 3 y _ {1} ^ {2} + 6 y _ {2} ^ {2}.\n$$",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-22",
+    "exam": "math1",
+    "year": 2017,
+    "number": 22,
+    "section": "解答题",
+    "type": "essay",
+    "score": 11,
+    "stem": "设随机变量 $X, Y$ 相互独立，且 $X$ 的概率分布为 $P\\{X = 0\\} = P\\{X = 2\\} = \\frac{1}{2}, Y$ 的概率密度为 $f(y) = \\left\\{ \\begin{array}{ll} 2y, & 0 < y < 1, \\\\ 0, & \\text{其他}. \\end{array} \\right.$\n\n（I）求 $P\\{Y \\leqslant E(Y)\\}$ ;\n\n（Ⅱ）求 $Z = X + Y$ 的概率密度",
+    "images": [],
+    "options": [],
+    "answer": [
+      "见各小问"
+    ],
+    "sub_questions": [
+      {
+        "number": 1,
+        "stem": "求 $P\\{Y\\leqslant E(Y)\\}$",
+        "score": null,
+        "answer": [
+          "$\\frac49$"
+        ]
+      },
+      {
+        "number": 2,
+        "stem": "求 $Z$ 的概率密度",
+        "score": null,
+        "answer": [
+          "$f_Z(z)=\\begin{cases}z,&0<z<1\\\\z-2,&2<z<3\\\\0,&\\text{其他}\\end{cases}$"
+        ]
+      }
+    ],
+    "solution": "**解** （I）$E(Y) = \\int_{0}^{1}y\\cdot 2y\\mathrm{d}y = \\frac{2}{3},$\n\n$$\nP \\left\\{Y \\leqslant E (Y) \\right\\} = P \\left\\{Y \\leqslant \\frac {2}{3} \\right\\} = \\int_ {0} ^ {\\frac {2}{3}} 2 y \\mathrm {d} y = \\frac {4}{9}.\n$$\n\n（Ⅱ）方法一 $F_{Z}(z) = P\\{Z \\leqslant z\\} = P\\{X + Y \\leqslant z\\}$ ，\n\n当 $z < 0$ 时， $F_{Z}(z) = 0$\n\n当 $z \\geq 3$ 时， $F_Z(z) = 1$\n\n当 $0 \\leqslant z < 1$ 时， $F_Z(z) = P\\{X = 0, Y \\leqslant z\\} = P\\{X = 0, Y \\leqslant z\\}$\n\n$$\n= P \\{X = 0 \\} P \\{Y \\leqslant z \\} = \\frac {1}{2} \\int_ {0} ^ {z} 2 y \\mathrm {d} y = \\frac {z ^ {2}}{2};\n$$\n\n当 $1 \\leqslant z < 2$ 时， $F_{Z}(z) = P\\{X = 0, Y \\leqslant z\\} = P\\{X = 0\\} P\\{Y \\leqslant 1\\} = \\frac{1}{2}$\n\n当 $2 \\leqslant z < 3$ 时， $F_{Z}(z) = P\\{X = 0, Y \\leqslant z\\} + P\\{X = 2, Z \\leqslant z - 2\\}$\n\n$$\n\\begin{array}{l} = P \\{X = 0 \\} P \\{Y \\leqslant 1 \\} + P \\{X = 2 \\} P \\{Y \\leqslant z - 2 \\} \\\\ = \\frac {1}{2} + \\frac {1}{2} \\int_ {0} ^ {z - 2} 2 y d y = \\frac {1}{2} + \\frac {1}{2} (z - 2) ^ {2}, \\\\ \\end{array}\n$$\n\n即 $F_{Z}(z) = \\left\\{ \\begin{array}{ll}0, & z <   0,\\\\ \\frac{z^{2}}{2}, & 0\\leqslant z <   1,\\\\ \\frac{1}{2} +\\frac{1}{2} (z - 2)^{2}, & 2\\leqslant z <   3,\\\\ 1, & z\\geqslant 3, \\end{array} \\right.$\n\n概率密度为 $f_{Z}(z) = \\left\\{ \\begin{array}{ll} z, & 0 < z < 1, \\\\ z - 2, & 2 < z < 3, \\\\ 0, & \\text{其他}. \\end{array} \\right.$\n\n方法二 由全概率公式得\n\n$$\n\\begin{array}{l} F _ {Z} (z) = P \\{Z \\leqslant z \\} = P \\{X + Y \\leqslant z \\} \\\\ = P \\{X = 0 \\} P \\{X + Y \\leqslant z \\mid X = 0 \\} + P \\{X = 2 \\} P \\{X + Y \\leqslant z \\mid X = 2 \\} \\\\ = \\frac {1}{2} P \\{Y \\leqslant z \\} + \\frac {1}{2} P \\{Y \\leqslant z - 2 \\}, \\\\ \\end{array}\n$$\n\n当 $z < 0$ 时， $F_{Z}(z) = 0$\n\n当 $0 \\leqslant z < 1$ 时， $F_{Z}(z) = \\frac{1}{2} P\\{Y \\leqslant z\\} = \\frac{1}{2} \\int_{0}^{z} 2y \\, \\mathrm{d}y = \\frac{z^2}{2}$\n\n当 $1 \\leqslant z < 2$ 时， $F_{Z}(z) = \\frac{1}{2} P\\{Y \\leqslant 1\\} = \\frac{1}{2}$\n\n当 $2 \\leqslant z < 3$ 时， $F_{Z}(z) = \\frac{1}{2} + \\frac{1}{2} P\\{Y \\leqslant z - 2\\}$\n\n$$\n= \\frac {1}{2} + \\frac {1}{2} \\int_ {0} ^ {z - 2} 2 y d y = \\frac {1}{2} + \\frac {(z - 2) ^ {2}}{2};\n$$\n\n当 $z \\geqslant 3$ 时， $F_Z(z) = 1$\n\n故 $f_{Z}(z) = F^{\\prime}(z) = \\left\\{ \\begin{array}{ll}z, & 0 <   z <   1,\\\\ z - 2, & 2 <   z <   3,\\\\ 0, & \\text{其他}. \\end{array} \\right.$",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "math1-2017-23",
+    "exam": "math1",
+    "year": 2017,
+    "number": 23,
+    "section": "解答题",
+    "type": "essay",
+    "score": 11,
+    "stem": "某工程师为了解一台天平的精度, 用该天平对一物体的质量做 $n$ 次测量, 该物体的质量 $\\mu$ 是已知的. 设 $n$ 次测量结果 $X_{1}, X_{2}, \\dots, X_{n}$ 相互独立且均服从正态分布 $N(\\mu, \\sigma^{2})$ , 该工程师记录的是 $n$ 次测量的绝对误差 $Z_{i} = |X_{i} - \\mu| (i = 1, 2, \\dots, n)$ . 利用 $Z_{1}, Z_{2}, \\dots, Z_{n}$ 估计 $\\sigma$ .\n\n（I）求 $Z_{1}$ 的概率密度；\n\n（Ⅱ）利用一阶矩求 $\\sigma$ 的矩估计量；\n\n（Ⅲ）求 $\\sigma$ 的最大似然估计量.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "见各小问"
+    ],
+    "sub_questions": [
+      {
+        "number": 1,
+        "stem": "求 $Z_1$ 的概率密度",
+        "score": null,
+        "answer": [
+          "$f(z)=\\begin{cases}\\frac{2}{\\sqrt{2\\pi}\\sigma}\\mathrm e^{-\\frac{z^2}{2\\sigma^2}},&z>0\\\\0,&z\\leqslant0\\end{cases}$"
+        ]
+      },
+      {
+        "number": 2,
+        "stem": "求矩估计量",
+        "score": null,
+        "answer": [
+          "$\\hat\\sigma=\\sqrt{\\frac{\\pi}{2}}\\,\\overline Z$"
+        ]
+      },
+      {
+        "number": 3,
+        "stem": "求最大似然估计量",
+        "score": null,
+        "answer": [
+          "$\\hat\\sigma=\\sqrt{\\frac1n\\sum_{i=1}^nZ_i^2}$"
+        ]
+      }
+    ],
+    "solution": "**解** （I）由 $X_{1} \\sim N(\\mu, \\sigma^{2})$ 得 $\\frac{X_{1} - \\mu}{\\sigma} \\sim N(0, 1)$ ，\n\n$Z_{1}$ 的分布函数为 $F(z) = P\\{Z_1\\leqslant z\\}$\n\n当 $z < 0$ 时， $F(z) = 0$\n\n当 $z \\geqslant 0$ 时， $F(z) = P\\left\\{\\left|\\frac{X_1 - \\mu}{\\sigma}\\right| \\leqslant \\frac{z}{\\sigma}\\right\\} = \\Phi\\left(\\frac{z}{\\sigma}\\right) - \\Phi\\left(-\\frac{z}{\\sigma}\\right) = 2\\Phi\\left(\\frac{z}{\\sigma}\\right) - 1,$\n\n$$\nF (z) = \\left\\{ \\begin{array}{l l} 0, & z <   0, \\\\ 2 \\Phi \\left(\\frac {z}{\\sigma}\\right) - 1, & z \\geqslant 0, \\end{array} \\right.\n$$\n\n$Z_{1}$ 的密度函数为 $f(z) = \\left\\{ \\begin{array}{ll}0, & z\\leqslant 0,\\\\ \\frac{2}{\\sigma}\\varphi \\left(\\frac{z}{\\sigma}\\right), & z > 0. \\end{array} \\right.$\n\n（Ⅱ）$E(Z) = E(|X_i - \\mu |) = E(|X_1 - \\mu |)$\n\n$$\n\\begin{array}{l} = \\int_ {0} ^ {+ \\infty} z \\cdot \\frac {2}{\\sigma} \\varphi (\\frac {z}{\\sigma}) d z = 2 \\sigma \\int_ {0} ^ {+ \\infty} \\frac {z}{\\sigma} \\varphi (\\frac {z}{\\sigma}) d \\left(\\frac {z}{\\sigma}\\right) \\\\ = 2 \\sigma \\int_ {0} ^ {+ \\infty} t \\varphi (t) d t = \\frac {2 \\sigma}{\\sqrt {2 \\pi}} \\int_ {0} ^ {+ \\infty} t e ^ {- \\frac {t ^ {2}}{2}} d t = \\frac {2 \\sigma}{\\sqrt {2 \\pi}} \\int_ {0} ^ {+ \\infty} e ^ {- \\frac {t ^ {2}}{2}} d \\left(\\frac {t ^ {2}}{2}\\right) = \\frac {2 \\sigma}{\\sqrt {2 \\pi}}, \\\\ \\end{array}\n$$\n\n由 $\\frac{2\\sigma}{\\sqrt{2\\pi}} = \\frac{1}{n}\\sum_{i = 1}^{n}Z_{i} = \\overline{Z}$ ，得 $\\sigma$ 的矩估计量为 $\\hat{\\sigma} = \\sqrt{\\frac{\\pi}{2}}\\overline{Z}$\n\n（Ⅲ）似然函数为\n\n$$\nL = f \\left(z _ {1}\\right) \\dots f \\left(z _ {n}\\right) = \\frac {2 ^ {n}}{\\sigma^ {n}} \\cdot \\left(\\frac {1}{\\sqrt {2 \\pi}}\\right) ^ {n} \\cdot e ^ {- \\frac {1}{2 \\sigma^ {2}} \\left(z _ {1} ^ {2} + \\dots + z _ {n} ^ {2}\\right)} \\left(z _ {i} > 0, i = 1, 2, \\dots , n\\right),\n$$\n\n$$\n\\ln L = n \\ln 2 - n \\ln \\sigma - n \\ln \\sqrt {2 \\pi} - \\frac {1}{2 \\sigma^ {2}} \\left(z _ {1} ^ {2} + \\dots + z _ {n} ^ {2}\\right),\n$$\n\n由 $\\frac{\\mathrm{d}}{\\mathrm{d}\\sigma}\\ln L = -\\frac{n}{\\sigma} +\\frac{1}{\\sigma^3} (z_1^2 +\\dots +z_n^2) = 0$ 得 $\\hat{\\sigma} = \\sqrt{\\frac{1}{n}\\sum_{i = 1}^{n}z_i^2},$\n\n故 $\\sigma$ 的最大似然估计量为 $\\hat{\\sigma} = \\sqrt{\\frac{1}{n}\\sum_{i = 1}^{n}Z_i^2}$",
+    "knowledge_points": [],
+    "source": {
+      "repo": "TsekaLuk/Kaoyan-Math1-Papers",
+      "files": [
+        "paper_2017.md",
+        "sol_2017.md"
+      ]
+    }
+  }
+]

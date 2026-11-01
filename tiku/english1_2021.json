@@ -1,0 +1,2668 @@
+[
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-01",
+    "exam": "english1",
+    "year": 2021,
+    "number": 1,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "It （1）______ in young adulthood, levels out for a period of time, and then （2）______ starts to slowly decline as we age.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "pauses"
+      },
+      {
+        "key": "B",
+        "content": "returns"
+      },
+      {
+        "key": "C",
+        "content": "peaks"
+      },
+      {
+        "key": "D",
+        "content": "fades"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-02",
+    "exam": "english1",
+    "year": 2021,
+    "number": 2,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "It （1）______ in young adulthood, levels out for a period of time, and then （2）______ starts to slowly decline as we age.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "alternatively"
+      },
+      {
+        "key": "B",
+        "content": "formally"
+      },
+      {
+        "key": "C",
+        "content": "accidentally"
+      },
+      {
+        "key": "D",
+        "content": "generally"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-03",
+    "exam": "english1",
+    "year": 2021,
+    "number": 3,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "But （3）______ aging is inevitable, scientists are finding out that certain changes in brain function may not be.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "while"
+      },
+      {
+        "key": "B",
+        "content": "since"
+      },
+      {
+        "key": "C",
+        "content": "once"
+      },
+      {
+        "key": "D",
+        "content": "until"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-04",
+    "exam": "english1",
+    "year": 2021,
+    "number": 4,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "One study found that muscle loss and the （4）______ of body fat around the abdomen are associated with a decline in fluid intelligence.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "detection"
+      },
+      {
+        "key": "B",
+        "content": "accumulation"
+      },
+      {
+        "key": "C",
+        "content": "consumption"
+      },
+      {
+        "key": "D",
+        "content": "separation"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-05",
+    "exam": "english1",
+    "year": 2021,
+    "number": 5,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "This suggests the （5）______ that lifestyle factors might help prevent or （6）______ this type of decline.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "possibility"
+      },
+      {
+        "key": "B",
+        "content": "decision"
+      },
+      {
+        "key": "C",
+        "content": "goal"
+      },
+      {
+        "key": "D",
+        "content": "requirement"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-06",
+    "exam": "english1",
+    "year": 2021,
+    "number": 6,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "This suggests the （5）______ that lifestyle factors might help prevent or （6）______ this type of decline.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "delay"
+      },
+      {
+        "key": "B",
+        "content": "ensure"
+      },
+      {
+        "key": "C",
+        "content": "seek"
+      },
+      {
+        "key": "D",
+        "content": "utilize"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-07",
+    "exam": "english1",
+    "year": 2021,
+    "number": 7,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "The researchers looked at data that （7）______ measurements of lean muscle and abdominal fat from more than 4,000 middle-to-older-aged men and women and （8）______ that data to reported changes in fluid intelligence over a six-year period.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "modified"
+      },
+      {
+        "key": "B",
+        "content": "supported"
+      },
+      {
+        "key": "C",
+        "content": "included"
+      },
+      {
+        "key": "D",
+        "content": "predicted"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-08",
+    "exam": "english1",
+    "year": 2021,
+    "number": 8,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "The researchers looked at data that （7）______ measurements of lean muscle and abdominal fat from more than 4,000 middle-to-older-aged men and women and （8）______ that data to reported changes in fluid intelligence over a six-year period.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "devoted"
+      },
+      {
+        "key": "B",
+        "content": "compared"
+      },
+      {
+        "key": "C",
+        "content": "converted"
+      },
+      {
+        "key": "D",
+        "content": "applied"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-09",
+    "exam": "english1",
+    "year": 2021,
+    "number": 9,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "They found that middle-aged people （9）______ higher measures of abdominal fat （10）______ worse on measures of fluid intelligence as the years （11）______.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "with"
+      },
+      {
+        "key": "B",
+        "content": "above"
+      },
+      {
+        "key": "C",
+        "content": "by"
+      },
+      {
+        "key": "D",
+        "content": "against"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-10",
+    "exam": "english1",
+    "year": 2021,
+    "number": 10,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "They found that middle-aged people （9）______ higher measures of abdominal fat （10）______ worse on measures of fluid intelligence as the years （11）______.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "lived"
+      },
+      {
+        "key": "B",
+        "content": "managed"
+      },
+      {
+        "key": "C",
+        "content": "scored"
+      },
+      {
+        "key": "D",
+        "content": "played"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-11",
+    "exam": "english1",
+    "year": 2021,
+    "number": 11,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "They found that middle-aged people （9）______ higher measures of abdominal fat （10）______ worse on measures of fluid intelligence as the years （11）______.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "ran out"
+      },
+      {
+        "key": "B",
+        "content": "set off"
+      },
+      {
+        "key": "C",
+        "content": "drew in"
+      },
+      {
+        "key": "D",
+        "content": "went by"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-12",
+    "exam": "english1",
+    "year": 2021,
+    "number": 12,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "For women, the association may be （12）______ to changes in immunity that resulted from excess abdominal fat; in men, the immune system did not appear to be （13）______.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "superior"
+      },
+      {
+        "key": "B",
+        "content": "attributable"
+      },
+      {
+        "key": "C",
+        "content": "parallel"
+      },
+      {
+        "key": "D",
+        "content": "resistant"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-13",
+    "exam": "english1",
+    "year": 2021,
+    "number": 13,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "For women, the association may be （12）______ to changes in immunity that resulted from excess abdominal fat; in men, the immune system did not appear to be （13）______.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "restored"
+      },
+      {
+        "key": "B",
+        "content": "isolated"
+      },
+      {
+        "key": "C",
+        "content": "involved"
+      },
+      {
+        "key": "D",
+        "content": "controlled"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-14",
+    "exam": "english1",
+    "year": 2021,
+    "number": 14,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "It is hoped that future studies could （14）______ these differences and perhaps lead to different （15）______ for men and women.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "alter"
+      },
+      {
+        "key": "B",
+        "content": "spread"
+      },
+      {
+        "key": "C",
+        "content": "remove"
+      },
+      {
+        "key": "D",
+        "content": "explain"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-15",
+    "exam": "english1",
+    "year": 2021,
+    "number": 15,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "It is hoped that future studies could （14）______ these differences and perhaps lead to different （15）______ for men and women.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "compensations"
+      },
+      {
+        "key": "B",
+        "content": "symptoms"
+      },
+      {
+        "key": "C",
+        "content": "demands"
+      },
+      {
+        "key": "D",
+        "content": "treatments"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-16",
+    "exam": "english1",
+    "year": 2021,
+    "number": 16,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "（16）______ there are steps you can （17）______ to help reduce abdominal fat and maintain lean muscle mass as you age in order to protect both your physical and mental （18）______.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Likewise"
+      },
+      {
+        "key": "B",
+        "content": "Meanwhile"
+      },
+      {
+        "key": "C",
+        "content": "Therefore"
+      },
+      {
+        "key": "D",
+        "content": "Instead"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-17",
+    "exam": "english1",
+    "year": 2021,
+    "number": 17,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "（16）______ there are steps you can （17）______ to help reduce abdominal fat and maintain lean muscle mass as you age in order to protect both your physical and mental （18）______.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "change"
+      },
+      {
+        "key": "B",
+        "content": "watch"
+      },
+      {
+        "key": "C",
+        "content": "count"
+      },
+      {
+        "key": "D",
+        "content": "take"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-18",
+    "exam": "english1",
+    "year": 2021,
+    "number": 18,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "（16）______ there are steps you can （17）______ to help reduce abdominal fat and maintain lean muscle mass as you age in order to protect both your physical and mental （18）______.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "well-being"
+      },
+      {
+        "key": "B",
+        "content": "process"
+      },
+      {
+        "key": "C",
+        "content": "formation"
+      },
+      {
+        "key": "D",
+        "content": "coordination"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-19",
+    "exam": "english1",
+    "year": 2021,
+    "number": 19,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "The two highly recommended lifestyle approaches are maintaining or increasing your （19）______ of aerobic exercise and following Mediterranean-style （20）______ that is high in fiber and eliminates highly processed foods.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "level"
+      },
+      {
+        "key": "B",
+        "content": "love"
+      },
+      {
+        "key": "C",
+        "content": "knowledge"
+      },
+      {
+        "key": "D",
+        "content": "space"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-20",
+    "exam": "english1",
+    "year": 2021,
+    "number": 20,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2021-P-cloze",
+    "stem": "The two highly recommended lifestyle approaches are maintaining or increasing your （19）______ of aerobic exercise and following Mediterranean-style （20）______ that is high in fiber and eliminates highly processed foods.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "design"
+      },
+      {
+        "key": "B",
+        "content": "routine"
+      },
+      {
+        "key": "C",
+        "content": "diet"
+      },
+      {
+        "key": "D",
+        "content": "prescription"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-21",
+    "exam": "english1",
+    "year": 2021,
+    "number": 21,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text1",
+    "stem": "The author holds that this year’s increase in rail passenger fares",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "has kept pace with inflation."
+      },
+      {
+        "key": "B",
+        "content": "is a big surprise to commuters."
+      },
+      {
+        "key": "C",
+        "content": "remains an unreasonable measure."
+      },
+      {
+        "key": "D",
+        "content": "will ease train operators’ burden."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-22",
+    "exam": "english1",
+    "year": 2021,
+    "number": 22,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text1",
+    "stem": "The stockbroker in Paragraph 2 is used to stand for",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "car drivers."
+      },
+      {
+        "key": "B",
+        "content": "rail travelers."
+      },
+      {
+        "key": "C",
+        "content": "local investors."
+      },
+      {
+        "key": "D",
+        "content": "ordinary taxpayers."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-23",
+    "exam": "english1",
+    "year": 2021,
+    "number": 23,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text1",
+    "stem": "It is indicated in Paragraph 3 that train operators",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "are offering compensation to commuters."
+      },
+      {
+        "key": "B",
+        "content": "are trying to repair relations with the unions."
+      },
+      {
+        "key": "C",
+        "content": "have failed to provide an adequate service."
+      },
+      {
+        "key": "D",
+        "content": "have suffered huge losses owing to the strikes."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-24",
+    "exam": "english1",
+    "year": 2021,
+    "number": 24,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text1",
+    "stem": "If unable to calm down passengers, the railways may have to face",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the loss of investment."
+      },
+      {
+        "key": "B",
+        "content": "the collapse of operations."
+      },
+      {
+        "key": "C",
+        "content": "a reduction of revenue."
+      },
+      {
+        "key": "D",
+        "content": "a change of ownership."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-25",
+    "exam": "english1",
+    "year": 2021,
+    "number": 25,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text1",
+    "stem": "Which of the following would be the best title for the text?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Who Are to Blame for the Strikes?"
+      },
+      {
+        "key": "B",
+        "content": "Constant Complaining Doesn’t Work"
+      },
+      {
+        "key": "C",
+        "content": "Can Nationalisation Bring Hope?"
+      },
+      {
+        "key": "D",
+        "content": "Ever-rising Fares Aren’t Sustainable"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-26",
+    "exam": "english1",
+    "year": 2021,
+    "number": 26,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text2",
+    "stem": "According to the first two paragraphs, CCT programs aim to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "facilitate healthcare reform."
+      },
+      {
+        "key": "B",
+        "content": "help poor families get better off."
+      },
+      {
+        "key": "C",
+        "content": "improve local education systems."
+      },
+      {
+        "key": "D",
+        "content": "lower deforestation rates."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-27",
+    "exam": "english1",
+    "year": 2021,
+    "number": 27,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text2",
+    "stem": "The study based on an area in Mexico is cited to show that",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "cattle rearing has been a major means of livelihood for the poor."
+      },
+      {
+        "key": "B",
+        "content": "CCT programs have helped preserve traditional lifestyles."
+      },
+      {
+        "key": "C",
+        "content": "antipoverty efforts require the participation of local farmers."
+      },
+      {
+        "key": "D",
+        "content": "economic growth tends to cause environmental degradation."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-28",
+    "exam": "english1",
+    "year": 2021,
+    "number": 28,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text2",
+    "stem": "In his study about Indonesia, Ferraro intends to find out",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "its acceptance level of CCTs."
+      },
+      {
+        "key": "B",
+        "content": "its annual rate of poverty alleviation."
+      },
+      {
+        "key": "C",
+        "content": "the relation of CCTs to its forest loss."
+      },
+      {
+        "key": "D",
+        "content": "the role of its forests in climate change."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-29",
+    "exam": "english1",
+    "year": 2021,
+    "number": 29,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text2",
+    "stem": "According to Ferraro, the CCT program in Indonesia is most valuable in that",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "it will benefit other Asian countries."
+      },
+      {
+        "key": "B",
+        "content": "it will reduce regional inequality."
+      },
+      {
+        "key": "C",
+        "content": "it can protect the environment."
+      },
+      {
+        "key": "D",
+        "content": "it can boost grain production."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-30",
+    "exam": "english1",
+    "year": 2021,
+    "number": 30,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text2",
+    "stem": "What is the text centered on?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "The effects of a program."
+      },
+      {
+        "key": "B",
+        "content": "The debates over a program."
+      },
+      {
+        "key": "C",
+        "content": "The process of a study."
+      },
+      {
+        "key": "D",
+        "content": "The transferability of a study."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-31",
+    "exam": "english1",
+    "year": 2021,
+    "number": 31,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text3",
+    "stem": "According to Paragraph 1, the author’s posts on Twitter",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "changed people’s impression of the Victorians."
+      },
+      {
+        "key": "B",
+        "content": "highlighted social media’s role in Victorian studies."
+      },
+      {
+        "key": "C",
+        "content": "re-evaluated the Victorian’s notion of public image."
+      },
+      {
+        "key": "D",
+        "content": "illustrated the development of Victorian photography."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-32",
+    "exam": "english1",
+    "year": 2021,
+    "number": 32,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text3",
+    "stem": "What does the author say about the Victorian portraits he has collected?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "They are in popular use among historians."
+      },
+      {
+        "key": "B",
+        "content": "They are rare among photographs of that age."
+      },
+      {
+        "key": "C",
+        "content": "They mirror 19th-century social conventions."
+      },
+      {
+        "key": "D",
+        "content": "They show effects of different exposure times."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-33",
+    "exam": "english1",
+    "year": 2021,
+    "number": 33,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text3",
+    "stem": "What might have kept the Victorians from smiling for pictures in the 1890s?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Their inherent social sensitiveness."
+      },
+      {
+        "key": "B",
+        "content": "Their tension before the camera."
+      },
+      {
+        "key": "C",
+        "content": "Their distrust of new inventions."
+      },
+      {
+        "key": "D",
+        "content": "Their unhealthy dental condition."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-34",
+    "exam": "english1",
+    "year": 2021,
+    "number": 34,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text3",
+    "stem": "Mark Twain is quoted to show that the disapproval of smiles in pictures was",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "a deep-root belief."
+      },
+      {
+        "key": "B",
+        "content": "a misguided attitude."
+      },
+      {
+        "key": "C",
+        "content": "a controversial view."
+      },
+      {
+        "key": "D",
+        "content": "a thought-provoking idea."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-35",
+    "exam": "english1",
+    "year": 2021,
+    "number": 35,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text3",
+    "stem": "Which of the following questions does the text answer?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Why did most Victorians look stern in photographs?"
+      },
+      {
+        "key": "B",
+        "content": "When did the Victorians start to view photography differently?"
+      },
+      {
+        "key": "C",
+        "content": "What made photography develop slowly in the Victorian period?"
+      },
+      {
+        "key": "D",
+        "content": "How did smiling in photographs become a post-Victorian norm?"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-36",
+    "exam": "english1",
+    "year": 2021,
+    "number": 36,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text4",
+    "stem": "There has long been concern that broadband providers would",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "bring web-based firms under control."
+      },
+      {
+        "key": "B",
+        "content": "slow down the traffic on their network."
+      },
+      {
+        "key": "C",
+        "content": "show partiality in treating clients."
+      },
+      {
+        "key": "D",
+        "content": "intensify competition with their rivals."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-37",
+    "exam": "english1",
+    "year": 2021,
+    "number": 37,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text4",
+    "stem": "Faced with the demand for net neutrality rules, the FCC",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "sticks to an out-of-date order."
+      },
+      {
+        "key": "B",
+        "content": "takes an anti-regulatory stance."
+      },
+      {
+        "key": "C",
+        "content": "has issued a special resolution."
+      },
+      {
+        "key": "D",
+        "content": "has allowed the states to intervene."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-38",
+    "exam": "english1",
+    "year": 2021,
+    "number": 38,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text4",
+    "stem": "What can be learned about AT&T from Paragraph 3?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "It protects against unfair competition."
+      },
+      {
+        "key": "B",
+        "content": "It engages in anti-competitive practices."
+      },
+      {
+        "key": "C",
+        "content": "It is under the FCC’s investigation."
+      },
+      {
+        "key": "D",
+        "content": "It is in pursuit of quality service."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-39",
+    "exam": "english1",
+    "year": 2021,
+    "number": 39,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text4",
+    "stem": "Judge Patricia Millett argues that the appeals court’s decision",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "focus on trivialities."
+      },
+      {
+        "key": "B",
+        "content": "conveys an ambiguous message."
+      },
+      {
+        "key": "C",
+        "content": "is at odds with its earlier rulings."
+      },
+      {
+        "key": "D",
+        "content": "is out of touch with reality."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-40",
+    "exam": "english1",
+    "year": 2021,
+    "number": 40,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2021-P-text4",
+    "stem": "What does the author argue in the last paragraph?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Congress needs to take action to ensure net neutrality."
+      },
+      {
+        "key": "B",
+        "content": "The FCC should be put under strict supervision."
+      },
+      {
+        "key": "C",
+        "content": "Rules need to be set to diversify online services."
+      },
+      {
+        "key": "D",
+        "content": "Broadband providers’ rights should be protected."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "https://gw.xztu.edu.cn/info/1115/1155.htm → /__local/2/CB/69/7E50BE44D3BC487BECD5DDBADD4_B5DC80B3_4C1948.pdf（原卷扫描，第 3、5、7、9、11 页）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-41",
+    "exam": "english1",
+    "year": 2021,
+    "number": 41,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2021-P-partb",
+    "stem": "选出填入第（41）处的选项：\n\nBetter hiring practices Companies are using artificial intelligence to remove some of the unconscious bias from hiring decisions. “There are experiments that show that, naturally, the results of interviews are much more biased than what AI does,” says Pedro Domingos, author of The Master Algorithm: How the Quest for the Ultimate Learning Machine Will Remake Our World and a computer science professor at the University of Washington. In addition,“（41）______” One company that’s doing this is called Blendoor. It uses analytics to help identify where there may be bias in the hiring process.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "AI replaces the boring parts of your job. If you’re doing research, you can have AI go out and look for relevant sources and information that otherwise you just wouldn’t have time for."
+      },
+      {
+        "key": "B",
+        "content": "One accounting firm, EY, uses an AI system that helps review contracts during an audit. This process, along with employees reviewing the contracts, is faster and more accurate."
+      },
+      {
+        "key": "C",
+        "content": "There are also companies like Acquisio, which analyzes advertising performance across multiple channels like Adwords, Bing and social media and makes adjustments or suggestions about where advertising funds will yield best results."
+      },
+      {
+        "key": "D",
+        "content": "You want to predict if something needs attention now and point to where it’s useful for employees to go to."
+      },
+      {
+        "key": "E",
+        "content": "Before, they might not insure the ones who felt like a high risk or charge them too much, or they would charge them too little and then it would cost the company money."
+      },
+      {
+        "key": "F",
+        "content": "We’re also giving our customers better channels versus picking up the phone to accomplish something beyond human scale."
+      },
+      {
+        "key": "G",
+        "content": "AI looks at resumes in greater numbers than humans would be able to, and selects the more promising candidates."
+      }
+    ],
+    "answer": [
+      "G"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/七选五"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "E",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-42",
+    "exam": "english1",
+    "year": 2021,
+    "number": 42,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2021-P-partb",
+    "stem": "选出填入第（42）处的选项：\n\nMore effective marketing Some AI software can analyze and optimize marketing email subject lines to increase open rates. One company in the UK, Phrasee, claims their software can outperform humans by up to 10 percent when it comes to email open rates. This can mean millions more in revenue. （42）______ These are \"tools that help people use data, not a replacement for people,” says Patrick H. Winston, a professor of artificial intelligence and computer science at MIT.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "AI replaces the boring parts of your job. If you’re doing research, you can have AI go out and look for relevant sources and information that otherwise you just wouldn’t have time for."
+      },
+      {
+        "key": "B",
+        "content": "One accounting firm, EY, uses an AI system that helps review contracts during an audit. This process, along with employees reviewing the contracts, is faster and more accurate."
+      },
+      {
+        "key": "C",
+        "content": "There are also companies like Acquisio, which analyzes advertising performance across multiple channels like Adwords, Bing and social media and makes adjustments or suggestions about where advertising funds will yield best results."
+      },
+      {
+        "key": "D",
+        "content": "You want to predict if something needs attention now and point to where it’s useful for employees to go to."
+      },
+      {
+        "key": "E",
+        "content": "Before, they might not insure the ones who felt like a high risk or charge them too much, or they would charge them too little and then it would cost the company money."
+      },
+      {
+        "key": "F",
+        "content": "We’re also giving our customers better channels versus picking up the phone to accomplish something beyond human scale."
+      },
+      {
+        "key": "G",
+        "content": "AI looks at resumes in greater numbers than humans would be able to, and selects the more promising candidates."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/七选五"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-43",
+    "exam": "english1",
+    "year": 2021,
+    "number": 43,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2021-P-partb",
+    "stem": "选出填入第（43）处的选项：\n\nDomingos says, “（43）______”",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "AI replaces the boring parts of your job. If you’re doing research, you can have AI go out and look for relevant sources and information that otherwise you just wouldn’t have time for."
+      },
+      {
+        "key": "B",
+        "content": "One accounting firm, EY, uses an AI system that helps review contracts during an audit. This process, along with employees reviewing the contracts, is faster and more accurate."
+      },
+      {
+        "key": "C",
+        "content": "There are also companies like Acquisio, which analyzes advertising performance across multiple channels like Adwords, Bing and social media and makes adjustments or suggestions about where advertising funds will yield best results."
+      },
+      {
+        "key": "D",
+        "content": "You want to predict if something needs attention now and point to where it’s useful for employees to go to."
+      },
+      {
+        "key": "E",
+        "content": "Before, they might not insure the ones who felt like a high risk or charge them too much, or they would charge them too little and then it would cost the company money."
+      },
+      {
+        "key": "F",
+        "content": "We’re also giving our customers better channels versus picking up the phone to accomplish something beyond human scale."
+      },
+      {
+        "key": "G",
+        "content": "AI looks at resumes in greater numbers than humans would be able to, and selects the more promising candidates."
+      }
+    ],
+    "answer": [
+      "E"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/七选五"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "G",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-44",
+    "exam": "english1",
+    "year": 2021,
+    "number": 44,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2021-P-partb",
+    "stem": "选出填入第（44）处的选项：\n\nImproved accuracy “Machine learning often provides a more reliable form of statistics which makes data more valuable,” says Winston. It “helps people make smarter decisions.” （44）______",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "AI replaces the boring parts of your job. If you’re doing research, you can have AI go out and look for relevant sources and information that otherwise you just wouldn’t have time for."
+      },
+      {
+        "key": "B",
+        "content": "One accounting firm, EY, uses an AI system that helps review contracts during an audit. This process, along with employees reviewing the contracts, is faster and more accurate."
+      },
+      {
+        "key": "C",
+        "content": "There are also companies like Acquisio, which analyzes advertising performance across multiple channels like Adwords, Bing and social media and makes adjustments or suggestions about where advertising funds will yield best results."
+      },
+      {
+        "key": "D",
+        "content": "You want to predict if something needs attention now and point to where it’s useful for employees to go to."
+      },
+      {
+        "key": "E",
+        "content": "Before, they might not insure the ones who felt like a high risk or charge them too much, or they would charge them too little and then it would cost the company money."
+      },
+      {
+        "key": "F",
+        "content": "We’re also giving our customers better channels versus picking up the phone to accomplish something beyond human scale."
+      },
+      {
+        "key": "G",
+        "content": "AI looks at resumes in greater numbers than humans would be able to, and selects the more promising candidates."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/七选五"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-45",
+    "exam": "english1",
+    "year": 2021,
+    "number": 45,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2021-P-partb",
+    "stem": "选出填入第（45）处的选项：\n\nProtecting and maintaining infrastructure A number of companies, particularly in energy and transportation, use AI image processing technology to inspect infrastructure and prevent equipment failure or leaks before they happen. \"If they fail first and then you fix them, it’s very expensive,” says Domingos. “（45）______”",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "AI replaces the boring parts of your job. If you’re doing research, you can have AI go out and look for relevant sources and information that otherwise you just wouldn’t have time for."
+      },
+      {
+        "key": "B",
+        "content": "One accounting firm, EY, uses an AI system that helps review contracts during an audit. This process, along with employees reviewing the contracts, is faster and more accurate."
+      },
+      {
+        "key": "C",
+        "content": "There are also companies like Acquisio, which analyzes advertising performance across multiple channels like Adwords, Bing and social media and makes adjustments or suggestions about where advertising funds will yield best results."
+      },
+      {
+        "key": "D",
+        "content": "You want to predict if something needs attention now and point to where it’s useful for employees to go to."
+      },
+      {
+        "key": "E",
+        "content": "Before, they might not insure the ones who felt like a high risk or charge them too much, or they would charge them too little and then it would cost the company money."
+      },
+      {
+        "key": "F",
+        "content": "We’re also giving our customers better channels versus picking up the phone to accomplish something beyond human scale."
+      },
+      {
+        "key": "G",
+        "content": "AI looks at resumes in greater numbers than humans would be able to, and selects the more promising candidates."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/七选五"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "F",
+        "agree": false
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-46",
+    "exam": "english1",
+    "year": 2021,
+    "number": 46,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2021-P-translation",
+    "stem": "Those societies came out of the war with levels of enrollment that had been roughly constant at 3-5% of the relevant age groups during the decades before the war.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "战争结束时，那些社会的高校入学率为相应年龄人群的 3%—5%,这一水平在战前数十年里大致保持稳定。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-47",
+    "exam": "english1",
+    "year": 2021,
+    "number": 47,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2021-P-translation",
+    "stem": "And the demand that rose in those societies for entry to higher education extended to groups and social classes that had not thought of attending a university before the war.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "那些社会中对于接受高等教育的需求增长了，其范围扩大到战前没有考虑过上大学的群体和社会阶层。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-48",
+    "exam": "english1",
+    "year": 2021,
+    "number": 48,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2021-P-translation",
+    "stem": "in many countries of Western Europe, the numbers of students in higher education doubled within five-year periods during the 1960s and doubled again in seven, eight, or 10 years by the middle of the 1970s.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "在许多西欧国家，高等院校的学生数量在二十世纪六十年代期间五年翻了一番，之后经过七、八或十年的时间到七十年代中期又翻了一番。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-49",
+    "exam": "english1",
+    "year": 2021,
+    "number": 49,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2021-P-translation",
+    "stem": "and when the new staff are predominantly young men and women fresh from postgraduate study, they largely define the norms of academic life in that faculty.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "当绝大多数新教职员工是刚刚完成研究生学业的年轻人时，他们就在很大程度上确立了所在院系的学术生活规范。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-50",
+    "exam": "english1",
+    "year": 2021,
+    "number": 50,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2021-P-translation",
+    "stem": "High growth rates increased the chances for academic innovation; they also weakened the forms and processes by which teachers and students are admitted into a community of scholars during periods of stability or slow growth.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "高增长率增加了学术创新的可能性；同时也弱化了在稳定时期或缓慢增长时期接纳教师和学生进入学者群体的那些形式和流程。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-51",
+    "exam": "english1",
+    "year": 2021,
+    "number": 51,
+    "section": "writing_a",
+    "type": "essay",
+    "score": 10.0,
+    "passage_id": null,
+    "stem": "51. Directions:\nA foreign friend of yours has recently graduated from college and intends to find a\njob in China. Write him/her an email to make some suggestions.\nYou should write about 100 words on the ANSWER SHEET.\nDo not sign your own name at the end. Use “Li Ming” instead.\nDo not write the address. (10 points)",
+    "images": [],
+    "options": [],
+    "answer": [
+      "My Dear Friend,\nCongratulations on your graduation from college! I am glad to hear that you plan on starting your career in China, and I would like to offer several suggestions that may be conducive to your job seeking.\n\nFirstly, I hope you have done your career planning by taking your education, strengths and interests into account, based on which you may set about collecting information regarding your dream industries and companies. Secondly, a variety of talent recruitment websites, including those specially designed for foreigners in China, are viable options, as you can receive first-hand job information and submit your job applications online. Thirdly, do not forget to apply for a post-study work visa. Otherwise, you will not be allowed to work in China.\n\nHopefully my suggestions above are helpful and wish you all the best!\n\nYours sincerely,\nLi Ming"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/小作文（书信、通知等）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2021-52",
+    "exam": "english1",
+    "year": 2021,
+    "number": 52,
+    "section": "writing_b",
+    "type": "essay",
+    "score": 20.0,
+    "passage_id": null,
+    "stem": "52. Directions:\nWrite an essay of 160-200 words based on the following picture. In your essay,\nyou should\n1) describe the picture briefly,\n2) interpret its intended meaning, and\n3) give your comments.\nYou should write neatly on the ANSWER SHEET. (20 points)",
+    "images": [
+      "images/english1-2021/q52.jpg"
+    ],
+    "options": [],
+    "answer": [
+      "In the picture, a boy in the Monkey King costume tells his father that many of his classmates find it boring to learn traditional Chinese opera. “Aren’t you yourself fond of it? That is all that matters,” his father replies in a tone of encouragement.\n\nThe picture is aimed at inspiring us to chase our passions and dreams regardless of what others may say. The original purpose of pursuing a hobby or a dream is by no means to please others, but to lead ourselves to a more fulfilling and meaningful life. It is thus totally unnecessary for us to hesitate to do what we enjoy for fear of disapproval from others. Admittedly, remaining open to constructive advice is conducive to our growth and future success. But we will never be able to take charge of our own destiny if we are easily swayed by throwaway or even biased remarks of others.\n\nTo sum up, having a distinctive hobby is nothing to be ashamed of. Different strokes for different folks, after all. Instead of giving in to pressure to follow the herd, we should be determined and courageous to stick to what we feel enthusiastic about."
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/大作文（图画作文）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2021-1/2021-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  }
+]

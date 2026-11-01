@@ -1,0 +1,2548 @@
+[
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-01",
+    "exam": "english1",
+    "year": 2017,
+    "number": 1,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "（1）______ helping you feel close and （2）______ to people you care about, it turns out that hugs can bring a （3）______ of health benefits to your body and mind.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Unlike"
+      },
+      {
+        "key": "B",
+        "content": "Besides"
+      },
+      {
+        "key": "C",
+        "content": "Despite"
+      },
+      {
+        "key": "D",
+        "content": "Throughout"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-02",
+    "exam": "english1",
+    "year": 2017,
+    "number": 2,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "（1）______ helping you feel close and （2）______ to people you care about, it turns out that hugs can bring a （3）______ of health benefits to your body and mind.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "connected"
+      },
+      {
+        "key": "B",
+        "content": "restricted"
+      },
+      {
+        "key": "C",
+        "content": "equal"
+      },
+      {
+        "key": "D",
+        "content": "inferior"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-03",
+    "exam": "english1",
+    "year": 2017,
+    "number": 3,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "（1）______ helping you feel close and （2）______ to people you care about, it turns out that hugs can bring a （3）______ of health benefits to your body and mind.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "choice"
+      },
+      {
+        "key": "B",
+        "content": "view"
+      },
+      {
+        "key": "C",
+        "content": "lesson"
+      },
+      {
+        "key": "D",
+        "content": "host"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-04",
+    "exam": "english1",
+    "year": 2017,
+    "number": 4,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "Believe it or not, a warm embrace might even help you （4）______ getting sick this winter.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "recall"
+      },
+      {
+        "key": "B",
+        "content": "forget"
+      },
+      {
+        "key": "C",
+        "content": "avoid"
+      },
+      {
+        "key": "D",
+        "content": "keep"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-05",
+    "exam": "english1",
+    "year": 2017,
+    "number": 5,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "In a recent study （5）______ over 400 healthy adults, researchers from Carnegie Mellon University in Pennsylvania examined the effects of perceived social support and the receipt of hugs （6）______ the participants’ susceptibility to developing the common cold after being （7）______ to the virus.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "collecting"
+      },
+      {
+        "key": "B",
+        "content": "involving"
+      },
+      {
+        "key": "C",
+        "content": "guiding"
+      },
+      {
+        "key": "D",
+        "content": "affecting"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-06",
+    "exam": "english1",
+    "year": 2017,
+    "number": 6,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "In a recent study （5）______ over 400 healthy adults, researchers from Carnegie Mellon University in Pennsylvania examined the effects of perceived social support and the receipt of hugs （6）______ the participants’ susceptibility to developing the common cold after being （7）______ to the virus.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "of"
+      },
+      {
+        "key": "B",
+        "content": "in"
+      },
+      {
+        "key": "C",
+        "content": "at"
+      },
+      {
+        "key": "D",
+        "content": "on"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-07",
+    "exam": "english1",
+    "year": 2017,
+    "number": 7,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "In a recent study （5）______ over 400 healthy adults, researchers from Carnegie Mellon University in Pennsylvania examined the effects of perceived social support and the receipt of hugs （6）______ the participants’ susceptibility to developing the common cold after being （7）______ to the virus.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "devoted"
+      },
+      {
+        "key": "B",
+        "content": "exposed"
+      },
+      {
+        "key": "C",
+        "content": "lost"
+      },
+      {
+        "key": "D",
+        "content": "attracted"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-08",
+    "exam": "english1",
+    "year": 2017,
+    "number": 8,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "People who perceived greater social support were less likely to come （8）______ with a cold, and the researchers （9）______ that the stress-reducing effects of hugging （10）______ about 32 percent of that beneficial effect.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "across"
+      },
+      {
+        "key": "B",
+        "content": "along"
+      },
+      {
+        "key": "C",
+        "content": "down"
+      },
+      {
+        "key": "D",
+        "content": "out"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-09",
+    "exam": "english1",
+    "year": 2017,
+    "number": 9,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "People who perceived greater social support were less likely to come （8）______ with a cold, and the researchers （9）______ that the stress-reducing effects of hugging （10）______ about 32 percent of that beneficial effect.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "calculated"
+      },
+      {
+        "key": "B",
+        "content": "denied"
+      },
+      {
+        "key": "C",
+        "content": "doubted"
+      },
+      {
+        "key": "D",
+        "content": "imagined"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-10",
+    "exam": "english1",
+    "year": 2017,
+    "number": 10,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "People who perceived greater social support were less likely to come （8）______ with a cold, and the researchers （9）______ that the stress-reducing effects of hugging （10）______ about 32 percent of that beneficial effect.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "served"
+      },
+      {
+        "key": "B",
+        "content": "required"
+      },
+      {
+        "key": "C",
+        "content": "restored"
+      },
+      {
+        "key": "D",
+        "content": "explained"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-11",
+    "exam": "english1",
+    "year": 2017,
+    "number": 11,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "（11）______ among those who got a cold, the ones who felt greater social support and received more frequent hugs had less severe （12）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Even"
+      },
+      {
+        "key": "B",
+        "content": "Still"
+      },
+      {
+        "key": "C",
+        "content": "Rather"
+      },
+      {
+        "key": "D",
+        "content": "Thus"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-12",
+    "exam": "english1",
+    "year": 2017,
+    "number": 12,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "（11）______ among those who got a cold, the ones who felt greater social support and received more frequent hugs had less severe （12）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "defeats"
+      },
+      {
+        "key": "B",
+        "content": "symptoms"
+      },
+      {
+        "key": "C",
+        "content": "tests"
+      },
+      {
+        "key": "D",
+        "content": "errors"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-13",
+    "exam": "english1",
+    "year": 2017,
+    "number": 13,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "“Hugging protects people who are under stress from the （13）______ risk for colds that’s usually （14）______ with stress,” notes Sheldon Cohen, a professor of psychology at Carnegie.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "minimized"
+      },
+      {
+        "key": "B",
+        "content": "highlighted"
+      },
+      {
+        "key": "C",
+        "content": "controlled"
+      },
+      {
+        "key": "D",
+        "content": "increased"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-14",
+    "exam": "english1",
+    "year": 2017,
+    "number": 14,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "“Hugging protects people who are under stress from the （13）______ risk for colds that’s usually （14）______ with stress,” notes Sheldon Cohen, a professor of psychology at Carnegie.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "equipped"
+      },
+      {
+        "key": "B",
+        "content": "associated"
+      },
+      {
+        "key": "C",
+        "content": "presented"
+      },
+      {
+        "key": "D",
+        "content": "compared"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-15",
+    "exam": "english1",
+    "year": 2017,
+    "number": 15,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "Hugging “is a marker of intimacy and helps （15）______ the feeling that others are there to help （16）______ difficulty.”",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "assess"
+      },
+      {
+        "key": "B",
+        "content": "moderate"
+      },
+      {
+        "key": "C",
+        "content": "generate"
+      },
+      {
+        "key": "D",
+        "content": "record"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-16",
+    "exam": "english1",
+    "year": 2017,
+    "number": 16,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "Hugging “is a marker of intimacy and helps （15）______ the feeling that others are there to help （16）______ difficulty.”",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "in the face of"
+      },
+      {
+        "key": "B",
+        "content": "in the form of"
+      },
+      {
+        "key": "C",
+        "content": "in the way of"
+      },
+      {
+        "key": "D",
+        "content": "in the name of"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-17",
+    "exam": "english1",
+    "year": 2017,
+    "number": 17,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "Some experts （17）______ the stress-reducing, health-related benefits of hugging to the release of oxytocin, often called “the bonding hormone”",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "transfer"
+      },
+      {
+        "key": "B",
+        "content": "commit"
+      },
+      {
+        "key": "C",
+        "content": "attribute"
+      },
+      {
+        "key": "D",
+        "content": "return"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-18",
+    "exam": "english1",
+    "year": 2017,
+    "number": 18,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "（18）______ it promotes attachment in relationships, including that between mothers and their newborn babies.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "because"
+      },
+      {
+        "key": "B",
+        "content": "unless"
+      },
+      {
+        "key": "C",
+        "content": "though"
+      },
+      {
+        "key": "D",
+        "content": "until"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-19",
+    "exam": "english1",
+    "year": 2017,
+    "number": 19,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "But some of it （19）______ in the brain, where it （20）______ mood, behavior and physiology.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "emerges"
+      },
+      {
+        "key": "B",
+        "content": "vanishes"
+      },
+      {
+        "key": "C",
+        "content": "remains"
+      },
+      {
+        "key": "D",
+        "content": "decreases"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-20",
+    "exam": "english1",
+    "year": 2017,
+    "number": 20,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2017-P-cloze",
+    "stem": "But some of it （19）______ in the brain, where it （20）______ mood, behavior and physiology.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "experiences"
+      },
+      {
+        "key": "B",
+        "content": "combines"
+      },
+      {
+        "key": "C",
+        "content": "justifies"
+      },
+      {
+        "key": "D",
+        "content": "influences"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-21",
+    "exam": "english1",
+    "year": 2017,
+    "number": 21,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text1",
+    "stem": "The crash of EgyptAir Flight 804 is mentioned to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "explain American’s tolerance of current security checks."
+      },
+      {
+        "key": "B",
+        "content": "stress the urgency to strengthen security worldwide."
+      },
+      {
+        "key": "C",
+        "content": "highlight the necessity of upgrading major U.S. airports."
+      },
+      {
+        "key": "D",
+        "content": "emphasize the importance of privacy protection."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-22",
+    "exam": "english1",
+    "year": 2017,
+    "number": 22,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text1",
+    "stem": "Which of the following contributes to long waits at major airports?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "New restrictions on carry-on bags."
+      },
+      {
+        "key": "B",
+        "content": "The declining efficiency of the TSA."
+      },
+      {
+        "key": "C",
+        "content": "An increase in the number of travelers."
+      },
+      {
+        "key": "D",
+        "content": "Frequent unexpected secret checks."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-23",
+    "exam": "english1",
+    "year": 2017,
+    "number": 23,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text1",
+    "stem": "The word “expedited” (Line 4, Para. 5) is closest in meaning to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "quieter."
+      },
+      {
+        "key": "B",
+        "content": "cheaper."
+      },
+      {
+        "key": "C",
+        "content": "wider."
+      },
+      {
+        "key": "D",
+        "content": "faster."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-24",
+    "exam": "english1",
+    "year": 2017,
+    "number": 24,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text1",
+    "stem": "One problem with the PreCheck program is",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "a dramatic reduction of its scale."
+      },
+      {
+        "key": "B",
+        "content": "its wrongly-directed implementation."
+      },
+      {
+        "key": "C",
+        "content": "the government’s reluctance to back it."
+      },
+      {
+        "key": "D",
+        "content": "an unreasonable price for enrollment."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-25",
+    "exam": "english1",
+    "year": 2017,
+    "number": 25,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text1",
+    "stem": "Which of the following would be the best title for the text?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Less Screening for More Safety"
+      },
+      {
+        "key": "B",
+        "content": "PreCheck – a Belated Solution"
+      },
+      {
+        "key": "C",
+        "content": "Getting Stuck in Security Lines"
+      },
+      {
+        "key": "D",
+        "content": "Underused PreCheck Lanes"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-26",
+    "exam": "english1",
+    "year": 2017,
+    "number": 26,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text2",
+    "stem": "Queen Liliuokalani’s remark in Paragraph 1 indicates",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "her conservative view on the historical role of astronomy."
+      },
+      {
+        "key": "B",
+        "content": "the importance of astronomy in ancient Hawaiian society."
+      },
+      {
+        "key": "C",
+        "content": "the regrettable decline of astronomy in ancient times."
+      },
+      {
+        "key": "D",
+        "content": "her appreciation of star watchers’ feats in her time."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-27",
+    "exam": "english1",
+    "year": 2017,
+    "number": 27,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text2",
+    "stem": "Mauna Kea is deemed as an ideal astronomical site due to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "its geographical features."
+      },
+      {
+        "key": "B",
+        "content": "its protective surroundings."
+      },
+      {
+        "key": "C",
+        "content": "its religious implications."
+      },
+      {
+        "key": "D",
+        "content": "its existing infrastructure."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-28",
+    "exam": "english1",
+    "year": 2017,
+    "number": 28,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text2",
+    "stem": "The construction of the TMT is opposed by some locals partly because",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "it may risk ruining their intellectual life."
+      },
+      {
+        "key": "B",
+        "content": "it reminds them of a humiliating history."
+      },
+      {
+        "key": "C",
+        "content": "their culture will lose a chance of revival."
+      },
+      {
+        "key": "D",
+        "content": "they fear losing control of Mauna Kea."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-29",
+    "exam": "english1",
+    "year": 2017,
+    "number": 29,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text2",
+    "stem": "It can be inferred from Paragraph 5 that progress in today’s astronomy",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "is fulfilling the dreams of ancient Hawaiians."
+      },
+      {
+        "key": "B",
+        "content": "helps spread Hawaiian culture across the world."
+      },
+      {
+        "key": "C",
+        "content": "may uncover the origin of Hawaiian culture."
+      },
+      {
+        "key": "D",
+        "content": "will eventually soften Hawaiians’ hostility."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-30",
+    "exam": "english1",
+    "year": 2017,
+    "number": 30,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text2",
+    "stem": "The author’s attitude toward choosing Mauna Kea as the TMT site is one of",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "severe criticism."
+      },
+      {
+        "key": "B",
+        "content": "passive acceptance."
+      },
+      {
+        "key": "C",
+        "content": "slight hesitancy."
+      },
+      {
+        "key": "D",
+        "content": "full approval."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-31",
+    "exam": "english1",
+    "year": 2017,
+    "number": 31,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text3",
+    "stem": "Robert F. Kennedy is cited because he",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "praised the UK for its GDP."
+      },
+      {
+        "key": "B",
+        "content": "identified GDP with happiness."
+      },
+      {
+        "key": "C",
+        "content": "misinterpreted the role of GDP."
+      },
+      {
+        "key": "D",
+        "content": "had a low opinion of GDP."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-32",
+    "exam": "english1",
+    "year": 2017,
+    "number": 32,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text3",
+    "stem": "It can be inferred from Paragraph 2 that",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the UK is reluctant to remold its economic pattern."
+      },
+      {
+        "key": "B",
+        "content": "GDP as the measure of success is widely defied in the UK."
+      },
+      {
+        "key": "C",
+        "content": "the UK will contribute less to the world economy."
+      },
+      {
+        "key": "D",
+        "content": "policymakers in the UK are paying less attention to GDP."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-33",
+    "exam": "english1",
+    "year": 2017,
+    "number": 33,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text3",
+    "stem": "Which of the following is true about the recent annual study?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "It is sponsored by 163 countries."
+      },
+      {
+        "key": "B",
+        "content": "It excludes GDP as an indicator."
+      },
+      {
+        "key": "C",
+        "content": "Its criteria are questionable."
+      },
+      {
+        "key": "D",
+        "content": "Its results are enlightening."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-34",
+    "exam": "english1",
+    "year": 2017,
+    "number": 34,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text3",
+    "stem": "In the last two paragraphs, the author suggests that",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the UK is preparing for an economic boom."
+      },
+      {
+        "key": "B",
+        "content": "high GDP foreshadows an economic decline."
+      },
+      {
+        "key": "C",
+        "content": "it is essential to consider factors beyond GDP."
+      },
+      {
+        "key": "D",
+        "content": "it requires caution to handle economic issues."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-35",
+    "exam": "english1",
+    "year": 2017,
+    "number": 35,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text3",
+    "stem": "Which of the following is the best title for the text?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "High GDP But Inadequate Well-being, a UK Lesson"
+      },
+      {
+        "key": "B",
+        "content": "GDP Figures, a Window on Global Economic Health"
+      },
+      {
+        "key": "C",
+        "content": "Robert F. Kennedy, a Terminator of GDP"
+      },
+      {
+        "key": "D",
+        "content": "Brexit, the UK’s Gateway to Well-being"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-36",
+    "exam": "english1",
+    "year": 2017,
+    "number": 36,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text4",
+    "stem": "The underlined sentence (Para.1) most probably shows that the court",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "avoided defining the extent of McDonnell’s duties."
+      },
+      {
+        "key": "B",
+        "content": "made no compromise in convicting McDonnell."
+      },
+      {
+        "key": "C",
+        "content": "was contemptuous of McDonnell’s conduct."
+      },
+      {
+        "key": "D",
+        "content": "refused to comment on McDonnell’s ethics."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-37",
+    "exam": "english1",
+    "year": 2017,
+    "number": 37,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text4",
+    "stem": "According to Paragraph 4, an official act is deemed corruptive only if it involves",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "leaking secrets intentionally."
+      },
+      {
+        "key": "B",
+        "content": "sizable gains in the form of gifts."
+      },
+      {
+        "key": "C",
+        "content": "concrete returns for gift-givers."
+      },
+      {
+        "key": "D",
+        "content": "breaking contracts officially."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-38",
+    "exam": "english1",
+    "year": 2017,
+    "number": 38,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text4",
+    "stem": "The court’s ruling is based on the assumption that public officials are",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "justified in addressing the needs of their constituents."
+      },
+      {
+        "key": "B",
+        "content": "qualified to deal independently with bureaucratic issues."
+      },
+      {
+        "key": "C",
+        "content": "allowed to focus on the concerns of their supporters."
+      },
+      {
+        "key": "D",
+        "content": "exempt from conviction on the charge of favoritism."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-39",
+    "exam": "english1",
+    "year": 2017,
+    "number": 39,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text4",
+    "stem": "Well-enforced laws in government transparency are needed to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "awaken the conscience of officials."
+      },
+      {
+        "key": "B",
+        "content": "guarantee fair play in official access."
+      },
+      {
+        "key": "C",
+        "content": "allow for certain kinds of lobbying."
+      },
+      {
+        "key": "D",
+        "content": "inspire hopes in average people."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-40",
+    "exam": "english1",
+    "year": 2017,
+    "number": 40,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2017-P-text4",
+    "stem": "The author’s attitude toward the court’s ruling is",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "sarcastic."
+      },
+      {
+        "key": "B",
+        "content": "tolerant."
+      },
+      {
+        "key": "C",
+        "content": "skeptical."
+      },
+      {
+        "key": "D",
+        "content": "supportive."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-41",
+    "exam": "english1",
+    "year": 2017,
+    "number": 41,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2017-P-partb",
+    "stem": "根据段落顺序 D → (41) → (42) → (43) → (44) → B → (45)，选出第（41）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "The first published sketch, “A Dinner at Poplar Walk” brought tears to Dickens’s eyes when he discovered it in the pages of The Monthly Magazine. From then on his sketches, which appeared under the pen name “Boz” in The Evening Chronicle, earned him a modest reputation."
+      },
+      {
+        "key": "B",
+        "content": "The runaway success of The Pickwick Papers, as it is generally known today, secured Dickens’s fame. There were Pickwick coats and Pickwick cigars, and the plump, spectacled hero, Samuel Pickwick, became a national figure."
+      },
+      {
+        "key": "C",
+        "content": "Soon after Sketches by Boz appeared, a publishing firm approached Dickens to write a story in monthly installments, as a backdrop for a series of woodcuts by the then-famous artist Robert Seymour, who had originated the idea for the story. With characteristic confidence, Dickens successfully insisted that Seymour’s pictures illustrate his own story instead. After the first installment, Dickens wrote to the artist and asked him to correct a drawing Dickens felt was not faithful enough to his prose. Seymour made the change, went into his backyard, and expressed his displeasure by committing suicide. Dickens and his publishers simply pressed on with a new artist. The comic novel, The Posthumous Papers of the Pickwick Club, appeared serially in 1836 and 1837 and was first published in book form in 1837."
+      },
+      {
+        "key": "D",
+        "content": "Charles Dickens is probably the best-known and, to many people, the greatest English novelist of the 19th century. A moralist, satirist, and social reformer, Dickens crafted complex plots and striking characters that capture the panorama of English society."
+      },
+      {
+        "key": "E",
+        "content": "Soon after his father’s release from prison, Dickens got a better job as errand boy in law offices. He taught himself shorthand to get an even better job later as a court stenographer and as a reporter in Parliament. At the same time, Dickens, who had a reporter’s eye for transcribing the life around him, especially anything comic or odd, submitted short sketches to obscure magazines."
+      },
+      {
+        "key": "F",
+        "content": "Dickens was born in Portsmouth, on England’s southern coast. His father was a clerk in the British Navy pay office – a respectable position, but with little social status. His paternal grandparents, a steward and a housekeeper, possessed even less status, having been servants, and Dickens later concealed their background. Dickens’s mother supposedly came from a more respectable family. Yet two years before Dickens’s birth, his mother’s father was caught stealing and fled to Europe, never to return. The family’s increasing poverty forced Dickens out of school at age 12 to work in Warren’s Blacking Warehouse, a shoe-polish factory, where the other working boys mocked him as “the young gentleman.” His father was then imprisoned for debt. The humiliations of his father’s imprisonment and his labor in the blacking factory formed Dickens’s greatest wound and became his deepest secret. He could not confide them even to his wife, although they provide the unacknowledged foundation of his fiction."
+      },
+      {
+        "key": "G",
+        "content": "After Pickwick, Dickens plunged into a bleaker world. In Oliver Twist, he traces an orphan’s progress from the workhouse to the criminal slums of London. Nicholas Nickleby, his next novel, combines the darkness of Oliver Twist with the sunlight of Pickwick. The popularity of these novels consolidated Dickens’ as a nationally and internationally celebrated man of letters."
+      }
+    ],
+    "answer": [
+      "F"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "F",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-42",
+    "exam": "english1",
+    "year": 2017,
+    "number": 42,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2017-P-partb",
+    "stem": "根据段落顺序 D → (41) → (42) → (43) → (44) → B → (45)，选出第（42）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "The first published sketch, “A Dinner at Poplar Walk” brought tears to Dickens’s eyes when he discovered it in the pages of The Monthly Magazine. From then on his sketches, which appeared under the pen name “Boz” in The Evening Chronicle, earned him a modest reputation."
+      },
+      {
+        "key": "B",
+        "content": "The runaway success of The Pickwick Papers, as it is generally known today, secured Dickens’s fame. There were Pickwick coats and Pickwick cigars, and the plump, spectacled hero, Samuel Pickwick, became a national figure."
+      },
+      {
+        "key": "C",
+        "content": "Soon after Sketches by Boz appeared, a publishing firm approached Dickens to write a story in monthly installments, as a backdrop for a series of woodcuts by the then-famous artist Robert Seymour, who had originated the idea for the story. With characteristic confidence, Dickens successfully insisted that Seymour’s pictures illustrate his own story instead. After the first installment, Dickens wrote to the artist and asked him to correct a drawing Dickens felt was not faithful enough to his prose. Seymour made the change, went into his backyard, and expressed his displeasure by committing suicide. Dickens and his publishers simply pressed on with a new artist. The comic novel, The Posthumous Papers of the Pickwick Club, appeared serially in 1836 and 1837 and was first published in book form in 1837."
+      },
+      {
+        "key": "D",
+        "content": "Charles Dickens is probably the best-known and, to many people, the greatest English novelist of the 19th century. A moralist, satirist, and social reformer, Dickens crafted complex plots and striking characters that capture the panorama of English society."
+      },
+      {
+        "key": "E",
+        "content": "Soon after his father’s release from prison, Dickens got a better job as errand boy in law offices. He taught himself shorthand to get an even better job later as a court stenographer and as a reporter in Parliament. At the same time, Dickens, who had a reporter’s eye for transcribing the life around him, especially anything comic or odd, submitted short sketches to obscure magazines."
+      },
+      {
+        "key": "F",
+        "content": "Dickens was born in Portsmouth, on England’s southern coast. His father was a clerk in the British Navy pay office – a respectable position, but with little social status. His paternal grandparents, a steward and a housekeeper, possessed even less status, having been servants, and Dickens later concealed their background. Dickens’s mother supposedly came from a more respectable family. Yet two years before Dickens’s birth, his mother’s father was caught stealing and fled to Europe, never to return. The family’s increasing poverty forced Dickens out of school at age 12 to work in Warren’s Blacking Warehouse, a shoe-polish factory, where the other working boys mocked him as “the young gentleman.” His father was then imprisoned for debt. The humiliations of his father’s imprisonment and his labor in the blacking factory formed Dickens’s greatest wound and became his deepest secret. He could not confide them even to his wife, although they provide the unacknowledged foundation of his fiction."
+      },
+      {
+        "key": "G",
+        "content": "After Pickwick, Dickens plunged into a bleaker world. In Oliver Twist, he traces an orphan’s progress from the workhouse to the criminal slums of London. Nicholas Nickleby, his next novel, combines the darkness of Oliver Twist with the sunlight of Pickwick. The popularity of these novels consolidated Dickens’ as a nationally and internationally celebrated man of letters."
+      }
+    ],
+    "answer": [
+      "E"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "E",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-43",
+    "exam": "english1",
+    "year": 2017,
+    "number": 43,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2017-P-partb",
+    "stem": "根据段落顺序 D → (41) → (42) → (43) → (44) → B → (45)，选出第（43）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "The first published sketch, “A Dinner at Poplar Walk” brought tears to Dickens’s eyes when he discovered it in the pages of The Monthly Magazine. From then on his sketches, which appeared under the pen name “Boz” in The Evening Chronicle, earned him a modest reputation."
+      },
+      {
+        "key": "B",
+        "content": "The runaway success of The Pickwick Papers, as it is generally known today, secured Dickens’s fame. There were Pickwick coats and Pickwick cigars, and the plump, spectacled hero, Samuel Pickwick, became a national figure."
+      },
+      {
+        "key": "C",
+        "content": "Soon after Sketches by Boz appeared, a publishing firm approached Dickens to write a story in monthly installments, as a backdrop for a series of woodcuts by the then-famous artist Robert Seymour, who had originated the idea for the story. With characteristic confidence, Dickens successfully insisted that Seymour’s pictures illustrate his own story instead. After the first installment, Dickens wrote to the artist and asked him to correct a drawing Dickens felt was not faithful enough to his prose. Seymour made the change, went into his backyard, and expressed his displeasure by committing suicide. Dickens and his publishers simply pressed on with a new artist. The comic novel, The Posthumous Papers of the Pickwick Club, appeared serially in 1836 and 1837 and was first published in book form in 1837."
+      },
+      {
+        "key": "D",
+        "content": "Charles Dickens is probably the best-known and, to many people, the greatest English novelist of the 19th century. A moralist, satirist, and social reformer, Dickens crafted complex plots and striking characters that capture the panorama of English society."
+      },
+      {
+        "key": "E",
+        "content": "Soon after his father’s release from prison, Dickens got a better job as errand boy in law offices. He taught himself shorthand to get an even better job later as a court stenographer and as a reporter in Parliament. At the same time, Dickens, who had a reporter’s eye for transcribing the life around him, especially anything comic or odd, submitted short sketches to obscure magazines."
+      },
+      {
+        "key": "F",
+        "content": "Dickens was born in Portsmouth, on England’s southern coast. His father was a clerk in the British Navy pay office – a respectable position, but with little social status. His paternal grandparents, a steward and a housekeeper, possessed even less status, having been servants, and Dickens later concealed their background. Dickens’s mother supposedly came from a more respectable family. Yet two years before Dickens’s birth, his mother’s father was caught stealing and fled to Europe, never to return. The family’s increasing poverty forced Dickens out of school at age 12 to work in Warren’s Blacking Warehouse, a shoe-polish factory, where the other working boys mocked him as “the young gentleman.” His father was then imprisoned for debt. The humiliations of his father’s imprisonment and his labor in the blacking factory formed Dickens’s greatest wound and became his deepest secret. He could not confide them even to his wife, although they provide the unacknowledged foundation of his fiction."
+      },
+      {
+        "key": "G",
+        "content": "After Pickwick, Dickens plunged into a bleaker world. In Oliver Twist, he traces an orphan’s progress from the workhouse to the criminal slums of London. Nicholas Nickleby, his next novel, combines the darkness of Oliver Twist with the sunlight of Pickwick. The popularity of these novels consolidated Dickens’ as a nationally and internationally celebrated man of letters."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-44",
+    "exam": "english1",
+    "year": 2017,
+    "number": 44,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2017-P-partb",
+    "stem": "根据段落顺序 D → (41) → (42) → (43) → (44) → B → (45)，选出第（44）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "The first published sketch, “A Dinner at Poplar Walk” brought tears to Dickens’s eyes when he discovered it in the pages of The Monthly Magazine. From then on his sketches, which appeared under the pen name “Boz” in The Evening Chronicle, earned him a modest reputation."
+      },
+      {
+        "key": "B",
+        "content": "The runaway success of The Pickwick Papers, as it is generally known today, secured Dickens’s fame. There were Pickwick coats and Pickwick cigars, and the plump, spectacled hero, Samuel Pickwick, became a national figure."
+      },
+      {
+        "key": "C",
+        "content": "Soon after Sketches by Boz appeared, a publishing firm approached Dickens to write a story in monthly installments, as a backdrop for a series of woodcuts by the then-famous artist Robert Seymour, who had originated the idea for the story. With characteristic confidence, Dickens successfully insisted that Seymour’s pictures illustrate his own story instead. After the first installment, Dickens wrote to the artist and asked him to correct a drawing Dickens felt was not faithful enough to his prose. Seymour made the change, went into his backyard, and expressed his displeasure by committing suicide. Dickens and his publishers simply pressed on with a new artist. The comic novel, The Posthumous Papers of the Pickwick Club, appeared serially in 1836 and 1837 and was first published in book form in 1837."
+      },
+      {
+        "key": "D",
+        "content": "Charles Dickens is probably the best-known and, to many people, the greatest English novelist of the 19th century. A moralist, satirist, and social reformer, Dickens crafted complex plots and striking characters that capture the panorama of English society."
+      },
+      {
+        "key": "E",
+        "content": "Soon after his father’s release from prison, Dickens got a better job as errand boy in law offices. He taught himself shorthand to get an even better job later as a court stenographer and as a reporter in Parliament. At the same time, Dickens, who had a reporter’s eye for transcribing the life around him, especially anything comic or odd, submitted short sketches to obscure magazines."
+      },
+      {
+        "key": "F",
+        "content": "Dickens was born in Portsmouth, on England’s southern coast. His father was a clerk in the British Navy pay office – a respectable position, but with little social status. His paternal grandparents, a steward and a housekeeper, possessed even less status, having been servants, and Dickens later concealed their background. Dickens’s mother supposedly came from a more respectable family. Yet two years before Dickens’s birth, his mother’s father was caught stealing and fled to Europe, never to return. The family’s increasing poverty forced Dickens out of school at age 12 to work in Warren’s Blacking Warehouse, a shoe-polish factory, where the other working boys mocked him as “the young gentleman.” His father was then imprisoned for debt. The humiliations of his father’s imprisonment and his labor in the blacking factory formed Dickens’s greatest wound and became his deepest secret. He could not confide them even to his wife, although they provide the unacknowledged foundation of his fiction."
+      },
+      {
+        "key": "G",
+        "content": "After Pickwick, Dickens plunged into a bleaker world. In Oliver Twist, he traces an orphan’s progress from the workhouse to the criminal slums of London. Nicholas Nickleby, his next novel, combines the darkness of Oliver Twist with the sunlight of Pickwick. The popularity of these novels consolidated Dickens’ as a nationally and internationally celebrated man of letters."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-45",
+    "exam": "english1",
+    "year": 2017,
+    "number": 45,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2017-P-partb",
+    "stem": "根据段落顺序 D → (41) → (42) → (43) → (44) → B → (45)，选出第（45）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "The first published sketch, “A Dinner at Poplar Walk” brought tears to Dickens’s eyes when he discovered it in the pages of The Monthly Magazine. From then on his sketches, which appeared under the pen name “Boz” in The Evening Chronicle, earned him a modest reputation."
+      },
+      {
+        "key": "B",
+        "content": "The runaway success of The Pickwick Papers, as it is generally known today, secured Dickens’s fame. There were Pickwick coats and Pickwick cigars, and the plump, spectacled hero, Samuel Pickwick, became a national figure."
+      },
+      {
+        "key": "C",
+        "content": "Soon after Sketches by Boz appeared, a publishing firm approached Dickens to write a story in monthly installments, as a backdrop for a series of woodcuts by the then-famous artist Robert Seymour, who had originated the idea for the story. With characteristic confidence, Dickens successfully insisted that Seymour’s pictures illustrate his own story instead. After the first installment, Dickens wrote to the artist and asked him to correct a drawing Dickens felt was not faithful enough to his prose. Seymour made the change, went into his backyard, and expressed his displeasure by committing suicide. Dickens and his publishers simply pressed on with a new artist. The comic novel, The Posthumous Papers of the Pickwick Club, appeared serially in 1836 and 1837 and was first published in book form in 1837."
+      },
+      {
+        "key": "D",
+        "content": "Charles Dickens is probably the best-known and, to many people, the greatest English novelist of the 19th century. A moralist, satirist, and social reformer, Dickens crafted complex plots and striking characters that capture the panorama of English society."
+      },
+      {
+        "key": "E",
+        "content": "Soon after his father’s release from prison, Dickens got a better job as errand boy in law offices. He taught himself shorthand to get an even better job later as a court stenographer and as a reporter in Parliament. At the same time, Dickens, who had a reporter’s eye for transcribing the life around him, especially anything comic or odd, submitted short sketches to obscure magazines."
+      },
+      {
+        "key": "F",
+        "content": "Dickens was born in Portsmouth, on England’s southern coast. His father was a clerk in the British Navy pay office – a respectable position, but with little social status. His paternal grandparents, a steward and a housekeeper, possessed even less status, having been servants, and Dickens later concealed their background. Dickens’s mother supposedly came from a more respectable family. Yet two years before Dickens’s birth, his mother’s father was caught stealing and fled to Europe, never to return. The family’s increasing poverty forced Dickens out of school at age 12 to work in Warren’s Blacking Warehouse, a shoe-polish factory, where the other working boys mocked him as “the young gentleman.” His father was then imprisoned for debt. The humiliations of his father’s imprisonment and his labor in the blacking factory formed Dickens’s greatest wound and became his deepest secret. He could not confide them even to his wife, although they provide the unacknowledged foundation of his fiction."
+      },
+      {
+        "key": "G",
+        "content": "After Pickwick, Dickens plunged into a bleaker world. In Oliver Twist, he traces an orphan’s progress from the workhouse to the criminal slums of London. Nicholas Nickleby, his next novel, combines the darkness of Oliver Twist with the sunlight of Pickwick. The popularity of these novels consolidated Dickens’ as a nationally and internationally celebrated man of letters."
+      }
+    ],
+    "answer": [
+      "G"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "G",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-46",
+    "exam": "english1",
+    "year": 2017,
+    "number": 46,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2017-P-translation",
+    "stem": "But even as the number of English speakers expands further there are signs that the global predominance of the language may fade within the foreseeable future.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "尽管讲英语的人数在进一步增加，但有迹象显示这一语言的全球统治地位在可预见的未来可能会衰落。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-47",
+    "exam": "english1",
+    "year": 2017,
+    "number": 47,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2017-P-translation",
+    "stem": "His analysis should therefore end any self-contentedness among those who may believe that the global position of English is so stable that the young generations of the United Kingdom do not need additional language capabilities.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "因此，他的分析会让一些人再也无法自满，这些人或许认为英语的全球地位十分稳固，从而英国的年轻人无需额外的语言能力。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-48",
+    "exam": "english1",
+    "year": 2017,
+    "number": 48,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2017-P-translation",
+    "stem": "many countries are introducing English into the primary-school curriculum but British schoolchildren and students do not appear to be gaining greater encouragement to achieve fluency in other languages.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "许多国家都在把英语纳入小学课程，但英国的大、中、小学生却似乎没有得到更多的鼓励去熟练掌握其他语言。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-49",
+    "exam": "english1",
+    "year": 2017,
+    "number": 49,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2017-P-translation",
+    "stem": "The changes identified by David Graddol all present clear and major challenges to the UK’s providers of English language teaching to people of other countries and to broader education business sectors.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "大卫·格拉多尔所指出的这些变化都对向其他国家的人提供英语教学的英国个人和组织机构乃至更广泛的教育产业领域构成明确的、重大的挑战。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-50",
+    "exam": "english1",
+    "year": 2017,
+    "number": 50,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2017-P-translation",
+    "stem": "It gives a basis to all organisations which seek to promote the learning and use of English, a basis for planning to meet the possibilities of what could be a very different operating environment.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "它为旨在促进英语学习和使用的所有组织机构提供了一个基础，该基础用于规划应对由一种或许会很不一样的运作环境所带来的各种可能。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-51",
+    "exam": "english1",
+    "year": 2017,
+    "number": 51,
+    "section": "writing_a",
+    "type": "essay",
+    "score": 10.0,
+    "passage_id": null,
+    "stem": "51. Directions:\nYou are to write an email to James Cook, a newly-arrived Australian professor,\nrecommending some tourist attractions in your city. Please give reasons for your\nrecommendation.\nYou should write neatly on the ANSWER SHEET.\nDo not sign your own name at the end of the email. Use “Li Ming” instead.\nDo not write the address. (10 points)",
+    "images": [],
+    "options": [],
+    "answer": [
+      "Dear Prof. Cook,\n\nWelcome to China! Knowing that you love travel, I'd like to recommend some of the most celebrated tourist attractions in Beijing.\n\nFirstly, I recommend exploring the Palace Museum, the world's largest ancient palace complex, because it showcases a huge collection of arts and antiquities which offers a quick glimpse into China's extensive history and sophisticated culture. Moreover, if you are interested in outdoor activities, I recommend visiting the Great Wall, for the spectacular view of rolling mountains atop the ancient beacon towers will definitely make your trip worthwhile. Besides, there are unique cafés and galleries tucked away in the old lanes and alleys, or Hutongs in Beijing. Riding a bike along the quaint downtown capital after a whole-day teaching is such an excellent way to experience the charming Hutong culture.\n\nHopefully my recommendations are helpful and wish you a delightful journey.\n\nYours sincerely,\nLi Ming"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/小作文（书信、通知等）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2017-52",
+    "exam": "english1",
+    "year": 2017,
+    "number": 52,
+    "section": "writing_b",
+    "type": "essay",
+    "score": 20.0,
+    "passage_id": null,
+    "stem": "52. Directions:\nWrite an essay of 160-200 words based on the following pictures. In your\nessay, you should\n1) describe the pictures briefly,\n2) interpret the meaning, and\n3) give your comments.\nYou should write neatly on the ANSWER SHEET. (20 points)\n（图题：“有书”与“读书”）",
+    "images": [
+      "images/english1-2017/q52.jpg"
+    ],
+    "options": [],
+    "answer": [
+      "In the left picture, a man is lolling back in his comfortable chair, smug about a shelf full of books in front of him. “What a great number of books I have!” he said to himself, yet obviously he shows no intention of reading any of them. The man on the right, by contrast, is sitting at a desk with only a few books on it, and has made a feasible reading plan: Finish reading 20 books this year.\n\nThrough sharp contrast, the pictures reveal the difference between “possessing books” and “reading books”. For some people, books are nothing more than decorations. Their studies are gorgeously decorated and shelves full of books which are used not to read, but to show off or to satisfy their vanity. Totally differently, some people, fewer books though they have, regard books as spiritual food and do everything possible to read. For example, Lin Haiyin, a famous writer, has written in Bookstore Freeloader's Journal that when she was young, she always went to a bookstore and read there in a secretive way for lack of money, rain or shine. It was the very thirst for knowledge that made her a writer with great achievements.\n\n“Books are a stepping stone to human progress”, but as books are not equal to knowledge and unread books won’t help, we should read a single book carefully instead of merely collecting thousands of books to make progress. Furthermore, everything else should also be dealt with in a down-to-earth way. Just as President Xi once put it, “Empty talk would lead a country astray, and hard work can revitalize a nation”, only through continuing efforts can individuals advance steadily and the Chinese nation achieve great rejuvenation."
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/大作文（图画作文）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2017-1/2017-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  }
+]

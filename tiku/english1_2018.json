@@ -1,0 +1,2548 @@
+[
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-01",
+    "exam": "english1",
+    "year": 2018,
+    "number": 1,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "On the one hand, it’s a necessary condition （1）______ many worthwhile things: child care, friendships, etc.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "on"
+      },
+      {
+        "key": "B",
+        "content": "like"
+      },
+      {
+        "key": "C",
+        "content": "for"
+      },
+      {
+        "key": "D",
+        "content": "from"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-02",
+    "exam": "english1",
+    "year": 2018,
+    "number": 2,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "On the other hand, putting your （2）______ in the wrong place often carries a high （3）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "faith"
+      },
+      {
+        "key": "B",
+        "content": "concern"
+      },
+      {
+        "key": "C",
+        "content": "attention"
+      },
+      {
+        "key": "D",
+        "content": "interest"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-03",
+    "exam": "english1",
+    "year": 2018,
+    "number": 3,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "On the other hand, putting your （2）______ in the wrong place often carries a high （3）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "benefit"
+      },
+      {
+        "key": "B",
+        "content": "debt"
+      },
+      {
+        "key": "C",
+        "content": "hope"
+      },
+      {
+        "key": "D",
+        "content": "price"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-04",
+    "exam": "english1",
+    "year": 2018,
+    "number": 4,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "（4）______ , why do we trust at all?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Therefore"
+      },
+      {
+        "key": "B",
+        "content": "Then"
+      },
+      {
+        "key": "C",
+        "content": "Instead"
+      },
+      {
+        "key": "D",
+        "content": "Again"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-05",
+    "exam": "english1",
+    "year": 2018,
+    "number": 5,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "（5）______ people place their trust in an individual or an institution, their brains release oxytocin, a hormone that （6）______ pleasurable feelings and triggers the herding instinct that prompts humans to （7）______ with one another.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Until"
+      },
+      {
+        "key": "B",
+        "content": "Unless"
+      },
+      {
+        "key": "C",
+        "content": "Although"
+      },
+      {
+        "key": "D",
+        "content": "When"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-06",
+    "exam": "english1",
+    "year": 2018,
+    "number": 6,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "（5）______ people place their trust in an individual or an institution, their brains release oxytocin, a hormone that （6）______ pleasurable feelings and triggers the herding instinct that prompts humans to （7）______ with one another.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "selects"
+      },
+      {
+        "key": "B",
+        "content": "produces"
+      },
+      {
+        "key": "C",
+        "content": "applies"
+      },
+      {
+        "key": "D",
+        "content": "maintains"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-07",
+    "exam": "english1",
+    "year": 2018,
+    "number": 7,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "（5）______ people place their trust in an individual or an institution, their brains release oxytocin, a hormone that （6）______ pleasurable feelings and triggers the herding instinct that prompts humans to （7）______ with one another.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "consult"
+      },
+      {
+        "key": "B",
+        "content": "compete"
+      },
+      {
+        "key": "C",
+        "content": "connect"
+      },
+      {
+        "key": "D",
+        "content": "compare"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-08",
+    "exam": "english1",
+    "year": 2018,
+    "number": 8,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "Scientists have found that exposure （8）______ this hormone puts us in a trusting （9）______ : In a Swiss study, researchers sprayed oxytocin into the noses of half the subjects; those subjects were ready to lend significantly higher amounts of money to strangers than were their （10）______ who inhaled something else.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "at"
+      },
+      {
+        "key": "B",
+        "content": "by"
+      },
+      {
+        "key": "C",
+        "content": "of"
+      },
+      {
+        "key": "D",
+        "content": "to"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-09",
+    "exam": "english1",
+    "year": 2018,
+    "number": 9,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "Scientists have found that exposure （8）______ this hormone puts us in a trusting （9）______ : In a Swiss study, researchers sprayed oxytocin into the noses of half the subjects; those subjects were ready to lend significantly higher amounts of money to strangers than were their （10）______ who inhaled something else.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "context"
+      },
+      {
+        "key": "B",
+        "content": "mood"
+      },
+      {
+        "key": "C",
+        "content": "period"
+      },
+      {
+        "key": "D",
+        "content": "circle"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-10",
+    "exam": "english1",
+    "year": 2018,
+    "number": 10,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "Scientists have found that exposure （8）______ this hormone puts us in a trusting （9）______ : In a Swiss study, researchers sprayed oxytocin into the noses of half the subjects; those subjects were ready to lend significantly higher amounts of money to strangers than were their （10）______ who inhaled something else.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "counterparts"
+      },
+      {
+        "key": "B",
+        "content": "substitutes"
+      },
+      {
+        "key": "C",
+        "content": "colleagues"
+      },
+      {
+        "key": "D",
+        "content": "supporters"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-11",
+    "exam": "english1",
+    "year": 2018,
+    "number": 11,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "（11）______ for us, we also have a sixth sense for dishonesty that may （12）______ us.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Funny"
+      },
+      {
+        "key": "B",
+        "content": "Lucky"
+      },
+      {
+        "key": "C",
+        "content": "Odd"
+      },
+      {
+        "key": "D",
+        "content": "Ironic"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-12",
+    "exam": "english1",
+    "year": 2018,
+    "number": 12,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "（11）______ for us, we also have a sixth sense for dishonesty that may （12）______ us.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "monitor"
+      },
+      {
+        "key": "B",
+        "content": "protect"
+      },
+      {
+        "key": "C",
+        "content": "surprise"
+      },
+      {
+        "key": "D",
+        "content": "delight"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-13",
+    "exam": "english1",
+    "year": 2018,
+    "number": 13,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "A Canadian study found that children as young as 14 months can differentiate （13）______ a credible person and a dishonest one.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "between"
+      },
+      {
+        "key": "B",
+        "content": "within"
+      },
+      {
+        "key": "C",
+        "content": "toward"
+      },
+      {
+        "key": "D",
+        "content": "over"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-14",
+    "exam": "english1",
+    "year": 2018,
+    "number": 14,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "Sixty toddlers were each （14）______ to an adult tester holding a plastic container.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "transferred"
+      },
+      {
+        "key": "B",
+        "content": "added"
+      },
+      {
+        "key": "C",
+        "content": "introduced"
+      },
+      {
+        "key": "D",
+        "content": "entrusted"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-15",
+    "exam": "english1",
+    "year": 2018,
+    "number": 15,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "Each subject was then invited to look （15）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "out"
+      },
+      {
+        "key": "B",
+        "content": "back"
+      },
+      {
+        "key": "C",
+        "content": "around"
+      },
+      {
+        "key": "D",
+        "content": "inside"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-16",
+    "exam": "english1",
+    "year": 2018,
+    "number": 16,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "Half of them found a toy; the other half （16）______ the container was empty – and realized the tester had （17）______ them.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "discovered"
+      },
+      {
+        "key": "B",
+        "content": "proved"
+      },
+      {
+        "key": "C",
+        "content": "insisted"
+      },
+      {
+        "key": "D",
+        "content": "remembered"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-17",
+    "exam": "english1",
+    "year": 2018,
+    "number": 17,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "Half of them found a toy; the other half （16）______ the container was empty – and realized the tester had （17）______ them.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "betrayed"
+      },
+      {
+        "key": "B",
+        "content": "wronged"
+      },
+      {
+        "key": "C",
+        "content": "fooled"
+      },
+      {
+        "key": "D",
+        "content": "mocked"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-18",
+    "exam": "english1",
+    "year": 2018,
+    "number": 18,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "Among the children who had not been tricked, the majority were （18）______ to cooperate with the tester in learning a new skill, demonstrating that they trusted his leadership.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "forced"
+      },
+      {
+        "key": "B",
+        "content": "willing"
+      },
+      {
+        "key": "C",
+        "content": "hesitant"
+      },
+      {
+        "key": "D",
+        "content": "entitled"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-19",
+    "exam": "english1",
+    "year": 2018,
+    "number": 19,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "（19）______ , only five of the 30 children paired with the “（20）______” tester participated in a follow-up activity.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "In contrast"
+      },
+      {
+        "key": "B",
+        "content": "As a result"
+      },
+      {
+        "key": "C",
+        "content": "On the whole"
+      },
+      {
+        "key": "D",
+        "content": "For instance"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-20",
+    "exam": "english1",
+    "year": 2018,
+    "number": 20,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2018-P-cloze",
+    "stem": "（19）______ , only five of the 30 children paired with the “（20）______” tester participated in a follow-up activity.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "inflexible"
+      },
+      {
+        "key": "B",
+        "content": "incapable"
+      },
+      {
+        "key": "C",
+        "content": "unreliable"
+      },
+      {
+        "key": "D",
+        "content": "unsuitable"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-21",
+    "exam": "english1",
+    "year": 2018,
+    "number": 21,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text1",
+    "stem": "Who will be most threatened by automation?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Leading politicians."
+      },
+      {
+        "key": "B",
+        "content": "Low-wage laborers."
+      },
+      {
+        "key": "C",
+        "content": "Robot owners."
+      },
+      {
+        "key": "D",
+        "content": "Middle-class workers."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-22",
+    "exam": "english1",
+    "year": 2018,
+    "number": 22,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text1",
+    "stem": "Which of the following best represents the author’s view?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Worries about automation are in fact groundless."
+      },
+      {
+        "key": "B",
+        "content": "Optimists’ opinions on new tech find little support."
+      },
+      {
+        "key": "C",
+        "content": "Issues arising from automation need to be tackled."
+      },
+      {
+        "key": "D",
+        "content": "Negative consequences of new tech can be avoided."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-23",
+    "exam": "english1",
+    "year": 2018,
+    "number": 23,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text1",
+    "stem": "Education in the age of automation should put more emphasis on",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "creative potential."
+      },
+      {
+        "key": "B",
+        "content": "job-hunting skills."
+      },
+      {
+        "key": "C",
+        "content": "individual needs."
+      },
+      {
+        "key": "D",
+        "content": "cooperative spirit."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-24",
+    "exam": "english1",
+    "year": 2018,
+    "number": 24,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text1",
+    "stem": "The author suggests that tax policies be aimed at",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "encouraging the development of automation."
+      },
+      {
+        "key": "B",
+        "content": "increasing the return on capital investment."
+      },
+      {
+        "key": "C",
+        "content": "easing the hostility between rich and poor."
+      },
+      {
+        "key": "D",
+        "content": "preventing the income gap from widening."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-25",
+    "exam": "english1",
+    "year": 2018,
+    "number": 25,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text1",
+    "stem": "In this text, the author presents a problem with",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "opposing views on it."
+      },
+      {
+        "key": "B",
+        "content": "possible solutions to it."
+      },
+      {
+        "key": "C",
+        "content": "its alarming impacts."
+      },
+      {
+        "key": "D",
+        "content": "its major variations."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-26",
+    "exam": "english1",
+    "year": 2018,
+    "number": 26,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text2",
+    "stem": "According to Paragraphs 1 and 2, many young Americans cast doubts on",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the justification of the news-filtering practice."
+      },
+      {
+        "key": "B",
+        "content": "people’s preference for social media platforms."
+      },
+      {
+        "key": "C",
+        "content": "the administration’s ability to handle information."
+      },
+      {
+        "key": "D",
+        "content": "social media as a reliable source of news."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-27",
+    "exam": "english1",
+    "year": 2018,
+    "number": 27,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text2",
+    "stem": "The phrase “beef up” (Line 2, Para. 2) is closest in meaning to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "sharpen."
+      },
+      {
+        "key": "B",
+        "content": "define."
+      },
+      {
+        "key": "C",
+        "content": "boast."
+      },
+      {
+        "key": "D",
+        "content": "share."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-28",
+    "exam": "english1",
+    "year": 2018,
+    "number": 28,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text2",
+    "stem": "According to the Knight Foundation survey, young people",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "tend to voice their opinions in cyberspace."
+      },
+      {
+        "key": "B",
+        "content": "verify news by referring to diverse sources."
+      },
+      {
+        "key": "C",
+        "content": "have a strong sense of responsibility."
+      },
+      {
+        "key": "D",
+        "content": "like to exchange views on “distributed trust”."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-29",
+    "exam": "english1",
+    "year": 2018,
+    "number": 29,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text2",
+    "stem": "The Barna survey found that a main cause for the fake news problem is",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "readers’ outdated values."
+      },
+      {
+        "key": "B",
+        "content": "journalists’ biased reporting."
+      },
+      {
+        "key": "C",
+        "content": "readers’ misinterpretation."
+      },
+      {
+        "key": "D",
+        "content": "journalists’ made-up stories."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-30",
+    "exam": "english1",
+    "year": 2018,
+    "number": 30,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text2",
+    "stem": "Which of the following would be the best title for the text?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "A Rise in Critical Skills for Sharing News Online."
+      },
+      {
+        "key": "B",
+        "content": "A Counteraction Against the Over-tweeting Trend."
+      },
+      {
+        "key": "C",
+        "content": "The Accumulation of Mutual Trust on Social Media."
+      },
+      {
+        "key": "D",
+        "content": "The Platforms for Projection of Personal Interests."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-31",
+    "exam": "english1",
+    "year": 2018,
+    "number": 31,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text3",
+    "stem": "What is true of the agreement between the NHS and DeepMind?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "It caused conflicts among tech giants."
+      },
+      {
+        "key": "B",
+        "content": "It failed to pay due attention to patients’ rights."
+      },
+      {
+        "key": "C",
+        "content": "It fell short of the latter’s expectations."
+      },
+      {
+        "key": "D",
+        "content": "It put both sides into a dangerous situation."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-32",
+    "exam": "english1",
+    "year": 2018,
+    "number": 32,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text3",
+    "stem": "The NHS trust responded to Denham’s verdict with",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "empty promises."
+      },
+      {
+        "key": "B",
+        "content": "tough resistance."
+      },
+      {
+        "key": "C",
+        "content": "necessary adjustments."
+      },
+      {
+        "key": "D",
+        "content": "sincere apologies."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-33",
+    "exam": "english1",
+    "year": 2018,
+    "number": 33,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text3",
+    "stem": "The author argues in Paragraph 2 that",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "privacy protection must be secured at all costs."
+      },
+      {
+        "key": "B",
+        "content": "leaking patients’ data is worse than selling it."
+      },
+      {
+        "key": "C",
+        "content": "making profits from patients’ data is illegal."
+      },
+      {
+        "key": "D",
+        "content": "the value of data comes from the processing of it."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-34",
+    "exam": "english1",
+    "year": 2018,
+    "number": 34,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text3",
+    "stem": "According to the last paragraph, the real worry arising from this deal is",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the vicious rivalry among big pharmas."
+      },
+      {
+        "key": "B",
+        "content": "the ineffective enforcement of privacy law."
+      },
+      {
+        "key": "C",
+        "content": "the uncontrolled use of new software."
+      },
+      {
+        "key": "D",
+        "content": "the monopoly of big data by tech giants."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-35",
+    "exam": "english1",
+    "year": 2018,
+    "number": 35,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text3",
+    "stem": "The author’s attitude toward the application of AI to healthcare is",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "ambiguous."
+      },
+      {
+        "key": "B",
+        "content": "cautious."
+      },
+      {
+        "key": "C",
+        "content": "appreciative."
+      },
+      {
+        "key": "D",
+        "content": "contemptuous."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-36",
+    "exam": "english1",
+    "year": 2018,
+    "number": 36,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text4",
+    "stem": "The financial problem with the USPS is caused partly by",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "its unbalanced budget."
+      },
+      {
+        "key": "B",
+        "content": "its rigid management."
+      },
+      {
+        "key": "C",
+        "content": "the cost for technical upgrading."
+      },
+      {
+        "key": "D",
+        "content": "the withdrawal of bank support."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-37",
+    "exam": "english1",
+    "year": 2018,
+    "number": 37,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text4",
+    "stem": "According to Paragraph 2, the USPS fails to modernize itself due to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the interference from interest groups."
+      },
+      {
+        "key": "B",
+        "content": "the inadequate funding from Congress."
+      },
+      {
+        "key": "C",
+        "content": "the shrinking demand for postal service."
+      },
+      {
+        "key": "D",
+        "content": "the incompetence of postal unions."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-38",
+    "exam": "english1",
+    "year": 2018,
+    "number": 38,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text4",
+    "stem": "The long-standing complaint by the USPS and its unions can be addressed by",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "removing its burden of retiree health care."
+      },
+      {
+        "key": "B",
+        "content": "making more investment in new vehicles."
+      },
+      {
+        "key": "C",
+        "content": "adopting a new rate-increase mechanism."
+      },
+      {
+        "key": "D",
+        "content": "attracting more first-class mail users."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-39",
+    "exam": "english1",
+    "year": 2018,
+    "number": 39,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text4",
+    "stem": "In the last paragraph, the author seems to view legislators with",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "respect."
+      },
+      {
+        "key": "B",
+        "content": "tolerance."
+      },
+      {
+        "key": "C",
+        "content": "discontent."
+      },
+      {
+        "key": "D",
+        "content": "gratitude."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-40",
+    "exam": "english1",
+    "year": 2018,
+    "number": 40,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2018-P-text4",
+    "stem": "Which of the following would be the best title for the text?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "The USPS Starts to Miss Its Good Old Days."
+      },
+      {
+        "key": "B",
+        "content": "The Postal Service: Keep Away from My Cheese."
+      },
+      {
+        "key": "C",
+        "content": "The USPS: Chronic Illness Requires a Quick Cure."
+      },
+      {
+        "key": "D",
+        "content": "The Postal Service Needs More Than a Band-Aid."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-41",
+    "exam": "english1",
+    "year": 2018,
+    "number": 41,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2018-P-partb",
+    "stem": "根据段落顺序 (41) → C → (42) → (43) → F → (44) → (45)，选出第（41）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "In December of 1869, Congress appointed a commission to select a site and prepare plans and cost estimates for a new State Department Building. The commission was also to consider possible arrangements for the War and Navy Departments. To the horror of some who expected a Greek Revival twin of the Treasury Building to be erected on the other side of the White House, the elaborate French Second Empire style design by Alfred Mullett was selected, and construction of a building to house all three departments began in June of 1871."
+      },
+      {
+        "key": "B",
+        "content": "Completed in 1875, the State Department’s south wing was the first to be occupied, with its elegant four-story library (completed in 1876), Diplomatic Reception Room, and Secretary’s office decorated with carved wood, Oriental rugs, and stenciled wall patterns. The Navy Department moved into the east wing in 1879, where elaborate wall and ceiling stenciling and marquetry floors decorated the office of the Secretary."
+      },
+      {
+        "key": "C",
+        "content": "The State, War, and Navy Building, as it was originally known, housed the three Executive Branch Departments most intimately associated with formulating and conducting the nation’s foreign policy in the last quarter of the nineteenth century and the first quarter of the twentieth century – the period when the United States emerged as an international power. The building has housed some of the nation’s most significant diplomats and politicians and has been the scene of many historic events."
+      },
+      {
+        "key": "D",
+        "content": "Many of the most celebrated national figures have participated in historical events that have taken place within the EEOB’s granite walls. Theodore and Franklin D. Roosevelt, William Howard Taft, Dwight D. Eisenhower, Lyndon B. Johnson, Gerald Ford, and George H. W. Bush all had offices in this building before becoming president. It has housed 16 Secretaries of the Navy, 21 Secretaries of War, and 24 Secretaries of State. Winston Churchill once walked its corridors and Japanese emissaries met here with Secretary of State Cordell Hull after the bombing of Pearl Harbor."
+      },
+      {
+        "key": "E",
+        "content": "The Eisenhower Executive Office Building (EEOB) commands a unique position in both the national history and the architectural heritage of the United States. Designed by Supervising Architect of the Treasury, Alfred B. Mullett, it was built from 1871 to 1888 to house the growing staffs of the State, War, and Navy Departments, and is considered one of the best examples of French Second Empire architecture in the country."
+      },
+      {
+        "key": "F",
+        "content": "Construction took 17 years as the building slowly rose wing by wing. When the EEOB was finished, it was the largest office building in Washington, with nearly 2 miles of black and white tiled corridors. Almost all of the interior detail is of cast iron or plaster; the use of wood was minimized to insure fire safety. Eight monumental curving staircases of granite with over 4,000 individually cast bronze balusters are capped by four skylight domes and two stained glass rotundas."
+      },
+      {
+        "key": "G",
+        "content": "The history of the EEOB began long before its foundations were laid. The first executive offices were constructed between 1799 and 1820. A series of fires (including those set by the British in 1814) and overcrowded conditions led to the construction of the existing Treasury Building. In 1866, the construction of the North Wing of the Treasury Building necessitated the demolition of the State Department building."
+      }
+    ],
+    "answer": [
+      "E"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "E",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-42",
+    "exam": "english1",
+    "year": 2018,
+    "number": 42,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2018-P-partb",
+    "stem": "根据段落顺序 (41) → C → (42) → (43) → F → (44) → (45)，选出第（42）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "In December of 1869, Congress appointed a commission to select a site and prepare plans and cost estimates for a new State Department Building. The commission was also to consider possible arrangements for the War and Navy Departments. To the horror of some who expected a Greek Revival twin of the Treasury Building to be erected on the other side of the White House, the elaborate French Second Empire style design by Alfred Mullett was selected, and construction of a building to house all three departments began in June of 1871."
+      },
+      {
+        "key": "B",
+        "content": "Completed in 1875, the State Department’s south wing was the first to be occupied, with its elegant four-story library (completed in 1876), Diplomatic Reception Room, and Secretary’s office decorated with carved wood, Oriental rugs, and stenciled wall patterns. The Navy Department moved into the east wing in 1879, where elaborate wall and ceiling stenciling and marquetry floors decorated the office of the Secretary."
+      },
+      {
+        "key": "C",
+        "content": "The State, War, and Navy Building, as it was originally known, housed the three Executive Branch Departments most intimately associated with formulating and conducting the nation’s foreign policy in the last quarter of the nineteenth century and the first quarter of the twentieth century – the period when the United States emerged as an international power. The building has housed some of the nation’s most significant diplomats and politicians and has been the scene of many historic events."
+      },
+      {
+        "key": "D",
+        "content": "Many of the most celebrated national figures have participated in historical events that have taken place within the EEOB’s granite walls. Theodore and Franklin D. Roosevelt, William Howard Taft, Dwight D. Eisenhower, Lyndon B. Johnson, Gerald Ford, and George H. W. Bush all had offices in this building before becoming president. It has housed 16 Secretaries of the Navy, 21 Secretaries of War, and 24 Secretaries of State. Winston Churchill once walked its corridors and Japanese emissaries met here with Secretary of State Cordell Hull after the bombing of Pearl Harbor."
+      },
+      {
+        "key": "E",
+        "content": "The Eisenhower Executive Office Building (EEOB) commands a unique position in both the national history and the architectural heritage of the United States. Designed by Supervising Architect of the Treasury, Alfred B. Mullett, it was built from 1871 to 1888 to house the growing staffs of the State, War, and Navy Departments, and is considered one of the best examples of French Second Empire architecture in the country."
+      },
+      {
+        "key": "F",
+        "content": "Construction took 17 years as the building slowly rose wing by wing. When the EEOB was finished, it was the largest office building in Washington, with nearly 2 miles of black and white tiled corridors. Almost all of the interior detail is of cast iron or plaster; the use of wood was minimized to insure fire safety. Eight monumental curving staircases of granite with over 4,000 individually cast bronze balusters are capped by four skylight domes and two stained glass rotundas."
+      },
+      {
+        "key": "G",
+        "content": "The history of the EEOB began long before its foundations were laid. The first executive offices were constructed between 1799 and 1820. A series of fires (including those set by the British in 1814) and overcrowded conditions led to the construction of the existing Treasury Building. In 1866, the construction of the North Wing of the Treasury Building necessitated the demolition of the State Department building."
+      }
+    ],
+    "answer": [
+      "G"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "G",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-43",
+    "exam": "english1",
+    "year": 2018,
+    "number": 43,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2018-P-partb",
+    "stem": "根据段落顺序 (41) → C → (42) → (43) → F → (44) → (45)，选出第（43）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "In December of 1869, Congress appointed a commission to select a site and prepare plans and cost estimates for a new State Department Building. The commission was also to consider possible arrangements for the War and Navy Departments. To the horror of some who expected a Greek Revival twin of the Treasury Building to be erected on the other side of the White House, the elaborate French Second Empire style design by Alfred Mullett was selected, and construction of a building to house all three departments began in June of 1871."
+      },
+      {
+        "key": "B",
+        "content": "Completed in 1875, the State Department’s south wing was the first to be occupied, with its elegant four-story library (completed in 1876), Diplomatic Reception Room, and Secretary’s office decorated with carved wood, Oriental rugs, and stenciled wall patterns. The Navy Department moved into the east wing in 1879, where elaborate wall and ceiling stenciling and marquetry floors decorated the office of the Secretary."
+      },
+      {
+        "key": "C",
+        "content": "The State, War, and Navy Building, as it was originally known, housed the three Executive Branch Departments most intimately associated with formulating and conducting the nation’s foreign policy in the last quarter of the nineteenth century and the first quarter of the twentieth century – the period when the United States emerged as an international power. The building has housed some of the nation’s most significant diplomats and politicians and has been the scene of many historic events."
+      },
+      {
+        "key": "D",
+        "content": "Many of the most celebrated national figures have participated in historical events that have taken place within the EEOB’s granite walls. Theodore and Franklin D. Roosevelt, William Howard Taft, Dwight D. Eisenhower, Lyndon B. Johnson, Gerald Ford, and George H. W. Bush all had offices in this building before becoming president. It has housed 16 Secretaries of the Navy, 21 Secretaries of War, and 24 Secretaries of State. Winston Churchill once walked its corridors and Japanese emissaries met here with Secretary of State Cordell Hull after the bombing of Pearl Harbor."
+      },
+      {
+        "key": "E",
+        "content": "The Eisenhower Executive Office Building (EEOB) commands a unique position in both the national history and the architectural heritage of the United States. Designed by Supervising Architect of the Treasury, Alfred B. Mullett, it was built from 1871 to 1888 to house the growing staffs of the State, War, and Navy Departments, and is considered one of the best examples of French Second Empire architecture in the country."
+      },
+      {
+        "key": "F",
+        "content": "Construction took 17 years as the building slowly rose wing by wing. When the EEOB was finished, it was the largest office building in Washington, with nearly 2 miles of black and white tiled corridors. Almost all of the interior detail is of cast iron or plaster; the use of wood was minimized to insure fire safety. Eight monumental curving staircases of granite with over 4,000 individually cast bronze balusters are capped by four skylight domes and two stained glass rotundas."
+      },
+      {
+        "key": "G",
+        "content": "The history of the EEOB began long before its foundations were laid. The first executive offices were constructed between 1799 and 1820. A series of fires (including those set by the British in 1814) and overcrowded conditions led to the construction of the existing Treasury Building. In 1866, the construction of the North Wing of the Treasury Building necessitated the demolition of the State Department building."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-44",
+    "exam": "english1",
+    "year": 2018,
+    "number": 44,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2018-P-partb",
+    "stem": "根据段落顺序 (41) → C → (42) → (43) → F → (44) → (45)，选出第（44）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "In December of 1869, Congress appointed a commission to select a site and prepare plans and cost estimates for a new State Department Building. The commission was also to consider possible arrangements for the War and Navy Departments. To the horror of some who expected a Greek Revival twin of the Treasury Building to be erected on the other side of the White House, the elaborate French Second Empire style design by Alfred Mullett was selected, and construction of a building to house all three departments began in June of 1871."
+      },
+      {
+        "key": "B",
+        "content": "Completed in 1875, the State Department’s south wing was the first to be occupied, with its elegant four-story library (completed in 1876), Diplomatic Reception Room, and Secretary’s office decorated with carved wood, Oriental rugs, and stenciled wall patterns. The Navy Department moved into the east wing in 1879, where elaborate wall and ceiling stenciling and marquetry floors decorated the office of the Secretary."
+      },
+      {
+        "key": "C",
+        "content": "The State, War, and Navy Building, as it was originally known, housed the three Executive Branch Departments most intimately associated with formulating and conducting the nation’s foreign policy in the last quarter of the nineteenth century and the first quarter of the twentieth century – the period when the United States emerged as an international power. The building has housed some of the nation’s most significant diplomats and politicians and has been the scene of many historic events."
+      },
+      {
+        "key": "D",
+        "content": "Many of the most celebrated national figures have participated in historical events that have taken place within the EEOB’s granite walls. Theodore and Franklin D. Roosevelt, William Howard Taft, Dwight D. Eisenhower, Lyndon B. Johnson, Gerald Ford, and George H. W. Bush all had offices in this building before becoming president. It has housed 16 Secretaries of the Navy, 21 Secretaries of War, and 24 Secretaries of State. Winston Churchill once walked its corridors and Japanese emissaries met here with Secretary of State Cordell Hull after the bombing of Pearl Harbor."
+      },
+      {
+        "key": "E",
+        "content": "The Eisenhower Executive Office Building (EEOB) commands a unique position in both the national history and the architectural heritage of the United States. Designed by Supervising Architect of the Treasury, Alfred B. Mullett, it was built from 1871 to 1888 to house the growing staffs of the State, War, and Navy Departments, and is considered one of the best examples of French Second Empire architecture in the country."
+      },
+      {
+        "key": "F",
+        "content": "Construction took 17 years as the building slowly rose wing by wing. When the EEOB was finished, it was the largest office building in Washington, with nearly 2 miles of black and white tiled corridors. Almost all of the interior detail is of cast iron or plaster; the use of wood was minimized to insure fire safety. Eight monumental curving staircases of granite with over 4,000 individually cast bronze balusters are capped by four skylight domes and two stained glass rotundas."
+      },
+      {
+        "key": "G",
+        "content": "The history of the EEOB began long before its foundations were laid. The first executive offices were constructed between 1799 and 1820. A series of fires (including those set by the British in 1814) and overcrowded conditions led to the construction of the existing Treasury Building. In 1866, the construction of the North Wing of the Treasury Building necessitated the demolition of the State Department building."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-45",
+    "exam": "english1",
+    "year": 2018,
+    "number": 45,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2018-P-partb",
+    "stem": "根据段落顺序 (41) → C → (42) → (43) → F → (44) → (45)，选出第（45）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "In December of 1869, Congress appointed a commission to select a site and prepare plans and cost estimates for a new State Department Building. The commission was also to consider possible arrangements for the War and Navy Departments. To the horror of some who expected a Greek Revival twin of the Treasury Building to be erected on the other side of the White House, the elaborate French Second Empire style design by Alfred Mullett was selected, and construction of a building to house all three departments began in June of 1871."
+      },
+      {
+        "key": "B",
+        "content": "Completed in 1875, the State Department’s south wing was the first to be occupied, with its elegant four-story library (completed in 1876), Diplomatic Reception Room, and Secretary’s office decorated with carved wood, Oriental rugs, and stenciled wall patterns. The Navy Department moved into the east wing in 1879, where elaborate wall and ceiling stenciling and marquetry floors decorated the office of the Secretary."
+      },
+      {
+        "key": "C",
+        "content": "The State, War, and Navy Building, as it was originally known, housed the three Executive Branch Departments most intimately associated with formulating and conducting the nation’s foreign policy in the last quarter of the nineteenth century and the first quarter of the twentieth century – the period when the United States emerged as an international power. The building has housed some of the nation’s most significant diplomats and politicians and has been the scene of many historic events."
+      },
+      {
+        "key": "D",
+        "content": "Many of the most celebrated national figures have participated in historical events that have taken place within the EEOB’s granite walls. Theodore and Franklin D. Roosevelt, William Howard Taft, Dwight D. Eisenhower, Lyndon B. Johnson, Gerald Ford, and George H. W. Bush all had offices in this building before becoming president. It has housed 16 Secretaries of the Navy, 21 Secretaries of War, and 24 Secretaries of State. Winston Churchill once walked its corridors and Japanese emissaries met here with Secretary of State Cordell Hull after the bombing of Pearl Harbor."
+      },
+      {
+        "key": "E",
+        "content": "The Eisenhower Executive Office Building (EEOB) commands a unique position in both the national history and the architectural heritage of the United States. Designed by Supervising Architect of the Treasury, Alfred B. Mullett, it was built from 1871 to 1888 to house the growing staffs of the State, War, and Navy Departments, and is considered one of the best examples of French Second Empire architecture in the country."
+      },
+      {
+        "key": "F",
+        "content": "Construction took 17 years as the building slowly rose wing by wing. When the EEOB was finished, it was the largest office building in Washington, with nearly 2 miles of black and white tiled corridors. Almost all of the interior detail is of cast iron or plaster; the use of wood was minimized to insure fire safety. Eight monumental curving staircases of granite with over 4,000 individually cast bronze balusters are capped by four skylight domes and two stained glass rotundas."
+      },
+      {
+        "key": "G",
+        "content": "The history of the EEOB began long before its foundations were laid. The first executive offices were constructed between 1799 and 1820. A series of fires (including those set by the British in 1814) and overcrowded conditions led to the construction of the existing Treasury Building. In 1866, the construction of the North Wing of the Treasury Building necessitated the demolition of the State Department building."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-46",
+    "exam": "english1",
+    "year": 2018,
+    "number": 46,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2018-P-translation",
+    "stem": "By the date of his birth Europe was witnessing the passing of the religious drama, and the creation of new forms under the incentive of classical tragedy and comedy.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "他出生时，欧洲正见证着宗教剧的消亡，以及在古典悲剧和喜剧启发之下新型戏剧形式的诞生。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-47",
+    "exam": "english1",
+    "year": 2018,
+    "number": 47,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2018-P-translation",
+    "stem": "no boy who went to a grammar school could be ignorant that the drama was a form of literature which gave glory to Greece and Rome and might yet bring honor to England.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "凡是文法学校的学童就不会不知道，戏剧这种文学形式曾给希腊和罗马带来辉煌，或也将为英国带来荣耀。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-48",
+    "exam": "english1",
+    "year": 2018,
+    "number": 48,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2018-P-translation",
+    "stem": "But the professional companies prospered in their permanent theaters, and university men with literary ambitions were quick to turn to these theaters as offering a means of livelihood.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "但是专业剧团在他们的固定剧场里蓬勃发展，而大学里有文学抱负的人们迅速转向这些剧场，视其为一种谋生手段。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-49",
+    "exam": "english1",
+    "year": 2018,
+    "number": 49,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2018-P-translation",
+    "stem": "A native literary drama had been created, its alliance with the public playhouses established, and at least some of its great traditions had been begun.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "一种本土的文学戏剧已然形成，它与公共剧场的联盟已然建立，它的伟大传统中至少有一部分也已然开启。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-50",
+    "exam": "english1",
+    "year": 2018,
+    "number": 50,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2018-P-translation",
+    "stem": "To realize how great was the dramatic activity, we must remember further that hosts of plays have been lost, and that probably there is no author of note whose entire work has survived.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "要明白当时的戏剧活动是何等繁荣，我们还必须记住，大量剧作都已散失，恐怕没有哪位知名作家的全部作品幸存至今。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-51",
+    "exam": "english1",
+    "year": 2018,
+    "number": 51,
+    "section": "writing_a",
+    "type": "essay",
+    "score": 10.0,
+    "passage_id": null,
+    "stem": "51. Directions:\nWrite an email to all international experts on campus inviting them to attend the\ngraduation ceremony. In your email you should include time, place and other relevant\ninformation about the ceremony.\nYou should write about 100 words neatly on the ANSWER SHEET.\nDo not use your own name at the end of the email. Use “Li Ming” instead.\n(10 points)",
+    "images": [],
+    "options": [],
+    "answer": [
+      "Dear Sir or Madam,\n\nThe 2018 Graduation and Degree Conferring Ceremony of our university will be held at the auditorium from 9:00 to 11:00 on June 28th.\n\nWith your remarkable expert knowledge, you have contributed a lot to the development of our university and the growth of our students. So I, on behalf of the Office of Student Affairs, sincerely extend to you an invitation to this ceremony. We will be greatly honored if you could be present at the grand ceremony, to witness this important moment in our students' life. And, on the occasion, there will be volunteers guiding you to your seat.\n\nThe schedule of the ceremony is attached for your reference. It would be much appreciated if you could please send back the reply slip before June 21st to inform us of your attendance. We look forward to your reply.\n\nYours faithfully,\nLi Ming"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/小作文（书信、通知等）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2018-52",
+    "exam": "english1",
+    "year": 2018,
+    "number": 52,
+    "section": "writing_b",
+    "type": "essay",
+    "score": 20.0,
+    "passage_id": null,
+    "stem": "52. Directions:\nWrite an essay of 160-200 words based on the picture below. In your essay, you\nshould\n1) describe the picture briefly,\n2) interpret the meaning, and\n3) give your comments.\nYou should write neatly on the ANSWER SHEET.（20 points）\n（图题：选课进行时）",
+    "images": [
+      "images/english1-2018/q52.jpg"
+    ],
+    "options": [],
+    "answer": [
+      "In the cartoon, a college student is sitting seriously in front of a laptop, selecting his next terms' courses. He \"smartly\" divides the courses into two groups: those offering cutting-edge knowledge, inspiring innovation, but requiring hard work, and those with little academic pressure and an easy high-score pass. The cartoon reflects a common phenomenon among today's college students, which is actually against the purpose of our course selection system.\n\nWhy does this happen? It can be mainly attributed to a social climate which puts too much emphasis on \"utility\". The current achievement assessment system in colleges which takes credits as the only indicator is also responsible for the phenomenon. However, neither of them is the excuse for students to shrink back from demanding courses and choose easy ones. Avoiding demanding courses will prevent them from building knowledge hierarchy and improving personal competence. Further, as the youth are the hope of a country, that will make our goal of constructing an innovative nation remain a remote dream.\n\nIt's not an overnight affair to solve the problem, and long-process concerted efforts are in need. First of all, students should put personal development high on the agenda, striving to be a man of courage, capabilities and responsibilities. Besides, colleges should diversify assessment standards and motivate teachers to deliver knowledge in interesting and illuminating ways. Meanwhile, a new tendency of daring to challenge and innovate should be cultivated. We sincerely believe that the Chinese dream of achieving great rejuvenation will surely be realized by the youth with the joint efforts."
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/大作文（图画作文）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2018-1/2018-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  }
+]

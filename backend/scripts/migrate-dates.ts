@@ -1,0 +1,49 @@
+import { Client } from 'pg';
+import { loadEnv } from './env';
+import { placeholdersDeep, studyDate, toPlaceholders } from '../src/common/time';
+
+/**
+ * 存量文字里的日期 → 占位符 {{date:YYYY-MM-DD}}（读时按读者学习日渲染）。幂等：占位符不会再被匹配。
+ * 参考日 = 写那条记录时用户的学习日（created_at 按用户时区、04:00 换日），用来给 MM-DD 补年份。
+ * 范围：agent_actions.summary/reason、daily_tips.text/headline/details/proposal.items[].summary、study_plans / plan_tasks.why_changed、agent_commands.events/result。
+ */
+async function main() {
+  loadEnv();
+  const c = new Client({ connectionString: process.env.DATABASE_URL });
+  await c.connect();
+  const tzOf = new Map<string, string>();
+  for (const r of (await c.query(`SELECT id, settings->>'timezone' tz FROM users`)).rows) tzOf.set(r.id, r.tz || process.env.APP_TZ || 'Asia/Shanghai');
+  const ref = (uid: string, at: Date | null) => studyDate(at ?? new Date(), tzOf.get(uid) ?? 'Asia/Shanghai');
+  const n: Record<string, number> = {};
+  const bump = (k: string) => { n[k] = (n[k] ?? 0) + 1; };
+  await c.query('BEGIN');
+  for (const r of (await c.query(`SELECT id, user_id, created_at, summary, reason FROM agent_actions`)).rows) {
+    const d = ref(r.user_id, r.created_at); const s = toPlaceholders(r.summary, d), w = toPlaceholders(r.reason, d);
+    if (s !== r.summary || w !== r.reason) { await c.query('UPDATE agent_actions SET summary=$2, reason=$3 WHERE id=$1', [r.id, s, w]); bump('agent_actions'); }
+  }
+  for (const r of (await c.query(`SELECT id, user_id, created_at, text, headline, details, proposal FROM daily_tips`)).rows) {
+    const d = ref(r.user_id, r.created_at);
+    const v = { text: toPlaceholders(r.text, d), headline: toPlaceholders(r.headline, d), details: toPlaceholders(r.details, d), proposal: r.proposal?.items ? { ...r.proposal, items: placeholdersDeep(r.proposal.items, d) } : r.proposal };
+    if (JSON.stringify(v) !== JSON.stringify({ text: r.text, headline: r.headline, details: r.details, proposal: r.proposal })) {
+      await c.query('UPDATE daily_tips SET text=$2, headline=$3, details=$4, proposal=$5 WHERE id=$1', [r.id, v.text, v.headline, v.details, v.proposal == null ? null : JSON.stringify(v.proposal)]); bump('daily_tips');
+    }
+  }
+  for (const r of (await c.query(`SELECT id, user_id, updated_at, why_changed FROM study_plans WHERE why_changed IS NOT NULL`)).rows) {
+    const w = toPlaceholders(r.why_changed, ref(r.user_id, r.updated_at));
+    if (w !== r.why_changed) { await c.query('UPDATE study_plans SET why_changed=$2 WHERE id=$1', [r.id, w]); bump('study_plans'); }
+  }
+  for (const r of (await c.query(`SELECT t.id, p.user_id, t.updated_at, t.why_changed FROM plan_tasks t JOIN study_plans p ON p.id=t.plan_id WHERE t.why_changed IS NOT NULL`)).rows) {
+    const w = toPlaceholders(r.why_changed, ref(r.user_id, r.updated_at));
+    if (w !== r.why_changed) { await c.query('UPDATE plan_tasks SET why_changed=$2 WHERE id=$1', [r.id, w]); bump('plan_tasks'); }
+  }
+  for (const r of (await c.query(`SELECT id, user_id, created_at, events, result FROM agent_commands`)).rows) {
+    const d = ref(r.user_id, r.created_at); const e = placeholdersDeep(r.events, d), x = placeholdersDeep(r.result, d);
+    if (JSON.stringify(e) !== JSON.stringify(r.events) || JSON.stringify(x) !== JSON.stringify(r.result)) {
+      await c.query('UPDATE agent_commands SET events=$2, result=$3 WHERE id=$1', [r.id, e == null ? null : JSON.stringify(e), x == null ? null : JSON.stringify(x)]); bump('agent_commands');
+    }
+  }
+  await c.query('COMMIT');
+  console.log('date placeholders:', JSON.stringify(n));
+  await c.end();
+}
+main().catch((e) => { console.error(e); process.exit(1); });

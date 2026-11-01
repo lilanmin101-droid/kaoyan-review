@@ -1,0 +1,2548 @@
+[
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-01",
+    "exam": "english1",
+    "year": 2015,
+    "number": 1,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "That is （1）______ a study, published from the University of California and Yale University in the Proceedings of the National Academy of Sciences, has （2）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "when"
+      },
+      {
+        "key": "B",
+        "content": "why"
+      },
+      {
+        "key": "C",
+        "content": "how"
+      },
+      {
+        "key": "D",
+        "content": "what"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-02",
+    "exam": "english1",
+    "year": 2015,
+    "number": 2,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "That is （1）______ a study, published from the University of California and Yale University in the Proceedings of the National Academy of Sciences, has （2）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "defended"
+      },
+      {
+        "key": "B",
+        "content": "concluded"
+      },
+      {
+        "key": "C",
+        "content": "withdrawn"
+      },
+      {
+        "key": "D",
+        "content": "advised"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-03",
+    "exam": "english1",
+    "year": 2015,
+    "number": 3,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "The study is a genome-wide analysis conducted （3）______ 1,932 unique subjects which （4）______ pairs of unrelated friends and unrelated strangers.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "for"
+      },
+      {
+        "key": "B",
+        "content": "with"
+      },
+      {
+        "key": "C",
+        "content": "on"
+      },
+      {
+        "key": "D",
+        "content": "by"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-04",
+    "exam": "english1",
+    "year": 2015,
+    "number": 4,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "The study is a genome-wide analysis conducted （3）______ 1,932 unique subjects which （4）______ pairs of unrelated friends and unrelated strangers.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "compared"
+      },
+      {
+        "key": "B",
+        "content": "sought"
+      },
+      {
+        "key": "C",
+        "content": "separated"
+      },
+      {
+        "key": "D",
+        "content": "connected"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-05",
+    "exam": "english1",
+    "year": 2015,
+    "number": 5,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "The same people were used in both （5）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "tests"
+      },
+      {
+        "key": "B",
+        "content": "objects"
+      },
+      {
+        "key": "C",
+        "content": "samples"
+      },
+      {
+        "key": "D",
+        "content": "examples"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-06",
+    "exam": "english1",
+    "year": 2015,
+    "number": 6,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "While 1% may seem （6）______ , it is not so to a geneticist.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "insignificant"
+      },
+      {
+        "key": "B",
+        "content": "unexpected"
+      },
+      {
+        "key": "C",
+        "content": "unreliable"
+      },
+      {
+        "key": "D",
+        "content": "incredible"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-07",
+    "exam": "english1",
+    "year": 2015,
+    "number": 7,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "As James Fowler, professor of medical genetics at UC San Diego, says, “Most people do not even （7）______ their fourth cousins but somehow manage to select as friends the people who （8）______ our kin.”",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "visit"
+      },
+      {
+        "key": "B",
+        "content": "miss"
+      },
+      {
+        "key": "C",
+        "content": "seek"
+      },
+      {
+        "key": "D",
+        "content": "know"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-08",
+    "exam": "english1",
+    "year": 2015,
+    "number": 8,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "As James Fowler, professor of medical genetics at UC San Diego, says, “Most people do not even （7）______ their fourth cousins but somehow manage to select as friends the people who （8）______ our kin.”",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "resemble"
+      },
+      {
+        "key": "B",
+        "content": "influence"
+      },
+      {
+        "key": "C",
+        "content": "favor"
+      },
+      {
+        "key": "D",
+        "content": "surpass"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-09",
+    "exam": "english1",
+    "year": 2015,
+    "number": 9,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "The study （9）______ found that the genes for smell were something shared in friends but not genes for immunity.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "again"
+      },
+      {
+        "key": "B",
+        "content": "also"
+      },
+      {
+        "key": "C",
+        "content": "instead"
+      },
+      {
+        "key": "D",
+        "content": "thus"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-10",
+    "exam": "english1",
+    "year": 2015,
+    "number": 10,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "（10）______ , as the team suggests, it draws us to similar environments but there is more （11）______ it.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Meanwhile"
+      },
+      {
+        "key": "B",
+        "content": "Furthermore"
+      },
+      {
+        "key": "C",
+        "content": "Likewise"
+      },
+      {
+        "key": "D",
+        "content": "Perhaps"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-11",
+    "exam": "english1",
+    "year": 2015,
+    "number": 11,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "（10）______ , as the team suggests, it draws us to similar environments but there is more （11）______ it.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "about"
+      },
+      {
+        "key": "B",
+        "content": "to"
+      },
+      {
+        "key": "C",
+        "content": "from"
+      },
+      {
+        "key": "D",
+        "content": "like"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-12",
+    "exam": "english1",
+    "year": 2015,
+    "number": 12,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "There could be many mechanisms working together that （12）______ us in choosing genetically similar friends （13）______ “functional kinship” of being friends with （14）______ !",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "drive"
+      },
+      {
+        "key": "B",
+        "content": "observe"
+      },
+      {
+        "key": "C",
+        "content": "confuse"
+      },
+      {
+        "key": "D",
+        "content": "limit"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-13",
+    "exam": "english1",
+    "year": 2015,
+    "number": 13,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "There could be many mechanisms working together that （12）______ us in choosing genetically similar friends （13）______ “functional kinship” of being friends with （14）______ !",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "according to"
+      },
+      {
+        "key": "B",
+        "content": "rather than"
+      },
+      {
+        "key": "C",
+        "content": "regardless of"
+      },
+      {
+        "key": "D",
+        "content": "along with"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-14",
+    "exam": "english1",
+    "year": 2015,
+    "number": 14,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "There could be many mechanisms working together that （12）______ us in choosing genetically similar friends （13）______ “functional kinship” of being friends with （14）______ !",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "chances"
+      },
+      {
+        "key": "B",
+        "content": "responses"
+      },
+      {
+        "key": "C",
+        "content": "missions"
+      },
+      {
+        "key": "D",
+        "content": "benefits"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-15",
+    "exam": "english1",
+    "year": 2015,
+    "number": 15,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "One of the remarkable findings of the study was that the similar genes seem to be evolving （15）______ than other genes.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "later"
+      },
+      {
+        "key": "B",
+        "content": "slower"
+      },
+      {
+        "key": "C",
+        "content": "faster"
+      },
+      {
+        "key": "D",
+        "content": "earlier"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-16",
+    "exam": "english1",
+    "year": 2015,
+    "number": 16,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "Studying this could help （16）______ why human evolution picked pace in the last 30,000 years, with social environment being a major （17）______ factor.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "forecast"
+      },
+      {
+        "key": "B",
+        "content": "remember"
+      },
+      {
+        "key": "C",
+        "content": "understand"
+      },
+      {
+        "key": "D",
+        "content": "express"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-17",
+    "exam": "english1",
+    "year": 2015,
+    "number": 17,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "Studying this could help （16）______ why human evolution picked pace in the last 30,000 years, with social environment being a major （17）______ factor.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "unpredictable"
+      },
+      {
+        "key": "B",
+        "content": "contributory"
+      },
+      {
+        "key": "C",
+        "content": "controllable"
+      },
+      {
+        "key": "D",
+        "content": "disruptive"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-18",
+    "exam": "english1",
+    "year": 2015,
+    "number": 18,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "The findings do not simply explain people’s （18）______ to befriend those of similar （19）______ backgrounds, say the researchers.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "endeavor"
+      },
+      {
+        "key": "B",
+        "content": "decision"
+      },
+      {
+        "key": "C",
+        "content": "arrangement"
+      },
+      {
+        "key": "D",
+        "content": "tendency"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-19",
+    "exam": "english1",
+    "year": 2015,
+    "number": 19,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "The findings do not simply explain people’s （18）______ to befriend those of similar （19）______ backgrounds, say the researchers.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "political"
+      },
+      {
+        "key": "B",
+        "content": "religious"
+      },
+      {
+        "key": "C",
+        "content": "ethnic"
+      },
+      {
+        "key": "D",
+        "content": "economic"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-20",
+    "exam": "english1",
+    "year": 2015,
+    "number": 20,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2015-P-cloze",
+    "stem": "Though all the subjects were drawn from a population of European extraction, care was taken to （20）______ that all subjects, friends and strangers, were taken from the same population.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "see"
+      },
+      {
+        "key": "B",
+        "content": "show"
+      },
+      {
+        "key": "C",
+        "content": "prove"
+      },
+      {
+        "key": "D",
+        "content": "tell"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-21",
+    "exam": "english1",
+    "year": 2015,
+    "number": 21,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text1",
+    "stem": "According to the first two paragraphs, King Juan Carl of Spain",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "eased his relationship with his rivals."
+      },
+      {
+        "key": "B",
+        "content": "used to enjoy high public support."
+      },
+      {
+        "key": "C",
+        "content": "was unpopular among European royals."
+      },
+      {
+        "key": "D",
+        "content": "ended his reign in embarrassment."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-22",
+    "exam": "english1",
+    "year": 2015,
+    "number": 22,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text1",
+    "stem": "Monarchs are kept as heads of state in Europe mostly",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "to give voters more public figures to look up to."
+      },
+      {
+        "key": "B",
+        "content": "to achieve a balance between tradition and reality."
+      },
+      {
+        "key": "C",
+        "content": "owing to their undoubted and respectable status."
+      },
+      {
+        "key": "D",
+        "content": "due to their everlasting political embodiment."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-23",
+    "exam": "english1",
+    "year": 2015,
+    "number": 23,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text1",
+    "stem": "Which of the following is shown to be odd, according to Paragraph 4?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Aristocrats’ excessive reliance on inherited wealth."
+      },
+      {
+        "key": "B",
+        "content": "The role of the nobility in modern democracies."
+      },
+      {
+        "key": "C",
+        "content": "The simple lifestyle of the aristocratic families."
+      },
+      {
+        "key": "D",
+        "content": "The nobility’s adherence to their privileges."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-24",
+    "exam": "english1",
+    "year": 2015,
+    "number": 24,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text1",
+    "stem": "The British royals “have most to fear” because Charles",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "fails to adapt himself to his future role."
+      },
+      {
+        "key": "B",
+        "content": "fails to change his lifestyle as advised."
+      },
+      {
+        "key": "C",
+        "content": "takes republicans as his potential allies."
+      },
+      {
+        "key": "D",
+        "content": "takes a tough line on political issues."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-25",
+    "exam": "english1",
+    "year": 2015,
+    "number": 25,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text1",
+    "stem": "Which of the following is the best title of the text?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Carlos, Glory and Disgrace Combined"
+      },
+      {
+        "key": "B",
+        "content": "Charles, Anxious to Succeed to the Throne"
+      },
+      {
+        "key": "C",
+        "content": "Carlos, a Lesson for All European Monarchs"
+      },
+      {
+        "key": "D",
+        "content": "Charles, Slow to React to the Coming Threats"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-26",
+    "exam": "english1",
+    "year": 2015,
+    "number": 26,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text2",
+    "stem": "The Supreme Court will work out whether, during an arrest, it is legitimate to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "prevent suspects from deleting their phone contents."
+      },
+      {
+        "key": "B",
+        "content": "search for suspects’ mobile phones without a warrant."
+      },
+      {
+        "key": "C",
+        "content": "check suspects’ phone contents without being authorized."
+      },
+      {
+        "key": "D",
+        "content": "prohibit suspects from using their mobile phones."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-27",
+    "exam": "english1",
+    "year": 2015,
+    "number": 27,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text2",
+    "stem": "The author’s attitude toward California’s argument is one of",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "disapproval."
+      },
+      {
+        "key": "B",
+        "content": "indifference."
+      },
+      {
+        "key": "C",
+        "content": "tolerance."
+      },
+      {
+        "key": "D",
+        "content": "cautiousness."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-28",
+    "exam": "english1",
+    "year": 2015,
+    "number": 28,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text2",
+    "stem": "The author believes that exploring one’s phone contents is comparable to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "going through one’s wallet."
+      },
+      {
+        "key": "B",
+        "content": "handling one’s historical records."
+      },
+      {
+        "key": "C",
+        "content": "scanning one’s correspondences."
+      },
+      {
+        "key": "D",
+        "content": "getting into one’s residence."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-29",
+    "exam": "english1",
+    "year": 2015,
+    "number": 29,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text2",
+    "stem": "In Paragraphs 5 and 6, the author shows his concern that",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "principles are hard to be clearly expressed."
+      },
+      {
+        "key": "B",
+        "content": "the court is giving police less room for action."
+      },
+      {
+        "key": "C",
+        "content": "phones are used to store sensitive information."
+      },
+      {
+        "key": "D",
+        "content": "citizens’ privacy is not effectively protected."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-30",
+    "exam": "english1",
+    "year": 2015,
+    "number": 30,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text2",
+    "stem": "Orin Kerr’s comparison is quoted to indicate that",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the Constitution should be implemented flexibly."
+      },
+      {
+        "key": "B",
+        "content": "principles of the Constitution should never be altered."
+      },
+      {
+        "key": "C",
+        "content": "California’s argument violates principles of the Constitution."
+      },
+      {
+        "key": "D",
+        "content": "new technology requires reinterpretation of the Constitution."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-31",
+    "exam": "english1",
+    "year": 2015,
+    "number": 31,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text3",
+    "stem": "It can be learned from Paragraph 1 that",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Science intends to simplify its peer-review process."
+      },
+      {
+        "key": "B",
+        "content": "journals are strengthening their statistical checks."
+      },
+      {
+        "key": "C",
+        "content": "few journals are blamed for mistakes in data analysis."
+      },
+      {
+        "key": "D",
+        "content": "lack of data analysis is common in research projects."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-32",
+    "exam": "english1",
+    "year": 2015,
+    "number": 32,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text3",
+    "stem": "The phrase “flagged up” (Para. 2) is the closest in meaning to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "found."
+      },
+      {
+        "key": "B",
+        "content": "revised."
+      },
+      {
+        "key": "C",
+        "content": "marked."
+      },
+      {
+        "key": "D",
+        "content": "stored."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-33",
+    "exam": "english1",
+    "year": 2015,
+    "number": 33,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text3",
+    "stem": "Giovanni Parmigiani believes that the establishment of the SBoRE may",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "pose a threat to all its peers."
+      },
+      {
+        "key": "B",
+        "content": "meet with strong opposition."
+      },
+      {
+        "key": "C",
+        "content": "increase Science’s circulation."
+      },
+      {
+        "key": "D",
+        "content": "set an example for other journals."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-34",
+    "exam": "english1",
+    "year": 2015,
+    "number": 34,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text3",
+    "stem": "David Vaux holds that what Science is doing now",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "adds to researchers’ workload."
+      },
+      {
+        "key": "B",
+        "content": "diminishes the role of reviewers."
+      },
+      {
+        "key": "C",
+        "content": "has room for further improvement."
+      },
+      {
+        "key": "D",
+        "content": "is to fail in the foreseeable future."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-35",
+    "exam": "english1",
+    "year": 2015,
+    "number": 35,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text3",
+    "stem": "Which of the following is the best title of the text?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Science Joins Push to Screen Statistics in Papers"
+      },
+      {
+        "key": "B",
+        "content": "Professional Statisticians Deserve More Respect"
+      },
+      {
+        "key": "C",
+        "content": "Data Analysis Finds Its Way onto Editors’ Desks"
+      },
+      {
+        "key": "D",
+        "content": "Statisticians Are Coming Back with Science"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-36",
+    "exam": "english1",
+    "year": 2015,
+    "number": 36,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text4",
+    "stem": "According to the first two paragraphs, Elisabeth was upset by",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the consequences of the current sorting mechanism."
+      },
+      {
+        "key": "B",
+        "content": "companies’ financial loss due to immoral practices."
+      },
+      {
+        "key": "C",
+        "content": "governmental ineffectiveness on moral issues."
+      },
+      {
+        "key": "D",
+        "content": "the wide misuse of integrity among institutions."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-37",
+    "exam": "english1",
+    "year": 2015,
+    "number": 37,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text4",
+    "stem": "It can be inferred from Paragraph 3 that",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Glenn Mulcaire may deny phone hacking as a crime."
+      },
+      {
+        "key": "B",
+        "content": "more journalists may be found guilty of phone hacking."
+      },
+      {
+        "key": "C",
+        "content": "Andy Coulson should be held innocent of the charge."
+      },
+      {
+        "key": "D",
+        "content": "phone hacking will be accepted on certain occasions."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-38",
+    "exam": "english1",
+    "year": 2015,
+    "number": 38,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text4",
+    "stem": "The author believes that Rebekah Brooks’s defence",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "was hardly convincing."
+      },
+      {
+        "key": "B",
+        "content": "centered on trivial issues."
+      },
+      {
+        "key": "C",
+        "content": "revealed a cunning personality."
+      },
+      {
+        "key": "D",
+        "content": "was part of a conspiracy."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-39",
+    "exam": "english1",
+    "year": 2015,
+    "number": 39,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text4",
+    "stem": "The author holds that the current collective doctrine shows",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "a marginalized lifestyle."
+      },
+      {
+        "key": "B",
+        "content": "unfair wealth distribution."
+      },
+      {
+        "key": "C",
+        "content": "generally distorted values."
+      },
+      {
+        "key": "D",
+        "content": "a rigid moral code."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-40",
+    "exam": "english1",
+    "year": 2015,
+    "number": 40,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2015-P-text4",
+    "stem": "Which of the following is suggested in the last paragraph?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "The quality of writings is of primary importance."
+      },
+      {
+        "key": "B",
+        "content": "Moral awareness matters in editing a newspaper."
+      },
+      {
+        "key": "C",
+        "content": "Common humanity is central to news reporting."
+      },
+      {
+        "key": "D",
+        "content": "Journalists need stricter industrial regulations."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-41",
+    "exam": "english1",
+    "year": 2015,
+    "number": 41,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2015-P-partb",
+    "stem": "选出填入第（41）处的选项：\n\nHow does your reading proceed? Clearly you try to comprehend, in the sense of identifying meanings for individual words and working out relationships between them, drawing on your implicit knowledge of English grammar. （41）______ You begin to infer a context for the text, for instance by making decisions about what kind of speech event is involved: Who is making the utterance, to whom, when and where.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Are we studying that text and trying to respond in a way that fulfils the requirement of a given course? Reading it simply for pleasure? Skimming it for information? Ways of reading on a train or in bed are likely to differ considerably from reading in a seminar room."
+      },
+      {
+        "key": "B",
+        "content": "Factors such as the place and period in which we are reading, our gender, ethnicity, age and social class will encourage us towards certain interpretations but at the same time obscure or even close off others."
+      },
+      {
+        "key": "C",
+        "content": "If you are unfamiliar with words or idioms, you guess at their meaning, using clues presented in the context. On the assumption that they will become relevant later, you make a mental note of discourse entities as well as possible links between them."
+      },
+      {
+        "key": "D",
+        "content": "In effect, you try to reconstruct the likely meanings or effects that any given sentence, image or reference might have had: These might be the ones the author intended."
+      },
+      {
+        "key": "E",
+        "content": "You make further inferences, for instance, about how the text may be significant to you, or about its validity – inferences that form the basis of a personal response for which the author will inevitably be far less responsible."
+      },
+      {
+        "key": "F",
+        "content": "In plays, novels and narrative poems, characters speak as constructs created by the author, not necessarily as mouthpieces for the author’s own thoughts."
+      },
+      {
+        "key": "G",
+        "content": "Rather, we ascribe meanings to texts on the basis of interaction between what we might call textual and contextual material: between kinds of organization or patterning we perceive in a text’s formal structures (so especially its language structures) and various kinds of background, social knowledge, belief and attitude that we bring to the text."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/七选五"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-42",
+    "exam": "english1",
+    "year": 2015,
+    "number": 42,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2015-P-partb",
+    "stem": "选出填入第（42）处的选项：\n\nThe ways of reading indicated here are without doubt kinds of comprehension. But they show comprehension to consist not just of passive assimilation but of active engagement in inference and problem-solving. You infer information you feel the writer has invited you to grasp by presenting you with specific evidence and clues. （42）______",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Are we studying that text and trying to respond in a way that fulfils the requirement of a given course? Reading it simply for pleasure? Skimming it for information? Ways of reading on a train or in bed are likely to differ considerably from reading in a seminar room."
+      },
+      {
+        "key": "B",
+        "content": "Factors such as the place and period in which we are reading, our gender, ethnicity, age and social class will encourage us towards certain interpretations but at the same time obscure or even close off others."
+      },
+      {
+        "key": "C",
+        "content": "If you are unfamiliar with words or idioms, you guess at their meaning, using clues presented in the context. On the assumption that they will become relevant later, you make a mental note of discourse entities as well as possible links between them."
+      },
+      {
+        "key": "D",
+        "content": "In effect, you try to reconstruct the likely meanings or effects that any given sentence, image or reference might have had: These might be the ones the author intended."
+      },
+      {
+        "key": "E",
+        "content": "You make further inferences, for instance, about how the text may be significant to you, or about its validity – inferences that form the basis of a personal response for which the author will inevitably be far less responsible."
+      },
+      {
+        "key": "F",
+        "content": "In plays, novels and narrative poems, characters speak as constructs created by the author, not necessarily as mouthpieces for the author’s own thoughts."
+      },
+      {
+        "key": "G",
+        "content": "Rather, we ascribe meanings to texts on the basis of interaction between what we might call textual and contextual material: between kinds of organization or patterning we perceive in a text’s formal structures (so especially its language structures) and various kinds of background, social knowledge, belief and attitude that we bring to the text."
+      }
+    ],
+    "answer": [
+      "E"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/七选五"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "E",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-43",
+    "exam": "english1",
+    "year": 2015,
+    "number": 43,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2015-P-partb",
+    "stem": "选出填入第（43）处的选项：\n\nConceived in this way, comprehension will not follow exactly the same track for each reader. What is in question is not the retrieval of an absolute, fixed or “true” meaning that can be read off and checked for accuracy, or some timeless relation of the text to the world. （43）______",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Are we studying that text and trying to respond in a way that fulfils the requirement of a given course? Reading it simply for pleasure? Skimming it for information? Ways of reading on a train or in bed are likely to differ considerably from reading in a seminar room."
+      },
+      {
+        "key": "B",
+        "content": "Factors such as the place and period in which we are reading, our gender, ethnicity, age and social class will encourage us towards certain interpretations but at the same time obscure or even close off others."
+      },
+      {
+        "key": "C",
+        "content": "If you are unfamiliar with words or idioms, you guess at their meaning, using clues presented in the context. On the assumption that they will become relevant later, you make a mental note of discourse entities as well as possible links between them."
+      },
+      {
+        "key": "D",
+        "content": "In effect, you try to reconstruct the likely meanings or effects that any given sentence, image or reference might have had: These might be the ones the author intended."
+      },
+      {
+        "key": "E",
+        "content": "You make further inferences, for instance, about how the text may be significant to you, or about its validity – inferences that form the basis of a personal response for which the author will inevitably be far less responsible."
+      },
+      {
+        "key": "F",
+        "content": "In plays, novels and narrative poems, characters speak as constructs created by the author, not necessarily as mouthpieces for the author’s own thoughts."
+      },
+      {
+        "key": "G",
+        "content": "Rather, we ascribe meanings to texts on the basis of interaction between what we might call textual and contextual material: between kinds of organization or patterning we perceive in a text’s formal structures (so especially its language structures) and various kinds of background, social knowledge, belief and attitude that we bring to the text."
+      }
+    ],
+    "answer": [
+      "G"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/七选五"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "G",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-44",
+    "exam": "english1",
+    "year": 2015,
+    "number": 44,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2015-P-partb",
+    "stem": "选出填入第（44）处的选项：\n\nSuch background material inevitably reflects who we are. （44）______ This doesn’t, however, make interpretation merely relative or even pointless. Precisely because readers from different historical periods, places and social experiences produce different but overlapping readings of the same words on the page– including for texts that engage with fundamental human concerns – debates about texts can play an important role in social discussion of beliefs and values.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Are we studying that text and trying to respond in a way that fulfils the requirement of a given course? Reading it simply for pleasure? Skimming it for information? Ways of reading on a train or in bed are likely to differ considerably from reading in a seminar room."
+      },
+      {
+        "key": "B",
+        "content": "Factors such as the place and period in which we are reading, our gender, ethnicity, age and social class will encourage us towards certain interpretations but at the same time obscure or even close off others."
+      },
+      {
+        "key": "C",
+        "content": "If you are unfamiliar with words or idioms, you guess at their meaning, using clues presented in the context. On the assumption that they will become relevant later, you make a mental note of discourse entities as well as possible links between them."
+      },
+      {
+        "key": "D",
+        "content": "In effect, you try to reconstruct the likely meanings or effects that any given sentence, image or reference might have had: These might be the ones the author intended."
+      },
+      {
+        "key": "E",
+        "content": "You make further inferences, for instance, about how the text may be significant to you, or about its validity – inferences that form the basis of a personal response for which the author will inevitably be far less responsible."
+      },
+      {
+        "key": "F",
+        "content": "In plays, novels and narrative poems, characters speak as constructs created by the author, not necessarily as mouthpieces for the author’s own thoughts."
+      },
+      {
+        "key": "G",
+        "content": "Rather, we ascribe meanings to texts on the basis of interaction between what we might call textual and contextual material: between kinds of organization or patterning we perceive in a text’s formal structures (so especially its language structures) and various kinds of background, social knowledge, belief and attitude that we bring to the text."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/七选五"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-45",
+    "exam": "english1",
+    "year": 2015,
+    "number": 45,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2015-P-partb",
+    "stem": "选出填入第（45）处的选项：\n\nHow we read a given text also depends to some extent on our particular interest in reading it. （45）______ Such dimensions of reading suggest – as others introduced later in the book will also do – that we bring an implicit（often unacknowledged）agenda to any act of reading. It doesn’t then necessarily follow that one kind of reading is fuller, more advanced or more worthwhile than another. Ideally, different kinds of reading inform each other, and act as useful reference points for and counterbalances to one another. Together, they make up the reading component of your overall literacy, or relationship to your surrounding textual environment.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Are we studying that text and trying to respond in a way that fulfils the requirement of a given course? Reading it simply for pleasure? Skimming it for information? Ways of reading on a train or in bed are likely to differ considerably from reading in a seminar room."
+      },
+      {
+        "key": "B",
+        "content": "Factors such as the place and period in which we are reading, our gender, ethnicity, age and social class will encourage us towards certain interpretations but at the same time obscure or even close off others."
+      },
+      {
+        "key": "C",
+        "content": "If you are unfamiliar with words or idioms, you guess at their meaning, using clues presented in the context. On the assumption that they will become relevant later, you make a mental note of discourse entities as well as possible links between them."
+      },
+      {
+        "key": "D",
+        "content": "In effect, you try to reconstruct the likely meanings or effects that any given sentence, image or reference might have had: These might be the ones the author intended."
+      },
+      {
+        "key": "E",
+        "content": "You make further inferences, for instance, about how the text may be significant to you, or about its validity – inferences that form the basis of a personal response for which the author will inevitably be far less responsible."
+      },
+      {
+        "key": "F",
+        "content": "In plays, novels and narrative poems, characters speak as constructs created by the author, not necessarily as mouthpieces for the author’s own thoughts."
+      },
+      {
+        "key": "G",
+        "content": "Rather, we ascribe meanings to texts on the basis of interaction between what we might call textual and contextual material: between kinds of organization or patterning we perceive in a text’s formal structures (so especially its language structures) and various kinds of background, social knowledge, belief and attitude that we bring to the text."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/七选五"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-46",
+    "exam": "english1",
+    "year": 2015,
+    "number": 46,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2015-P-translation",
+    "stem": "This movement, driven by powerful and diverse motivations, built a nation out of a wilderness and, by its nature, shaped the character and destiny of an uncharted continent.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "在各种强大动机的推动下，这场迁移从荒野中造就了一个民族，并循其本质塑造了一片全新大陆的特点，决定了它的命运。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-47",
+    "exam": "english1",
+    "year": 2015,
+    "number": 47,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2015-P-translation",
+    "stem": "The United States is the product of two principal forces – the immigration of European peoples with their varied ideas, customs, and national characteristics and the impact of a new country which modified these traits.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "合众国是两股主要力量作用的产物，一是具有不同思想、风俗和民族特点的欧洲各民族的迁入，二是一个新国家因改变了这些特性而产生的影响。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-48",
+    "exam": "english1",
+    "year": 2015,
+    "number": 48,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2015-P-translation",
+    "stem": "But the force of geographic conditions peculiar to America, the interplay of the varied national groups upon one another, and the sheer difficulty of maintaining old-world ways in a raw, new continent caused significant changes.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "但是美洲特有地理条件的作用，不同族群间的相互影响，加上在一片荒蛮新大陆上维持旧大陆方式的巨大困难，所有这一切引起了意义深远的变化。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-49",
+    "exam": "english1",
+    "year": 2015,
+    "number": 49,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2015-P-translation",
+    "stem": "The first shiploads of immigrants bound for the territory which is now the United States crossed the Atlantic more than a hundred years after the 15th-and-16th-century explorations of North America.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "在十五、十六世纪的北美大陆探险过去一百多年后，首批满载移民驶向今天合众国这片疆土的船只横穿过了大西洋。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-50",
+    "exam": "english1",
+    "year": 2015,
+    "number": 50,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2015-P-translation",
+    "stem": "The virgin forest with its richness and variety of trees was a real treasure-house which extended from Maine all the way down to Georgia.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "郁郁葱葱、树种繁多的原始森林是一座从缅因一直向南绵延到佐治亚的天然宝库。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-51",
+    "exam": "english1",
+    "year": 2015,
+    "number": 51,
+    "section": "writing_a",
+    "type": "essay",
+    "score": 10.0,
+    "passage_id": null,
+    "stem": "51. Directions:\nYou are going to host a club reading session. Write an email of about 100\nwords recommending a book to the club members.\nYou should state reasons for your recommendation.\nYou should write neatly on the ANSWER SHEET.\nDo not sign your own name at the end of the letter, use “Li Ming” instead.\nDo not write the address. (10 points)",
+    "images": [],
+    "options": [],
+    "answer": [
+      "Dear Friends,\nAs the host of the upcoming reading session, I am writing to recommend a plain but moving book, *We Three*, written by Yang Jiang, one of the most talented contemporary female writers.\nWith great wisdom and perseverance, Yang Jiang tells us about the love and support shared by her, her late daughter and her husband over more than 60 years, as well as their experiences of being happily together and heartbreakingly apart.  By depicting dreams as well as realities, this book shows us the sorrows and joys of life.  In addition, through this ordinary but extraordinary family, we can see the character of Chinese intellectuals of that time—their devotion to family and diligence in study—and deeply appreciate the truth that happiness always comes with troubles.\nI hope you will enjoy the book as much as I do and share your impressions of it during the session.\nYours sincerely,\nLi Ming"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/小作文（书信、通知等）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2015-52",
+    "exam": "english1",
+    "year": 2015,
+    "number": 52,
+    "section": "writing_b",
+    "type": "essay",
+    "score": 20.0,
+    "passage_id": null,
+    "stem": "52. Directions:\nWrite an essay of 160-200 words based on the following picture. In your essay,\nyou should\n1) describe the picture briefly,\n2) interpret its intended meaning, and\n3) give your comments.\nYou should write neatly on ANSWER SHEET. (20 points)\n（图题：手机时代的聚会）",
+    "images": [
+      "images/english1-2015/q52.jpg"
+    ],
+    "options": [],
+    "answer": [
+      "Four friends get together to have a dinner. What's weird is that the four appear to be stranger to each other, not talking with friends seated beside but totally indulging in smart phones.\nThe picture reveals a typical scene for modern people.\nWhenever people have a chance to relax, they will fish out phones to play for a while.  The warm face-to-face communication which was taken for granted has been violently ruined by smart phones and become a luxury. It is challenging or even impossible for many people to concentrate on face-to-face communication. As the quality of emotional interaction between people suffer an annoying dramatic deterioration, more and more people arrive at an agreement that people should shut down mobile phones when being with friends or relatives. Unfortunately, it is only a theoretical opinion around the WeChat, a communication tool on the smart phone. Few people apply it into life.\nThe smart phone is really the most controversial modern invention, bringing enjoyable relaxation and great convenience on one hand and causing problematic phone addiction and consequent interpersonal isolation on the other hand.  Rational attitude should be paid to the mobile phone.  We should not squander the limited and precious time with friends and relatives on a lifeless machine.  Due importance should be attached to the contact in real life."
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/大作文（图画作文）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2015-1/2015-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  }
+]

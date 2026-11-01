@@ -1,0 +1,20 @@
+event: step
+data: {"type":"step","command_id":"fdfc6acc-52d7-4054-8ccb-1dd34298de49","text":"收到：「明天加 10 道错题」"}
+
+event: step
+data: {"type":"step","command_id":"fdfc6acc-52d7-4054-8ccb-1dd34298de49","text":"正在翻你的错题本","tool":"getWrongQuestions"}
+
+event: step
+data: {"type":"step","command_id":"fdfc6acc-52d7-4054-8ccb-1dd34298de49","text":"还没有错题，在明天（11-02）排 10 道基础练习","tool":"updateDailyPlan"}
+
+event: action
+data: {"type":"action","command_id":"fdfc6acc-52d7-4054-8ccb-1dd34298de49","action":{"id":"8fef5245-d295-49d5-8232-d690d74be9e6","command_id":"fdfc6acc-52d7-4054-8ccb-1dd34298de49","group_id":"fdfc6acc-52d7-4054-8ccb-1dd34298de49","trigger":"command","tool":"updateDailyPlan","summary":"在 11-02 的计划里加了「基础练习 10 题」","reason":"你说「明天加 10 道错题」，现在没有错题，先用 10 道基础题摸一下底。","target":{"kind":"plan_task","id":"19b29c4c-85a9-458e-b789-6a056bfcbae1"},"before":null,"after":{"id":"19b29c4c-85a9-458e-b789-6a056bfcbae1","kind":"practice","title":"基础练习 10 题","status":"todo","payload":{"count":10},"plan_id":"0fca51e5-a795-4f51-ac79-cea7edf17999","sort_order":-3,"updated_at":"2026-11-01T15:29:30.620Z","completed_at":null,"agent_action_id":null,"changed_by_agent":true,"estimated_minutes":60},"undoable":true,"undone_at":null,"created_at":"2026-11-01T15:29:30.620Z"}}
+
+event: action
+data: {"type":"action","command_id":"fdfc6acc-52d7-4054-8ccb-1dd34298de49","action":{"id":"fb633616-9c73-4a8e-95e4-9cd48d9d040c","command_id":"fdfc6acc-52d7-4054-8ccb-1dd34298de49","group_id":"fdfc6acc-52d7-4054-8ccb-1dd34298de49","trigger":"command","tool":"updateDailyPlan","summary":"更新了 11-02 计划的说明","reason":"你说「明天加 10 道错题」，现在没有错题，先用 10 道基础题摸一下底。","target":{"kind":"plan","id":"0fca51e5-a795-4f51-ac79-cea7edf17999"},"before":{"why_changed":"演示建议：热身题已经排上了，再加 3 道基础题巩固。","changed_by_agent":true},"after":{"why_changed":"你说「明天加 10 道错题」，现在没有错题，先用 10 道基础题摸一下底。","changed_by_agent":true},"undoable":true,"undone_at":null,"created_at":"2026-11-01T15:29:30.620Z"}}
+
+event: done
+data: {"type":"done","command_id":"fdfc6acc-52d7-4054-8ccb-1dd34298de49","summary":"在 11-02 的计划里加了「基础练习 10 题」；更新了 11-02 计划的说明（你现在没有错题，先排了 10 道基础题）","mock":true,"reply":"已改明天（11-02）的计划：基础练习 10 题。你现在没有错题，先排了 10 道基础题。","action_count":2,"deduped":false,"date":"2026-11-02","quantity_from":null,"quantity_to":null,"question_id":null}
+
+
+[HTTP 200]

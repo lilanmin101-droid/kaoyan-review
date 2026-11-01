@@ -1,0 +1,31 @@
+{"id": "math1-2023-01", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "", "at": "2026-11-01T05:20-08:00"}
+{"id": "math1-2023-06", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "", "at": "2026-11-01T05:20-08:00"}
+{"id": "math1-2023-08", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "", "at": "2026-11-01T05:20-08:00"}
+{"id": "math1-2023-13", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "", "at": "2026-11-01T05:20-08:00"}
+{"id": "math1-2023-14", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "", "at": "2026-11-01T05:20-08:00"}
+{"id": "math1-2023-16", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "", "at": "2026-11-01T05:20-08:00"}
+{"id": "math1-2023-02", "kind": "official_solution", "result": "fail", "by": "行业专家", "note": "计算错误：通解写成 e^{-λx}，重根情形写成 x e^{a/2 x}，指数符号都反了；也没说明 D 属于 Δ>0 的情形。已补专家讲解。", "at": "2026-11-01T05:20-08:00"}
+{"id": "math1-2023-03", "kind": "official_solution", "result": "fail", "by": "行业专家", "note": "符号错误：左导数和左侧二阶导数写成 x→0^+，并且两处都标成 y''_+；解析中间夹了一张网站水印图。已补专家讲解。", "at": "2026-11-01T05:20-08:00"}
+{"id": "math1-2023-05", "kind": "official_solution", "result": "fail", "by": "行业专家", "note": "跳步：只算出 r1=n、r2=r(AB)+n、r3=r(ABAB)+n 就选 B，漏了关键的 r(ABAB)≤r(AB)。已补专家讲解。", "at": "2026-11-01T05:20-08:00"}
+{"id": "math1-2023-09", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "小问题：第二组样本误写成 Y1…Yn，应为 Ym。", "at": "2026-11-01T05:20-08:00"}
+{"id": "math1-2023-10", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "小问题：解析中间夹了一张网站水印图，需要删除。", "at": "2026-11-01T05:20-08:00"}
+{"id": "math1-2023-15", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "建议：「同理」处可补一句「α1、α2、α3 两两正交，模长平方都是 3」，否则读者看不出为什么交叉项为 0。", "at": "2026-11-01T05:20-08:00"}
+{"id":"math1-2023-04","kind":"official_solution","result":"pass","by":"用户","at":"2026-11-01T05:25-08:00","note":"两个方向都证到了，合格。小建议：结尾补一句「故选(A)」。"}
+{"id":"math1-2023-07","kind":"official_solution","result":"pass","by":"用户","at":"2026-11-01T05:25-08:00","note":"化简和零空间向量 (-3,1,-1,1) 都验过，合格。小问题：解析里把 γ 写成了 r，跟题干对不上，建议改回 γ，结尾补一句「故选(D)」。"}
+{"id":"math1-2023-11","kind":"official_solution","result":"pass","by":"用户","at":"2026-11-01T05:25-08:00","note":"展开到二阶后比较系数，a+1=0、b-1/2=3/2，合格。"}
+{"id":"math1-2023-12","kind":"official_solution","result":"pass","by":"用户","at":"2026-11-01T05:25-08:00","note":"法向量 (1,2,-1) 正确，合格。"}
+{"id": "math1-2023-04", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "合格。小问题：结尾没写「故选 A，充分必要」，建议补上。", "at": "2026-11-01T05:30-08:00"}
+{"id": "math1-2023-07", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "合格，行化简和基础解系已验算。小问题：所求向量写成了 r，应统一为 γ。", "at": "2026-11-01T05:30-08:00"}
+{"id": "math1-2023-11", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "合格，泰勒展开系数已验。", "at": "2026-11-01T05:30-08:00"}
+{"id": "math1-2023-12", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "合格。", "at": "2026-11-01T05:30-08:00"}
+{"id": "math1-2023-02", "kind": "expert", "result": "pass", "status": "confirmed", "by": "用户", "note": "合格。三种判别式情况推导正确，A/B（a≠0 指数因子无界）、D（Δ>0 实根无界）都已排除，LaTeX 正常。", "at": "2026-11-01T06:14-08:00"}
+{"id": "math1-2023-03", "kind": "expert", "result": "fail", "status": "suspect", "by": "用户", "note": "不合格类别6：计算全对（f'(0)=0，f''_+(0)=2/9，f''_-(0)=-2 已验算），但没有逐项排除错误选项。建议在第4步末补一句：「由 f'(0)=0 存在排除 A；f'(x) 在 0 处连续排除 B；f''(0) 不存在排除 D。」", "at": "2026-11-01T06:14-08:00"}
+{"id": "math1-2023-05", "kind": "expert", "result": "fail", "status": "suspect", "by": "用户", "note": "不合格类别6：三处分块初等变换均已逐块验算正确，结论 r1≤r3≤r2 对；但没说明 A、C、D 为何错。建议补：「取 A=B=E、C=O：r1=n，r2=r3=2n，C（r3≤r1）、D（r2≤r1）不成立；取 n=2，A=[[0,1],[0,0]]、B=E、C=O：r(AB)=1、r(ABAB)=0，r3=2<r2=3，A（r2≤r3）不成立。」", "at": "2026-11-01T06:14-08:00"}
+{"id": "math1-2023-17", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "切线截距建方程、解得 y=x(2−ln x)、f 在 x=e² 取最大值 e⁴/4−5/4，推导正确。", "at": "2026-11-01T06:14-08:00"}
+{"id": "math1-2023-18", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "三个驻点和 A、B、C 值我逐个重算过；(0,0) 沿 y=x²+kx³ 用 kx⁵ 变号说明非极值，论证完整；极小值 −4/729 正确。", "at": "2026-11-01T06:14-08:00"}
+{"id": "math1-2023-19", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "高斯公式与对称性化简正确，5π/4。", "at": "2026-11-01T06:14-08:00"}
+{"id": "math1-2023-20", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "思路正确，但第（Ⅱ）问有两处要修：①γ1 应介于 −a 与 x0 之间、γ2 介于 x0 与 a 之间，原文写成 −a<γ1<0、0<γ2<a 是错的（x0 不一定是 0）；②「M=max{|f''(γ1)|,} |f''(γ2)|」括号被识别坏了，应为 M=max{|f''(γ1)|,|f''(γ2)|}。结论不受影响。", "at": "2026-11-01T06:14-08:00"}
+{"id": "math1-2023-21", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "两次配方正确，所求矩阵我验过 PᵀAP=B；（Ⅱ）用迹 5≠3 否定正交变换，正确。", "at": "2026-11-01T06:14-08:00"}
+{"id": "math1-2023-22", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "边缘密度、不独立的判断、Z 的分布函数 z² 与密度 2z 都正确。", "at": "2026-11-01T06:14-08:00"}
+{"id": "math1-2023-03", "kind": "expert", "result": "pass", "status": "confirmed", "by": "用户", "note": "复查通过：已补排除 A（f'(0) 存在）、B（f' 连续）、D（f''(0) 不存在），计算此前已验，LaTeX 正常。", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2023-05", "kind": "expert", "result": "pass", "status": "confirmed", "by": "用户", "note": "复查通过：两个反例已验算（A=B=E,C=O 得 r1=n,r2=r3=2n 排除 C、D；n=2 幂零 A 得 r3=2<r2=3 排除 A），均满足 ABC=O。", "at": "2026-11-01T06:19-08:00"}

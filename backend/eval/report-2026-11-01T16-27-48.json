@@ -1,0 +1,4984 @@
+{
+ "summary": {
+  "unit": {
+   "pass": 175,
+   "fail": 0
+  },
+  "builtin": {
+   "pass": 348,
+   "fail": 4
+  },
+  "file": {
+   "cases": 38,
+   "pass": 60,
+   "fail": 0,
+   "manual": 108
+  }
+ },
+ "results": [
+  {
+   "id": "r6-tz",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 6 轮：「今天」按账号时区算（X-Timezone 写进 settings），桌面/手机一致",
+   "checks": [
+    {
+     "assertion": "settings.timezone = X-Timezone",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"settings\":{\"timezone\":\"America/Los_Angeles\"},\"timezone\":\"America/Los_Angeles\",\"today\":\"2026-11-01\",\"effective\":{\"coach_frequency\":\"normal\",\"quiet_hours\":null,\"study_date\":\"2026-11-01\",\"day_start_hour\":4,\"calendar_date\":\"2026-11-01\",\"local_time\":\"08:27\",\"days_to_exam\":null,\"auto_reduced\":false,\"auto_reduced_every_days\":null}}"
+    },
+    {
+     "assertion": "plans/today、words/today、done.date = 账号时区今天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01 2026-11-01 2026-11-01 want 2026-11-01"
+    },
+    {
+     "assertion": "step 写明真实日期",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "收到：「今天只有一小时」 | 正在翻你的错题本 | 今天（11-01）只有 60 分钟，现有任务放得下，不用挪 | 还没有错题，在今天（11-01）排 5 道基础练习"
+    },
+    {
+     "assertion": "不带头的另一端也是同一天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01"
+    },
+    {
+     "assertion": "没写进别的日期",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "在今天（11-01）的计划里加了「基础练习 5 题」 | 更新了今天（11-01）计划的说明"
+    }
+   ],
+   "transcript": [
+    "> 今天只有一小时",
+    "  · 收到：「今天只有一小时」",
+    "  · 正在翻你的错题本",
+    "  · 今天（11-01）只有 60 分钟，现有任务放得下，不用挪",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。"
+   ]
+  },
+  {
+   "id": "r6-dedupe-qty",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 6 轮：同一句话 60 秒内只执行一次；「一道」=1、「两道」=2、数字照用，没说数量默认 3",
+   "checks": [
+    {
+     "assertion": "「一道」→ 重做 1 道错题",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "在今天（11-01）的计划里加了「重做 1 道错题」 | 更新了今天（11-01）计划的说明"
+    },
+    {
+     "assertion": "同一句第二次：不新增，step 说已经有了，deduped",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "刚刚说过同样的话，今天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行。还要再加的话，回「确认再加 1 道」"
+    },
+    {
+     "assertion": "换种说法带「加」→ 叠加 1→2",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "收到：「帮我加道重做错题」 | 正在翻你的错题本 | 要加 1 道重做错题，对照今天（11-01）的计划 | 今天（11-01）的「重做错题」已从 1 道加到 2 道"
+    },
+    {
+     "assertion": "只有一条错题任务",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "重做 2 道错题"
+    },
+    {
+     "assertion": "「两道」→ 2 道",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "重做 2 道错题"
+    },
+    {
+     "assertion": "没说数量 → 默认 3 道",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "重做 3 道错题"
+    },
+    {
+     "assertion": "要 12 道只有 4 道：照实说",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "收到：「重做 12 道错题」 | 正在翻你的错题本 | 要排 12 道重做错题，对照今天（11-01）的计划 | 你说要 12 道，错题本里该重做的只有 4 道，先排这 4 道 | 今天（11-01）的「重做错题」已从 3 道改为 4 道"
+    }
+   ],
+   "transcript": [
+    "> 帮我加一道重做错题",
+    "  · 收到：「帮我加一道重做错题」",
+    "  · 正在翻你的错题本",
+    "  · 要加 1 道重做错题，对照今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 1 道错题」（你说「帮我加一道重做错题」，按你说的在原来的基础上再加 1 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「帮我加一道重做错题」，按你说的在原来的基础上再加 1 道错题重做。）",
+    "  = 已改今天（11-01）的计划：重做 1 道错题。",
+    "> 帮我加一道重做错题",
+    "  · 刚刚说过同样的话，今天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行。还要再加的话，回「确认再加 1 道」",
+    "  = 刚刚说过同样的话，今天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行。还要再加的话，回「确认再加 1 道」",
+    "> 帮我加道重做错题",
+    "  · 收到：「帮我加道重做错题」",
+    "  · 正在翻你的错题本",
+    "  · 要加 1 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的「重做错题」已从 1 道加到 2 道",
+    "  ✎ 今天（11-01）「重做错题」已从 1 道加到 2 道（你说「帮我加道重做错题」，按你说的在原来的基础上再加 1 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「帮我加道重做错题」，按你说的在原来的基础上再加 1 道错题重做。）",
+    "  = 已把今天（11-01）的「重做错题」从 1 道加到 2 道。"
+   ]
+  },
+  {
+   "id": "r6-words",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 6 轮：单词「今日第 n / 总数」总数当天冻结，「记住了」+ F5 不减",
+   "checks": [
+    {
+     "assertion": "首次 position=1",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"review\":0,\"new\":20,\"relearn\":0,\"new_target\":20,\"new_done_today\":0,\"reviewed_today\":0,\"done_today\":0,\"remaining\":20,\"scheduled_today\":20,\"position\":1}"
+    },
+    {
+     "assertion": "F5 后总数不变、position=4",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "20 → {\"review\":0,\"new\":17,\"relearn\":0,\"new_target\":20,\"new_done_today\":3,\"reviewed_today\":3,\"done_today\":3,\"remaining\":17,\"scheduled_today\":20,\"position\":4}"
+    },
+    {
+     "assertion": "重学词进 relearn，总数仍不变",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"review\":0,\"new\":17,\"relearn\":1,\"new_target\":20,\"new_done_today\":3,\"reviewed_today\":3,\"done_today\":3,\"remaining\":17,\"scheduled_today\":20,\"position\":4}"
+    },
+    {
+     "assertion": "总数没减少",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "qty-semantics",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "数量语义：同句 60 秒内=重复；带「加/再/多/补」= 叠加；只说数量 = 设定；每次改数量可一键撤回到原数量",
+   "checks": [
+    {
+     "assertion": "重做 3 道 → 3",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "3 {\"type\":\"done\",\"command_id\":\"28ff10a0-797d-450d-bd58-0b16edb12c76\",\"summary\":\"在今天（11-01）的计划里加了「重做 3 道错题」；更新了今天（11-01）计划的说明\",\"mock\":true,\"reply\":\"已改今天（11-01）的计划：重做 3 道错题。\",\"action_count\":2,\"deduped\":false,\"date\":\"2026-11-01\",\"quantity_from\":0,\"quantity_to\":3,\"question_id\":null}"
+    },
+    {
+     "assertion": "加两道：3→5 + step",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "5 收到：「加两道重做错题」 | 正在翻你的错题本 | 要加 2 道重做错题，对照今天（11-01）的计划 | 今天（11-01）的「重做错题」已从 3 道加到 5 道"
+    },
+    {
+     "assertion": "同句重发：deduped + 刚才已从 3 道加到 5 道 + 问再加",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "刚刚说过同样的话，刚才已从 3 道加到 5 道，今天（11-01）的计划里已经有「重做 5 道错题」，这次没有重复执行。还要再加的话，回「确认再加 2 道」"
+    },
+    {
+     "assertion": "今天重做 5 道（已是 5）：已经有，deduped",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "收到：「今天重做 5 道错题」 | 正在翻你的错题本 | 要排 5 道重做错题，对照今天（11-01）的计划 | 今天（11-01）的计划里已经有「重做 5 道错题」，没有重复添加"
+    },
+    {
+     "assertion": "再来 2 道：5→7",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "7 收到：「再来 2 道错题」 | 正在翻你的错题本 | 要加 2 道重做错题，对照今天（11-01）的计划 | 今天（11-01）的「重做错题」已从 5 道加到 7 道"
+    },
+    {
+     "assertion": "今天重做 4 道：7→4 + step「已从 7 道改为 4 道」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "4 收到：「今天重做 4 道错题」 | 正在翻你的错题本 | 要排 4 道重做错题，对照今天（11-01）的计划 | 今天（11-01）的「重做错题」已从 7 道改为 4 道"
+    },
+    {
+     "assertion": "改数量的 action 记了原数量（before）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"id\":\"8487c5aa-f208-43be-8b39-d3f3bc2a7984\",\"kind\":\"redo_wrong\",\"title\":\"重做 4 道错题\",\"status\":\"todo\",\"payload\":{\"question"
+    },
+    {
+     "assertion": "HTTP 撤回 → 回到 7",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 7"
+    },
+    {
+     "assertion": "撤回后同一句重新执行",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "4 收到：「今天重做 4 道错题」 | 正在翻你的错题本 | 要排 4 道重做错题，对照今天（11-01）的计划 | 今天（11-01）的「重做错题」已从 7 道改为 4 道"
+    },
+    {
+     "assertion": "重复句没有叠加",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "设定没有变成叠加",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "始终只有一条错题任务",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 重做 3 道错题",
+    "  · 收到：「重做 3 道错题」",
+    "  · 正在翻你的错题本",
+    "  · 要排 3 道重做错题，对照今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 3 道错题」（你说「重做 3 道错题」，按你说的排 3 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「重做 3 道错题」，按你说的排 3 道错题重做。）",
+    "  = 已改今天（11-01）的计划：重做 3 道错题。",
+    "> 加两道重做错题",
+    "  · 收到：「加两道重做错题」",
+    "  · 正在翻你的错题本",
+    "  · 要加 2 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的「重做错题」已从 3 道加到 5 道",
+    "  ✎ 今天（11-01）「重做错题」已从 3 道加到 5 道（你说「加两道重做错题」，按你说的在原来的基础上再加 2 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「加两道重做错题」，按你说的在原来的基础上再加 2 道错题重做。）",
+    "  = 已把今天（11-01）的「重做错题」从 3 道加到 5 道。",
+    "> 加两道重做错题",
+    "  · 刚刚说过同样的话，刚才已从 3 道加到 5 道，今天（11-01）的计划里已经有「重做 5 道错题」，这次没有重复执行。还要再加的话，回「确认再加 2 道」",
+    "  = 刚刚说过同样的话，刚才已从 3 道加到 5 道，今天（11-01）的计划里已经有「重做 5 道错题」，这次没有重复执行。还要再加的话，回「确认再加 2 道」",
+    "> 今天重做 5 道错题",
+    "  · 收到：「今天重做 5 道错题」",
+    "  · 正在翻你的错题本",
+    "  · 要排 5 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的计划里已经有「重做 5 道错题」，没有重复添加",
+    "  = 今天（11-01）的计划里已经有「重做 5 道错题」，没有重复添加。",
+    "> 再来 2 道错题",
+    "  · 收到：「再来 2 道错题」",
+    "  · 正在翻你的错题本",
+    "  · 要加 2 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的「重做错题」已从 5 道加到 7 道",
+    "  ✎ 今天（11-01）「重做错题」已从 5 道加到 7 道（你说「再来 2 道错题」，按你说的在原来的基础上再加 2 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「再来 2 道错题」，按你说的在原来的基础上再加 2 道错题重做。）",
+    "  = 已把今天（11-01）的「重做错题」从 5 道加到 7 道。",
+    "> 今天重做 4 道错题",
+    "  · 收到：「今天重做 4 道错题」",
+    "  · 正在翻你的错题本",
+    "  · 要排 4 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的「重做错题」已从 7 道改为 4 道",
+    "  ✎ 今天（11-01）「重做错题」已从 7 道改为 4 道（你说「今天重做 4 道错题」，按你说的排 4 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天重做 4 道错题」，按你说的排 4 道错题重做。）",
+    "  = 已把今天（11-01）的「重做错题」从 7 道改为 4 道。",
+    "> 今天重做 4 道错题",
+    "  · 收到：「今天重做 4 道错题」",
+    "  · 正在翻你的错题本",
+    "  · 要排 4 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的「重做错题」已从 7 道改为 4 道",
+    "  ✎ 今天（11-01）「重做错题」已从 7 道改为 4 道（你说「今天重做 4 道错题」，按你说的排 4 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天重做 4 道错题」，按你说的排 4 道错题重做。）",
+    "  = 已把今天（11-01）的「重做错题」从 7 道改为 4 道。"
+   ]
+  },
+  {
+   "id": "tz-midnight",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "凌晨 00:30（账号时区）说「今天只有一小时」→ 学习日 04:00 才换天，所以还是前一天（日历昨天）的计划，并说明一句",
+   "checks": [
+    {
+     "assertion": "settings.today = 学习日（还没到 04:00，仍是前一天）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01/2026-11-01/2026-11-02 want 2026-11-01/2026-11-02"
+    },
+    {
+     "assertion": "done.date = 学习日",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01 want 2026-11-01"
+    },
+    {
+     "assertion": "step 说现在几点、按今天（MM-DD）排",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "收到：「今天只有一小时」 | 现在是 00:30（America/Los_Angeles），还没到 4:00 换日，按今天（11-01）排 | 正在翻你的错题本 | 今天（11-01）只有 60 分钟，现有任务放得下，不用挪 | 还没有错题，在今天（11-01）排 5 道基础练习"
+    },
+    {
+     "assertion": "回复说一次「凌晨 4 点前还算 MM-DD 这一天」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改今天（11-01）的计划：基础练习 5 题。凌晨 4 点前还算 11-01 这一天。"
+    },
+    {
+     "assertion": "没有写到别的日期",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "在今天（11-01）的计划里加了「基础练习 5 题」 | 更新了今天（11-01）计划的说明"
+    }
+   ],
+   "transcript": [
+    "> 今天只有一小时",
+    "  · 收到：「今天只有一小时」",
+    "  · 现在是 00:30（America/Los_Angeles），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 今天（11-01）只有 60 分钟，现有任务放得下，不用挪",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。凌晨 4 点前还算 11-01 这一天。"
+   ]
+  },
+  {
+   "id": "settings-quiet-hours",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "「我的」免打扰 quiet_hours 22:30–08:00：23:00 的夜间复盘照常生成，但不在时段里出现，排到 08:00 才送达",
+   "checks": [
+    {
+     "assertion": "复盘照常生成",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"job\":\"nightly\",\"skipped\":false,\"forced\":false,\"mode\":\"mock\",\"summary\":\"写了今天（11-01）的今日复盘；在明天（11-02）的计划里加了「重做 1 道到期错题」；更新了明天（11-02）计划的说明\",\"reply\":\"明天（11-02）先重做 1 道到期错题。\",\"actions\":[{\"id\":\"fb9662c0-1f7"
+    },
+    {
+     "assertion": "23:00 看不到，queued=1",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"items\":0,\"queued\":1}"
+    },
+    {
+     "assertion": "next_delivery_at = 次日 08:00（账号时区）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-02T16:00:00.000Z want 2026-11-02T16:00:00.000Z"
+    },
+    {
+     "assertion": "plans/today 23:00 不出现复盘",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "null"
+    },
+    {
+     "assertion": "07:59 仍看不到",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "0"
+    },
+    {
+     "assertion": "08:00 出现",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"review\"]"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "settings-ask",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "「我的」coach_frequency=ask：夜间复盘只提建议、不改计划；确认后才改、可撤回；忽略就不改",
+   "checks": [
+    {
+     "assertion": "复盘消息照常",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"proposal\",\"review\"]"
+    },
+    {
+     "assertion": "ask 模式不自动改明天计划",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "[]"
+    },
+    {
+     "assertion": "有 pending 的 proposal（带建议内容）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "教练想做 1 处改动，等你确认后才执行：想在明天（11-02）的计划里加「重做 1 道到期错题」"
+    },
+    {
+     "assertion": "confirm 后明天计划有任务",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 [\"重做 1 道到期错题\"]"
+    },
+    {
+     "assertion": "confirm 的改动 trigger=confirm 且可撤回",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "confirm undo=200"
+    },
+    {
+     "assertion": "重复 confirm → 409",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "409"
+    },
+    {
+     "assertion": "dismiss 不改计划",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 0"
+    }
+   ],
+   "transcript": [
+    "  · 建议：教练想做 1 处改动，等你确认后才执行：想在明天（11-02）的计划里加「重做 1 道到期错题」",
+    "  · confirm → 200 在明天（11-02）的计划里加了「重做 1 道到期错题」；更新了明天（11-02）计划的说明"
+   ]
+  },
+  {
+   "id": "settings-less-more",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "「我的」coach_frequency=less：复盘每 3 天一次（周报照常）；more：多一条中午提醒；「别管我」叠加在上面",
+   "checks": [
+    {
+     "assertion": "less：第一天发",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"job\":\"nightly\",\"skipped\":false,\"forced\":false,\"mode\":\"mock\",\"summary\":\"写了今天（11-01）的今日复盘\",\"reply\":\"明天（11-02）从一组 5 道基础题开始。\",\"actions\":[{\"id\":\"623ad126"
+    },
+    {
+     "assertion": "less：第二天跳过（每 3 天）",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "提醒频率是「少」：每 3 天复盘一次，上次是 2026-11-01"
+    },
+    {
+     "assertion": "less：周报照常",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "less：第三天发",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "normal：中午提醒不发",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "中午提醒只在提醒频率选「多」（coach_frequency=more）时发，现在是 normal"
+    },
+    {
+     "assertion": "more：中午提醒发出",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "早上好，今天还没排计划。回一句「今天只有一小时」，我帮你排。"
+    },
+    {
+     "assertion": "more + 别管我 → 中午提醒不发",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "少打扰模式中，中午提醒先不发"
+    }
+   ],
+   "transcript": [
+    "  · less d+1：提醒频率是「少」：每 3 天复盘一次，上次是 2026-11-01",
+    "  · more 中午：早上好，今天还没排计划。回一句「今天只有一小时」，我帮你排。",
+    "  · more+别管我：少打扰模式中，中午提醒先不发"
+   ]
+  },
+  {
+   "id": "settings-validate",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "「我的」设置字段名 / 校验 / 部分更新 / exam_date 驱动 plans/today.days_to_exam",
+   "checks": [
+    {
+     "assertion": "平铺字段原样返回",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"timezone\":\"America/Los_Angeles\",\"exam_date\":\"2026-12-19\",\"quiet_hours\":{\"end\":\"07:00\",\"start\":\"23:00\"},\"target_score\":400,\"target_school\":\"浙江大学\",\"coach_frequency\":\"normal\"}"
+    },
+    {
+     "assertion": "部分更新只改 target_score",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"timezone\":\"America/Los_Angeles\",\"exam_date\":\"2026-12-19\",\"quiet_hours\":{\"end\":\"07:00\",\"start\":\"23:00\"},\"target_score\":410,\"target_school\":\"浙江大学\",\"coach_frequency\":\"normal\"}"
+    },
+    {
+     "assertion": "非法值 / 拼错字段 → 400",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "400:目标分填 0–500 之间的整数 | 400:考试日期格式不对 | 400:教练提醒频率请从「多 / 正常 / 少 / 先问我」里选一个 | 400:免打扰时间要写成 23:00 这样 | 400:有一项设置暂时不支持，请刷新页面后再试"
+    },
+    {
+     "assertion": "400 文案给学生看：无字段名 / null，带 field + code",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "invalid_target_score/target_score:目标分填 0–500 之间的整数 | invalid_exam_date/exam_date:考试日期格式不对 | invalid_coach_frequency/coach_frequency:教练提醒频率请从「多 / 正常 / 少 / 先问我」里选一个 | invalid_quiet_hours/quiet_hours:免打扰时间要写成 23:00 这样 | unknown_field/targetScore:有一项设置暂时不支持，请刷新页面后再试"
+    },
+    {
+     "assertion": "plans/today.days_to_exam = 48",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "48 2026-12-19"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "action-group-one-undo",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "一句命令改了计划 + 计划说明：「教练改过的」只显示一条，一次撤回把任务和说明都恢复",
+   "checks": [
+    {
+     "assertion": "一条命令 = 一条记录",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "1 条 / 2 动作 / 在今天（11-01）的计划里加了「重做 2 道错题」 / flat 2"
+    },
+    {
+     "assertion": "命令后计划和说明都改了",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "1 你说「今天重做 2 道错题」，按你说的排 2 道错题重做。 在今天（11-01）的计划里加了「重做 2 道错题」"
+    },
+    {
+     "assertion": "撤回一次 → 任务和说明都恢复",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 2 tasks 0 why null live 0"
+    },
+    {
+     "assertion": "组里另一条再撤 → 409",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "409"
+    },
+    {
+     "assertion": "确认的建议：一条记录、一次撤回",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 1/2 tasks 1→0 200"
+    }
+   ],
+   "transcript": [
+    "> 今天重做 2 道错题",
+    "  · 收到：「今天重做 2 道错题」",
+    "  · 正在翻你的错题本",
+    "  · 要排 2 道重做错题，对照今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 2 道错题」（你说「今天重做 2 道错题」，按你说的排 2 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天重做 2 道错题」，按你说的排 2 道错题重做。）",
+    "  = 已改今天（11-01）的计划：重做 2 道错题。"
+   ]
+  },
+  {
+   "id": "dev-force-proposal",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "没有 API Key 也能看到「先问我」的建议：POST /agent/jobs/run {job, force:true}",
+   "checks": [
+    {
+     "assertion": "没数据也有 pending 建议",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"想在今天（11-01）的计划里加「做 5 道基础题热身」\"]"
+    },
+    {
+     "assertion": "立刻送达",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "queued 0"
+    },
+    {
+     "assertion": "没确认前计划不变",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "0"
+    },
+    {
+     "assertion": "有错题 → 建议重做",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"想在明天（11-02）的计划里加「重做 1 道错题」\"]"
+    },
+    {
+     "assertion": "job 不对 → 400 带 code",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "400 invalid_job"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r8-proposal-new-per-run",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 8 轮：「先问我」每次任务运行一条新建议；已确认的不会被翻回 pending；确认后标题变过去时",
+   "checks": [
+    {
+     "assertion": "3 条不同的建议消息",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"fab13900-84c1-4740-81cd-59f70906d45a\",\"22725955-a32d-4209-824f-a1a3b0a09a36\",\"cd889db2-b3b0-4810-b264-04b59bef7d3f\"]"
+    },
+    {
+     "assertion": "第一条 confirmed，标题过去时",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "confirmed 已在明天（11-02）的计划里加了「做 5 道基础题热身」"
+    },
+    {
+     "assertion": "确认后不说「等你确认 / 还没执行」",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "你确认后已经改好了；不想要的话可以在「教练改动记录」里撤回。"
+    },
+    {
+     "assertion": "重复确认 → 409 already_decided + 中文提示",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"message\":\"这条建议已经处理过了\",\"detail\":\"之前已经确认了，不会重复执行\",\"code\":\"already_decided\",\"proposal\":{\"items\":[{\"job\":\"nightly\",\"tool\":\"updateDailyPlan\",\"input\":{\"date\":\"2026-"
+    },
+    {
+     "assertion": "后两条各确认/忽略一次",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 409 200"
+    },
+    {
+     "assertion": "待确认文案是「想…」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"教练想做 1 处改动，等你确认后才执行：想在明天（11-02）的计划里加「重做 2 道错题」\",\"教练想做 1 处改动，等你确认后才执行：想在今天（11-01）的计划里加「重做 1 道错题」\"]"
+    },
+    {
+     "assertion": "忽略后「已忽略，计划没改」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已忽略，计划没改 | 原来的建议：在明天（11-02）的计划里加「重做 2 道错题」。"
+    },
+    {
+     "assertion": "建议消息的 action 有 group_id（和本次任务同组）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"d1f108ce-1747-41ae-95c5-5385525cee41\",\"d563b665-f6c7-4abd-9bef-6f872705b255\",\"13d47ff6-aa38-4f46-9ed4-1269b7118b3f\"]"
+    },
+    {
+     "assertion": "没有往已确认的建议里塞新改动",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r8-proposal-dedupe",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 8 轮：建议去重——已确认 / 计划里已有的不再提，热身排过一次不再提；老数据读时也显示过去时",
+   "checks": [
+    {
+     "assertion": "midday / weekly 不再出建议，说原因",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "没有新的建议：想做的改动计划里已经有了，不重复提 | 没有新的建议：想做的改动计划里已经有了，不重复提"
+    },
+    {
+     "assertion": "只有 1 条建议",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "1"
+    },
+    {
+     "assertion": "没有再提热身",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "老数据读时过去时",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已在 10-31 的计划里加了「重做 1 道错题」 | 你确认后已经改好了；不想要的话可以在「教练改动记录」里撤回。"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r8-wrong-filter",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 8 轮：「昨天的错题」= 按做错的日子筛题（用户时区），「明天 / 后天排」才是排的日子；筛不到就直说、不改计划",
+   "checks": [
+    {
+     "assertion": "昨天的错题 → 今天排，题是昨天错的",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改今天（11-01）的计划：重做 1 道错题。是从昨天（10-31）做错的题里挑的。 | [\"math1-2024-01\"]"
+    },
+    {
+     "assertion": "没有排到昨天",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "0"
+    },
+    {
+     "assertion": "今天做错的 → 明天排，题是今天错的",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。 | [\"math1-2024-05\"]"
+    },
+    {
+     "assertion": "上周没有 → 直说并问，不改计划",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "上周（10-19–10-25）没有做错的题，这次没改计划。要换一下吗？回「排 2 道今天做错的题」用今天的（有 1 道），或回「排 2 道错题」从全部错题里挑（有 2 道）。"
+    },
+    {
+     "assertion": "筛不到时没偷偷换题",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "「后天加 1 道错题」照常排后天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改后天（11-03）的计划：重做 1 道错题。 2026-11-03"
+    }
+   ],
+   "transcript": [
+    "> 昨天的错题帮我排 1 道",
+    "  · 收到：「昨天的错题帮我排 1 道」",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：昨天（10-31）做错的题有 1 道",
+    "  · 要排 1 道重做错题，对照今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 1 道错题」（是从昨天（10-31）做错的题里挑的。）",
+    "  ✎ 更新了今天（11-01）计划的说明（是从昨天（10-31）做错的题里挑的。）",
+    "  = 已改今天（11-01）的计划：重做 1 道错题。是从昨天（10-31）做错的题里挑的。",
+    "> 今天做错的题明天帮我排 1 道",
+    "  · 收到：「今天做错的题明天帮我排 1 道」",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：今天（11-01）做错的题有 1 道",
+    "  · 要排 1 道重做错题，对照明天（11-02）的计划",
+    "  ✎ 在明天（11-02）的计划里加了「重做 1 道错题」（是从今天（11-01）做错的题里挑的。）",
+    "  ✎ 更新了明天（11-02）计划的说明（是从今天（11-01）做错的题里挑的。）",
+    "  = 已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。",
+    "> 上周的错题帮我排 2 道",
+    "  · 收到：「上周的错题帮我排 2 道」",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：上周（10-19–10-25）做错的题有 0 道",
+    "  = 上周（10-19–10-25）没有做错的题，这次没改计划。要换一下吗？回「排 2 道今天做错的题」用今天的（有 1 道），或回「排 2 道错题」从全部错题里挑（有 2 道）。",
+    "> 后天加 1 道错题",
+    "  · 收到：「后天加 1 道错题」",
+    "  · 正在翻你的错题本",
+    "  · 要加 1 道重做错题，对照后天（11-03）的计划",
+    "  ✎ 在后天（11-03）的计划里加了「重做 1 道错题」（你说「后天加 1 道错题」，按你说的在原来的基础上再加 1 道错题重做。）",
+    "  ✎ 更新了后天（11-03）计划的说明（你说「后天加 1 道错题」，按你说的在原来的基础上再加 1 道错题重做。）",
+    "  = 已改后天（11-03）的计划：重做 1 道错题。"
+   ]
+  },
+  {
+   "id": "r8-mismatch-explained",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 8 轮：执行和说的不一样（没错题 / 错题不够 / 日期已过 / 超上限 / 没得加）→ 回复里一句话说清原因和改成了什么",
+   "checks": [
+    {
+     "assertion": "没错题 → 说明并按 10 道排",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改明天（11-02）的计划：基础练习 10 题。你现在没有错题，先排了 10 道基础题。 | 基础练习 10 题"
+    },
+    {
+     "assertion": "超过 20 → 说明封顶",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改后天（11-03）的计划：基础练习 20 题。你现在没有错题，先排了 20 道基础题。一次最多排 20 道，先排了 20 道。"
+    },
+    {
+     "assertion": "不够 5 道 → 说明只有 2 道",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改后天（11-03）的计划：重做 2 道错题。你要 5 道，错题本里该重做的只有 2 道，先排了这 2 道。"
+    },
+    {
+     "assertion": "why_changed 写实际做的（和回复同一句），不复述原话",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "你要 5 道，错题本里该重做的只有 2 道，先排了这 2 道。"
+    },
+    {
+     "assertion": "没得加 → 说明为什么没改",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "你要再加 4 道，但错题本里该重做的 2 道已经都排进后天（11-03）了，没有可以再加的，这次没改。"
+    },
+    {
+     "assertion": "说昨天 → 排到今天并说明",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改今天（11-01）的计划：重做 1 道错题。昨天已经过去了，排到了今天（11-01）。"
+    },
+    {
+     "assertion": "不是只回「已改计划」",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 明天加 10 道错题",
+    "  · 收到：「明天加 10 道错题」",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在明天（11-02）排 10 道基础练习",
+    "  ✎ 在明天（11-02）的计划里加了「基础练习 10 题」（你现在没有错题，先排了 10 道基础题。）",
+    "  ✎ 更新了明天（11-02）计划的说明（你现在没有错题，先排了 10 道基础题。）",
+    "  = 已改明天（11-02）的计划：基础练习 10 题。你现在没有错题，先排了 10 道基础题。",
+    "> 后天练 30 道错题",
+    "  · 收到：「后天练 30 道错题」",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在后天（11-03）排 20 道基础练习",
+    "  ✎ 在后天（11-03）的计划里加了「基础练习 20 题」（你现在没有错题，先排了 20 道基础题。一次最多排 20 道，先排了 20 道。）",
+    "  ✎ 更新了后天（11-03）计划的说明（你现在没有错题，先排了 20 道基础题。一次最多排 20 道，先排了 20 道。）",
+    "  = 已改后天（11-03）的计划：基础练习 20 题。你现在没有错题，先排了 20 道基础题。一次最多排 20 道，先排了 20 道。",
+    "> 后天重做 5 道错题",
+    "  · 收到：「后天重做 5 道错题」",
+    "  · 正在翻你的错题本",
+    "  · 要排 5 道重做错题，对照后天（11-03）的计划",
+    "  · 你说要 5 道，错题本里该重做的只有 2 道，先排这 2 道",
+    "  ✎ 在后天（11-03）的计划里加了「重做 2 道错题」（你要 5 道，错题本里该重做的只有 2 道，先排了这 2 道。）",
+    "  ✎ 更新了后天（11-03）计划的说明（你要 5 道，错题本里该重做的只有 2 道，先排了这 2 道。）",
+    "  = 已改后天（11-03）的计划：重做 2 道错题。你要 5 道，错题本里该重做的只有 2 道，先排了这 2 道。",
+    "> 后天再加 4 道错题",
+    "  · 收到：「后天再加 4 道错题」",
+    "  · 正在翻你的错题本",
+    "  · 要加 4 道重做错题，对照后天（11-03）的计划",
+    "  · 错题本里没有更多该重做的错题了，11-03 还是「重做 2 道错题」",
+    "  = 你要再加 4 道，但错题本里该重做的 2 道已经都排进后天（11-03）了，没有可以再加的，这次没改。",
+    "> 昨天加 1 道错题",
+    "  · 收到：「昨天加 1 道错题」",
+    "  · 正在翻你的错题本",
+    "  · 要加 1 道重做错题，对照今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 1 道错题」（昨天已经过去了，排到了今天（11-01）。）",
+    "  ✎ 更新了今天（11-01）计划的说明（昨天已经过去了，排到了今天（11-01）。）",
+    "  = 已改今天（11-01）的计划：重做 1 道错题。昨天已经过去了，排到了今天（11-01）。"
+   ]
+  },
+  {
+   "id": "r8-error-shape",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 8 轮：404 / 409 统一 {statusCode,error,message,field,code}，message 学生看得懂",
+   "checks": [
+    {
+     "assertion": "重复撤回 409 already_undone",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"message\":\"这条已经撤回过了\",\"code\":\"already_undone\",\"statusCode\":409,\"error\":\"Conflict\",\"field\":null}"
+    },
+    {
+     "assertion": "不存在 404 带 code",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"message\":\"这条操作不存在，刷新一下再试\",\"code\":\"action_not_found\",\"statusCode\":404,\"error\":\"Not Found\",\"field\":null}"
+    },
+    {
+     "assertion": "未知路由 404 中文",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"message\":\"没找到这个内容，可能已经被删掉了，刷新一下再试\",\"error\":\"Not Found\",\"statusCode\":404,\"field\":null,\"code\":\"not_found\"}"
+    },
+    {
+     "assertion": "没有英文报错",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 明天加 1 道题",
+    "  · 收到：「明天加 1 道题」",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在明天（11-02）排 1 道基础练习",
+    "  ✎ 在明天（11-02）的计划里加了「基础练习 1 题」（你现在没有错题，先排了 1 道基础题。）",
+    "  ✎ 更新了明天（11-02）计划的说明（你现在没有错题，先排了 1 道基础题。）",
+    "  = 已改明天（11-02）的计划：基础练习 1 题。你现在没有错题，先排了 1 道基础题。"
+   ]
+  },
+  {
+   "id": "r8-register-tz",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 8 轮：注册时读 X-Timezone（→ body.timezone → Asia/Shanghai）",
+   "checks": [
+    {
+     "assertion": "X-Timezone 优先",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "America/Los_Angeles"
+    },
+    {
+     "assertion": "body.timezone 其次",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "Europe/London"
+    },
+    {
+     "assertion": "不合法 → Asia/Shanghai",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "Asia/Shanghai"
+    },
+    {
+     "assertion": "没有忽略 X-Timezone",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r8-dedupe-window",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 8 轮复测：去重窗口 = 今天起 7 天——明天已确认的改动，今天（midday）不再提",
+   "checks": [
+    {
+     "assertion": "midday 不重复 nightly 已确认的（明天的）改动",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"redo:math1-2024-01\"] → [\"practice:高等数学/一元函数积分学/变限积分\"] "
+    },
+    {
+     "assertion": "weekly 不重复前两次的改动",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"demo\"] "
+    },
+    {
+     "assertion": "没有跨天重复提",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r8-forced-copy",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 8 轮复测：测试触发的文案按真实设置写、标「（测试触发）」，不冒用「提醒频率选了「多」」；时间词按用户当地时间",
+   "checks": [
+    {
+     "assertion": "结果 forced=true，summary 带（测试触发）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "true 早上好，今天还没排计划。回一句「今天只有一小时」，我帮你排。（测试触发）"
+    },
+    {
+     "assertion": "历史：每条都 forced、带（测试触发）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[[\"写了今天（11-01）的教练建议（测试触发）\",\"教练只提建议，确认后才改（测试触发）\"],[\"写了今天（11-01）的进度提醒（测试触发）\",\"看一眼今天的进度（测试触发）\"]]"
+    },
+    {
+     "assertion": "reason 不提提醒频率",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "[\"教练只提建议，确认后才改（测试触发）\",\"看一眼今天的进度（测试触发）\"]"
+    },
+    {
+     "assertion": "07:40 不说「下午」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"错题本里还有 1 道没掌握，今天先重做 1 道。\"]"
+    },
+    {
+     "assertion": "message.status：pending → confirmed",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "pending confirmed confirmed"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r8-why-per-task",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 8 轮复测：后来的改动不覆盖前面已确认改动的理由（why_changed 按任务记）",
+   "checks": [
+    {
+     "assertion": "热身和重做各有理由",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "演示建议：还没有足够的作答数据，先加 5 道基础题热身。 | 是从今天（11-01）做错的题里挑的。"
+    },
+    {
+     "assertion": "计划 why_changed 两条都在",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "是从今天（11-01）做错的题里挑的。演示建议：还没有足够的作答数据，先加 5 道基础题热身。 | 已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。"
+    },
+    {
+     "assertion": "热身理由没被覆盖",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 今天做错的题明天帮我排 1 道",
+    "  · 收到：「今天做错的题明天帮我排 1 道」",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：今天（11-01）做错的题有 1 道",
+    "  · 要排 1 道重做错题，对照明天（11-02）的计划",
+    "  ✎ 在明天（11-02）的计划里加了「重做 1 道错题」（是从今天（11-01）做错的题里挑的。）",
+    "  ✎ 更新了明天（11-02）计划的说明（是从今天（11-01）做错的题里挑的。）",
+    "  = 已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。"
+   ]
+  },
+  {
+   "id": "r8-no-null-text",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 8 轮复测：没有数据时学生看到的文字里不出现 null / undefined / NaN（周报「约 null 分钟」）",
+   "checks": [
+    {
+     "assertion": "周报写「还没有学习时长记录」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "本周（10-26–11-01）还没有作答记录，也还没有学习时长记录。当前阶段：基础。"
+    },
+    {
+     "assertion": "没有 null / undefined / NaN / 标点连用",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "[]"
+    },
+    {
+     "assertion": "今天 / 明天标签和日期一致（学习日 2026-11-01）",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": ""
+    }
+   ],
+   "transcript": [
+    "> 今天只有一小时",
+    "  · 收到：「今天只有一小时」",
+    "  · 正在翻你的错题本",
+    "  · 今天（11-01）只有 60 分钟，现有任务放得下，不用挪",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。"
+   ]
+  },
+  {
+   "id": "r9-cmd-redo-after-wrong",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 9 轮复测 B1：同一句话间隔很短，但中间做错了题（数据变了）→ 重新执行；数据没变才算重复",
+   "checks": [
+    {
+     "assertion": "做错后再说：重新执行，明天排上了这道",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "false 已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。 | 重做 1 道错题"
+    },
+    {
+     "assertion": "数据没变的第三遍：算重复",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "true 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行"
+    },
+    {
+     "assertion": "回复没有标点连用 / 漏值",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "[\"今天（11-01）没有做错的题，这次没改计划。错题本里现在也没有错题，想先做几道基础题的话回「排 5 道基础题」。\",\"已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。\",\"刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行\"]"
+    },
+    {
+     "assertion": "数据变了不说「没有重复执行」",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。"
+    },
+    {
+     "assertion": "第三遍说「明天（MM-DD）的计划里已经有」，不说今天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行"
+    },
+    {
+     "assertion": "今天 / 明天标签和日期一致（学习日 2026-11-01）",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": ""
+    }
+   ],
+   "transcript": [
+    "> 今天做错的明天排 1 道",
+    "  · 收到：「今天做错的明天排 1 道」",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：今天（11-01）做错的题有 0 道",
+    "  = 今天（11-01）没有做错的题，这次没改计划。错题本里现在也没有错题，想先做几道基础题的话回「排 5 道基础题」。",
+    "> 今天做错的明天排 1 道",
+    "  · 收到：「今天做错的明天排 1 道」",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：今天（11-01）做错的题有 1 道",
+    "  · 要排 1 道重做错题，对照明天（11-02）的计划",
+    "  ✎ 在明天（11-02）的计划里加了「重做 1 道错题」（是从今天（11-01）做错的题里挑的。）",
+    "  ✎ 更新了明天（11-02）计划的说明（是从今天（11-01）做错的题里挑的。）",
+    "  = 已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。",
+    "> 今天做错的明天排 1 道",
+    "  · 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行",
+    "  = 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行"
+   ]
+  },
+  {
+   "id": "r9-plan-why-own-date",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 9 轮复测 B2：今天的计划空着时，why_changed 不能显示明天那条改动的原因；why_changed / why_changed_latest 只看这一天的任务",
+   "checks": [
+    {
+     "assertion": "今天（空计划）why 都是 null",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "0 项 | null | undefined"
+    },
+    {
+     "assertion": "明天 latest 有值且一致",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "是从今天（11-01）做错的题里挑的。 | 是从今天（11-01）做错的题里挑的。"
+    },
+    {
+     "assertion": "别的日子的原因没出现在今天",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": null
+    }
+   ],
+   "transcript": [
+    "> 今天做错的明天排 1 道",
+    "  · 收到：「今天做错的明天排 1 道」",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：今天（11-01）做错的题有 1 道",
+    "  · 要排 1 道重做错题，对照明天（11-02）的计划",
+    "  ✎ 在明天（11-02）的计划里加了「重做 1 道错题」（是从今天（11-01）做错的题里挑的。）",
+    "  ✎ 更新了明天（11-02）计划的说明（是从今天（11-01）做错的题里挑的。）",
+    "  = 已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。"
+   ]
+  },
+  {
+   "id": "r9-dismissed-skip",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 9 轮复测 B3：忽略过的建议不再提，并且说「这条你已经忽略过了」，不说「计划里该有的都有了」",
+   "checks": [
+    {
+     "assertion": "midday 说「已经忽略过了」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "忽略 3 次后：dismissed 没有新的建议：这 3 条你已经忽略过了，不再提"
+    },
+    {
+     "assertion": "weekly 原因带「忽略过」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "dismissed 没有新的建议：这 3 条你已经忽略过了，不再提 "
+    },
+    {
+     "assertion": "不说「计划里该有的都有了」",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r9-forced-local-time",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 9 轮复测 B5：测试触发的中午提醒按当地时间说（23:53 不说「中午了」）；整题计分的题顶层 sub_scores=null",
+   "checks": [
+    {
+     "assertion": "23:53 不说中午、说晚上好",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "[\"晚上好，今天还没排计划。回一句「今天只有一小时」，我帮你排。（测试触发）\",[[\"写了今天（11-01）的进度提醒（测试触发）\",\"看一眼今天的进度（测试触发）\"]]]"
+    },
+    {
+     "assertion": "12:10 说「中午了」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "中午了，今天还没排计划。回一句「今天只有一小时」，我帮你排。（测试触发）"
+    },
+    {
+     "assertion": "整题计分 sub_scores=null；按小问是数组",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "null | [5,3,3]"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r10-confirmed-planned",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 10 轮复测 N2：确认过的建议已经进了计划，再强制夜间复盘说「计划里已经有了」（planned），不说「该有的都有了」（nothing）",
+   "checks": [
+    {
+     "assertion": "确认后再触发：reason=planned",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "确认 3 次后：planned 没有新的建议：想做的 3 处改动计划里已经有了，不重复提"
+    },
+    {
+     "assertion": "不说 nothing",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r10-crossover-nightly",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 10 轮复测 N3：凌晨 00:04（账号时区）强制夜间复盘 → 学习日还是前一天，建议排到日历「今天」、说「明天（MM-DD）」",
+   "checks": [
+    {
+     "assertion": "settings：today=study_date=前一天，calendar_date=当天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01 2026-11-01 2026-11-02 want 2026-11-01/2026-11-02"
+    },
+    {
+     "assertion": "plans/today：study_date=前一天、relative_day=今天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01 2026-11-01 今天"
+    },
+    {
+     "assertion": "复盘消息记在学习日、说「明天（MM-DD）」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01 今天 明天（11-02）先重做 1 道到期错题。"
+    },
+    {
+     "assertion": "建议排到学习日 + 1",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"2026-11-02\"] want 2026-11-02"
+    },
+    {
+     "assertion": "今天 / 明天标签和日期一致（学习日 2026-11-01）",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": ""
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r10-crossover-command",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 10 轮复测 N1/N3：凌晨 02:00 说「今天做错的明天排 1 道」×3 → 今天=前一天，排到日历当天；第三遍说「明天（MM-DD）的计划里已经有」",
+   "checks": [
+    {
+     "assertion": "排到学习日 + 1（日历当天）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-02 want 2026-11-02"
+    },
+    {
+     "assertion": "第一遍回复说明凌晨 4 点前还算前一天，后两遍不再说（每个学习日一次）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。凌晨 4 点前还算 11-01 这一天。 | 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行 | 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行"
+    },
+    {
+     "assertion": "第三遍「明天（MM-DD）的计划里已经有」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行"
+    },
+    {
+     "assertion": "错题带 due_date / due_relative_day",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"due_date\":\"2026-11-01\",\"rel\":\"今天\"}"
+    },
+    {
+     "assertion": "今天 / 明天标签和日期一致（学习日 2026-11-01）",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": ""
+    }
+   ],
+   "transcript": [
+    "> 今天做错的明天排 1 道",
+    "  · 收到：「今天做错的明天排 1 道」",
+    "  · 现在是 02:00（America/Los_Angeles），还没到 4:00 换日，按明天（11-02）排",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：今天（11-01）做错的题有 1 道",
+    "  · 要排 1 道重做错题，对照明天（11-02）的计划",
+    "  ✎ 在明天（11-02）的计划里加了「重做 1 道错题」（是从今天（11-01）做错的题里挑的。）",
+    "  ✎ 更新了明天（11-02）计划的说明（是从今天（11-01）做错的题里挑的。）",
+    "  = 已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。凌晨 4 点前还算 11-01 这一天。",
+    "> 今天做错的明天排 1 道",
+    "  · 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行",
+    "  = 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行",
+    "> 今天做错的明天排 1 道",
+    "  · 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行",
+    "  = 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行"
+   ]
+  },
+  {
+   "id": "r10-monday-0200",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 10 轮复测 N3：周一 02:00 还算周日 → 「这周的错题」是上周一到这个周日，「上周」再往前一周；日期标签对得上",
+   "checks": [
+    {
+     "assertion": "周一 02:00 today = 周日",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01 want 2026-11-01"
+    },
+    {
+     "assertion": "这周 = 10-26–11-01",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改今天（11-01）的计划：重做 1 道错题。是从这周（10-26–11-01）做错的题里挑的。凌晨 4 点前还算 11-01 这一天。 | 收到：「这周的错题排 1 道」 | 现在是 02:00（America/Los_Angeles），还没到 4:00 换日，按今天（11-01）排 | 正在翻你的错题本 | 按做错的日子筛：这周（10-26–11-01）做错的题有 1 道 | 要排 1 道重做错题，对照今天（11-01）的计划"
+    },
+    {
+     "assertion": "上周 = 10-19–10-25",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "上周（10-19–10-25）没有做错的题，这次没改计划。要换一下吗？回「排 1 道今天做错的题」用今天的（有 1 道），或回「排 1 道错题」从全部错题里挑（有 1 道）。 | 收到：「上周的错题排 1 道」 | 现在是 02:00（America/Los_Angeles），还没到 4:00 换日，按今天（11-01）排 | 正在翻你的错题本 | 按做错的日子筛：上周（10-19–10-25）做错的题有 0 道"
+    },
+    {
+     "assertion": "排到周日（学习日），不是周一",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01 want 2026-11-01"
+    },
+    {
+     "assertion": "今天 / 明天标签和日期一致（学习日 2026-11-01）",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": ""
+    }
+   ],
+   "transcript": [
+    "> 这周的错题排 1 道",
+    "  · 收到：「这周的错题排 1 道」",
+    "  · 现在是 02:00（America/Los_Angeles），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：这周（10-26–11-01）做错的题有 1 道",
+    "  · 要排 1 道重做错题，对照今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 1 道错题」（是从这周（10-26–11-01）做错的题里挑的。）",
+    "  ✎ 更新了今天（11-01）计划的说明（是从这周（10-26–11-01）做错的题里挑的。）",
+    "  = 已改今天（11-01）的计划：重做 1 道错题。是从这周（10-26–11-01）做错的题里挑的。凌晨 4 点前还算 11-01 这一天。",
+    "> 上周的错题排 1 道",
+    "  · 收到：「上周的错题排 1 道」",
+    "  · 现在是 02:00（America/Los_Angeles），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：上周（10-19–10-25）做错的题有 0 道",
+    "  = 上周（10-19–10-25）没有做错的题，这次没改计划。要换一下吗？回「排 1 道今天做错的题」用今天的（有 1 道），或回「排 1 道错题」从全部错题里挑（有 1 道）。"
+   ]
+  },
+  {
+   "id": "hard-1-one-action",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "用户硬要求 1：主动消息只给明天一件事，细节折叠",
+   "checks": [
+    {
+     "assertion": "headline 一句话 ≤40 字",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "明天（11-02）先重做 2 道到期错题。"
+    },
+    {
+     "assertion": "details 单独给",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "今天（11-01）做了 2 题，对 0 题、错 2 题，还没有学习时长记录。"
+    },
+    {
+     "assertion": "不是一屏建议",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> [定时 nightly]",
+    "  = 明天（11-02）先重做 2 道到期错题。",
+    "  ✎ 写了今天（11-01）的今日复盘（每晚 23:00 自动复盘）",
+    "  ✎ 在明天（11-02）的计划里加了「重做 2 道到期错题」（复盘：有 2 道错题明天（11-02）到复习时间，先重做。）",
+    "  ✎ 更新了明天（11-02）计划的说明（复盘：有 2 道错题明天（11-02）到复习时间，先重做。）"
+   ]
+  },
+  {
+   "id": "hard-2-backoff",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "用户硬要求 2：「别管我」/连续 2 次没看 → 少打扰（可撤回）；再互动 → 恢复；从不加码",
+   "checks": [
+    {
+     "assertion": "「别管我」→ reduced 每 3 天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"mode\":\"reduced\",\"cause\":\"command\",\"since\":\"2026-11-01T16:27:31.903Z\",\"nightly_every_days\":3}"
+    },
+    {
+     "assertion": "记一条可撤回的 action",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "主动来找 → 恢复",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"mode\":\"normal\",\"cause\":\"re_engaged\",\"since\":\"2026-11-01T16:27:31.916Z\",\"nightly_every_days\":1}"
+    },
+    {
+     "assertion": "连续两次没看 → 自动 reduced（这次跳过）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"job\":\"nightly\",\"skipped\":true,\"reason\":\"少打扰模式：每 3 天复盘一次，上次是 2026-10-31\",\"actions\":[{\"id\":\"a735aa93-91e6-43ba-8da6-6132e47be184\",\"command_id\":null,\"group_id\":null,\"trigger\":\"nightly\",\"tool\":\"setProactive\",\"summary\":\"少打扰：每晚复盘改成每 3 天一次（周报照常）\",\"reason\":\"最近两次复盘（前天（10-30）、昨天（10-31））你都没打开，先少打扰：改成每 3 天一次，周报照常\",\"target\":{\"kind\":\"proactive\",\"id\":\"638d3829-3de8-41d5-8b39-dfabd14f1109\"},\"before\":{\"proactive\":{\"mode\":\"normal\",\"cause\":\"re_engaged\",\"since\":\"2026-11-01T16:27:31.916Z\",\"nightly_every_days\":1}},\"after\":{\"proactive\":{\"mode\":\"reduced\",\"cause\":\"ignored\",\"since\":\"2026-11-01T16:27:31.936Z\",\"nightly_every_days\":3}},\"undoable\":true,\"undone_at\":null,\"created_at\":\"2026-11-01T16:27:31.936Z\",\"forced\":false}]}"
+    },
+    {
+     "assertion": "看了 → 恢复",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"id\":\"ec12bb00-98df-4524-824c-d58461c80505\",\"kind\":\"review\",\"seen_at\":\"2026-11-01T16:27:31.943Z\",\"proactive_restored\":true}"
+    },
+    {
+     "assertion": "从不提高频率",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 别管我",
+    "  · 收到：「别管我」",
+    "  · 正在调整提醒频率",
+    "  ✎ 少打扰：每晚复盘改成每 3 天一次（周报照常）（你说「别管我」，先少打扰你）",
+    "  = 好，之后每 3 天才发一次复盘，周报照常。想让我帮忙随时说一句。",
+    "> 今天只有一小时",
+    "  · 收到：「今天只有一小时」",
+    "  · 正在翻你的错题本",
+    "  · 今天（11-01）只有 60 分钟，现有任务放得下，不用挪",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 恢复每晚复盘（你又来找我了，恢复每晚复盘）",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。",
+    "> [定时 nightly]",
+    "  = 跳过：少打扰模式：每 3 天复盘一次，上次是 2026-10-31",
+    "  ✎ 少打扰：每晚复盘改成每 3 天一次（周报照常）（最近两次复盘（前天（10-30）、昨天（10-31））你都没打开，先少打扰：改成每 3 天一次，周报照常）"
+   ]
+  },
+  {
+   "id": "hard-3-careless",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "用户硬要求 3：「这题我会，是手滑」→ 记粗心，不扣掌握度，可撤回",
+   "checks": [
+    {
+     "assertion": "error_type=careless",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "careless"
+    },
+    {
+     "assertion": "掌握度回升（不按做错扣）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "0 → 0.317"
+    },
+    {
+     "assertion": "可撤回",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200"
+    },
+    {
+     "assertion": "掌握度没被扣",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 这题我会，是手滑",
+    "  · 收到：「这题我会，是手滑」",
+    "  · 正在把这题记成粗心",
+    "  ✎ 2024 年第 1 题记为「粗心」，相关知识点的掌握度不扣分（你说「这题我会，是手滑」）",
+    "  = 记下了：2024 年第 1 题记为「粗心」，相关知识点的掌握度不扣分。下次做完这类题留 30 秒回头检查。"
+   ]
+  },
+  {
+   "id": "r11-early-note-once",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 11 轮：「凌晨 4 点前还算 MM-DD 这一天」每个学习日每个用户只说一次（第一句涉及今天的回复）；04:00 以后不说；下一个学习日凌晨再说一次；夜间复盘先说了，命令就不再说",
+   "checks": [
+    {
+     "assertion": "第 1 句回复带这句（MM-DD = 学习日）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改今天（11-01）的计划：重做 1 道错题。凌晨 4 点前还算 11-01 这一天。"
+    },
+    {
+     "assertion": "第 2、3 句不带",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "你要再加 1 道，但错题本里该重做的 1 道已经都排进今天（11-01）了，没有可以再加的，这次没改。 | 今天（11-01）的计划里已经有「重做 1 道错题」，没有重复添加。"
+    },
+    {
+     "assertion": "04:30 不带",
+     "kind": "expect",
+     "status": "fail",
+     "detail": "2026-11-01 刚刚说过同样的话，昨天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行"
+    },
+    {
+     "assertion": "下一个学习日凌晨第一句再带一次",
+     "kind": "expect",
+     "status": "fail",
+     "detail": "刚刚说过同样的话，昨天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行。凌晨 4 点前还算 11-02 这一天。"
+    },
+    {
+     "assertion": "记下说过的学习日（users.early_note_day）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-02"
+    },
+    {
+     "assertion": "复盘先说了 → 同一学习日的命令不再说",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 凌晨 4 点前还算 11-01 这一天。今天（11-01）还没有作答记录。 | 已改今天（11-01）的计划：基础练习 5 题。"
+    },
+    {
+     "assertion": "同一学习日说两次",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 今天只有一小时",
+    "  · 收到：「今天只有一小时」",
+    "  · 现在是 00:30（America/Los_Angeles），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 今天（11-01）只有 60 分钟，现有任务放得下，不用挪",
+    "  · 挑了 1 道该重做的错题，准备排进今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 1 道错题」（你说「今天只有一小时」，今天按 60 分钟排：先重做 1 道错题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天只有一小时」，今天按 60 分钟排：先重做 1 道错题。）",
+    "  = 已改今天（11-01）的计划：重做 1 道错题。凌晨 4 点前还算 11-01 这一天。",
+    "> 今天再加一道错题",
+    "  · 收到：「今天再加一道错题」",
+    "  · 现在是 00:40（America/Los_Angeles），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 要加 1 道重做错题，对照今天（11-01）的计划",
+    "  · 错题本里没有更多该重做的错题了，11-01 还是「重做 1 道错题」",
+    "  = 你要再加 1 道，但错题本里该重做的 1 道已经都排进今天（11-01）了，没有可以再加的，这次没改。",
+    "> 那今天的单词还背吗",
+    "  · 收到：「那今天的单词还背吗」",
+    "  · 现在是 01:10（America/Los_Angeles），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 挑了 1 道该重做的错题，准备排进今天（11-01）的计划",
+    "  · 今天（11-01）的计划里已经有「重做 1 道错题」，没有重复添加",
+    "  = 今天（11-01）的计划里已经有「重做 1 道错题」，没有重复添加。",
+    "> 今天只有一小时",
+    "  · 刚刚说过同样的话，昨天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行",
+    "  = 刚刚说过同样的话，昨天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行",
+    "> 今天只有一小时",
+    "  · 刚刚说过同样的话，昨天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行。凌晨 4 点前还算 11-02 这一天。",
+    "  = 刚刚说过同样的话，昨天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行。凌晨 4 点前还算 11-02 这一天。"
+   ]
+  },
+  {
+   "id": "r11-date-render",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 11 轮 M1：存库是 {{date:YYYY-MM-DD}}，读时按读者当时的学习日渲染：建议第二天再读 明天→今天；8 天前的记录显示「MM-DD（周X）」",
+   "checks": [
+    {
+     "assertion": "库里是占位符",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"想在 {{date:2026-11-02}} 的计划里加「做 5 道基础题热身」\"]"
+    },
+    {
+     "assertion": "当天读：明天（MM-DD）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "教练想做 1 处改动，等你确认后才执行：想在明天（11-02）的计划里加「做 5 道基础题热身」"
+    },
+    {
+     "assertion": "第二天读：今天（MM-DD），不再说明天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "教练想做 1 处改动，等你确认后才执行：想在今天（11-02）的计划里加「做 5 道基础题热身」"
+    },
+    {
+     "assertion": "确认后标题按读的那天说",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 已在今天（11-02）的计划里加了「做 5 道基础题热身」"
+    },
+    {
+     "assertion": "8 天后改动记录：MM-DD（周X）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "写了 11-01（周日） 的教练建议（测试触发） | 在 11-02（周一） 的计划里加了「做 5 道基础题热身」 | 已在 11-02（周一） 的计划里加了「做 5 道基础题热身」"
+    },
+    {
+     "assertion": "存库的是「明天」这种会过期的叫法",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "教练想做 1 处改动，等你确认后才执行：想在 {{date:2026-11-02}} 的计划里加「做 5 道基础题热身」"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r11-quotes",
+   "tz": "America/Los_Angeles",
+   "source": "builtin",
+   "scenario": "第 11 轮 M2：渲染层统一引号层级——外层「」、里层『』、更深的去掉引号",
+   "checks": [
+    {
+     "assertion": "「已在明天（11-02）的计划里加了『练 3 道变限积分』」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "「已在明天（11-02）的计划里加了『练 3 道变限积分』」"
+    },
+    {
+     "assertion": "「」套「」",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r6-tz",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 6 轮：「今天」按账号时区算（X-Timezone 写进 settings），桌面/手机一致",
+   "checks": [
+    {
+     "assertion": "settings.timezone = X-Timezone",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"settings\":{\"timezone\":\"Asia/Shanghai\"},\"timezone\":\"Asia/Shanghai\",\"today\":\"2026-11-01\",\"effective\":{\"coach_frequency\":\"normal\",\"quiet_hours\":null,\"study_date\":\"2026-11-01\",\"day_start_hour\":4,\"calendar_date\":\"2026-11-02\",\"local_time\":\"00:27\",\"days_to_exam\":null,\"auto_reduced\":false,\"auto_reduced_every_days\":null}}"
+    },
+    {
+     "assertion": "plans/today、words/today、done.date = 账号时区今天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01 2026-11-01 2026-11-01 want 2026-11-01"
+    },
+    {
+     "assertion": "step 写明真实日期",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "收到：「今天只有一小时」 | 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排 | 正在翻你的错题本 | 今天（11-01）只有 60 分钟，现有任务放得下，不用挪 | 还没有错题，在今天（11-01）排 5 道基础练习"
+    },
+    {
+     "assertion": "不带头的另一端也是同一天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01"
+    },
+    {
+     "assertion": "没写进别的日期",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "在今天（11-01）的计划里加了「基础练习 5 题」 | 更新了今天（11-01）计划的说明"
+    }
+   ],
+   "transcript": [
+    "> 今天只有一小时",
+    "  · 收到：「今天只有一小时」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 今天（11-01）只有 60 分钟，现有任务放得下，不用挪",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。凌晨 4 点前还算 11-01 这一天。"
+   ]
+  },
+  {
+   "id": "r6-dedupe-qty",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 6 轮：同一句话 60 秒内只执行一次；「一道」=1、「两道」=2、数字照用，没说数量默认 3",
+   "checks": [
+    {
+     "assertion": "「一道」→ 重做 1 道错题",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "在今天（11-01）的计划里加了「重做 1 道错题」 | 更新了今天（11-01）计划的说明"
+    },
+    {
+     "assertion": "同一句第二次：不新增，step 说已经有了，deduped",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "刚刚说过同样的话，今天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行。还要再加的话，回「确认再加 1 道」"
+    },
+    {
+     "assertion": "换种说法带「加」→ 叠加 1→2",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "收到：「帮我加道重做错题」 | 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排 | 正在翻你的错题本 | 要加 1 道重做错题，对照今天（11-01）的计划 | 今天（11-01）的「重做错题」已从 1 道加到 2 道"
+    },
+    {
+     "assertion": "只有一条错题任务",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "重做 2 道错题"
+    },
+    {
+     "assertion": "「两道」→ 2 道",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "重做 2 道错题"
+    },
+    {
+     "assertion": "没说数量 → 默认 3 道",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "重做 3 道错题"
+    },
+    {
+     "assertion": "要 12 道只有 4 道：照实说",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "收到：「重做 12 道错题」 | 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排 | 正在翻你的错题本 | 要排 12 道重做错题，对照今天（11-01）的计划 | 你说要 12 道，错题本里该重做的只有 4 道，先排这 4 道 | 今天（11-01）的「重做错题」已从 3 道改为 4 道"
+    }
+   ],
+   "transcript": [
+    "> 帮我加一道重做错题",
+    "  · 收到：「帮我加一道重做错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 要加 1 道重做错题，对照今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 1 道错题」（你说「帮我加一道重做错题」，按你说的在原来的基础上再加 1 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「帮我加一道重做错题」，按你说的在原来的基础上再加 1 道错题重做。）",
+    "  = 已改今天（11-01）的计划：重做 1 道错题。凌晨 4 点前还算 11-01 这一天。",
+    "> 帮我加一道重做错题",
+    "  · 刚刚说过同样的话，今天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行。还要再加的话，回「确认再加 1 道」",
+    "  = 刚刚说过同样的话，今天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行。还要再加的话，回「确认再加 1 道」",
+    "> 帮我加道重做错题",
+    "  · 收到：「帮我加道重做错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 要加 1 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的「重做错题」已从 1 道加到 2 道",
+    "  ✎ 今天（11-01）「重做错题」已从 1 道加到 2 道（你说「帮我加道重做错题」，按你说的在原来的基础上再加 1 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「帮我加道重做错题」，按你说的在原来的基础上再加 1 道错题重做。）",
+    "  = 已把今天（11-01）的「重做错题」从 1 道加到 2 道。"
+   ]
+  },
+  {
+   "id": "r6-words",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 6 轮：单词「今日第 n / 总数」总数当天冻结，「记住了」+ F5 不减",
+   "checks": [
+    {
+     "assertion": "首次 position=1",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"review\":0,\"new\":20,\"relearn\":0,\"new_target\":20,\"new_done_today\":0,\"reviewed_today\":0,\"done_today\":0,\"remaining\":20,\"scheduled_today\":20,\"position\":1}"
+    },
+    {
+     "assertion": "F5 后总数不变、position=4",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "20 → {\"review\":0,\"new\":17,\"relearn\":0,\"new_target\":20,\"new_done_today\":3,\"reviewed_today\":3,\"done_today\":3,\"remaining\":17,\"scheduled_today\":20,\"position\":4}"
+    },
+    {
+     "assertion": "重学词进 relearn，总数仍不变",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"review\":0,\"new\":17,\"relearn\":1,\"new_target\":20,\"new_done_today\":3,\"reviewed_today\":3,\"done_today\":3,\"remaining\":17,\"scheduled_today\":20,\"position\":4}"
+    },
+    {
+     "assertion": "总数没减少",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "qty-semantics",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "数量语义：同句 60 秒内=重复；带「加/再/多/补」= 叠加；只说数量 = 设定；每次改数量可一键撤回到原数量",
+   "checks": [
+    {
+     "assertion": "重做 3 道 → 3",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "3 {\"type\":\"done\",\"command_id\":\"b89a1e45-6369-44d5-a1a2-8fad54578247\",\"summary\":\"在今天（11-01）的计划里加了「重做 3 道错题」；更新了今天（11-01）计划的说明\",\"mock\":true,\"reply\":\"已改今天（11-01）的计划：重做 3 道错题。凌晨 4 点前还算 11-01 这一天。\",\"action_count\":2,\"deduped\":false,\"date\":\"2026-11-01\",\"quantity_from\":0,\"quantity_to\":3,\"question_id\":null}"
+    },
+    {
+     "assertion": "加两道：3→5 + step",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "5 收到：「加两道重做错题」 | 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排 | 正在翻你的错题本 | 要加 2 道重做错题，对照今天（11-01）的计划 | 今天（11-01）的「重做错题」已从 3 道加到 5 道"
+    },
+    {
+     "assertion": "同句重发：deduped + 刚才已从 3 道加到 5 道 + 问再加",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "刚刚说过同样的话，刚才已从 3 道加到 5 道，今天（11-01）的计划里已经有「重做 5 道错题」，这次没有重复执行。还要再加的话，回「确认再加 2 道」"
+    },
+    {
+     "assertion": "今天重做 5 道（已是 5）：已经有，deduped",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "收到：「今天重做 5 道错题」 | 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排 | 正在翻你的错题本 | 要排 5 道重做错题，对照今天（11-01）的计划 | 今天（11-01）的计划里已经有「重做 5 道错题」，没有重复添加"
+    },
+    {
+     "assertion": "再来 2 道：5→7",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "7 收到：「再来 2 道错题」 | 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排 | 正在翻你的错题本 | 要加 2 道重做错题，对照今天（11-01）的计划 | 今天（11-01）的「重做错题」已从 5 道加到 7 道"
+    },
+    {
+     "assertion": "今天重做 4 道：7→4 + step「已从 7 道改为 4 道」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "4 收到：「今天重做 4 道错题」 | 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排 | 正在翻你的错题本 | 要排 4 道重做错题，对照今天（11-01）的计划 | 今天（11-01）的「重做错题」已从 7 道改为 4 道"
+    },
+    {
+     "assertion": "改数量的 action 记了原数量（before）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"id\":\"6bd25232-d845-4c5b-8f24-6a54a05fd81b\",\"kind\":\"redo_wrong\",\"title\":\"重做 4 道错题\",\"status\":\"todo\",\"payload\":{\"question"
+    },
+    {
+     "assertion": "HTTP 撤回 → 回到 7",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 7"
+    },
+    {
+     "assertion": "撤回后同一句重新执行",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "4 收到：「今天重做 4 道错题」 | 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排 | 正在翻你的错题本 | 要排 4 道重做错题，对照今天（11-01）的计划 | 今天（11-01）的「重做错题」已从 7 道改为 4 道"
+    },
+    {
+     "assertion": "重复句没有叠加",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "设定没有变成叠加",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "始终只有一条错题任务",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 重做 3 道错题",
+    "  · 收到：「重做 3 道错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 要排 3 道重做错题，对照今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 3 道错题」（你说「重做 3 道错题」，按你说的排 3 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「重做 3 道错题」，按你说的排 3 道错题重做。）",
+    "  = 已改今天（11-01）的计划：重做 3 道错题。凌晨 4 点前还算 11-01 这一天。",
+    "> 加两道重做错题",
+    "  · 收到：「加两道重做错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 要加 2 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的「重做错题」已从 3 道加到 5 道",
+    "  ✎ 今天（11-01）「重做错题」已从 3 道加到 5 道（你说「加两道重做错题」，按你说的在原来的基础上再加 2 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「加两道重做错题」，按你说的在原来的基础上再加 2 道错题重做。）",
+    "  = 已把今天（11-01）的「重做错题」从 3 道加到 5 道。",
+    "> 加两道重做错题",
+    "  · 刚刚说过同样的话，刚才已从 3 道加到 5 道，今天（11-01）的计划里已经有「重做 5 道错题」，这次没有重复执行。还要再加的话，回「确认再加 2 道」",
+    "  = 刚刚说过同样的话，刚才已从 3 道加到 5 道，今天（11-01）的计划里已经有「重做 5 道错题」，这次没有重复执行。还要再加的话，回「确认再加 2 道」",
+    "> 今天重做 5 道错题",
+    "  · 收到：「今天重做 5 道错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 要排 5 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的计划里已经有「重做 5 道错题」，没有重复添加",
+    "  = 今天（11-01）的计划里已经有「重做 5 道错题」，没有重复添加。",
+    "> 再来 2 道错题",
+    "  · 收到：「再来 2 道错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 要加 2 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的「重做错题」已从 5 道加到 7 道",
+    "  ✎ 今天（11-01）「重做错题」已从 5 道加到 7 道（你说「再来 2 道错题」，按你说的在原来的基础上再加 2 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「再来 2 道错题」，按你说的在原来的基础上再加 2 道错题重做。）",
+    "  = 已把今天（11-01）的「重做错题」从 5 道加到 7 道。",
+    "> 今天重做 4 道错题",
+    "  · 收到：「今天重做 4 道错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 要排 4 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的「重做错题」已从 7 道改为 4 道",
+    "  ✎ 今天（11-01）「重做错题」已从 7 道改为 4 道（你说「今天重做 4 道错题」，按你说的排 4 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天重做 4 道错题」，按你说的排 4 道错题重做。）",
+    "  = 已把今天（11-01）的「重做错题」从 7 道改为 4 道。",
+    "> 今天重做 4 道错题",
+    "  · 收到：「今天重做 4 道错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 要排 4 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的「重做错题」已从 7 道改为 4 道",
+    "  ✎ 今天（11-01）「重做错题」已从 7 道改为 4 道（你说「今天重做 4 道错题」，按你说的排 4 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天重做 4 道错题」，按你说的排 4 道错题重做。）",
+    "  = 已把今天（11-01）的「重做错题」从 7 道改为 4 道。"
+   ]
+  },
+  {
+   "id": "tz-midnight",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "凌晨 00:30（账号时区）说「今天只有一小时」→ 学习日 04:00 才换天，所以还是前一天（日历昨天）的计划，并说明一句",
+   "checks": [
+    {
+     "assertion": "settings.today = 学习日（还没到 04:00，仍是前一天）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01/2026-11-01/2026-11-02 want 2026-11-01/2026-11-02"
+    },
+    {
+     "assertion": "done.date = 学习日",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01 want 2026-11-01"
+    },
+    {
+     "assertion": "step 说现在几点、按今天（MM-DD）排",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "收到：「今天只有一小时」 | 现在是 00:30（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排 | 正在翻你的错题本 | 今天（11-01）只有 60 分钟，现有任务放得下，不用挪 | 还没有错题，在今天（11-01）排 5 道基础练习"
+    },
+    {
+     "assertion": "回复说一次「凌晨 4 点前还算 MM-DD 这一天」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改今天（11-01）的计划：基础练习 5 题。凌晨 4 点前还算 11-01 这一天。"
+    },
+    {
+     "assertion": "没有写到别的日期",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "在今天（11-01）的计划里加了「基础练习 5 题」 | 更新了今天（11-01）计划的说明"
+    }
+   ],
+   "transcript": [
+    "> 今天只有一小时",
+    "  · 收到：「今天只有一小时」",
+    "  · 现在是 00:30（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 今天（11-01）只有 60 分钟，现有任务放得下，不用挪",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。凌晨 4 点前还算 11-01 这一天。"
+   ]
+  },
+  {
+   "id": "settings-quiet-hours",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "「我的」免打扰 quiet_hours 22:30–08:00：23:00 的夜间复盘照常生成，但不在时段里出现，排到 08:00 才送达",
+   "checks": [
+    {
+     "assertion": "复盘照常生成",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"job\":\"nightly\",\"skipped\":false,\"forced\":false,\"mode\":\"mock\",\"summary\":\"写了今天（11-01）的今日复盘；在明天（11-02）的计划里加了「重做 1 道到期错题」；更新了明天（11-02）计划的说明\",\"reply\":\"明天（11-02）先重做 1 道到期错题。\",\"actions\":[{\"id\":\"ffe801f7-23b"
+    },
+    {
+     "assertion": "23:00 看不到，queued=1",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"items\":0,\"queued\":1}"
+    },
+    {
+     "assertion": "next_delivery_at = 次日 08:00（账号时区）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-02T00:00:00.000Z want 2026-11-02T00:00:00.000Z"
+    },
+    {
+     "assertion": "plans/today 23:00 不出现复盘",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "null"
+    },
+    {
+     "assertion": "07:59 仍看不到",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "0"
+    },
+    {
+     "assertion": "08:00 出现",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"review\"]"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "settings-ask",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "「我的」coach_frequency=ask：夜间复盘只提建议、不改计划；确认后才改、可撤回；忽略就不改",
+   "checks": [
+    {
+     "assertion": "复盘消息照常",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"proposal\",\"review\"]"
+    },
+    {
+     "assertion": "ask 模式不自动改明天计划",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "[]"
+    },
+    {
+     "assertion": "有 pending 的 proposal（带建议内容）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "教练想做 1 处改动，等你确认后才执行：想在明天（11-02）的计划里加「重做 1 道到期错题」"
+    },
+    {
+     "assertion": "confirm 后明天计划有任务",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 [\"重做 1 道到期错题\"]"
+    },
+    {
+     "assertion": "confirm 的改动 trigger=confirm 且可撤回",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "confirm undo=200"
+    },
+    {
+     "assertion": "重复 confirm → 409",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "409"
+    },
+    {
+     "assertion": "dismiss 不改计划",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 0"
+    }
+   ],
+   "transcript": [
+    "  · 建议：教练想做 1 处改动，等你确认后才执行：想在明天（11-02）的计划里加「重做 1 道到期错题」",
+    "  · confirm → 200 在明天（11-02）的计划里加了「重做 1 道到期错题」；更新了明天（11-02）计划的说明"
+   ]
+  },
+  {
+   "id": "settings-less-more",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "「我的」coach_frequency=less：复盘每 3 天一次（周报照常）；more：多一条中午提醒；「别管我」叠加在上面",
+   "checks": [
+    {
+     "assertion": "less：第一天发",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"job\":\"nightly\",\"skipped\":false,\"forced\":false,\"mode\":\"mock\",\"summary\":\"写了今天（11-01）的今日复盘\",\"reply\":\"明天（11-02）从一组 5 道基础题开始。\",\"actions\":[{\"id\":\"71359657"
+    },
+    {
+     "assertion": "less：第二天跳过（每 3 天）",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "提醒频率是「少」：每 3 天复盘一次，上次是 2026-11-01"
+    },
+    {
+     "assertion": "less：周报照常",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "less：第三天发",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "normal：中午提醒不发",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "中午提醒只在提醒频率选「多」（coach_frequency=more）时发，现在是 normal"
+    },
+    {
+     "assertion": "more：中午提醒发出",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "夜深了，今天还没排计划。回一句「今天只有一小时」，我帮你排。"
+    },
+    {
+     "assertion": "more + 别管我 → 中午提醒不发",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "少打扰模式中，中午提醒先不发"
+    }
+   ],
+   "transcript": [
+    "  · less d+1：提醒频率是「少」：每 3 天复盘一次，上次是 2026-11-01",
+    "  · more 中午：夜深了，今天还没排计划。回一句「今天只有一小时」，我帮你排。",
+    "  · more+别管我：少打扰模式中，中午提醒先不发"
+   ]
+  },
+  {
+   "id": "settings-validate",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "「我的」设置字段名 / 校验 / 部分更新 / exam_date 驱动 plans/today.days_to_exam",
+   "checks": [
+    {
+     "assertion": "平铺字段原样返回",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"timezone\":\"Asia/Shanghai\",\"exam_date\":\"2026-12-19\",\"quiet_hours\":{\"end\":\"07:00\",\"start\":\"23:00\"},\"target_score\":400,\"target_school\":\"浙江大学\",\"coach_frequency\":\"normal\"}"
+    },
+    {
+     "assertion": "部分更新只改 target_score",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"timezone\":\"Asia/Shanghai\",\"exam_date\":\"2026-12-19\",\"quiet_hours\":{\"end\":\"07:00\",\"start\":\"23:00\"},\"target_score\":410,\"target_school\":\"浙江大学\",\"coach_frequency\":\"normal\"}"
+    },
+    {
+     "assertion": "非法值 / 拼错字段 → 400",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "400:目标分填 0–500 之间的整数 | 400:考试日期格式不对 | 400:教练提醒频率请从「多 / 正常 / 少 / 先问我」里选一个 | 400:免打扰时间要写成 23:00 这样 | 400:有一项设置暂时不支持，请刷新页面后再试"
+    },
+    {
+     "assertion": "400 文案给学生看：无字段名 / null，带 field + code",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "invalid_target_score/target_score:目标分填 0–500 之间的整数 | invalid_exam_date/exam_date:考试日期格式不对 | invalid_coach_frequency/coach_frequency:教练提醒频率请从「多 / 正常 / 少 / 先问我」里选一个 | invalid_quiet_hours/quiet_hours:免打扰时间要写成 23:00 这样 | unknown_field/targetScore:有一项设置暂时不支持，请刷新页面后再试"
+    },
+    {
+     "assertion": "plans/today.days_to_exam = 48",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "48 2026-12-19"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "action-group-one-undo",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "一句命令改了计划 + 计划说明：「教练改过的」只显示一条，一次撤回把任务和说明都恢复",
+   "checks": [
+    {
+     "assertion": "一条命令 = 一条记录",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "1 条 / 2 动作 / 在今天（11-01）的计划里加了「重做 2 道错题」 / flat 2"
+    },
+    {
+     "assertion": "命令后计划和说明都改了",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "1 你说「今天重做 2 道错题」，按你说的排 2 道错题重做。 在今天（11-01）的计划里加了「重做 2 道错题」"
+    },
+    {
+     "assertion": "撤回一次 → 任务和说明都恢复",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 2 tasks 0 why null live 0"
+    },
+    {
+     "assertion": "组里另一条再撤 → 409",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "409"
+    },
+    {
+     "assertion": "确认的建议：一条记录、一次撤回",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 1/2 tasks 1→0 200"
+    }
+   ],
+   "transcript": [
+    "> 今天重做 2 道错题",
+    "  · 收到：「今天重做 2 道错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 要排 2 道重做错题，对照今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 2 道错题」（你说「今天重做 2 道错题」，按你说的排 2 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天重做 2 道错题」，按你说的排 2 道错题重做。）",
+    "  = 已改今天（11-01）的计划：重做 2 道错题。凌晨 4 点前还算 11-01 这一天。"
+   ]
+  },
+  {
+   "id": "dev-force-proposal",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "没有 API Key 也能看到「先问我」的建议：POST /agent/jobs/run {job, force:true}",
+   "checks": [
+    {
+     "assertion": "没数据也有 pending 建议",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"想在今天（11-01）的计划里加「做 5 道基础题热身」\"]"
+    },
+    {
+     "assertion": "立刻送达",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "queued 0"
+    },
+    {
+     "assertion": "没确认前计划不变",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "0"
+    },
+    {
+     "assertion": "有错题 → 建议重做",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"想在明天（11-02）的计划里加「重做 1 道错题」\"]"
+    },
+    {
+     "assertion": "job 不对 → 400 带 code",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "400 invalid_job"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r8-proposal-new-per-run",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 8 轮：「先问我」每次任务运行一条新建议；已确认的不会被翻回 pending；确认后标题变过去时",
+   "checks": [
+    {
+     "assertion": "3 条不同的建议消息",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"dac1941a-2961-44c5-b7af-f79087c675b7\",\"59f2c916-18b4-4cc2-99dc-f60990611bc7\",\"9753fea7-b233-4065-bc23-2853aa9f60b0\"]"
+    },
+    {
+     "assertion": "第一条 confirmed，标题过去时",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "confirmed 已在明天（11-02）的计划里加了「做 5 道基础题热身」"
+    },
+    {
+     "assertion": "确认后不说「等你确认 / 还没执行」",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "你确认后已经改好了；不想要的话可以在「教练改动记录」里撤回。"
+    },
+    {
+     "assertion": "重复确认 → 409 already_decided + 中文提示",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"message\":\"这条建议已经处理过了\",\"detail\":\"之前已经确认了，不会重复执行\",\"code\":\"already_decided\",\"proposal\":{\"items\":[{\"job\":\"nightly\",\"tool\":\"updateDailyPlan\",\"input\":{\"date\":\"2026-"
+    },
+    {
+     "assertion": "后两条各确认/忽略一次",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 409 200"
+    },
+    {
+     "assertion": "待确认文案是「想…」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"教练想做 1 处改动，等你确认后才执行：想在明天（11-02）的计划里加「重做 2 道错题」\",\"教练想做 1 处改动，等你确认后才执行：想在今天（11-01）的计划里加「重做 1 道错题」\"]"
+    },
+    {
+     "assertion": "忽略后「已忽略，计划没改」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已忽略，计划没改 | 原来的建议：在明天（11-02）的计划里加「重做 2 道错题」。"
+    },
+    {
+     "assertion": "建议消息的 action 有 group_id（和本次任务同组）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"53e4d505-e2b2-4648-949d-23775d2f7264\",\"340e58e5-fc43-4b89-857d-3477df94950e\",\"ff00d0fa-8b6b-42e2-8e3c-06720d49652a\"]"
+    },
+    {
+     "assertion": "没有往已确认的建议里塞新改动",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r8-proposal-dedupe",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 8 轮：建议去重——已确认 / 计划里已有的不再提，热身排过一次不再提；老数据读时也显示过去时",
+   "checks": [
+    {
+     "assertion": "midday / weekly 不再出建议，说原因",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "没有新的建议：想做的改动计划里已经有了，不重复提 | 没有新的建议：想做的改动计划里已经有了，不重复提"
+    },
+    {
+     "assertion": "只有 1 条建议",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "1"
+    },
+    {
+     "assertion": "没有再提热身",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "老数据读时过去时",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已在 10-31 的计划里加了「重做 1 道错题」 | 你确认后已经改好了；不想要的话可以在「教练改动记录」里撤回。"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r8-wrong-filter",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 8 轮：「昨天的错题」= 按做错的日子筛题（用户时区），「明天 / 后天排」才是排的日子；筛不到就直说、不改计划",
+   "checks": [
+    {
+     "assertion": "昨天的错题 → 今天排，题是昨天错的",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改今天（11-01）的计划：重做 1 道错题。是从昨天（10-31）做错的题里挑的。凌晨 4 点前还算 11-01 这一天。 | [\"math1-2024-01\"]"
+    },
+    {
+     "assertion": "没有排到昨天",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "0"
+    },
+    {
+     "assertion": "今天做错的 → 明天排，题是今天错的",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。 | [\"math1-2024-05\"]"
+    },
+    {
+     "assertion": "上周没有 → 直说并问，不改计划",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "上周（10-19–10-25）没有做错的题，这次没改计划。要换一下吗？回「排 2 道今天做错的题」用今天的（有 1 道），或回「排 2 道错题」从全部错题里挑（有 2 道）。"
+    },
+    {
+     "assertion": "筛不到时没偷偷换题",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "「后天加 1 道错题」照常排后天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改后天（11-03）的计划：重做 1 道错题。 2026-11-03"
+    }
+   ],
+   "transcript": [
+    "> 昨天的错题帮我排 1 道",
+    "  · 收到：「昨天的错题帮我排 1 道」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：昨天（10-31）做错的题有 1 道",
+    "  · 要排 1 道重做错题，对照今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 1 道错题」（是从昨天（10-31）做错的题里挑的。）",
+    "  ✎ 更新了今天（11-01）计划的说明（是从昨天（10-31）做错的题里挑的。）",
+    "  = 已改今天（11-01）的计划：重做 1 道错题。是从昨天（10-31）做错的题里挑的。凌晨 4 点前还算 11-01 这一天。",
+    "> 今天做错的题明天帮我排 1 道",
+    "  · 收到：「今天做错的题明天帮我排 1 道」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按明天（11-02）排",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：今天（11-01）做错的题有 1 道",
+    "  · 要排 1 道重做错题，对照明天（11-02）的计划",
+    "  ✎ 在明天（11-02）的计划里加了「重做 1 道错题」（是从今天（11-01）做错的题里挑的。）",
+    "  ✎ 更新了明天（11-02）计划的说明（是从今天（11-01）做错的题里挑的。）",
+    "  = 已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。",
+    "> 上周的错题帮我排 2 道",
+    "  · 收到：「上周的错题帮我排 2 道」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：上周（10-19–10-25）做错的题有 0 道",
+    "  = 上周（10-19–10-25）没有做错的题，这次没改计划。要换一下吗？回「排 2 道今天做错的题」用今天的（有 1 道），或回「排 2 道错题」从全部错题里挑（有 2 道）。",
+    "> 后天加 1 道错题",
+    "  · 收到：「后天加 1 道错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按后天（11-03）排",
+    "  · 正在翻你的错题本",
+    "  · 要加 1 道重做错题，对照后天（11-03）的计划",
+    "  ✎ 在后天（11-03）的计划里加了「重做 1 道错题」（你说「后天加 1 道错题」，按你说的在原来的基础上再加 1 道错题重做。）",
+    "  ✎ 更新了后天（11-03）计划的说明（你说「后天加 1 道错题」，按你说的在原来的基础上再加 1 道错题重做。）",
+    "  = 已改后天（11-03）的计划：重做 1 道错题。"
+   ]
+  },
+  {
+   "id": "r8-mismatch-explained",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 8 轮：执行和说的不一样（没错题 / 错题不够 / 日期已过 / 超上限 / 没得加）→ 回复里一句话说清原因和改成了什么",
+   "checks": [
+    {
+     "assertion": "没错题 → 说明并按 10 道排",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改明天（11-02）的计划：基础练习 10 题。你现在没有错题，先排了 10 道基础题。凌晨 4 点前还算 11-01 这一天。 | 基础练习 10 题"
+    },
+    {
+     "assertion": "超过 20 → 说明封顶",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改后天（11-03）的计划：基础练习 20 题。你现在没有错题，先排了 20 道基础题。一次最多排 20 道，先排了 20 道。"
+    },
+    {
+     "assertion": "不够 5 道 → 说明只有 2 道",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改后天（11-03）的计划：重做 2 道错题。你要 5 道，错题本里该重做的只有 2 道，先排了这 2 道。"
+    },
+    {
+     "assertion": "why_changed 写实际做的（和回复同一句），不复述原话",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "你要 5 道，错题本里该重做的只有 2 道，先排了这 2 道。"
+    },
+    {
+     "assertion": "没得加 → 说明为什么没改",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "你要再加 4 道，但错题本里该重做的 2 道已经都排进后天（11-03）了，没有可以再加的，这次没改。"
+    },
+    {
+     "assertion": "说昨天 → 排到今天并说明",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改今天（11-01）的计划：重做 1 道错题。昨天已经过去了，排到了今天（11-01）。"
+    },
+    {
+     "assertion": "不是只回「已改计划」",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 明天加 10 道错题",
+    "  · 收到：「明天加 10 道错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按明天（11-02）排",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在明天（11-02）排 10 道基础练习",
+    "  ✎ 在明天（11-02）的计划里加了「基础练习 10 题」（你现在没有错题，先排了 10 道基础题。）",
+    "  ✎ 更新了明天（11-02）计划的说明（你现在没有错题，先排了 10 道基础题。）",
+    "  = 已改明天（11-02）的计划：基础练习 10 题。你现在没有错题，先排了 10 道基础题。凌晨 4 点前还算 11-01 这一天。",
+    "> 后天练 30 道错题",
+    "  · 收到：「后天练 30 道错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按后天（11-03）排",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在后天（11-03）排 20 道基础练习",
+    "  ✎ 在后天（11-03）的计划里加了「基础练习 20 题」（你现在没有错题，先排了 20 道基础题。一次最多排 20 道，先排了 20 道。）",
+    "  ✎ 更新了后天（11-03）计划的说明（你现在没有错题，先排了 20 道基础题。一次最多排 20 道，先排了 20 道。）",
+    "  = 已改后天（11-03）的计划：基础练习 20 题。你现在没有错题，先排了 20 道基础题。一次最多排 20 道，先排了 20 道。",
+    "> 后天重做 5 道错题",
+    "  · 收到：「后天重做 5 道错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按后天（11-03）排",
+    "  · 正在翻你的错题本",
+    "  · 要排 5 道重做错题，对照后天（11-03）的计划",
+    "  · 你说要 5 道，错题本里该重做的只有 2 道，先排这 2 道",
+    "  ✎ 在后天（11-03）的计划里加了「重做 2 道错题」（你要 5 道，错题本里该重做的只有 2 道，先排了这 2 道。）",
+    "  ✎ 更新了后天（11-03）计划的说明（你要 5 道，错题本里该重做的只有 2 道，先排了这 2 道。）",
+    "  = 已改后天（11-03）的计划：重做 2 道错题。你要 5 道，错题本里该重做的只有 2 道，先排了这 2 道。",
+    "> 后天再加 4 道错题",
+    "  · 收到：「后天再加 4 道错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按后天（11-03）排",
+    "  · 正在翻你的错题本",
+    "  · 要加 4 道重做错题，对照后天（11-03）的计划",
+    "  · 错题本里没有更多该重做的错题了，11-03 还是「重做 2 道错题」",
+    "  = 你要再加 4 道，但错题本里该重做的 2 道已经都排进后天（11-03）了，没有可以再加的，这次没改。",
+    "> 昨天加 1 道错题",
+    "  · 收到：「昨天加 1 道错题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 要加 1 道重做错题，对照今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 1 道错题」（昨天已经过去了，排到了今天（11-01）。）",
+    "  ✎ 更新了今天（11-01）计划的说明（昨天已经过去了，排到了今天（11-01）。）",
+    "  = 已改今天（11-01）的计划：重做 1 道错题。昨天已经过去了，排到了今天（11-01）。"
+   ]
+  },
+  {
+   "id": "r8-error-shape",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 8 轮：404 / 409 统一 {statusCode,error,message,field,code}，message 学生看得懂",
+   "checks": [
+    {
+     "assertion": "重复撤回 409 already_undone",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"message\":\"这条已经撤回过了\",\"code\":\"already_undone\",\"statusCode\":409,\"error\":\"Conflict\",\"field\":null}"
+    },
+    {
+     "assertion": "不存在 404 带 code",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"message\":\"这条操作不存在，刷新一下再试\",\"code\":\"action_not_found\",\"statusCode\":404,\"error\":\"Not Found\",\"field\":null}"
+    },
+    {
+     "assertion": "未知路由 404 中文",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"message\":\"没找到这个内容，可能已经被删掉了，刷新一下再试\",\"error\":\"Not Found\",\"statusCode\":404,\"field\":null,\"code\":\"not_found\"}"
+    },
+    {
+     "assertion": "没有英文报错",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 明天加 1 道题",
+    "  · 收到：「明天加 1 道题」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按明天（11-02）排",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在明天（11-02）排 1 道基础练习",
+    "  ✎ 在明天（11-02）的计划里加了「基础练习 1 题」（你现在没有错题，先排了 1 道基础题。）",
+    "  ✎ 更新了明天（11-02）计划的说明（你现在没有错题，先排了 1 道基础题。）",
+    "  = 已改明天（11-02）的计划：基础练习 1 题。你现在没有错题，先排了 1 道基础题。凌晨 4 点前还算 11-01 这一天。"
+   ]
+  },
+  {
+   "id": "r8-register-tz",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 8 轮：注册时读 X-Timezone（→ body.timezone → Asia/Shanghai）",
+   "checks": [
+    {
+     "assertion": "X-Timezone 优先",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "America/Los_Angeles"
+    },
+    {
+     "assertion": "body.timezone 其次",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "Europe/London"
+    },
+    {
+     "assertion": "不合法 → Asia/Shanghai",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "Asia/Shanghai"
+    },
+    {
+     "assertion": "没有忽略 X-Timezone",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r8-dedupe-window",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 8 轮复测：去重窗口 = 今天起 7 天——明天已确认的改动，今天（midday）不再提",
+   "checks": [
+    {
+     "assertion": "midday 不重复 nightly 已确认的（明天的）改动",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"redo:math1-2024-01\"] → [\"practice:高等数学/一元函数积分学/变限积分\"] "
+    },
+    {
+     "assertion": "weekly 不重复前两次的改动",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"demo\"] "
+    },
+    {
+     "assertion": "没有跨天重复提",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r8-forced-copy",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 8 轮复测：测试触发的文案按真实设置写、标「（测试触发）」，不冒用「提醒频率选了「多」」；时间词按用户当地时间",
+   "checks": [
+    {
+     "assertion": "结果 forced=true，summary 带（测试触发）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "true 早上好，今天还没排计划。回一句「今天只有一小时」，我帮你排。（测试触发）"
+    },
+    {
+     "assertion": "历史：每条都 forced、带（测试触发）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[[\"写了今天（11-01）的教练建议（测试触发）\",\"教练只提建议，确认后才改（测试触发）\"],[\"写了今天（11-01）的进度提醒（测试触发）\",\"看一眼今天的进度（测试触发）\"]]"
+    },
+    {
+     "assertion": "reason 不提提醒频率",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "[\"教练只提建议，确认后才改（测试触发）\",\"看一眼今天的进度（测试触发）\"]"
+    },
+    {
+     "assertion": "07:40 不说「下午」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"错题本里还有 1 道没掌握，今天先重做 1 道。\"]"
+    },
+    {
+     "assertion": "message.status：pending → confirmed",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "pending confirmed confirmed"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r8-why-per-task",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 8 轮复测：后来的改动不覆盖前面已确认改动的理由（why_changed 按任务记）",
+   "checks": [
+    {
+     "assertion": "热身和重做各有理由",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "演示建议：还没有足够的作答数据，先加 5 道基础题热身。 | 是从今天（11-01）做错的题里挑的。"
+    },
+    {
+     "assertion": "计划 why_changed 两条都在",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "是从今天（11-01）做错的题里挑的。演示建议：还没有足够的作答数据，先加 5 道基础题热身。 | 已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。"
+    },
+    {
+     "assertion": "热身理由没被覆盖",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 今天做错的题明天帮我排 1 道",
+    "  · 收到：「今天做错的题明天帮我排 1 道」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按明天（11-02）排",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：今天（11-01）做错的题有 1 道",
+    "  · 要排 1 道重做错题，对照明天（11-02）的计划",
+    "  ✎ 在明天（11-02）的计划里加了「重做 1 道错题」（是从今天（11-01）做错的题里挑的。）",
+    "  ✎ 更新了明天（11-02）计划的说明（是从今天（11-01）做错的题里挑的。）",
+    "  = 已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。"
+   ]
+  },
+  {
+   "id": "r8-no-null-text",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 8 轮复测：没有数据时学生看到的文字里不出现 null / undefined / NaN（周报「约 null 分钟」）",
+   "checks": [
+    {
+     "assertion": "周报写「还没有学习时长记录」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "本周（10-26–11-01）还没有作答记录，也还没有学习时长记录。当前阶段：基础。"
+    },
+    {
+     "assertion": "没有 null / undefined / NaN / 标点连用",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "[]"
+    },
+    {
+     "assertion": "今天 / 明天标签和日期一致（学习日 2026-11-01）",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": ""
+    }
+   ],
+   "transcript": [
+    "> 今天只有一小时",
+    "  · 收到：「今天只有一小时」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 今天（11-01）只有 60 分钟，现有任务放得下，不用挪",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。"
+   ]
+  },
+  {
+   "id": "r9-cmd-redo-after-wrong",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 9 轮复测 B1：同一句话间隔很短，但中间做错了题（数据变了）→ 重新执行；数据没变才算重复",
+   "checks": [
+    {
+     "assertion": "做错后再说：重新执行，明天排上了这道",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "false 已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。 | 重做 1 道错题"
+    },
+    {
+     "assertion": "数据没变的第三遍：算重复",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "true 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行"
+    },
+    {
+     "assertion": "回复没有标点连用 / 漏值",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "[\"今天（11-01）没有做错的题，这次没改计划。错题本里现在也没有错题，想先做几道基础题的话回「排 5 道基础题」。凌晨 4 点前还算 11-01 这一天。\",\"已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。\",\"刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行\"]"
+    },
+    {
+     "assertion": "数据变了不说「没有重复执行」",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。"
+    },
+    {
+     "assertion": "第三遍说「明天（MM-DD）的计划里已经有」，不说今天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行"
+    },
+    {
+     "assertion": "今天 / 明天标签和日期一致（学习日 2026-11-01）",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": ""
+    }
+   ],
+   "transcript": [
+    "> 今天做错的明天排 1 道",
+    "  · 收到：「今天做错的明天排 1 道」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按明天（11-02）排",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：今天（11-01）做错的题有 0 道",
+    "  = 今天（11-01）没有做错的题，这次没改计划。错题本里现在也没有错题，想先做几道基础题的话回「排 5 道基础题」。凌晨 4 点前还算 11-01 这一天。",
+    "> 今天做错的明天排 1 道",
+    "  · 收到：「今天做错的明天排 1 道」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按明天（11-02）排",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：今天（11-01）做错的题有 1 道",
+    "  · 要排 1 道重做错题，对照明天（11-02）的计划",
+    "  ✎ 在明天（11-02）的计划里加了「重做 1 道错题」（是从今天（11-01）做错的题里挑的。）",
+    "  ✎ 更新了明天（11-02）计划的说明（是从今天（11-01）做错的题里挑的。）",
+    "  = 已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。",
+    "> 今天做错的明天排 1 道",
+    "  · 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行",
+    "  = 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行"
+   ]
+  },
+  {
+   "id": "r9-plan-why-own-date",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 9 轮复测 B2：今天的计划空着时，why_changed 不能显示明天那条改动的原因；why_changed / why_changed_latest 只看这一天的任务",
+   "checks": [
+    {
+     "assertion": "今天（空计划）why 都是 null",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "0 项 | null | undefined"
+    },
+    {
+     "assertion": "明天 latest 有值且一致",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "是从今天（11-01）做错的题里挑的。 | 是从今天（11-01）做错的题里挑的。"
+    },
+    {
+     "assertion": "别的日子的原因没出现在今天",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": null
+    }
+   ],
+   "transcript": [
+    "> 今天做错的明天排 1 道",
+    "  · 收到：「今天做错的明天排 1 道」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按明天（11-02）排",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：今天（11-01）做错的题有 1 道",
+    "  · 要排 1 道重做错题，对照明天（11-02）的计划",
+    "  ✎ 在明天（11-02）的计划里加了「重做 1 道错题」（是从今天（11-01）做错的题里挑的。）",
+    "  ✎ 更新了明天（11-02）计划的说明（是从今天（11-01）做错的题里挑的。）",
+    "  = 已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。凌晨 4 点前还算 11-01 这一天。"
+   ]
+  },
+  {
+   "id": "r9-dismissed-skip",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 9 轮复测 B3：忽略过的建议不再提，并且说「这条你已经忽略过了」，不说「计划里该有的都有了」",
+   "checks": [
+    {
+     "assertion": "midday 说「已经忽略过了」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "忽略 3 次后：dismissed 没有新的建议：这 3 条你已经忽略过了，不再提"
+    },
+    {
+     "assertion": "weekly 原因带「忽略过」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "dismissed 没有新的建议：这 3 条你已经忽略过了，不再提 "
+    },
+    {
+     "assertion": "不说「计划里该有的都有了」",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r9-forced-local-time",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 9 轮复测 B5：测试触发的中午提醒按当地时间说（23:53 不说「中午了」）；整题计分的题顶层 sub_scores=null",
+   "checks": [
+    {
+     "assertion": "23:53 不说中午、说晚上好",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "[\"晚上好，今天还没排计划。回一句「今天只有一小时」，我帮你排。（测试触发）\",[[\"写了今天（11-01）的进度提醒（测试触发）\",\"看一眼今天的进度（测试触发）\"]]]"
+    },
+    {
+     "assertion": "12:10 说「中午了」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "中午了，今天还没排计划。回一句「今天只有一小时」，我帮你排。（测试触发）"
+    },
+    {
+     "assertion": "整题计分 sub_scores=null；按小问是数组",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "null | [5,3,3]"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r10-confirmed-planned",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 10 轮复测 N2：确认过的建议已经进了计划，再强制夜间复盘说「计划里已经有了」（planned），不说「该有的都有了」（nothing）",
+   "checks": [
+    {
+     "assertion": "确认后再触发：reason=planned",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "确认 3 次后：planned 没有新的建议：想做的 3 处改动计划里已经有了，不重复提"
+    },
+    {
+     "assertion": "不说 nothing",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r10-crossover-nightly",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 10 轮复测 N3：凌晨 00:04（账号时区）强制夜间复盘 → 学习日还是前一天，建议排到日历「今天」、说「明天（MM-DD）」",
+   "checks": [
+    {
+     "assertion": "settings：today=study_date=前一天，calendar_date=当天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01 2026-11-01 2026-11-02 want 2026-11-01/2026-11-02"
+    },
+    {
+     "assertion": "plans/today：study_date=前一天、relative_day=今天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01 2026-11-01 今天"
+    },
+    {
+     "assertion": "复盘消息记在学习日、说「明天（MM-DD）」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01 今天 明天（11-02）先重做 1 道到期错题。"
+    },
+    {
+     "assertion": "建议排到学习日 + 1",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"2026-11-02\"] want 2026-11-02"
+    },
+    {
+     "assertion": "今天 / 明天标签和日期一致（学习日 2026-11-01）",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": ""
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r10-crossover-command",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 10 轮复测 N1/N3：凌晨 02:00 说「今天做错的明天排 1 道」×3 → 今天=前一天，排到日历当天；第三遍说「明天（MM-DD）的计划里已经有」",
+   "checks": [
+    {
+     "assertion": "排到学习日 + 1（日历当天）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-02 want 2026-11-02"
+    },
+    {
+     "assertion": "第一遍回复说明凌晨 4 点前还算前一天，后两遍不再说（每个学习日一次）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。凌晨 4 点前还算 11-01 这一天。 | 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行 | 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行"
+    },
+    {
+     "assertion": "第三遍「明天（MM-DD）的计划里已经有」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行"
+    },
+    {
+     "assertion": "错题带 due_date / due_relative_day",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"due_date\":\"2026-11-01\",\"rel\":\"今天\"}"
+    },
+    {
+     "assertion": "今天 / 明天标签和日期一致（学习日 2026-11-01）",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": ""
+    }
+   ],
+   "transcript": [
+    "> 今天做错的明天排 1 道",
+    "  · 收到：「今天做错的明天排 1 道」",
+    "  · 现在是 02:00（Asia/Shanghai），还没到 4:00 换日，按明天（11-02）排",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：今天（11-01）做错的题有 1 道",
+    "  · 要排 1 道重做错题，对照明天（11-02）的计划",
+    "  ✎ 在明天（11-02）的计划里加了「重做 1 道错题」（是从今天（11-01）做错的题里挑的。）",
+    "  ✎ 更新了明天（11-02）计划的说明（是从今天（11-01）做错的题里挑的。）",
+    "  = 已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。凌晨 4 点前还算 11-01 这一天。",
+    "> 今天做错的明天排 1 道",
+    "  · 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行",
+    "  = 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行",
+    "> 今天做错的明天排 1 道",
+    "  · 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行",
+    "  = 刚刚说过同样的话，明天（11-02）的计划里已经有「重做 1 道错题」，这次没有重复执行"
+   ]
+  },
+  {
+   "id": "r10-monday-0200",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 10 轮复测 N3：周一 02:00 还算周日 → 「这周的错题」是上周一到这个周日，「上周」再往前一周；日期标签对得上",
+   "checks": [
+    {
+     "assertion": "周一 02:00 today = 周日",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01 want 2026-11-01"
+    },
+    {
+     "assertion": "这周 = 10-26–11-01",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改今天（11-01）的计划：重做 1 道错题。是从这周（10-26–11-01）做错的题里挑的。凌晨 4 点前还算 11-01 这一天。 | 收到：「这周的错题排 1 道」 | 现在是 02:00（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排 | 正在翻你的错题本 | 按做错的日子筛：这周（10-26–11-01）做错的题有 1 道 | 要排 1 道重做错题，对照今天（11-01）的计划"
+    },
+    {
+     "assertion": "上周 = 10-19–10-25",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "上周（10-19–10-25）没有做错的题，这次没改计划。要换一下吗？回「排 1 道今天做错的题」用今天的（有 1 道），或回「排 1 道错题」从全部错题里挑（有 1 道）。 | 收到：「上周的错题排 1 道」 | 现在是 02:00（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排 | 正在翻你的错题本 | 按做错的日子筛：上周（10-19–10-25）做错的题有 0 道"
+    },
+    {
+     "assertion": "排到周日（学习日），不是周一",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-01 want 2026-11-01"
+    },
+    {
+     "assertion": "今天 / 明天标签和日期一致（学习日 2026-11-01）",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": ""
+    }
+   ],
+   "transcript": [
+    "> 这周的错题排 1 道",
+    "  · 收到：「这周的错题排 1 道」",
+    "  · 现在是 02:00（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：这周（10-26–11-01）做错的题有 1 道",
+    "  · 要排 1 道重做错题，对照今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 1 道错题」（是从这周（10-26–11-01）做错的题里挑的。）",
+    "  ✎ 更新了今天（11-01）计划的说明（是从这周（10-26–11-01）做错的题里挑的。）",
+    "  = 已改今天（11-01）的计划：重做 1 道错题。是从这周（10-26–11-01）做错的题里挑的。凌晨 4 点前还算 11-01 这一天。",
+    "> 上周的错题排 1 道",
+    "  · 收到：「上周的错题排 1 道」",
+    "  · 现在是 02:00（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 按做错的日子筛：上周（10-19–10-25）做错的题有 0 道",
+    "  = 上周（10-19–10-25）没有做错的题，这次没改计划。要换一下吗？回「排 1 道今天做错的题」用今天的（有 1 道），或回「排 1 道错题」从全部错题里挑（有 1 道）。"
+   ]
+  },
+  {
+   "id": "hard-1-one-action",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "用户硬要求 1：主动消息只给明天一件事，细节折叠",
+   "checks": [
+    {
+     "assertion": "headline 一句话 ≤40 字",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "明天（11-02）先重做 2 道到期错题。"
+    },
+    {
+     "assertion": "details 单独给",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "凌晨 4 点前还算 11-01 这一天。今天（11-01）做了 2 题，对 0 题、错 2 题，还没有学习时长记录。"
+    },
+    {
+     "assertion": "不是一屏建议",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> [定时 nightly]",
+    "  = 明天（11-02）先重做 2 道到期错题。",
+    "  ✎ 写了今天（11-01）的今日复盘（每晚 23:00 自动复盘）",
+    "  ✎ 在明天（11-02）的计划里加了「重做 2 道到期错题」（复盘：有 2 道错题明天（11-02）到复习时间，先重做。）",
+    "  ✎ 更新了明天（11-02）计划的说明（复盘：有 2 道错题明天（11-02）到复习时间，先重做。）"
+   ]
+  },
+  {
+   "id": "hard-2-backoff",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "用户硬要求 2：「别管我」/连续 2 次没看 → 少打扰（可撤回）；再互动 → 恢复；从不加码",
+   "checks": [
+    {
+     "assertion": "「别管我」→ reduced 每 3 天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"mode\":\"reduced\",\"cause\":\"command\",\"since\":\"2026-11-01T16:27:40.305Z\",\"nightly_every_days\":3}"
+    },
+    {
+     "assertion": "记一条可撤回的 action",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "主动来找 → 恢复",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"mode\":\"normal\",\"cause\":\"re_engaged\",\"since\":\"2026-11-01T16:27:40.316Z\",\"nightly_every_days\":1}"
+    },
+    {
+     "assertion": "连续两次没看 → 自动 reduced（这次跳过）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"job\":\"nightly\",\"skipped\":true,\"reason\":\"少打扰模式：每 3 天复盘一次，上次是 2026-10-31\",\"actions\":[{\"id\":\"846aad51-a2a0-44d7-9861-d863a988fc6e\",\"command_id\":null,\"group_id\":null,\"trigger\":\"nightly\",\"tool\":\"setProactive\",\"summary\":\"少打扰：每晚复盘改成每 3 天一次（周报照常）\",\"reason\":\"最近两次复盘（前天（10-30）、昨天（10-31））你都没打开，先少打扰：改成每 3 天一次，周报照常\",\"target\":{\"kind\":\"proactive\",\"id\":\"4eda8058-3aab-418c-bee2-841c6f9d31d6\"},\"before\":{\"proactive\":{\"mode\":\"normal\",\"cause\":\"re_engaged\",\"since\":\"2026-11-01T16:27:40.316Z\",\"nightly_every_days\":1}},\"after\":{\"proactive\":{\"mode\":\"reduced\",\"cause\":\"ignored\",\"since\":\"2026-11-01T16:27:40.334Z\",\"nightly_every_days\":3}},\"undoable\":true,\"undone_at\":null,\"created_at\":\"2026-11-01T16:27:40.334Z\",\"forced\":false}]}"
+    },
+    {
+     "assertion": "看了 → 恢复",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "{\"id\":\"b2939f1f-6367-4ee2-afe3-deca064d12c7\",\"kind\":\"review\",\"seen_at\":\"2026-11-01T16:27:40.340Z\",\"proactive_restored\":true}"
+    },
+    {
+     "assertion": "从不提高频率",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 别管我",
+    "  · 收到：「别管我」",
+    "  · 正在调整提醒频率",
+    "  ✎ 少打扰：每晚复盘改成每 3 天一次（周报照常）（你说「别管我」，先少打扰你）",
+    "  = 好，之后每 3 天才发一次复盘，周报照常。想让我帮忙随时说一句。",
+    "> 今天只有一小时",
+    "  · 收到：「今天只有一小时」",
+    "  · 现在是 00:27（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 今天（11-01）只有 60 分钟，现有任务放得下，不用挪",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 恢复每晚复盘（你又来找我了，恢复每晚复盘）",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。凌晨 4 点前还算 11-01 这一天。",
+    "> [定时 nightly]",
+    "  = 跳过：少打扰模式：每 3 天复盘一次，上次是 2026-10-31",
+    "  ✎ 少打扰：每晚复盘改成每 3 天一次（周报照常）（最近两次复盘（前天（10-30）、昨天（10-31））你都没打开，先少打扰：改成每 3 天一次，周报照常）"
+   ]
+  },
+  {
+   "id": "hard-3-careless",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "用户硬要求 3：「这题我会，是手滑」→ 记粗心，不扣掌握度，可撤回",
+   "checks": [
+    {
+     "assertion": "error_type=careless",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "careless"
+    },
+    {
+     "assertion": "掌握度回升（不按做错扣）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "0 → 0.317"
+    },
+    {
+     "assertion": "可撤回",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200"
+    },
+    {
+     "assertion": "掌握度没被扣",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 这题我会，是手滑",
+    "  · 收到：「这题我会，是手滑」",
+    "  · 正在把这题记成粗心",
+    "  ✎ 2024 年第 1 题记为「粗心」，相关知识点的掌握度不扣分（你说「这题我会，是手滑」）",
+    "  = 记下了：2024 年第 1 题记为「粗心」，相关知识点的掌握度不扣分。下次做完这类题留 30 秒回头检查。"
+   ]
+  },
+  {
+   "id": "r11-early-note-once",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 11 轮：「凌晨 4 点前还算 MM-DD 这一天」每个学习日每个用户只说一次（第一句涉及今天的回复）；04:00 以后不说；下一个学习日凌晨再说一次；夜间复盘先说了，命令就不再说",
+   "checks": [
+    {
+     "assertion": "第 1 句回复带这句（MM-DD = 学习日）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "已改今天（11-01）的计划：重做 1 道错题。凌晨 4 点前还算 11-01 这一天。"
+    },
+    {
+     "assertion": "第 2、3 句不带",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "你要再加 1 道，但错题本里该重做的 1 道已经都排进今天（11-01）了，没有可以再加的，这次没改。 | 今天（11-01）的计划里已经有「重做 1 道错题」，没有重复添加。"
+    },
+    {
+     "assertion": "04:30 不带",
+     "kind": "expect",
+     "status": "fail",
+     "detail": "2026-11-01 刚刚说过同样的话，昨天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行"
+    },
+    {
+     "assertion": "下一个学习日凌晨第一句再带一次",
+     "kind": "expect",
+     "status": "fail",
+     "detail": "刚刚说过同样的话，昨天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行。凌晨 4 点前还算 11-02 这一天。"
+    },
+    {
+     "assertion": "记下说过的学习日（users.early_note_day）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "2026-11-02"
+    },
+    {
+     "assertion": "复盘先说了 → 同一学习日的命令不再说",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 凌晨 4 点前还算 11-01 这一天。今天（11-01）还没有作答记录。 | 已改今天（11-01）的计划：基础练习 5 题。"
+    },
+    {
+     "assertion": "同一学习日说两次",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 今天只有一小时",
+    "  · 收到：「今天只有一小时」",
+    "  · 现在是 00:30（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 今天（11-01）只有 60 分钟，现有任务放得下，不用挪",
+    "  · 挑了 1 道该重做的错题，准备排进今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 1 道错题」（你说「今天只有一小时」，今天按 60 分钟排：先重做 1 道错题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天只有一小时」，今天按 60 分钟排：先重做 1 道错题。）",
+    "  = 已改今天（11-01）的计划：重做 1 道错题。凌晨 4 点前还算 11-01 这一天。",
+    "> 今天再加一道错题",
+    "  · 收到：「今天再加一道错题」",
+    "  · 现在是 00:40（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 要加 1 道重做错题，对照今天（11-01）的计划",
+    "  · 错题本里没有更多该重做的错题了，11-01 还是「重做 1 道错题」",
+    "  = 你要再加 1 道，但错题本里该重做的 1 道已经都排进今天（11-01）了，没有可以再加的，这次没改。",
+    "> 那今天的单词还背吗",
+    "  · 收到：「那今天的单词还背吗」",
+    "  · 现在是 01:10（Asia/Shanghai），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 挑了 1 道该重做的错题，准备排进今天（11-01）的计划",
+    "  · 今天（11-01）的计划里已经有「重做 1 道错题」，没有重复添加",
+    "  = 今天（11-01）的计划里已经有「重做 1 道错题」，没有重复添加。",
+    "> 今天只有一小时",
+    "  · 刚刚说过同样的话，昨天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行",
+    "  = 刚刚说过同样的话，昨天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行",
+    "> 今天只有一小时",
+    "  · 刚刚说过同样的话，昨天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行。凌晨 4 点前还算 11-02 这一天。",
+    "  = 刚刚说过同样的话，昨天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行。凌晨 4 点前还算 11-02 这一天。"
+   ]
+  },
+  {
+   "id": "r11-date-render",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 11 轮 M1：存库是 {{date:YYYY-MM-DD}}，读时按读者当时的学习日渲染：建议第二天再读 明天→今天；8 天前的记录显示「MM-DD（周X）」",
+   "checks": [
+    {
+     "assertion": "库里是占位符",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "[\"想在 {{date:2026-11-02}} 的计划里加「做 5 道基础题热身」\"]"
+    },
+    {
+     "assertion": "当天读：明天（MM-DD）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "教练想做 1 处改动，等你确认后才执行：想在明天（11-02）的计划里加「做 5 道基础题热身」"
+    },
+    {
+     "assertion": "第二天读：今天（MM-DD），不再说明天",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "教练想做 1 处改动，等你确认后才执行：想在今天（11-02）的计划里加「做 5 道基础题热身」"
+    },
+    {
+     "assertion": "确认后标题按读的那天说",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "200 已在今天（11-02）的计划里加了「做 5 道基础题热身」"
+    },
+    {
+     "assertion": "8 天后改动记录：MM-DD（周X）",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "写了 11-01（周日） 的教练建议（测试触发） | 在 11-02（周一） 的计划里加了「做 5 道基础题热身」 | 已在 11-02（周一） 的计划里加了「做 5 道基础题热身」"
+    },
+    {
+     "assertion": "存库的是「明天」这种会过期的叫法",
+     "kind": "must_not",
+     "status": "pass",
+     "detail": "教练想做 1 处改动，等你确认后才执行：想在 {{date:2026-11-02}} 的计划里加「做 5 道基础题热身」"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "r11-quotes",
+   "tz": "Asia/Shanghai",
+   "source": "builtin",
+   "scenario": "第 11 轮 M2：渲染层统一引号层级——外层「」、里层『』、更深的去掉引号",
+   "checks": [
+    {
+     "assertion": "「已在明天（11-02）的计划里加了『练 3 道变限积分』」",
+     "kind": "expect",
+     "status": "pass",
+     "detail": "「已在明天（11-02）的计划里加了『练 3 道变限积分』」"
+    },
+    {
+     "assertion": "「」套「」",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": []
+  },
+  {
+   "id": "coach-01",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "时间被压缩：今天只有一小时",
+   "input": "今天只有一小时",
+   "checks": [
+    {
+     "assertion": "只修改今天（北京时间）的计划，总时长压到 60 分钟以内",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "按掌握度优先保留最弱的知识点，例如二重积分里交换积分次序的 3 道错题",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "被砍掉的任务写明去向（顺延到哪天或放进待办池），并给出改动原因",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "每条改动都写进撤销日志，可以一键撤回",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "回复先说一句明天要先做的那一件事，再附简短理由",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "把任务排进明天或之后的日期却不说明",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "删除任何任务、作答或笔记记录",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "回复超过一屏，或一次列出多于 3 条建议",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 今天只有一小时",
+    "  · 收到：「今天只有一小时」",
+    "  · 正在翻你的错题本",
+    "  · 今天（11-01）只有 60 分钟：保留 1 项，「二重积分专项 20 题」「错题重做 5 道」放不下，挪到明天（11-02）",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题，放不下的 2 项挪到明天（11-02）。）",
+    "  ✎ 今天（11-01）：先跳过「二重积分专项 20 题」（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题，放不下的 2 项挪到明天（11-02）。）",
+    "  ✎ 今天（11-01）：先跳过「错题重做 5 道」（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题，放不下的 2 项挪到明天（11-02）。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题，放不下的 2 项挪到明天（11-02）。）",
+    "  ✎ 在明天（11-02）的计划里加了「二重积分专项 20 题」（你说「今天只有一小时」，今天时间不够，这 2 项从今天（11-01）挪到明天（11-02）。）",
+    "  ✎ 在明天（11-02）的计划里加了「错题重做 5 道」（你说「今天只有一小时」，今天时间不够，这 2 项从今天（11-01）挪到明天（11-02）。）",
+    "  ✎ 更新了明天（11-02）计划的说明（你说「今天只有一小时」，今天时间不够，这 2 项从今天（11-01）挪到明天（11-02）。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题；放不下的 2 项挪到明天（11-02）。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-02",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "同一句话重复说（幂等）",
+   "input": "给我加一道错题重做（20:00:40 再次发送）",
+   "checks": [
+    {
+     "assertion": "识别为 1 分钟内的重复指令，只执行一次",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "回复说明「刚才已经加过了」，并给出那条任务",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "再新增一条重复的错题重做任务",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 给我加一道错题重做",
+    "  · 收到：「给我加一道错题重做」",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在今天（11-01）排 1 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 1 题」（你现在没有错题，先排了 1 道基础题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你现在没有错题，先排了 1 道基础题。）",
+    "  = 已改今天（11-01）的计划：基础练习 1 题。你现在没有错题，先排了 1 道基础题。",
+    "> 给我加一道错题重做",
+    "  · 刚刚说过同样的话，今天（11-01）的计划里已经有「基础练习 1 题」，这次没有重复执行。还要再加的话，回「确认再加 1 道」",
+    "  = 刚刚说过同样的话，今天（11-01）的计划里已经有「基础练习 1 题」，这次没有重复执行。还要再加的话，回「确认再加 1 道」"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-03",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "连错三道同一知识点",
+   "input": "又错了，烦死了",
+   "checks": [
+    {
+     "assertion": "先共情一句（不超过一句），再指出三道题共同的错因：补面的方向取错，并引用三道题的题号",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "给出一个针对性动作：先做一道补面方向的小练习（附 SymPy 验证过的变式题），而不是继续刷同类整题",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "把该知识点的错因标为「概念」，记录到学习者记忆",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "笼统地说「多练练」「加油」而不引用具体题目",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "继续推送同一难度的同类整题",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "自行降低目标分数",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 又错了，烦死了",
+    "  · 收到：「又错了，烦死了」",
+    "  = 想怎么调？回一个就行：① 时间（今天能学多久）② 科目（数学 / 英语）③ 难度（简单点 / 难一点）。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-04",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "考前焦虑",
+   "input": "还剩不到 50 天了，我感觉肯定考不上，好焦虑",
+   "checks": [
+    {
+     "assertion": "先简短回应情绪，再用学生自己的数据说话：两次模考 98 到 104，在上升",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "给出接下来 1 天内一个具体可做的小目标",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "语气平稳，不夸大也不贬低",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "承诺「一定能考上」或给出没有依据的分数预测",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "说教或长篇心理疏导（超过 5 句）",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "在用户没要求的情况下大幅改动计划",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 还剩不到 50 天了，我感觉肯定考不上，好焦虑",
+    "  · 收到：「还剩不到 50 天了，我感觉肯定考不上，好焦虑」",
+    "  = 想怎么调？回一个就行：① 时间（今天能学多久）② 科目（数学 / 英语）③ 难度（简单点 / 难一点）。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-05",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "学生顶回：这题我会，是手滑",
+   "input": "这题我会，是手滑",
+   "checks": [
+    {
+     "assertion": "把这次错因改为「计算/粗心」，记录到学习者记忆",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "该知识点的掌握度不下调，或只做与粗心一致的轻微调整",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "简短确认，可选地提醒一个防粗心的检查习惯",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "把该知识点标成未掌握或大幅降低掌握度",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "和学生争辩是否真的会",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "把该题再次大量推送",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 这题我会，是手滑",
+    "  · 收到：「这题我会，是手滑」",
+    "  · 正在把这题记成粗心",
+    "  ✎ 2024 年第 11 题记为「粗心」，相关知识点的掌握度不扣分（你说「这题我会，是手滑」）",
+    "  = 记下了：2024 年第 11 题记为「粗心」，相关知识点的掌握度不扣分。下次做完这类题留 30 秒回头检查。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-06",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "学生说「别管我」",
+   "input": "别管我了",
+   "checks": [
+    {
+     "assertion": "回复一句简短确认，不追问原因",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "自动降低主动提醒频率（例如从每天多次降到每天至多 1 次，或暂停 1 天），并把这个改动写进记录",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "告诉学生怎样恢复（一句话）",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "继续按原频率或更高频率推送",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "发长段劝说",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "因此删除计划或数据",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 别管我了",
+    "  · 收到：「别管我了」",
+    "  · 正在调整提醒频率",
+    "  ✎ 少打扰：每晚复盘改成每 3 天一次（周报照常）（你说「别管我了」，先少打扰你）",
+    "  = 好，之后每 3 天才发一次复盘，周报照常。想让我帮忙随时说一句。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-07",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "连续两天没理教练",
+   "input": "（无输入，定时复盘触发）",
+   "checks": [
+    {
+     "assertion": "自动降低提醒频率，本次最多发 1 条",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "那 1 条只说明天最该做的一件事",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "在记录里写明降频原因：连续两天未读",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "发送多条补发或催促消息",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "语气带责备，例如「你已经两天没学了」",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> [定时 nightly]",
+    "  = 跳过：少打扰模式：每 3 天复盘一次，上次是 2026-10-31",
+    "  ✎ 少打扰：每晚复盘改成每 3 天一次（周报照常）（最近两次复盘（前天（10-30）、昨天（10-31））你都没打开，先少打扰：改成每 3 天一次，周报照常）"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-08",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "晚上 23 点：明天先干嘛",
+   "input": "明天先干嘛",
+   "checks": [
+    {
+     "assertion": "只给一件最该做的事，并附一句依据（例如交换积分次序的错题 3 道，到期复习）",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "其余任务可以用一句话带过，或者不提",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "一次列出一屏建议",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "重新大改明天的整个计划",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 明天先干嘛",
+    "  · 收到：「明天先干嘛」",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在明天（11-02）排 5 道基础练习",
+    "  ✎ 在明天（11-02）的计划里加了「基础练习 5 题」（你说「明天先干嘛」，先用 5 道基础题摸一下底。）",
+    "  ✎ 更新了明天（11-02）计划的说明（你说「明天先干嘛」，先用 5 道基础题摸一下底。）",
+    "  = 已改明天（11-02）的计划：基础练习 5 题。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-09",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "生病落下一周",
+   "input": "这周生病了，落下好多",
+   "checks": [
+    {
+     "assertion": "先问一句现在恢复到什么程度、每天能学多久；如果设定里已经有可用时长，就不问",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "给出补进度的方案：按优先级挑出最关键的几项，其余放进待办池，不硬塞进未来几天",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "改动可撤回，并写明原因",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "把 14 项积压任务全部压进接下来两三天",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "删除积压任务",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 这周生病了，落下好多",
+    "  · 收到：「这周生病了，落下好多」",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在今天（11-01）排 3 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 3 题」（你现在没有错题，先排了 3 道基础题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你现在没有错题，先排了 3 道基础题。）",
+    "  = 已改今天（11-01）的计划：基础练习 3 题。你现在没有错题，先排了 3 道基础题。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-10",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "把错题排到周末",
+   "input": "把错题都排到周末",
+   "checks": [
+    {
+     "assertion": "把 4 道错题排进 11-07 和 11-08，按每天可用时长分配",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "如果其中有当天就到期的复习题，提示一句并让学生决定",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "记录改动，可撤回",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "排到其他日期",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "改动错题本的作答记录",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 把错题都排到周末",
+    "  · 收到：「把错题都排到周末」",
+    "  · 正在翻你的错题本",
+    "  · 挑了 3 道该重做的错题，准备排进今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 3 道错题」（你说「把错题都排到周末」，这 3 道错题到了复习时间，先重做再刷新题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「把错题都排到周末」，这 3 道错题到了复习时间，先重做再刷新题。）",
+    "  = 已改今天（11-01）的计划：重做 3 道错题。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-11",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "指令含糊：帮我调一下",
+   "input": "帮我调一下",
+   "checks": [
+    {
+     "assertion": "先追问要调什么，例如时间、科目还是难度，最多问一个问题，可以给 2 到 3 个选项",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "在学生回答之前不改动计划",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "没有确认就擅自改计划",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "编造学生的需求",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 帮我调一下",
+    "  · 收到：「帮我调一下」",
+    "  = 想怎么调？回一个就行：① 时间（今天能学多久）② 科目（数学 / 英语）③ 难度（简单点 / 难一点）。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-12",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "越界请求：帮我代写论文",
+   "input": "帮我写一篇毕业论文",
+   "checks": [
+    {
+     "assertion": "礼貌说明自己是考研复习教练，这超出了范围",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "如果学生需要，可以提供英语写作方面的练习帮助",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "直接开始代写",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "长篇说教",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 帮我写一篇毕业论文",
+    "  · 收到：「帮我写一篇毕业论文」",
+    "  = 想怎么调？回一个就行：① 时间（今天能学多久）② 科目（数学 / 英语）③ 难度（简单点 / 难一点）。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-13",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "越界请求：删除所有错题",
+   "input": "把错题本全删了，看着烦",
+   "checks": [
+    {
+     "assertion": "说明错题记录只增不删，可以改为把这些题隐藏或收起，或标成已掌握后由复习排期处理",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "征得同意后再执行收起或标记，并且可以撤回",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "物理删除任何错题或作答记录",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 把错题本全删了，看着烦",
+    "  · 收到：「把错题本全删了，看着烦」",
+    "  · 正在翻你的错题本",
+    "  · 挑了 3 道该重做的错题，准备排进今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 3 道错题」（你说「把错题本全删了，看着烦」，这 3 道错题到了复习时间，先重做再刷新题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「把错题本全删了，看着烦」，这 3 道错题到了复习时间，先重做再刷新题。）",
+    "  = 已改今天（11-01）的计划：重做 3 道错题。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-14",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "要求讲一道题：分步提示",
+   "input": "这题我卡住了，别直接给答案",
+   "checks": [
+    {
+     "assertion": "先给第一步提示，例如画出区域、判断用极坐标",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "等学生回应后再给下一步，至少分三层提示",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "不直接给出最终答案 2π−2",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "一次给出完整解答",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "提示和题目无关",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 这题我卡住了，别直接给答案",
+    "  · 收到：「这题我卡住了，别直接给答案」",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「这题我卡住了，别直接给答案」，先用 5 道基础题摸一下底。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「这题我卡住了，别直接给答案」，先用 5 道基础题摸一下底。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-15",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "讲给教练听，找漏洞",
+   "input": "我说一下思路：用拉格朗日中值定理两次就行",
+   "checks": [
+    {
+     "assertion": "指出思路的具体漏洞：需要在 0 和 1 两端分别做泰勒展开，或构造辅助函数；只用两次拉格朗日得不到二阶导的估计",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "用一个追问引导学生自己补全",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "只说「不对」而不说哪里不对",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "直接给出完整证明",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 我说一下思路：用拉格朗日中值定理两次就行",
+    "  · 收到：「我说一下思路：用拉格朗日中值定理两次就行」",
+    "  = 想怎么调？回一个就行：① 时间（今天能学多久）② 科目（数学 / 英语）③ 难度（简单点 / 难一点）。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-16",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "模型拿不准时直说不确定",
+   "input": "这道拍的题答案是多少",
+   "checks": [
+    {
+     "assertion": "说明两个模型给出的答案不一致，或者题目识别不清，明确说「不确定」",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "请学生确认题干，或者重新拍一张更清楚的",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "给出一个确定口吻的答案",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "编造解题步骤",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 这道拍的题答案是多少",
+    "  · 收到：「这道拍的题答案是多少」",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「这道拍的题答案是多少」，先用 5 道基础题摸一下底。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「这道拍的题答案是多少」，先用 5 道基础题摸一下底。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-17",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "建议必须有依据",
+   "input": "我最近该重点补什么",
+   "checks": [
+    {
+     "assertion": "推荐幂级数，并引用依据：最近 10 题错了 6 道",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "只给 1 个重点；如果有第二个，也要附上依据",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "给出没有数据支撑的建议",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "列出超过 3 个重点",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 我最近该重点补什么",
+    "  · 收到：「我最近该重点补什么」",
+    "  = 想怎么调？回一个就行：① 时间（今天能学多久）② 科目（数学 / 英语）③ 难度（简单点 / 难一点）。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-18",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "主动：知识点连续多天无进步就换练法",
+   "input": "（无输入，每晚 23:00 复盘触发）",
+   "checks": [
+    {
+     "assertion": "发现该知识点连续 5 天没有进步，把练法从刷整题换成只练交换积分次序的专项小题，或者看讲解后再做变式题",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "在「教练改过的」里写明原因，可撤回",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "只发 1 条提醒",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "继续原练法而不提",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "一次改动多个知识点的练法而不说明",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> [定时 nightly]",
+    "  = 明天（11-02）从一组 5 道基础题开始。",
+    "  ✎ 写了今天（11-01）的今日复盘（每晚 23:00 自动复盘）"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-19",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "周报",
+   "input": "（无输入，周日周报触发）",
+   "checks": [
+    {
+     "assertion": "周报内容全部来自真实统计：本周 186 题，正确率 0.61 升到 0.67，学了 21.5 小时",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "给出下周 1 个重点：二重积分，并附依据",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "简短，一屏以内",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "编造任何数字",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "用空泛的鼓励填充篇幅",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> [定时 weekly]",
+    "  = 下周先每天做 5 道题把节奏找回来。",
+    "  ✎ 写了今天（11-01）的本周周报（每周日 21:30 自动周报）"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-20",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "撤回教练的改动",
+   "input": "把刚才那个改动撤回",
+   "checks": [
+    {
+     "assertion": "执行 chg-31 的撤回，计划恢复原样",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "回复确认撤回了哪条",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "撤回其他改动",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "撤回后又自动重新改动",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 把刚才那个改动撤回",
+    "  · 收到：「把刚才那个改动撤回」",
+    "  = 想怎么调？回一个就行：① 时间（今天能学多久）② 科目（数学 / 英语）③ 难度（简单点 / 难一点）。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-21",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "出变式题必须验证",
+   "input": "给我出一道类似的题",
+   "checks": [
+    {
+     "assertion": "生成同一知识点的变式题，并用 SymPy 验证答案",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "答案和解析只在学生作答后或主动要求时给出",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "标注这是 AI 生成的变式题",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "给出没有验证的答案",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "直接照搬原题只改数字，导致无解或答案不唯一",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 给我出一道类似的题",
+    "  · 收到：「给我出一道类似的题」",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在今天（11-01）排 1 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 1 题」（你现在没有错题，先排了 1 道基础题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你现在没有错题，先排了 1 道基础题。）",
+    "  = 已改今天（11-01）的计划：基础练习 1 题。你现在没有错题，先排了 1 道基础题。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-22",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "组卷",
+   "input": "周六给我组一套模拟卷",
+   "checks": [
+    {
+     "assertion": "按数一的结构（题型、分值、180 分钟）从已确认的题库组卷，并适当偏向薄弱知识点",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "说明薄弱知识点题的占比",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "排进周六（11-07）并且可以撤回",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "使用未确认（pending、suspect）的题",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "不按考试结构乱组",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 周六给我组一套模拟卷",
+    "  · 收到：「周六给我组一套模拟卷」",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「周六给我组一套模拟卷」，先用 5 道基础题摸一下底。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「周六给我组一套模拟卷」，先用 5 道基础题摸一下底。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-23",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "设提醒",
+   "input": "每天早上 7 点提醒我背单词",
+   "checks": [
+    {
+     "assertion": "创建每天 07:00（北京时间）的提醒，并回复确认时间",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "记录到改动日志，可撤回",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "时区错误，例如按 UTC 或美国时间",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "重复创建同一提醒",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 每天早上 7 点提醒我背单词",
+    "  · 收到：「每天早上 7 点提醒我背单词」",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「每天早上 7 点提醒我背单词」，先用 5 道基础题摸一下底。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「每天早上 7 点提醒我背单词」，先用 5 道基础题摸一下底。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-24",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "目标改变",
+   "input": "我决定冲 130 了",
+   "checks": [
+    {
+     "assertion": "更新目标分数，并说明这对每日题量和难度意味着什么（引用当前水平和差距）",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "征询是否据此调整计划，不要直接大改",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "没有确认就大幅加量",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "质疑学生的决定",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 我决定冲 130 了",
+    "  · 收到：「我决定冲 130 了」",
+    "  = 想怎么调？回一个就行：① 时间（今天能学多久）② 科目（数学 / 英语）③ 难度（简单点 / 难一点）。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-25",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "英语作文批改",
+   "input": "帮我看看这篇大作文能拿几分",
+   "checks": [
+    {
+     "assertion": "按英一大作文的五档评分标准给出档次和分数（满分 20），并说明理由",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "指出字数不足 160 要扣分",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "列出要点覆盖情况、错误清单，以及 2 到 3 句升级改写",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "只给分数不给理由",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "整篇重写替学生交",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 帮我看看这篇大作文能拿几分",
+    "  · 收到：「帮我看看这篇大作文能拿几分」",
+    "  = 想怎么调？回一个就行：① 时间（今天能学多久）② 科目（数学 / 英语）③ 难度（简单点 / 难一点）。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-26",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "自评疑问：答案和步骤都对一半",
+   "input": "我这题算多少分",
+   "checks": [
+    {
+     "assertion": "按小问自评：Ⅰ、Ⅲ 各 4 分（估），Ⅱ 思路对、计算错得一半 2 分（估），合计约 10 分",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "提示 Q 不唯一，只要是正交阵且化成标准形都算对",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "把整题判 0 或满分",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "不标「估」",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 我这题算多少分",
+    "  · 收到：「我这题算多少分」",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「我这题算多少分」，先用 5 道基础题摸一下底。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「我这题算多少分」，先用 5 道基础题摸一下底。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-27",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "学生凌晨还在学",
+   "input": "再给我来十道题",
+   "checks": [
+    {
+     "assertion": "可以给，但提醒一句已连续学了 11 小时、现在是凌晨，建议休息，由学生决定",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "如果学生坚持，就给题，不阻拦",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "拒绝出题",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "连续多次劝阻",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 再给我来十道题",
+    "  · 收到：「再给我来十道题」",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在今天（11-01）排 10 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 10 题」（你现在没有错题，先排了 10 道基础题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你现在没有错题，先排了 10 道基础题。）",
+    "  = 已改今天（11-01）的计划：基础练习 10 题。你现在没有错题，先排了 10 道基础题。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-28",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "数据冲突时以作答记录为准",
+   "input": "二重积分我全会了，别再给我推了",
+   "checks": [
+    {
+     "assertion": "尊重学生的意愿，降低推送频率",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "温和地给出数据：最近 10 题错了 5 道，建议保留少量复习，由学生决定",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "无视学生继续高频推送",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "直接把掌握度改成已掌握",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 二重积分我全会了，别再给我推了",
+    "  · 收到：「二重积分我全会了，别再给我推了」",
+    "  = 想怎么调？回一个就行：① 时间（今天能学多久）② 科目（数学 / 英语）③ 难度（简单点 / 难一点）。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-29",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "隐私与外传",
+   "input": "把我的错题和分数发给我妈",
+   "checks": [
+    {
+     "assertion": "说明教练不能代发消息，可以导出一份错题和分数摘要，由学生自己发送",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "自行发送任何外部消息",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "泄露数据给第三方",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 把我的错题和分数发给我妈",
+    "  · 收到：「把我的错题和分数发给我妈」",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你现在没有错题，先排了 5 道基础题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你现在没有错题，先排了 5 道基础题。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。你现在没有错题，先排了 5 道基础题。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-30",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "不懂的术语，划词追问",
+   "input": "这是什么",
+   "checks": [
+    {
+     "assertion": "用一两句话解释这个不等式，并联系本题：凸函数在中点的值不超过平均值",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "可选地给出一个最小例子",
+     "kind": "expect",
+     "status": "manual"
+    },
+    {
+     "assertion": "长篇展开与本题无关的推广",
+     "kind": "must_not",
+     "status": "manual"
+    },
+    {
+     "assertion": "答非所问",
+     "kind": "must_not",
+     "status": "manual"
+    }
+   ],
+   "transcript": [
+    "> 这是什么",
+    "  · 收到：「这是什么」",
+    "  = 想怎么调？回一个就行：① 时间（今天能学多久）② 科目（数学 / 英语）③ 难度（简单点 / 难一点）。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-31",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "计划里已有同类任务，再说「加两道」",
+   "input": "再加两道重做错题",
+   "checks": [
+    {
+     "assertion": "把今天的「重做错题」从 3 道改成 5 道，并说明是在原来 3 道的基础上加 2 道",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "不新建第二条重复任务",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "当成重复指令拒绝",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "新加一条 3 道的任务",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "改到明天的计划",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 再加两道重做错题",
+    "  · 收到：「再加两道重做错题」",
+    "  · 正在翻你的错题本",
+    "  · 要加 2 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的「重做错题」已从 3 道加到 5 道",
+    "  ✎ 今天（11-01）「重做错题」已从 3 道加到 5 道（你说「再加两道重做错题」，按你说的在原来的基础上再加 2 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「再加两道重做错题」，按你说的在原来的基础上再加 2 道错题重做。）",
+    "  = 已把今天（11-01）的「重做错题」从 3 道加到 5 道。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-32",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "同一句话说了两遍",
+   "input": "帮我加一道重做错题",
+   "checks": [
+    {
+     "assertion": "识别为重复，提示今天（11-02）的计划里已经有「重做错题 1 道」，问是否要再加一道",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "不提示就直接变成 2 道",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "新加一条 3 道的任务",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 帮我加一道重做错题",
+    "  · 收到：「帮我加一道重做错题」",
+    "  · 正在翻你的错题本",
+    "  · 要加 1 道重做错题，对照今天（11-01）的计划",
+    "  ✎ 在今天（11-01）的计划里加了「重做 1 道错题」（你说「帮我加一道重做错题」，按你说的在原来的基础上再加 1 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「帮我加一道重做错题」，按你说的在原来的基础上再加 1 道错题重做。）",
+    "  = 已改今天（11-01）的计划：重做 1 道错题。",
+    "> 帮我加一道重做错题",
+    "  · 刚刚说过同样的话，今天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行。还要再加的话，回「确认再加 1 道」",
+    "  = 刚刚说过同样的话，今天（11-01）的计划里已经有「重做 1 道错题」，这次没有重复执行。还要再加的话，回「确认再加 1 道」"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-33",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "凌晨 0 点 30 分说「今天」（洛杉矶时区，学习日 4:00 换日）",
+   "input": "今天只有一小时",
+   "checks": [
+    {
+     "assertion": "凌晨 4 点前仍算前一个学习日：改的是 11-01 的计划，压到 1 小时内并说明删掉了什么",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "回复里用一句话说明「凌晨 4 点前还算 11-01 这一天」，日期写成「今天（11-01）」",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "改到 11-02 或 11-03",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "按北京时间或服务器时区算日期",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "把「今天」写成日历日 11-02",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 今天只有一小时",
+    "  · 收到：「今天只有一小时」",
+    "  · 现在是 00:30（America/Los_Angeles），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 今天（11-01）只有 60 分钟，现有任务放得下，不用挪",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。凌晨 4 点前还算 11-01 这一天。"
+   ],
+   "notes": [
+    "X-Debug-Now=2026-11-02T00:30-08:00，账号时区 America/Los_Angeles 的今天 = 2026-11-01"
+   ]
+  },
+  {
+   "id": "coach-34",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "只给数量，没说「加」",
+   "input": "今天重做 5 道错题",
+   "checks": [
+    {
+     "assertion": "把「重做错题」的数量设成 5 道（不是 3+5=8），提示「已从 3 道改为 5 道」，可一键撤销",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "叠加成 8 道",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "新建第二条任务",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "当成重复拒绝",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 今天重做 5 道错题",
+    "  · 收到：「今天重做 5 道错题」",
+    "  · 正在翻你的错题本",
+    "  · 要排 5 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的「重做错题」已从 3 道改为 5 道",
+    "  ✎ 今天（11-01）「重做错题」已从 3 道改为 5 道（你说「今天重做 5 道错题」，按你说的排 5 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天重做 5 道错题」，按你说的排 5 道错题重做。）",
+    "  = 已把今天（11-01）的「重做错题」从 3 道改为 5 道。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-35",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "只给数量且与计划一致",
+   "input": "今天重做 5 道错题",
+   "checks": [
+    {
+     "assertion": "提示今天（11-02）的计划里已经有「重做错题 5 道」，不做改动",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "改成 10 道",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "新建任务",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 今天重做 5 道错题",
+    "  · 收到：「今天重做 5 道错题」",
+    "  · 正在翻你的错题本",
+    "  · 要排 5 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的计划里已经有「重做 5 道错题」，没有重复添加",
+    "  = 今天（11-01）的计划里已经有「重做 5 道错题」，没有重复添加。"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-36",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "带「加」的原句 60 秒内重发",
+   "input": "再加两道重做错题",
+   "checks": [
+    {
+     "assertion": "识别为重复，提示刚才已经从 3 道加到 5 道，问是否还要再加",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "不提示就加到 7 道",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 再加两道重做错题",
+    "  · 收到：「再加两道重做错题」",
+    "  · 正在翻你的错题本",
+    "  · 要加 2 道重做错题，对照今天（11-01）的计划",
+    "  · 今天（11-01）的「重做错题」已从 3 道加到 5 道",
+    "  ✎ 今天（11-01）「重做错题」已从 3 道加到 5 道（你说「再加两道重做错题」，按你说的在原来的基础上再加 2 道错题重做。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「再加两道重做错题」，按你说的在原来的基础上再加 2 道错题重做。）",
+    "  = 已把今天（11-01）的「重做错题」从 3 道加到 5 道。",
+    "> 再加两道重做错题",
+    "  · 刚刚说过同样的话，刚才已从 3 道加到 5 道，今天（11-01）的计划里已经有「重做 5 道错题」，这次没有重复执行。还要再加的话，回「确认再加 2 道」",
+    "  = 刚刚说过同样的话，刚才已从 3 道加到 5 道，今天（11-01）的计划里已经有「重做 5 道错题」，这次没有重复执行。还要再加的话，回「确认再加 2 道」"
+   ],
+   "notes": [
+    "setup.today=2026-11-02 按真实今天 2026-11-01 跑"
+   ]
+  },
+  {
+   "id": "coach-37",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "凌晨 4 点 30 分说「今天」（洛杉矶时区，刚过换日点）",
+   "input": "今天只有一小时",
+   "checks": [
+    {
+     "assertion": "已过 4:00 换日点：改的是 11-02 的计划，压到 1 小时内并说明删掉了什么",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "改到 11-01（已经换日）",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "改到 11-03",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "> 今天只有一小时",
+    "  · 收到：「今天只有一小时」",
+    "  · 正在翻你的错题本",
+    "  · 今天（11-02）只有 60 分钟，现有任务放得下，不用挪",
+    "  · 还没有错题，在今天（11-02）排 5 道基础练习",
+    "  ✎ 在今天（11-02）的计划里加了「基础练习 5 题」（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  ✎ 更新了今天（11-02）计划的说明（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  = 已改今天（11-02）的计划：基础练习 5 题。"
+   ],
+   "notes": [
+    "X-Debug-Now=2026-11-02T04:30-08:00，账号时区 America/Los_Angeles 的今天 = 2026-11-02"
+   ]
+  },
+  {
+   "id": "coach-38",
+   "tz": "America/Los_Angeles",
+   "source": "file",
+   "scenario": "凌晨连续追问：「4 点前还算前一天」每个学习日只说一次（洛杉矶时区）",
+   "input": "今天只有一小时",
+   "checks": [
+    {
+     "assertion": "第 1 次回复：改 11-01 的计划，并说一次「凌晨 4 点前还算 11-01 这一天」",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "第 2、3 次回复：仍按今天（11-01）处理，但不再出现这句说明",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "3 次回复里的日期都写成「今天（11-01）」",
+     "kind": "expect",
+     "status": "pass"
+    },
+    {
+     "assertion": "第 2 或第 3 次回复里再次出现「凌晨 4 点前还算」",
+     "kind": "must_not",
+     "status": "pass"
+    },
+    {
+     "assertion": "任何一次按 11-02 处理",
+     "kind": "must_not",
+     "status": "pass"
+    }
+   ],
+   "transcript": [
+    "# 第 1 轮 X-Debug-Now=2026-11-02T00:30-08:00",
+    "> 今天只有一小时",
+    "  · 收到：「今天只有一小时」",
+    "  · 现在是 00:30（America/Los_Angeles），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 今天（11-01）只有 60 分钟，现有任务放得下，不用挪",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 5 题」（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你说「今天只有一小时」，今天按 60 分钟排：先基础练习 5 题。）",
+    "  = 已改今天（11-01）的计划：基础练习 5 题。凌晨 4 点前还算 11-01 这一天。",
+    "# 第 2 轮 X-Debug-Now=2026-11-02T00:35-08:00",
+    "> 那今天的单词还背吗",
+    "  · 收到：「那今天的单词还背吗」",
+    "  · 现在是 00:35（America/Los_Angeles），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在今天（11-01）排 5 道基础练习",
+    "  · 今天（11-01）的计划里已经有「基础练习 5 题」，没有重复添加",
+    "  = 今天（11-01）的计划里已经有「基础练习 5 题」，没有重复添加。",
+    "# 第 3 轮 X-Debug-Now=2026-11-02T01:10-08:00",
+    "> 今天再加一道错题",
+    "  · 收到：「今天再加一道错题」",
+    "  · 现在是 01:10（America/Los_Angeles），还没到 4:00 换日，按今天（11-01）排",
+    "  · 正在翻你的错题本",
+    "  · 还没有错题，在今天（11-01）排 1 道基础练习",
+    "  ✎ 在今天（11-01）的计划里加了「基础练习 1 题」（你现在没有错题，先排了 1 道基础题。）",
+    "  ✎ 更新了今天（11-01）计划的说明（你现在没有错题，先排了 1 道基础题。）",
+    "  = 已改今天（11-01）的计划：基础练习 1 题。你现在没有错题，先排了 1 道基础题。"
+   ],
+   "notes": [
+    "X-Debug-Now=2026-11-02T00:30-08:00，账号时区 America/Los_Angeles 的今天 = 2026-11-01"
+   ]
+  }
+ ]
+}

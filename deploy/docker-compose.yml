@@ -1,0 +1,198 @@
+# 考研复习 App · 一键部署（单台 Linux 主机，Docker + Compose v2；按 2 核 4G 40G 调的资源上限）
+# 目录结构（deploy.sh 同步后，服务器上的 APP_DIR，默认 /opt/kaoyan）：
+#   backend/  frontend/  deploy/(本目录)  tiku/  data/ecdict/
+# 用法：cd deploy && ./server-up.sh（第一次会从 .env.example 生成 .env 并填随机密码）
+#
+# 服务：
+#   db       PostgreSQL 17 + pgvector
+#   migrate  一次性：每次 `up` 先跑迁移（执行过的跳过），成功后 backend 才启动
+#   backend  NestJS（NODE_ENV=production，开发工具关闭）
+#   web      Caddy：前端静态文件 + /api 反代；设了 DOMAIN 自动 HTTPS，否则只听 :80
+#   backup   每天定时 pg_dump（+ 费曼录音 + tiku/src 真题 PDF），保留 BACKUP_KEEP_DAYS 天（默认 7）
+#   import   一次性导入题库 + 单词（profile: tools，不随 up 启动）：docker compose --profile tools run --rm import
+name: kaoyan
+
+x-logging: &logging
+  # 日志轮转：40G 盘别被容器日志写满
+  driver: json-file
+  options: { max-size: "10m", max-file: "5" }
+
+x-backend-env: &backend-env
+  # 这些覆盖 .env，保证容器内路径和生产开关正确
+  NODE_ENV: production
+  DEV_TOOLS: "0"            # 关掉 POST /agent/jobs/run 等开发接口
+  DISABLE_DEBUG_NOW: "1"    # 不认 X-Debug-Now（NODE_ENV=production 时本来也不认，双保险）
+  AI_FAKE: ""               # 测试用的假模型，生产一律关
+  DATABASE_URL: postgres://kaoyan:${POSTGRES_PASSWORD}@db:5432/kaoyan
+  JWT_SECRET: ${JWT_SECRET:?请在 deploy/.env 里设置 JWT_SECRET（openssl rand -hex 32）}
+  PORT: "3000"
+  ASSETS_DIR: /data/tiku
+  TIKU_DIR: /data/tiku
+  EXPLANATIONS_DIR: /data/tiku/explanations
+  REVIEWS_DIR: /data/tiku/reviews
+  ECDICT_PATH: /data/ecdict/ecdict.csv
+  ECDICT_CSV: /data/ecdict/ecdict.csv
+  AUDIO_DIR: /app/audio
+  CHROME_PATH: /usr/bin/chromium
+  TZ: ${APP_TZ:-Asia/Shanghai}
+
+x-backend-volumes: &backend-volumes
+  # 题库（只读）：题目 JSON、*_passages.json、*_kp_tags.json、images/、explanations/、reviews/、vocab/
+  - ${TIKU_HOST_DIR:-../tiku}:/data/tiku:ro
+  - ${ECDICT_HOST_DIR:-../data/ecdict}:/data/ecdict:ro
+  - uploads:/app/uploads            # 费曼「讲给它听」录音
+  - audio:/app/audio                # 单词发音缓存
+  - ./reports:/app/reports          # 导入报告 import_report_*.md
+
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: kaoyan
+      POSTGRES_DB: kaoyan
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?请在 deploy/.env 里设置 POSTGRES_PASSWORD}
+      TZ: ${APP_TZ:-Asia/Shanghai}
+    # 4G 内存的机器：给 PG 约 1G
+    command: ["postgres", "-c", "shared_buffers=256MB", "-c", "effective_cache_size=768MB", "-c", "work_mem=8MB", "-c", "maintenance_work_mem=128MB", "-c", "max_connections=60"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kaoyan -d kaoyan"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    mem_limit: 1g
+    logging: *logging
+    # 不对外暴露端口；需要从宿主机连时临时加 ports: ["127.0.0.1:5432:5432"]
+
+  migrate:
+    image: kaoyan-backend:latest
+    pull_policy: never    # 用 backend 构建出的本地镜像（server-up.sh 会先 build）
+    restart: "no"
+    env_file: .env
+    environment: *backend-env
+    command: ["node", "dist/scripts/migrate.js"]
+    depends_on:
+      db:
+        condition: service_healthy
+    logging: *logging
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+      args:
+        NPM_REGISTRY: ${NPM_REGISTRY:-https://registry.npmjs.org}
+    image: kaoyan-backend:latest
+    restart: unless-stopped
+    env_file: .env
+    environment: *backend-env
+    depends_on:
+      db:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    volumes: *backend-volumes
+    expose:
+      - "3000"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:3000/api/v1/health >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
+    # Node + 常驻 Chromium（导出 PDF）
+    mem_limit: 1536m
+    logging: *logging
+
+  import:
+    image: kaoyan-backend:latest
+    pull_policy: never
+    profiles: ["tools"]
+    restart: "no"
+    env_file: .env
+    environment: *backend-env     # IMPORT_WORDS 来自 env_file .env（默认 1）
+    volumes: *backend-volumes
+    depends_on:
+      db:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    # 全部 upsert，可重复跑：题库（报告在 deploy/reports/）→ ECDICT 考研词（可选）→ 真题词汇（频次 / 年份 / 例句）
+    entrypoint: ["sh", "-c"]
+    command:
+      - |
+        set -e
+        node dist/scripts/import-questions.js --tree /data/tiku/knowledge_tree.json --questions /data/tiku --report-dir /app/reports
+        if [ "$${IMPORT_WORDS:-1}" != "0" ] && [ -f /data/ecdict/ecdict.csv ]; then node dist/scripts/import-words.js /data/ecdict/ecdict.csv --tags ky; else echo "跳过 ECDICT（IMPORT_WORDS=0 或没有 ecdict.csv）"; fi
+        if [ -f /data/tiku/vocab/english1_exam_vocab.json ]; then node dist/scripts/import-vocab.js --report /app/reports/import_report_vocab.md; else echo "跳过真题词汇（没有 vocab/english1_exam_vocab.json）"; fi
+    logging: *logging
+
+  web:
+    build:
+      context: ..
+      # deploy/web.Dockerfile：在服务器上 vite build；deploy/web.prebuilt.Dockerfile：直接用同步过去的 frontend/dist（省内存省时间）
+      dockerfile: ${WEB_DOCKERFILE:-deploy/web.Dockerfile}
+      args:
+        NPM_REGISTRY: ${NPM_REGISTRY:-https://registry.npmjs.org}
+    image: kaoyan-web:latest
+    restart: unless-stopped
+    environment:
+      # 有域名 → 自动 HTTPS；没域名 → 只听 :80
+      SITE_ADDRESS: ${DOMAIN:-:80}
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
+      - "${HTTPS_PORT:-443}:443/udp"   # HTTP/3
+    volumes:
+      - caddy_data:/data                # 证书
+      - caddy_config:/config
+    healthcheck:
+      # Caddy 管理接口只在容器内 localhost:2019；有域名时 :80 会跳 https，所以不用 :80 探活
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:2019/config/ >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    logging: *logging
+
+  backup:
+    image: pgvector/pgvector:pg17     # 和库同版本的 pg_dump
+    restart: unless-stopped
+    environment:
+      PGHOST: db
+      PGUSER: kaoyan
+      PGDATABASE: kaoyan
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+      TZ: ${APP_TZ:-Asia/Shanghai}
+      BACKUP_AT: ${BACKUP_AT:-03:15}
+      BACKUP_KEEP_DAYS: ${BACKUP_KEEP_DAYS:-7}
+    entrypoint: ["bash", "/backup-loop.sh"]
+    volumes:
+      - ./backup-loop.sh:/backup-loop.sh:ro
+      - ./backups:/backups
+      - uploads:/uploads:ro
+      - ${TIKU_HOST_DIR:-../tiku}/src:/tiku-src:ro   # 真题 PDF / OCR 原始材料（不进 git），每日一起备份
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      # 循环每分钟写一次心跳；超过 2 小时没写说明卡住了
+      test: ["CMD-SHELL", "test -n \"$$(find /backups/.heartbeat -mmin -120 2>/dev/null)\""]
+      interval: 5m
+      timeout: 5s
+      start_period: 2m
+      retries: 2
+    mem_limit: 256m
+    logging: *logging
+
+volumes:
+  pgdata:
+  uploads:
+  audio:
+  caddy_data:
+  caddy_config:

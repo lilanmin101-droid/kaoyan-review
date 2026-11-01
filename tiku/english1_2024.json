@@ -1,0 +1,2548 @@
+[
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-01",
+    "exam": "english1",
+    "year": 2024,
+    "number": 1,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "（1）______ the need to be touched to open or close, automatic doors are essential in （2）______ disabled access to buildings and helping provide general （3）______ to commercial buildings.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Through"
+      },
+      {
+        "key": "B",
+        "content": "Despite"
+      },
+      {
+        "key": "C",
+        "content": "Besides"
+      },
+      {
+        "key": "D",
+        "content": "Without"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-02",
+    "exam": "english1",
+    "year": 2024,
+    "number": 2,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "（1）______ the need to be touched to open or close, automatic doors are essential in （2）______ disabled access to buildings and helping provide general （3）______ to commercial buildings.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "revealing"
+      },
+      {
+        "key": "B",
+        "content": "demanding"
+      },
+      {
+        "key": "C",
+        "content": "improving"
+      },
+      {
+        "key": "D",
+        "content": "tracing"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-03",
+    "exam": "english1",
+    "year": 2024,
+    "number": 3,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "（1）______ the need to be touched to open or close, automatic doors are essential in （2）______ disabled access to buildings and helping provide general （3）______ to commercial buildings.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "experience"
+      },
+      {
+        "key": "B",
+        "content": "convenience"
+      },
+      {
+        "key": "C",
+        "content": "guidance"
+      },
+      {
+        "key": "D",
+        "content": "reference"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-04",
+    "exam": "english1",
+    "year": 2024,
+    "number": 4,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "Self-sliding doors began to emerge as a commercial product in 1960 after being invented six years （4）______ by Americans Dee Horton and Lew Hewitt.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "previously"
+      },
+      {
+        "key": "B",
+        "content": "temporarily"
+      },
+      {
+        "key": "C",
+        "content": "successively"
+      },
+      {
+        "key": "D",
+        "content": "eventually"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-05",
+    "exam": "english1",
+    "year": 2024,
+    "number": 5,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "They （5）______ as a novelty feature, but as their use has grown, their （6）______ have extended within our technologically advanced world.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "held on"
+      },
+      {
+        "key": "B",
+        "content": "started out"
+      },
+      {
+        "key": "C",
+        "content": "settled down"
+      },
+      {
+        "key": "D",
+        "content": "went by"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-06",
+    "exam": "english1",
+    "year": 2024,
+    "number": 6,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "They （5）______ as a novelty feature, but as their use has grown, their （6）______ have extended within our technologically advanced world.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "relations"
+      },
+      {
+        "key": "B",
+        "content": "volumes"
+      },
+      {
+        "key": "C",
+        "content": "benefits"
+      },
+      {
+        "key": "D",
+        "content": "sources"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-07",
+    "exam": "english1",
+    "year": 2024,
+    "number": 7,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "Particularly （7）______ in busy locations or during times of emergency, the doors （8）______ crowd management by reducing the obstacles put in people’s way.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "useful"
+      },
+      {
+        "key": "B",
+        "content": "simple"
+      },
+      {
+        "key": "C",
+        "content": "flexible"
+      },
+      {
+        "key": "D",
+        "content": "stable"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-08",
+    "exam": "english1",
+    "year": 2024,
+    "number": 8,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "Particularly （7）______ in busy locations or during times of emergency, the doors （8）______ crowd management by reducing the obstacles put in people’s way.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "call for"
+      },
+      {
+        "key": "B",
+        "content": "yield to"
+      },
+      {
+        "key": "C",
+        "content": "insist on"
+      },
+      {
+        "key": "D",
+        "content": "act as"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-09",
+    "exam": "english1",
+    "year": 2024,
+    "number": 9,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "（9）______ making access both in and out of buildings easier for people, the difference in the way many of these doors open helps reduce the total area （10）______ by them.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "As well as"
+      },
+      {
+        "key": "B",
+        "content": "In terms of"
+      },
+      {
+        "key": "C",
+        "content": "Thanks to"
+      },
+      {
+        "key": "D",
+        "content": "Rather than"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-10",
+    "exam": "english1",
+    "year": 2024,
+    "number": 10,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "（9）______ making access both in and out of buildings easier for people, the difference in the way many of these doors open helps reduce the total area （10）______ by them.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "connected"
+      },
+      {
+        "key": "B",
+        "content": "shared"
+      },
+      {
+        "key": "C",
+        "content": "represented"
+      },
+      {
+        "key": "D",
+        "content": "occupied"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-11",
+    "exam": "english1",
+    "year": 2024,
+    "number": 11,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "Replacing swing doors, these （11）______ smaller buildings to maximise the usable space inside without having to （12）______ the way for a large, sticking-out door.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "allow"
+      },
+      {
+        "key": "B",
+        "content": "expect"
+      },
+      {
+        "key": "C",
+        "content": "require"
+      },
+      {
+        "key": "D",
+        "content": "direct"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-12",
+    "exam": "english1",
+    "year": 2024,
+    "number": 12,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "Replacing swing doors, these （11）______ smaller buildings to maximise the usable space inside without having to （12）______ the way for a large, sticking-out door.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "adopt"
+      },
+      {
+        "key": "B",
+        "content": "lead"
+      },
+      {
+        "key": "C",
+        "content": "clear"
+      },
+      {
+        "key": "D",
+        "content": "change"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-13",
+    "exam": "english1",
+    "year": 2024,
+    "number": 13,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "There are many different types of automatic door, with each （13）______ specific signals to tell them when to open.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "adapting to"
+      },
+      {
+        "key": "B",
+        "content": "deriving from"
+      },
+      {
+        "key": "C",
+        "content": "relying on"
+      },
+      {
+        "key": "D",
+        "content": "pointing at"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-14",
+    "exam": "english1",
+    "year": 2024,
+    "number": 14,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "（14）______ these methods differ, the main （15）______ remain the same.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Once"
+      },
+      {
+        "key": "B",
+        "content": "Since"
+      },
+      {
+        "key": "C",
+        "content": "Unless"
+      },
+      {
+        "key": "D",
+        "content": "Although"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-15",
+    "exam": "english1",
+    "year": 2024,
+    "number": 15,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "（14）______ these methods differ, the main （15）______ remain the same.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "records"
+      },
+      {
+        "key": "B",
+        "content": "positions"
+      },
+      {
+        "key": "C",
+        "content": "principles"
+      },
+      {
+        "key": "D",
+        "content": "reasons"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-16",
+    "exam": "english1",
+    "year": 2024,
+    "number": 16,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "Each automatic door system （16）______ the light, sound, weight or movement in their vicinity as a signal to open.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "controls"
+      },
+      {
+        "key": "B",
+        "content": "analyses"
+      },
+      {
+        "key": "C",
+        "content": "produces"
+      },
+      {
+        "key": "D",
+        "content": "mixes"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-17",
+    "exam": "english1",
+    "year": 2024,
+    "number": 17,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "Sensor types are chosen to （17）______ the different environments they are needed in.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "decorate"
+      },
+      {
+        "key": "B",
+        "content": "compare"
+      },
+      {
+        "key": "C",
+        "content": "protect"
+      },
+      {
+        "key": "D",
+        "content": "complement"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-18",
+    "exam": "english1",
+    "year": 2024,
+    "number": 18,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "（18）______ , a busy street might not （19）______ a motion-sensored door, as it would constantly be opening for passers-by.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "In conclusion"
+      },
+      {
+        "key": "B",
+        "content": "By contrast"
+      },
+      {
+        "key": "C",
+        "content": "For example"
+      },
+      {
+        "key": "D",
+        "content": "Above all"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-19",
+    "exam": "english1",
+    "year": 2024,
+    "number": 19,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "（18）______ , a busy street might not （19）______ a motion-sensored door, as it would constantly be opening for passers-by.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "identify"
+      },
+      {
+        "key": "B",
+        "content": "suit"
+      },
+      {
+        "key": "C",
+        "content": "secure"
+      },
+      {
+        "key": "D",
+        "content": "include"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-20",
+    "exam": "english1",
+    "year": 2024,
+    "number": 20,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2024-P-cloze",
+    "stem": "A pressure-sensitive mat would be more （20）______ to limit the surveyed area.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "appropriate"
+      },
+      {
+        "key": "B",
+        "content": "obvious"
+      },
+      {
+        "key": "C",
+        "content": "impressive"
+      },
+      {
+        "key": "D",
+        "content": "delicate"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-21",
+    "exam": "english1",
+    "year": 2024,
+    "number": 21,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text1",
+    "stem": "The Romans buried the nails probably for the sake of",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "saving them for future use."
+      },
+      {
+        "key": "B",
+        "content": "keeping them from rusting."
+      },
+      {
+        "key": "C",
+        "content": "letting them grow in value."
+      },
+      {
+        "key": "D",
+        "content": "hiding them from the locals."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-22",
+    "exam": "english1",
+    "year": 2024,
+    "number": 22,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text1",
+    "stem": "The example of early 17th-century Virginians is used to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "highlight the thriftiness of early American colonists."
+      },
+      {
+        "key": "B",
+        "content": "illustrate the high status of blacksmiths in that period."
+      },
+      {
+        "key": "C",
+        "content": "contrast the attitudes of different civilisations towards nails."
+      },
+      {
+        "key": "D",
+        "content": "show the preciousness of nail-making technology at that time."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-23",
+    "exam": "english1",
+    "year": 2024,
+    "number": 23,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text1",
+    "stem": "What played the major role in lowering the price of nails after the late 1700s?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Increased productivity."
+      },
+      {
+        "key": "B",
+        "content": "Wider use of new energies."
+      },
+      {
+        "key": "C",
+        "content": "Fiercer market competition."
+      },
+      {
+        "key": "D",
+        "content": "Reduced cost of raw materials."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-24",
+    "exam": "english1",
+    "year": 2024,
+    "number": 24,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text1",
+    "stem": "It can be learned from Paragraph 5 that nails",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "have undergone many technological improvements."
+      },
+      {
+        "key": "B",
+        "content": "have remained basically the same since Roman times."
+      },
+      {
+        "key": "C",
+        "content": "are less studied than other everyday products."
+      },
+      {
+        "key": "D",
+        "content": "are one of the world’s most significant inventions."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-25",
+    "exam": "english1",
+    "year": 2024,
+    "number": 25,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text1",
+    "stem": "Which of the following best summarises the last two paragraphs?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Cheap technologies bring about revolutionary change."
+      },
+      {
+        "key": "B",
+        "content": "Technological innovation is integral to economic success."
+      },
+      {
+        "key": "C",
+        "content": "Technology defines people’s understanding of the world."
+      },
+      {
+        "key": "D",
+        "content": "Sophisticated technologies develop from small inventions."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-26",
+    "exam": "english1",
+    "year": 2024,
+    "number": 26,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text2",
+    "stem": "According to the first two paragraphs, alloparenting refers to the practice of",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "sharing childcare among community members."
+      },
+      {
+        "key": "B",
+        "content": "assigning babies to specific adult caregivers."
+      },
+      {
+        "key": "C",
+        "content": "teaching parenting skills to older children."
+      },
+      {
+        "key": "D",
+        "content": "carrying infants around by their parents."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-27",
+    "exam": "english1",
+    "year": 2024,
+    "number": 27,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text2",
+    "stem": "The scheme in Germany is mentioned to illustrate",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "an attempt to facilitate intergenerational communication."
+      },
+      {
+        "key": "B",
+        "content": "an approach to integrating alloparenting into western society."
+      },
+      {
+        "key": "C",
+        "content": "the conventional parenting style in western culture."
+      },
+      {
+        "key": "D",
+        "content": "the differences between western and African ways of living."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-28",
+    "exam": "english1",
+    "year": 2024,
+    "number": 28,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text2",
+    "stem": "According to Paragraph 4, the “intensive mothering narrative”",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "alleviates parenting pressures."
+      },
+      {
+        "key": "B",
+        "content": "consolidates family relationships."
+      },
+      {
+        "key": "C",
+        "content": "results in the child-centred family."
+      },
+      {
+        "key": "D",
+        "content": "departs from the course of evolution."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-29",
+    "exam": "english1",
+    "year": 2024,
+    "number": 29,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text2",
+    "stem": "What can be inferred about the nurseries in the UK?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "They tend to fall short of official requirements."
+      },
+      {
+        "key": "B",
+        "content": "They have difficulty finding enough caregivers."
+      },
+      {
+        "key": "C",
+        "content": "They ought to improve their carer-to-child ratio."
+      },
+      {
+        "key": "D",
+        "content": "They should try to prevent parental depression."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-30",
+    "exam": "english1",
+    "year": 2024,
+    "number": 30,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text2",
+    "stem": "Which of the following would be the best title for the text?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Instructive teaching: a dilemma for anxious parents"
+      },
+      {
+        "key": "B",
+        "content": "For a happier family, learn from the hunter-gatherers"
+      },
+      {
+        "key": "C",
+        "content": "Mixed-age playgroup, a better choice for lonely children"
+      },
+      {
+        "key": "D",
+        "content": "Tracing the history of parenting: from Africa to Europe"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-31",
+    "exam": "english1",
+    "year": 2024,
+    "number": 31,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text3",
+    "stem": "What can be learned about Rutkowski from the first two paragraphs?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "He is enthusiastic about using AI models."
+      },
+      {
+        "key": "B",
+        "content": "He is popular with users of an AI art generator."
+      },
+      {
+        "key": "C",
+        "content": "He attracts admiration from other illustrators."
+      },
+      {
+        "key": "D",
+        "content": "He specializes in classical painting digitalization."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-32",
+    "exam": "english1",
+    "year": 2024,
+    "number": 32,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text3",
+    "stem": "The problem with open-source AI art generators is that they",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "lack flexibility in responding to prompts."
+      },
+      {
+        "key": "B",
+        "content": "produce artworks in unpredictable styles."
+      },
+      {
+        "key": "C",
+        "content": "make unauthorized use of online images."
+      },
+      {
+        "key": "D",
+        "content": "collect user information without consent."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-33",
+    "exam": "english1",
+    "year": 2024,
+    "number": 33,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text3",
+    "stem": "After searching online, Rutkowski found",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "a unique way to reach audiences."
+      },
+      {
+        "key": "B",
+        "content": "a new method to identify AI images."
+      },
+      {
+        "key": "C",
+        "content": "AI-generated work bearing his name."
+      },
+      {
+        "key": "D",
+        "content": "heated disputes regarding his copyright."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-34",
+    "exam": "english1",
+    "year": 2024,
+    "number": 34,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text3",
+    "stem": "According to Ortiz, AI companies are advised to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "campaign for new policies or regulation."
+      },
+      {
+        "key": "B",
+        "content": "offer their services to public institutions."
+      },
+      {
+        "key": "C",
+        "content": "strengthen their relationships with AI users."
+      },
+      {
+        "key": "D",
+        "content": "adopt a different strategy for AI model training."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-35",
+    "exam": "english1",
+    "year": 2024,
+    "number": 35,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text3",
+    "stem": "What is the text mainly about?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Artists’ responses to AI art generation."
+      },
+      {
+        "key": "B",
+        "content": "AI’s expanded role in artistic creation."
+      },
+      {
+        "key": "C",
+        "content": "Privacy issues in the application of AI."
+      },
+      {
+        "key": "D",
+        "content": "Opposing views on AI development."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-36",
+    "exam": "english1",
+    "year": 2024,
+    "number": 36,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text4",
+    "stem": "The Chesapeake Bay is described in Paragraph 1 as",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "a valuable natural environment."
+      },
+      {
+        "key": "B",
+        "content": "a controversial conservation area."
+      },
+      {
+        "key": "C",
+        "content": "a place with commercial potential."
+      },
+      {
+        "key": "D",
+        "content": "a headache for nearby communities."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-37",
+    "exam": "english1",
+    "year": 2024,
+    "number": 37,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text4",
+    "stem": "The U.S. Supreme Court’s ruling in the Idaho case",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "reinforces water pollution control."
+      },
+      {
+        "key": "B",
+        "content": "weakens the EPA’s regulatory power."
+      },
+      {
+        "key": "C",
+        "content": "will end conflicts among local residents."
+      },
+      {
+        "key": "D",
+        "content": "may face opposition from mining operators."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-38",
+    "exam": "english1",
+    "year": 2024,
+    "number": 38,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text4",
+    "stem": "How does the author feel about the future of the Chesapeake Bay?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Worried."
+      },
+      {
+        "key": "B",
+        "content": "Puzzled."
+      },
+      {
+        "key": "C",
+        "content": "Relieved."
+      },
+      {
+        "key": "D",
+        "content": "Encouraged."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-39",
+    "exam": "english1",
+    "year": 2024,
+    "number": 39,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text4",
+    "stem": "What can be inferred about the EPA’s involvement in the Chesapeake Bay Program?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "It has restored the balance among neighboring jurisdictions."
+      },
+      {
+        "key": "B",
+        "content": "It has triggered a radical reform in commercial fisheries."
+      },
+      {
+        "key": "C",
+        "content": "It has set a fine example of respecting state authorities."
+      },
+      {
+        "key": "D",
+        "content": "It has ensured the coordination of protection efforts."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-40",
+    "exam": "english1",
+    "year": 2024,
+    "number": 40,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2024-P-text4",
+    "stem": "The author holds that the state lawmakers should",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "be cautious about the influence of land owners."
+      },
+      {
+        "key": "B",
+        "content": "attach due importance to wetlands protections."
+      },
+      {
+        "key": "C",
+        "content": "recognize the need to expand wildlife refuges."
+      },
+      {
+        "key": "D",
+        "content": "improve the wellbeing of endangered species."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-41",
+    "exam": "english1",
+    "year": 2024,
+    "number": 41,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2024-P-partb",
+    "stem": "Hannah\nSimply, there are people in Nigeria who cannot travel to the Smithsonian Institution to see that part of their history and culture represented by the Benin Bronzes. These should be available to them as part of their cultural heritage and history and as a source of national pride. There is no good reason that these artifacts should be beyond the ordinary reach of the educational objectives or inspiration of the generations to which they were left. They serve no purpose in a museum in the United States or elsewhere except as curious objects. They cannot be compared to works of art produced for sale which can be passed from hand to hand and place to place by purchase.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "It is clear that the countries of origin have never been compensated for the stolen artifacts."
+      },
+      {
+        "key": "B",
+        "content": "It is a flawed line of reasoning to argue against returning artifacts to their countries of origin."
+      },
+      {
+        "key": "C",
+        "content": "Museum visitors can still learn as much from artifacts’ copies after the originals are returned."
+      },
+      {
+        "key": "D",
+        "content": "Reproductions, even if perfectly made, cannot take the place of the authentic objects."
+      },
+      {
+        "key": "E",
+        "content": "The real value of artifacts can only be recognized in their countries of origin rather than anywhere else."
+      },
+      {
+        "key": "F",
+        "content": "Ways to get artifacts from other countries must be decent and lawful."
+      },
+      {
+        "key": "G",
+        "content": "Concern over security is no excuse for refusing to return artifacts to their countries of origin."
+      }
+    ],
+    "answer": [
+      "E"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/信息匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "E",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-42",
+    "exam": "english1",
+    "year": 2024,
+    "number": 42,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2024-P-partb",
+    "stem": "Buck\nWe know very exact reproductions of artwork can be and are regularly produced. Perhaps museums and governments might explore some role for the use of nearly exact reproductions as a means of resolving issues relating to returning works of art and antiquities. The context of any exhibit is more important to me than whether the object being displayed is 2,000 years old or 2 months old. In many cases the experts have a hard time agreeing on what is the real object and what is a forgery. Again, the story an exhibit is trying to tell is what matters. The monetary value of the objects on display is a distant second place in importance.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "It is clear that the countries of origin have never been compensated for the stolen artifacts."
+      },
+      {
+        "key": "B",
+        "content": "It is a flawed line of reasoning to argue against returning artifacts to their countries of origin."
+      },
+      {
+        "key": "C",
+        "content": "Museum visitors can still learn as much from artifacts’ copies after the originals are returned."
+      },
+      {
+        "key": "D",
+        "content": "Reproductions, even if perfectly made, cannot take the place of the authentic objects."
+      },
+      {
+        "key": "E",
+        "content": "The real value of artifacts can only be recognized in their countries of origin rather than anywhere else."
+      },
+      {
+        "key": "F",
+        "content": "Ways to get artifacts from other countries must be decent and lawful."
+      },
+      {
+        "key": "G",
+        "content": "Concern over security is no excuse for refusing to return artifacts to their countries of origin."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/信息匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-43",
+    "exam": "english1",
+    "year": 2024,
+    "number": 43,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2024-P-partb",
+    "stem": "Sara\nWhen visiting the Baltimore Museum of Art, I came across a magnificent 15th-century Chinese sculpture. It inspired me to learn more about the culture that it represented. Artifacts in museums have the power to inspire, and perhaps spark that need to learn and understand the nature of their creators. Having said that, I do feel that whatever artifacts find their way to public museums should, in fact, be sanctioned as having been obtained on loan, legally purchased, or obtained by treaty. Stealing artifacts from other peoples’ cultures is obscene; it robs not only the physical objects, but the dignity and spirit of their creators.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "It is clear that the countries of origin have never been compensated for the stolen artifacts."
+      },
+      {
+        "key": "B",
+        "content": "It is a flawed line of reasoning to argue against returning artifacts to their countries of origin."
+      },
+      {
+        "key": "C",
+        "content": "Museum visitors can still learn as much from artifacts’ copies after the originals are returned."
+      },
+      {
+        "key": "D",
+        "content": "Reproductions, even if perfectly made, cannot take the place of the authentic objects."
+      },
+      {
+        "key": "E",
+        "content": "The real value of artifacts can only be recognized in their countries of origin rather than anywhere else."
+      },
+      {
+        "key": "F",
+        "content": "Ways to get artifacts from other countries must be decent and lawful."
+      },
+      {
+        "key": "G",
+        "content": "Concern over security is no excuse for refusing to return artifacts to their countries of origin."
+      }
+    ],
+    "answer": [
+      "F"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/信息匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "F",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-44",
+    "exam": "english1",
+    "year": 2024,
+    "number": 44,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2024-P-partb",
+    "stem": "Victor\nAncient art that is displayed in foreign countries by all means should be returned to the original country. The foreign countries have no right to hold back returning the items. I would ask that the foreign nations and the original country discuss the terms of transfer. Yes, there is the risk that the original country will not have as good security as do the foreign countries. But look at what happened to Boston’s Gardner Museum theft in 1990, including the loss of Rembrandt, Vermeer, Manet, and other masterpieces. Nothing is absolutely safe nowhere. And now Climate Change agitators are attacking publicly displayed works in European museums.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "It is clear that the countries of origin have never been compensated for the stolen artifacts."
+      },
+      {
+        "key": "B",
+        "content": "It is a flawed line of reasoning to argue against returning artifacts to their countries of origin."
+      },
+      {
+        "key": "C",
+        "content": "Museum visitors can still learn as much from artifacts’ copies after the originals are returned."
+      },
+      {
+        "key": "D",
+        "content": "Reproductions, even if perfectly made, cannot take the place of the authentic objects."
+      },
+      {
+        "key": "E",
+        "content": "The real value of artifacts can only be recognized in their countries of origin rather than anywhere else."
+      },
+      {
+        "key": "F",
+        "content": "Ways to get artifacts from other countries must be decent and lawful."
+      },
+      {
+        "key": "G",
+        "content": "Concern over security is no excuse for refusing to return artifacts to their countries of origin."
+      }
+    ],
+    "answer": [
+      "G"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/信息匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "G",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-45",
+    "exam": "english1",
+    "year": 2024,
+    "number": 45,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2024-P-partb",
+    "stem": "Julia\nTo those of you in the comments section who are having strong feelings about artifacts being removed from cities in the U.S. and Britain and returned to their countries of origin, I would ask you to consider why do you think Americans have more of a right to easily access the Benin Bronzes than the people of Nigeria? Why are people who live within a day’s drive of London entitled to go and see the Elgin Marbles whenever they want, but the people of Athens aren’t? What intrinsic factors make the West a suitable home for these artifacts but preclude them from being preserved and displayed by their countries of origin? If your conclusion is that the West is better able to preserve these artifacts, think about why you’re assuming that to be true.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "It is clear that the countries of origin have never been compensated for the stolen artifacts."
+      },
+      {
+        "key": "B",
+        "content": "It is a flawed line of reasoning to argue against returning artifacts to their countries of origin."
+      },
+      {
+        "key": "C",
+        "content": "Museum visitors can still learn as much from artifacts’ copies after the originals are returned."
+      },
+      {
+        "key": "D",
+        "content": "Reproductions, even if perfectly made, cannot take the place of the authentic objects."
+      },
+      {
+        "key": "E",
+        "content": "The real value of artifacts can only be recognized in their countries of origin rather than anywhere else."
+      },
+      {
+        "key": "F",
+        "content": "Ways to get artifacts from other countries must be decent and lawful."
+      },
+      {
+        "key": "G",
+        "content": "Concern over security is no excuse for refusing to return artifacts to their countries of origin."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/信息匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-46",
+    "exam": "english1",
+    "year": 2024,
+    "number": 46,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2024-P-translation",
+    "stem": "They sometimes travel more than sixty miles to find food or water, and are very good at working out where other elephants are—even when they are out of sight.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "它们有时会行走 60 多英里去寻找食物或水源，而且非常擅长判断其他大象的位置——即使后者位于其视线以外。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-47",
+    "exam": "english1",
+    "year": 2024,
+    "number": 47,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2024-P-translation",
+    "stem": "The researchers are convinced that the elephants always know precisely where they are in relation to all the resources they need, and can therefore take shortcuts, as well as following familiar routes.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "研究人员确信，这些大象总是能够很确切地知道它们与所有所需资源之间的相对位置，因此除了走熟路，它们还能走捷径。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-48",
+    "exam": "english1",
+    "year": 2024,
+    "number": 48,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2024-P-translation",
+    "stem": "One possibility was that they merely used their eyes and tried out the plants they found, but that would probably result in a lot of wasted time and energy, not least because their eyesight is actually not very good.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "一种可能是，它们只是用眼睛看，然后尝试吃找到的植物，但这样很可能会浪费大量的时间和精力，尤其是因为它们的视力实际上并不怎么好。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-49",
+    "exam": "english1",
+    "year": 2024,
+    "number": 49,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2024-P-translation",
+    "stem": "The volatile chemicals produced by plants can be carried a long way, and they are very characteristic: Each plant or tree has its own particular odor signature.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "植物所产生的挥发性化学物质可以扩散很远的距离，而且这些物质还极具独特性：每种植物或树木都有自己特有的气味特征。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-50",
+    "exam": "english1",
+    "year": 2024,
+    "number": 50,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2024-P-translation",
+    "stem": "The experiment showed that elephants may well use smell to identify patches of trees that are good to eat, and secondly to assess the quality of the trees within each patch.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "实验表明，大象很可能用嗅觉来辨别适宜食用的树丛，其次用来评估每片树丛内树木的质量。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-51",
+    "exam": "english1",
+    "year": 2024,
+    "number": 51,
+    "section": "writing_a",
+    "type": "essay",
+    "score": 10.0,
+    "passage_id": null,
+    "stem": "Read the following email from an international student and write a reply.\nDear Li Ming,\nI’ve got a class assignment to make an oral report on an ancient Chinese scientist,\nbut I’m not sure how to prepare for it. Can you give me some advice? Thank you for\nyour help.\nYours,\nPaul\nWrite your answer in about 100 words on the ANSWER SHEET.\nDo not use your own name in your email; use “Li Ming” instead.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "Dear Paul,\n\nI'm happy to help with your assignment about an ancient Chinese scientist.\n\nYou can start by picking someone famous, like Zhang Heng or Zu Chongzhi. Learn about his life, big discoveries, and how he changed science and people. This will be the main part of your talk. Add pictures and fun stories about the scientist to make it more interesting. Also, it's important to communicate well. You should speak in a clear and sure way. This may seem like old boring advice, but it can help make your talk better.\n\nI think if you do these things, your report will be great. Contact me if you have more questions. Good luck!\n\nWarm regards,\nLi Ming"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/小作文（书信、通知等）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2024-52",
+    "exam": "english1",
+    "year": 2024,
+    "number": 52,
+    "section": "writing_b",
+    "type": "essay",
+    "score": 20.0,
+    "passage_id": null,
+    "stem": "Write an essay based on the picture and the chart below. In your essay, you should\n1) describe the picture and the chart briefly,\n2) interpret the implied meaning, and\n3) give your comments.\nWrite your answer in 160-200 words on the ANSWER SHEET.",
+    "images": [
+      "images/english1-2024/q52.jpg"
+    ],
+    "options": [],
+    "answer": [
+      "The picture on the left depicts a park. A young couple are walking in the park, and two children are running. A resident sees this scene and says, “The new small park near home is really great!” The chart on the right shows that the number of parks in a certain city has increased from 406 in 2020 to 670 in 2022.\n\nThe picture indicates that parks can make people feel happy. Parks are of great importance to cities. They help clean the air, and people can see a lot of plants and animals there. Moreover, many people like doing exercise and having fun in parks. When more parks are built, people will have more opportunities to connect with nature and engage in physical activities. As a result, they will become healthier. Many local governments have known these benefits very well, so they have built a large number of parks recently, just like the city shown in the chart.\n\nTo conclude, parks are very important, because they help increase people's quality of life. The government should not focus only on new parks, but also on old ones."
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/大作文（图画作文）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2024-1/2024-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  }
+]

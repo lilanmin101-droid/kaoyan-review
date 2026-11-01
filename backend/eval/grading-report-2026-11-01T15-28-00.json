@@ -1,0 +1,1731 @@
+{
+  "at": "2026-11-01T15:28:00.575Z",
+  "fake": true,
+  "models": {
+    "deepseek": true,
+    "qwen": true
+  },
+  "overall": {
+    "deepseek": {
+      "n": 20,
+      "graded": 20,
+      "errors": 0,
+      "pass_rate": 0.6,
+      "band_exact": 0.4,
+      "band_within1": 1,
+      "mae": 1.2,
+      "in_range": 0.35,
+      "hit_recall": 0.3404255319148936,
+      "missed_ok": 0.8333333333333334,
+      "err_recall": 0.08333333333333333,
+      "mean_ms": 0.6
+    },
+    "qwen": {
+      "n": 20,
+      "graded": 20,
+      "errors": 0,
+      "pass_rate": 0.6,
+      "band_exact": 0.4,
+      "band_within1": 1,
+      "mae": 1.2,
+      "in_range": 0.35,
+      "hit_recall": 0.3404255319148936,
+      "missed_ok": 0.8333333333333334,
+      "err_recall": 0.08333333333333333,
+      "mean_ms": 0.45
+    }
+  },
+  "cross_disagreement_rate": 0,
+  "flagged_rate": 0,
+  "flagged": [],
+  "cases": [
+    {
+      "id": "grade-tr-01",
+      "kind": "translation",
+      "expected": {
+        "score": 2,
+        "score_range": [
+          2,
+          2
+        ],
+        "band": null,
+        "points_hit_must": [
+          "走六十多英里找食物或水",
+          "善于判断其他大象的位置",
+          "即使不在视线内"
+        ],
+        "points_missed_must": [],
+        "errors_must": [],
+        "word_count": 0
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 0,
+        "band": null,
+        "model": "fake-grader-v1",
+        "score_err": 2,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": false,
+        "hit_recall": 0,
+        "hit_found": [],
+        "hit_lost": [
+          "走六十多英里找食物或水",
+          "善于判断其他大象的位置",
+          "即使不在视线内"
+        ],
+        "missed_ok": null,
+        "err_recall": null,
+        "pass": false,
+        "fails": [
+          "分数 0，期望 2（2–2）±0.5"
+        ],
+        "ms": 3,
+        "points_hit": [],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 0,
+        "band": null,
+        "model": "fake-qwen-v1",
+        "score_err": 2,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": false,
+        "hit_recall": 0,
+        "hit_found": [],
+        "hit_lost": [
+          "走六十多英里找食物或水",
+          "善于判断其他大象的位置",
+          "即使不在视线内"
+        ],
+        "missed_ok": null,
+        "err_recall": null,
+        "pass": false,
+        "fails": [
+          "分数 0，期望 2（2–2）±0.5"
+        ],
+        "ms": 2,
+        "points_hit": [],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-tr-02",
+      "kind": "translation",
+      "expected": {
+        "score": 1,
+        "score_range": [
+          0.5,
+          1
+        ],
+        "band": null,
+        "points_hit_must": [
+          "走六十多英里找食物或水"
+        ],
+        "points_missed_must": [
+          "善于判断其他大象的位置"
+        ],
+        "errors_must": [
+          {
+            "span": "工作出",
+            "type": "vocab"
+          }
+        ],
+        "word_count": 0
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 0.5,
+        "band": null,
+        "model": "fake-grader-v1",
+        "score_err": 0.5,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": true,
+        "hit_recall": 0,
+        "hit_found": [],
+        "hit_lost": [
+          "走六十多英里找食物或水"
+        ],
+        "missed_ok": 0,
+        "err_recall": 0,
+        "pass": true,
+        "fails": [],
+        "ms": 1,
+        "points_hit": [
+          "而且非常擅长判断其他大象的位置"
+        ],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 0.5,
+        "band": null,
+        "model": "fake-qwen-v1",
+        "score_err": 0.5,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": true,
+        "hit_recall": 0,
+        "hit_found": [],
+        "hit_lost": [
+          "走六十多英里找食物或水"
+        ],
+        "missed_ok": 0,
+        "err_recall": 0,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [
+          "而且非常擅长判断其他大象的位置"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-tr-03",
+      "kind": "translation",
+      "expected": {
+        "score": 2,
+        "score_range": [
+          2,
+          2
+        ],
+        "band": null,
+        "points_hit_must": [
+          "研究人员确信",
+          "准确知道自己与所需资源的相对位置",
+          "因此能走捷径",
+          "除了走熟路"
+        ],
+        "points_missed_must": [],
+        "errors_must": [],
+        "word_count": 0
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 1.5,
+        "band": null,
+        "model": "fake-grader-v1",
+        "score_err": 0.5,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": false,
+        "hit_recall": 0.75,
+        "hit_found": [
+          "研究人员确信",
+          "因此能走捷径",
+          "除了走熟路"
+        ],
+        "hit_lost": [
+          "准确知道自己与所需资源的相对位置"
+        ],
+        "missed_ok": null,
+        "err_recall": null,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [
+          "研究人员确信",
+          "因此除了走熟路",
+          "它们还能走捷径"
+        ],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 1.5,
+        "band": null,
+        "model": "fake-qwen-v1",
+        "score_err": 0.5,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": false,
+        "hit_recall": 0.75,
+        "hit_found": [
+          "研究人员确信",
+          "因此能走捷径",
+          "除了走熟路"
+        ],
+        "hit_lost": [
+          "准确知道自己与所需资源的相对位置"
+        ],
+        "missed_ok": null,
+        "err_recall": null,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [
+          "研究人员确信",
+          "因此除了走熟路",
+          "它们还能走捷径"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-tr-04",
+      "kind": "translation",
+      "expected": {
+        "score": 0.5,
+        "score_range": [
+          0,
+          1
+        ],
+        "band": null,
+        "points_hit_must": [
+          "因此能走捷径"
+        ],
+        "points_missed_must": [
+          "与所需资源的相对位置",
+          "除了走熟路"
+        ],
+        "errors_must": [],
+        "word_count": 0
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 0.5,
+        "band": null,
+        "model": "fake-grader-v1",
+        "score_err": 0,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": true,
+        "hit_recall": 1,
+        "hit_found": [
+          "因此能走捷径"
+        ],
+        "hit_lost": [],
+        "missed_ok": 1,
+        "err_recall": null,
+        "pass": true,
+        "fails": [],
+        "ms": 1,
+        "points_hit": [
+          "它们还能走捷径"
+        ],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 0.5,
+        "band": null,
+        "model": "fake-qwen-v1",
+        "score_err": 0,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": true,
+        "hit_recall": 1,
+        "hit_found": [
+          "因此能走捷径"
+        ],
+        "hit_lost": [],
+        "missed_ok": 1,
+        "err_recall": null,
+        "pass": true,
+        "fails": [],
+        "ms": 1,
+        "points_hit": [
+          "它们还能走捷径"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-tr-05",
+      "kind": "translation",
+      "expected": {
+        "score": 2,
+        "score_range": [
+          2,
+          2
+        ],
+        "band": null,
+        "points_hit_must": [
+          "一种可能是",
+          "只是用眼睛并试吃找到的植物",
+          "可能浪费大量时间和精力",
+          "尤其是因为视力其实不好"
+        ],
+        "points_missed_must": [],
+        "errors_must": [],
+        "word_count": 0
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 1.5,
+        "band": null,
+        "model": "fake-grader-v1",
+        "score_err": 0.5,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": false,
+        "hit_recall": 0.75,
+        "hit_found": [
+          "一种可能是",
+          "可能浪费大量时间和精力",
+          "尤其是因为视力其实不好"
+        ],
+        "hit_lost": [
+          "只是用眼睛并试吃找到的植物"
+        ],
+        "missed_ok": null,
+        "err_recall": null,
+        "pass": true,
+        "fails": [],
+        "ms": 1,
+        "points_hit": [
+          "一种可能是它们只是用眼睛看",
+          "但这样很可能会浪费大量的时间和精力",
+          "尤其是因为它们的视力实际上并不怎么好"
+        ],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 1.5,
+        "band": null,
+        "model": "fake-qwen-v1",
+        "score_err": 0.5,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": false,
+        "hit_recall": 0.75,
+        "hit_found": [
+          "一种可能是",
+          "可能浪费大量时间和精力",
+          "尤其是因为视力其实不好"
+        ],
+        "hit_lost": [
+          "只是用眼睛并试吃找到的植物"
+        ],
+        "missed_ok": null,
+        "err_recall": null,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [
+          "一种可能是它们只是用眼睛看",
+          "但这样很可能会浪费大量的时间和精力",
+          "尤其是因为它们的视力实际上并不怎么好"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-tr-06",
+      "kind": "translation",
+      "expected": {
+        "score": 1,
+        "score_range": [
+          1,
+          1.5
+        ],
+        "band": null,
+        "points_hit_must": [
+          "一种可能是",
+          "可能浪费大量时间和精力"
+        ],
+        "points_missed_must": [
+          "尤其是因为视力其实不好"
+        ],
+        "errors_must": [
+          {
+            "span": "至少因为",
+            "type": "vocab"
+          },
+          {
+            "span": "能量",
+            "type": "vocab"
+          }
+        ],
+        "word_count": 0
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 1.5,
+        "band": null,
+        "model": "fake-grader-v1",
+        "score_err": 0.5,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": true,
+        "hit_recall": 0.5,
+        "hit_found": [
+          "一种可能是"
+        ],
+        "hit_lost": [
+          "可能浪费大量时间和精力"
+        ],
+        "missed_ok": 0,
+        "err_recall": 0,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [
+          "一种可能是它们只是用眼睛看",
+          "然后尝试吃找到的植物",
+          "尤其是因为它们的视力实际上并不怎么好"
+        ],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 1.5,
+        "band": null,
+        "model": "fake-qwen-v1",
+        "score_err": 0.5,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": true,
+        "hit_recall": 0.5,
+        "hit_found": [
+          "一种可能是"
+        ],
+        "hit_lost": [
+          "可能浪费大量时间和精力"
+        ],
+        "missed_ok": 0,
+        "err_recall": 0,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [
+          "一种可能是它们只是用眼睛看",
+          "然后尝试吃找到的植物",
+          "尤其是因为它们的视力实际上并不怎么好"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-tr-07",
+      "kind": "translation",
+      "expected": {
+        "score": 2,
+        "score_range": [
+          2,
+          2
+        ],
+        "band": null,
+        "points_hit_must": [
+          "植物产生的挥发性化学物质",
+          "能扩散很远",
+          "极具特征",
+          "每种植物都有独特的气味特征"
+        ],
+        "points_missed_must": [],
+        "errors_must": [],
+        "word_count": 0
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 1.5,
+        "band": null,
+        "model": "fake-grader-v1",
+        "score_err": 0.5,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": false,
+        "hit_recall": 0.75,
+        "hit_found": [
+          "植物产生的挥发性化学物质",
+          "能扩散很远",
+          "每种植物都有独特的气味特征"
+        ],
+        "hit_lost": [
+          "极具特征"
+        ],
+        "missed_ok": null,
+        "err_recall": null,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [
+          "植物所产生的挥发性化学物质可以扩散很远的距离",
+          "每种植物或树木都有自己特有的气味特征"
+        ],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 1.5,
+        "band": null,
+        "model": "fake-qwen-v1",
+        "score_err": 0.5,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": false,
+        "hit_recall": 0.75,
+        "hit_found": [
+          "植物产生的挥发性化学物质",
+          "能扩散很远",
+          "每种植物都有独特的气味特征"
+        ],
+        "hit_lost": [
+          "极具特征"
+        ],
+        "missed_ok": null,
+        "err_recall": null,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [
+          "植物所产生的挥发性化学物质可以扩散很远的距离",
+          "每种植物或树木都有自己特有的气味特征"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-tr-08",
+      "kind": "translation",
+      "expected": {
+        "score": 1.5,
+        "score_range": [
+          1,
+          1.5
+        ],
+        "band": null,
+        "points_hit_must": [
+          "能扩散很远",
+          "极具特征",
+          "每种植物都有独特的气味特征"
+        ],
+        "points_missed_must": [
+          "挥发性化学物质"
+        ],
+        "errors_must": [
+          {
+            "span": "不稳定",
+            "type": "vocab"
+          }
+        ],
+        "word_count": 0
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 0.5,
+        "band": null,
+        "model": "fake-grader-v1",
+        "score_err": 1,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": false,
+        "hit_recall": 0.3333333333333333,
+        "hit_found": [
+          "每种植物都有独特的气味特征"
+        ],
+        "hit_lost": [
+          "能扩散很远",
+          "极具特征"
+        ],
+        "missed_ok": 1,
+        "err_recall": 0,
+        "pass": false,
+        "fails": [
+          "分数 0.5，期望 1.5（1–1.5）±0.5"
+        ],
+        "ms": 0,
+        "points_hit": [
+          "每种植物或树木都有自己特有的气味特征"
+        ],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 0.5,
+        "band": null,
+        "model": "fake-qwen-v1",
+        "score_err": 1,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": false,
+        "hit_recall": 0.3333333333333333,
+        "hit_found": [
+          "每种植物都有独特的气味特征"
+        ],
+        "hit_lost": [
+          "能扩散很远",
+          "极具特征"
+        ],
+        "missed_ok": 1,
+        "err_recall": 0,
+        "pass": false,
+        "fails": [
+          "分数 0.5，期望 1.5（1–1.5）±0.5"
+        ],
+        "ms": 1,
+        "points_hit": [
+          "每种植物或树木都有自己特有的气味特征"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-tr-09",
+      "kind": "translation",
+      "expected": {
+        "score": 1,
+        "score_range": [
+          0.5,
+          1
+        ],
+        "band": null,
+        "points_hit_must": [
+          "用嗅觉辨别适宜食用的树丛"
+        ],
+        "points_missed_must": [
+          "评估每片树丛内树木的质量"
+        ],
+        "errors_must": [],
+        "word_count": 0
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 0,
+        "band": null,
+        "model": "fake-grader-v1",
+        "score_err": 1,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": false,
+        "hit_recall": 0,
+        "hit_found": [],
+        "hit_lost": [
+          "用嗅觉辨别适宜食用的树丛"
+        ],
+        "missed_ok": 1,
+        "err_recall": null,
+        "pass": false,
+        "fails": [
+          "分数 0，期望 1（0.5–1）±0.5"
+        ],
+        "ms": 1,
+        "points_hit": [],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 0,
+        "band": null,
+        "model": "fake-qwen-v1",
+        "score_err": 1,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": false,
+        "hit_recall": 0,
+        "hit_found": [],
+        "hit_lost": [
+          "用嗅觉辨别适宜食用的树丛"
+        ],
+        "missed_ok": 1,
+        "err_recall": null,
+        "pass": false,
+        "fails": [
+          "分数 0，期望 1（0.5–1）±0.5"
+        ],
+        "ms": 1,
+        "points_hit": [],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-tr-10",
+      "kind": "translation",
+      "expected": {
+        "score": 0,
+        "score_range": [
+          0,
+          0
+        ],
+        "band": null,
+        "points_hit_must": [],
+        "points_missed_must": [
+          "用嗅觉辨别适宜食用的树丛",
+          "评估每片树丛内树木的质量"
+        ],
+        "errors_must": [
+          {
+            "span": "",
+            "type": "off_topic"
+          }
+        ],
+        "word_count": 0
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 0,
+        "band": null,
+        "model": "fake-grader-v1",
+        "score_err": 0,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": true,
+        "hit_recall": null,
+        "hit_found": [],
+        "hit_lost": [],
+        "missed_ok": 1,
+        "err_recall": 0,
+        "pass": true,
+        "fails": [],
+        "ms": 1,
+        "points_hit": [],
+        "errors": [
+          {
+            "span": "",
+            "type": "off_topic",
+            "fix": "没有作答"
+          }
+        ]
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 0,
+        "band": null,
+        "model": "fake-qwen-v1",
+        "score_err": 0,
+        "band_exact": null,
+        "band_within": null,
+        "in_range": true,
+        "hit_recall": null,
+        "hit_found": [],
+        "hit_lost": [],
+        "missed_ok": 1,
+        "err_recall": 0,
+        "pass": true,
+        "fails": [],
+        "ms": 1,
+        "points_hit": [],
+        "errors": [
+          {
+            "span": "",
+            "type": "off_topic",
+            "fix": "没有作答"
+          }
+        ]
+      }
+    },
+    {
+      "id": "grade-wr-01",
+      "kind": "writing_a",
+      "expected": {
+        "score": 9,
+        "score_range": [
+          9,
+          10
+        ],
+        "band": 5,
+        "points_hit_must": [
+          "选人物（给出具体科学家）",
+          "聚焦主要成就及影响",
+          "演示与练习技巧",
+          "落款 Li Ming"
+        ],
+        "points_missed_must": [],
+        "errors_must": [],
+        "word_count": 123
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 8,
+        "band": 4,
+        "model": "fake-grader-v1",
+        "score_err": 1,
+        "band_exact": false,
+        "band_within": true,
+        "in_range": false,
+        "hit_recall": 0.25,
+        "hit_found": [
+          "落款 Li Ming"
+        ],
+        "hit_lost": [
+          "选人物（给出具体科学家）",
+          "聚焦主要成就及影响",
+          "演示与练习技巧"
+        ],
+        "missed_ok": null,
+        "err_recall": null,
+        "pass": true,
+        "fails": [],
+        "ms": 1,
+        "points_hit": [
+          "dear",
+          "ming",
+          "make",
+          "oral",
+          "report",
+          "some",
+          "help",
+          "yours",
+          "paul"
+        ],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 8,
+        "band": 4,
+        "model": "fake-qwen-v1",
+        "score_err": 1,
+        "band_exact": false,
+        "band_within": true,
+        "in_range": false,
+        "hit_recall": 0.25,
+        "hit_found": [
+          "落款 Li Ming"
+        ],
+        "hit_lost": [
+          "选人物（给出具体科学家）",
+          "聚焦主要成就及影响",
+          "演示与练习技巧"
+        ],
+        "missed_ok": null,
+        "err_recall": null,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [
+          "dear",
+          "ming",
+          "make",
+          "oral",
+          "report",
+          "some",
+          "help",
+          "yours",
+          "paul"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-wr-02",
+      "kind": "writing_a",
+      "expected": {
+        "score": 6.5,
+        "score_range": [
+          6,
+          7
+        ],
+        "band": 3,
+        "points_hit_must": [
+          "选人物（给出具体科学家）",
+          "查资料",
+          "演示与练习技巧",
+          "落款 Li Ming"
+        ],
+        "points_missed_must": [],
+        "errors_must": [
+          {
+            "span": "advices",
+            "type": "grammar"
+          },
+          {
+            "span": "he is famous",
+            "type": "grammar"
+          }
+        ],
+        "word_count": 75
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 5,
+        "band": 3,
+        "model": "fake-grader-v1",
+        "score_err": 1.5,
+        "band_exact": true,
+        "band_within": true,
+        "in_range": false,
+        "hit_recall": 0.25,
+        "hit_found": [
+          "落款 Li Ming"
+        ],
+        "hit_lost": [
+          "选人物（给出具体科学家）",
+          "查资料",
+          "演示与练习技巧"
+        ],
+        "missed_ok": null,
+        "err_recall": 0,
+        "pass": false,
+        "fails": [
+          "分数 5，期望 6.5（6–7）±1"
+        ],
+        "ms": 1,
+        "points_hit": [
+          "email",
+          "dear",
+          "ming",
+          "class",
+          "make",
+          "report",
+          "some",
+          "advice",
+          "help",
+          "yours",
+          "paul"
+        ],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 5,
+        "band": 3,
+        "model": "fake-qwen-v1",
+        "score_err": 1.5,
+        "band_exact": true,
+        "band_within": true,
+        "in_range": false,
+        "hit_recall": 0.25,
+        "hit_found": [
+          "落款 Li Ming"
+        ],
+        "hit_lost": [
+          "选人物（给出具体科学家）",
+          "查资料",
+          "演示与练习技巧"
+        ],
+        "missed_ok": null,
+        "err_recall": 0,
+        "pass": false,
+        "fails": [
+          "分数 5，期望 6.5（6–7）±1"
+        ],
+        "ms": 1,
+        "points_hit": [
+          "email",
+          "dear",
+          "ming",
+          "class",
+          "make",
+          "report",
+          "some",
+          "advice",
+          "help",
+          "yours",
+          "paul"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-wr-03",
+      "kind": "writing_a",
+      "expected": {
+        "score": 4,
+        "score_range": [
+          3,
+          5
+        ],
+        "band": 2,
+        "points_hit_must": [
+          "查资料",
+          "落款 Li Ming"
+        ],
+        "points_missed_must": [
+          "选人物（给出具体科学家）",
+          "演示与练习技巧"
+        ],
+        "errors_must": [
+          {
+            "span": "want make",
+            "type": "grammar"
+          },
+          {
+            "span": "books is",
+            "type": "grammar"
+          },
+          {
+            "span": "do it good",
+            "type": "grammar"
+          }
+        ],
+        "word_count": 46
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 3,
+        "band": 2,
+        "model": "fake-grader-v1",
+        "score_err": 1,
+        "band_exact": true,
+        "band_within": true,
+        "in_range": true,
+        "hit_recall": 0.5,
+        "hit_found": [
+          "落款 Li Ming"
+        ],
+        "hit_lost": [
+          "查资料"
+        ],
+        "missed_ok": 1,
+        "err_recall": 0,
+        "pass": true,
+        "fails": [],
+        "ms": 1,
+        "points_hit": [
+          "read",
+          "dear",
+          "ming",
+          "make",
+          "report",
+          "ancient",
+          "chinese",
+          "scientist",
+          "help",
+          "yours",
+          "paul"
+        ],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 3,
+        "band": 2,
+        "model": "fake-qwen-v1",
+        "score_err": 1,
+        "band_exact": true,
+        "band_within": true,
+        "in_range": true,
+        "hit_recall": 0.5,
+        "hit_found": [
+          "落款 Li Ming"
+        ],
+        "hit_lost": [
+          "查资料"
+        ],
+        "missed_ok": 1,
+        "err_recall": 0,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [
+          "read",
+          "dear",
+          "ming",
+          "make",
+          "report",
+          "ancient",
+          "chinese",
+          "scientist",
+          "help",
+          "yours",
+          "paul"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-wr-04",
+      "kind": "writing_a",
+      "expected": {
+        "score": 2,
+        "score_range": [
+          1,
+          2
+        ],
+        "band": 1,
+        "points_hit_must": [
+          "落款 Li Ming"
+        ],
+        "points_missed_must": [
+          "选人物（给出具体科学家）",
+          "查资料",
+          "演示与练习技巧"
+        ],
+        "errors_must": [
+          {
+            "span": "listen English songs",
+            "type": "grammar"
+          },
+          {
+            "span": "English is very important for our future",
+            "type": "off_topic"
+          }
+        ],
+        "word_count": 49
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 3,
+        "band": 2,
+        "model": "fake-grader-v1",
+        "score_err": 1,
+        "band_exact": false,
+        "band_within": true,
+        "in_range": false,
+        "hit_recall": 1,
+        "hit_found": [
+          "落款 Li Ming"
+        ],
+        "hit_lost": [],
+        "missed_ok": 1,
+        "err_recall": 0,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [
+          "read",
+          "student",
+          "dear",
+          "ming",
+          "paul",
+          "name"
+        ],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 3,
+        "band": 2,
+        "model": "fake-qwen-v1",
+        "score_err": 1,
+        "band_exact": false,
+        "band_within": true,
+        "in_range": false,
+        "hit_recall": 1,
+        "hit_found": [
+          "落款 Li Ming"
+        ],
+        "hit_lost": [],
+        "missed_ok": 1,
+        "err_recall": 0,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [
+          "read",
+          "student",
+          "dear",
+          "ming",
+          "paul",
+          "name"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-wr-05",
+      "kind": "writing_a",
+      "expected": {
+        "score": 5,
+        "score_range": [
+          4,
+          6
+        ],
+        "band": 3,
+        "points_hit_must": [
+          "选人物（给出具体科学家）",
+          "聚焦主要成就及影响",
+          "演示与练习技巧"
+        ],
+        "points_missed_must": [
+          "落款 Li Ming"
+        ],
+        "errors_must": [
+          {
+            "span": "Wang Lei",
+            "type": "logic"
+          }
+        ],
+        "word_count": 52
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 3,
+        "band": 2,
+        "model": "fake-grader-v1",
+        "score_err": 2,
+        "band_exact": false,
+        "band_within": true,
+        "in_range": false,
+        "hit_recall": 0,
+        "hit_found": [],
+        "hit_lost": [
+          "选人物（给出具体科学家）",
+          "聚焦主要成就及影响",
+          "演示与练习技巧"
+        ],
+        "missed_ok": 1,
+        "err_recall": 1,
+        "pass": false,
+        "fails": [
+          "分数 3，期望 5（4–6）±1"
+        ],
+        "ms": 0,
+        "points_hit": [
+          "read",
+          "email",
+          "dear",
+          "report",
+          "scientist",
+          "some",
+          "thank",
+          "paul"
+        ],
+        "errors": [
+          {
+            "span": "Wang Lei",
+            "type": "logic",
+            "fix": "落款写 Li Ming，不要写真实姓名"
+          }
+        ]
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 3,
+        "band": 2,
+        "model": "fake-qwen-v1",
+        "score_err": 2,
+        "band_exact": false,
+        "band_within": true,
+        "in_range": false,
+        "hit_recall": 0,
+        "hit_found": [],
+        "hit_lost": [
+          "选人物（给出具体科学家）",
+          "聚焦主要成就及影响",
+          "演示与练习技巧"
+        ],
+        "missed_ok": 1,
+        "err_recall": 1,
+        "pass": false,
+        "fails": [
+          "分数 3，期望 5（4–6）±1"
+        ],
+        "ms": 1,
+        "points_hit": [
+          "read",
+          "email",
+          "dear",
+          "report",
+          "scientist",
+          "some",
+          "thank",
+          "paul"
+        ],
+        "errors": [
+          {
+            "span": "Wang Lei",
+            "type": "logic",
+            "fix": "落款写 Li Ming，不要写真实姓名"
+          }
+        ]
+      }
+    },
+    {
+      "id": "grade-wr-06",
+      "kind": "writing_b",
+      "expected": {
+        "score": 18,
+        "score_range": [
+          17,
+          19
+        ],
+        "band": 5,
+        "points_hit_must": [
+          "描述图画",
+          "描述图表数据（406 到 670）",
+          "解释寓意（家门口小公园提升生活质量）",
+          "给出评论或建议"
+        ],
+        "points_missed_must": [],
+        "errors_must": [],
+        "word_count": 174
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 15,
+        "band": 4,
+        "model": "fake-grader-v1",
+        "score_err": 3,
+        "band_exact": false,
+        "band_within": true,
+        "in_range": false,
+        "hit_recall": 0,
+        "hit_found": [],
+        "hit_lost": [
+          "描述图画",
+          "描述图表数据（406 到 670）",
+          "解释寓意（家门口小公园提升生活质量）",
+          "给出评论或建议"
+        ],
+        "missed_ok": null,
+        "err_recall": null,
+        "pass": false,
+        "fails": [
+          "分数 15，期望 18（17–19）±2"
+        ],
+        "ms": 1,
+        "points_hit": [
+          "picture",
+          "chart"
+        ],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 15,
+        "band": 4,
+        "model": "fake-qwen-v1",
+        "score_err": 3,
+        "band_exact": false,
+        "band_within": true,
+        "in_range": false,
+        "hit_recall": 0,
+        "hit_found": [],
+        "hit_lost": [
+          "描述图画",
+          "描述图表数据（406 到 670）",
+          "解释寓意（家门口小公园提升生活质量）",
+          "给出评论或建议"
+        ],
+        "missed_ok": null,
+        "err_recall": null,
+        "pass": false,
+        "fails": [
+          "分数 15，期望 18（17–19）±2"
+        ],
+        "ms": 1,
+        "points_hit": [
+          "picture",
+          "chart"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-wr-07",
+      "kind": "writing_b",
+      "expected": {
+        "score": 13,
+        "score_range": [
+          12,
+          14
+        ],
+        "band": 4,
+        "points_hit_must": [
+          "描述图画",
+          "描述图表数据（406 到 670）",
+          "解释寓意（家门口小公园提升生活质量）",
+          "给出评论或建议"
+        ],
+        "points_missed_must": [],
+        "errors_must": [
+          {
+            "span": "The picture tell",
+            "type": "grammar"
+          },
+          {
+            "span": "it is good for their health",
+            "type": "grammar"
+          },
+          {
+            "span": "more clean",
+            "type": "grammar"
+          },
+          {
+            "span": "Only in this way, we can",
+            "type": "grammar"
+          }
+        ],
+        "word_count": 128
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 10,
+        "band": 3,
+        "model": "fake-grader-v1",
+        "score_err": 3,
+        "band_exact": false,
+        "band_within": true,
+        "in_range": false,
+        "hit_recall": 0,
+        "hit_found": [],
+        "hit_lost": [
+          "描述图画",
+          "描述图表数据（406 到 670）",
+          "解释寓意（家门口小公园提升生活质量）",
+          "给出评论或建议"
+        ],
+        "missed_ok": null,
+        "err_recall": 0,
+        "pass": false,
+        "fails": [
+          "分数 10，期望 13（12–14）±2"
+        ],
+        "ms": 0,
+        "points_hit": [
+          "picture",
+          "chart"
+        ],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 10,
+        "band": 3,
+        "model": "fake-qwen-v1",
+        "score_err": 3,
+        "band_exact": false,
+        "band_within": true,
+        "in_range": false,
+        "hit_recall": 0,
+        "hit_found": [],
+        "hit_lost": [
+          "描述图画",
+          "描述图表数据（406 到 670）",
+          "解释寓意（家门口小公园提升生活质量）",
+          "给出评论或建议"
+        ],
+        "missed_ok": null,
+        "err_recall": 0,
+        "pass": false,
+        "fails": [
+          "分数 10，期望 13（12–14）±2"
+        ],
+        "ms": 0,
+        "points_hit": [
+          "picture",
+          "chart"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-wr-08",
+      "kind": "writing_b",
+      "expected": {
+        "score": 9,
+        "score_range": [
+          8,
+          10
+        ],
+        "band": 3,
+        "points_hit_must": [
+          "描述图画",
+          "给出评论或建议"
+        ],
+        "points_missed_must": [
+          "描述图表数据（406 到 670）",
+          "解释寓意（家门口小公园提升生活质量）"
+        ],
+        "errors_must": [
+          {
+            "span": "760",
+            "type": "logic"
+          },
+          {
+            "span": "Health is the most important thing in our life",
+            "type": "off_topic"
+          }
+        ],
+        "word_count": 78
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 6,
+        "band": 2,
+        "model": "fake-grader-v1",
+        "score_err": 3,
+        "band_exact": false,
+        "band_within": true,
+        "in_range": false,
+        "hit_recall": 0,
+        "hit_found": [],
+        "hit_lost": [
+          "描述图画",
+          "给出评论或建议"
+        ],
+        "missed_ok": 1,
+        "err_recall": 0,
+        "pass": false,
+        "fails": [
+          "分数 6，期望 9（8–10）±2"
+        ],
+        "ms": 0,
+        "points_hit": [
+          "picture",
+          "chart"
+        ],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 6,
+        "band": 2,
+        "model": "fake-qwen-v1",
+        "score_err": 3,
+        "band_exact": false,
+        "band_within": true,
+        "in_range": false,
+        "hit_recall": 0,
+        "hit_found": [],
+        "hit_lost": [
+          "描述图画",
+          "给出评论或建议"
+        ],
+        "missed_ok": 1,
+        "err_recall": 0,
+        "pass": false,
+        "fails": [
+          "分数 6，期望 9（8–10）±2"
+        ],
+        "ms": 0,
+        "points_hit": [
+          "picture",
+          "chart"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-wr-09",
+      "kind": "writing_b",
+      "expected": {
+        "score": 6,
+        "score_range": [
+          5,
+          8
+        ],
+        "band": 2,
+        "points_hit_must": [],
+        "points_missed_must": [
+          "描述图画",
+          "描述图表数据（406 到 670）",
+          "解释寓意（家门口小公园提升生活质量）"
+        ],
+        "errors_must": [
+          {
+            "span": "Different people have different opinion",
+            "type": "grammar"
+          },
+          {
+            "span": "people's living standard improve",
+            "type": "grammar"
+          },
+          {
+            "span": "we should take measures to solve this problem",
+            "type": "off_topic"
+          }
+        ],
+        "word_count": 90
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 5,
+        "band": 2,
+        "model": "fake-grader-v1",
+        "score_err": 1,
+        "band_exact": true,
+        "band_within": true,
+        "in_range": true,
+        "hit_recall": null,
+        "hit_found": [],
+        "hit_lost": [],
+        "missed_ok": 1,
+        "err_recall": 0,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 5,
+        "band": 2,
+        "model": "fake-qwen-v1",
+        "score_err": 1,
+        "band_exact": true,
+        "band_within": true,
+        "in_range": true,
+        "hit_recall": null,
+        "hit_found": [],
+        "hit_lost": [],
+        "missed_ok": 1,
+        "err_recall": 0,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [],
+        "errors": []
+      }
+    },
+    {
+      "id": "grade-wr-10",
+      "kind": "writing_b",
+      "expected": {
+        "score": 2,
+        "score_range": [
+          1,
+          3
+        ],
+        "band": 1,
+        "points_hit_must": [],
+        "points_missed_must": [
+          "描述图画",
+          "描述图表数据（406 到 670）",
+          "解释寓意（家门口小公园提升生活质量）",
+          "给出评论或建议"
+        ],
+        "errors_must": [
+          {
+            "span": "many plastic in the sea",
+            "type": "grammar"
+          },
+          {
+            "span": "The ocean is very important to the earth",
+            "type": "off_topic"
+          }
+        ],
+        "word_count": 40
+      },
+      "deepseek": {
+        "status": "ok",
+        "score": 1,
+        "band": 1,
+        "model": "fake-grader-v1",
+        "score_err": 1,
+        "band_exact": true,
+        "band_within": true,
+        "in_range": true,
+        "hit_recall": null,
+        "hit_found": [],
+        "hit_lost": [],
+        "missed_ok": 1,
+        "err_recall": 0,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [],
+        "errors": []
+      },
+      "qwen": {
+        "status": "ok",
+        "score": 1,
+        "band": 1,
+        "model": "fake-qwen-v1",
+        "score_err": 1,
+        "band_exact": true,
+        "band_within": true,
+        "in_range": true,
+        "hit_recall": null,
+        "hit_found": [],
+        "hit_lost": [],
+        "missed_ok": 1,
+        "err_recall": 0,
+        "pass": true,
+        "fails": [],
+        "ms": 0,
+        "points_hit": [],
+        "errors": []
+      }
+    }
+  ],
+  "bad": []
+}

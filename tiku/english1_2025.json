@@ -1,0 +1,2619 @@
+[
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-01",
+    "exam": "english1",
+    "year": 2025,
+    "number": 1,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "This area of the Aegean Sea is （1）______ to earthquakes and tsunamis, which caused the city to （2）______ sink.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "relevant"
+      },
+      {
+        "key": "B",
+        "content": "prone"
+      },
+      {
+        "key": "C",
+        "content": "available"
+      },
+      {
+        "key": "D",
+        "content": "alien"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-02",
+    "exam": "english1",
+    "year": 2025,
+    "number": 2,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "This area of the Aegean Sea is （1）______ to earthquakes and tsunamis, which caused the city to （2）______ sink.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "accidentally"
+      },
+      {
+        "key": "B",
+        "content": "frequently"
+      },
+      {
+        "key": "C",
+        "content": "gradually"
+      },
+      {
+        "key": "D",
+        "content": "temporarily"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-03",
+    "exam": "english1",
+    "year": 2025,
+    "number": 3,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "The slow sea level rise in the Mediterranean （3）______ the city more than 3,000 years ago.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "disguised"
+      },
+      {
+        "key": "B",
+        "content": "submerged"
+      },
+      {
+        "key": "C",
+        "content": "relocated"
+      },
+      {
+        "key": "D",
+        "content": "isolated"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-04",
+    "exam": "english1",
+    "year": 2025,
+    "number": 4,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "For millennia, the city’s （4）______ lay unseen below some 13 feet of water.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "legends"
+      },
+      {
+        "key": "B",
+        "content": "programs"
+      },
+      {
+        "key": "C",
+        "content": "remains"
+      },
+      {
+        "key": "D",
+        "content": "surroundings"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-05",
+    "exam": "english1",
+    "year": 2025,
+    "number": 5,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "They were covered by a thick layer of sand （5）______ the island of Laconia.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "across"
+      },
+      {
+        "key": "B",
+        "content": "off"
+      },
+      {
+        "key": "C",
+        "content": "under"
+      },
+      {
+        "key": "D",
+        "content": "via"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-06",
+    "exam": "english1",
+    "year": 2025,
+    "number": 6,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "In recent decades, shifting （6）______ and climate change have eroded a natural barrier that （7）______ Pavlopetri.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "currents"
+      },
+      {
+        "key": "B",
+        "content": "rivers"
+      },
+      {
+        "key": "C",
+        "content": "seasons"
+      },
+      {
+        "key": "D",
+        "content": "winds"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-07",
+    "exam": "english1",
+    "year": 2025,
+    "number": 7,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "In recent decades, shifting （6）______ and climate change have eroded a natural barrier that （7）______ Pavlopetri.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "elevated"
+      },
+      {
+        "key": "B",
+        "content": "separated"
+      },
+      {
+        "key": "C",
+        "content": "comprised"
+      },
+      {
+        "key": "D",
+        "content": "protected"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-08",
+    "exam": "english1",
+    "year": 2025,
+    "number": 8,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "In 1967, a scientific survey of the Peloponnesian coast was （8）______ data to analyze changes in sea levels （9）______ British oceanographer Nicholas Flemming first spotted the sunken （10）______.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "gathering"
+      },
+      {
+        "key": "B",
+        "content": "restoring"
+      },
+      {
+        "key": "C",
+        "content": "updating"
+      },
+      {
+        "key": "D",
+        "content": "supplying"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-09",
+    "exam": "english1",
+    "year": 2025,
+    "number": 9,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "In 1967, a scientific survey of the Peloponnesian coast was （8）______ data to analyze changes in sea levels （9）______ British oceanographer Nicholas Flemming first spotted the sunken （10）______.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "when"
+      },
+      {
+        "key": "B",
+        "content": "until"
+      },
+      {
+        "key": "C",
+        "content": "after"
+      },
+      {
+        "key": "D",
+        "content": "once"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-10",
+    "exam": "english1",
+    "year": 2025,
+    "number": 10,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "In 1967, a scientific survey of the Peloponnesian coast was （8）______ data to analyze changes in sea levels （9）______ British oceanographer Nicholas Flemming first spotted the sunken （10）______.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "belongings"
+      },
+      {
+        "key": "B",
+        "content": "resources"
+      },
+      {
+        "key": "C",
+        "content": "products"
+      },
+      {
+        "key": "D",
+        "content": "structures"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-11",
+    "exam": "english1",
+    "year": 2025,
+    "number": 11,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "A year later, he returned with a few students to （11）______ the location and map the site.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "preserve"
+      },
+      {
+        "key": "B",
+        "content": "select"
+      },
+      {
+        "key": "C",
+        "content": "display"
+      },
+      {
+        "key": "D",
+        "content": "examine"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-12",
+    "exam": "english1",
+    "year": 2025,
+    "number": 12,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "（12）______ the exciting initial finds, the site would lie （13）______ for decades before archaeologists would return.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Despite"
+      },
+      {
+        "key": "B",
+        "content": "Unlike"
+      },
+      {
+        "key": "C",
+        "content": "Besides"
+      },
+      {
+        "key": "D",
+        "content": "Among"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-13",
+    "exam": "english1",
+    "year": 2025,
+    "number": 13,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "（12）______ the exciting initial finds, the site would lie （13）______ for decades before archaeologists would return.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "unchallenged"
+      },
+      {
+        "key": "B",
+        "content": "unknown"
+      },
+      {
+        "key": "C",
+        "content": "unorganized"
+      },
+      {
+        "key": "D",
+        "content": "undisturbed"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-14",
+    "exam": "english1",
+    "year": 2025,
+    "number": 14,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "In 2009 archaeologists Chrysanthi Gallon and Jon Henderson （14）______ excavation of Pavlopetri in cooperation with the Greek Ministry of Culture.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "suspended"
+      },
+      {
+        "key": "B",
+        "content": "transferred"
+      },
+      {
+        "key": "C",
+        "content": "resumed"
+      },
+      {
+        "key": "D",
+        "content": "canceled"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    },
+    "errata": [
+      {
+        "printed": "Chrysanthi Gallon",
+        "correct": "Chrysanthi Gallou",
+        "note": "原卷如此：完形第 3 段原卷印作 “Chrysanthi Gallon”，这位考古学家的名字应为 Chrysanthi Gallou；题面按原卷保留。"
+      }
+    ]
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-15",
+    "exam": "english1",
+    "year": 2025,
+    "number": 15,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "Since the 1960s, underwater archaeology （15）______ and tools had made huge advances.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "policies"
+      },
+      {
+        "key": "B",
+        "content": "theories"
+      },
+      {
+        "key": "C",
+        "content": "documents"
+      },
+      {
+        "key": "D",
+        "content": "techniques"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-16",
+    "exam": "english1",
+    "year": 2025,
+    "number": 16,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "The team （16）______ robotics, sonar mapping, and state-of-the-art graphics to survey the site.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "ordered"
+      },
+      {
+        "key": "B",
+        "content": "provided"
+      },
+      {
+        "key": "C",
+        "content": "employed"
+      },
+      {
+        "key": "D",
+        "content": "adjusted"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-17",
+    "exam": "english1",
+    "year": 2025,
+    "number": 17,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "From 2009 to 2013 they were able to bring the underwater town to （17）______.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "effect"
+      },
+      {
+        "key": "B",
+        "content": "light"
+      },
+      {
+        "key": "C",
+        "content": "reality"
+      },
+      {
+        "key": "D",
+        "content": "mind"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-18",
+    "exam": "english1",
+    "year": 2025,
+    "number": 18,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "Covering about two and a half acres, Pavlopetri’s three main roads （18）______ some 50 rectangular buildings, all of which had open courtyards.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "crossed"
+      },
+      {
+        "key": "B",
+        "content": "connected"
+      },
+      {
+        "key": "C",
+        "content": "blocked"
+      },
+      {
+        "key": "D",
+        "content": "altered"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-19",
+    "exam": "english1",
+    "year": 2025,
+    "number": 19,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "Excavations revealed a large number of Minoan-style loom weights, （19）______ Pavlopetri was a thriving trade center with a （20）______ textile industry.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "expecting"
+      },
+      {
+        "key": "B",
+        "content": "suggesting"
+      },
+      {
+        "key": "C",
+        "content": "predicting"
+      },
+      {
+        "key": "D",
+        "content": "recalling"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-20",
+    "exam": "english1",
+    "year": 2025,
+    "number": 20,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2025-P-cloze",
+    "stem": "Excavations revealed a large number of Minoan-style loom weights, （19）______ Pavlopetri was a thriving trade center with a （20）______ textile industry.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "robust"
+      },
+      {
+        "key": "B",
+        "content": "diverse"
+      },
+      {
+        "key": "C",
+        "content": "marginal"
+      },
+      {
+        "key": "D",
+        "content": "dependent"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-21",
+    "exam": "english1",
+    "year": 2025,
+    "number": 21,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text1",
+    "stem": "The “rehearsal room” approach requires pupils to ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "rewrite the lines from Shakespeare."
+      },
+      {
+        "key": "B",
+        "content": "watch RSC actors’ performances."
+      },
+      {
+        "key": "C",
+        "content": "play the roles in Shakespeare."
+      },
+      {
+        "key": "D",
+        "content": "study drama under RSC artists."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-22",
+    "exam": "english1",
+    "year": 2025,
+    "number": 22,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text1",
+    "stem": "The study divided the pupils into two groups to find whether ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the change in instruction enhances learning outcomes."
+      },
+      {
+        "key": "B",
+        "content": "expanding vocabulary helps develop reading fluency."
+      },
+      {
+        "key": "C",
+        "content": "emotion affects understanding of sophisticated works."
+      },
+      {
+        "key": "D",
+        "content": "the classroom activity stimulates interest in the arts."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-23",
+    "exam": "english1",
+    "year": 2025,
+    "number": 23,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text1",
+    "stem": "Control pupils’ reliance on “desert island clichés” shows their ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "weakness in description."
+      },
+      {
+        "key": "B",
+        "content": "omission of small details."
+      },
+      {
+        "key": "C",
+        "content": "casual style of writing."
+      },
+      {
+        "key": "D",
+        "content": "preference for big words."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-24",
+    "exam": "english1",
+    "year": 2025,
+    "number": 24,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text1",
+    "stem": "What can promote children’s emotional literacy according to O’Hanlon?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Writing in an imaginative manner."
+      },
+      {
+        "key": "B",
+        "content": "Identifying with literary characters."
+      },
+      {
+        "key": "C",
+        "content": "Drawing inspiration from nature."
+      },
+      {
+        "key": "D",
+        "content": "Concentrating on real-life situations."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-25",
+    "exam": "english1",
+    "year": 2025,
+    "number": 25,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text1",
+    "stem": "It can be inferred from the last paragraph that ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the new teaching method may work best with Shakespeare."
+      },
+      {
+        "key": "B",
+        "content": "the language of Shakespeare may be formidable for pupils."
+      },
+      {
+        "key": "C",
+        "content": "other old dramatists may be included in primary education."
+      },
+      {
+        "key": "D",
+        "content": "pupils may be reluctant to work on other old dramatists."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-26",
+    "exam": "english1",
+    "year": 2025,
+    "number": 26,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text2",
+    "stem": "The author expressed great surprise at some scientists’ ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "unwillingness to cut carbon emissions."
+      },
+      {
+        "key": "B",
+        "content": "intention to reduce their research."
+      },
+      {
+        "key": "C",
+        "content": "suspicions about sustainable energy."
+      },
+      {
+        "key": "D",
+        "content": "waste of electricity in their projects."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-27",
+    "exam": "english1",
+    "year": 2025,
+    "number": 27,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text2",
+    "stem": "The author believes that carbon emissions from research ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "have caused grave consequences."
+      },
+      {
+        "key": "B",
+        "content": "have aroused groundless worries."
+      },
+      {
+        "key": "C",
+        "content": "are hard to handle at present."
+      },
+      {
+        "key": "D",
+        "content": "are justifiable in the long run."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-28",
+    "exam": "english1",
+    "year": 2025,
+    "number": 28,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text2",
+    "stem": "The example of Green in Paragraph 5 is used to illustrate ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the achievements of great scientists."
+      },
+      {
+        "key": "B",
+        "content": "the urgency of addressing climate change."
+      },
+      {
+        "key": "C",
+        "content": "the rewards of scientific endeavours."
+      },
+      {
+        "key": "D",
+        "content": "the value of fostering human ingenuity."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-29",
+    "exam": "english1",
+    "year": 2025,
+    "number": 29,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text2",
+    "stem": "It can be learned from the last two paragraphs that LUMI ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "is a model of sustainability efforts."
+      },
+      {
+        "key": "B",
+        "content": "is a triumph against energy shortage."
+      },
+      {
+        "key": "C",
+        "content": "owes much to global net-zero initiatives."
+      },
+      {
+        "key": "D",
+        "content": "aims to explore the power of intelligence."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-30",
+    "exam": "english1",
+    "year": 2025,
+    "number": 30,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text2",
+    "stem": "Which of the following statements would the author agree with?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Emission-free modelling demands extra funding."
+      },
+      {
+        "key": "B",
+        "content": "The need for supercomputers is difficult to meet."
+      },
+      {
+        "key": "C",
+        "content": "Energy-intensive research work is inevitable."
+      },
+      {
+        "key": "D",
+        "content": "The goals of researchers ought to be realistic."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-31",
+    "exam": "english1",
+    "year": 2025,
+    "number": 31,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text3",
+    "stem": "According to Paragraph 1, legitimate streaming services ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "have drawn lessons from Hollywood."
+      },
+      {
+        "key": "B",
+        "content": "have surpassed cable in revenue."
+      },
+      {
+        "key": "C",
+        "content": "are unpopular with advertisers."
+      },
+      {
+        "key": "D",
+        "content": "are confronted with a real threat."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-32",
+    "exam": "english1",
+    "year": 2025,
+    "number": 32,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text3",
+    "stem": "It can be learned that streamers like Netflix ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "played a part in the fight against illegal file-sharing."
+      },
+      {
+        "key": "B",
+        "content": "reaped benefits from the war with digital pirates."
+      },
+      {
+        "key": "C",
+        "content": "promised to become big job creators in the US."
+      },
+      {
+        "key": "D",
+        "content": "used to collaborate with file-uploading platforms."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-33",
+    "exam": "english1",
+    "year": 2025,
+    "number": 33,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text3",
+    "stem": "It can be inferred from Paragraph 4 that the MPA ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "was denied cooperation by Silicon Valley."
+      },
+      {
+        "key": "B",
+        "content": "led a national protest against online piracy."
+      },
+      {
+        "key": "C",
+        "content": "was urged to form an enforcement task force."
+      },
+      {
+        "key": "D",
+        "content": "failed to win support from local authorities."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-34",
+    "exam": "english1",
+    "year": 2025,
+    "number": 34,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text3",
+    "stem": "According to Hawley, digital piracy ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "cannot be checked in spite of new legislation."
+      },
+      {
+        "key": "B",
+        "content": "will possibly overwhelm legitimate streamers."
+      },
+      {
+        "key": "C",
+        "content": "is unlikely to diminish in the near future."
+      },
+      {
+        "key": "D",
+        "content": "has been underestimated by some analysts."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-35",
+    "exam": "english1",
+    "year": 2025,
+    "number": 35,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text3",
+    "stem": "Which of the following is emphasized in the text?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "The need to coordinate anti-piracy action."
+      },
+      {
+        "key": "B",
+        "content": "The criminal nature of copyright violation."
+      },
+      {
+        "key": "C",
+        "content": "The prospect of eliminating online piracy."
+      },
+      {
+        "key": "D",
+        "content": "The economic harm from illegal streaming."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-36",
+    "exam": "english1",
+    "year": 2025,
+    "number": 36,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text4",
+    "stem": "The author mentions the artifacts from the past to ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "introduce the collection of antiques."
+      },
+      {
+        "key": "B",
+        "content": "contrast them with everyday items."
+      },
+      {
+        "key": "C",
+        "content": "bring up the issue of preservation."
+      },
+      {
+        "key": "D",
+        "content": "comment on their historical value."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-37",
+    "exam": "english1",
+    "year": 2025,
+    "number": 37,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text4",
+    "stem": "Compared with digital objects, tangible artifacts ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "are less subject to their creators’ neglect."
+      },
+      {
+        "key": "B",
+        "content": "convey information in a more direct way."
+      },
+      {
+        "key": "C",
+        "content": "require more intentional preservation."
+      },
+      {
+        "key": "D",
+        "content": "are less likely to suffer serious damage."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-38",
+    "exam": "english1",
+    "year": 2025,
+    "number": 38,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text4",
+    "stem": "According to Paragraph 3, librarians’ work may result in ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "oversupply of materials."
+      },
+      {
+        "key": "B",
+        "content": "undervaluation of libraries."
+      },
+      {
+        "key": "C",
+        "content": "researchers’ underperformance."
+      },
+      {
+        "key": "D",
+        "content": "users’ overreliance on technology."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-39",
+    "exam": "english1",
+    "year": 2025,
+    "number": 39,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text4",
+    "stem": "The “ZIP disk” is cited as an example to show ____",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the hazard of retrieving files through unusual means."
+      },
+      {
+        "key": "B",
+        "content": "the infeasibility of constantly migrating digital assets."
+      },
+      {
+        "key": "C",
+        "content": "the possibility of losing information in obsolete formats."
+      },
+      {
+        "key": "D",
+        "content": "the inconvenience of storing information on analog devices."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": false
+      }
+    },
+    "errata": [
+      {
+        "printed": "when digital replace analog",
+        "correct": "when digital replaces analog",
+        "note": "原卷如此：Text 4 第 4 段原卷印作 “when digital replace analog”，digital 作单数主语，应为 replaces；题面按原卷保留。"
+      }
+    ]
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-40",
+    "exam": "english1",
+    "year": 2025,
+    "number": 40,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2025-P-text4",
+    "stem": "Which of the following statements best summarizes the text?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Hard work should be done to preserve artifacts."
+      },
+      {
+        "key": "B",
+        "content": "Contributions of librarians should be recognized."
+      },
+      {
+        "key": "C",
+        "content": "Accessing databases is essential to researchers."
+      },
+      {
+        "key": "D",
+        "content": "Keeping digital historical records is a challenge."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-41",
+    "exam": "english1",
+    "year": 2025,
+    "number": 41,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2025-P-partb",
+    "stem": "根据段落顺序 (41) → (42) → C → (43) → H → (44) → A → (45)，选出第（41）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Peters likes to photograph butterflies in a landscape, celebrating the beauty of their surroundings as well as the insects themselves. His pictures of a Glanville fritillary rising from the sea-pinks beside the chalk cliffs of Compton Bay on the Isle of Wight are particularly glorious. These take-off shots are even more challenging because they require a wide-angle lens, which means he must be less than 2cm from the butterfly. It’s incredibly difficult to get that close to a skittish sun-warmed insect. Unlike some photographers, who “cheat” by keeping insects in a fridge to slow them down, Peters refuses to tamper with wild butterflies."
+      },
+      {
+        "key": "B",
+        "content": "Peters’ signature shot is a butterfly “take-off”, showing the multiple wing-beats of one butterfly in one frame as it lifts off from a flower. How does he capture it? Technology helps. A typical digital SLR camera shoots 20 frames a second. He uses a high-speed OM System which shoots 120 frames a second."
+      },
+      {
+        "key": "C",
+        "content": "Britain has relatively few butterfly species compared with mainland Europe and 80% are in decline, mostly because intensive chemical farming has reduced many species to tiny fragments of habitat and small nature reserves. Global heating is benefiting some species but others are too isolated to find suitable new habitat, and gardening habits — paving over gardens and using pesticides — aren’t helping either. Butterflies may not pollinate as many plants as wild bees and hoverflies, but because British butterflies are the best-studied group of insects in the world, they are an extremely useful indicator of the wider declines in flying insects."
+      },
+      {
+        "key": "D",
+        "content": "Five years ago, at summer’s end, Andrew Fusek Peters was diagnosed with bowel cancer. “I was waiting for surgery, feeling really ill, sitting in my garden. It was amazing weather and there were painted lady butterflies everywhere,” he says. “They were a symbol of fragile life, of hope and defiance, and something appealed to my soul.”"
+      },
+      {
+        "key": "E",
+        "content": "That makes it sound easy, and artificial, but Peters insists it is still a massive challenge. He typically takes between 10,000 and 20,000 shots to get one butterfly take-off sequence in focus. At such high shutter speeds, the depth of field is tiny, and as butterflies do not fly in a straight line they swiftly flutter out of focus. As well as thousands of attempts, it takes patience and fieldcraft to anticipate a butterfly’s likely flight-line — and catch it — in focus."
+      },
+      {
+        "key": "F",
+        "content": "So what’s the appeal of a long, sweaty day in pursuit of an elusive, fast-moving wild animal? “It just feels bloody brilliant,” says Peters. “If I’ve had a full day of good encounters with butterflies, met interesting butterfly people and I’ve got some good shots, that becomes a vault in my spiritual bank. It’s a happy feeling.”"
+      },
+      {
+        "key": "G",
+        "content": "A children’s author and poet who had become a keen amateur photographer, Peters watched the butterflies and idly wondered if he could capture them in flight. It swiftly became an obsession as he recovered from a successful operation to remove the cancer. In recent summers, he has travelled the length and breadth of Britain to photograph all 58 native species of butterfly. Now the fruits of those summers have been published in a beautiful new book."
+      },
+      {
+        "key": "H",
+        "content": "A butterfly takes off so quickly it is still impossible to react quickly enough to capture that take-off but if he half-presses the shutter, the camera saves the 70 previous frames before the moment he actually takes the picture. “It’s time travel, so I don’t miss the moment of take-off,” he says. After he’s captured the butterfly taking off, he layers 10 to 15 frames together in Photoshop."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-42",
+    "exam": "english1",
+    "year": 2025,
+    "number": 42,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2025-P-partb",
+    "stem": "根据段落顺序 (41) → (42) → C → (43) → H → (44) → A → (45)，选出第（42）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Peters likes to photograph butterflies in a landscape, celebrating the beauty of their surroundings as well as the insects themselves. His pictures of a Glanville fritillary rising from the sea-pinks beside the chalk cliffs of Compton Bay on the Isle of Wight are particularly glorious. These take-off shots are even more challenging because they require a wide-angle lens, which means he must be less than 2cm from the butterfly. It’s incredibly difficult to get that close to a skittish sun-warmed insect. Unlike some photographers, who “cheat” by keeping insects in a fridge to slow them down, Peters refuses to tamper with wild butterflies."
+      },
+      {
+        "key": "B",
+        "content": "Peters’ signature shot is a butterfly “take-off”, showing the multiple wing-beats of one butterfly in one frame as it lifts off from a flower. How does he capture it? Technology helps. A typical digital SLR camera shoots 20 frames a second. He uses a high-speed OM System which shoots 120 frames a second."
+      },
+      {
+        "key": "C",
+        "content": "Britain has relatively few butterfly species compared with mainland Europe and 80% are in decline, mostly because intensive chemical farming has reduced many species to tiny fragments of habitat and small nature reserves. Global heating is benefiting some species but others are too isolated to find suitable new habitat, and gardening habits — paving over gardens and using pesticides — aren’t helping either. Butterflies may not pollinate as many plants as wild bees and hoverflies, but because British butterflies are the best-studied group of insects in the world, they are an extremely useful indicator of the wider declines in flying insects."
+      },
+      {
+        "key": "D",
+        "content": "Five years ago, at summer’s end, Andrew Fusek Peters was diagnosed with bowel cancer. “I was waiting for surgery, feeling really ill, sitting in my garden. It was amazing weather and there were painted lady butterflies everywhere,” he says. “They were a symbol of fragile life, of hope and defiance, and something appealed to my soul.”"
+      },
+      {
+        "key": "E",
+        "content": "That makes it sound easy, and artificial, but Peters insists it is still a massive challenge. He typically takes between 10,000 and 20,000 shots to get one butterfly take-off sequence in focus. At such high shutter speeds, the depth of field is tiny, and as butterflies do not fly in a straight line they swiftly flutter out of focus. As well as thousands of attempts, it takes patience and fieldcraft to anticipate a butterfly’s likely flight-line — and catch it — in focus."
+      },
+      {
+        "key": "F",
+        "content": "So what’s the appeal of a long, sweaty day in pursuit of an elusive, fast-moving wild animal? “It just feels bloody brilliant,” says Peters. “If I’ve had a full day of good encounters with butterflies, met interesting butterfly people and I’ve got some good shots, that becomes a vault in my spiritual bank. It’s a happy feeling.”"
+      },
+      {
+        "key": "G",
+        "content": "A children’s author and poet who had become a keen amateur photographer, Peters watched the butterflies and idly wondered if he could capture them in flight. It swiftly became an obsession as he recovered from a successful operation to remove the cancer. In recent summers, he has travelled the length and breadth of Britain to photograph all 58 native species of butterfly. Now the fruits of those summers have been published in a beautiful new book."
+      },
+      {
+        "key": "H",
+        "content": "A butterfly takes off so quickly it is still impossible to react quickly enough to capture that take-off but if he half-presses the shutter, the camera saves the 70 previous frames before the moment he actually takes the picture. “It’s time travel, so I don’t miss the moment of take-off,” he says. After he’s captured the butterfly taking off, he layers 10 to 15 frames together in Photoshop."
+      }
+    ],
+    "answer": [
+      "G"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "G",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-43",
+    "exam": "english1",
+    "year": 2025,
+    "number": 43,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2025-P-partb",
+    "stem": "根据段落顺序 (41) → (42) → C → (43) → H → (44) → A → (45)，选出第（43）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Peters likes to photograph butterflies in a landscape, celebrating the beauty of their surroundings as well as the insects themselves. His pictures of a Glanville fritillary rising from the sea-pinks beside the chalk cliffs of Compton Bay on the Isle of Wight are particularly glorious. These take-off shots are even more challenging because they require a wide-angle lens, which means he must be less than 2cm from the butterfly. It’s incredibly difficult to get that close to a skittish sun-warmed insect. Unlike some photographers, who “cheat” by keeping insects in a fridge to slow them down, Peters refuses to tamper with wild butterflies."
+      },
+      {
+        "key": "B",
+        "content": "Peters’ signature shot is a butterfly “take-off”, showing the multiple wing-beats of one butterfly in one frame as it lifts off from a flower. How does he capture it? Technology helps. A typical digital SLR camera shoots 20 frames a second. He uses a high-speed OM System which shoots 120 frames a second."
+      },
+      {
+        "key": "C",
+        "content": "Britain has relatively few butterfly species compared with mainland Europe and 80% are in decline, mostly because intensive chemical farming has reduced many species to tiny fragments of habitat and small nature reserves. Global heating is benefiting some species but others are too isolated to find suitable new habitat, and gardening habits — paving over gardens and using pesticides — aren’t helping either. Butterflies may not pollinate as many plants as wild bees and hoverflies, but because British butterflies are the best-studied group of insects in the world, they are an extremely useful indicator of the wider declines in flying insects."
+      },
+      {
+        "key": "D",
+        "content": "Five years ago, at summer’s end, Andrew Fusek Peters was diagnosed with bowel cancer. “I was waiting for surgery, feeling really ill, sitting in my garden. It was amazing weather and there were painted lady butterflies everywhere,” he says. “They were a symbol of fragile life, of hope and defiance, and something appealed to my soul.”"
+      },
+      {
+        "key": "E",
+        "content": "That makes it sound easy, and artificial, but Peters insists it is still a massive challenge. He typically takes between 10,000 and 20,000 shots to get one butterfly take-off sequence in focus. At such high shutter speeds, the depth of field is tiny, and as butterflies do not fly in a straight line they swiftly flutter out of focus. As well as thousands of attempts, it takes patience and fieldcraft to anticipate a butterfly’s likely flight-line — and catch it — in focus."
+      },
+      {
+        "key": "F",
+        "content": "So what’s the appeal of a long, sweaty day in pursuit of an elusive, fast-moving wild animal? “It just feels bloody brilliant,” says Peters. “If I’ve had a full day of good encounters with butterflies, met interesting butterfly people and I’ve got some good shots, that becomes a vault in my spiritual bank. It’s a happy feeling.”"
+      },
+      {
+        "key": "G",
+        "content": "A children’s author and poet who had become a keen amateur photographer, Peters watched the butterflies and idly wondered if he could capture them in flight. It swiftly became an obsession as he recovered from a successful operation to remove the cancer. In recent summers, he has travelled the length and breadth of Britain to photograph all 58 native species of butterfly. Now the fruits of those summers have been published in a beautiful new book."
+      },
+      {
+        "key": "H",
+        "content": "A butterfly takes off so quickly it is still impossible to react quickly enough to capture that take-off but if he half-presses the shutter, the camera saves the 70 previous frames before the moment he actually takes the picture. “It’s time travel, so I don’t miss the moment of take-off,” he says. After he’s captured the butterfly taking off, he layers 10 to 15 frames together in Photoshop."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-44",
+    "exam": "english1",
+    "year": 2025,
+    "number": 44,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2025-P-partb",
+    "stem": "根据段落顺序 (41) → (42) → C → (43) → H → (44) → A → (45)，选出第（44）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Peters likes to photograph butterflies in a landscape, celebrating the beauty of their surroundings as well as the insects themselves. His pictures of a Glanville fritillary rising from the sea-pinks beside the chalk cliffs of Compton Bay on the Isle of Wight are particularly glorious. These take-off shots are even more challenging because they require a wide-angle lens, which means he must be less than 2cm from the butterfly. It’s incredibly difficult to get that close to a skittish sun-warmed insect. Unlike some photographers, who “cheat” by keeping insects in a fridge to slow them down, Peters refuses to tamper with wild butterflies."
+      },
+      {
+        "key": "B",
+        "content": "Peters’ signature shot is a butterfly “take-off”, showing the multiple wing-beats of one butterfly in one frame as it lifts off from a flower. How does he capture it? Technology helps. A typical digital SLR camera shoots 20 frames a second. He uses a high-speed OM System which shoots 120 frames a second."
+      },
+      {
+        "key": "C",
+        "content": "Britain has relatively few butterfly species compared with mainland Europe and 80% are in decline, mostly because intensive chemical farming has reduced many species to tiny fragments of habitat and small nature reserves. Global heating is benefiting some species but others are too isolated to find suitable new habitat, and gardening habits — paving over gardens and using pesticides — aren’t helping either. Butterflies may not pollinate as many plants as wild bees and hoverflies, but because British butterflies are the best-studied group of insects in the world, they are an extremely useful indicator of the wider declines in flying insects."
+      },
+      {
+        "key": "D",
+        "content": "Five years ago, at summer’s end, Andrew Fusek Peters was diagnosed with bowel cancer. “I was waiting for surgery, feeling really ill, sitting in my garden. It was amazing weather and there were painted lady butterflies everywhere,” he says. “They were a symbol of fragile life, of hope and defiance, and something appealed to my soul.”"
+      },
+      {
+        "key": "E",
+        "content": "That makes it sound easy, and artificial, but Peters insists it is still a massive challenge. He typically takes between 10,000 and 20,000 shots to get one butterfly take-off sequence in focus. At such high shutter speeds, the depth of field is tiny, and as butterflies do not fly in a straight line they swiftly flutter out of focus. As well as thousands of attempts, it takes patience and fieldcraft to anticipate a butterfly’s likely flight-line — and catch it — in focus."
+      },
+      {
+        "key": "F",
+        "content": "So what’s the appeal of a long, sweaty day in pursuit of an elusive, fast-moving wild animal? “It just feels bloody brilliant,” says Peters. “If I’ve had a full day of good encounters with butterflies, met interesting butterfly people and I’ve got some good shots, that becomes a vault in my spiritual bank. It’s a happy feeling.”"
+      },
+      {
+        "key": "G",
+        "content": "A children’s author and poet who had become a keen amateur photographer, Peters watched the butterflies and idly wondered if he could capture them in flight. It swiftly became an obsession as he recovered from a successful operation to remove the cancer. In recent summers, he has travelled the length and breadth of Britain to photograph all 58 native species of butterfly. Now the fruits of those summers have been published in a beautiful new book."
+      },
+      {
+        "key": "H",
+        "content": "A butterfly takes off so quickly it is still impossible to react quickly enough to capture that take-off but if he half-presses the shutter, the camera saves the 70 previous frames before the moment he actually takes the picture. “It’s time travel, so I don’t miss the moment of take-off,” he says. After he’s captured the butterfly taking off, he layers 10 to 15 frames together in Photoshop."
+      }
+    ],
+    "answer": [
+      "E"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "E",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-45",
+    "exam": "english1",
+    "year": 2025,
+    "number": 45,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2025-P-partb",
+    "stem": "根据段落顺序 (41) → (42) → C → (43) → H → (44) → A → (45)，选出第（45）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Peters likes to photograph butterflies in a landscape, celebrating the beauty of their surroundings as well as the insects themselves. His pictures of a Glanville fritillary rising from the sea-pinks beside the chalk cliffs of Compton Bay on the Isle of Wight are particularly glorious. These take-off shots are even more challenging because they require a wide-angle lens, which means he must be less than 2cm from the butterfly. It’s incredibly difficult to get that close to a skittish sun-warmed insect. Unlike some photographers, who “cheat” by keeping insects in a fridge to slow them down, Peters refuses to tamper with wild butterflies."
+      },
+      {
+        "key": "B",
+        "content": "Peters’ signature shot is a butterfly “take-off”, showing the multiple wing-beats of one butterfly in one frame as it lifts off from a flower. How does he capture it? Technology helps. A typical digital SLR camera shoots 20 frames a second. He uses a high-speed OM System which shoots 120 frames a second."
+      },
+      {
+        "key": "C",
+        "content": "Britain has relatively few butterfly species compared with mainland Europe and 80% are in decline, mostly because intensive chemical farming has reduced many species to tiny fragments of habitat and small nature reserves. Global heating is benefiting some species but others are too isolated to find suitable new habitat, and gardening habits — paving over gardens and using pesticides — aren’t helping either. Butterflies may not pollinate as many plants as wild bees and hoverflies, but because British butterflies are the best-studied group of insects in the world, they are an extremely useful indicator of the wider declines in flying insects."
+      },
+      {
+        "key": "D",
+        "content": "Five years ago, at summer’s end, Andrew Fusek Peters was diagnosed with bowel cancer. “I was waiting for surgery, feeling really ill, sitting in my garden. It was amazing weather and there were painted lady butterflies everywhere,” he says. “They were a symbol of fragile life, of hope and defiance, and something appealed to my soul.”"
+      },
+      {
+        "key": "E",
+        "content": "That makes it sound easy, and artificial, but Peters insists it is still a massive challenge. He typically takes between 10,000 and 20,000 shots to get one butterfly take-off sequence in focus. At such high shutter speeds, the depth of field is tiny, and as butterflies do not fly in a straight line they swiftly flutter out of focus. As well as thousands of attempts, it takes patience and fieldcraft to anticipate a butterfly’s likely flight-line — and catch it — in focus."
+      },
+      {
+        "key": "F",
+        "content": "So what’s the appeal of a long, sweaty day in pursuit of an elusive, fast-moving wild animal? “It just feels bloody brilliant,” says Peters. “If I’ve had a full day of good encounters with butterflies, met interesting butterfly people and I’ve got some good shots, that becomes a vault in my spiritual bank. It’s a happy feeling.”"
+      },
+      {
+        "key": "G",
+        "content": "A children’s author and poet who had become a keen amateur photographer, Peters watched the butterflies and idly wondered if he could capture them in flight. It swiftly became an obsession as he recovered from a successful operation to remove the cancer. In recent summers, he has travelled the length and breadth of Britain to photograph all 58 native species of butterfly. Now the fruits of those summers have been published in a beautiful new book."
+      },
+      {
+        "key": "H",
+        "content": "A butterfly takes off so quickly it is still impossible to react quickly enough to capture that take-off but if he half-presses the shutter, the camera saves the 70 previous frames before the moment he actually takes the picture. “It’s time travel, so I don’t miss the moment of take-off,” he says. After he’s captured the butterfly taking off, he layers 10 to 15 frames together in Photoshop."
+      }
+    ],
+    "answer": [
+      "F"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "F",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-46",
+    "exam": "english1",
+    "year": 2025,
+    "number": 46,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2025-P-translation",
+    "stem": "Recent decades have seen science move into a convention where engagement in the subject can only be done through institutions, such as a university.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "近几十年来，科学界已经形成了一种惯例，即对科学的参与只能通过大学等机构来实现。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-47",
+    "exam": "english1",
+    "year": 2025,
+    "number": 47,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2025-P-translation",
+    "stem": "But by utilising the natural curiosity of the general public it is possible to overcome many of these challenges by engaging non-scientists directly in the research process.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "但是，借助公众与生俱来的求知欲，让非科学家们直接参与研究过程，就有可能克服许多这样的挑战。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-48",
+    "exam": "english1",
+    "year": 2025,
+    "number": 48,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2025-P-translation",
+    "stem": "Scientists have employed a variety of ways to engage the general public in their research, such as making data analysis into an online game or sample collection into a smartphone application.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "科学家们采用了各种各样的方式让公众参与他们的研究，比如将数据分析做成在线游戏或者将样本采集做成智能手机应用程序。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-49",
+    "exam": "english1",
+    "year": 2025,
+    "number": 49,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2025-P-translation",
+    "stem": "These groups of people are part of a rapidly expanding biotechnological social movement of citizen scientists and professional scientists seeking to take discovery out of institutions and put it into the hands of anyone with the enthusiasm.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "这些群体属于快速扩张的生物科技社会运动的一部分，在这场运动中，公民科学家和专业科学家试图将科学发现带离研究机构，让任何有热情的人都能参与其中。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-50",
+    "exam": "english1",
+    "year": 2025,
+    "number": 50,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2025-P-translation",
+    "stem": "They pool resources, collaborate, think outside the box, and find solutions and ways around obstacles to explore science for the sake of science without the traditional boundaries of working inside a formal setting.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "这些中心汇聚资源、通力合作、打破常规思维，并围绕难题找到解决措施和方法，为了科学而探索科学，不受传统上在正式环境中工作的限制。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-51",
+    "exam": "english1",
+    "year": 2025,
+    "number": 51,
+    "section": "writing_a",
+    "type": "essay",
+    "score": 10.0,
+    "passage_id": null,
+    "stem": "Read the following email from your classmate Paul and write him a reply.\nDear Li Ming,\nI was really excited to hear that you’d invite some young craftsmen to demonstrate their innovative craft-making on campus. May I know more about what they’ll show? Also, I’d like to help with your preparation work. Please let me know what I can do.\nYours,\nPaul\nWrite your answer in about 100 words on the ANSWER SHEET.\nDo not use your own name in your email; use “Li Ming” instead. (10 points)",
+    "images": [],
+    "options": [],
+    "answer": [
+      "Dear Paul,\n\nI am glad to receive your email and to know your great interest in this craft-making show. Thank you for offering to help with the preparation work. I am writing to provide further details for you.\n\nIn the show, the craftsmen will present many innovative handicrafts from multiple angles. The handicrafts will include eco-friendly paper cuttings, clay sculptures and bamboo weavings. Besides, the craftsmen will show the making process of the handicrafts and share their innovative ideas. As to the preparation work, you can help to choose and set up the display area, contact the craftsmen, make the poster and advertise among students.\n\nI’m very delighted to welcome you to participate in our activity. With your help, I believe that our event will definitely be held successfully.\n\nYours truly,\nLi Ming"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/小作文（书信、通知等）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2025-52",
+    "exam": "english1",
+    "year": 2025,
+    "number": 52,
+    "section": "writing_b",
+    "type": "essay",
+    "score": 20.0,
+    "passage_id": null,
+    "stem": "Write an essay of 160-200 based on the following table. In your essay, you should\n1) describe the table briefly,\n2) explain its intended meaning, and\n3) give your comments.\nYou should write neatly on the ANSWER SHEET. (20 points)\n{{table:0}}",
+    "images": [
+      "images/english1-2025/q52_table.png"
+    ],
+    "tables": [
+      {
+        "caption": "近年来全国居民平均每百户年末主要耐用消费品拥有量",
+        "header": [
+          "年份",
+          "空调（台）",
+          "洗衣机（台）",
+          "电冰箱（台）"
+        ],
+        "rows": [
+          [
+            "2014",
+            "75.2",
+            "83.7",
+            "85.5"
+          ],
+          [
+            "2017",
+            "96.1",
+            "91.7",
+            "95.3"
+          ],
+          [
+            "2020",
+            "117.7",
+            "96.7",
+            "101.8"
+          ],
+          [
+            "2023",
+            "145.9",
+            "98.2",
+            "103.4"
+          ]
+        ]
+      }
+    ],
+    "options": [],
+    "answer": [
+      "The table above presents the average number of major consumer durables owned by every 100 households nationwide at the end of the year from 2014 to 2023, from which we can observe that the ownership of air conditioners increases from 75.2 units to 145.9 units, the ownership of washing machines from 83.7 units to 98.2 units, and the ownership of refrigerators from 85.5 units to 103.4 units.\n\nThese figures indicate an increasing trend in spending on consumer durables over the past decade. This is the result of various factors. For one thing, people's income levels have improved, and they have more controllable income to buy these objects. For another, because consumption concepts have shifted, people pay more attention to the quality of life and are willing to purchase products that can improve their quality of life.\n\nIn conclusion, the popularity of consumer durables is a witness to the progress of the times. I believe there will be more intelligent consumer durables in the near future, and they will bring great changes to more people's lives."
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/大作文（图画作文）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2025-1/2025-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  }
+]

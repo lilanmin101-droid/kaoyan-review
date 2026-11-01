@@ -1,0 +1,19 @@
+{"id": "math1-2019-17", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "逐区间去绝对值求和，正确。", "at": "2026-11-01T06:16-08:00"}
+{"id": "math1-2019-18", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "完整，见上。", "at": "2026-11-01T06:16-08:00"}
+{"id": "math1-2019-19", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "正确；末行「dx du」应为「dx dy」。", "at": "2026-11-01T06:16-08:00"}
+{"id": "math1-2019-20", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "完整正确。", "at": "2026-11-01T06:16-08:00"}
+{"id": "math1-2019-01", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2019.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2019-02", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2019.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2019-03", "kind": "official_solution", "result": "pass", "by": "用户", "note": "只证 D 收敛；可补 A、B 取 u_n≡1、C 取 u_n=−1/n 的反例。 （已对照 origin_2019.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2019-04", "kind": "official_solution", "result": "fail", "by": "用户", "note": "3/6：C 的 P=1/x−1/y 同样满足 ∂P/∂y=1/y²，解析没说它因为在 x=0 处无定义（上半平面含 x=0）而被排除，「可取 D」缺依据；A、B 不满足也没写。 （已对照 origin_2019.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2019-05", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2019.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2019-06", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2019.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2019-07", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2019.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2019-08", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2019.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2019-09", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2019.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2019-10", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2019.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2019-11", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2019.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2019-12", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2019.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2019-13", "kind": "official_solution", "result": "pass", "by": "用户", "note": "OCR 修正后的三维向量与解析 PDF 图一致。 （已对照 origin_2019.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2019-14", "kind": "official_solution", "result": "pass", "by": "用户", "note": "F(x)=∫_{-∞}^x f(x)dx 积分变量和上限同名，建议写成 f(t)dt。 （已对照 origin_2019.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2019-04", "kind": "expert", "result": "pass", "status": "confirmed", "by": "用户", "note": "合格。SymPy 验 P_y：A=1+3x²/y⁴，B=3x²/y⁴-1/y²，C、D=1/y²；C 因 x=0 无定义排除，理由清楚。", "at": "2026-11-01T06:26-08:00"}

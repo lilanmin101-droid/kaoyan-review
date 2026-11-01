@@ -1,0 +1,28 @@
+{"id": "math1-2022-17", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "推导正确。小瑕疵：方程含 1/(2√x)，定义域应是 x>0，「在 [0,+∞) 上没有无定义的点」应改为「x→0⁺ 时 y→e 有限，故无铅直渐近线」。", "at": "2026-11-01T06:11-08:00"}
+{"id": "math1-2022-18", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "极坐标分块正确，结果 2π−2。", "at": "2026-11-01T06:11-08:00"}
+{"id": "math1-2022-19", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "法一、法二都正确。法二第二行积分号下标识别成了 ∬_z，应为 ∬_Σ。", "at": "2026-11-01T06:11-08:00"}
+{"id": "math1-2022-20", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "结论和思路正确，但法一有两处要修：①代入后中间项前的符号识别成「−f'」，应为「+f'」（反正该项积分为 0）；②ξ 随 x 变化，不能把 ½f''(ξ) 提到积分号外，应写成 ½∫_a^b f''(ξ(x))(x−(a+b)/2)²dx ≥ 0。", "at": "2026-11-01T06:11-08:00"}
+{"id": "math1-2022-21", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "特征值、特征向量、施密特正交化与叉积两种做法都正确。", "at": "2026-11-01T06:11-08:00"}
+{"id": "math1-2022-22", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "似然函数、求导与方差计算正确。", "at": "2026-11-01T06:11-08:00"}
+{"id": "math1-2022-01", "kind": "official_solution", "result": "pass", "by": "用户", "note": "已对照原卷图片。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-02", "kind": "official_solution", "result": "pass", "by": "用户", "note": "已对照原卷图片。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-03", "kind": "official_solution", "result": "pass", "by": "用户", "note": "已对照原卷图片。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-04", "kind": "official_solution", "result": "pass", "by": "用户", "note": "已对照原卷图片。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-05", "kind": "official_solution", "result": "fail", "by": "用户", "note": "已对照原卷图片。类别 2/7：对角矩阵 Λ 被识别成 A，「A=PAP⁻¹」「A 与对角矩阵 A 相似」自相矛盾；另有一处动词「解」被加粗成【解】标签。改法见 math1_2022.jsonl 的 fix_request。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-06", "kind": "official_solution", "result": "fail", "by": "用户", "note": "已对照原卷图片。类别 7：结论句「BAx=0 与 BAx=0 不同解」前后相同，原卷为「ABx=0 与 BAx=0」。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-07", "kind": "official_solution", "result": "pass", "by": "用户", "note": "已对照原卷图片。行变换和两个行列式均已验算。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-08", "kind": "official_solution", "result": "pass", "by": "用户", "note": "已对照原卷图片。计算型选择题，未逐项说明错误选项，按惯例不扣。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-09", "kind": "official_solution", "result": "pass", "by": "用户", "note": "已对照原卷图片。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-10", "kind": "official_solution", "result": "fail", "by": "用户", "note": "已对照原卷图片。类别 2/8：二维正态密度 y 项写成 μ1、σ1；两处配凑式方括号掉到指数外，指数系数 1/(2[1-ρ²]) 写成 ½[1-ρ²]；y 识别成 γ。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-11", "kind": "official_solution", "result": "pass", "by": "用户", "note": "已对照原卷图片。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-12", "kind": "official_solution", "result": "pass", "by": "用户", "note": "已对照原卷图片。两种方法都已验算。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-13", "kind": "official_solution", "result": "pass", "by": "用户", "note": "已对照原卷图片。小瑕疵：解方程组前多了一个加粗「**解**」（原卷是动词「解」），建议去掉加粗。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-14", "kind": "official_solution", "result": "fail", "by": "用户", "note": "已对照原卷图片。类别 2：法二 t^n 识别成 i^n；另有一处动词「解」被加粗成标签。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-15", "kind": "official_solution", "result": "pass", "by": "用户", "note": "已对照原卷图片。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-16", "kind": "official_solution", "result": "pass", "by": "用户", "note": "已对照原卷图片。小瑕疵：「# 三个事件的和事件概率公式」会渲染成一级标题，建议改为加粗。", "at": "2026-11-01T06:15-08:00"}
+{"id": "math1-2022-05", "kind": "official_solution", "result": "pass", "by": "用户", "note": "复查通过：Λ 已恢复，前后不再矛盾。", "at": "2026-11-01T06:18-08:00"}
+{"id": "math1-2022-06", "kind": "official_solution", "result": "pass", "by": "用户", "note": "复查通过：结论句已改为 ABx=0 与 BAx=0。", "at": "2026-11-01T06:18-08:00"}
+{"id": "math1-2022-10", "kind": "official_solution", "result": "pass", "by": "用户", "note": "复查通过：密度公式、指数结构、y 均已改对，可渲染。", "at": "2026-11-01T06:18-08:00"}
+{"id": "math1-2022-14", "kind": "official_solution", "result": "pass", "by": "用户", "note": "复查通过：t^n 已改对。", "at": "2026-11-01T06:18-08:00"}
+{"id": "math1-2022-13", "kind": "official_solution", "result": "pass", "by": "用户", "note": "复查：多余的加粗「解」已去掉。", "at": "2026-11-01T06:18-08:00"}
+{"id": "math1-2022-16", "kind": "official_solution", "result": "pass", "by": "用户", "note": "复查：一级标题已改为加粗，可渲染。", "at": "2026-11-01T06:18-08:00"}

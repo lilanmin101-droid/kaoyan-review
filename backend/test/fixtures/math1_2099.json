@@ -1,0 +1,129 @@
+[
+ {
+  "schema_version": "0.2",
+  "id": "math1-2099-01",
+  "exam": "math1",
+  "year": 2099,
+  "number": 1,
+  "section": "选择题",
+  "type": "single_choice",
+  "score": 5,
+  "stem": "设随机变量 $X$ 的分布律为\n{{table:0}}\n则 $E(X)=$",
+  "tables": [
+   {
+    "header": [
+     "$X$",
+     "$0$",
+     "$1$",
+     "$2$"
+    ],
+    "rows": [
+     [
+      "$P$",
+      "$0.2$",
+      "$0.5$",
+      "$0.3$"
+     ]
+    ]
+   }
+  ],
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "$1.1$"
+   },
+   {
+    "key": "B",
+    "content": "$1.0$"
+   },
+   {
+    "key": "C",
+    "content": "$0.9$"
+   },
+   {
+    "key": "D",
+    "content": "$1.2$"
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "knowledge_points": [],
+  "source": {
+   "fixture": true
+  }
+ },
+ {
+  "schema_version": "0.2",
+  "id": "math1-2099-02",
+  "exam": "math1",
+  "year": 2099,
+  "number": 2,
+  "section": "解答题",
+  "type": "essay",
+  "score": 12,
+  "stem": "（本题满分 12 分）设 $f(x)$ 连续，求两问。",
+  "images": [],
+  "options": [],
+  "sub_questions": [
+   {
+    "number": 1,
+    "stem": "第一问",
+    "answer": [
+     "略"
+    ]
+   },
+   {
+    "number": 2,
+    "stem": "第二问",
+    "answer": [
+     "略"
+    ]
+   }
+  ],
+  "answer": [],
+  "solution": null,
+  "knowledge_points": [],
+  "source": {
+   "fixture": true
+  }
+ },
+ {
+  "schema_version": "0.2",
+  "id": "math1-2099-03",
+  "exam": "math1",
+  "year": 2099,
+  "number": 3,
+  "section": "解答题",
+  "type": "essay",
+  "score": 12,
+  "stem": "（本题满分 12 分）设 $g(x)=x^2$，求两问。",
+  "images": [],
+  "options": [],
+  "sub_questions": [
+   {
+    "number": 1,
+    "stem": "第一问",
+    "answer": [
+     "略"
+    ]
+   },
+   {
+    "number": 2,
+    "stem": "第二问",
+    "answer": [
+     "略"
+    ]
+   }
+  ],
+  "answer": [],
+  "solution": null,
+  "knowledge_points": [],
+  "source": {
+   "fixture": true
+  }
+ }
+]

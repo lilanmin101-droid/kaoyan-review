@@ -1,0 +1,2124 @@
+[
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-01",
+  "exam": "english1",
+  "year": 2098,
+  "number": 1,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（1）______",
+  "answer": [
+   "B"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-02",
+  "exam": "english1",
+  "year": 2098,
+  "number": 2,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（2）______",
+  "answer": [
+   "C"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-03",
+  "exam": "english1",
+  "year": 2098,
+  "number": 3,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（3）______",
+  "answer": [
+   "D"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-04",
+  "exam": "english1",
+  "year": 2098,
+  "number": 4,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（4）______",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-05",
+  "exam": "english1",
+  "year": 2098,
+  "number": 5,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（5）______",
+  "answer": [
+   "B"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-06",
+  "exam": "english1",
+  "year": 2098,
+  "number": 6,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（6）______",
+  "answer": [
+   "C"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-07",
+  "exam": "english1",
+  "year": 2098,
+  "number": 7,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（7）______",
+  "answer": [
+   "D"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-08",
+  "exam": "english1",
+  "year": 2098,
+  "number": 8,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（8）______",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-09",
+  "exam": "english1",
+  "year": 2098,
+  "number": 9,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（9）______",
+  "answer": [
+   "B"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-10",
+  "exam": "english1",
+  "year": 2098,
+  "number": 10,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（10）______",
+  "answer": [
+   "C"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-11",
+  "exam": "english1",
+  "year": 2098,
+  "number": 11,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（11）______",
+  "answer": [
+   "D"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-12",
+  "exam": "english1",
+  "year": 2098,
+  "number": 12,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（12）______",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-13",
+  "exam": "english1",
+  "year": 2098,
+  "number": 13,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（13）______",
+  "answer": [
+   "B"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-14",
+  "exam": "english1",
+  "year": 2098,
+  "number": 14,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（14）______",
+  "answer": [
+   "C"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-15",
+  "exam": "english1",
+  "year": 2098,
+  "number": 15,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（15）______",
+  "answer": [
+   "D"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-16",
+  "exam": "english1",
+  "year": 2098,
+  "number": 16,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（16）______",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-17",
+  "exam": "english1",
+  "year": 2098,
+  "number": 17,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（17）______",
+  "answer": [
+   "B"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-18",
+  "exam": "english1",
+  "year": 2098,
+  "number": 18,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（18）______",
+  "answer": [
+   "C"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-19",
+  "exam": "english1",
+  "year": 2098,
+  "number": 19,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（19）______",
+  "answer": [
+   "D"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-20",
+  "exam": "english1",
+  "year": 2098,
+  "number": 20,
+  "section": "use_of_english",
+  "type": "choice",
+  "score": 0.5,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "gap"
+   },
+   {
+    "key": "B",
+    "content": "space"
+   },
+   {
+    "key": "C",
+    "content": "hole"
+   },
+   {
+    "key": "D",
+    "content": "break"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "（20）______",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/完形填空/上下文复现"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-21",
+  "exam": "english1",
+  "year": 2098,
+  "number": 21,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text1",
+  "stem": "Question 21: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-22",
+  "exam": "english1",
+  "year": 2098,
+  "number": 22,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text1",
+  "stem": "Question 22: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-23",
+  "exam": "english1",
+  "year": 2098,
+  "number": 23,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-nope",
+  "stem": "Question 23: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-24",
+  "exam": "english1",
+  "year": 2098,
+  "number": 24,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text1",
+  "stem": "Question 24: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-25",
+  "exam": "english1",
+  "year": 2098,
+  "number": 25,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text1",
+  "stem": "Question 25: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-26",
+  "exam": "english1",
+  "year": 2098,
+  "number": 26,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text2",
+  "stem": "Question 26: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-27",
+  "exam": "english1",
+  "year": 2098,
+  "number": 27,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text2",
+  "stem": "Question 27: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-28",
+  "exam": "english1",
+  "year": 2098,
+  "number": 28,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text2",
+  "stem": "Question 28: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-29",
+  "exam": "english1",
+  "year": 2098,
+  "number": 29,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text2",
+  "stem": "Question 29: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-30",
+  "exam": "english1",
+  "year": 2098,
+  "number": 30,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text2",
+  "stem": "Question 30: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-31",
+  "exam": "english1",
+  "year": 2098,
+  "number": 31,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-cloze",
+  "stem": "Question 31: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-32",
+  "exam": "english1",
+  "year": 2098,
+  "number": 32,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text3",
+  "stem": "Question 32: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-33",
+  "exam": "english1",
+  "year": 2098,
+  "number": 33,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text3",
+  "stem": "Question 33: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-34",
+  "exam": "english1",
+  "year": 2098,
+  "number": 34,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text3",
+  "stem": "Question 34: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-35",
+  "exam": "english1",
+  "year": 2098,
+  "number": 35,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text3",
+  "stem": "Question 35: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-36",
+  "exam": "english1",
+  "year": 2098,
+  "number": 36,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text4",
+  "stem": "Question 36: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-37",
+  "exam": "english1",
+  "year": 2098,
+  "number": 37,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text4",
+  "stem": "Question 37: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-38",
+  "exam": "english1",
+  "year": 2098,
+  "number": 38,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text4",
+  "stem": "Question 38: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-39",
+  "exam": "english1",
+  "year": 2098,
+  "number": 39,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text4",
+  "stem": "Question 39: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-40",
+  "exam": "english1",
+  "year": 2098,
+  "number": 40,
+  "section": "reading_a",
+  "type": "choice",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Gardens."
+   },
+   {
+    "key": "B",
+    "content": "Cars."
+   },
+   {
+    "key": "C",
+    "content": "Music."
+   },
+   {
+    "key": "D",
+    "content": "Sports."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-text4",
+  "stem": "Question 40: What does the text mainly discuss?",
+  "answer": [
+   "A"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解A/细节题"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-41",
+  "exam": "english1",
+  "year": 2098,
+  "number": 41,
+  "section": "reading_b",
+  "type": "match",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Plan your route the night before."
+   },
+   {
+    "key": "B",
+    "content": "Pack light and pack early."
+   },
+   {
+    "key": "C",
+    "content": "Ask locals for advice."
+   },
+   {
+    "key": "D",
+    "content": "Keep a small notebook."
+   },
+   {
+    "key": "E",
+    "content": "Leave room for surprises."
+   },
+   {
+    "key": "F",
+    "content": "Check the weather twice."
+   },
+   {
+    "key": "G",
+    "content": "Learn a few local words."
+   },
+   {
+    "key": "J",
+    "content": "extra"
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-partb",
+  "stem": "Paragraph 41: a short paragraph about one travel tip.",
+  "answer": [
+   "J"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解B（新题型）/小标题匹配"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-42",
+  "exam": "english1",
+  "year": 2098,
+  "number": 42,
+  "section": "reading_b",
+  "type": "match",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Plan your route the night before."
+   },
+   {
+    "key": "B",
+    "content": "Pack light and pack early."
+   },
+   {
+    "key": "C",
+    "content": "Ask locals for advice."
+   },
+   {
+    "key": "D",
+    "content": "Keep a small notebook."
+   },
+   {
+    "key": "E",
+    "content": "Leave room for surprises."
+   },
+   {
+    "key": "F",
+    "content": "Check the weather twice."
+   },
+   {
+    "key": "G",
+    "content": "Learn a few local words."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-partb",
+  "stem": "Paragraph 42: a short paragraph about one travel tip.",
+  "answer": [
+   "B"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解B（新题型）/小标题匹配"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-43",
+  "exam": "english1",
+  "year": 2098,
+  "number": 43,
+  "section": "reading_b",
+  "type": "match",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Plan your route the night before."
+   },
+   {
+    "key": "B",
+    "content": "Pack light and pack early."
+   },
+   {
+    "key": "C",
+    "content": "Ask locals for advice."
+   },
+   {
+    "key": "D",
+    "content": "Keep a small notebook."
+   },
+   {
+    "key": "E",
+    "content": "Leave room for surprises."
+   },
+   {
+    "key": "F",
+    "content": "Check the weather twice."
+   },
+   {
+    "key": "G",
+    "content": "Learn a few local words."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-partb",
+  "stem": "Paragraph 43: a short paragraph about one travel tip.",
+  "answer": [
+   "C"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解B（新题型）/小标题匹配"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-44",
+  "exam": "english1",
+  "year": 2098,
+  "number": 44,
+  "section": "reading_b",
+  "type": "match",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Plan your route the night before."
+   },
+   {
+    "key": "B",
+    "content": "Pack light and pack early."
+   },
+   {
+    "key": "C",
+    "content": "Ask locals for advice."
+   },
+   {
+    "key": "D",
+    "content": "Keep a small notebook."
+   },
+   {
+    "key": "E",
+    "content": "Leave room for surprises."
+   },
+   {
+    "key": "F",
+    "content": "Check the weather twice."
+   },
+   {
+    "key": "G",
+    "content": "Learn a few local words."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-partb",
+  "stem": "Paragraph 44: a short paragraph about one travel tip.",
+  "answer": [
+   "D"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解B（新题型）/小标题匹配"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-45",
+  "exam": "english1",
+  "year": 2098,
+  "number": 45,
+  "section": "reading_b",
+  "type": "match",
+  "score": 2,
+  "images": [],
+  "options": [
+   {
+    "key": "A",
+    "content": "Plan your route the night before."
+   },
+   {
+    "key": "B",
+    "content": "Pack light and pack early."
+   },
+   {
+    "key": "C",
+    "content": "Ask locals for advice."
+   },
+   {
+    "key": "D",
+    "content": "Keep a small notebook."
+   },
+   {
+    "key": "E",
+    "content": "Leave room for surprises."
+   },
+   {
+    "key": "F",
+    "content": "Check the weather twice."
+   },
+   {
+    "key": "G",
+    "content": "Learn a few local words."
+   }
+  ],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-partb",
+  "stem": "Paragraph 45: a short paragraph about one travel tip.",
+  "answer": [
+   "E"
+  ],
+  "knowledge_points": [
+   "英语/阅读理解B（新题型）/小标题匹配"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-46",
+  "exam": "english1",
+  "year": 2098,
+  "number": 46,
+  "section": "translation",
+  "type": "translation",
+  "score": 15,
+  "images": [],
+  "options": [],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-translation",
+  "stem": "Many people now work from home, which saves them time.",
+  "answer": [
+   "如今许多人在家办公，这为他们节省了时间。"
+  ],
+  "knowledge_points": [
+   "英语/翻译/英译汉长难句拆分"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-47",
+  "exam": "english1",
+  "year": 2098,
+  "number": 47,
+  "section": "translation",
+  "type": "translation",
+  "score": 2,
+  "images": [],
+  "options": [],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-translation",
+  "stem": "Parks have become more important than ever before.",
+  "answer": [
+   "公园变得比以往任何时候都更加重要。"
+  ],
+  "knowledge_points": [
+   "英语/翻译/英译汉长难句拆分"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-48",
+  "exam": "english1",
+  "year": 2098,
+  "number": 48,
+  "section": "translation",
+  "type": "translation",
+  "score": 2,
+  "images": [],
+  "options": [],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-translation",
+  "stem": "Children learn best when they are allowed to play outside.",
+  "answer": [
+   "当孩子们被允许在户外玩耍时，他们学得最好。"
+  ],
+  "knowledge_points": [
+   "英语/翻译/英译汉长难句拆分"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-49",
+  "exam": "english1",
+  "year": 2098,
+  "number": 49,
+  "section": "translation",
+  "type": "translation",
+  "score": 2,
+  "images": [],
+  "options": [],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-translation",
+  "stem": "Good public transport makes a city easier to live in.",
+  "answer": [
+   "良好的公共交通让城市更宜居。"
+  ],
+  "knowledge_points": [
+   "英语/翻译/英译汉长难句拆分"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-50",
+  "exam": "english1",
+  "year": 2098,
+  "number": 50,
+  "section": "translation",
+  "type": "translation",
+  "score": 2,
+  "images": [],
+  "options": [],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": "english1-2098-P-translation",
+  "stem": "Planners must listen to the people who live there.",
+  "answer": [
+   "规划者必须倾听当地居民的意见。"
+  ],
+  "knowledge_points": [
+   "英语/翻译/英译汉长难句拆分"
+  ]
+ },
+ {
+  "schema_version": "0.2",
+  "id": "english1-2098-51",
+  "exam": "english1",
+  "year": 2098,
+  "number": 51,
+  "section": "writing_a",
+  "type": "essay",
+  "score": 10,
+  "images": [],
+  "options": [],
+  "sub_questions": [],
+  "solution": null,
+  "source": {
+   "fixture": true
+  },
+  "passage_id": null,
+  "stem": "Write an email to a friend inviting him to a city walk. Write about 100 words. Do not use your own name; use \"Li Ming\" instead. {{table:0}} {{table:3}}",
+  "answer": [
+   "Dear Tom, I am writing to invite you to a city walk this Saturday ... Yours, Li Ming"
+  ],
+  "knowledge_points": [
+   "英语/写作/小作文（书信、通知等）"
+  ],
+  "tables": [
+   {
+    "header": [
+     "a",
+     "b"
+    ],
+    "rows": [
+     [
+      "1",
+      "2",
+      "3"
+     ]
+    ]
+   },
+   {
+    "rows": []
+   }
+  ]
+ }
+]

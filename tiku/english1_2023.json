@@ -1,0 +1,2568 @@
+[
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-01",
+    "exam": "english1",
+    "year": 2023,
+    "number": 1,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "They were typically （1）______ outside the walls of a city or village and were usually funded by local governments or （2）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "displayed"
+      },
+      {
+        "key": "B",
+        "content": "occupied"
+      },
+      {
+        "key": "C",
+        "content": "located"
+      },
+      {
+        "key": "D",
+        "content": "equipped"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-02",
+    "exam": "english1",
+    "year": 2023,
+    "number": 2,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "They were typically （1）______ outside the walls of a city or village and were usually funded by local governments or （2）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "privately"
+      },
+      {
+        "key": "B",
+        "content": "regularly"
+      },
+      {
+        "key": "C",
+        "content": "respectively"
+      },
+      {
+        "key": "D",
+        "content": "permanently"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-03",
+    "exam": "english1",
+    "year": 2023,
+    "number": 3,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "The word “caravanserai” is a （3）______ of the Persian words “karvan”, which means a group of travellers or a caravan, and “saray”, a palace or enclosed building.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "definition"
+      },
+      {
+        "key": "B",
+        "content": "transition"
+      },
+      {
+        "key": "C",
+        "content": "substitution"
+      },
+      {
+        "key": "D",
+        "content": "combination"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-04",
+    "exam": "english1",
+    "year": 2023,
+    "number": 4,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "The term caravan was used to （4）______ groups of people who travelled together across the ancient network for safety reasons, （5）______ merchants, travellers or pilgrims.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "classify"
+      },
+      {
+        "key": "B",
+        "content": "record"
+      },
+      {
+        "key": "C",
+        "content": "describe"
+      },
+      {
+        "key": "D",
+        "content": "connect"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-05",
+    "exam": "english1",
+    "year": 2023,
+    "number": 5,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "The term caravan was used to （4）______ groups of people who travelled together across the ancient network for safety reasons, （5）______ merchants, travellers or pilgrims.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "apart from"
+      },
+      {
+        "key": "B",
+        "content": "instead of"
+      },
+      {
+        "key": "C",
+        "content": "such as"
+      },
+      {
+        "key": "D",
+        "content": "along with"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-06",
+    "exam": "english1",
+    "year": 2023,
+    "number": 6,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "From the 10th century onwards, as merchant and travel routes became more developed, the （6）______ of caravanserais increased and they served as a safe place for people to rest at night.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "construction"
+      },
+      {
+        "key": "B",
+        "content": "restoration"
+      },
+      {
+        "key": "C",
+        "content": "impression"
+      },
+      {
+        "key": "D",
+        "content": "evaluation"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-07",
+    "exam": "english1",
+    "year": 2023,
+    "number": 7,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "Travellers on the Silk Road （7）______ the possibility of being attacked by thieves or being （8）______ to extreme weather conditions.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "doubted"
+      },
+      {
+        "key": "B",
+        "content": "faced"
+      },
+      {
+        "key": "C",
+        "content": "accepted"
+      },
+      {
+        "key": "D",
+        "content": "reduced"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-08",
+    "exam": "english1",
+    "year": 2023,
+    "number": 8,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "Travellers on the Silk Road （7）______ the possibility of being attacked by thieves or being （8）______ to extreme weather conditions.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "assigned"
+      },
+      {
+        "key": "B",
+        "content": "subjected"
+      },
+      {
+        "key": "C",
+        "content": "accustomed"
+      },
+      {
+        "key": "D",
+        "content": "opposed"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-09",
+    "exam": "english1",
+    "year": 2023,
+    "number": 9,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "For this reason, caravanserais were strategically placed （9）______ they could be reached in a day’s travel time.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "so that"
+      },
+      {
+        "key": "B",
+        "content": "even if"
+      },
+      {
+        "key": "C",
+        "content": "now that"
+      },
+      {
+        "key": "D",
+        "content": "in case"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-10",
+    "exam": "english1",
+    "year": 2023,
+    "number": 10,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "Caravanserais served as an informal （10）______ point for the various people who travelled the Silk Road.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "talking"
+      },
+      {
+        "key": "B",
+        "content": "starting"
+      },
+      {
+        "key": "C",
+        "content": "breaking"
+      },
+      {
+        "key": "D",
+        "content": "meeting"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-11",
+    "exam": "english1",
+    "year": 2023,
+    "number": 11,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "（11）______ , these structures became important centres for cultural （12）______ and interaction, with travellers sharing their cultures, ideas and beliefs, （13）______ taking knowledge with them, greatly （14）______ the development of several civilisations.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "By the way"
+      },
+      {
+        "key": "B",
+        "content": "On occasion"
+      },
+      {
+        "key": "C",
+        "content": "In comparison"
+      },
+      {
+        "key": "D",
+        "content": "As a result"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-12",
+    "exam": "english1",
+    "year": 2023,
+    "number": 12,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "（11）______ , these structures became important centres for cultural （12）______ and interaction, with travellers sharing their cultures, ideas and beliefs, （13）______ taking knowledge with them, greatly （14）______ the development of several civilisations.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "heritage"
+      },
+      {
+        "key": "B",
+        "content": "revival"
+      },
+      {
+        "key": "C",
+        "content": "exchange"
+      },
+      {
+        "key": "D",
+        "content": "status"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-13",
+    "exam": "english1",
+    "year": 2023,
+    "number": 13,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "（11）______ , these structures became important centres for cultural （12）______ and interaction, with travellers sharing their cultures, ideas and beliefs, （13）______ taking knowledge with them, greatly （14）______ the development of several civilisations.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "with regard to"
+      },
+      {
+        "key": "B",
+        "content": "in spite of"
+      },
+      {
+        "key": "C",
+        "content": "as well as"
+      },
+      {
+        "key": "D",
+        "content": "in line with"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-14",
+    "exam": "english1",
+    "year": 2023,
+    "number": 14,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "（11）______ , these structures became important centres for cultural （12）______ and interaction, with travellers sharing their cultures, ideas and beliefs, （13）______ taking knowledge with them, greatly （14）______ the development of several civilisations.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "completing"
+      },
+      {
+        "key": "B",
+        "content": "influencing"
+      },
+      {
+        "key": "C",
+        "content": "resuming"
+      },
+      {
+        "key": "D",
+        "content": "pioneering"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-15",
+    "exam": "english1",
+    "year": 2023,
+    "number": 15,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "Caravanserais were also an important marketplace for commodities and （15）______ in the trade of goods along the Silk Road.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "aided"
+      },
+      {
+        "key": "B",
+        "content": "invested"
+      },
+      {
+        "key": "C",
+        "content": "failed"
+      },
+      {
+        "key": "D",
+        "content": "competed"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-16",
+    "exam": "english1",
+    "year": 2023,
+    "number": 16,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "（16）______ , it was frequently the first stop for merchants looking to sell their wares and （17）______ supplies for their own journeys.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Rather"
+      },
+      {
+        "key": "B",
+        "content": "Indeed"
+      },
+      {
+        "key": "C",
+        "content": "Otherwise"
+      },
+      {
+        "key": "D",
+        "content": "However"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-17",
+    "exam": "english1",
+    "year": 2023,
+    "number": 17,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "（16）______ , it was frequently the first stop for merchants looking to sell their wares and （17）______ supplies for their own journeys.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "go in for"
+      },
+      {
+        "key": "B",
+        "content": "stand up for"
+      },
+      {
+        "key": "C",
+        "content": "close in on"
+      },
+      {
+        "key": "D",
+        "content": "stock up on"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-18",
+    "exam": "english1",
+    "year": 2023,
+    "number": 18,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "It is （18）______ that around 12,000 to 15,000 caravanserais were built along the Silk Road, （19）______ only about 3,000 are known to remain today, many of which are in （20）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "believed"
+      },
+      {
+        "key": "B",
+        "content": "predicted"
+      },
+      {
+        "key": "C",
+        "content": "recalled"
+      },
+      {
+        "key": "D",
+        "content": "implied"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-19",
+    "exam": "english1",
+    "year": 2023,
+    "number": 19,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "It is （18）______ that around 12,000 to 15,000 caravanserais were built along the Silk Road, （19）______ only about 3,000 are known to remain today, many of which are in （20）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "until"
+      },
+      {
+        "key": "B",
+        "content": "because"
+      },
+      {
+        "key": "C",
+        "content": "unless"
+      },
+      {
+        "key": "D",
+        "content": "although"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-20",
+    "exam": "english1",
+    "year": 2023,
+    "number": 20,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2023-P-cloze",
+    "stem": "It is （18）______ that around 12,000 to 15,000 caravanserais were built along the Silk Road, （19）______ only about 3,000 are known to remain today, many of which are in （20）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "ruins"
+      },
+      {
+        "key": "B",
+        "content": "debt"
+      },
+      {
+        "key": "C",
+        "content": "fashion"
+      },
+      {
+        "key": "D",
+        "content": "series"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-21",
+    "exam": "english1",
+    "year": 2023,
+    "number": 21,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text1",
+    "stem": "In Paragraph 1, the weather in Texas is mentioned to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "forecast a policy shift in Texas schools."
+      },
+      {
+        "key": "B",
+        "content": "stress the consequences of climate change."
+      },
+      {
+        "key": "C",
+        "content": "indicate the atmosphere at the board meeting."
+      },
+      {
+        "key": "D",
+        "content": "draw the public’s attention to energy shortages."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-22",
+    "exam": "english1",
+    "year": 2023,
+    "number": 22,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text1",
+    "stem": "What does Quinn think of Hardy?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "She exaggerates the existing panic."
+      },
+      {
+        "key": "B",
+        "content": "She denies the value of scientific work."
+      },
+      {
+        "key": "C",
+        "content": "She shows no concern for pre-teens."
+      },
+      {
+        "key": "D",
+        "content": "She expresses self-contradictory views."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-23",
+    "exam": "english1",
+    "year": 2023,
+    "number": 23,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text1",
+    "stem": "The study mentioned in Paragraph 5 shows that",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "climate education is insufficient at state public schools."
+      },
+      {
+        "key": "B",
+        "content": "policymakers have little drive for science education."
+      },
+      {
+        "key": "C",
+        "content": "Texas is reluctant to rewrite its science textbooks."
+      },
+      {
+        "key": "D",
+        "content": "environmental teaching in some states lacks supervision."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-24",
+    "exam": "english1",
+    "year": 2023,
+    "number": 24,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text1",
+    "stem": "According to Branch, state-level science standards in the US",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "call for regular revision."
+      },
+      {
+        "key": "B",
+        "content": "require urgent application."
+      },
+      {
+        "key": "C",
+        "content": "have limited influence."
+      },
+      {
+        "key": "D",
+        "content": "cater to local needs."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-25",
+    "exam": "english1",
+    "year": 2023,
+    "number": 25,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text1",
+    "stem": "It is implied in the last paragraph that climate change teaching in some schools",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "agrees to major public demands."
+      },
+      {
+        "key": "B",
+        "content": "reflects teachers’ personal bias."
+      },
+      {
+        "key": "C",
+        "content": "may misrepresent the energy sector."
+      },
+      {
+        "key": "D",
+        "content": "can be swayed by external forces."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-26",
+    "exam": "english1",
+    "year": 2023,
+    "number": 26,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text2",
+    "stem": "Which of the following is true of New England?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Its housing supply is at a very low level."
+      },
+      {
+        "key": "B",
+        "content": "Its communities are in need of funding."
+      },
+      {
+        "key": "C",
+        "content": "Its rental vacancy rate is going up slowly."
+      },
+      {
+        "key": "D",
+        "content": "Its home prices are under strict control."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-27",
+    "exam": "english1",
+    "year": 2023,
+    "number": 27,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text2",
+    "stem": "The bill mentioned in Paragraph 2 was intended to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "curb short-term rental speculation."
+      },
+      {
+        "key": "B",
+        "content": "ensure the supply of cheap housing."
+      },
+      {
+        "key": "C",
+        "content": "punish illegal dealings in housing."
+      },
+      {
+        "key": "D",
+        "content": "allow a free short-term rental market."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-28",
+    "exam": "english1",
+    "year": 2023,
+    "number": 28,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text2",
+    "stem": "Compared with Castle, Taylor is more likely to support",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "further investment in local tourism."
+      },
+      {
+        "key": "B",
+        "content": "an increase in affordable housing."
+      },
+      {
+        "key": "C",
+        "content": "strict management of real estate agents."
+      },
+      {
+        "key": "D",
+        "content": "a favorable policy for short-term workers."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-29",
+    "exam": "english1",
+    "year": 2023,
+    "number": 29,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text2",
+    "stem": "What does Hom emphasize in Paragraph 5?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "The urgency to upgrade short-term rental facilities."
+      },
+      {
+        "key": "B",
+        "content": "The efficient operation of the local housing market."
+      },
+      {
+        "key": "C",
+        "content": "The necessity to stop developers from evading taxes."
+      },
+      {
+        "key": "D",
+        "content": "The proper procedures for renting out spare houses."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-30",
+    "exam": "english1",
+    "year": 2023,
+    "number": 30,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text2",
+    "stem": "Hom holds that imposing registration requirements is",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "an irrational decision."
+      },
+      {
+        "key": "B",
+        "content": "an unfeasible proposal."
+      },
+      {
+        "key": "C",
+        "content": "an unnecessary measure."
+      },
+      {
+        "key": "D",
+        "content": "an inadequate solution."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-31",
+    "exam": "english1",
+    "year": 2023,
+    "number": 31,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text3",
+    "stem": "The author mentions two books in Paragraph 1 to present",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "an ongoing conflict."
+      },
+      {
+        "key": "B",
+        "content": "an intellectual concept."
+      },
+      {
+        "key": "C",
+        "content": "a prevailing sentiment."
+      },
+      {
+        "key": "D",
+        "content": "a literary phenomenon."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-32",
+    "exam": "english1",
+    "year": 2023,
+    "number": 32,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text3",
+    "stem": "Why did Waterstones shops retire PRH books to their relevant sections?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "To make them easily noticeable."
+      },
+      {
+        "key": "B",
+        "content": "To comply with PRH’s requirement."
+      },
+      {
+        "key": "C",
+        "content": "To respond to PRH’s business move."
+      },
+      {
+        "key": "D",
+        "content": "To arrange them in a systematic way."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-33",
+    "exam": "english1",
+    "year": 2023,
+    "number": 33,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text3",
+    "stem": "What message does the spokesperson for Waterstones seem to convey?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Their customers remain loyal."
+      },
+      {
+        "key": "B",
+        "content": "The credit limit will be removed."
+      },
+      {
+        "key": "C",
+        "content": "Their stock is underestimated."
+      },
+      {
+        "key": "D",
+        "content": "The book market is rather slack."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-34",
+    "exam": "english1",
+    "year": 2023,
+    "number": 34,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text3",
+    "stem": "What can be one consequence of the current dispute?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Sales of books by mid-list PRH writers fall off considerably."
+      },
+      {
+        "key": "B",
+        "content": "Lesser-known PRH writers become the target of criticism."
+      },
+      {
+        "key": "C",
+        "content": "Waterstones staff hesitate to promote big-name authors’ books."
+      },
+      {
+        "key": "D",
+        "content": "Waterstones branches suffer a severe reduction in revenue."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-35",
+    "exam": "english1",
+    "year": 2023,
+    "number": 35,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text3",
+    "stem": "Which of the following statements best represents Lownie’s view?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Small publishers ought to stick together."
+      },
+      {
+        "key": "B",
+        "content": "Big publishers will lose their dominance."
+      },
+      {
+        "key": "C",
+        "content": "The publishing industry is having a hard time."
+      },
+      {
+        "key": "D",
+        "content": "The merger of publishers is a worrying trend."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-36",
+    "exam": "english1",
+    "year": 2023,
+    "number": 36,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text4",
+    "stem": "According to Paragraph 1, the careers of scientists can be determined by",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "how many citations their works contain."
+      },
+      {
+        "key": "B",
+        "content": "how many times their papers are cited."
+      },
+      {
+        "key": "C",
+        "content": "the prestige of the people they work with."
+      },
+      {
+        "key": "D",
+        "content": "the status they have in scientific circles."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-37",
+    "exam": "english1",
+    "year": 2023,
+    "number": 37,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text4",
+    "stem": "The support service consultancies tend to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "recommend journals to their clients."
+      },
+      {
+        "key": "B",
+        "content": "list citation patterns for their clients."
+      },
+      {
+        "key": "C",
+        "content": "ask authors to include extra citations."
+      },
+      {
+        "key": "D",
+        "content": "advise contributors to cite each other."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-38",
+    "exam": "english1",
+    "year": 2023,
+    "number": 38,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text4",
+    "stem": "The function of the “milk cow” journals is to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "boost citation counts for certain authors."
+      },
+      {
+        "key": "B",
+        "content": "help scholars publish articles at low cost."
+      },
+      {
+        "key": "C",
+        "content": "instruct first-time contributors in citation."
+      },
+      {
+        "key": "D",
+        "content": "increase the readership of new journals."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-39",
+    "exam": "english1",
+    "year": 2023,
+    "number": 39,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text4",
+    "stem": "What can be learned about Scopus from the last two paragraphs?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "It fosters competition among citation providers."
+      },
+      {
+        "key": "B",
+        "content": "It has the capability to identify suspicious citations."
+      },
+      {
+        "key": "C",
+        "content": "It hinders the growth of “international” journals."
+      },
+      {
+        "key": "D",
+        "content": "It is established to prevent citation manipulation."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-40",
+    "exam": "english1",
+    "year": 2023,
+    "number": 40,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2023-P-text4",
+    "stem": "What should an author do to deal with citation manipulators?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Take legal action."
+      },
+      {
+        "key": "B",
+        "content": "Demand an apology."
+      },
+      {
+        "key": "C",
+        "content": "Seek professional advice."
+      },
+      {
+        "key": "D",
+        "content": "Reveal their misconduct."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-41",
+    "exam": "english1",
+    "year": 2023,
+    "number": 41,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2023-P-partb",
+    "stem": "根据段落顺序 (41) → A → (42) → E → (43) → H → (44) → (45)，选出第（41）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Last year marked the 150th anniversary of a series of Yellowstone photographs by the renowned landscape photographer William Henry Jackson. Jackson snapped the first-ever shots of iconic landmarks such as the Tetons, Old Faithful and the Colorado Rockies on a late 19th-century expedition through the Yellowstone Basin, conducted by the head of the U.S. Geological and Geographical Survey of the Territories, Ferdinand V. Hayden. The team included a meteorologist, a zoologist, a mineralogist, and an agricultural statistician."
+      },
+      {
+        "key": "B",
+        "content": "Two centuries ago, the idea of preserving nature, rather than exploiting it, was a novel one to many US settlers. One of the turning points in public support for land conservation efforts—and recognizing the magnificence of the Yellowstone region in particular—came in the form of vivid photographs."
+      },
+      {
+        "key": "C",
+        "content": "As an effective Washington operator, Hayden sensed that he could capitalize on the expedition’s stunning visuals. He asked Jackson to print out large copies and distributed them, along with reproductions of Moran's paintings, to each member of Congress. “The visualization, particularly those photographs, really hit home that this is something that has to be protected,” says Alicia Murphy, Yellowstone’s park historian."
+      },
+      {
+        "key": "D",
+        "content": "Throughout the trip, Jackson juggled multiple cameras and plate sizes using the collodion process that involved coating the plates with a chemical mixture, exposing them and developing the resulting images with a portable darkroom. The crude technique required educated guesses on exposure times, and involved heavy, awkward equipment—several men had to assist in its transportation. Despite these challenges, Jackson captured dozens of striking photos, ranging from majestic images like his now-famous snapshot of Old Faithful, to casual portraits of expedition members at the camp. While veterans of previous expeditions had written at length about stunning sights, these vivid photographs were another thing entirely."
+      },
+      {
+        "key": "E",
+        "content": "The journey officially began in Ogden, Utah, on June 8, 1871. Over nearly four months, dozens of men made their way on horseback into Montana and traversed along the Yellowstone River and around Yellowstone Lake. That fall, they concluded the survey in Fort Bridger, Wyoming."
+      },
+      {
+        "key": "F",
+        "content": "Though Native Americans (and later miners and fur trappers) had long recognized the area’s riches, most Americans did not. That’s why Hayden’s expedition aimed to produce a fuller understanding of the Yellowstone River region, from its hot springs and waterfalls to its variety of flora and fauna. In addition to the entourage of scientists, the team also included artists: Painter Thomas Moran and photographer Jackson were charged with capturing this astounding natural beauty and sharing it with the world."
+      },
+      {
+        "key": "G",
+        "content": "The bill proved largely popular and sailed through Congress with large majorities in favor. In quick succession, the Senate and House passed legislation protecting Yellowstone in early 1872. That March, President Ulysses S. Grant signed an act into law that established Yellowstone as the world’s first national park. While some locals opposed the designation, the decision was largely accepted—and Jackson’s photos played a key role in the fight to protect the area. “I don’t believe that the legal protection would have happened in the time frame that it did without those images,” says Heather Hansen, journalist and author of Prophets and Moguls, Rangers and Rogues, Bison and Bears: 100 Years of the National Park Service."
+      },
+      {
+        "key": "H",
+        "content": "Perhaps most importantly, these images provided documentary evidence that later made its way to government officials. Weeks after completing the expedition, Hayden collected his team’s observations into an extensive report aimed at convincing senators and representatives, along with colleagues at government agencies like the Department of the Interior, that Yellowstone ought to be preserved. 41. 42. 43. 44. 45. →A→ → E→ → H → →"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-42",
+    "exam": "english1",
+    "year": 2023,
+    "number": 42,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2023-P-partb",
+    "stem": "根据段落顺序 (41) → A → (42) → E → (43) → H → (44) → (45)，选出第（42）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Last year marked the 150th anniversary of a series of Yellowstone photographs by the renowned landscape photographer William Henry Jackson. Jackson snapped the first-ever shots of iconic landmarks such as the Tetons, Old Faithful and the Colorado Rockies on a late 19th-century expedition through the Yellowstone Basin, conducted by the head of the U.S. Geological and Geographical Survey of the Territories, Ferdinand V. Hayden. The team included a meteorologist, a zoologist, a mineralogist, and an agricultural statistician."
+      },
+      {
+        "key": "B",
+        "content": "Two centuries ago, the idea of preserving nature, rather than exploiting it, was a novel one to many US settlers. One of the turning points in public support for land conservation efforts—and recognizing the magnificence of the Yellowstone region in particular—came in the form of vivid photographs."
+      },
+      {
+        "key": "C",
+        "content": "As an effective Washington operator, Hayden sensed that he could capitalize on the expedition’s stunning visuals. He asked Jackson to print out large copies and distributed them, along with reproductions of Moran's paintings, to each member of Congress. “The visualization, particularly those photographs, really hit home that this is something that has to be protected,” says Alicia Murphy, Yellowstone’s park historian."
+      },
+      {
+        "key": "D",
+        "content": "Throughout the trip, Jackson juggled multiple cameras and plate sizes using the collodion process that involved coating the plates with a chemical mixture, exposing them and developing the resulting images with a portable darkroom. The crude technique required educated guesses on exposure times, and involved heavy, awkward equipment—several men had to assist in its transportation. Despite these challenges, Jackson captured dozens of striking photos, ranging from majestic images like his now-famous snapshot of Old Faithful, to casual portraits of expedition members at the camp. While veterans of previous expeditions had written at length about stunning sights, these vivid photographs were another thing entirely."
+      },
+      {
+        "key": "E",
+        "content": "The journey officially began in Ogden, Utah, on June 8, 1871. Over nearly four months, dozens of men made their way on horseback into Montana and traversed along the Yellowstone River and around Yellowstone Lake. That fall, they concluded the survey in Fort Bridger, Wyoming."
+      },
+      {
+        "key": "F",
+        "content": "Though Native Americans (and later miners and fur trappers) had long recognized the area’s riches, most Americans did not. That’s why Hayden’s expedition aimed to produce a fuller understanding of the Yellowstone River region, from its hot springs and waterfalls to its variety of flora and fauna. In addition to the entourage of scientists, the team also included artists: Painter Thomas Moran and photographer Jackson were charged with capturing this astounding natural beauty and sharing it with the world."
+      },
+      {
+        "key": "G",
+        "content": "The bill proved largely popular and sailed through Congress with large majorities in favor. In quick succession, the Senate and House passed legislation protecting Yellowstone in early 1872. That March, President Ulysses S. Grant signed an act into law that established Yellowstone as the world’s first national park. While some locals opposed the designation, the decision was largely accepted—and Jackson’s photos played a key role in the fight to protect the area. “I don’t believe that the legal protection would have happened in the time frame that it did without those images,” says Heather Hansen, journalist and author of Prophets and Moguls, Rangers and Rogues, Bison and Bears: 100 Years of the National Park Service."
+      },
+      {
+        "key": "H",
+        "content": "Perhaps most importantly, these images provided documentary evidence that later made its way to government officials. Weeks after completing the expedition, Hayden collected his team’s observations into an extensive report aimed at convincing senators and representatives, along with colleagues at government agencies like the Department of the Interior, that Yellowstone ought to be preserved. 41. 42. 43. 44. 45. →A→ → E→ → H → →"
+      }
+    ],
+    "answer": [
+      "F"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "F",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-43",
+    "exam": "english1",
+    "year": 2023,
+    "number": 43,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2023-P-partb",
+    "stem": "根据段落顺序 (41) → A → (42) → E → (43) → H → (44) → (45)，选出第（43）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Last year marked the 150th anniversary of a series of Yellowstone photographs by the renowned landscape photographer William Henry Jackson. Jackson snapped the first-ever shots of iconic landmarks such as the Tetons, Old Faithful and the Colorado Rockies on a late 19th-century expedition through the Yellowstone Basin, conducted by the head of the U.S. Geological and Geographical Survey of the Territories, Ferdinand V. Hayden. The team included a meteorologist, a zoologist, a mineralogist, and an agricultural statistician."
+      },
+      {
+        "key": "B",
+        "content": "Two centuries ago, the idea of preserving nature, rather than exploiting it, was a novel one to many US settlers. One of the turning points in public support for land conservation efforts—and recognizing the magnificence of the Yellowstone region in particular—came in the form of vivid photographs."
+      },
+      {
+        "key": "C",
+        "content": "As an effective Washington operator, Hayden sensed that he could capitalize on the expedition’s stunning visuals. He asked Jackson to print out large copies and distributed them, along with reproductions of Moran's paintings, to each member of Congress. “The visualization, particularly those photographs, really hit home that this is something that has to be protected,” says Alicia Murphy, Yellowstone’s park historian."
+      },
+      {
+        "key": "D",
+        "content": "Throughout the trip, Jackson juggled multiple cameras and plate sizes using the collodion process that involved coating the plates with a chemical mixture, exposing them and developing the resulting images with a portable darkroom. The crude technique required educated guesses on exposure times, and involved heavy, awkward equipment—several men had to assist in its transportation. Despite these challenges, Jackson captured dozens of striking photos, ranging from majestic images like his now-famous snapshot of Old Faithful, to casual portraits of expedition members at the camp. While veterans of previous expeditions had written at length about stunning sights, these vivid photographs were another thing entirely."
+      },
+      {
+        "key": "E",
+        "content": "The journey officially began in Ogden, Utah, on June 8, 1871. Over nearly four months, dozens of men made their way on horseback into Montana and traversed along the Yellowstone River and around Yellowstone Lake. That fall, they concluded the survey in Fort Bridger, Wyoming."
+      },
+      {
+        "key": "F",
+        "content": "Though Native Americans (and later miners and fur trappers) had long recognized the area’s riches, most Americans did not. That’s why Hayden’s expedition aimed to produce a fuller understanding of the Yellowstone River region, from its hot springs and waterfalls to its variety of flora and fauna. In addition to the entourage of scientists, the team also included artists: Painter Thomas Moran and photographer Jackson were charged with capturing this astounding natural beauty and sharing it with the world."
+      },
+      {
+        "key": "G",
+        "content": "The bill proved largely popular and sailed through Congress with large majorities in favor. In quick succession, the Senate and House passed legislation protecting Yellowstone in early 1872. That March, President Ulysses S. Grant signed an act into law that established Yellowstone as the world’s first national park. While some locals opposed the designation, the decision was largely accepted—and Jackson’s photos played a key role in the fight to protect the area. “I don’t believe that the legal protection would have happened in the time frame that it did without those images,” says Heather Hansen, journalist and author of Prophets and Moguls, Rangers and Rogues, Bison and Bears: 100 Years of the National Park Service."
+      },
+      {
+        "key": "H",
+        "content": "Perhaps most importantly, these images provided documentary evidence that later made its way to government officials. Weeks after completing the expedition, Hayden collected his team’s observations into an extensive report aimed at convincing senators and representatives, along with colleagues at government agencies like the Department of the Interior, that Yellowstone ought to be preserved. 41. 42. 43. 44. 45. →A→ → E→ → H → →"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-44",
+    "exam": "english1",
+    "year": 2023,
+    "number": 44,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2023-P-partb",
+    "stem": "根据段落顺序 (41) → A → (42) → E → (43) → H → (44) → (45)，选出第（44）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Last year marked the 150th anniversary of a series of Yellowstone photographs by the renowned landscape photographer William Henry Jackson. Jackson snapped the first-ever shots of iconic landmarks such as the Tetons, Old Faithful and the Colorado Rockies on a late 19th-century expedition through the Yellowstone Basin, conducted by the head of the U.S. Geological and Geographical Survey of the Territories, Ferdinand V. Hayden. The team included a meteorologist, a zoologist, a mineralogist, and an agricultural statistician."
+      },
+      {
+        "key": "B",
+        "content": "Two centuries ago, the idea of preserving nature, rather than exploiting it, was a novel one to many US settlers. One of the turning points in public support for land conservation efforts—and recognizing the magnificence of the Yellowstone region in particular—came in the form of vivid photographs."
+      },
+      {
+        "key": "C",
+        "content": "As an effective Washington operator, Hayden sensed that he could capitalize on the expedition’s stunning visuals. He asked Jackson to print out large copies and distributed them, along with reproductions of Moran's paintings, to each member of Congress. “The visualization, particularly those photographs, really hit home that this is something that has to be protected,” says Alicia Murphy, Yellowstone’s park historian."
+      },
+      {
+        "key": "D",
+        "content": "Throughout the trip, Jackson juggled multiple cameras and plate sizes using the collodion process that involved coating the plates with a chemical mixture, exposing them and developing the resulting images with a portable darkroom. The crude technique required educated guesses on exposure times, and involved heavy, awkward equipment—several men had to assist in its transportation. Despite these challenges, Jackson captured dozens of striking photos, ranging from majestic images like his now-famous snapshot of Old Faithful, to casual portraits of expedition members at the camp. While veterans of previous expeditions had written at length about stunning sights, these vivid photographs were another thing entirely."
+      },
+      {
+        "key": "E",
+        "content": "The journey officially began in Ogden, Utah, on June 8, 1871. Over nearly four months, dozens of men made their way on horseback into Montana and traversed along the Yellowstone River and around Yellowstone Lake. That fall, they concluded the survey in Fort Bridger, Wyoming."
+      },
+      {
+        "key": "F",
+        "content": "Though Native Americans (and later miners and fur trappers) had long recognized the area’s riches, most Americans did not. That’s why Hayden’s expedition aimed to produce a fuller understanding of the Yellowstone River region, from its hot springs and waterfalls to its variety of flora and fauna. In addition to the entourage of scientists, the team also included artists: Painter Thomas Moran and photographer Jackson were charged with capturing this astounding natural beauty and sharing it with the world."
+      },
+      {
+        "key": "G",
+        "content": "The bill proved largely popular and sailed through Congress with large majorities in favor. In quick succession, the Senate and House passed legislation protecting Yellowstone in early 1872. That March, President Ulysses S. Grant signed an act into law that established Yellowstone as the world’s first national park. While some locals opposed the designation, the decision was largely accepted—and Jackson’s photos played a key role in the fight to protect the area. “I don’t believe that the legal protection would have happened in the time frame that it did without those images,” says Heather Hansen, journalist and author of Prophets and Moguls, Rangers and Rogues, Bison and Bears: 100 Years of the National Park Service."
+      },
+      {
+        "key": "H",
+        "content": "Perhaps most importantly, these images provided documentary evidence that later made its way to government officials. Weeks after completing the expedition, Hayden collected his team’s observations into an extensive report aimed at convincing senators and representatives, along with colleagues at government agencies like the Department of the Interior, that Yellowstone ought to be preserved. 41. 42. 43. 44. 45. →A→ → E→ → H → →"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-45",
+    "exam": "english1",
+    "year": 2023,
+    "number": 45,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2023-P-partb",
+    "stem": "根据段落顺序 (41) → A → (42) → E → (43) → H → (44) → (45)，选出第（45）处的段落。",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Last year marked the 150th anniversary of a series of Yellowstone photographs by the renowned landscape photographer William Henry Jackson. Jackson snapped the first-ever shots of iconic landmarks such as the Tetons, Old Faithful and the Colorado Rockies on a late 19th-century expedition through the Yellowstone Basin, conducted by the head of the U.S. Geological and Geographical Survey of the Territories, Ferdinand V. Hayden. The team included a meteorologist, a zoologist, a mineralogist, and an agricultural statistician."
+      },
+      {
+        "key": "B",
+        "content": "Two centuries ago, the idea of preserving nature, rather than exploiting it, was a novel one to many US settlers. One of the turning points in public support for land conservation efforts—and recognizing the magnificence of the Yellowstone region in particular—came in the form of vivid photographs."
+      },
+      {
+        "key": "C",
+        "content": "As an effective Washington operator, Hayden sensed that he could capitalize on the expedition’s stunning visuals. He asked Jackson to print out large copies and distributed them, along with reproductions of Moran's paintings, to each member of Congress. “The visualization, particularly those photographs, really hit home that this is something that has to be protected,” says Alicia Murphy, Yellowstone’s park historian."
+      },
+      {
+        "key": "D",
+        "content": "Throughout the trip, Jackson juggled multiple cameras and plate sizes using the collodion process that involved coating the plates with a chemical mixture, exposing them and developing the resulting images with a portable darkroom. The crude technique required educated guesses on exposure times, and involved heavy, awkward equipment—several men had to assist in its transportation. Despite these challenges, Jackson captured dozens of striking photos, ranging from majestic images like his now-famous snapshot of Old Faithful, to casual portraits of expedition members at the camp. While veterans of previous expeditions had written at length about stunning sights, these vivid photographs were another thing entirely."
+      },
+      {
+        "key": "E",
+        "content": "The journey officially began in Ogden, Utah, on June 8, 1871. Over nearly four months, dozens of men made their way on horseback into Montana and traversed along the Yellowstone River and around Yellowstone Lake. That fall, they concluded the survey in Fort Bridger, Wyoming."
+      },
+      {
+        "key": "F",
+        "content": "Though Native Americans (and later miners and fur trappers) had long recognized the area’s riches, most Americans did not. That’s why Hayden’s expedition aimed to produce a fuller understanding of the Yellowstone River region, from its hot springs and waterfalls to its variety of flora and fauna. In addition to the entourage of scientists, the team also included artists: Painter Thomas Moran and photographer Jackson were charged with capturing this astounding natural beauty and sharing it with the world."
+      },
+      {
+        "key": "G",
+        "content": "The bill proved largely popular and sailed through Congress with large majorities in favor. In quick succession, the Senate and House passed legislation protecting Yellowstone in early 1872. That March, President Ulysses S. Grant signed an act into law that established Yellowstone as the world’s first national park. While some locals opposed the designation, the decision was largely accepted—and Jackson’s photos played a key role in the fight to protect the area. “I don’t believe that the legal protection would have happened in the time frame that it did without those images,” says Heather Hansen, journalist and author of Prophets and Moguls, Rangers and Rogues, Bison and Bears: 100 Years of the National Park Service."
+      },
+      {
+        "key": "H",
+        "content": "Perhaps most importantly, these images provided documentary evidence that later made its way to government officials. Weeks after completing the expedition, Hayden collected his team’s observations into an extensive report aimed at convincing senators and representatives, along with colleagues at government agencies like the Department of the Interior, that Yellowstone ought to be preserved. 41. 42. 43. 44. 45. →A→ → E→ → H → →"
+      }
+    ],
+    "answer": [
+      "G"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/段落排序"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "G",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-46",
+    "exam": "english1",
+    "year": 2023,
+    "number": 46,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2023-P-translation",
+    "stem": "AI can also be used to identify the lifestyle choices of customers regarding their hobbies, favourite celebrities, and fashions to provide unique content in marketing messages put out through social media.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "人工智能也可用于识别客户的生活方式选择，包括他们的兴趣爱好、最喜爱的名人和时尚风格，进而可以通过社交媒体向客户投放针对性的营销内容。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-47",
+    "exam": "english1",
+    "year": 2023,
+    "number": 47,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2023-P-translation",
+    "stem": "Some believe that AI is negatively impacting on the marketer’s role by reducing creativity and removing jobs, but they are aware that it is a way of reducing costs and creating new information.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "有些人认为，人工智能通过降低创新能力和取消工作岗位正在对营销人员的角色产生负面影响，但他们也意识到这是一种削减成本和创造新内容的方式。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-48",
+    "exam": "english1",
+    "year": 2023,
+    "number": 48,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2023-P-translation",
+    "stem": "Algorithms used to simulate human interactions are creating many of these concerns, especially as no-one is quite sure what the outcomes of using AI to interact with customers will be.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "用于模拟人类互动的算法正在引发许多这样的担忧，尤其是因为没有人能十分确定使用人工智能与客户互动会带来什么结果。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-49",
+    "exam": "english1",
+    "year": 2023,
+    "number": 49,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2023-P-translation",
+    "stem": "If customers are not willing to share data, AI will be starved of essential information and will not be able to function effectively or employ machine learning to improve its marketing content and communication.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "如果客户不愿分享数据，人工智能便会缺乏必要信息，以至于无法有效地运作，也无法运用机器学习来改进其营销内容和传播策略。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-50",
+    "exam": "english1",
+    "year": 2023,
+    "number": 50,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2023-P-translation",
+    "stem": "The non-intrusive delivery of the marketing messages in a way that is sensitive to the needs of target customers is one of the critical challenges to the digital marketer.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "用一种对目标客户的需求保持敏感的方式非侵入性地传递营销信息是数字营销人员面临的关键挑战之一。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-51",
+    "exam": "english1",
+    "year": 2023,
+    "number": 51,
+    "section": "writing_a",
+    "type": "essay",
+    "score": 10.0,
+    "passage_id": null,
+    "stem": "Write a notice to recruit a student for Prof. Smith’s research project on campus sports activities. Specify the duties and requirements of the job.\nWrite your answer in about 100 words on the ANSWER SHEET.\nDo not use your own name in the notice; use “Li Ming” instead. (10 points)",
+    "images": [],
+    "options": [],
+    "answer": [
+      "Notice\n\nProfessor Smith is currently looking for an assistant for his research project on campus sports activities, which aims to reveal factors affecting students' sports preferences.\n\nOnce recruited, the assistant will be asked to distribute questionnaires to random students on campus and persuade them to fill it out. After collecting sufficient raw data, the assistant will need to build a database based on them and carry out further analysis of them. Hence, the prospective candidate is expected to exhibit good communication and analytical skills. The research project lasts about a month, during which the assistant can receive an hourly wage of 40 yuan.\n\nThis is a great opportunity to gain invaluable research experience. If the research project matches your academic interest, please feel free to apply by sending your résumé to profsmith@uni.com.\n\nLi Ming"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/小作文（书信、通知等）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2023-52",
+    "exam": "english1",
+    "year": 2023,
+    "number": 52,
+    "section": "writing_b",
+    "type": "essay",
+    "score": 20.0,
+    "passage_id": null,
+    "stem": "Write an essay based on the picture below. In your essay, you should\n1) describe the picture briefly,\n2) interpret the implied meaning, and\n3) give your comments.\nWrite your answer in 160-200 words on the ANSWER SHEET. (20 points)",
+    "images": [
+      "images/english1-2023/q52.jpg"
+    ],
+    "options": [],
+    "answer": [
+      "In the picture, two teams of dragon boat racers are paddling vigorously through the water, with crowds both on the bridge and along the banks cheering them on. Delighted by this scene, an elderly lady says to her spouse, “It is really wonderful that the dragon boat racing in our village is becoming increasingly popular and exciting!”\n\nThe picture demonstrates the public's great interest in traditional Chinese culture and customs. Nowadays, many Chinese people participate in various cultural activities either during special festivals or in daily life, from which they not only derive pleasure but also acquire deeper knowledge about their own history and culture. Moreover, these activities help provide further impetus for rural revitalization. For example, villagers promote intangible cultural heritage through sports events, art performances or craft fairs in an effort to attract visitors from far and wide.\n\nIn summary, holding cultural events in the countryside is a commendable and sustainable way both to keep time-honored cultural traditions alive and to facilitate rural development. We, as the younger generation, are also responsible for doing what we can to preserve Chinese culture and give back to our hometown."
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/大作文（图画作文）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2023-1/2023-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  }
+]

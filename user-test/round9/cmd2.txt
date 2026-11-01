@@ -1,0 +1,21 @@
+event: step
+data: {"type":"step","command_id":"35c425b7-19bf-4ab8-a4cf-22bb50614829","text":"收到：「今天做错的题，明天排 1 道」"}
+
+event: step
+data: {"type":"step","command_id":"35c425b7-19bf-4ab8-a4cf-22bb50614829","text":"正在翻你的错题本","tool":"getWrongQuestions"}
+
+event: step
+data: {"type":"step","command_id":"35c425b7-19bf-4ab8-a4cf-22bb50614829","text":"按做错的日子筛：今天（11-01）做错的题有 1 道"}
+
+event: step
+data: {"type":"step","command_id":"35c425b7-19bf-4ab8-a4cf-22bb50614829","text":"要排 1 道重做错题，对照明天（11-02）的计划","tool":"updateDailyPlan"}
+
+event: action
+data: {"type":"action","command_id":"35c425b7-19bf-4ab8-a4cf-22bb50614829","action":{"id":"376f2805-bffb-4a38-84be-6116f1aed89f","command_id":"35c425b7-19bf-4ab8-a4cf-22bb50614829","group_id":"35c425b7-19bf-4ab8-a4cf-22bb50614829","trigger":"command","tool":"updateDailyPlan","summary":"在 11-02 的计划里加了「重做 1 道错题」","reason":"是从今天（11-01）做错的题里挑的。","target":{"kind":"plan_task","id":"12462a3f-6bc2-4dff-895c-546e9b03fb83"},"before":null,"after":{"id":"12462a3f-6bc2-4dff-895c-546e9b03fb83","kind":"redo_wrong","title":"重做 1 道错题","status":"todo","payload":{"question_ids":["math1-2024-01"]},"plan_id":"dab5c5e7-0e59-4d9b-9f9f-b1c4eb410e6f","sort_order":-2,"updated_at":"2026-11-01T15:53:10.728Z","quantity_to":1,"why_changed":null,"completed_at":null,"quantity_from":0,"agent_action_id":null,"changed_by_agent":true,"estimated_minutes":8},"undoable":true,"undone_at":null,"created_at":"2026-11-01T15:53:10.728Z","forced":false}}
+
+event: action
+data: {"type":"action","command_id":"35c425b7-19bf-4ab8-a4cf-22bb50614829","action":{"id":"7c373708-cad5-47eb-93f9-3d8956c2daab","command_id":"35c425b7-19bf-4ab8-a4cf-22bb50614829","group_id":"35c425b7-19bf-4ab8-a4cf-22bb50614829","trigger":"command","tool":"updateDailyPlan","summary":"更新了 11-02 计划的说明","reason":"是从今天（11-01）做错的题里挑的。","target":{"kind":"plan","id":"dab5c5e7-0e59-4d9b-9f9f-b1c4eb410e6f"},"before":{"why_changed":"演示建议：还没有足够的作答数据，先加 5 道基础题热身。","changed_by_agent":true},"after":{"why_changed":"是从今天（11-01）做错的题里挑的。","changed_by_agent":true},"undoable":true,"undone_at":null,"created_at":"2026-11-01T15:53:10.728Z","forced":false}}
+
+event: done
+data: {"type":"done","command_id":"35c425b7-19bf-4ab8-a4cf-22bb50614829","summary":"在 11-02 的计划里加了「重做 1 道错题」；更新了 11-02 计划的说明（是从今天（11-01）做错的题里挑的）","mock":true,"reply":"已改明天（11-02）的计划：重做 1 道错题。是从今天（11-01）做错的题里挑的。","action_count":2,"deduped":false,"date":"2026-11-02","quantity_from":0,"quantity_to":1,"question_id":null}
+

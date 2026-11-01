@@ -1,0 +1,18 @@
+{"id": "math1-2020-20", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "资料重写的（Ⅱ）推导正确：Q1、Q2 特征向量与 B=(Q1Q2ᵀ)ᵀA(Q1Q2ᵀ) 都对。", "at": "2026-11-01T06:13-08:00"}
+{"id": "math1-2020-23", "kind": "official_solution", "result": "pass", "by": "行业专家", "note": "补回内容正确，无残留乱码。", "at": "2026-11-01T06:13-08:00"}
+{"id": "math1-2020-01", "kind": "official_solution", "result": "fail", "by": "用户", "note": "2 OCR 错误（对照解析 PDF 图）：方法点评【例1】中间一步「\\lim\\frac{\\int_0^x f(x-t)dt}{x^n}」漏了 t，应为 ∫_0^x t f(x−t)dt；分子「x∫_0^x f(u)du − ∫_0^x f(u)du」漏了 u，应为 −∫_0^x u f(u)du。【例2】题目写成 ∫_0^{e^x−1}，应为 ∫_0^{e^{x²}−1}。 （已对照 origin_2020.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2020-02", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2020.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2020-03", "kind": "official_solution", "result": "pass", "by": "用户", "note": "选项里的 n 建议统一加粗。 （已对照 origin_2020.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2020-04", "kind": "official_solution", "result": "fail", "by": "用户", "note": "3 跳步：「当 |x|<R 时级数绝对收敛，进而 ∑a_{2n}r^{2n} 收敛」缺了「当 |r|<R 时，∑|a_{2n}r^{2n}| 是 ∑|a_n r^n| 的子级数」这一步；这题是陷阱题，B/C/D 没给反例。 （已对照 origin_2020.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2020-05", "kind": "official_solution", "result": "fail", "by": "用户", "note": "2 OCR 错误：「A = B_t^{-1}…P_2^{-1}P_1^{-1}」应为「A = B P_t^{-1}…P_2^{-1}P_1^{-1}」（解析 PDF 图如此）。 （已对照 origin_2020.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2020-06", "kind": "official_solution", "result": "fail", "by": "用户", "note": "8/2 OCR 损坏：「L_1: \\binom{x}{y}=x_{2}+t\\alpha_1」应为 L_1: (x,y,z)ᵀ = α2 + tα1（三行列向量）。 （已对照 origin_2020.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2020-07", "kind": "official_solution", "result": "fail", "by": "用户", "note": "2 OCR 错误：最后一行「P(A\\bar B\\bar C)+P(\\bar A BC)+P(\\overline{ABC})」应为 P(A\\bar B\\bar C)+P(\\bar A B\\bar C)+P(\\bar A\\bar B C)。 （已对照 origin_2020.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2020-08", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2020.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2020-09", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2020.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2020-10", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2020.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2020-11", "kind": "official_solution", "result": "fail", "by": "用户", "note": "2/3 推理漏情形：由 λ1+λ2=−a<0、λ1λ2=1 推出「λ1<0, λ2<0」只在 a>2 时成立；0<a<2 是共轭复根（实部 −a/2<0），a=2 是重根，这两种情况 f 的形式不同（原 PDF 就漏了）。结论 n+am 不变，但应补「三种情况根的实部都为负，所以 f、f'→0」。 （已对照 origin_2020.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2020-12", "kind": "official_solution", "result": "fail", "by": "用户", "note": "8 渲染错误：「\\int_0^{x^{\\frac{3}{2} y}}」把 y 放进了指数，应为 \\int_0^{x^{\\frac{3}{2}}y}（第一行和 ∂f/∂x 里两处）。 （已对照 origin_2020.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2020-13", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2020.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2020-14", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2020.pdf 解析图）", "at": "2026-11-01T06:19-08:00"}
+{"id": "math1-2020-04", "kind": "expert", "result": "pass", "status": "confirmed", "by": "用户", "note": "合格。A 用逆否命题，B/C 反例（奇数项为 1、偶数项为 0，R=1，r=2）与 D 反例（a_n=1，r=1）均成立。", "at": "2026-11-01T06:26-08:00"}
+{"id": "math1-2020-11", "kind": "expert", "result": "pass", "status": "confirmed", "by": "用户", "note": "合格。SymPy 对 a=3、2、1 三种情况求解析解再积分，分别得 n+3m、n+2m、n+m，与 n+am 一致；三种根的衰减论证完整。", "at": "2026-11-01T06:26-08:00"}

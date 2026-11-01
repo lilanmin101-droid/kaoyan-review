@@ -1,0 +1,60 @@
+{"id": "math1-2015-01", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "f''(x) 图原被识别到第 2 题题干后，已挪回第 1 题，请对原图"}
+{"id": "math1-2015-02", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-03", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-04", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "选项 C、D 原粘连，已拆开"}
+{"id": "math1-2015-05", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-06", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-07", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-08", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-09", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-10", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-11", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-12", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-13", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-14", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-15", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-16", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-17", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "解析里驻点方程组的解识别坏了，已重写为四个点"}
+{"id": "math1-2015-18", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-19", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-20", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "解析末尾坐标向量原截断成两行，已补成三维"}
+{"id": "math1-2015-21", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-22", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-23", "status": "pending", "by": "资料/仓库搜索者", "at": "2026-11-01T22:21:33+08:00", "note": "已清洗，答案与官方解析一致"}
+{"id": "math1-2015-15", "status": "confirmed", "by": "行业专家", "note": "泰勒展开得 a=−1, b=−1/2，三次项系数 −1/3=k，一致。", "at": "2026-11-01T06:22-08:00"}
+{"id": "math1-2015-16", "status": "confirmed", "by": "行业专家", "note": "切线围成面积 f²/(2f')=4 ⇒ f'=f²/8，f=8/(4−x)，代回验证一致。", "at": "2026-11-01T06:22-08:00"}
+{"id": "math1-2015-17", "status": "confirmed", "by": "行业专家", "note": "|grad f|²=(1+x)²+(1+y)² 在 C 上的条件极值，驻点 (1,1)(−1,−1)(2,−1)(−1,2)，最大值 3，与资料重写的四个点一致。", "at": "2026-11-01T06:22-08:00"}
+{"id": "math1-2015-18", "status": "confirmed", "by": "行业专家", "note": "（Ⅰ）证明题；（Ⅱ）n 个函数乘积的求导公式正确。", "at": "2026-11-01T06:22-08:00"}
+{"id": "math1-2015-19", "status": "confirmed", "by": "行业专家", "note": "参数化 x=z=cos t, y=√2 sin t（t 从 π/2 到 −π/2）直接计算得 √2π/2，一致。", "at": "2026-11-01T06:22-08:00"}
+{"id": "math1-2015-20", "status": "confirmed", "by": "行业专家", "note": "过渡矩阵行列式 4≠0 所以是基；det(C−E)=−k ⇒ k=0，ξ=C(α3−α1)，与补全的 C(−1,0,1)ᵀ 一致。", "at": "2026-11-01T06:22-08:00"}
+{"id": "math1-2015-21", "status": "confirmed", "by": "行业专家", "note": "a=4, b=5（迹与行列式），P 可逆且 P⁻¹AP=diag(1,1,5)，sympy 一致；P 不唯一。", "at": "2026-11-01T06:22-08:00"}
+{"id": "math1-2015-22", "status": "confirmed", "by": "行业专家", "note": "p=P(X>3)=1/8，负二项分布，E(Y)=2/p=16，一致。", "at": "2026-11-01T06:22-08:00"}
+{"id": "math1-2015-23", "status": "confirmed", "by": "行业专家", "note": "矩估计 2X̄−1，MLE min Xi，一致。", "at": "2026-11-01T06:22-08:00"}
+{"id": "math1-2015-01", "status": "pending", "by": "用户", "at": "2026-11-01T06:24-08:00", "answer_verified": true, "image_checked": false, "note": "答案 C 用 sympy/独立求解，结果一致。没有对照原卷图片：仓库没有原卷整页图，origin_2015.pdf 只有解析。题干已和 paper_2015.md、blog.ccyg.studio 2015 真题页、解析 PDF 图三方比对，结果一致。附图已查看：f''(x) 图现在挂在 Q1（Q1 images 字段有 c6f9…jpg，Q2 题干里已没有图片引用）。图中左侧零点相切不变号，x=0 处 f'' 不存在且两侧异号，右侧零点穿过，共 2 个拐点，与答案 C 一致。", "figure_checked": true}
+{"id": "math1-2015-02", "status": "pending", "by": "用户", "at": "2026-11-01T06:24-08:00", "answer_verified": true, "image_checked": false, "note": "答案 A 用 sympy/独立求解，结果一致。没有对照原卷图片：仓库没有原卷整页图，origin_2015.pdf 只有解析。题干已和 paper_2015.md、blog.ccyg.studio 2015 真题页、解析 PDF 图三方比对，结果一致。"}
+{"id": "math1-2015-03", "status": "pending", "by": "用户", "at": "2026-11-01T06:24-08:00", "answer_verified": true, "image_checked": false, "note": "答案 B 用 sympy/独立求解，结果一致。没有对照原卷图片：仓库没有原卷整页图，origin_2015.pdf 只有解析。题干已和 paper_2015.md、blog.ccyg.studio 2015 真题页、解析 PDF 图三方比对，结果一致。"}
+{"id": "math1-2015-04", "status": "pending", "by": "用户", "at": "2026-11-01T06:24-08:00", "answer_verified": true, "image_checked": false, "note": "答案 B 用 sympy/独立求解，结果一致。没有对照原卷图片：仓库没有原卷整页图，origin_2015.pdf 只有解析。题干已和 paper_2015.md、blog.ccyg.studio 2015 真题页、解析 PDF 图三方比对，结果一致。选项 C/D 拆分正确：C=∫dθ∫_{1/(2sin2θ)}^{1/sin2θ} f dr，D=∫dθ∫_{1/√(2sin2θ)}^{1/√(sin2θ)} f dr（都没有 r），和 ccyg 2015 页一致；A/B 带 r。"}
+{"id": "math1-2015-05", "status": "pending", "by": "用户", "at": "2026-11-01T06:24-08:00", "answer_verified": true, "image_checked": false, "note": "答案 D 用 sympy/独立求解，结果一致。没有对照原卷图片：仓库没有原卷整页图，origin_2015.pdf 只有解析。题干已和 paper_2015.md、blog.ccyg.studio 2015 真题页、解析 PDF 图三方比对，结果一致。"}
+{"id": "math1-2015-06", "status": "pending", "by": "用户", "at": "2026-11-01T06:24-08:00", "answer_verified": true, "image_checked": false, "note": "答案 A 用 sympy/独立求解，结果一致。没有对照原卷图片：仓库没有原卷整页图，origin_2015.pdf 只有解析。题干已和 paper_2015.md、blog.ccyg.studio 2015 真题页、解析 PDF 图三方比对，结果一致。"}
+{"id": "math1-2015-07", "status": "pending", "by": "用户", "at": "2026-11-01T06:24-08:00", "answer_verified": true, "image_checked": false, "note": "答案 C 用 sympy/独立求解，结果一致。没有对照原卷图片：仓库没有原卷整页图，origin_2015.pdf 只有解析。题干已和 paper_2015.md、blog.ccyg.studio 2015 真题页、解析 PDF 图三方比对，结果一致。"}
+{"id": "math1-2015-08", "status": "pending", "by": "用户", "at": "2026-11-01T06:24-08:00", "answer_verified": true, "image_checked": false, "note": "答案 D 用 sympy/独立求解，结果一致。没有对照原卷图片：仓库没有原卷整页图，origin_2015.pdf 只有解析。题干已和 paper_2015.md、blog.ccyg.studio 2015 真题页、解析 PDF 图三方比对，结果一致。"}
+{"id": "math1-2015-09", "status": "pending", "by": "用户", "at": "2026-11-01T06:24-08:00", "answer_verified": true, "image_checked": false, "note": "答案 -1/2 用 sympy/独立求解，结果一致。没有对照原卷图片：仓库没有原卷整页图，origin_2015.pdf 只有解析。题干已和 paper_2015.md、blog.ccyg.studio 2015 真题页、解析 PDF 图三方比对，结果一致。"}
+{"id": "math1-2015-10", "status": "pending", "by": "用户", "at": "2026-11-01T06:24-08:00", "answer_verified": true, "image_checked": false, "note": "答案 π²/4 用 sympy/独立求解，结果一致。没有对照原卷图片：仓库没有原卷整页图，origin_2015.pdf 只有解析。题干已和 paper_2015.md、blog.ccyg.studio 2015 真题页、解析 PDF 图三方比对，结果一致。"}
+{"id": "math1-2015-11", "status": "pending", "by": "用户", "at": "2026-11-01T06:24-08:00", "answer_verified": true, "image_checked": false, "note": "答案 -dx 用 sympy/独立求解，结果一致。没有对照原卷图片：仓库没有原卷整页图，origin_2015.pdf 只有解析。题干已和 paper_2015.md、blog.ccyg.studio 2015 真题页、解析 PDF 图三方比对，结果一致。"}
+{"id": "math1-2015-12", "status": "pending", "by": "用户", "at": "2026-11-01T06:24-08:00", "answer_verified": true, "image_checked": false, "note": "答案 1/4 用 sympy/独立求解，结果一致。没有对照原卷图片：仓库没有原卷整页图，origin_2015.pdf 只有解析。题干已和 paper_2015.md、blog.ccyg.studio 2015 真题页、解析 PDF 图三方比对，结果一致。"}
+{"id": "math1-2015-13", "status": "pending", "by": "用户", "at": "2026-11-01T06:24-08:00", "answer_verified": true, "image_checked": false, "note": "答案 2^{n+1}-2 用 sympy/独立求解，结果一致。没有对照原卷图片：仓库没有原卷整页图，origin_2015.pdf 只有解析。题干已和 paper_2015.md、blog.ccyg.studio 2015 真题页、解析 PDF 图三方比对，结果一致。"}
+{"id": "math1-2015-14", "status": "pending", "by": "用户", "at": "2026-11-01T06:24-08:00", "answer_verified": true, "image_checked": false, "note": "答案 1/2 用 sympy/独立求解，结果一致。没有对照原卷图片：仓库没有原卷整页图，origin_2015.pdf 只有解析。题干已和 paper_2015.md、blog.ccyg.studio 2015 真题页、解析 PDF 图三方比对，结果一致。"}
+{"id": "math1-2015-01", "status": "confirmed", "by": "用户", "at": "2026-11-01T06:25-08:00", "answer_verified": true, "image_checked": false, "stem_check": "text_triangulated", "note": "按统筹者规则：无原卷题干图，三方文本比对一致且答案独立验算通过，转 confirmed；日后补到原图再对图复核。"}
+{"id": "math1-2015-02", "status": "confirmed", "by": "用户", "at": "2026-11-01T06:25-08:00", "answer_verified": true, "image_checked": false, "stem_check": "text_triangulated", "note": "按统筹者规则：无原卷题干图，三方文本比对一致且答案独立验算通过，转 confirmed；日后补到原图再对图复核。"}
+{"id": "math1-2015-03", "status": "confirmed", "by": "用户", "at": "2026-11-01T06:25-08:00", "answer_verified": true, "image_checked": false, "stem_check": "text_triangulated", "note": "按统筹者规则：无原卷题干图，三方文本比对一致且答案独立验算通过，转 confirmed；日后补到原图再对图复核。"}
+{"id": "math1-2015-04", "status": "confirmed", "by": "用户", "at": "2026-11-01T06:25-08:00", "answer_verified": true, "image_checked": false, "stem_check": "text_triangulated", "note": "按统筹者规则：无原卷题干图，三方文本比对一致且答案独立验算通过，转 confirmed；日后补到原图再对图复核。"}
+{"id": "math1-2015-05", "status": "confirmed", "by": "用户", "at": "2026-11-01T06:25-08:00", "answer_verified": true, "image_checked": false, "stem_check": "text_triangulated", "note": "按统筹者规则：无原卷题干图，三方文本比对一致且答案独立验算通过，转 confirmed；日后补到原图再对图复核。"}
+{"id": "math1-2015-06", "status": "confirmed", "by": "用户", "at": "2026-11-01T06:25-08:00", "answer_verified": true, "image_checked": false, "stem_check": "text_triangulated", "note": "按统筹者规则：无原卷题干图，三方文本比对一致且答案独立验算通过，转 confirmed；日后补到原图再对图复核。"}
+{"id": "math1-2015-07", "status": "confirmed", "by": "用户", "at": "2026-11-01T06:25-08:00", "answer_verified": true, "image_checked": false, "stem_check": "text_triangulated", "note": "按统筹者规则：无原卷题干图，三方文本比对一致且答案独立验算通过，转 confirmed；日后补到原图再对图复核。"}
+{"id": "math1-2015-08", "status": "confirmed", "by": "用户", "at": "2026-11-01T06:25-08:00", "answer_verified": true, "image_checked": false, "stem_check": "text_triangulated", "note": "按统筹者规则：无原卷题干图，三方文本比对一致且答案独立验算通过，转 confirmed；日后补到原图再对图复核。"}
+{"id": "math1-2015-09", "status": "confirmed", "by": "用户", "at": "2026-11-01T06:25-08:00", "answer_verified": true, "image_checked": false, "stem_check": "text_triangulated", "note": "按统筹者规则：无原卷题干图，三方文本比对一致且答案独立验算通过，转 confirmed；日后补到原图再对图复核。"}
+{"id": "math1-2015-10", "status": "confirmed", "by": "用户", "at": "2026-11-01T06:25-08:00", "answer_verified": true, "image_checked": false, "stem_check": "text_triangulated", "note": "按统筹者规则：无原卷题干图，三方文本比对一致且答案独立验算通过，转 confirmed；日后补到原图再对图复核。"}
+{"id": "math1-2015-11", "status": "confirmed", "by": "用户", "at": "2026-11-01T06:25-08:00", "answer_verified": true, "image_checked": false, "stem_check": "text_triangulated", "note": "按统筹者规则：无原卷题干图，三方文本比对一致且答案独立验算通过，转 confirmed；日后补到原图再对图复核。"}
+{"id": "math1-2015-12", "status": "confirmed", "by": "用户", "at": "2026-11-01T06:25-08:00", "answer_verified": true, "image_checked": false, "stem_check": "text_triangulated", "note": "按统筹者规则：无原卷题干图，三方文本比对一致且答案独立验算通过，转 confirmed；日后补到原图再对图复核。"}
+{"id": "math1-2015-13", "status": "confirmed", "by": "用户", "at": "2026-11-01T06:25-08:00", "answer_verified": true, "image_checked": false, "stem_check": "text_triangulated", "note": "按统筹者规则：无原卷题干图，三方文本比对一致且答案独立验算通过，转 confirmed；日后补到原图再对图复核。"}
+{"id": "math1-2015-14", "status": "confirmed", "by": "用户", "at": "2026-11-01T06:25-08:00", "answer_verified": true, "image_checked": false, "stem_check": "text_triangulated", "note": "按统筹者规则：无原卷题干图，三方文本比对一致且答案独立验算通过，转 confirmed；日后补到原图再对图复核。"}

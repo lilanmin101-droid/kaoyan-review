@@ -1,0 +1,188 @@
+{
+ "source": "math1_2024.json",
+ "note": "行业专家按题干初标；medium/low 需等题干修复后复核，none 为题干缺失暂无法标注",
+ "tags": [
+  {
+   "number": 1,
+   "knowledge_points": [
+    "高等数学/一元函数积分学/变限积分"
+   ],
+   "confidence": "high"
+  },
+  {
+   "number": 2,
+   "knowledge_points": [
+    "高等数学/多元函数积分学/第二类曲面积分与高斯公式"
+   ],
+   "confidence": "high"
+  },
+  {
+   "number": 3,
+   "knowledge_points": [
+    "高等数学/无穷级数/函数的幂级数展开",
+    "高等数学/无穷级数/幂级数的收敛域与和函数"
+   ],
+   "confidence": "high"
+  },
+  {
+   "number": 4,
+   "knowledge_points": [
+    "高等数学/一元函数微分学/导数与微分的概念",
+    "高等数学/函数、极限、连续/函数极限"
+   ],
+   "confidence": "medium"
+  },
+  {
+   "number": 5,
+   "knowledge_points": [
+    "线性代数/线性方程组/非齐次方程组的解",
+    "高等数学/向量代数与空间解析几何/位置关系与距离"
+   ],
+   "confidence": "medium"
+  },
+  {
+   "number": 6,
+   "knowledge_points": [],
+   "confidence": "none"
+  },
+  {
+   "number": 7,
+   "knowledge_points": [
+    "线性代数/矩阵/矩阵的秩",
+    "线性代数/线性方程组/齐次方程组的解"
+   ],
+   "confidence": "medium"
+  },
+  {
+   "number": 8,
+   "knowledge_points": [
+    "概率论与数理统计/多维随机变量及其分布/两个随机变量函数的分布",
+    "概率论与数理统计/随机变量及其分布/连续型随机变量与常见分布"
+   ],
+   "confidence": "medium"
+  },
+  {
+   "number": 9,
+   "knowledge_points": [
+    "概率论与数理统计/随机变量及其分布/连续型随机变量与常见分布",
+    "概率论与数理统计/随机变量的数字特征/数学期望"
+   ],
+   "confidence": "medium"
+  },
+  {
+   "number": 10,
+   "knowledge_points": [
+    "概率论与数理统计/多维随机变量及其分布/两个随机变量函数的分布"
+   ],
+   "confidence": "high"
+  },
+  {
+   "number": 11,
+   "knowledge_points": [
+    "高等数学/函数、极限、连续/未定式极限（洛必达、泰勒）"
+   ],
+   "confidence": "high"
+  },
+  {
+   "number": 12,
+   "knowledge_points": [],
+   "confidence": "none"
+  },
+  {
+   "number": 13,
+   "knowledge_points": [
+    "高等数学/无穷级数/傅里叶级数"
+   ],
+   "confidence": "high"
+  },
+  {
+   "number": 14,
+   "knowledge_points": [
+    "高等数学/常微分方程/一阶微分方程"
+   ],
+   "confidence": "high"
+  },
+  {
+   "number": 15,
+   "knowledge_points": [
+    "线性代数/特征值与特征向量/相似矩阵"
+   ],
+   "confidence": "low"
+  },
+  {
+   "number": 16,
+   "knowledge_points": [
+    "概率论与数理统计/随机事件和概率/条件概率与乘法公式",
+    "概率论与数理统计/随机事件和概率/事件的独立性"
+   ],
+   "confidence": "high"
+  },
+  {
+   "number": 17,
+   "knowledge_points": [
+    "高等数学/多元函数积分学/二重积分"
+   ],
+   "confidence": "high"
+  },
+  {
+   "number": 18,
+   "knowledge_points": [
+    "高等数学/多元函数微分学/多元函数极值与条件极值"
+   ],
+   "confidence": "high"
+  },
+  {
+   "number": 19,
+   "knowledge_points": [
+    "高等数学/一元函数微分学/微分中值定理",
+    "高等数学/一元函数微分学/泰勒公式"
+   ],
+   "confidence": "medium"
+  },
+  {
+   "number": 20,
+   "knowledge_points": [
+    "高等数学/多元函数积分学/斯托克斯公式",
+    "高等数学/多元函数积分学/第二类曲线积分与格林公式"
+   ],
+   "confidence": "medium"
+  },
+  {
+   "number": 21,
+   "knowledge_points": [
+    "线性代数/特征值与特征向量/矩阵的相似对角化",
+    "线性代数/矩阵/矩阵运算"
+   ],
+   "confidence": "medium"
+  },
+  {
+   "number": 22,
+   "knowledge_points": [
+    "概率论与数理统计/参数估计/最大似然估计",
+    "概率论与数理统计/参数估计/估计量的评选标准"
+   ],
+   "confidence": "high"
+  }
+ ],
+ "score_by_whole": [],
+ "sub_scores": {
+  "math1-2024-18": [
+   5,
+   7
+  ],
+  "math1-2024-21": [
+   2,
+   6,
+   4
+  ],
+  "math1-2024-22": [
+   6,
+   6
+  ],
+  "math1-2024-19": [
+   6,
+   6
+  ]
+ },
+ "sub_scores_note": "官方不公布小问分值；行业专家按常见阅卷步骤权重估计（非官方），2026-11-01"
+}

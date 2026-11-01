@@ -1,0 +1,13 @@
+**/node_modules
+**/dist
+backend
+data
+pg-build
+pg-runtime
+pgdata
+pglogs
+user-test
+deploy/.env
+deploy/backups
+deploy/reports
+frontend/e2e*.mjs

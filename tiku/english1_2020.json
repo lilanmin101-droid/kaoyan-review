@@ -1,0 +1,2648 @@
+[
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-01",
+    "exam": "english1",
+    "year": 2020,
+    "number": 1,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "（1）______ a cold winter’s day, few culinary pleasures can （2）______ it.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "In"
+      },
+      {
+        "key": "B",
+        "content": "Towards"
+      },
+      {
+        "key": "C",
+        "content": "On"
+      },
+      {
+        "key": "D",
+        "content": "Till"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-02",
+    "exam": "english1",
+    "year": 2020,
+    "number": 2,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "（1）______ a cold winter’s day, few culinary pleasures can （2）______ it.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "match"
+      },
+      {
+        "key": "B",
+        "content": "express"
+      },
+      {
+        "key": "C",
+        "content": "satisfy"
+      },
+      {
+        "key": "D",
+        "content": "influence"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-03",
+    "exam": "english1",
+    "year": 2020,
+    "number": 3,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "Yet as we report now, the food police are determined that this （3）______ should be rendered yet another guilty pleasure （4）______ to damage our health.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "patience"
+      },
+      {
+        "key": "B",
+        "content": "enjoyment"
+      },
+      {
+        "key": "C",
+        "content": "surprise"
+      },
+      {
+        "key": "D",
+        "content": "concern"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-04",
+    "exam": "english1",
+    "year": 2020,
+    "number": 4,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "Yet as we report now, the food police are determined that this （3）______ should be rendered yet another guilty pleasure （4）______ to damage our health.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "intensified"
+      },
+      {
+        "key": "B",
+        "content": "privileged"
+      },
+      {
+        "key": "C",
+        "content": "compelled"
+      },
+      {
+        "key": "D",
+        "content": "guaranteed"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-05",
+    "exam": "english1",
+    "year": 2020,
+    "number": 5,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "The Food Standards Authority (FSA) has （5）______ a public warning about the risks of a compound called acrylamide that forms in some foods cooked （6）______ high temperatures.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "issued"
+      },
+      {
+        "key": "B",
+        "content": "received"
+      },
+      {
+        "key": "C",
+        "content": "ignored"
+      },
+      {
+        "key": "D",
+        "content": "cancelled"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-06",
+    "exam": "english1",
+    "year": 2020,
+    "number": 6,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "The Food Standards Authority (FSA) has （5）______ a public warning about the risks of a compound called acrylamide that forms in some foods cooked （6）______ high temperatures.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "under"
+      },
+      {
+        "key": "B",
+        "content": "at"
+      },
+      {
+        "key": "C",
+        "content": "for"
+      },
+      {
+        "key": "D",
+        "content": "by"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-07",
+    "exam": "english1",
+    "year": 2020,
+    "number": 7,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "This means that people should （7）______ crisping their roast potatoes, reject thin-crust pizzas and only （8）______ toast their bread.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "forget"
+      },
+      {
+        "key": "B",
+        "content": "regret"
+      },
+      {
+        "key": "C",
+        "content": "finish"
+      },
+      {
+        "key": "D",
+        "content": "avoid"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-08",
+    "exam": "english1",
+    "year": 2020,
+    "number": 8,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "This means that people should （7）______ crisping their roast potatoes, reject thin-crust pizzas and only （8）______ toast their bread.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "partially"
+      },
+      {
+        "key": "B",
+        "content": "regularly"
+      },
+      {
+        "key": "C",
+        "content": "easily"
+      },
+      {
+        "key": "D",
+        "content": "initially"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-09",
+    "exam": "english1",
+    "year": 2020,
+    "number": 9,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "（9）______ studies have shown that acrylamide can cause neurological damage in mice, there is no （10）______ evidence that it causes cancer in humans.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Unless"
+      },
+      {
+        "key": "B",
+        "content": "Since"
+      },
+      {
+        "key": "C",
+        "content": "If"
+      },
+      {
+        "key": "D",
+        "content": "While"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-10",
+    "exam": "english1",
+    "year": 2020,
+    "number": 10,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "（9）______ studies have shown that acrylamide can cause neurological damage in mice, there is no （10）______ evidence that it causes cancer in humans.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "secondary"
+      },
+      {
+        "key": "B",
+        "content": "external"
+      },
+      {
+        "key": "C",
+        "content": "conclusive"
+      },
+      {
+        "key": "D",
+        "content": "negative"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-11",
+    "exam": "english1",
+    "year": 2020,
+    "number": 11,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "Scientists say the compound is （11）______ to cause cancer but have no hard scientific proof.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "insufficient"
+      },
+      {
+        "key": "B",
+        "content": "bound"
+      },
+      {
+        "key": "C",
+        "content": "likely"
+      },
+      {
+        "key": "D",
+        "content": "slow"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-12",
+    "exam": "english1",
+    "year": 2020,
+    "number": 12,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "（12）______ the precautionary principle, it could be argued that it is （13）______ to follow the FSA advice.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "On the basis of"
+      },
+      {
+        "key": "B",
+        "content": "At the cost of"
+      },
+      {
+        "key": "C",
+        "content": "In addition to"
+      },
+      {
+        "key": "D",
+        "content": "In contrast to"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-13",
+    "exam": "english1",
+    "year": 2020,
+    "number": 13,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "（12）______ the precautionary principle, it could be argued that it is （13）______ to follow the FSA advice.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "interesting"
+      },
+      {
+        "key": "B",
+        "content": "advisable"
+      },
+      {
+        "key": "C",
+        "content": "urgent"
+      },
+      {
+        "key": "D",
+        "content": "fortunate"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-14",
+    "exam": "english1",
+    "year": 2020,
+    "number": 14,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "（14）______ , it was rumoured that smoking caused cancer for years before the evidence was found to prove a （15）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "As usual"
+      },
+      {
+        "key": "B",
+        "content": "In particular"
+      },
+      {
+        "key": "C",
+        "content": "By definition"
+      },
+      {
+        "key": "D",
+        "content": "After all"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-15",
+    "exam": "english1",
+    "year": 2020,
+    "number": 15,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "（14）______ , it was rumoured that smoking caused cancer for years before the evidence was found to prove a （15）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "resemblance"
+      },
+      {
+        "key": "B",
+        "content": "combination"
+      },
+      {
+        "key": "C",
+        "content": "connection"
+      },
+      {
+        "key": "D",
+        "content": "pattern"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-16",
+    "exam": "english1",
+    "year": 2020,
+    "number": 16,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "Doubtless a piece of boiled beef can always be （16）______ up on Sunday alongside some steamed vegetables, without the Yorkshire pudding and no wine.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "made"
+      },
+      {
+        "key": "B",
+        "content": "served"
+      },
+      {
+        "key": "C",
+        "content": "saved"
+      },
+      {
+        "key": "D",
+        "content": "used"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-17",
+    "exam": "english1",
+    "year": 2020,
+    "number": 17,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "（17）______ , the FSA says it is not telling people to cut out roast foods （18）______, but to reduce their lifetime intake.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "To be fair"
+      },
+      {
+        "key": "B",
+        "content": "For instance"
+      },
+      {
+        "key": "C",
+        "content": "To be brief"
+      },
+      {
+        "key": "D",
+        "content": "In general"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-18",
+    "exam": "english1",
+    "year": 2020,
+    "number": 18,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "（17）______ , the FSA says it is not telling people to cut out roast foods （18）______, but to reduce their lifetime intake.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "reluctantly"
+      },
+      {
+        "key": "B",
+        "content": "entirely"
+      },
+      {
+        "key": "C",
+        "content": "gradually"
+      },
+      {
+        "key": "D",
+        "content": "carefully"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-19",
+    "exam": "english1",
+    "year": 2020,
+    "number": 19,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "However, its （19）______ risks coming across as being pushy and overprotective.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "promise"
+      },
+      {
+        "key": "B",
+        "content": "experience"
+      },
+      {
+        "key": "C",
+        "content": "campaign"
+      },
+      {
+        "key": "D",
+        "content": "competition"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-20",
+    "exam": "english1",
+    "year": 2020,
+    "number": 20,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2020-P-cloze",
+    "stem": "Constant health scares just （20）______ with no one listening.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "follow up"
+      },
+      {
+        "key": "B",
+        "content": "pick up"
+      },
+      {
+        "key": "C",
+        "content": "open up"
+      },
+      {
+        "key": "D",
+        "content": "end up"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-21",
+    "exam": "english1",
+    "year": 2020,
+    "number": 21,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text1",
+    "stem": "Cooper and her colleagues argue that a “town of culture” award could",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "consolidate the town-city ties in Britain."
+      },
+      {
+        "key": "B",
+        "content": "promote cooperation among Britain’s towns."
+      },
+      {
+        "key": "C",
+        "content": "increase the economic strength of Britain’s towns."
+      },
+      {
+        "key": "D",
+        "content": "focus Britain’s limited resources on cultural events."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-22",
+    "exam": "english1",
+    "year": 2020,
+    "number": 22,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text1",
+    "stem": "According to Paragraph 2, the proposal might be regarded by some as",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "a sensible compromise."
+      },
+      {
+        "key": "B",
+        "content": "a self-deceiving attempt."
+      },
+      {
+        "key": "C",
+        "content": "an eye-catching bonus."
+      },
+      {
+        "key": "D",
+        "content": "an inaccessible target."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-23",
+    "exam": "english1",
+    "year": 2020,
+    "number": 23,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text1",
+    "stem": "The author suggests that a title holder is successful only if it",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "endeavours to maintain its image."
+      },
+      {
+        "key": "B",
+        "content": "meets the aspirations of its people."
+      },
+      {
+        "key": "C",
+        "content": "brings its local arts to prominence."
+      },
+      {
+        "key": "D",
+        "content": "commits to its long-term growth."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-24",
+    "exam": "english1",
+    "year": 2020,
+    "number": 24,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text1",
+    "stem": "Glasgow is mentioned in Paragraph 3 to present",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "a contrasting case."
+      },
+      {
+        "key": "B",
+        "content": "a supporting example."
+      },
+      {
+        "key": "C",
+        "content": "a background story."
+      },
+      {
+        "key": "D",
+        "content": "a related topic."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-25",
+    "exam": "english1",
+    "year": 2020,
+    "number": 25,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text1",
+    "stem": "What is the author’s attitude towards the proposal?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Skeptical."
+      },
+      {
+        "key": "B",
+        "content": "Objective."
+      },
+      {
+        "key": "C",
+        "content": "Favourable."
+      },
+      {
+        "key": "D",
+        "content": "Critical."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-26",
+    "exam": "english1",
+    "year": 2020,
+    "number": 26,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text2",
+    "stem": "Scientific publishing is seen as “a licence to print money” partly because",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "its funding has enjoyed a steady increase."
+      },
+      {
+        "key": "B",
+        "content": "its marketing strategy has been successful."
+      },
+      {
+        "key": "C",
+        "content": "its payment for peer review is reduced."
+      },
+      {
+        "key": "D",
+        "content": "its content acquisition costs nothing."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-27",
+    "exam": "english1",
+    "year": 2020,
+    "number": 27,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text2",
+    "stem": "According to Paragraphs 2 and 3, scientific publishers like Elsevier have",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "thrived mainly on university libraries."
+      },
+      {
+        "key": "B",
+        "content": "gone through an existential crisis."
+      },
+      {
+        "key": "C",
+        "content": "revived the publishing industry."
+      },
+      {
+        "key": "D",
+        "content": "financed researchers generously."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-28",
+    "exam": "english1",
+    "year": 2020,
+    "number": 28,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text2",
+    "stem": "How does the author feel about the success of Sci-Hub?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Relieved."
+      },
+      {
+        "key": "B",
+        "content": "Puzzled."
+      },
+      {
+        "key": "C",
+        "content": "Concerned."
+      },
+      {
+        "key": "D",
+        "content": "Encouraged."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-29",
+    "exam": "english1",
+    "year": 2020,
+    "number": 29,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text2",
+    "stem": "It can be learned from Paragraphs 5 and 6 that open access terms",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "allow publishers some room to make money."
+      },
+      {
+        "key": "B",
+        "content": "render publishing much easier for scientists."
+      },
+      {
+        "key": "C",
+        "content": "reduce the cost of publication substantially."
+      },
+      {
+        "key": "D",
+        "content": "free universities from financial burdens."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-30",
+    "exam": "english1",
+    "year": 2020,
+    "number": 30,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text2",
+    "stem": "Which of the following characterizes the scientific publishing model?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Trial subscription is offered."
+      },
+      {
+        "key": "B",
+        "content": "Labour triumphs over status."
+      },
+      {
+        "key": "C",
+        "content": "Costs are well controlled."
+      },
+      {
+        "key": "D",
+        "content": "The few feed on the many."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-31",
+    "exam": "english1",
+    "year": 2020,
+    "number": 31,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text3",
+    "stem": "The author believes that the bills sponsored by Lewis and Haddad will",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "help little to reduce gender bias."
+      },
+      {
+        "key": "B",
+        "content": "pose a threat to the state government."
+      },
+      {
+        "key": "C",
+        "content": "raise women’s position in politics."
+      },
+      {
+        "key": "D",
+        "content": "greatly broaden career options."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-32",
+    "exam": "english1",
+    "year": 2020,
+    "number": 32,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text3",
+    "stem": "Which of the following is true of the California measure?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "It has irritated private business owners."
+      },
+      {
+        "key": "B",
+        "content": "It is welcomed by the Supreme Court."
+      },
+      {
+        "key": "C",
+        "content": "It may go against the Constitution."
+      },
+      {
+        "key": "D",
+        "content": "It will settle the prior controversies."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-33",
+    "exam": "english1",
+    "year": 2020,
+    "number": 33,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text3",
+    "stem": "The author mentions the study by Catalyst to illustrate",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the harm from arbitrary board decisions."
+      },
+      {
+        "key": "B",
+        "content": "the importance of constitutional guarantees."
+      },
+      {
+        "key": "C",
+        "content": "the pressure on women in global corporations."
+      },
+      {
+        "key": "D",
+        "content": "the needlessness of government interventions."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-34",
+    "exam": "english1",
+    "year": 2020,
+    "number": 34,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text3",
+    "stem": "Norway’s adoption of a nationwide corporate gender quota has led to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "the underestimation of elite women’s role."
+      },
+      {
+        "key": "B",
+        "content": "the objection to female participation on boards."
+      },
+      {
+        "key": "C",
+        "content": "the entry of unqualified candidates into the board."
+      },
+      {
+        "key": "D",
+        "content": "the growing tension between labor and management."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-35",
+    "exam": "english1",
+    "year": 2020,
+    "number": 35,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text3",
+    "stem": "Which of the following can be inferred from the text?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Women’s needs in employment should be considered."
+      },
+      {
+        "key": "B",
+        "content": "Feasibility should be a prime concern in policymaking."
+      },
+      {
+        "key": "C",
+        "content": "Everyone should try hard to promote social justice."
+      },
+      {
+        "key": "D",
+        "content": "Major social issues should be the focus of legislation."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-36",
+    "exam": "english1",
+    "year": 2020,
+    "number": 36,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text4",
+    "stem": "The French Senate has passed a bill to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "regulate digital services platforms."
+      },
+      {
+        "key": "B",
+        "content": "protect French companies’ interests."
+      },
+      {
+        "key": "C",
+        "content": "impose a levy on tech multinationals."
+      },
+      {
+        "key": "D",
+        "content": "curb the influence of advertising."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-37",
+    "exam": "english1",
+    "year": 2020,
+    "number": 37,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text4",
+    "stem": "It can be learned from Paragraph 2 that the digital services tax",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "may trigger countermeasures against France."
+      },
+      {
+        "key": "B",
+        "content": "is apt to arouse criticism at home and abroad."
+      },
+      {
+        "key": "C",
+        "content": "aims to ease international trade tensions."
+      },
+      {
+        "key": "D",
+        "content": "will prompt the tech giants to quit France."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-38",
+    "exam": "english1",
+    "year": 2020,
+    "number": 38,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text4",
+    "stem": "The countries adopting the unilateral measures share the opinion that",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "redistribution of tech giants’ revenue must be ensured."
+      },
+      {
+        "key": "B",
+        "content": "the current international tax system needs upgrading."
+      },
+      {
+        "key": "C",
+        "content": "tech multinationals’ monopoly should be prevented."
+      },
+      {
+        "key": "D",
+        "content": "all countries ought to enjoy equal taxing rights."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-39",
+    "exam": "english1",
+    "year": 2020,
+    "number": 39,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text4",
+    "stem": "It can be learned from Paragraph 5 that the OECD’s current work",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "is being resisted by US companies."
+      },
+      {
+        "key": "B",
+        "content": "needs to be readjusted immediately."
+      },
+      {
+        "key": "C",
+        "content": "is faced with uncertain prospects."
+      },
+      {
+        "key": "D",
+        "content": "needs to involve more countries."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-40",
+    "exam": "english1",
+    "year": 2020,
+    "number": 40,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2020-P-text4",
+    "stem": "Which of the following might be the best title for this text?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "France Is Confronted with Trade Sanctions"
+      },
+      {
+        "key": "B",
+        "content": "France leads the charge on Digital Tax"
+      },
+      {
+        "key": "C",
+        "content": "France Says “NO” to Tech Multinationals"
+      },
+      {
+        "key": "D",
+        "content": "France Demands a Role in the Digital Economy"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "option_order_from": [
+        "TsekaLuk/Kaoyan-English1-Papers english1_from_github/english1_2020.pdf（原卷扫描，第1–2、6页）",
+        "http://kaoyan.b2cedu.com/news/15418.html（完形选项顺序与答案 1C 2A 3B 4D 5A…）"
+      ],
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-41",
+    "exam": "english1",
+    "year": 2020,
+    "number": 41,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2020-P-partb",
+    "stem": "选出第（41）处的小标题：\n\n（41）______\n\nWe know that a typical infant will instinctively gaze into its mother’s eyes, and she will look back. This mutual gaze is a major part of the attachment between mother and child. In adulthood, looking at someone else in a pleasant way can be a complimentary sign of paying attention. It can catch someone’s attention in a crowded room, “Eye contact and smiles” can signal availability and confidence, a common-sense notion supported in studies by psychologist Monica Moore.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Eye fixations are brief"
+      },
+      {
+        "key": "B",
+        "content": "Too much eye contact is instinctively felt to be rude"
+      },
+      {
+        "key": "C",
+        "content": "Eye contact can be a friendly social signal"
+      },
+      {
+        "key": "D",
+        "content": "Personality can affect how a person reacts to eye contact"
+      },
+      {
+        "key": "E",
+        "content": "Biological factors behind eye contact are being investigated"
+      },
+      {
+        "key": "F",
+        "content": "Most people are not comfortable holding eye contact with strangers"
+      },
+      {
+        "key": "G",
+        "content": "Eye contact can also be aggressive."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/小标题匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-42",
+    "exam": "english1",
+    "year": 2020,
+    "number": 42,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2020-P-partb",
+    "stem": "选出第（42）处的小标题：\n\n（42）______\n\nNeuroscientist Bonnie Auyeung found that the hormone oxytocin increased the amount of eye contact from men toward the interviewer during a brief interview when the direction of their gaze was recorded. This was also found in high-functioning men with some autistic spectrum symptoms, who may tend to avoid eye contact. Specific brain regions that respond during direct gaze are being explored by other researchers, using advanced methods of brain scanning.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Eye fixations are brief"
+      },
+      {
+        "key": "B",
+        "content": "Too much eye contact is instinctively felt to be rude"
+      },
+      {
+        "key": "C",
+        "content": "Eye contact can be a friendly social signal"
+      },
+      {
+        "key": "D",
+        "content": "Personality can affect how a person reacts to eye contact"
+      },
+      {
+        "key": "E",
+        "content": "Biological factors behind eye contact are being investigated"
+      },
+      {
+        "key": "F",
+        "content": "Most people are not comfortable holding eye contact with strangers"
+      },
+      {
+        "key": "G",
+        "content": "Eye contact can also be aggressive."
+      }
+    ],
+    "answer": [
+      "E"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/小标题匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "E",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-43",
+    "exam": "english1",
+    "year": 2020,
+    "number": 43,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2020-P-partb",
+    "stem": "选出第（43）处的小标题：\n\n（43）______\n\nWith the use of eye-tracking technology, Julia Minson of the Harvard Kennedy School of Government concluded that eye contact can signal very different kinds of messages, depending on the situation. While eye contact may be a sign of connection or trust in friendly situations, it’s more likely to be associated with dominance or intimidation in adversarial situations. “Whether you’re a politician or a parent, it might be helpful to keep in mind that trying to maintain eye contact may backfire if you’re trying to convince someone who has a different set of beliefs than you,” said Minson.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Eye fixations are brief"
+      },
+      {
+        "key": "B",
+        "content": "Too much eye contact is instinctively felt to be rude"
+      },
+      {
+        "key": "C",
+        "content": "Eye contact can be a friendly social signal"
+      },
+      {
+        "key": "D",
+        "content": "Personality can affect how a person reacts to eye contact"
+      },
+      {
+        "key": "E",
+        "content": "Biological factors behind eye contact are being investigated"
+      },
+      {
+        "key": "F",
+        "content": "Most people are not comfortable holding eye contact with strangers"
+      },
+      {
+        "key": "G",
+        "content": "Eye contact can also be aggressive."
+      }
+    ],
+    "answer": [
+      "G"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/小标题匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "G",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-44",
+    "exam": "english1",
+    "year": 2020,
+    "number": 44,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2020-P-partb",
+    "stem": "选出第（44）处的小标题：\n\n（44）______\n\nWhen we look at a face or a picture, our eyes pause on one spot at a time, often on the eyes or mouth. These pauses typically occur at about three per second, and the eyes then jump to another spot, until several important points in the image are registered like a series of snapshots. How the whole image is then assembled and perceived is still a mystery although it is the subject of current research.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Eye fixations are brief"
+      },
+      {
+        "key": "B",
+        "content": "Too much eye contact is instinctively felt to be rude"
+      },
+      {
+        "key": "C",
+        "content": "Eye contact can be a friendly social signal"
+      },
+      {
+        "key": "D",
+        "content": "Personality can affect how a person reacts to eye contact"
+      },
+      {
+        "key": "E",
+        "content": "Biological factors behind eye contact are being investigated"
+      },
+      {
+        "key": "F",
+        "content": "Most people are not comfortable holding eye contact with strangers"
+      },
+      {
+        "key": "G",
+        "content": "Eye contact can also be aggressive."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/小标题匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-45",
+    "exam": "english1",
+    "year": 2020,
+    "number": 45,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2020-P-partb",
+    "stem": "选出第（45）处的小标题：\n\n（45）______\n\nIn people who score high in a test of neuroticism, a personality dimension associated with self-consciousness and anxiety, eye contact triggered more activity associated with avoidance, according to the Finnish researcher Jari Hietanen and colleagues. “Our findings indicate that people do not only feel different when they are the centre of attention but that their brain reactions also differ.” A more direct finding is that people who scored high for negative emotions like anxiety looked at others for shorter periods of time and reported more comfortable feelings when others did not look directly at them.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Eye fixations are brief"
+      },
+      {
+        "key": "B",
+        "content": "Too much eye contact is instinctively felt to be rude"
+      },
+      {
+        "key": "C",
+        "content": "Eye contact can be a friendly social signal"
+      },
+      {
+        "key": "D",
+        "content": "Personality can affect how a person reacts to eye contact"
+      },
+      {
+        "key": "E",
+        "content": "Biological factors behind eye contact are being investigated"
+      },
+      {
+        "key": "F",
+        "content": "Most people are not comfortable holding eye contact with strangers"
+      },
+      {
+        "key": "G",
+        "content": "Eye contact can also be aggressive."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/小标题匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-46",
+    "exam": "english1",
+    "year": 2020,
+    "number": 46,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2020-P-translation",
+    "stem": "With the Church’s teachings and ways of thinking being eclipsed by the Renaissance, the gap between the Medieval and modern periods had been bridged, leading to new and unexplored intellectual territories.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "随着教会的教义和思维模式因文艺复兴而暗淡无光，中世纪和现代两个历史时期之间架起了桥梁，进而通向了崭新和未探索过的知识领域。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-47",
+    "exam": "english1",
+    "year": 2020,
+    "number": 47,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2020-P-translation",
+    "stem": "Before each of their revelations, many thinkers at the time had sustained more ancient ways of thinking, including the geocentric view that the Earth was at the centre of our universe.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "在他们的每项发现之前，当时的许多思想家一直沿袭着更加古老的思维模式，其中包括认为地球处于宇宙中心的地心说。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-48",
+    "exam": "english1",
+    "year": 2020,
+    "number": 48,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2020-P-translation",
+    "stem": "Despite attempts by the Church to suppress this new generation of logicians and rationalists, more explanations for how the universe functioned were being made at a rate that the people could no longer ignore.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "尽管教会屡屡打压这些新一代的逻辑学家和理性主义者，但关于宇宙运行原理的阐释还是不断涌现，其速度让世人再也无法视而不见。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-49",
+    "exam": "english1",
+    "year": 2020,
+    "number": 49,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2020-P-translation",
+    "stem": "As many took on the duty of trying to integrate reasoning and scientific philosophies into the world, the Renaissance was over and it was time for a new era—the Age of Reason.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "当很多人承担起试图将理性思维和科学思想融入大千世界这一责任时，文艺复兴即告结束，新的时代从此开启。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-50",
+    "exam": "english1",
+    "year": 2020,
+    "number": 50,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2020-P-translation",
+    "stem": "Such actions to seek knowledge and to understand what information we already knew were captured by the Latin phrase ‘sapere aude’ or ‘dare to know’,",
+    "images": [],
+    "options": [],
+    "answer": [
+      "拉丁语短语“sapere aude”即“敢于求知”，准确地概括了这类寻求知识和理解已知信息的行为。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-51",
+    "exam": "english1",
+    "year": 2020,
+    "number": 51,
+    "section": "writing_a",
+    "type": "essay",
+    "score": 10.0,
+    "passage_id": null,
+    "stem": "51. Directions:\nThe student Union of your university has assigned you to inform the international\nstudents about an upcoming singing contest. Write a notice in about 100 words.\nWrite your answer on the ANSWER SHEET.\nDo not use your own name in the notice. (10 points)",
+    "images": [],
+    "options": [],
+    "answer": [
+      "Notice\n\nThere is wonderful news! The annual Chinese Songs Singing Competition for overseas students will kick off at 7 p. m. next Saturday, December 28.\n\nThis year's competition, which is to be held in the auditorium boasting brand-new lighting and sound equipment, will be a marvelous opportunity to showcase your passion for music and hone your performance skills. The contest, consisting of three rounds, is for solo performances only. To enter it, you need to submit a list of Chinese songs you'd like to perform, from which the judges will choose the song you will sing in each round. Handsome prizes await the top 10 winners!\n\nThose who want to participate can find our desk by the dining hall around 12 a. m. every day this week. We look forward to your participation.\n\nThe Student Union"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/小作文（书信、通知等）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2020-52",
+    "exam": "english1",
+    "year": 2020,
+    "number": 52,
+    "section": "writing_b",
+    "type": "essay",
+    "score": 20.0,
+    "passage_id": null,
+    "stem": "52. Directions:\nWrite an essay of 160-200 words based on the pictures below. In your essay, you\nshould\n1) describe the picture briefly,\n2) interpret the implied meaning, and\n3) give your comments.\nYou should write neatly on the ANSWER SHEET. (20 points)",
+    "images": [
+      "images/english1-2020/q52.jpg"
+    ],
+    "options": [],
+    "answer": [
+      "In the left picture, a girl is concentrating on her assignments, with a strong desire to complete them as soon as possible. In stark contrast to her, the boy in the right picture is resting his back against a chair lazily, with no intention of doing schoolwork. He has a habit of, in his own words, waiting until the last minute to make a start.\n\nThe two pictures serve as a reminder of the significance of self-discipline, the ability to make ourselves do what we ought to do without being urged by someone else. It motivates us to take control of our time and devote our attention to what is truly important and meaningful to us. This in turn ensures quality and productivity. Those who lack self-discipline often fail to get their priorities right, easily falling into the bad habit of procrastination. They will end up either rushing through their assignments or missing the deadlines, which is detrimental to their academic progress and career advancement.\n\nIn summary, self-discipline brings us lifelong benefits. It is thus necessary for us to develop this personal quality as long as we would like to achieve something impressive."
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/大作文（图画作文）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2020-1/2020-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  }
+]

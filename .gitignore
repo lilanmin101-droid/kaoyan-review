@@ -1,0 +1,58 @@
+# --- deps / build ---
+node_modules/
+dist/
+dist-*/
+build/
+.vite/
+.cache/
+.turbo/
+coverage/
+tmp/
+.tmp/
+*.tsbuildinfo
+*.log
+pglogs/
+
+# --- env / secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+.ssh/
+secrets/
+
+# --- local postgres (embedded) + backups ---
+pgdata/
+pg-runtime/
+pg-build/
+backups/
+*.dump
+*.sql.gz
+*.pgdump
+
+# --- runtime caches / uploads ---
+data/audio/
+backend/uploads/
+
+# --- large third-party data (fetch in deploy instead) ---
+data/ecdict/ecdict.csv
+
+# --- OS / editor ---
+.DS_Store
+.idea/
+.vscode/
+
+# local test tokens
+.token
+*.token
+
+# --- tiku: keep JSON/images/pipeline/vocab/reviews/explanations; drop OCR sources & PDFs ---
+tiku/src/
+tiku/img_tmp/
+tiku/**/*.pdf
+user-test/**/*.pdf

@@ -1,0 +1,16 @@
+{"id": "math1-2018-20", "kind": "official_solution", "result": "fail", "note": "①（Ⅱ）a=2 时配方算错：2x1²+2x2²+6x3²−2x1x2+6x1x3 应等于 2(x1−½x2+3/2·x3)²+3/2(x2+x3)²，原文第一个平方写成了 2(x1−x2+x3)²，展开对不上（sympy 已验）。结论 y1²+y2² 不变（特征值 5±√7、0）。②（Ⅰ）a=2 时「其中 k≠0」应改为「k 为任意常数」，f=0 的解包括零解。", "fix_request": "把 2(x_1-x_2+x_3)^2 改成 2(x_1-\\frac12x_2+\\frac32x_3)^2（出现两处）；（Ⅰ）「其中 k≠0」改成「k 为任意常数」", "by": "行业专家", "at": "2026-11-01T06:18-08:00"}
+{"id": "math1-2018-21", "kind": "official_solution", "result": "pass", "note": "重写部分正确。", "by": "行业专家", "at": "2026-11-01T06:18-08:00"}
+{"id": "math1-2018-01", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2018.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2018-02", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2018.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2018-03", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2018.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2018-04", "kind": "official_solution", "result": "pass", "by": "用户", "note": "用到 e^x>1+x 和 2x/(1+x²) 是奇函数，原解析没写明；建议补上。（已对照 origin_2018.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2018-05", "kind": "official_solution", "result": "pass", "by": "用户", "note": "方法一只用 r(E−M)=r(E−A)=2 推相似，一般情况下不充分（这里单一特征值 3 阶时恰好成立）；方法二用 P⁻¹AP 直接验证，sympy 复核正确。（已对照 origin_2018.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2018-06", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2018.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2018-07", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2018.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2018-08", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2018.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2018-09", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2018.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2018-10", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2018.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2018-11", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2018.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2018-12", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2018.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2018-13", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2018.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}
+{"id": "math1-2018-14", "kind": "official_solution", "result": "pass", "by": "用户", "note": "（已对照 origin_2018.pdf 解析图，文字和 PDF 一致）", "at": "2026-11-01T06:24-08:00"}

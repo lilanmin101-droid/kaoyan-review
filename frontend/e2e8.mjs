@@ -1,0 +1,17 @@
+import puppeteer from 'puppeteer-core'
+const b=await puppeteer.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']})
+const p=await b.newPage();await p.setViewport({width:390,height:844,isMobile:true,hasTouch:true})
+const W=ms=>new Promise(r=>setTimeout(r,ms))
+await p.goto('http://localhost:4173/#/quiz');await W(400)
+if(await p.$('.login input')){const ins=await p.$$('.login input');await ins[0].type('fe_test');await ins[1].type('secret123');await p.click('.login .next')}
+await p.waitForSelector('.sheet .row');await p.evaluate(()=>{const y=[...document.querySelectorAll('.cell.yr')].find(e=>e.textContent==='2024');y&&y.click()});await W(1200)
+await W(700);const r4=(await p.$$('.sheet .row'))[3];const bs=await r4.$$('.b');await bs[1].tap();await W(300)
+await p.goto('http://localhost:4173/#/wrong');await W(800);await p.goto('http://localhost:4173/#/quiz');await W(1200)
+console.log('q4 pick kept:',await p.evaluate(()=>[...document.querySelectorAll('.sheet .row')][3].querySelector('.b.f')?.textContent))
+await (await p.$$('.sheet .row'))[1].tap();await W(400)
+await p.evaluate(()=>[...document.querySelectorAll('.acts span')].find(s=>s.textContent.includes('思路'))?.click());await W(600)
+console.log('hint:',await p.$eval('.note',e=>e.textContent.slice(0,60)).catch(()=>'none'))
+await p.goto('http://localhost:4173/#/wrong');await W(1000)
+await p.evaluate(()=>[...document.querySelectorAll('.wq .link')].find(e=>e.textContent==='看讲解')?.click());await W(1200)
+console.log('wrong explain:',await p.$eval('.wq .note',e=>e.textContent.slice(0,60)).catch(()=>'none'))
+await b.close()

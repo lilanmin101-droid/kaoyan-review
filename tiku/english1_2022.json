@@ -1,0 +1,2548 @@
+[
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-01",
+    "exam": "english1",
+    "year": 2022,
+    "number": 1,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "The idea that plants have some degree of consciousness first took root in the early 2000s; the term “plant neurobiology” was （1）______ around the notion that some aspects of plant behavior could be （2）______ to intelligence in animals.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "coined"
+      },
+      {
+        "key": "B",
+        "content": "discovered"
+      },
+      {
+        "key": "C",
+        "content": "collected"
+      },
+      {
+        "key": "D",
+        "content": "issued"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-02",
+    "exam": "english1",
+    "year": 2022,
+    "number": 2,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "The idea that plants have some degree of consciousness first took root in the early 2000s; the term “plant neurobiology” was （1）______ around the notion that some aspects of plant behavior could be （2）______ to intelligence in animals.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "attributed"
+      },
+      {
+        "key": "B",
+        "content": "directed"
+      },
+      {
+        "key": "C",
+        "content": "compared"
+      },
+      {
+        "key": "D",
+        "content": "confined"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-03",
+    "exam": "english1",
+    "year": 2022,
+    "number": 3,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "（3）______ plants lack brains, the firing of electrical signals in their stems and leaves nonetheless triggered responses that （4）______ consciousness, researchers previously reported.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Unless"
+      },
+      {
+        "key": "B",
+        "content": "When"
+      },
+      {
+        "key": "C",
+        "content": "Once"
+      },
+      {
+        "key": "D",
+        "content": "Though"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-04",
+    "exam": "english1",
+    "year": 2022,
+    "number": 4,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "（3）______ plants lack brains, the firing of electrical signals in their stems and leaves nonetheless triggered responses that （4）______ consciousness, researchers previously reported.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "coped with"
+      },
+      {
+        "key": "B",
+        "content": "consisted of"
+      },
+      {
+        "key": "C",
+        "content": "hinted at"
+      },
+      {
+        "key": "D",
+        "content": "extended to"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-05",
+    "exam": "english1",
+    "year": 2022,
+    "number": 5,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "Plant biology is complex and fascinating, but it （5）______ so greatly from that of animals that so-called （6）______ of plants’ intelligence is inconclusive, the authors wrote.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "suffers"
+      },
+      {
+        "key": "B",
+        "content": "benefits"
+      },
+      {
+        "key": "C",
+        "content": "develops"
+      },
+      {
+        "key": "D",
+        "content": "differs"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-06",
+    "exam": "english1",
+    "year": 2022,
+    "number": 6,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "Plant biology is complex and fascinating, but it （5）______ so greatly from that of animals that so-called （6）______ of plants’ intelligence is inconclusive, the authors wrote.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "acceptance"
+      },
+      {
+        "key": "B",
+        "content": "evidence"
+      },
+      {
+        "key": "C",
+        "content": "cultivation"
+      },
+      {
+        "key": "D",
+        "content": "creation"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-07",
+    "exam": "english1",
+    "year": 2022,
+    "number": 7,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "Beginning in 2006, some scientists have （7）______ that plants possess neuron-like cells that interact with hormones and neurotransmitters, （8）______ “a plant nervous system, （9）______ to that in animals,” said lead study author Lincoln Taiz.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "doubted"
+      },
+      {
+        "key": "B",
+        "content": "denied"
+      },
+      {
+        "key": "C",
+        "content": "argued"
+      },
+      {
+        "key": "D",
+        "content": "requested"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-08",
+    "exam": "english1",
+    "year": 2022,
+    "number": 8,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "Beginning in 2006, some scientists have （7）______ that plants possess neuron-like cells that interact with hormones and neurotransmitters, （8）______ “a plant nervous system, （9）______ to that in animals,” said lead study author Lincoln Taiz.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "adapting"
+      },
+      {
+        "key": "B",
+        "content": "forming"
+      },
+      {
+        "key": "C",
+        "content": "repairing"
+      },
+      {
+        "key": "D",
+        "content": "testing"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-09",
+    "exam": "english1",
+    "year": 2022,
+    "number": 9,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "Beginning in 2006, some scientists have （7）______ that plants possess neuron-like cells that interact with hormones and neurotransmitters, （8）______ “a plant nervous system, （9）______ to that in animals,” said lead study author Lincoln Taiz.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "analogous"
+      },
+      {
+        "key": "B",
+        "content": "essential"
+      },
+      {
+        "key": "C",
+        "content": "suitable"
+      },
+      {
+        "key": "D",
+        "content": "sensitive"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-10",
+    "exam": "english1",
+    "year": 2022,
+    "number": 10,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "“They （10）______ claimed that plants have ‘brain-like command centers’ at their root tips.”",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "just"
+      },
+      {
+        "key": "B",
+        "content": "ever"
+      },
+      {
+        "key": "C",
+        "content": "still"
+      },
+      {
+        "key": "D",
+        "content": "even"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-11",
+    "exam": "english1",
+    "year": 2022,
+    "number": 11,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "This （11）______ makes sense if you simplify the workings of a complex brain, （12）______ it to an array of electrical pulses; cells in plants also communicate through electrical signals.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "restriction"
+      },
+      {
+        "key": "B",
+        "content": "experiment"
+      },
+      {
+        "key": "C",
+        "content": "perspective"
+      },
+      {
+        "key": "D",
+        "content": "demand"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-12",
+    "exam": "english1",
+    "year": 2022,
+    "number": 12,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "This （11）______ makes sense if you simplify the workings of a complex brain, （12）______ it to an array of electrical pulses; cells in plants also communicate through electrical signals.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "attaching"
+      },
+      {
+        "key": "B",
+        "content": "reducing"
+      },
+      {
+        "key": "C",
+        "content": "returning"
+      },
+      {
+        "key": "D",
+        "content": "exposing"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-13",
+    "exam": "english1",
+    "year": 2022,
+    "number": 13,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "（13）______ , the signaling in a plant is only （14）______ similar to the firing in a complex animal brain, which is more than “a mass of cells that communicate by electricity,”",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "However"
+      },
+      {
+        "key": "B",
+        "content": "Moreover"
+      },
+      {
+        "key": "C",
+        "content": "Therefore"
+      },
+      {
+        "key": "D",
+        "content": "Otherwise"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-14",
+    "exam": "english1",
+    "year": 2022,
+    "number": 14,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "（13）______ , the signaling in a plant is only （14）______ similar to the firing in a complex animal brain, which is more than “a mass of cells that communicate by electricity,”",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "temporarily"
+      },
+      {
+        "key": "B",
+        "content": "literally"
+      },
+      {
+        "key": "C",
+        "content": "superficially"
+      },
+      {
+        "key": "D",
+        "content": "imaginarily"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-15",
+    "exam": "english1",
+    "year": 2022,
+    "number": 15,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "“For consciousness to evolve, a brain with a threshold （15）______ of complexity and capacity is required,” he （16）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "list"
+      },
+      {
+        "key": "B",
+        "content": "level"
+      },
+      {
+        "key": "C",
+        "content": "label"
+      },
+      {
+        "key": "D",
+        "content": "load"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-16",
+    "exam": "english1",
+    "year": 2022,
+    "number": 16,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "“For consciousness to evolve, a brain with a threshold （15）______ of complexity and capacity is required,” he （16）______ .",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "recalled"
+      },
+      {
+        "key": "B",
+        "content": "agreed"
+      },
+      {
+        "key": "C",
+        "content": "questioned"
+      },
+      {
+        "key": "D",
+        "content": "added"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-17",
+    "exam": "english1",
+    "year": 2022,
+    "number": 17,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "“Since plants don’t have nervous systems, the （17）______ that they have consciousness are effectively zero.”",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "chances"
+      },
+      {
+        "key": "B",
+        "content": "risks"
+      },
+      {
+        "key": "C",
+        "content": "excuses"
+      },
+      {
+        "key": "D",
+        "content": "assumptions"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-18",
+    "exam": "english1",
+    "year": 2022,
+    "number": 18,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "Plants can’t run away from （18）______ , so investing energy in a body system which （19）______ a threat and can feel pain would be a very （20）______ evolutionary strategy, according to the article.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "danger"
+      },
+      {
+        "key": "B",
+        "content": "failure"
+      },
+      {
+        "key": "C",
+        "content": "warning"
+      },
+      {
+        "key": "D",
+        "content": "control"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-19",
+    "exam": "english1",
+    "year": 2022,
+    "number": 19,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "Plants can’t run away from （18）______ , so investing energy in a body system which （19）______ a threat and can feel pain would be a very （20）______ evolutionary strategy, according to the article.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "represents"
+      },
+      {
+        "key": "B",
+        "content": "includes"
+      },
+      {
+        "key": "C",
+        "content": "reveals"
+      },
+      {
+        "key": "D",
+        "content": "recognizes"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-20",
+    "exam": "english1",
+    "year": 2022,
+    "number": 20,
+    "section": "use_of_english",
+    "type": "choice",
+    "score": 0.5,
+    "passage_id": "english1-2022-P-cloze",
+    "stem": "Plants can’t run away from （18）______ , so investing energy in a body system which （19）______ a threat and can feel pain would be a very （20）______ evolutionary strategy, according to the article.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "humble"
+      },
+      {
+        "key": "B",
+        "content": "poor"
+      },
+      {
+        "key": "C",
+        "content": "practical"
+      },
+      {
+        "key": "D",
+        "content": "easy"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-21",
+    "exam": "english1",
+    "year": 2022,
+    "number": 21,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text1",
+    "stem": "According to Paragraph 1, museums are faced with difficulties in",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "maintaining their plastic items."
+      },
+      {
+        "key": "B",
+        "content": "obtaining durable plastic artifacts."
+      },
+      {
+        "key": "C",
+        "content": "handling outdated plastic exhibits."
+      },
+      {
+        "key": "D",
+        "content": "classifying their plastic collections."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-22",
+    "exam": "english1",
+    "year": 2022,
+    "number": 22,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text1",
+    "stem": "Van Oosten believes that certain plastic objects are",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "immune to decay."
+      },
+      {
+        "key": "B",
+        "content": "improperly shaped."
+      },
+      {
+        "key": "C",
+        "content": "inherently flawed."
+      },
+      {
+        "key": "D",
+        "content": "complex in structure."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-23",
+    "exam": "english1",
+    "year": 2022,
+    "number": 23,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text1",
+    "stem": "Museums stopped exhibiting some of Gilardi’s artworks to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "keep them from hurting visitors."
+      },
+      {
+        "key": "B",
+        "content": "duplicate them for future display."
+      },
+      {
+        "key": "C",
+        "content": "have their ingredients analyzed."
+      },
+      {
+        "key": "D",
+        "content": "prevent them from further damage."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-24",
+    "exam": "english1",
+    "year": 2022,
+    "number": 24,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text1",
+    "stem": "The author thinks that preservation of plastics is",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "costly."
+      },
+      {
+        "key": "B",
+        "content": "unworthy."
+      },
+      {
+        "key": "C",
+        "content": "unpopular."
+      },
+      {
+        "key": "D",
+        "content": "challenging."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-25",
+    "exam": "english1",
+    "year": 2022,
+    "number": 25,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text1",
+    "stem": "In Ferreira’s opinion, preservation of plastic artifacts",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "will inspire future scientific research."
+      },
+      {
+        "key": "B",
+        "content": "has profound historical significance."
+      },
+      {
+        "key": "C",
+        "content": "will help us separate the material ages."
+      },
+      {
+        "key": "D",
+        "content": "has an impact on today’s cultural life."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-26",
+    "exam": "english1",
+    "year": 2022,
+    "number": 26,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text2",
+    "stem": "The author suggests that Generation Z should",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "be careful in choosing a college."
+      },
+      {
+        "key": "B",
+        "content": "be diligent at each educational stage."
+      },
+      {
+        "key": "C",
+        "content": "reassess the necessity of college education."
+      },
+      {
+        "key": "D",
+        "content": "postpone their undergraduate application."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-27",
+    "exam": "english1",
+    "year": 2022,
+    "number": 27,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text2",
+    "stem": "The percentage of UK graduates in non-graduate roles reflects",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Millennial’s opinion about work."
+      },
+      {
+        "key": "B",
+        "content": "the shrinking value of a degree."
+      },
+      {
+        "key": "C",
+        "content": "public discontent with education."
+      },
+      {
+        "key": "D",
+        "content": "the desired route of social mobility."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-28",
+    "exam": "english1",
+    "year": 2022,
+    "number": 28,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text2",
+    "stem": "The author considers it a good sign that",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Generation Z are seeking to earn a decent degree."
+      },
+      {
+        "key": "B",
+        "content": "school leavers are willing to be skilled workers."
+      },
+      {
+        "key": "C",
+        "content": "employers are taking a realistic attitude to degree."
+      },
+      {
+        "key": "D",
+        "content": "parents are changing their minds about education."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-29",
+    "exam": "english1",
+    "year": 2022,
+    "number": 29,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text2",
+    "stem": "It is advised in Paragraph 5 that those with one degree should",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "make an early decision on their career."
+      },
+      {
+        "key": "B",
+        "content": "attend on-the-job training programs."
+      },
+      {
+        "key": "C",
+        "content": "team up with high-paid postgraduates."
+      },
+      {
+        "key": "D",
+        "content": "further their studies in a specific field."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-30",
+    "exam": "english1",
+    "year": 2022,
+    "number": 30,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text2",
+    "stem": "What can be concluded about Generation Z from the last two paragraphs?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Lifelong learning will define them."
+      },
+      {
+        "key": "B",
+        "content": "They will make qualified educators."
+      },
+      {
+        "key": "C",
+        "content": "Degrees will no longer appeal them."
+      },
+      {
+        "key": "D",
+        "content": "They will have a limited choice of jobs."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-31",
+    "exam": "english1",
+    "year": 2022,
+    "number": 31,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text3",
+    "stem": "According to Paragraph 1, art-science collaborations have",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "caught the attention of critics."
+      },
+      {
+        "key": "B",
+        "content": "received favorable responses."
+      },
+      {
+        "key": "C",
+        "content": "promoted academic publishing."
+      },
+      {
+        "key": "D",
+        "content": "sparked heated public disputes."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-32",
+    "exam": "english1",
+    "year": 2022,
+    "number": 32,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text3",
+    "stem": "The reworked version of The Four Seasons is mentioned to show that",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "art can offer audiences easy access to science."
+      },
+      {
+        "key": "B",
+        "content": "science can help with the expression of emotions."
+      },
+      {
+        "key": "C",
+        "content": "public participation in science has a promising future."
+      },
+      {
+        "key": "D",
+        "content": "art is effective in facilitating scientific innovations."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-33",
+    "exam": "english1",
+    "year": 2022,
+    "number": 33,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text3",
+    "stem": "Some artists seem to worry about in the art-science partnership",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "their role may be underestimated."
+      },
+      {
+        "key": "B",
+        "content": "their reputation may be impaired."
+      },
+      {
+        "key": "C",
+        "content": "their creativity may be inhibited."
+      },
+      {
+        "key": "D",
+        "content": "their work may be misguided."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-34",
+    "exam": "english1",
+    "year": 2022,
+    "number": 34,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text3",
+    "stem": "What does the author say about CAYS?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "It was headed alternately by artists and scientists."
+      },
+      {
+        "key": "B",
+        "content": "It exemplified valuable art-science alliances."
+      },
+      {
+        "key": "C",
+        "content": "Its projects aimed at advancing visual studies."
+      },
+      {
+        "key": "D",
+        "content": "Its founders sought to raise the status of artists."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-35",
+    "exam": "english1",
+    "year": 2022,
+    "number": 35,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text3",
+    "stem": "In the last paragraph, the author holds that art-science collaborations",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "are likely to go beyond public expectations."
+      },
+      {
+        "key": "B",
+        "content": "will intensify interdisciplinary competition."
+      },
+      {
+        "key": "C",
+        "content": "should do more than communicating science."
+      },
+      {
+        "key": "D",
+        "content": "are becoming more popular than before."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-36",
+    "exam": "english1",
+    "year": 2022,
+    "number": 36,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text4",
+    "stem": "The personal grievance provisions of the ERA are intended to",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "punish dubious corporate practices."
+      },
+      {
+        "key": "B",
+        "content": "improve traditional hiring procedures."
+      },
+      {
+        "key": "C",
+        "content": "exempt employers from certain duties."
+      },
+      {
+        "key": "D",
+        "content": "protect the rights of ordinary workers."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-37",
+    "exam": "english1",
+    "year": 2022,
+    "number": 37,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text4",
+    "stem": "It can be learned from Paragraph 3 that the provisions may",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "hinder business development."
+      },
+      {
+        "key": "B",
+        "content": "undermine managers’ authority."
+      },
+      {
+        "key": "C",
+        "content": "affect the public image of the firms."
+      },
+      {
+        "key": "D",
+        "content": "worsen labor-management relations."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-38",
+    "exam": "english1",
+    "year": 2022,
+    "number": 38,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text4",
+    "stem": "Which of the following measures would the Productivity Commissionsupport?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Imposing reasonable wage restraints."
+      },
+      {
+        "key": "B",
+        "content": "Enforcing employment protection laws."
+      },
+      {
+        "key": "C",
+        "content": "Limiting the powers of business owners."
+      },
+      {
+        "key": "D",
+        "content": "Dismissing poorly performing managers."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-39",
+    "exam": "english1",
+    "year": 2022,
+    "number": 39,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text4",
+    "stem": "What might be an effect of ERA’s unjustified dismissal procedures?",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Highly paid managers lose their jobs."
+      },
+      {
+        "key": "B",
+        "content": "Employees suffer from salary cuts."
+      },
+      {
+        "key": "C",
+        "content": "Society sees a rise in overall well-being."
+      },
+      {
+        "key": "D",
+        "content": "Employers need to hire new staff."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "B",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-40",
+    "exam": "english1",
+    "year": 2022,
+    "number": 40,
+    "section": "reading_a",
+    "type": "choice",
+    "score": 2,
+    "passage_id": "english1-2022-P-text4",
+    "stem": "It can be inferred that the “high-income threshold” in Australia",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "has secured managers’ earnings."
+      },
+      {
+        "key": "B",
+        "content": "has produced undesired results."
+      },
+      {
+        "key": "C",
+        "content": "is beneficial to business owners."
+      },
+      {
+        "key": "D",
+        "content": "is difficult to put into practice"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-41",
+    "exam": "english1",
+    "year": 2022,
+    "number": 41,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2022-P-partb",
+    "stem": "Teri Byrd:\nI was a zoo and wildlife park employee for years. Both the wildlife park and zoo claimed to be operating for the benefit of the animals and for conservation purposes. This claim was false. Neither one of them actually participated in any contributions to animal research or conservation. They are profitable institutions whose bottom line is much more important than the condition of the animals. Animals despise being captives in zoos. No matter how you “enhance” enclosures, they do not allow for freedom, a natural diet or adequate exercise. Animals end up stressed and unhealthy or dead. It’s past time for transparency with these institutions, and it’s past time to eliminate zoos from our culture.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Zoos which spare no effort to take care of animals should not be subjected to unfair criticism."
+      },
+      {
+        "key": "B",
+        "content": "To pressure zoos to spend less on their animals would lead to inhumane outcomes for the precious creatures in their care."
+      },
+      {
+        "key": "C",
+        "content": "While animals in captivity deserve sympathy, zoos play a significant role in starting young people down the path of related sciences."
+      },
+      {
+        "key": "D",
+        "content": "Zoos save people trips to wilderness areas and thus contribute to wildlife conservation."
+      },
+      {
+        "key": "E",
+        "content": "For wild animals that cannot be returned to their natural habitats, zoos offer the best alternative."
+      },
+      {
+        "key": "F",
+        "content": "Zoos should have been closed down as they prioritize money making over animals’ wellbeing."
+      },
+      {
+        "key": "G",
+        "content": "Marris distorts our findings which actually prove that zoos serve as an indispensable link between man and nature."
+      }
+    ],
+    "answer": [
+      "F"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/信息匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "F",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-42",
+    "exam": "english1",
+    "year": 2022,
+    "number": 42,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2022-P-partb",
+    "stem": "Karen R. Sime:\nAs a zoology professor, I agree with Emma Marris that zoo displays can be sad and cruel. But she underestimates the educational value of zoos. The zoology program at my university attracts students for whom zoo visits were the crucial formative experience that led them to major in biological sciences. These are mostly students who had no opportunity as children to travel to wilderness areas, wildlife refuges or national parks. Although good TV shows can help stir children’s interest in conservation, they cannot replace the excitement of a zoo visit as an intense, immersive and interactive experience. Surely there must be some middle ground that balances zoos’ treatment of animals with their educational potential.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Zoos which spare no effort to take care of animals should not be subjected to unfair criticism."
+      },
+      {
+        "key": "B",
+        "content": "To pressure zoos to spend less on their animals would lead to inhumane outcomes for the precious creatures in their care."
+      },
+      {
+        "key": "C",
+        "content": "While animals in captivity deserve sympathy, zoos play a significant role in starting young people down the path of related sciences."
+      },
+      {
+        "key": "D",
+        "content": "Zoos save people trips to wilderness areas and thus contribute to wildlife conservation."
+      },
+      {
+        "key": "E",
+        "content": "For wild animals that cannot be returned to their natural habitats, zoos offer the best alternative."
+      },
+      {
+        "key": "F",
+        "content": "Zoos should have been closed down as they prioritize money making over animals’ wellbeing."
+      },
+      {
+        "key": "G",
+        "content": "Marris distorts our findings which actually prove that zoos serve as an indispensable link between man and nature."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/信息匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "C",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-43",
+    "exam": "english1",
+    "year": 2022,
+    "number": 43,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2022-P-partb",
+    "stem": "Greg Newberry:\nEmma Marris’s article is an insult and a disservice to the thousands of passionate people who    work tirelessly to improve the lives of animals and protect our planet. She uses outdated research and decades-old examples to undermine the noble mission of organizations committed to connecting children to a world beyond their own. Zoos are at the forefront of conservation and constantly evolving to improve how they care for animals and protect each species in its natural habitat. Are there tragedies? Of course. But they are the exception, not the norm that Ms. Marris implies. A distressed animal in a zoo will get as good or better treatment than most of us at our local hospital.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Zoos which spare no effort to take care of animals should not be subjected to unfair criticism."
+      },
+      {
+        "key": "B",
+        "content": "To pressure zoos to spend less on their animals would lead to inhumane outcomes for the precious creatures in their care."
+      },
+      {
+        "key": "C",
+        "content": "While animals in captivity deserve sympathy, zoos play a significant role in starting young people down the path of related sciences."
+      },
+      {
+        "key": "D",
+        "content": "Zoos save people trips to wilderness areas and thus contribute to wildlife conservation."
+      },
+      {
+        "key": "E",
+        "content": "For wild animals that cannot be returned to their natural habitats, zoos offer the best alternative."
+      },
+      {
+        "key": "F",
+        "content": "Zoos should have been closed down as they prioritize money making over animals’ wellbeing."
+      },
+      {
+        "key": "G",
+        "content": "Marris distorts our findings which actually prove that zoos serve as an indispensable link between man and nature."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/信息匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "A",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-44",
+    "exam": "english1",
+    "year": 2022,
+    "number": 44,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2022-P-partb",
+    "stem": "Dean Gallea:\nAs a fellow environmentalist, animal-protection advocate and longtime vegetarian, I could properly be in the same camp as Emma Marris on the issue of zoos. But I believe that well-run zoos, and the heroic animals that suffer their captivity, do serve a higher purpose. Were it not for opportunities to observe these beautiful, wild creatures close to home, many more people would be driven by their fascination to travel to wild areas to seek out, disturb and even hunt them down. Zoos are, in that sense, similar to natural history and archeology museums, serving to satisfy our need for contact with these living creatures while leaving the vast majority undisturbed in their natural environments.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Zoos which spare no effort to take care of animals should not be subjected to unfair criticism."
+      },
+      {
+        "key": "B",
+        "content": "To pressure zoos to spend less on their animals would lead to inhumane outcomes for the precious creatures in their care."
+      },
+      {
+        "key": "C",
+        "content": "While animals in captivity deserve sympathy, zoos play a significant role in starting young people down the path of related sciences."
+      },
+      {
+        "key": "D",
+        "content": "Zoos save people trips to wilderness areas and thus contribute to wildlife conservation."
+      },
+      {
+        "key": "E",
+        "content": "For wild animals that cannot be returned to their natural habitats, zoos offer the best alternative."
+      },
+      {
+        "key": "F",
+        "content": "Zoos should have been closed down as they prioritize money making over animals’ wellbeing."
+      },
+      {
+        "key": "G",
+        "content": "Marris distorts our findings which actually prove that zoos serve as an indispensable link between man and nature."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/信息匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "D",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-45",
+    "exam": "english1",
+    "year": 2022,
+    "number": 45,
+    "section": "reading_b",
+    "type": "match",
+    "score": 2,
+    "passage_id": "english1-2022-P-partb",
+    "stem": "John Fraser:\nEmma Marris selectively describes and misrepresents the findings of our research. Our studies focused on the impact of zoo experiences on how people think about themselves and nature, and the data points extracted from our studies do not, in any way, discount what is learned in a zoo visit.  Zoos are tools for thinking. Our research provides strong support for the value of zoos in connecting people with animals and with nature. Zoos provide a critical voice for conservation and environmental protection. They afford an opportunity for people from all backgrounds to encounter a range of animals, from drone bees to springbok or salmon, to better understand the natural world we live in.",
+    "images": [],
+    "options": [
+      {
+        "key": "A",
+        "content": "Zoos which spare no effort to take care of animals should not be subjected to unfair criticism."
+      },
+      {
+        "key": "B",
+        "content": "To pressure zoos to spend less on their animals would lead to inhumane outcomes for the precious creatures in their care."
+      },
+      {
+        "key": "C",
+        "content": "While animals in captivity deserve sympathy, zoos play a significant role in starting young people down the path of related sciences."
+      },
+      {
+        "key": "D",
+        "content": "Zoos save people trips to wilderness areas and thus contribute to wildlife conservation."
+      },
+      {
+        "key": "E",
+        "content": "For wild animals that cannot be returned to their natural habitats, zoos offer the best alternative."
+      },
+      {
+        "key": "F",
+        "content": "Zoos should have been closed down as they prioritize money making over animals’ wellbeing."
+      },
+      {
+        "key": "G",
+        "content": "Marris distorts our findings which actually prove that zoos serve as an indispensable link between man and nature."
+      }
+    ],
+    "answer": [
+      "G"
+    ],
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/阅读理解B（新题型）/信息匹配"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_crosscheck": {
+        "repo": "Echo1LZJY/echo-kaoyan-english-skill",
+        "answer": "G",
+        "agree": true
+      }
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-46",
+    "exam": "english1",
+    "year": 2022,
+    "number": 46,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2022-P-translation",
+    "stem": "It was also, and this is unknown even to many people well read about the period, a battle between those who made codes and those who broke them.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "这也是一场编码者和破译者之间的较量，即便对熟读这段历史的很多人来说，这也是闻所未闻的。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-47",
+    "exam": "english1",
+    "year": 2022,
+    "number": 47,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2022-P-translation",
+    "stem": "It listed many documents in code that had been captured from the French army of Spain, and whose secrets had been revealed by the work of one George Scovell, an officer in British headquarters.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "附录列出了从西班牙的法国驻军截获的许多加密文件，将其破译的是英军司令部一位名叫乔治·斯科威尔的军官。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-48",
+    "exam": "english1",
+    "year": 2022,
+    "number": 48,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2022-P-translation",
+    "stem": "he could not analyze carefully what this obscure officer may or may not have contributed to that great struggle between nations or indeed tell us anything much about the man himself.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "他无法详细分析这位无名军官对那场国家间的大战是否做过什么贡献，也确实无法告诉我们多少此人的个人情况。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-49",
+    "exam": "english1",
+    "year": 2022,
+    "number": 49,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2022-P-translation",
+    "stem": "There may have been many spies and intelligence officers during the Napoleonic Wars, but it is usually extremely difficult to find the material they actually provided or worked on.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "拿破仑战争期间可能有过很多间谍和情报官，但要找到真正由他们提供或处理过的材料，通常却非常困难。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-50",
+    "exam": "english1",
+    "year": 2022,
+    "number": 50,
+    "section": "translation",
+    "type": "translation",
+    "score": 2,
+    "passage_id": "english1-2022-P-translation",
+    "stem": "Just as the code breaking has its wider relevance in the struggle for Spain, so his attempts to make his way up the promotion ladder speak volumes about British society.",
+    "images": [],
+    "options": [],
+    "answer": [
+      "正如密码破译对于那场争夺西班牙的战争有着更广泛的意义，他谋求晋升的种种努力也充分说明了当时英国社会的现实。"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/翻译/英译汉长难句拆分"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-51",
+    "exam": "english1",
+    "year": 2022,
+    "number": 51,
+    "section": "writing_a",
+    "type": "essay",
+    "score": 10.0,
+    "passage_id": null,
+    "stem": "51. Directions:\nWrite an email to a professor at a British university, inviting him/her to organize a team for the\ninternational innovation contest to be held at your university.\nYou should write about 100 words on the ANSWER SHEET.\nDo not use your own name. Use “Li Ming” instead. (10 points)",
+    "images": [],
+    "options": [],
+    "answer": [
+      "Dear Professor Smith,\nThe annual International Innovation Contest organized by my university is scheduled for late next month between the 24th to 30th. You and your students are cordially invited to compete as a team in this contest.\n\nThe contest is designed to inspire the younger generation to approach real-world problems in innovative ways. This year, each team of up to four participants will put their heads together to formulate a detailed proposal for urban waste disposal and recycling. The independent jury will assess the originality and practicality of the proposals submitted to them before selecting five prize-winning ones. At the cutting edge of research on urban planning, you and your students may provide enlightening and even groundbreaking insights into sustainable waste management. In addition, over 15 teams from prestigious universities around the globe have so far confirmed their entry into the contest. It is bound to be revealing and rewarding to exchange ideas with them.\n\nI would greatly appreciate it if you could inform me of your decision by replying to this email before this Friday (September 25th). Please feel free to contact me if you need any further information.\n\nYours sincerely,\nLi Ming"
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/小作文（书信、通知等）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  },
+  {
+    "schema_version": "0.2",
+    "id": "english1-2022-52",
+    "exam": "english1",
+    "year": 2022,
+    "number": 52,
+    "section": "writing_b",
+    "type": "essay",
+    "score": 20.0,
+    "passage_id": null,
+    "stem": "52. Directions:\nWrite an essay of 160-200 words based on the picture below. In your essay, you\nshould\n1) describe the picture briefly,\n2) explain its intended meaning, and\n3) give your comments.\nYou should write neatly on the ANSWER SHEET. ( 20 points)",
+    "images": [
+      "images/english1-2022/q52.jpg"
+    ],
+    "options": [],
+    "answer": [
+      "The picture portrays two female students' contrasting reactions to an upcoming lecture. The one on the left dismisses the lecture as nearly worthless because it has nothing to do with their major. The one on the right, meanwhile, views it in a positive light, saying that there must be some kind of benefit they can gain from it.\n\nThe picture is intended to encourage us to acquire knowledge from a wide range of disciplines. This will equip us with various expertise and skills necessary for adapting to an increasingly competitive and ever-changing job market, in which those with an interdisciplinary background are more likely to stand out. Furthermore, even if we are determined to pursue a career closely related to our college major, exposing ourselves to different fields will provide a wider perspective on a complicated issue and help us move away from a fixed mindset. A compelling example is Qian Xuesen, who set aside time for literary and art theories while majoring in mechanical engineering. It was this experience that opened his mind to a myriad of ideas, thereby enabling him to adopt flexible and innovative approaches to daunting challenges in the aerospace sector.\n\nIn sum, all-around self-improvement requires us to proactively break down the barriers between our chosen field of study. To put it in a nutshell, we should place weight on the breadth as well as depth of knowledge."
+    ],
+    "answer_source": "expert",
+    "sub_questions": [],
+    "solution": null,
+    "knowledge_points": [
+      "英语/写作/大作文（图画作文）"
+    ],
+    "source": {
+      "repo": "LIziak112/structured-kaoyan-english",
+      "commit": "ce0e9ac7c48e74738ffaeb04ff7033e69ea314c9",
+      "files": [
+        "data/2022-1/2022-1.json"
+      ],
+      "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
+      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+    }
+  }
+]
