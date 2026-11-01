@@ -265,3 +265,4 @@
 - 2026-11-01T09:37:53-08:00 前端：离线补传失败改为指数退避重试（2s 起翻倍，封顶 5 分钟）；api 层把 304 当作「题包没变」。
 - 2026-11-01T09:40:08-08:00 前端：「考过的」顶部加模考趋势图（components/ExamTrend.vue）：数据用 /exams?limit=50，只取整卷已交卷场次，按科目切换；朱笔实心点细线连，non_continuous/counts_in_trend=false 画空心点不连线；下方「按最近 3 次连续作答估：约 N 分」（不足 3 次按实际次数估）；点击圆点打开那场成绩。e2e48 390/1280 通过。
 - 2026-11-01T09:58:19-08:00 前端：按后端 7fe2c67 对齐离线题包——explanation 按对象渲染（source_label + steps），没有就用 solution；错题重做认 origin:'wrong_redo'；主观题离线先看参考答案（优先 sub_questions 各小问答案）再自评，补传带 self_rating/thought_text；补传带 time_spent_seconds、不再传 local_correct；返回 status:'rejected' 或 400 等 4xx 直接丢弃并记日志，只有网络错误/5xx/401 退避重试。e2e49 真接口 390/1280：断网 5 道选择 + 1 道主观题自评，联网 6 条全部 201 recorded、计入 11-01、答错进错题本，重发返回 duplicate:true。
+- 2026-11-01T10:00:18-08:00 前端：英一估分拆开写——趋势线只画客观题（完形+阅读A+新题型/60），下方「客观题约 N / 60 · 主观题自评 M / 40」，word_count_low 的自评不计入 M 并注「N 道字数不够，没计入」；有 ai_score 时主观题优先用它；数一不变。英语拆分数据取自 /exams/{id} 的 sections 和 per_question。e2e48 390/1280 通过。
