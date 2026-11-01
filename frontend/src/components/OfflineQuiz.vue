@@ -59,7 +59,8 @@ const ans = (x: PQ) => (x.answer ?? []).join('、')
         <p v-if="res.ok === true" class="good">对了</p>
         <p v-else-if="res.ok === false" class="wrong">错了，正确答案 {{ ans(q) }}</p>
         <p v-else class="ref">参考答案 <span v-html="renderTex(ans(q))"></span></p>
-        <div v-if="q.solution || q.explanation" class="zhu" v-html="renderTex((q.solution || q.explanation)!)"></div>
+        <div v-if="q.explanation_status !== 'pending' && (q.solution || q.explanation)" class="zhu" v-html="renderTex((q.solution || q.explanation)!)"></div>
+        <p v-else-if="q.explanation_status === 'pending'" class="sub">讲解还没出</p>
         <p class="sub">{{ queue.some(x => x.question_id === q!.id) ? '这题等联网后补传，教练点评到时候再更新' : '已经交上去了' }}</p>
       </div>
     </template>

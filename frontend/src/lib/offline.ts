@@ -1,12 +1,13 @@
 // 离线题包：联网时预存今天的题（今日任务里的阅读/完形 + 10 道错题重做，带答案和解析），每天 04:00 换新
-// 离线作答先存本机（客户端时间 + client_id 幂等），联网后 POST /answers/batch 补传，不会重复计分
+// 离线作答先存本机（客户端时间 + client_id 幂等），联网后逐条走 POST /answers 补传（source:'offline_pack'），不会重复计分
 import { ref } from 'vue'
 import { api, offline, uid } from './api'
 import { toast } from './toast'
+import { ApiError } from './api'
 
 export type POpt = { key: string; content: string }
 export type PQ = { id: string; number?: number | string; type: string; section?: string; stem: string; score?: number | string; options?: POpt[]; answer?: string[]; solution?: string | null;
-  passage_id?: string | null; tables?: any[] | null; exam?: string; year?: number | string; origin?: string; explanation?: string | null }
+  passage_id?: string | null; tables?: any[] | null; exam?: string; year?: number | string; origin?: string; explanation?: string | null; explanation_status?: string }
 export type PPassage = { id: string; title?: string; directions?: string; text: string; options?: POpt[] }
 export type Pack = { version: string; study_date?: string; expires_at?: string; fetched_at: number; questions: PQ[]; passages: PPassage[] }
 export type Pending = { client_id: string; question_id: string; answer: string[]; answered_at: string; pack_version: string; local_correct: boolean | null }
@@ -34,7 +35,7 @@ export async function refreshPack(force = false) {
   loading = true
   try {
     const v = pack.value?.version
-    const r = await api<any>('/today/pack' + (v && packFresh() ? `?since_version=${encodeURIComponent(v)}` : ''), {}, { noReload: true })
+    const r = await api<any>('/offline/pack' + (v && packFresh() ? `?since_version=${encodeURIComponent(v)}` : ''), {}, { noReload: true })
     if (r && r.not_modified) return
     const p = normalize(r)
     if (!p.questions.length) return
@@ -58,12 +59,16 @@ export async function flushQueue() {
   if (flushing || offline.value || !queue.value.length) return
   flushing = true
   try {
-    const items = queue.value.slice(0, 50)
-    await api('/answers/batch', { method: 'POST', body: JSON.stringify({ source: 'offline_pack', items }) }, { noReload: true })
-    const sent = new Set(items.map(x => x.client_id))
-    queue.value = queue.value.filter(x => !sent.has(x.client_id)); save()
-    toast(`离线做的 ${items.length} 道题已经补传`)
-    if (queue.value.length) { flushing = false; return flushQueue() }
+    // 补传走现有作答接口，一题一条；client_id 幂等，后端按 answered_at 计入当天
+    let n = 0
+    while (queue.value.length && !offline.value) {
+      const x = queue.value[0]
+      try {
+        await api('/answers', { method: 'POST', body: JSON.stringify({ question_id: x.question_id, answer: x.answer, client_id: x.client_id, answered_at: x.answered_at, source: 'offline_pack', pack_version: x.pack_version }) }, { noReload: true })
+      } catch (e: any) { if (!(e instanceof ApiError) || e.code === 'offline' || e.status >= 500 || e.status === 401) throw e /* 4xx（题不存在等）丢掉这条，免得卡住队列 */ }
+      queue.value = queue.value.slice(1); save(); n++
+    }
+    if (n) toast(`离线做的 ${n} 道题已经补传`)
   } catch { /* 下次联网再传 */ } finally { flushing = false }
 }
 

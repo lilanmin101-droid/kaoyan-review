@@ -261,3 +261,4 @@
 - 2026-11-01T09:20:47-08:00 前端：PWA v4——启动/切回前台/每 5 秒（断网时）用 HEAD 探测真实联网，首屏离线提示稳定；恢复联网后自动重拉当前页数据、考场补传，提示条自动消失；sw 预缓存 maskable 图标，index.html 带 content-length，激活和每次打开时清掉不在当前清单里的旧 js/css（e2e45：断网 F5×3 均显示，恢复后 5 秒内消失，390/1280）
 - 2026-11-01T09:21:07-08:00 前端：心跳/提交收到 409 exam_auto_submitted 时提示「时间到了，已经自动交卷」并进成绩页
 - 2026-11-01T09:32:04-08:00 前端：离线题包前端完成（src/lib/offline.ts 题包缓存+本地判分+补传队列，components/OfflineQuiz.vue 离线刷题页）。按后端草案对接 GET /today/pack、POST /answers/batch（client_id+answered_at+pack_version，50 条一批），等 openapi 定稿再对字段。e2e46 390/1280 通过（断网答 5 题→联网补传 1 批 5 条→回到正常刷题）。
+- 2026-11-01T09:37:06-08:00 前端：暂停门槛按 15 分钟做——暂停页提示「已暂停 N 分钟，超过 15 分钟这场就不算进趋势了」，10 分钟弹提醒，超过变红；继续后顶栏显示「停过 N 分」；成绩页 non_continuous 显示「中途暂停较久，这次不计入模考趋势」，考过的列表标「不计入趋势」（前端目前没有趋势图，等有了按 non_continuous 过滤）。离线题包改为 GET /offline/pack，补传逐条走 POST /answers（client_id、answered_at、source:'offline_pack'），explanation_status:'pending' 显示「讲解还没出」。手机考试顶栏不再换行。e2e47 390/1280、e2e46、e2e44 通过。

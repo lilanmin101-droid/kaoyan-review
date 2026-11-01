@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // 考场模式：整卷限时。计时以服务端为准；每次作答都进本机队列，按 client_seq 递增、带 idempotency_key 发给后端，
 // 断网时留在本机（localStorage），联网后按顺序补交。暂停时题目遮住、计时停。
-import { computed, nextTick, onBeforeUnmount, onMounted, onUpdated, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, onUpdated, ref, watch , onUnmounted } from 'vue'
 import { dragHint } from '../lib/draghint'
 import { renderStem, renderTex, type StemTable } from '../lib/tex'
 import { api, ApiError, download, downloading, sse, uid } from '../lib/api'
@@ -120,7 +120,7 @@ async function open(e: Exam) {
   // 本机还没交上去的答案盖在服务端进度上面
   for (const rq of queue) for (const a of rq.answers ?? []) answers.value[a.question_id] = { ...answers.value[a.question_id], ...a }
   idx.value = Math.max(0, qs.value.findIndex(x => x.id === e.progress?.current_question_id))
-  setRem(e.remaining_seconds); paused.value = e.status === 'paused'; unsent.value = pendingQs()
+  setRem(e.remaining_seconds); paused.value = e.status === 'paused'; pzAcc.value = (e as any).paused_seconds ?? 0; pzWarned = pzAcc.value >= PZ_WARN * 60; if (paused.value) { pzStart(); const since = (e as any).paused_at; if (since) pzAt.value = Math.min(Date.now(), Date.parse(since)) }; unsent.value = pendingQs()
   if (e.status === 'submitted') { stage.value = 'result'; return }
   stage.value = 'run'; qStart = Date.now()
   if (paused.value) push({ state: 'running' }), paused.value = false
@@ -171,8 +171,16 @@ function go(i: number) {
   const sameG = isEn.value && curG.value?.questions.some(x => x.id === qs.value[i]?.id)
   idx.value = i; qStart = Date.now(); if (!sameG) scrollTo({ top: 0 }); if (isEn.value) focusId.value = qs.value[i].id; push({ current_question_id: qs.value[i].id })
 }
-function pause() { paused.value = true; push({ state: 'paused' }) }
-function cont() { paused.value = false; setRem(remaining.value); qStart = Date.now(); push({ state: 'running' }) }
+// 暂停门槛：累计超过 15 分钟这场不计入模考趋势，10 分钟时提醒一次
+const PZ_LIMIT = 15, PZ_WARN = 10
+const pzAcc = ref(0), pzAt = ref(0), pzNow = ref(Date.now()); let pzT = 0, pzWarned = false
+const pzMin = computed(() => Math.floor((pzAcc.value + (paused.value && pzAt.value ? (pzNow.value - pzAt.value) / 1000 : 0)) / 60))
+const pzHint = computed(() => pzMin.value < 1 ? `暂停超过 ${PZ_LIMIT} 分钟，这场就不算进模考趋势` : pzMin.value >= PZ_LIMIT ? `已暂停 ${pzMin.value} 分钟，这场不算进模考趋势了，分数和错题照常保留` : `已暂停 ${pzMin.value} 分钟，超过 ${PZ_LIMIT} 分钟这场就不算进趋势了`)
+function pzStart() { pzAt.value = Date.now(); pzNow.value = pzAt.value; clearInterval(pzT); pzT = window.setInterval(() => { pzNow.value = Date.now(); if (!pzWarned && pzMin.value >= PZ_WARN && pzMin.value < PZ_LIMIT) { pzWarned = true; toast(`已经暂停 ${pzMin.value} 分钟了，超过 ${PZ_LIMIT} 分钟这场就不算进模考趋势`) } }, 5000) }
+function pzStop() { if (pzAt.value) pzAcc.value += (Date.now() - pzAt.value) / 1000; pzAt.value = 0; clearInterval(pzT) }
+onUnmounted(() => clearInterval(pzT))
+function pause() { paused.value = true; pzStart(); push({ state: 'paused' }) }
+function cont() { pzStop(); paused.value = false; setRem(remaining.value); qStart = Date.now(); push({ state: 'running' }) }
 const answered = (x: Q) => !!answers.value[x.id]?.answer?.some(v => v?.trim())
 const flagged = (x: Q) => !!answers.value[x.id]?.flagged
 const doneN = computed(() => qs.value.filter(answered).length)
@@ -273,13 +281,14 @@ const nextTickTop = () => setTimeout(() => document.querySelector('.qpeek')?.scr
 const tex = (s: string) => isEn.value ? s.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]!)) : renderTex(s)
 async function report() { try { await download(`/exams/${ex.value!.id}/report.pdf`, `成绩单-${ex.value!.title}.pdf`); toast('成绩单已下载') } catch (e: any) { toast(e.message) } }
 // 历史
-type Hist = { id: string; title: string; answered_count?: number; score: number | null; max_score: number; status: string; pending_self_rating_count?: number; coach_headline?: string | null; submitted_at?: string; created_at?: string }
+type Hist = { id: string; non_continuous?: boolean; title: string; answered_count?: number; score: number | null; max_score: number; status: string; pending_self_rating_count?: number; coach_headline?: string | null; submitted_at?: string; created_at?: string }
 const hist = ref<Hist[]>([])
 // 加载文案：打开成绩页说「正在打开成绩」，只有从「继续」接回进行中的考试才说「接回考场」
 const loadMsg = /^#\/exam\/[\w-]+\/(result|rate)/.test(location.hash) ? '正在打开成绩…' : /^#\/exam\/go/.test(location.hash) ? '正在接回考场…' : '正在加载…'
 // 中途暂停：后端字段 pause_count / paused_seconds（在考试或成绩上都认）
 const pauseLine = computed(() => { const o: any = { ...(ex.value ?? {}), ...(res.value ?? {}) }; const n = o.pause_count ?? 0, sec = o.paused_seconds ?? 0
   return n > 0 ? `中途暂停 ${n} 次，共 ${Math.max(1, Math.round(sec / 60))} 分钟` : '' })
+const nonCont = computed(() => !!((res.value as any)?.non_continuous ?? (ex.value as any)?.non_continuous))
 async function loadHist() { try { hist.value = ((await api<{ items: Hist[] }>('/exams?limit=10')).items ?? []).filter(h => h.status === 'submitted' || h.status === 'abandoned') } catch { /* 没有就不显示 */ } }
 onMounted(loadHist)
 async function openHist(h: Hist) { if (h.status !== 'submitted') return; open(await api<Exam>(`/exams/${h.id}`)) }
@@ -339,7 +348,7 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
       </template>
       <div v-if="!loading && hist.length" class="hist"><div class="cap sm">考 过 的</div>
         <div v-for="h in hist" :key="h.id" class="hrow" @click="openHist(h)">
-          <span class="t">{{ h.title }}</span><span class="s">{{ h.status === 'abandoned' ? '—' : h.score ?? '—' }}<small> / {{ h.max_score }}</small></span>
+          <span class="t">{{ h.title }}<i v-if="h.non_continuous" class="nc">不计入趋势</i></span><span class="s">{{ h.status === 'abandoned' ? '—' : h.score ?? '—' }}<small> / {{ h.max_score }}</small></span>
           <span v-if="h.status === 'abandoned'" class="c">已放弃{{ h.answered_count ? ` · 做了 ${h.answered_count} 题` : '' }}</span><span v-else class="c">{{ h.pending_self_rating_count ? `${h.pending_self_rating_count} 道待自评` : (h.coach_headline ?? '') }}</span></div></div>
     </main>
 
@@ -349,10 +358,10 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
         <span class="t" @click="drawer = !drawer">{{ ex?.title }} · {{ isEn ? `${gLabel(curG)}（${gRange(curG)}）` : `第 ${q.number} / ${qs.length} 题` }}<i class="dw">{{ drawer ? ' ▴' : ' ▾' }}</i></span>
         <span class="net" v-if="!online">{{ online ? `${unsent} 道题在传` : `离线中，${unsent} 道题的答案存在本机，联网后自动补交` }}</span>
         <span class="clk" :class="{ low: remaining < 900 }">{{ clock(remaining) }}</span>
-        <span class="link" @click="paused ? cont() : pause()">{{ paused ? '继续' : '暂停' }}</span>
+        <span class="link" @click="paused ? cont() : pause()">{{ paused ? '继续' : '暂停' }}</span><span v-if="!paused && pzMin > 0" class="pzs" :class="{ over: pzMin >= PZ_LIMIT }" :title="pzHint">停过 {{ pzMin }} 分</span>
         <span class="link" @click="ask = 'leave'">交卷</span>
       </div>
-      <div v-if="paused" class="main pausebox"><p class="big">已暂停，计时停了</p><p class="sub">题目先遮住。回来点继续。</p><div class="acts flat"><span class="next" @click="cont">继续</span></div></div>
+      <div v-if="paused" class="main pausebox"><p class="big">已暂停，计时停了</p><p class="sub">题目先遮住。回来点继续。</p><p class="sub pzhint" :class="{ over: pzMin >= PZ_LIMIT }">{{ pzHint }}</p><div class="acts flat"><span class="next" @click="cont">继续</span></div></div>
       <div v-else class="erow">
         <main v-if="isEn && curG" class="main enmain">
           <EnPaper :g="curG" :answers="answers" :focus="focusId" @pick="(x, k) => setAns(x as any, { answer: [k] })" @typed="(x, v) => typed(x as any, v)" @focus="id => focusId = id" @flag="x => setAns(x as any, { flagged: !flagged(x as any) })" />
@@ -427,6 +436,7 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
       <div class="cap">{{ ex?.title }} · 成 绩</div>
       <div class="score"><b>{{ res.score }}</b><small>/ {{ res.max_score }}</small></div>
       <p v-if="pauseLine" class="sub pauseln">{{ pauseLine }}</p>
+      <p v-if="nonCont" class="sub noncont">中途暂停较久，这次不计入模考趋势</p>
       <p v-if="coachLine" class="coach"><span class="k">教练说</span>{{ coachLine }}</p>
       <div class="brk">
         <table><tr><th>题型</th><th>得分</th><th>得分率</th></tr>
