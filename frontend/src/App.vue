@@ -5,6 +5,10 @@ import { pack } from './lib/offline'
 import OfflineQuiz from './components/OfflineQuiz.vue'
 const offQ = computed(() => offline.value && !!pack.value?.questions?.length)
 import { toastMsg } from './lib/toast'
+import { updReady, lastInput, applyUpdate } from './lib/update'
+const nowU = ref(Date.now()); setInterval(() => { nowU.value = Date.now() }, 15000)
+// 有考试在进行、或者刚在作答，就先不提示更新
+const showUpd = computed(() => updReady.value && !live.value && nowU.value - lastInput.value > 120000)
 import Login from './Login.vue'
 import Quiz from './pages/Quiz.vue'
 import Today from './pages/Today.vue'
@@ -83,6 +87,7 @@ const sub = computed(() => tab.value === 'quiz' ? `${subj.value === 'english1' ?
       <div class="cd"><span v-if="tab === 'quiz'" class="seg subj"><span :class="{ on: subj === 'math1' }" @click="setSubj('math1')">数学一</span><span :class="{ on: subj === 'english1' }" @click="setSubj('english1')">英语一</span></span></div>
     </header>
     <div v-if="offline" class="offbar">现在没网，连上再试 · 看到的是上次同步的内容</div>
+    <div v-if="showUpd" class="updbar" @click="applyUpdate">有新版本，点一下更新</div>
     <div v-if="live && tab !== 'exam'" class="examlive" @click="nav('exam/go')"><span class="dot"></span>考试进行中 · {{ live.title }} · {{ live.status === 'paused' ? '已暂停' : `剩 ${Math.max(0, Math.floor(liveLeft / 60))} 分钟` }}<span class="go">继续</span></div>
     <ExamCard v-if="tab === 'quiz' && !offQ" :years="mathExamYears" :en-years="enExamYears" @nav="nav" />
     <OfflineQuiz v-if="tab === 'quiz' && offQ" />

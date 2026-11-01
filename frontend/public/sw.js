@@ -1,5 +1,5 @@
 // 研习 PWA：外壳和静态资源可离线；GET 接口联网优先，断网时用上次的结果（按账号分开存）
-const V = 'v4', SHELL = 'shell-' + V, ASSETS = 'assets-' + V, API = 'api-' + V
+const V = 'v5', SHELL = 'shell-' + V, ASSETS = 'assets-' + V, API = 'api-' + V
 const BASE = new URL('./', self.location).href
 const STATIC = ['index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png', 'favicon-64.png']
 self.addEventListener('install', e => e.waitUntil((async () => {
@@ -11,14 +11,15 @@ self.addEventListener('install', e => e.waitUntil((async () => {
   // 外壳的 js/css 必须存成功，不然断网打开会没样式
   const ok = await Promise.all(urls.map(async u => store(ASSETS, BASE + u, await fetch(BASE + u, { cache: 'reload' }).catch(() => null))))
   if (ok.includes(false)) throw new Error('precache failed')
-  self.skipWaiting()
+  // 第一次装直接生效；有旧版本在跑时等页面点「更新」
+  if (!self.registration.active) self.skipWaiting()
 })()))
 self.addEventListener('activate', e => e.waitUntil((async () => {
   for (const k of await caches.keys()) if (![SHELL, ASSETS, API].includes(k)) await caches.delete(k)
   const idx = await pick(BASE + 'index.html'); if (idx) await prune(await idx.text())
   await self.clients.claim()
 })()))
-self.addEventListener('message', e => { if (e.data === 'clear-api') e.waitUntil(caches.delete(API)) })
+self.addEventListener('message', e => { if (e.data === 'clear-api') e.waitUntil(caches.delete(API)); if (e.data === 'skip-waiting') self.skipWaiting() })
 // 存之前把 Vary 去掉、确认真有内容，避免存进空条目或因 Vary: Origin 匹配不上
 async function store(cacheName, key, r) {
   if (!r || !r.ok || r.type === 'opaque') return false
