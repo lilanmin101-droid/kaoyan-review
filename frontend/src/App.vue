@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { computed, onUnmounted, ref } from 'vue'
 import { api, token, offline } from './lib/api'
+import { pack } from './lib/offline'
+import OfflineQuiz from './components/OfflineQuiz.vue'
+const offQ = computed(() => offline.value && !!pack.value?.questions?.length)
 import { toastMsg } from './lib/toast'
 import Login from './Login.vue'
 import Quiz from './pages/Quiz.vue'
@@ -81,10 +84,11 @@ const sub = computed(() => tab.value === 'quiz' ? `${subj.value === 'english1' ?
     </header>
     <div v-if="offline" class="offbar">现在没网，连上再试 · 看到的是上次同步的内容</div>
     <div v-if="live && tab !== 'exam'" class="examlive" @click="nav('exam/go')"><span class="dot"></span>考试进行中 · {{ live.title }} · {{ live.status === 'paused' ? '已暂停' : `剩 ${Math.max(0, Math.floor(liveLeft / 60))} 分钟` }}<span class="go">继续</span></div>
-    <ExamCard v-if="tab === 'quiz'" :years="mathExamYears" :en-years="enExamYears" @nav="nav" />
-    <English v-if="tab === 'quiz' && subj === 'english1'" :key="'en' + enYear" :year="enYear" :years="enYears" @nav="nav" @year="setEnYear" @subj="setSubj" />
+    <ExamCard v-if="tab === 'quiz' && !offQ" :years="mathExamYears" :en-years="enExamYears" @nav="nav" />
+    <OfflineQuiz v-if="tab === 'quiz' && offQ" />
+    <English v-else-if="tab === 'quiz' && subj === 'english1'" :key="'en' + enYear" :year="enYear" :years="enYears" @nav="nav" @year="setEnYear" @subj="setSubj" />
     <Quiz v-else-if="tab === 'quiz'" :key="'quiz' + year" :year="year" :years="years" @nav="nav" @year="setYear" @subj="setSubj" />
- <Exam v-else-if="tab === 'exam'" :years="mathExamYears" :en-years="enExamYears" @nav="nav" />
+    <Exam v-else-if="tab === 'exam'" :years="mathExamYears" :en-years="enExamYears" @nav="nav" />
     <component v-else :is="comp" :key="tab + ':' + backOnline" @nav="nav" @passage="openPassage" />
     <nav v-if="tab !== 'exam'" class="btabs"><a v-for="[k, t] in tabs" :key="k" :href="'#/' + k" :class="{ on: tab === k }" @click.prevent="nav(k)" @auxclick.prevent>{{ t }}</a></nav>
   </div>
