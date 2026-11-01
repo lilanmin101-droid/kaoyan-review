@@ -2333,7 +2333,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "它们有时会行走 60 多英里去寻找食物或水源，而且非常擅长判断其他大象的位置——即使后者位于其视线以外。"
+      "它们有时会跋涉六十多英里去寻找食物或水源，而且非常善于判断其他大象身在何处——即使那些大象不在视线范围之内。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2348,7 +2348,7 @@
         "data/2024-1/2024-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
     }
   },
   {
@@ -2365,7 +2365,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "研究人员确信，这些大象总是能够很确切地知道它们与所有所需资源之间的相对位置，因此除了走熟路，它们还能走捷径。"
+      "研究人员确信，大象始终清楚地知道自己相对于所需各种资源的确切位置，因此除了沿着熟悉的路线行走之外，它们还能抄近路。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2380,7 +2380,7 @@
         "data/2024-1/2024-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
     }
   },
   {
@@ -2397,7 +2397,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "一种可能是，它们只是用眼睛看，然后尝试吃找到的植物，但这样很可能会浪费大量的时间和精力，尤其是因为它们的视力实际上并不怎么好。"
+      "一种可能是，大象只是用眼睛寻找，再尝一尝发现的植物，但这样很可能会浪费大量时间和精力，尤其是因为它们的视力其实并不好。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2412,7 +2412,7 @@
         "data/2024-1/2024-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
     }
   },
   {
@@ -2429,7 +2429,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "植物所产生的挥发性化学物质可以扩散很远的距离，而且这些物质还极具独特性：每种植物或树木都有自己特有的气味特征。"
+      "植物释放的挥发性化学物质能够传播到很远的地方，而且特征十分鲜明：每一种植物或树木都有自己独特的气味标识。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2444,7 +2444,7 @@
         "data/2024-1/2024-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
     }
   },
   {
@@ -2461,7 +2461,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "实验表明，大象很可能用嗅觉来辨别适宜食用的树丛，其次用来评估每片树丛内树木的质量。"
+      "实验表明，大象很可能是利用嗅觉，首先找出值得采食的树丛，其次判断每片树丛中树木的好坏。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2476,7 +2476,7 @@
         "data/2024-1/2024-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
     }
   },
   {
@@ -2493,7 +2493,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "Dear Paul,\n\nI'm happy to help with your assignment about an ancient Chinese scientist.\n\nYou can start by picking someone famous, like Zhang Heng or Zu Chongzhi. Learn about his life, big discoveries, and how he changed science and people. This will be the main part of your talk. Add pictures and fun stories about the scientist to make it more interesting. Also, it's important to communicate well. You should speak in a clear and sure way. This may seem like old boring advice, but it can help make your talk better.\n\nI think if you do these things, your report will be great. Contact me if you have more questions. Good luck!\n\nWarm regards,\nLi Ming"
+      "Dear Paul,\n\nI am glad to help with your oral report. Here are some suggestions.\n\nFirst, choose a scientist whose story is both inspiring and easy to explain, such as Zhang Heng, who invented an instrument to detect earthquakes. Second, collect reliable information from the library and academic websites, and focus on his major achievements and their influence today. Third, make some slides with pictures or models, which will make your report vivid and help your classmates follow you. Finally, rehearse several times and keep within the time limit.\n\nIf you need any books, I can lend you mine. Good luck with your report!\n\nYours,\nLi Ming"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2508,7 +2508,7 @@
         "data/2024-1/2024-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
     }
   },
   {
@@ -2527,7 +2527,7 @@
     ],
     "options": [],
     "answer": [
-      "The picture on the left depicts a park. A young couple are walking in the park, and two children are running. A resident sees this scene and says, “The new small park near home is really great!” The chart on the right shows that the number of parks in a certain city has increased from 406 in 2020 to 670 in 2022.\n\nThe picture indicates that parks can make people feel happy. Parks are of great importance to cities. They help clean the air, and people can see a lot of plants and animals there. Moreover, many people like doing exercise and having fun in parks. When more parks are built, people will have more opportunities to connect with nature and engage in physical activities. As a result, they will become healthier. Many local governments have known these benefits very well, so they have built a large number of parks recently, just like the city shown in the chart.\n\nTo conclude, parks are very important, because they help increase people's quality of life. The government should not focus only on new parks, but also on old ones."
+      "The picture shows residents enjoying a newly built park right outside their homes: a couple are strolling hand in hand, some people are jogging, and a young man exclaims, \"What a nice little park at our doorstep!\" The chart beside it indicates that the number of parks in a certain city rose from 406 in 2020 to 532 in 2021, and further to 670 in 2022.\n\nThe two images reveal that more and more small parks are being built close to where people live, which brings considerable benefits. On the one hand, they offer convenient places for exercise and relaxation, helping citizens stay physically and mentally healthy. On the other hand, they serve as public spaces where neighbors can meet and talk, which strengthens community ties. Moreover, the green space beautifies the city and improves the environment.\n\nIn my opinion, this trend is a vivid example of people-oriented urban development. The government should continue to plan parks in densely populated areas and keep them well maintained, while residents should take good care of public facilities. Only when everyone contributes can our cities become more livable."
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2542,7 +2542,7 @@
         "data/2024-1/2024-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
     }
   }
 ]

@@ -2453,7 +2453,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "战争结束时，那些社会的高校入学率为相应年龄人群的 3%—5%,这一水平在战前数十年里大致保持稳定。"
+      "战争结束时，这些社会的高等教育入学人数约占相应年龄人口的3%～5%，这一比例在战前几十年间基本保持不变。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2468,7 +2468,7 @@
         "data/2021-1/2021-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
     }
   },
   {
@@ -2485,7 +2485,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "那些社会中对于接受高等教育的需求增长了，其范围扩大到战前没有考虑过上大学的群体和社会阶层。"
+      "而且，这些社会中接受高等教育的需求不断上升，并扩展到了战前从未想过上大学的群体和社会阶层。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2500,7 +2500,7 @@
         "data/2021-1/2021-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
     }
   },
   {
@@ -2517,7 +2517,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "在许多西欧国家，高等院校的学生数量在二十世纪六十年代期间五年翻了一番，之后经过七、八或十年的时间到七十年代中期又翻了一番。"
+      "在西欧许多国家，高校学生人数在20世纪60年代每五年就翻一番，到70年代中期，又在七年、八年或十年内再次翻番。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2532,7 +2532,7 @@
         "data/2021-1/2021-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
     }
   },
   {
@@ -2549,7 +2549,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "当绝大多数新教职员工是刚刚完成研究生学业的年轻人时，他们就在很大程度上确立了所在院系的学术生活规范。"
+      "当新进教员大多是刚完成研究生学业的年轻人时，他们在很大程度上决定了该院系学术生活的规范。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2564,7 +2564,7 @@
         "data/2021-1/2021-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
     }
   },
   {
@@ -2581,7 +2581,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "高增长率增加了学术创新的可能性；同时也弱化了在稳定时期或缓慢增长时期接纳教师和学生进入学者群体的那些形式和流程。"
+      "高增长率增加了学术创新的机会，同时也削弱了那些在稳定或缓慢增长时期让教师和学生得以进入学者共同体的形式和程序。"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2596,7 +2596,7 @@
         "data/2021-1/2021-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
     }
   },
   {
@@ -2613,7 +2613,7 @@
     "images": [],
     "options": [],
     "answer": [
-      "My Dear Friend,\nCongratulations on your graduation from college! I am glad to hear that you plan on starting your career in China, and I would like to offer several suggestions that may be conducive to your job seeking.\n\nFirstly, I hope you have done your career planning by taking your education, strengths and interests into account, based on which you may set about collecting information regarding your dream industries and companies. Secondly, a variety of talent recruitment websites, including those specially designed for foreigners in China, are viable options, as you can receive first-hand job information and submit your job applications online. Thirdly, do not forget to apply for a post-study work visa. Otherwise, you will not be allowed to work in China.\n\nHopefully my suggestions above are helpful and wish you all the best!\n\nYours sincerely,\nLi Ming"
+      "Dear Tom,\n\nCongratulations on your graduation! I am glad to hear that you plan to work in China, and here are some suggestions.\n\nFirst, think carefully about what kind of job suits you. With your language advantage, you may consider positions in foreign trade, education or international companies. Second, search for openings on popular recruitment websites and attend job fairs in big cities, where many employers look for international talent. Third, learn some basic Chinese and get to know Chinese working culture, which will help you adapt quickly. Finally, make sure your work visa is in order.\n\nI hope you will find an ideal job soon.\n\nYours,\nLi Ming"
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2628,7 +2628,7 @@
         "data/2021-1/2021-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
     }
   },
   {
@@ -2647,7 +2647,7 @@
     ],
     "options": [],
     "answer": [
-      "In the picture, a boy in the Monkey King costume tells his father that many of his classmates find it boring to learn traditional Chinese opera. “Aren’t you yourself fond of it? That is all that matters,” his father replies in a tone of encouragement.\n\nThe picture is aimed at inspiring us to chase our passions and dreams regardless of what others may say. The original purpose of pursuing a hobby or a dream is by no means to please others, but to lead ourselves to a more fulfilling and meaningful life. It is thus totally unnecessary for us to hesitate to do what we enjoy for fear of disapproval from others. Admittedly, remaining open to constructive advice is conducive to our growth and future success. But we will never be able to take charge of our own destiny if we are easily swayed by throwaway or even biased remarks of others.\n\nTo sum up, having a distinctive hobby is nothing to be ashamed of. Different strokes for different folks, after all. Instead of giving in to pressure to follow the herd, we should be determined and courageous to stick to what we feel enthusiastic about."
+      "In the picture, a little boy dressed as the Monkey King tells his father that many of his classmates find learning Chinese opera boring. With a gentle smile, the father replies, \"Don't you like it yourself? That's enough.\"\n\nThe picture conveys a simple but important message: we should follow our genuine interests instead of being swayed by others' opinions. Interest is the best teacher. When we truly love something, we are willing to devote time and energy to it, and we can enjoy the process even when it is hard. If we give up what we like simply because others do not appreciate it, we may lose both a source of happiness and a chance to develop our potential. Moreover, the father's response shows the value of parental support, which gives children the confidence to stick to their choices.\n\nIn my view, it is natural that people have different tastes, and we should respect our own choices as well as others'. As students, we should listen to useful advice, but we must also have the courage to pursue what we love. Only then can we live a fulfilling life."
     ],
     "answer_source": "expert",
     "sub_questions": [],
@@ -2662,7 +2662,7 @@
         "data/2021-1/2021-1.json"
       ],
       "license": "题面/答案/参考译文/范文：仓库 LICENSE.md 第一层（试题数据，自由使用）；未取解析字段（CC BY-NC）",
-      "answer_note": "参考译文/范文为专家参考答案（取自 LIziak112 源仓库），不是考试院发布的标准答案；考试院只公布评分标准"
+      "answer_note": "参考译文/范文由行业专家自写（非考试院标准答案，考试院只公布评分标准）；不再使用 LIziak112 源仓库的参考译文/范文文本"
     }
   }
 ]
