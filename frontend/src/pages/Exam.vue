@@ -197,7 +197,7 @@ async function endActive() {
   ask.value = null; const a = active.value; if (!a) return
   try {
     // 放弃：不计分、不进错题本；已交卷的会 409
-    try { await api(`/exams/${a.id}/abandon`, { method: 'POST' }); toast('那场已放弃，不计分') }
+    try { const r = await api<{ discarded?: boolean }>(`/exams/${a.id}/abandon`, { method: 'POST' }); toast(r?.discarded ? '那场还没开始答，直接删掉了' : '那场已放弃，不计分') }
     catch (e: any) { if (e instanceof ApiError && e.status === 409) toast('那场已经交过卷了'); else throw e }
     localStorage.removeItem(QKEY(a.id)); await lobby(); loadHist()
   }
@@ -269,6 +269,8 @@ async function report() { try { await download(`/exams/${ex.value!.id}/report.pd
 // 历史
 type Hist = { id: string; title: string; answered_count?: number; score: number | null; max_score: number; status: string; pending_self_rating_count?: number; coach_headline?: string | null; submitted_at?: string; created_at?: string }
 const hist = ref<Hist[]>([])
+// 加载文案：打开成绩页说「正在打开成绩」，只有从「继续」接回进行中的考试才说「接回考场」
+const loadMsg = /^#\/exam\/[\w-]+\/(result|rate)/.test(location.hash) ? '正在打开成绩…' : /^#\/exam\/go/.test(location.hash) ? '正在接回考场…' : '正在加载…'
 async function loadHist() { try { hist.value = ((await api<{ items: Hist[] }>('/exams?limit=10')).items ?? []).filter(h => h.status === 'submitted' || h.status === 'abandoned') } catch { /* 没有就不显示 */ } }
 onMounted(loadHist)
 async function openHist(h: Hist) { if (h.status !== 'submitted') return; open(await api<Exam>(`/exams/${h.id}`)) }
@@ -307,7 +309,7 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
     <!-- 入口：有没交卷的先接着做 -->
     <main v-if="stage === 'lobby'" class="main">
       <div class="cap">考 场 模 式</div>
-      <p v-if="loading" class="sub">正在接回考场…</p>
+      <p v-if="loading" class="sub">{{ loadMsg }}</p>
       <template v-else-if="liveErr"><p class="big">暂时没接上考场</p><p class="sub">网络或服务器刚才没响应，已经答过的都在，不会丢。</p><div class="acts flat"><span class="next" @click="lobby(true)">再试一次</span></div></template>
       <template v-else-if="active">
         <p class="big">{{ active.title }}还没交卷</p>
