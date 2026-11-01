@@ -76,7 +76,7 @@ const sub = computed(() => tab.value === 'quiz' ? `${subj.value === 'english1' ?
       <nav class="tabs"><a v-for="[k, t] in deskTabs" :key="k" :href="'#/' + k" :class="{ on: tab === k }" @click.prevent="nav(k)" @auxclick.prevent>{{ t }}</a></nav>
       <div class="cd"><span v-if="tab === 'quiz'" class="seg subj"><span :class="{ on: subj === 'math1' }" @click="setSubj('math1')">数学一</span><span :class="{ on: subj === 'english1' }" @click="setSubj('english1')">英语一</span></span></div>
     </header>
-    <div v-if="offline" class="offbar">现在没网，看到的是上次同步的内容，改动要连上网再做</div>
+    <div v-if="offline" class="offbar">现在没网，连上再试 · 看到的是上次同步的内容</div>
     <div v-if="live && tab !== 'exam'" class="examlive" @click="nav('exam/go')"><span class="dot"></span>考试进行中 · {{ live.title }} · {{ live.status === 'paused' ? '已暂停' : `剩 ${Math.max(0, Math.floor(liveLeft / 60))} 分钟` }}<span class="go">继续</span></div>
     <ExamCard v-if="tab === 'quiz'" :years="mathExamYears" :en-years="enExamYears" @nav="nav" />
     <English v-if="tab === 'quiz' && subj === 'english1'" :key="'en' + enYear" :year="enYear" :years="enYears" @nav="nav" @year="setEnYear" @subj="setSubj" />

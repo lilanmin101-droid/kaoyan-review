@@ -310,7 +310,7 @@ onUpdated(() => { const eb = document.querySelector<HTMLElement>('.ebar'); if (e
     <main v-if="stage === 'lobby'" class="main">
       <div class="cap">考 场 模 式</div>
       <p v-if="loading" class="sub">{{ loadMsg }}</p>
-      <template v-else-if="liveErr"><p class="big">暂时没接上考场</p><p class="sub">网络或服务器刚才没响应，已经答过的都在，不会丢。</p><div class="acts flat"><span class="next" @click="lobby(true)">再试一次</span></div></template>
+      <template v-else-if="liveErr"><p class="big">暂时没接上考场</p><p class="sub">网络刚才没响应，已经答过的都在，不会丢。</p><div class="acts flat"><span class="next" @click="lobby(true)">再试一次</span></div></template>
       <template v-else-if="active">
         <p class="big">{{ active.title }}还没交卷</p>
         <p v-if="wanted" class="sub">你刚才点的是 {{ wanted }}。同一时间只能有一场模考，先把 {{ active.title }} 接着做完，或者放弃它，再开新的。</p>

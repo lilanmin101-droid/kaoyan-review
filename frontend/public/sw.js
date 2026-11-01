@@ -1,5 +1,5 @@
 // 研习 PWA：外壳和静态资源可离线；GET 接口联网优先，断网时用上次的结果（按账号分开存）
-const V = 'v2', SHELL = 'shell-' + V, ASSETS = 'assets-' + V, API = 'api-' + V
+const V = 'v3', SHELL = 'shell-' + V, ASSETS = 'assets-' + V, API = 'api-' + V
 const BASE = new URL('./', self.location).href
 const STATIC = ['index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png', 'favicon-64.png']
 self.addEventListener('install', e => e.waitUntil((async () => {

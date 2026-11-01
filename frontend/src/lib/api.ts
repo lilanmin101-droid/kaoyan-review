@@ -18,7 +18,7 @@ addEventListener('online', () => { offline.value = false }); addEventListener('o
 export async function api<T = any>(path: string, init: RequestInit = {}, opts: { noReload?: boolean } = {}): Promise<T> {
   let r: Response
   try { r = await fetch(BASE + path, { ...init, headers: headers(init.headers as any) }) }
-  catch { offline.value = true; throw new ApiError('现在没网，连上网再试', 0, undefined, 'offline') }
+  catch { offline.value = true; throw new ApiError('现在没网，连上再试', 0, undefined, 'offline') }
   offline.value = r.headers.get('x-sw-cache') === '1'
   if (r.status === 401 && !opts.noReload) { token.set(null); location.reload() }
   if (!r.ok) {

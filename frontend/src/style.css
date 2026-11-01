@@ -1,6 +1,6 @@
 @import 'katex/dist/katex.min.css';
 @import 'lxgw-wenkai-webfont/lxgwwenkai-regular.css';
-:root{--desk:#EDE7DA;--paper:#FBF8F1;--ink:#22201C;--sub:#8A8376;--hair:#DED6C6;--zhu:#A8382A}
+:root{--lv:#2F4F3F;--desk:#EDE7DA;--paper:#FBF8F1;--ink:#22201C;--sub:#8A8376;--hair:#DED6C6;--zhu:#A8382A}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--desk);font-family:"Source Han Serif SC","Noto Serif CJK SC",serif;color:var(--ink)}
 .desk{max-width:1280px;margin:0 auto;padding:22px 28px;min-height:100vh}
@@ -465,3 +465,13 @@ html{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .mockcard .next.go{align-self:flex-end;margin-top:4px}
 .pendex{display:flex;align-items:center;gap:10px;padding:10px 14px;margin:0 0 18px;border:1px solid var(--hair);border-left:3px solid var(--zhu);font-size:14px;cursor:pointer}.pendex .go{margin-left:auto;color:var(--zhu);border-bottom:1px solid currentColor}
 .offbar{font-size:12px;color:var(--sub);background:var(--paper);border:1px solid var(--hair);padding:6px 12px;margin:0 0 10px;text-align:center}
+
+/* 墨绿主色（Tony 定的：墨绿主色 + 朱红批注）：导航选中、主要操作、进度、选中态用墨绿；朱红只留给批改/错误/要动手的地方 */
+.tabs .on,.tabs a.on{color:var(--lv);border-bottom-color:var(--lv)}
+.btabs a.on{color:var(--lv);font-weight:600}
+.acts .next,.next,.submit,.words .wacts .next{color:var(--lv);border-bottom-color:var(--lv)}
+.summary .bar i,.me .week i{background:var(--lv)}
+.me .map i.a{background:var(--lv);border-color:var(--lv)}
+.me .seg span.on,.seg.subj span.on,.mockcard .seg span.on{color:var(--lv);border-bottom-color:var(--lv)}
+.mockcard .yr.on{color:var(--lv);border-color:var(--lv)}
+.me input:focus,.me select:focus,.en textarea:focus{border-color:var(--lv)}

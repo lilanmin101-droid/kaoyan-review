@@ -5,7 +5,7 @@ import { toast } from './lib/toast'
 const emit = defineEmits<{ done: [] }>()
 const username = ref(''), password = ref(''), err = ref(''), mode = ref<'login' | 'register'>('login'), busy = ref(false)
 function explain(e: unknown) {
-  if (!(e instanceof ApiError)) return '连不上服务器，检查一下网络或后端是否在运行'
+  if (!(e instanceof ApiError)) return '现在没网，连上再试'
   if (mode.value === 'register' && e.status === 409) return '这个账号已经被注册了，换一个，或者直接登录'
   if (mode.value === 'login' && (e.status === 401 || e.status === 404)) return '账号或密码不对'
   if (e.status === 400) return e.message || '账号或密码格式不对'
