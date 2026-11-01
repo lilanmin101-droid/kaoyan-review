@@ -518,6 +518,34 @@ const BUILTIN: Case[] = [
     },
   },
   {
+    id: 'r15-offline-upload', scenario: '第 15 轮：离线题包补传——昨晚断网做的题（answered_at=昨天 21:00、source=offline_pack）今天联网补传，教练按做题那天算；重发不重复计', input: '补传 3 题（2 错）×2 → 昨天的错题帮我排 1 道', source: 'builtin',
+    expect: ['补传的作答按 answered_at 记到昨天（学习日）', '重发全 duplicate，作答条数不变', '「昨天的错题」能筛到补传的错题并排进今天', '错题本 / 统计和在线做一样'], must_not: ['补传的题被当成今天做的', '重发后作答或错题次数翻倍'],
+    run: async (s) => {
+      const d = await today(s), y = addDays(d, -1);
+      const pack = await s.get('/offline/pack');
+      const at = localIso(s, y, '21:00');
+      const items = [
+        { question_id: 'math1-2024-01', answer: ['Z'] }, { question_id: 'math1-2024-05', answer: ['Z'] }, { question_id: 'math1-2024-17', self_rating: 'full' },
+      ].map((x, k) => ({ ...x, client_id: `eval-off-${s.userId.slice(0, 8)}-${k}`, answered_at: at, source: 'offline_pack', pack_version: pack.version }));
+      const r1 = await s.send('POST', '/answers', { items });
+      const r2 = await s.send('POST', '/answers', { items });
+      const rows = (await db.query(`SELECT source, pack_version, to_char(answered_at AT TIME ZONE $2 - interval '4 hours','YYYY-MM-DD') sd FROM answer_records WHERE user_id=$1`, [s.userId, s.tz])).rows;
+      const wq = (await db.query(`SELECT question_id, wrong_count FROM wrong_questions WHERE user_id=$1 ORDER BY question_id`, [s.userId])).rows;
+      const stats = await s.get('/me/stats');
+      const r = await s.command('昨天的错题帮我排 1 道');
+      const t = (await planTasks(s, d)).filter((x: any) => x.kind === 'redo_wrong').flatMap((x: any) => x.payload?.question_ids ?? []);
+      const rep = r.done?.reply ?? '';
+      return [
+        pass('补传 3 条 recorded，学习日 = 昨天', 'expect', r1.body?.items?.every((i: any) => i.status === 'recorded' && i.study_date === y) && rows.length === 3 && rows.every((x: any) => x.sd === y && x.source === 'offline_pack' && x.pack_version === pack.version), JSON.stringify(rows)),
+        pass('重发全 duplicate', 'expect', r2.body?.items?.every((i: any) => i.status === 'duplicate' && i.duplicate === true) && r2.body.items.map((i: any) => i.id).join() === r1.body.items.map((i: any) => i.id).join()),
+        pass('错题本 2 道、各 1 次；统计 3 次作答', 'expect', wq.length === 2 && wq.every((w: any) => w.wrong_count === 1) && stats.attempts === 3, `${JSON.stringify(wq)} attempts=${stats.attempts}`),
+        pass('「昨天的错题」筛到补传的错题、排今天', 'expect', t.some((q: string) => ['math1-2024-01', 'math1-2024-05'].includes(q)) && r.done?.date === d && /昨天/.test(rep), `${rep} | ${JSON.stringify(t)}`),
+        pass('没把补传的题算成今天', 'must_not', rows.every((x: any) => x.sd !== d)),
+        pass('重发没翻倍', 'must_not', rows.length === 3 && wq.every((w: any) => w.wrong_count === 1)),
+      ];
+    },
+  },
+  {
     id: 'r8-mismatch-explained', scenario: '第 8 轮：执行和说的不一样（没错题 / 错题不够 / 日期已过 / 超上限 / 没得加）→ 回复里一句话说清原因和改成了什么', input: '明天加 10 道错题 …', source: 'builtin',
     expect: ['没错题 → 「你现在没有错题，先排了 10 道基础题」，题数=10', '不够 N 道 → 「只有 k 道，先排了这 k 道」', '说昨天 → 排今天并说明', '超过上限 → 说明封顶', '没得加 → 说明为什么没改'], must_not: ['只回「已改计划」不解释'],
     run: async (s) => {

@@ -18,6 +18,7 @@ import { EventsModule } from './events/events.module';
 import { AgentModule } from './agent/agent.module';
 import { FeynmanModule } from './feynman/feynman.module';
 import { MasteryModule } from './mastery/mastery.module';
+import { OfflineModule } from './offline/offline.module';
 
 @Controller('health')
 class HealthController {
@@ -31,7 +32,7 @@ class HealthController {
 
 @Module({
   imports: [DbModule, AuthModule, MasteryModule, PlansModule, QuestionsModule, AnswersModule, ExamsModule, WrongQuestionsModule, WordsModule,
-    CheckinsModule, SyncModule, EventsModule, AgentModule, FeynmanModule],
+    CheckinsModule, SyncModule, EventsModule, AgentModule, FeynmanModule, OfflineModule],
   controllers: [HealthController],
   providers: [{ provide: APP_INTERCEPTOR, useClass: TimezoneInterceptor }, { provide: APP_INTERCEPTOR, useClass: RenderInterceptor }],
 })

@@ -4939,7 +4939,7 @@ components:
             小问号。计算题可按小问分别自评（每问按该小问分值算）；证明题（score_by_whole）只按整题算，带了也会被忽略（返回 sub_number_ignored=true）
         client_id:
           type: string
-          description: 客户端生成的唯一 id（推荐 uuid；8–64 位字母数字 / - / _），同一用户内唯一，重发去重
+          description: 客户端生成的唯一 id（推荐 uuid；1–128 位，字母数字、下划线、点、冒号、连字符），同一用户内唯一，重发去重
         answered_at:
           type: string
           format: date-time
@@ -4968,7 +4968,7 @@ components:
           type:
             - string
             - 'null'
-          description: rejected 的原因：question_not_found / bad_client_id / bad_answered_at / bad_self_rating / missing_question_id / error
+          description: rejected 的原因：question_not_found / bad_client_id / bad_answered_at / bad_self_rating / bad_source / bad_answer / missing_question_id / error
         score:
           type:
             - number
@@ -5683,9 +5683,13 @@ components:
             assets: {type: integer}
         passages:
           type: array
-          description: 文章（同 GET /passages/{id}：text、paragraphs、blanks、underlines、asset_base…）
+          description: 文章（同 GET /passages/{id}：text、paragraphs、blanks、underlines、asset_base…），另加 pick：plan = 今日计划点名的；auto = 计划没指定、后端挑的（今天 04:00 前做得最少、整篇已核对、最新年份）；wrong_redo = 错题重做小题所在的文章（只带这一题）
           items:
-            $ref: '#/components/schemas/Passage'
+            allOf:
+              - $ref: '#/components/schemas/Passage'
+              - type: object
+                properties:
+                  pick: {type: string, enum: [plan, auto, wrong_redo]}
         questions:
           type: array
           items:
@@ -5709,6 +5713,7 @@ components:
               options: {type: ['array', 'null'], items: {type: object}}
               images: {type: ['array', 'null'], items: {type: string}}
               tables: {type: ['array', 'null'], items: {type: object}}
+              errata: {type: array, items: {type: object}}
               sub_questions: {type: ['array', 'null'], items: {type: object}}
               passage_id: {type: ['string', 'null']}
               knowledge_points: {type: array, items: {type: string}}

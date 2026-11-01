@@ -4,7 +4,9 @@ import { PoolClient } from 'pg';
 import { createEmptyCard, fsrs, Rating } from 'ts-fsrs';
 import { DbService } from '../db/db.service';
 import { fromSelfRating, gradeObjective, maxPointsFor, pointsFor } from '../common/grading';
-import { localHour } from '../common/time';
+import { localHour, studyDate } from '../common/time';
+import { clockNow } from '../common/clock';
+import { clampAnsweredAt } from '../offline/offline';
 
 export interface AnswerInput {
   question_id: string;
@@ -16,6 +18,9 @@ export interface AnswerInput {
   client_id?: string | null;
   answered_at?: string | null;
   exam_id?: string | null;
+  /** online（默认）/ offline_pack（离线题包补传） */
+  source?: 'online' | 'offline_pack' | null;
+  pack_version?: string | null;
 }
 
 const scheduler = fsrs();
@@ -28,11 +33,19 @@ export class LearningService {
   async recordAnswer(c: PoolClient, userId: string, a: AnswerInput, device?: string) {
     const q = (await c.query('SELECT id,type,answer,knowledge_points,score::float score,score_by_whole,sub_questions FROM questions WHERE id=$1', [a.question_id])).rows[0];
     if (!q) return { error: 'question_not_found', question_id: a.question_id };
-    // 离线重发去重
+    const tz = await this.time.tz(userId);
+    // 离线重发去重：返回第一次的结果（含当时的错题本 id），不重复计分
     if (a.client_id) {
       const dup = (await c.query('SELECT *, points::float points, max_points::float max_points FROM answer_records WHERE user_id=$1 AND client_id=$2', [userId, a.client_id])).rows[0];
-      if (dup) return { ...dup, duplicate: true };
+      if (dup) {
+        const w = (await c.query('SELECT id, status FROM wrong_questions WHERE user_id=$1 AND question_id=$2', [userId, dup.question_id])).rows[0];
+        return { ...dup, status: 'duplicate', duplicate: true, reason: null, score: dup.points, study_date: studyDate(new Date(dup.answered_at), tz), answered_at_clamped: null,
+          wrong_question_id: w?.id ?? null, wrong_question_status: w?.status ?? null, correct_answer: q.answer };
+      }
     }
+    // 作答时间：没带 = 服务器「现在」（非生产环境跟 X-Debug-Now，和模考同一口径）；带了 = 客户端时间，夹到 [现在−7 天, 现在]
+    const when = clampAnsweredAt(a.answered_at, clockNow());
+    if (when.error) return { error: when.error, question_id: a.question_id };
     const objective = gradeObjective(q.type, q.answer, a.answer ?? []);
     const isCorrect = objective ?? fromSelfRating(a.self_rating);
     // 证明题只按整题计分：带了 sub_number 也按整题记
@@ -40,12 +53,13 @@ export class LearningService {
     const subNumber = subIgnored ? null : a.sub_number ?? null;
     const maxPoints = maxPointsFor(q, subNumber);
     const points = pointsFor(maxPoints, objective, a.self_rating);
-    const answeredAt = a.answered_at ? new Date(a.answered_at) : new Date();
+    const answeredAt = when.at;
     const rec = (await c.query(
-      `INSERT INTO answer_records(user_id,question_id,exam_id,sub_number,answer,is_correct,self_rating,time_spent_seconds,thought_text,client_id,device,answered_at,points,max_points)
-       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING *, points::float points, max_points::float max_points`,
+      `INSERT INTO answer_records(user_id,question_id,exam_id,sub_number,answer,is_correct,self_rating,time_spent_seconds,thought_text,client_id,device,answered_at,points,max_points,source,pack_version)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *, points::float points, max_points::float max_points`,
       [userId, a.question_id, a.exam_id ?? null, subNumber, JSON.stringify(a.answer ?? []), isCorrect, a.self_rating ?? null,
-        a.time_spent_seconds ?? null, a.thought_text ?? null, a.client_id ?? null, device ?? null, answeredAt, points, maxPoints])).rows[0];
+        a.time_spent_seconds ?? null, a.thought_text ?? null, a.client_id ?? null, device ?? null, answeredAt, points, maxPoints,
+        a.source ?? 'online', a.pack_version ?? null])).rows[0];
     if (subIgnored) rec.sub_number_ignored = true;
     await this.db.recordChange(c, userId, 'answer_record', rec.id, 'upsert', rec, device);
 
@@ -87,7 +101,7 @@ export class LearningService {
         }
       }
       // 时段习惯
-      const hour = localHour(answeredAt, await this.time.tz(userId)); // 用户时区的钟点
+      const hour = localHour(answeredAt, tz); // 用户时区的钟点
       await c.query(
         `INSERT INTO habits(user_id,hour_bucket,acc,avg_seconds,samples) VALUES($1,$2,$3,$4,1)
          ON CONFLICT (user_id,hour_bucket) DO UPDATE SET
@@ -96,7 +110,8 @@ export class LearningService {
            samples=habits.samples+1, updated_at=now()`,
         [userId, hour, isCorrect ? 1 : 0, a.time_spent_seconds ?? null]);
     }
-    return { ...rec, wrong_question_id: wrong?.id ?? null, wrong_question_status: wrong?.status ?? null, correct_answer: q.answer };
+    return { ...rec, status: 'recorded', duplicate: false, reason: null, score: rec.points, study_date: studyDate(answeredAt, tz), answered_at_clamped: when.clamped,
+      wrong_question_id: wrong?.id ?? null, wrong_question_status: wrong?.status ?? null, correct_answer: q.answer };
   }
 
   /**
