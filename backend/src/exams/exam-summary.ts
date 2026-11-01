@@ -23,6 +23,9 @@ export interface PerQuestion {
   self_rating?: SelfRating | null;     // 整题自评（证明题 / 没有小问的解答题）
   sub_scores?: SubScore[];             // 计算题按小问自评
   wrong_question_id?: string | null;
+  // 英语翻译 / 作文（统筹者定）：unanswered=true → 一律 0 分；submitted_self_rating = 没作答时提交上来的档（被改成 no_idea）
+  unanswered?: boolean; submitted_self_rating?: SelfRating;
+  word_count?: number; min_words?: number; self_grade_flags?: string[]; // 字数低于线但评了「基本到位 / 大概一半」→ ["word_count_low"]
 }
 
 export type SubjectKey = 'calculus' | 'linear_algebra' | 'probability' | EnglishSection; // 英语卷的「分科」就是六个部分

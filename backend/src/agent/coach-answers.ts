@@ -77,6 +77,7 @@ export class CoachAnswers {
       steps.push('正在看今天的单词');
       const w = await this.wordsLeft(userId);
       const total = w.review + w.fresh;
+      const MIN_NEW = Math.min(5, w.fresh);
       const need = wordMinutes(w.review, w.fresh), rMin = wordMinutes(w.review, 0);
       const cnt = `${T}单词还剩 ${total} 个（复习 ${w.review} 个、新词 ${w.fresh} 个，约 ${need} 分钟）`;
       if (!total) return { steps, reply: `不用背了：${T}的单词已经背完（复习了 ${w.reviewed} 个、新学 ${w.newDone} 个）。` };
@@ -86,15 +87,15 @@ export class CoachAnswers {
       const planPart = other.length ? `计划里其他任务约 ${used} 分钟，还剩 ${Math.max(0, left)} 分钟` : '计划里还没有别的任务';
       if (need <= left) return { steps, reply: `要背，${total} 个都背：${cnt}；${bText}，${planPart}，放得下，${T}背完。` };
       if (w.review && rMin <= left) {
-        const k = Math.max(0, Math.floor((left - rMin) / NEW_MIN));
+        const k0 = Math.floor((left - rMin) / NEW_MIN), k = k0 >= MIN_NEW ? Math.min(w.fresh, k0) : 0; // 新词少于 5 个不值得开头，整批挪走
         return { steps, reply: `要背，但只背复习的 ${w.review} 个（约 ${rMin} 分钟，到期不复习容易忘）：${cnt}；${bText}，${planPart}，放不下全部。`
           + (k ? `新词减到 ${k} 个，剩下 ${w.fresh - k} 个挪到${N}。` : `${w.fresh} 个新词挪到${N}。`) };
       }
-      if (!w.review && left > 0) {
+      if (!w.review && Math.floor(left / NEW_MIN) >= MIN_NEW) {
         const k = Math.min(w.fresh, Math.floor(left / NEW_MIN));
         return { steps, reply: `可以背 ${k} 个：${cnt}；${bText}，${planPart}，新词减到 ${k} 个，剩下 ${w.fresh - k} 个挪到${N}。` };
       }
-      return { steps, reply: `${T}先不背了，挪到${N}：${cnt}；${bText}，${planPart.replace(/，还剩 -?\d+ 分钟/, '')}，已经排满。${w.review ? `实在有空，只把最急的 ${Math.min(w.review, 15)} 个复习过一遍（约 5 分钟）。` : ''}` };
+      return { steps, reply: `${T}先不背了，挪到${N}：${cnt}；${bText}，${left > 0 ? `${planPart}，不够背一批新词` : `${planPart.replace(/，还剩 -?\d+ 分钟/, '')}，已经排满`}。${w.review ? `实在有空，只把最急的 ${Math.min(w.review, 15)} 个复习过一遍（约 5 分钟）。` : ''}` };
     }
 
     if (kind === 'todo') {

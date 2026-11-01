@@ -350,16 +350,18 @@ export class CoachService {
     const due = (await this.tools.getWrongQuestions(ctx, { limit: 5 })).items.filter((w: any) => w.due_at && Date.parse(w.due_at) < Date.now() + 86400000 * 1.5);
     // 主动消息只给「明天最重要的一件事」（headline），数据和其他细节放 details（前端默认折叠）
     const tl = dayLabelOf(addDays(today, 1), today); // 「明天（11-02）」：相对学习日（凌晨 0–4 点跑也还是前一天的复盘）
-    const text = due.length ? `${tl}先重做 ${due.length} 道到期错题。` : s.wrong ? `${tl}先把今天错的 ${s.wrong} 题再做一遍。` : s.n ? `${tl}按计划推进，先做最弱的知识点。` : `${tl}从一组 5 道基础题开始。`;
+    // 都写成「<日期>先…」：存成 {{date:…|plan}}，过了那天再读渲染成「11-02（周一）当天计划重做…」（时态跟着读的人的学习日走）
+    const td = dayLabelOf(today, today);
+    const text = due.length ? `${tl}先重做 ${due.length} 道到期错题。` : s.wrong ? `${tl}先把${td}错的 ${s.wrong} 题再做一遍。` : s.n ? `${tl}先按计划推进，做最弱的知识点。` : `${tl}先做一组 5 道基础题。`;
     const en = (await this.time.earlyNoteOnce(ctx.userId)) ?? ''; // 凌晨 0–4 点跑复盘：说明还算前一天（每个学习日只说一次）
-    const details = en + (s.n ? `今天（${today.slice(5)}）做了 ${s.n} 题，对 ${s.correct} 题${s.wrong ? `、错 ${s.wrong} 题` : ''}，${minutesText(s.minutes)}。` : `今天（${today.slice(5)}）还没有作答记录。`);
+    const details = en + (s.n ? `${td}做了 ${s.n} 题，对 ${s.correct} 题${s.wrong ? `、错 ${s.wrong} 题` : ''}，${minutesText(s.minutes)}。` : `${td}还没有作答记录。`);
     await this.tools.writeDailyTip(ctx, { kind: 'review', date: today, text, details, reason, source: 'mock' });
     const tomorrow = addDays(today, 1);
     if (due.length) {
       const plan = await this.db.one(
         `SELECT 1 FROM plan_tasks t JOIN study_plans p ON p.id=t.plan_id WHERE p.user_id=$1 AND p.plan_date=$2 AND t.kind='redo_wrong' AND t.changed_by_agent`, [ctx.userId, tomorrow]);
       if (!plan) await this.tools.updateDailyPlan(ctx, {
-        date: tomorrow, why_changed: `复盘：有 ${due.length} 道错题${tl}到复习时间，先重做。`,
+        date: tomorrow, why_changed: `复盘：有 ${due.length} 道错题到了复习时间，${tl}先重做。`,
         add_tasks: [{ kind: 'redo_wrong', title: `重做 ${due.length} 道到期错题`, payload: { question_ids: due.map((w: any) => w.question_id) }, estimated_minutes: due.length * 8 }],
       });
     }

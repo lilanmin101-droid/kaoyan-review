@@ -219,8 +219,18 @@ function nestQuotes(t) {
   for (const ch of t) { if (ch === '「' || ch === '『') { k++; o += k === 1 ? '「' : k === 2 ? '『' : ''; } else if ((ch === '」' || ch === '』') && k > 0) { o += k === 1 ? '」' : k === 2 ? '』' : ''; k--; } else o += ch; }
   return o;
 }
+// 英语翻译 / 作文自评（和后端一致）：没作答 → 0 分 + unanswered；字数低于线（小作文 50 / 大作文 80 / 翻译 参考译文 30%）但评了 full / approach_ok_calc_wrong → self_grade_flags
+function mockEnSelfGrade(q) {
+  if (!['translation', 'writing_a', 'writing_b'].includes(q.section)) return q;
+  const cw = (t) => (String(t || '').match(/[A-Za-z]+(?:['’-][A-Za-z]+)*/g) || []).length;
+  const text = (q.answer || []).join('\n').trim(), wc = cw(text);
+  const min = q.section === 'translation' ? Math.ceil(cw(q.reference_answer) * 0.3) : q.section === 'writing_a' ? 50 : 80;
+  if (!text) return { ...q, ...(q.self_rating !== 'no_idea' ? { submitted_self_rating: q.self_rating } : {}), self_rating: 'no_idea', got: 0, is_correct: false, answered: false, unanswered: true, word_count: 0, min_words: min, self_grade_flags: [] };
+  return { ...q, unanswered: false, word_count: wc, min_words: min, self_grade_flags: q.self_rating !== 'no_idea' && wc < min ? ['word_count_low'] : [] };
+}
 function renderMock(v, quotes) {
-  if (typeof v === 'string') { const r = v.replace(/( ?)\{\{date:(\d{4}-\d{2}-\d{2})\}\}( ?)/g, (_m, a, d, b) => { const l = mockDayLabel(d); return /^\d/.test(l) ? a + l + b : l; }); return quotes ? nestQuotes(r) : r; }
+  // 和后端一致：占位符两边的空格都去掉；{{date:D|plan}} 那天已过 → 「11-02（周一）当天计划…」（去掉后面的「先」）
+  if (typeof v === 'string') { const r = v.replace(/[ \u3000]*\{\{date:(\d{4}-\d{2}-\d{2})(\|plan)?\}\}[ \u3000]*(先)?/g, (_m, d, plan, xian) => { const l = mockDayLabel(d); return plan && d < MOCK_STUDY_DATE ? l + '当天计划' : l + (xian || ''); }); return quotes ? nestQuotes(r) : r; }
   if (Array.isArray(v)) return v.map((x) => renderMock(x, quotes));
   if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, renderMock(x, quotes)]));
   return v;
@@ -292,7 +302,7 @@ const customize = {
   'POST /exams/{id}/self-ratings': (body, req) => {
     const out = { ...body, id: req.params.id, server_time: now(), duplicate: false };
     const sr = req.body?.self_ratings || {};
-    if (out.result?.per_question) out.result.per_question = out.result.per_question.map((q) => (q.question_id in sr && typeof sr[q.question_id] === 'string' ? { ...q, self_rating: sr[q.question_id] } : q));
+    if (out.result?.per_question) out.result.per_question = out.result.per_question.map((q) => (q.question_id in sr && typeof sr[q.question_id] === 'string' ? mockEnSelfGrade({ ...q, self_rating: sr[q.question_id] }) : q));
     if (out.result) out.result.self_rated_at = now();
     return out;
   },

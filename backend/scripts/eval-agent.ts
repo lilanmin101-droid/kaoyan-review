@@ -11,7 +11,7 @@ import * as path from 'path';
 import { Client } from 'pg';
 import { loadEnv } from './env';
 import { runUnitTests } from './test-unit';
-import { badDayLabels } from '../src/common/time';
+import { badDayLabels, renderDates } from '../src/common/time';
 /** 学生文字里不该有的标点连用（和 src/agent/coach.service.ts badPunct 一致） */
 const BAD_PUNCT = /[。，；、：][。，；、]|[！？][，；、]|，[！？]/;
 loadEnv();
@@ -630,6 +630,7 @@ const BUILTIN: Case[] = [
       await s.command('今天只有一小时');
       await s.send('PATCH', '/me/settings', { coach_frequency: 'ask' });
       await s.send('POST', '/agent/jobs/run', { job: 'weekly', force: true });
+      const d0 = await today(s);
       const rows = (await db.query(
         `SELECT text x FROM daily_tips WHERE user_id=$1 UNION ALL SELECT headline FROM daily_tips WHERE user_id=$1 UNION ALL SELECT details FROM daily_tips WHERE user_id=$1
          UNION ALL SELECT why_changed FROM study_plans WHERE user_id=$1 UNION ALL SELECT t.title FROM plan_tasks t JOIN study_plans p ON p.id=t.plan_id WHERE p.user_id=$1
@@ -641,7 +642,8 @@ const BUILTIN: Case[] = [
       return [
         pass('周报写「还没有学习时长记录」', 'expect', /还没有学习时长记录/.test(weekly?.details ?? ''), weekly?.details),
         pass('没有 null / undefined / NaN / 标点连用', 'must_not', leak.length === 0 && !/约 null/.test(JSON.stringify(wk.body)), JSON.stringify(leak).slice(0, 300)),
-        await labelCheck(s, [...rows, ...msgs]),
+        // 库里存的是 {{date:…}} 占位符，按今天渲染后再查；接口读出来的 msgs 原样查（占位符漏出来也算错）
+        await labelCheck(s, [...rows.map((x: any) => renderDates(x, d0)), ...msgs], d0),
       ];
     },
   },
@@ -962,6 +964,154 @@ const BUILTIN: Case[] = [
       ];
     },
   },
+  {
+    id: 'r12-questions', scenario: '第 12 轮：问题（不是命令）用真实数据直接回答，什么都不改：单词背不背 / 今天还要做什么 / 错题还剩几道 / 离考试还有几天 / 这周进度',
+    input: '「那今天的单词还背吗」「今天还要做什么」「错题还剩几道」「离考试还有几天」「我这周进度怎么样」', source: 'builtin',
+    expect: ['单词：剩余数和 /words/today 一致，说背不背', '今天还要做什么：列出计划里没做的任务和总分钟', '错题还剩几道：和错题本 active 数一致', '离考试还有几天：按学习日算的天数', '这周进度：题数和正确率是真实的', '同一个问题连问两次都回答（不去重）'],
+    must_not: ['问题改了计划 / 写了改动记录', '回答成「计划里已经有…」'],
+    run: async (s) => {
+      const d = await today(s);
+      await s.wrong('math1-2024-01'); await s.wrong('math1-2024-02');
+      await s.send('POST', '/plans', { plan_date: d, tasks: [{ kind: 'practice', title: '练 5 道极限', estimated_minutes: 25 }, { kind: 'redo_wrong', title: '重做 2 道错题', payload: { question_ids: ['math1-2024-01', 'math1-2024-02'] }, estimated_minutes: 16 }] });
+      const exam = addDays(d, 47);
+      await s.send('PATCH', '/me/settings', { exam_date: exam });
+      const acts0 = (await db.query(`SELECT count(*)::int n FROM agent_actions WHERE user_id=$1`, [s.userId])).rows[0].n;
+      const plan0 = JSON.stringify((await planTasks(s, d)).map((t: any) => [t.id, t.status, t.estimated_minutes, t.payload]));
+      const w = await s.get('/words/today');
+      const qa = async (t: string) => s.command(t);
+      const q1 = await qa('那今天的单词还背吗'), q2 = await qa('今天还要做什么'), q3 = await qa('错题还剩几道'), q4 = await qa('离考试还有几天'), q5 = await qa('我这周进度怎么样'), q6 = await qa('错题还剩几道');
+      const r = (c: any) => String(c.done?.reply ?? '');
+      const active = (await s.get('/wrong-questions?status=active')).items.length;
+      const ans = (await db.query(`SELECT count(*)::int n, count(*) FILTER (WHERE is_correct)::int c FROM answer_records WHERE user_id=$1`, [s.userId])).rows[0];
+      const acts1 = (await db.query(`SELECT count(*)::int n FROM agent_actions WHERE user_id=$1`, [s.userId])).rows[0].n;
+      const plan1 = JSON.stringify((await planTasks(s, d)).map((t: any) => [t.id, t.status, t.estimated_minutes, t.payload]));
+      const all = [q1, q2, q3, q4, q5, q6];
+      const n = w.counts.review + w.counts.new, mm = d.slice(5);
+      return [
+        pass('单词：剩余数和 /words/today 一致，说背不背', 'expect', q1.done?.question_kind === 'words' && r(q1).includes(`今天（${mm}）单词还剩 ${n} 个`) && /^要背|^可以背|先不背/.test(r(q1)), r(q1)),
+        pass('今天还要做什么：列出计划里没做的任务和总分钟', 'expect', q2.done?.question_kind === 'todo' && r(q2).includes('还要做 2 项，共约 41 分钟') && r(q2).includes('练 5 道极限（25 分钟）'), r(q2)),
+        pass('错题还剩几道：和错题本 active 数一致', 'expect', q3.done?.question_kind === 'wrong_left' && r(q3).startsWith(`错题还剩 ${active} 道`) && r(q3).includes('已经排了 2 道重做'), r(q3)),
+        pass('离考试还有几天：按学习日算的天数', 'expect', q4.done?.question_kind === 'exam_days' && r(q4).includes(`还有 47 天`) && r(q4).includes(exam), r(q4)),
+        pass('这周进度：题数和正确率是真实的', 'expect', q5.done?.question_kind === 'week' && r(q5).includes(`做了 ${ans.n} 题，正确率 ${Math.round((100 * ans.c) / ans.n)}%`), r(q5)),
+        pass('同一个问题连问两次都回答（不去重）', 'expect', q6.done?.deduped === false && r(q6) === r(q3), r(q6)),
+        pass('问题改了计划 / 写了改动记录', 'must_not', acts1 === acts0 && plan1 === plan0 && all.every((c) => c.done?.action_count === 0 && !(c.actions ?? []).length), `${acts0}→${acts1}`),
+        pass('回答成「计划里已经有…」', 'must_not', all.every((c) => !/计划里已经有/.test(r(c)) && !badDayLabels(r(c), d).length)),
+      ];
+    },
+  },
+  {
+    id: 'r12-question-budget', scenario: '第 12 轮：多轮对话——先说「今天只有半小时」，再问单词 / 今天还要做什么，回答按 30 分钟预算给建议；下一个学习日不再沿用',
+    input: '今天只有半小时 → 那今天的单词还背吗 → 今天还要做什么 → （04:30 次日）那今天的单词还背吗', source: 'builtin',
+    expect: ['单词回答提到 30 分钟预算并给结论', '待办回答提到 30 分钟', '换了学习日不沿用昨天的预算'], must_not: ['问题改了计划'],
+    run: async (s) => {
+      const d = await today(s), t = addDays(d, 1);
+      await s.wrong('math1-2024-03');
+      await s.send('POST', '/plans', { plan_date: d, tasks: [{ kind: 'practice', title: '练 5 道极限', estimated_minutes: 25 }, { kind: 'practice', title: '练 3 道级数', estimated_minutes: 20 }] });
+      const c1 = await s.command('今天只有半小时');
+      const a0 = (await db.query(`SELECT count(*)::int n FROM agent_actions WHERE user_id=$1`, [s.userId])).rows[0].n;
+      const q1 = await s.command('那今天的单词还背吗'), q2 = await s.command('今天还要做什么');
+      const a1 = (await db.query(`SELECT count(*)::int n FROM agent_actions WHERE user_id=$1`, [s.userId])).rows[0].n;
+      s.debugNow = localIso(s, t, '04:30');
+      const q3 = await s.command('那今天的单词还背吗');
+      s.debugNow = null;
+      const r = (c: any) => String(c.done?.reply ?? '');
+      return [
+        pass('单词回答提到 30 分钟预算并给结论', 'expect', !!c1.done && /只有 30 分钟/.test(r(q1)) && /都背|只背|先不背|挪到明天|减到|可以背/.test(r(q1)) && r(q1).includes(`今天（${d.slice(5)}）`), r(q1)),
+        pass('待办回答提到 30 分钟', 'expect', /只有 30 分钟/.test(r(q2)), r(q2)),
+        pass('换了学习日不沿用昨天的预算', 'expect', q3.done?.date === t && !/只有 30 分钟/.test(r(q3)) && r(q3).includes(`今天（${t.slice(5)}）`), r(q3)),
+        pass('问题改了计划', 'must_not', a1 === a0),
+      ];
+    },
+  },
+  {
+    id: 'r12-dedupe-studyday', scenario: '第 12 轮 P4：同一句话只在同一学习日、按有效的「现在」（X-Debug-Now）60 秒内才算重复；换了学习日一律重新执行',
+    input: '00:30 今天只有一小时 → 00:30:20 同一句 → 04:30 同一句（新学习日）→ 次日 00:30 同一句', source: 'builtin',
+    expect: ['00:30:20 同一句 = 重复', '04:30（新学习日）重新执行，按新学习日', '同一学习日隔 1 小时（有效时间）不算重复'], must_not: ['跨学习日说「刚刚说过同样的话」'],
+    run: async (s) => {
+      const d = await today(s), t = addDays(d, 1);
+      await s.wrong('math1-2024-04');
+      const at = async (day: string, hhmm: string, text = '今天只有一小时') => { s.debugNow = localIso(s, day, hhmm); return s.command(text); };
+      const c1 = await at(t, '00:30');
+      s.debugNow = new Date(Date.parse(localIso(s, t, '00:30')) + 20000).toISOString();
+      const c2 = await s.command('今天只有一小时');
+      const c3 = await at(t, '04:30');
+      const c4 = await at(t, '05:31');
+      s.debugNow = null;
+      const r = (c: any) => String(c.done?.reply ?? c.steps?.join('') ?? '');
+      return [
+        pass('00:30:20 同一句 = 重复', 'expect', c2.done?.deduped === true, `${s.debugNow} ${r(c2)}`),
+        pass('04:30（新学习日）重新执行，按新学习日', 'expect', c1.done?.date === d && c3.done?.deduped === false && c3.done?.date === t && !/刚刚说过/.test(r(c3)), `${c1.done?.date} ${c3.done?.date} ${r(c3)}`),
+        pass('同一学习日隔 1 小时（有效时间）不算重复', 'expect', c4.done?.date === t && !/刚刚说过/.test(r(c4)), r(c4)),
+        pass('跨学习日说「刚刚说过同样的话」', 'must_not', !/刚刚说过/.test(r(c3))),
+      ];
+    },
+  },
+  {
+    id: 'r12-render-tense', scenario: '第 12 轮 P1 / P3：渲染后日期两边没有空格；往后看的说法过了那天读成「MM-DD（周X）当天计划…」；P2：改动记录 before/after 存占位符、读时渲染',
+    input: 'nightly（先问我）→ 确认 → +8 天读复盘 / 改动记录', source: 'builtin',
+    expect: ['当天读：明天（MM-DD）先…', '8 天后读：MM-DD（周X）当天计划…', '日期后面没有空格', 'before/after 库里是占位符、读出来是渲染好的'], must_not: ['漏出占位符'],
+    run: async (s) => {
+      const d = await today(s), t = addDays(d, 1);
+      const wd = (x: string) => `周${'日一二三四五六'[new Date(`${x}T12:00:00Z`).getUTCDay()]}`;
+      await s.wrong('math1-2024-05');
+      await s.send('PATCH', '/me/settings', { coach_frequency: 'ask', quiet_hours: { start: '00:00', end: '23:59' } });
+      const n = await s.send('POST', '/agent/jobs/run', { job: 'nightly', force: true });
+      const id = n.body?.proposal?.message_id;
+      await s.send('POST', `/agent/messages/${id}/confirm`, {});
+      // 直接发的复盘（不先问）：headline「明天（MM-DD）先…」
+      const s2 = await new Session(s.tz).init();
+      await s2.wrong('math1-2024-05');
+      await s2.send('PATCH', '/me/settings', { quiet_hours: { start: '05:00', end: '05:01' } });
+      await s2.send('POST', '/agent/jobs/run', { job: 'nightly', force: true });
+      const h0 = (await s2.get('/agent/messages')).items.find((x: any) => x.kind === 'review')?.headline ?? '';
+      s2.debugNow = localIso(s2, addDays(d, 8), '12:00');
+      const h8 = (await s2.get('/agent/messages')).items.find((x: any) => x.kind === 'review')?.headline ?? '';
+      await db.query(`INSERT INTO daily_tips(user_id,tip_date,kind,text,headline,source,delivered_at) VALUES($1,$2,'review',$3,$3,'eval',now())`, [s.userId, addDays(d, -1), `想在 {{date:${t}}} 的计划里加「练 3 道」`]);
+      const raw = (await db.query(`SELECT before::text b, after::text a FROM agent_actions WHERE user_id=$1`, [s.userId])).rows.map((x: any) => `${x.b} ${x.a}`).join(' ');
+      s.debugNow = localIso(s, addDays(d, 8), '12:00');
+      const msgs = (await s.get('/agent/messages')).items as any[];
+      const acts = (await s.get('/agent/actions?flat=true')).items as any[];
+      s.debugNow = null;
+      const ins = msgs.find((x: any) => x.source === 'eval' || /练 3 道/.test(x.headline ?? ''))?.headline ?? '';
+      const text = JSON.stringify(msgs) + JSON.stringify(acts);
+      const bare = raw.match(/(?<![\d{:\-]|还算 )(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])(?![\d\-])/g) ?? [];
+      return [
+        pass('当天读：明天（MM-DD）先…', 'expect', h0.startsWith(`明天（${t.slice(5)}）先`), h0),
+        pass('8 天后读：MM-DD（周X）当天计划…', 'expect', h8.startsWith(`${t.slice(5)}（${wd(t)}）当天计划`) && !/当天计划先/.test(h8), h8),
+        pass('日期后面没有空格', 'expect', ins.includes(`想在${t.slice(5)}（${wd(t)}）的计划`) && !/）[ \u3000]+[\u4e00-\u9fff]/.test(text), ins),
+        pass('before/after 库里是占位符、读出来是渲染好的', 'expect', raw.includes('{{date:') && !bare.length && acts.some((a: any) => JSON.stringify([a.before, a.after]).includes(`${t.slice(5)}（${wd(t)}）`)), bare.join(',') || raw.slice(0, 200)),
+        pass('漏出占位符', 'must_not', !text.includes('{{date:')),
+      ];
+    },
+  },
+  {
+    id: 'r12-self-grade', scenario: '第 12 轮 A / B：英语翻译 / 作文自评——没作答一律 0 分（unanswered）；字数低于线但评了基本到位 / 大概一半照记并标 word_count_low',
+    input: '模考 46（翻译）空着、51（小作文）写 12 词、52（大作文）写 90 词 → 交卷时都评 full → 再自评 46=full', source: 'builtin',
+    expect: ['没作答：0 分、unanswered=true、self_rating=no_idea', '小作文 12 词评 full：照记满分、self_grade_flags=["word_count_low"]、word_count=12', '大作文 90 词：没有标记', '交卷后再评没作答的题仍是 0 分', '错题本带 self_grade_flags'], must_not: ['没作答的题得分'],
+    run: async (s) => {
+      const ids = ['english1-2024-46', 'english1-2024-51', 'english1-2024-52'];
+      const e = await s.send('POST', '/exams', { question_ids: ids, title: 'eval 英语自评' });
+      const eid = e.body?.id;
+      const words = (k: number) => Array.from({ length: k }, (_, i) => `word${String.fromCharCode(97 + (i % 26))}`).join(' ');
+      await s.send('PUT', `/exams/${eid}/progress`, { idempotency_key: `eval-${eid}`, client_seq: 1, answers: [{ question_id: ids[0], answer: ['   '] }, { question_id: ids[1], answer: [words(12)] }, { question_id: ids[2], answer: [words(90)] }] });
+      const sub = await s.send('POST', `/exams/${eid}/submit`, { idempotency_key: `eval-sub-${eid}`, self_ratings: { [ids[0]]: 'full', [ids[1]]: 'full', [ids[2]]: 'full' } });
+      const per = (sub.body?.result?.per_question ?? []) as any[];
+      const p = (id: string) => per.find((x) => x.question_id === id) ?? {};
+      const re = await s.send('POST', `/exams/${eid}/self-ratings`, { idempotency_key: `eval-re-${eid}`, self_ratings: { [ids[0]]: 'approach_ok_calc_wrong', [ids[1]]: 'approach_ok_calc_wrong' } });
+      const per2 = (re.body?.result?.per_question ?? []) as any[];
+      const p2 = (id: string) => per2.find((x) => x.question_id === id) ?? {};
+      const wq = ((await s.get(`/wrong-questions?exam_id=${eid}`)).items ?? []) as any[];
+      const w51 = wq.find((x: any) => x.question_id === ids[1]);
+      return [
+        pass('没作答：0 分、unanswered=true、self_rating=no_idea', 'expect', sub.status === 200 && p(ids[0]).got === 0 && p(ids[0]).unanswered === true && p(ids[0]).self_rating === 'no_idea' && p(ids[0]).submitted_self_rating === 'full', JSON.stringify(p(ids[0])).slice(0, 300)),
+        pass('小作文 12 词评 full：照记满分、self_grade_flags=["word_count_low"]、word_count=12', 'expect', p(ids[1]).got === p(ids[1]).score && JSON.stringify(p(ids[1]).self_grade_flags) === '["word_count_low"]' && p(ids[1]).word_count === 12 && p(ids[1]).min_words === 50, JSON.stringify({ got: p(ids[1]).got, f: p(ids[1]).self_grade_flags, w: p(ids[1]).word_count })),
+        pass('大作文 90 词：没有标记', 'expect', JSON.stringify(p(ids[2]).self_grade_flags) === '[]' && p(ids[2]).word_count === 90 && p(ids[2]).min_words === 80),
+        pass('交卷后再评没作答的题仍是 0 分', 'expect', re.status === 200 && p2(ids[0]).got === 0 && p2(ids[0]).unanswered === true && JSON.stringify(p2(ids[1]).self_grade_flags) === '["word_count_low"]', `${re.status} ${JSON.stringify(p2(ids[0])).slice(0, 200)}`),
+        pass('错题本带 self_grade_flags', 'expect', !!w51 && JSON.stringify(w51.self_grade_flags) === '["word_count_low"]' && w51.word_count === 12, JSON.stringify(w51 && { f: w51.self_grade_flags, w: w51.word_count })),
+        pass('没作答的题得分', 'must_not', p(ids[0]).got === 0 && p2(ids[0]).got === 0),
+      ];
+    },
+  },
 ];
 
 // ───────────── 专家用例：setup 落库 + 断言映射 ─────────────
@@ -1015,7 +1165,7 @@ async function applySetup(s: Session, setup: any, firstTurn?: Turn) {
   return notes;
 }
 
-interface Ctx { s: Session; run: any; job: any; d: string; before: any; after: any; setup?: any; turns?: any[]; hour?: number }
+interface Ctx { s: Session; run: any; job: any; d: string; before: any; after: any; setup?: any; turns?: any[]; hour?: number; words?: any }
 const runSteps = (c: Ctx) => (c.run?.steps ?? []).join(' | ');
 type Mapper = { re: RegExp; kind: 'expect' | 'must_not'; check: (c: Ctx, a: string) => boolean | null };
 const plansActs = (c: Ctx) => (c.run?.actions ?? c.job?.actions ?? []).filter((a: any) => a.tool === 'updateDailyPlan');
@@ -1026,7 +1176,21 @@ const allRuns = (c: Ctx) => c.turns ?? (c.run ? [c.run] : []);
 /** 计划改动只碰 mmdd 那天（挪 / 顺延出去的除外） */
 const onlyDay = (c: Ctx, runs: any[], mmdd: string) => runs.every((r) => (r.done?.date == null || r.done.date.slice(5) === mmdd)
   && (r.actions ?? []).filter((a: any) => a.tool === 'updateDailyPlan').every((a: any) => a.summary.includes(mmdd) || /挪|顺延/.test(`${a.summary}${a.reason ?? ''}`)));
+/** 问题的回答（round12）：正面回答背不背 / 背多少，数量和 GET /words/today 一致，不改任何东西 */
+const WORDS_ANSWER_RE = /要背|都背|只背|背完|可以背|先不背|挪到明天|减到 ?\d+ ?个/;
+const wordsAnswerOk = (r: any, mmdd: string, words: any) => {
+  const t = replyOf(r); const n = words?.counts ? words.counts.review + words.counts.new : null;
+  return !r?.error && (r.actions ?? []).length === 0 && r.done?.action_count === 0 && t.includes(`今天（${mmdd}）`) && WORDS_ANSWER_RE.test(t)
+    && (n == null || new RegExp(`单词还剩 ${n} 个|单词已经背完`).test(t)) && (n == null || !n || t.includes(`复习 ${words.counts.review} 个、新词 ${words.counts.new} 个`));
+};
 const MAPPERS: Mapper[] = [
+  // 问题意图（coach-38 第 2 轮）
+  { kind: 'expect', re: /^第 ?2 ?次回复正面回答「背不背、背多少」：给出今天（(\d{2}-\d{2})）单词的剩余数量，并按(一小时|\d+ ?分钟)的总预算说明背还是挪到明天/, check: (c, a) => {
+    const mmdd = /今天（(\d{2}-\d{2})）/.exec(a)![1]; const r = allRuns(c)[1];
+    return !!r && wordsAnswerOk(r, mmdd, c.words) && /只有 ?60 ?分钟/.test(replyOf(r)) && /背完|只背|挪到明天|减到/.test(replyOf(r)); } },
+  { kind: 'must_not', re: /^第 ?2 ?次回复只说「计划里已经有…」而不回答背不背/, check: (c) => {
+    const r = allRuns(c)[1]; const t = replyOf(r);
+    return !!r && !/^[^。]{0,30}计划里已经有/.test(t) && WORDS_ANSWER_RE.test(t) && r.done?.deduped !== true; } },
   // 凌晨换日（coach-33 / 37 / 38）
   { kind: 'expect', re: /^第 ?1 ?次回复：改 ?(\d{2}-\d{2}) ?的计划，并说一次「凌晨 4 点前还算 ?(\d{2}-\d{2}) ?这一天」/, check: (c, a) => {
     const m = /改 ?(\d{2}-\d{2}) ?的计划.*还算 ?(\d{2}-\d{2})/.exec(a)!; const r = allRuns(c)[0];
@@ -1134,7 +1298,8 @@ async function runFileCase(c: Case, tz: string): Promise<{ checks: Check[]; tran
   } else if (/^（无输入/.test(c.input)) job = await s.job(/周报/.test(c.input) ? 'weekly' : 'nightly', true);
   else run = await s.command(c.input.replace(/（.*?再次发送）$/, ''), { question_id: c.setup?.current_q ?? c.setup?.last_wrong?.q });
   const after: any = await snapshot(s, d); after.newMessages = after.messages - before.messages;
-  const ctx: Ctx = { s, run, job, d, before, after, setup: c.setup, turns: turns ? turnRuns : undefined, hour };
+  const words = await s.get('/words/today').catch(() => null); // 问题回答里的单词数要和 /words/today 一致
+  const ctx: Ctx = { s, run, job, d, before, after, setup: c.setup, turns: turns ? turnRuns : undefined, hour, words };
   if (turns) turns.forEach((t, k) => { if (t.expect?.length || t.must_not?.length) judge({ ...ctx, run: turnRuns[k], hour: turnRuns[k].hour, turns: [turnRuns[k]] }, t.expect ?? [], t.must_not ?? [], `第 ${k + 1} 轮：`); });
   judge(ctx, c.expect, c.must_not);
   s.debugNow = null;
@@ -1151,7 +1316,8 @@ async function main() {
     : [];
   if (!fileCases.length) console.log(`（没有 ${path.relative(ROOT, CASES_FILE)}，跳过专家用例）`);
   const results: any[] = [];
-  for (const tz of TZS) for (const c of BUILTIN) {
+  const only = process.env.EVAL_ONLY ? new RegExp(process.env.EVAL_ONLY) : null; // 调试用：只跑 id 匹配的用例
+  for (const tz of TZS) for (const c of BUILTIN.filter((x) => !only || only.test(x.id))) {
     const s = await new Session(tz).init();
     let checks: Check[];
     try { checks = await c.run!(s); } catch (e: any) { checks = [{ assertion: '用例跑完', kind: 'expect', status: 'fail', detail: e.message }]; }
@@ -1159,7 +1325,7 @@ async function main() {
     console.log(`${checks.every((x) => x.status === 'pass') ? 'PASS' : 'FAIL'} [${tz}] ${c.id} ${c.scenario}`);
     for (const x of checks.filter((x) => x.status !== 'pass')) console.log(`     ✗ ${x.assertion} ${x.detail ?? ''}`);
   }
-  for (const c of fileCases) {
+  for (const c of fileCases.filter((x: any) => !only || only.test(x.id))) {
     const tz = c.setup?.timezone || TZS[0];
     let r: any;
     try { r = await runFileCase(c, tz); } catch (e: any) { r = { checks: [{ assertion: '用例跑完', kind: 'expect', status: 'fail', detail: e.message }], transcript: [], notes: [] }; }

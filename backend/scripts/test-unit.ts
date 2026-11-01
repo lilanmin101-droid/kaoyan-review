@@ -21,7 +21,9 @@ import { fixLemmas, isBasic, mergeExamples } from './import-vocab';
 import { resolveScoreByWhole } from '../src/common/grading';
 import { assertedLetters, estimateTokens, normEvidence, qualityCheck } from '../src/ai/explanation-gen';
 import { questionText } from '../src/ai/explain';
-import { resolveDeepseekModel } from '../src/ai/llm';
+import { pickModel, resolveDeepseekModel } from '../src/ai/llm';
+import { questionKind } from '../src/agent/coach-answers';
+import { selfGradeCheck } from '../src/exams/self-grade-check';
 import { referenceAnswer } from '../src/questions/reference-answer';
 import { parseGenArgs } from './gen-explanations';
 
@@ -226,7 +228,20 @@ export function runUnitTests() {
     '在 {{date:2026-11-02}} 的计划里加了；{{date:2026-11-01}}；{{date:2026-11-04}}；{{date:2026-11-20}}；本周（10-26–11-01）；凌晨 4 点前还算 11-01 这一天；math1-2024-01；2026-11-01；ab12-05');
   eq('toPlaceholders 跨年', [toPlaceholders('明天（01-01）', '2026-12-31'), toPlaceholders('12-31', '2027-01-01')], ['{{date:2027-01-01}}', '{{date:2026-12-31}}']);
   eq('toPlaceholders 幂等', toPlaceholders('{{date:2026-11-02}}', '2026-11-01'), '{{date:2026-11-02}}');
-  eq('renderDates', ['2026-11-02', '2026-11-03', '2026-11-10'].map((d) => renderDates('想在 {{date:2026-11-02}} 的计划里加「x」', d)), ['想在今天（11-02）的计划里加「x」', '想在昨天（11-02）的计划里加「x」', '想在 11-02（周一） 的计划里加「x」']);
+  eq('renderDates', ['2026-11-02', '2026-11-03', '2026-11-10'].map((d) => renderDates('想在 {{date:2026-11-02}} 的计划里加「x」', d)), ['想在今天（11-02）的计划里加「x」', '想在昨天（11-02）的计划里加「x」', '想在11-02（周一）的计划里加「x」']);
+  // round12 P1/P3：两边空格都去掉；{{date:D|plan}} 时态
+  eq('toPlaceholders |plan', [toPlaceholders('明天（11-02）先重做 1 道到期错题。', '2026-11-01'), toPlaceholders('{{date:2026-11-02}}先做', '2026-11-01'), toPlaceholders('明天（11-02）的计划', '2026-11-01')],
+    ['{{date:2026-11-02|plan}}先重做 1 道到期错题。', '{{date:2026-11-02|plan}}先做', '{{date:2026-11-02}}的计划']);
+  eq('renderDates |plan', ['2026-11-01', '2026-11-02', '2026-11-10'].map((d) => renderDates('{{date:2026-11-02|plan}}先重做 1 道到期错题。', d)),
+    ['明天（11-02）先重做 1 道到期错题。', '今天（11-02）先重做 1 道到期错题。', '11-02（周一）当天计划重做 1 道到期错题。']);
+  eq('badDayLabels 日期后空格 + 漏出的占位符', badDayLabels('在11-02（周一） 的计划；明天（11-03） 先做；{{date:2026-11-02}}', '2026-11-02'), ['（周一） 的', '11-03） 先', '{{date:2026-11-02}}']);
+  eq('questionKind', ['那今天的单词还背吗', '今天还要做什么', '错题还剩几道', '离考试还有几天', '我这周进度怎么样', '今天只有一小时', '今天单词少背点', '帮我把错题排到明天', '今天只有一小时，单词还背吗', '今天能不能少练点？'].map((t) => questionKind(t)),
+    ['words', 'todo', 'wrong_left', 'exam_days', 'week', null, null, null, 'words', null]);
+  eq('selfGradeCheck', [selfGradeCheck({ exam: 'english1', section: 'writing_a', type: 'essay' }, ['  ']), selfGradeCheck({ exam: 'english1', section: 'writing_b', type: 'essay' }, ['I think so.']),
+    selfGradeCheck({ exam: 'english1', section: 'translation', type: 'essay', answer: ['one two three four five six seven eight nine ten'] }, ['a b c']), selfGradeCheck({ exam: 'math1', section: null, type: 'essay' }, ['x'])],
+    [{ kind: 'writing_a', unanswered: true, word_count: 0, min_words: 50 }, { kind: 'writing_b', unanswered: false, word_count: 3, min_words: 80 }, { kind: 'translation', unanswered: false, word_count: 3, min_words: 3 }, null]);
+  eq('pickModel', [pickModel('deepseek', 'chat', ['deepseek-v4-flash', 'deepseek-v4-pro'], 'deepseek-chat'), pickModel('deepseek', 'chat', ['deepseek-flash'], 'deepseek-flash'), pickModel('qwen', 'chat', ['qwen-plus', 'qwen-max-latest'], 'qwen-max')],
+    ['deepseek-v4-flash', 'deepseek-flash', 'qwen-max-latest']);
   eq('renderDates 周X', [renderDates('{{date:2026-11-04}}', '2026-11-01'), renderDates('{{date:2026-11-03}}', '2026-11-01')], ['周三（11-04）', '后天（11-03）']);
   eq('nestQuotes', [nestQuotes('「已在明天（11-02）的计划里加了「练 3 道「变限积分」」」'), nestQuotes('加了「a」和「b」'), nestQuotes('「a『b』」')], ['「已在明天（11-02）的计划里加了『练 3 道变限积分』」', '加了「a」和「b」', '「a『b』」']);
   eq('earlyNote', [earlyNote(0, '2026-11-01'), earlyNote(3, '2026-11-01'), earlyNote(4, '2026-11-02')], ['凌晨 4 点前还算 11-01 这一天。', '凌晨 4 点前还算 11-01 这一天。', null]);

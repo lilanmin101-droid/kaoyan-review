@@ -26,13 +26,13 @@ export function providers(): Record<ProviderId, ProviderCfg> {
       id: 'deepseek', label: 'DeepSeek', keyEnv: 'DEEPSEEK_API_KEY', baseUrlEnv: 'DEEPSEEK_BASE_URL',
       baseURL: env('DEEPSEEK_BASE_URL', 'https://api.deepseek.com').replace(/\/+$/, ''),
       apiKey: env('DEEPSEEK_API_KEY'),
-      models: { chat: env('DEEPSEEK_CHAT_MODEL', 'deepseek-flash'), reasoner: env('DEEPSEEK_REASONER_MODEL', 'deepseek-flash') },
+      models: { chat: picked('deepseek', 'chat', env('DEEPSEEK_CHAT_MODEL', 'deepseek-flash')), reasoner: picked('deepseek', 'reasoner', env('DEEPSEEK_REASONER_MODEL', 'deepseek-flash')) },
     },
     qwen: {
       id: 'qwen', label: '通义千问（DashScope）', keyEnv: 'DASHSCOPE_API_KEY', baseUrlEnv: 'DASHSCOPE_BASE_URL',
       baseURL: env('DASHSCOPE_BASE_URL', 'https://dashscope.aliyuncs.com/compatible-mode/v1').replace(/\/+$/, ''),
       apiKey: env('DASHSCOPE_API_KEY'),
-      models: { chat: env('QWEN_MODEL', 'qwen-max'), reasoner: env('QWEN_MODEL', 'qwen-max') },
+      models: { chat: picked('qwen', 'chat', env('QWEN_MODEL', 'qwen-max')), reasoner: picked('qwen', 'reasoner', env('QWEN_MODEL', 'qwen-max')) },
     },
   };
 }
@@ -94,9 +94,63 @@ export async function chat(p: ProviderId, o: ChatOptions): Promise<ChatResult> {
 /** 旧模型名（2026-07-24 已下线）→ deepseek-flash；thinking：调用方指定优先，否则旧名 reasoner = 开，其余关 */
 export function resolveDeepseekModel(model: string, thinking?: boolean): { model: string; thinking: boolean } {
   const legacy: Record<string, boolean> = { 'deepseek-chat': false, 'deepseek-reasoner': true };
-  if (model in legacy) return { model: 'deepseek-flash', thinking: thinking ?? legacy[model] };
+  const ids = discovered.deepseek?.ids;
+  // 预检拿到了 /models 列表：列表里有的名字照用（不信记忆里的「已下线」）；没有才换
+  if (ids?.length && ids.includes(model)) return { model, thinking: thinking ?? legacy[model] ?? false };
+  if (model in legacy) {
+    const to = ids?.length && !ids.includes('deepseek-flash') ? discovered.deepseek!.chat : 'deepseek-flash';
+    return { model: to, thinking: thinking ?? legacy[model] };
+  }
+  if (ids?.length) return { model: discovered.deepseek!.chat, thinking: thinking ?? false };
   return { model, thinking: thinking ?? false };
 }
+
+// ───────────── 模型名预检：启动时 / gen:explanations 开始前调一次提供方的 GET /models ─────────────
+// 不信记忆里的模型名：有 Key 时按返回的列表挑默认模型和映射；配置的模型不在列表里就打一行清楚的日志并改用列表里的。
+// 没 Key（或 AI_MOCK=1）不调，照旧用配置 / 内置默认名。
+export interface Discovered { ids: string[]; chat: string; reasoner: string; configured: { chat: string; reasoner: string }; missing: string[]; checked_at: string; error?: string }
+const discovered: Partial<Record<ProviderId, Discovered>> = {};
+function picked(p: ProviderId, role: 'chat' | 'reasoner', configured: string) {
+  const d = discovered[p];
+  if (!d || d.error || !d.ids.length) return configured;
+  return d.ids.includes(configured) ? configured : d[role];
+}
+const PREFER: Record<ProviderId, { chat: RegExp[]; reasoner: RegExp[] }> = {
+  deepseek: { chat: [/^deepseek-flash$/, /flash/, /^deepseek-chat$/, /chat/, /^deepseek-v\d/], reasoner: [/^deepseek-flash$/, /flash/, /reason/, /think/, /^deepseek-chat$/] },
+  qwen: { chat: [/^qwen-max$/, /^qwen-max/, /^qwen-plus/, /^qwen3?-/, /^qwen/], reasoner: [/^qwen-max$/, /^qwen-max/, /^qwen-plus/, /^qwen/] },
+};
+export function pickModel(p: ProviderId, role: 'chat' | 'reasoner', ids: string[], configured: string): string {
+  if (ids.includes(configured)) return configured;
+  for (const re of PREFER[p][role]) { const m = ids.filter((x) => re.test(x)).sort()[0]; if (m) return m; }
+  return ids[0] ?? configured;
+}
+export async function preflightModels(who = 'startup', log: (s: string) => void = (s) => console.log(s)): Promise<Partial<Record<ProviderId, Discovered>>> {
+  for (const p of ['deepseek', 'qwen'] as ProviderId[]) {
+    delete discovered[p];
+    const cfg = providers()[p];
+    if (!isConfigured(p)) { log(`[ai:${who}] ${cfg.label}：没配 ${cfg.keyEnv}，不预检模型名，照旧用 ${cfg.models.chat}${cfg.models.reasoner !== cfg.models.chat ? ` / ${cfg.models.reasoner}` : ''}（mock / 兜底）`); continue; }
+    const conf = { chat: p === 'deepseek' ? env('DEEPSEEK_CHAT_MODEL', 'deepseek-flash') : env('QWEN_MODEL', 'qwen-max'), reasoner: p === 'deepseek' ? env('DEEPSEEK_REASONER_MODEL', 'deepseek-flash') : env('QWEN_MODEL', 'qwen-max') };
+    const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), Number(env('AI_PREFLIGHT_TIMEOUT_MS', '8000')));
+    try {
+      const r = await fetch(`${cfg.baseURL}/models`, { signal: ctl.signal, headers: { authorization: `Bearer ${cfg.apiKey}` } });
+      const txt = await r.text();
+      if (!r.ok) throw new Error(`HTTP ${r.status}: ${txt.slice(0, 200)}`);
+      const j = JSON.parse(txt);
+      const ids: string[] = (Array.isArray(j?.data) ? j.data : Array.isArray(j) ? j : []).map((x: any) => String(x?.id ?? x)).filter(Boolean);
+      if (!ids.length) throw new Error('/models 返回的列表是空的');
+      const chatM = pickModel(p, 'chat', ids, conf.chat), reasM = pickModel(p, 'reasoner', ids, conf.reasoner);
+      const missing = [...new Set([conf.chat, conf.reasoner])].filter((m) => !ids.includes(m) && !(p === 'deepseek' && m in { 'deepseek-chat': 1, 'deepseek-reasoner': 1 } && ids.includes('deepseek-flash')));
+      discovered[p] = { ids, chat: chatM, reasoner: reasM, configured: conf, missing, checked_at: new Date().toISOString() };
+      log(`[ai:${who}] ${cfg.label}：/models 返回 ${ids.length} 个（${ids.slice(0, 8).join(', ')}${ids.length > 8 ? ', …' : ''}）；用 chat=${chatM} reasoner=${reasM}`);
+      for (const m of missing) log(`[ai:${who}] ⚠ ${cfg.label}：配置的模型「${m}」不在 /models 列表里，已改用「${m === conf.reasoner && m !== conf.chat ? reasM : chatM}」。请检查 ${p === 'deepseek' ? 'DEEPSEEK_CHAT_MODEL / DEEPSEEK_REASONER_MODEL' : 'QWEN_MODEL'}`);
+    } catch (e: any) {
+      discovered[p] = { ids: [], chat: conf.chat, reasoner: conf.reasoner, configured: conf, missing: [], checked_at: new Date().toISOString(), error: e?.name === 'AbortError' ? '超时' : String(e?.message ?? e) };
+      log(`[ai:${who}] ⚠ ${cfg.label}：预检 /models 失败（${discovered[p]!.error}），照旧用配置的 ${conf.chat}`);
+    } finally { clearTimeout(timer); }
+  }
+  return { ...discovered };
+}
+export const discoveredModels = () => ({ ...discovered });
 
 /** 从模型输出里取 JSON（容忍 ```json 代码块和前后废话） */
 export function parseJsonLoose<T = any>(text: string): T {
@@ -123,6 +177,7 @@ export function aiStatus() {
     forced_mock: forcedMock(),
     providers: (Object.values(ps)).map((c) => ({
       id: c.id, label: c.label, key_env: c.keyEnv, configured: isConfigured(c.id), base_url: c.baseURL, models: c.models,
+      preflight: discovered[c.id] ? { checked_at: discovered[c.id]!.checked_at, model_count: discovered[c.id]!.ids.length, missing: discovered[c.id]!.missing, error: discovered[c.id]!.error ?? null } : null,
     })),
   };
 }

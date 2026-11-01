@@ -80,7 +80,7 @@ export class AgentController {
         const r = await this.coach.runCommand(u.id, commandId, b.text!, (event, data) => { events.push({ event, data }); sse.send(event, data); }, { question_id: b.question_id });
         r.reply = (await this.earlyNote(u.id, r.reply ?? '', b.text!)) || r.reply; // 凌晨 0–4 点补一句「还算前一天」（每个学习日只说一次）
         const done = { command_id: commandId, summary: r.summary, mock: r.mode === 'mock', reply: r.reply, action_count: r.actions.length, deduped: !!r.deduped, date: r.date ?? null,
-          quantity_from: r.quantity_from ?? null, quantity_to: r.quantity_to ?? null, question_id: b.question_id ?? null };
+          quantity_from: r.quantity_from ?? null, quantity_to: r.quantity_to ?? null, question_id: b.question_id ?? null, ...(r.question_kind ? { question_kind: r.question_kind } : {}) };
         sse.send('done', done);
         // 执行完以后的数据指纹（不发给前端）：下一句同样的话来时比对，数据没变才算重复
         await this.db.query(`UPDATE agent_commands SET status='done', events=$2, result=$3, finished_at=now() WHERE id=$1`, [commandId, ph(events), ph({ ...done, state_fp: await this.stateFp(u.id) })]);

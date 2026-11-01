@@ -137,6 +137,8 @@ export function toPlaceholders(text: string | null | undefined, ref: string): st
     .replace(/\{\{date:(\d{4}-\d{2}-\d{2})\}\}(?=先)/g, '{{date:$1|plan}}');
 }
 /** 读的时候：占位符 → 相对今天（读者当时的学习日）的叫法 */
+/** 占位符还原成存库前的裸日期 MM-DD（快照里本来不存占位符的字段撤回时用：计划任务标题、提醒文字） */
+export const bareDates = <T>(s: T): T => (typeof s === 'string' ? (s.replace(/\{\{date:\d{4}-(\d{2}-\d{2})(?:\|plan)?\}\}/g, '$1') as any) : s);
 export function renderDates(text: string, today: string): string {
   if (!text.includes('{{date:')) return text;
   // 模板里裸日期两边常有空格（「在 11-02 的计划」）：渲染后两边的空格都去掉（「在11-02（周一）的计划」「在明天（11-02）的计划」）

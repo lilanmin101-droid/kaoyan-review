@@ -12,7 +12,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { Pool } from 'pg';
 import { loadEnv } from './env';
-import { aiStatus, isConfigured, providers, resolveDeepseekModel } from '../src/ai/llm';
+import { aiStatus, isConfigured, preflightModels, providers, resolveDeepseekModel } from '../src/ai/llm';
 import { ChatFn, officialSolution, PROMPT_VERSION, QuestionRow } from '../src/ai/explain';
 import { aiFake, estimateQuestion, fakeChatFor, generateChecked, loadExplainQuestions, prices, storeExplanation } from '../src/ai/explanation-gen';
 import { chat } from '../src/ai/llm';
@@ -50,6 +50,7 @@ async function main() {
   loadEnv();
   const o = args();
   const fake = aiFake();
+  if (!fake) await preflightModels('gen:explanations'); // 有 Key：先按 /models 核对模型名再估算 / 生成
   const keys = isConfigured('deepseek') && isConfigured('qwen');
   const dry = o.dry || (!keys && !fake);
   const db = new Pool({ connectionString: process.env.DATABASE_URL, max: Math.min(10, o.concurrency + 1) });

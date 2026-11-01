@@ -4,7 +4,7 @@ import { DbService } from '../db/db.service';
 import { PlansService } from '../plans/plans.service';
 import { undoExtraKinds } from './agent-undo';
 import { UserTimeService } from '../common/user-time.service';
-import { placeholdersDeep, toPlaceholders } from '../common/time';
+import { bareDates, placeholdersDeep, toPlaceholders } from '../common/time';
 
 export interface ActionInput {
   commandId?: string | null;
@@ -122,7 +122,7 @@ export class AgentActionsService {
         case 'plan_task':
           if (a.before == null) await c.query('DELETE FROM plan_tasks WHERE id=$1', [a.target_id]);
           else await c.query(`UPDATE plan_tasks SET title=$2, payload=$3, sort_order=$4, status=$5, estimated_minutes=$6, changed_by_agent=$7, why_changed=$8, updated_at=now() WHERE id=$1`,
-            [a.target_id, a.before.title, JSON.stringify(a.before.payload ?? {}), a.before.sort_order, a.before.status, a.before.estimated_minutes, a.before.changed_by_agent ?? false, a.before.why_changed ?? null]);
+            [a.target_id, bareDates(a.before.title), JSON.stringify(a.before.payload ?? {}), a.before.sort_order, a.before.status, a.before.estimated_minutes, a.before.changed_by_agent ?? false, a.before.why_changed ?? null]);
           await this.db.recordChange(c, userId, 'plan_task', a.target_id, a.before == null ? 'delete' : 'upsert', a.before);
           break;
         case 'plan':
@@ -143,7 +143,7 @@ export class AgentActionsService {
           break;
         case 'reminder':
           if (a.before == null) await c.query('DELETE FROM reminders WHERE id=$1', [a.target_id]);
-          else await c.query('UPDATE reminders SET text=$2, updated_at=now() WHERE id=$1', [a.target_id, a.before.text]);
+          else await c.query('UPDATE reminders SET text=$2, updated_at=now() WHERE id=$1', [a.target_id, bareDates(a.before.text)]);
           break;
         case 'goal':
           await c.query(`UPDATE goals SET status=$2, subtasks=$3, phase=$4, updated_at=now() WHERE id=$1`,

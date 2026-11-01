@@ -1,3 +1,4 @@
+import { selfGradeCheck } from './self-grade-check';
 import { subScoresSql } from '../common/grading';
 import { referenceAnswer } from '../questions/reference-answer';
 import { BadRequestException, ConflictException, Injectable, Logger, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
@@ -300,15 +301,22 @@ export class ExamsService {
 
   /** 把规范化后的自评写进作答记录（走 LearningService：错题本 / 掌握度照常），并更新 per_question。同一值重复自评不再记 */
   private async applyRatings(c: PoolClient, userId: string, examId: string, per: PerQuestion[], qs: Map<string, any>, ratings: Map<string, SelfRating | Record<string, SelfRating>>, opKey: string, device?: string) {
-    for (const [qid, r] of ratings) {
+    for (let [qid, r] of ratings) {
       const p = per.find((x) => x.question_id === qid)!;
       const q = qs.get(qid);
       const common = { question_id: qid, answer: p.answer, exam_id: examId, time_spent_seconds: null as number | null };
+      // 英语翻译 / 作文：没作答一律 0 分（不管评了哪档，unanswered=true）；字数太少但评了「基本到位 / 大概一半」照记，标 self_grade_flags=["word_count_low"]
+      const chk = typeof r === 'string' ? selfGradeCheck(q, p.answer) : null;
+      if (chk) {
+        p.word_count = chk.word_count; p.min_words = chk.min_words; p.unanswered = chk.unanswered;
+        if (chk.unanswered) { if (r !== 'no_idea') p.submitted_self_rating = r as SelfRating; r = 'no_idea'; }
+        p.self_grade_flags = !chk.unanswered && r !== 'no_idea' && chk.word_count < chk.min_words ? ['word_count_low'] : [];
+      }
       if (typeof r === 'string') {
         if (p.self_rating === r) continue;
         const rec: any = await this.learning.recordAnswer(c, userId, { ...common, self_rating: r, time_spent_seconds: p.time_spent_seconds || null, client_id: `exam:${examId}:${qid}:r:${opKey}` }, device);
         await this.tagWrong(c, examId, rec);
-        p.self_rating = r; p.got = rec.points ?? 0; p.is_correct = r === 'full'; p.answered = true; // 自评过 = 做过（答案多半写在纸上）
+        p.self_rating = r; p.got = rec.points ?? 0; p.is_correct = r === 'full'; p.answered = !chk?.unanswered; // 自评过 = 做过（答案多半写在纸上）；英语翻译 / 作文看实际写了没
         if (rec.wrong_question_id) p.wrong_question_id = rec.wrong_question_id;
         continue;
       }
@@ -329,7 +337,7 @@ export class ExamsService {
   }
 
   private async loadQuestions(c: PoolClient, ids: string[]) {
-    const rows = (await c.query('SELECT id,number,type,section,score::float score,answer,score_by_whole,score_estimated,sub_scores_source,sub_questions,knowledge_points FROM questions WHERE id = ANY($1)', [ids])).rows;
+    const rows = (await c.query('SELECT id,exam,number,type,section,score::float score,answer,score_by_whole,score_estimated,sub_scores_source,sub_questions,knowledge_points FROM questions WHERE id = ANY($1)', [ids])).rows;
     return new Map<string, any>(rows.map((q: any) => [q.id, q]));
   }
 
@@ -361,6 +369,11 @@ export class ExamsService {
         };
       });
       const ratings = this.normalizeRatings(per, qs, b?.self_ratings); // 先校验再写库
+      // 英语翻译 / 作文没作答：交卷时直接记 0 分（不用再自评）
+      for (const p of per) {
+        const chk = p.objective ? null : selfGradeCheck(qs.get(p.question_id), p.answer);
+        if (chk) { p.word_count = chk.word_count; p.min_words = chk.min_words; p.unanswered = chk.unanswered; p.self_grade_flags = []; if (chk.unanswered && !ratings.has(p.question_id)) ratings.set(p.question_id, 'no_idea'); }
+      }
       // 客观题判分（没作答 = 错，也进错题本）
       for (const p of per.filter((x) => x.objective)) {
         const rec: any = await this.learning.recordAnswer(c, userId, { question_id: p.question_id, answer: p.answer, exam_id: examId, self_rating: null, time_spent_seconds: p.time_spent_seconds || null, client_id: `exam:${examId}:${p.question_id}` }, device);

@@ -5,7 +5,8 @@ import { placeholdersDeep, studyDate, toPlaceholders } from '../src/common/time'
 /**
  * 存量文字里的日期 → 占位符 {{date:YYYY-MM-DD}}（读时按读者学习日渲染）。幂等：占位符不会再被匹配。
  * 参考日 = 写那条记录时用户的学习日（created_at 按用户时区、04:00 换日），用来给 MM-DD 补年份。
- * 范围：agent_actions.summary/reason、daily_tips.text/headline/details/proposal.items[].summary、study_plans / plan_tasks.why_changed、agent_commands.events/result。
+ * 往后看的说法（日期后面紧跟「先」）记成 {{date:…|plan}}（已经是占位符的也补上）。
+ * 范围：agent_actions.summary/reason/before/after、daily_tips.text/headline/details/proposal.items[].summary、study_plans / plan_tasks.why_changed、agent_commands.events/result。
  */
 async function main() {
   loadEnv();
@@ -17,9 +18,13 @@ async function main() {
   const n: Record<string, number> = {};
   const bump = (k: string) => { n[k] = (n[k] ?? 0) + 1; };
   await c.query('BEGIN');
-  for (const r of (await c.query(`SELECT id, user_id, created_at, summary, reason FROM agent_actions`)).rows) {
+  for (const r of (await c.query(`SELECT id, user_id, created_at, summary, reason, before, after FROM agent_actions`)).rows) {
     const d = ref(r.user_id, r.created_at); const s = toPlaceholders(r.summary, d), w = toPlaceholders(r.reason, d);
+    const b = placeholdersDeep(r.before, d), a = placeholdersDeep(r.after, d);
     if (s !== r.summary || w !== r.reason) { await c.query('UPDATE agent_actions SET summary=$2, reason=$3 WHERE id=$1', [r.id, s, w]); bump('agent_actions'); }
+    if (JSON.stringify(b) !== JSON.stringify(r.before) || JSON.stringify(a) !== JSON.stringify(r.after)) {
+      await c.query('UPDATE agent_actions SET before=$2, after=$3 WHERE id=$1', [r.id, b == null ? null : JSON.stringify(b), a == null ? null : JSON.stringify(a)]); bump('agent_actions.before_after');
+    }
   }
   for (const r of (await c.query(`SELECT id, user_id, created_at, text, headline, details, proposal FROM daily_tips`)).rows) {
     const d = ref(r.user_id, r.created_at);

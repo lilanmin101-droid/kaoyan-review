@@ -7,6 +7,7 @@ import { assetsMiddleware, ASSETS_DIR } from './common/assets';
 import { clockMiddleware } from './common/clock';
 import { closePdfRenderer, warmPdfRenderer } from './wrong-questions/pdf';
 import { HttpErrorFilter } from './common/http-error.filter';
+import { preflightModels } from './ai/llm';
 
 // 任何漏掉的异步错误只记日志，不让进程退出（以前这类错误会让 :3000 掉线，前端代理报 502）
 process.on('unhandledRejection', (e: any) => console.error('[unhandledRejection]', e?.stack ?? e));
@@ -31,6 +32,7 @@ async function bootstrap() {
   app.use('/api/v1/assets', assetsMiddleware);
   const port = Number(process.env.PORT || 3000);
   await app.listen(port, '0.0.0.0');
+  void preflightModels('startup'); // 有 Key 时调提供方 /models 核对模型名（后台，不阻塞启动）
   void warmPdfRenderer(); // 导出 PDF 用的 Chrome 常驻 + 字体预热（后台，不阻塞启动）
   console.log(`kaoyan backend listening on http://localhost:${port}/api/v1 (assets: ${ASSETS_DIR})`);
 }

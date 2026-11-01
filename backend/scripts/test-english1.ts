@@ -176,7 +176,10 @@ async function http() {
   ok(rb.score === 6 && rb.max_score === 10 && rb.name.includes('阅读理解 B'), '阅读 B 小计 6/10', rb);
   ok(res.sections.find((s: any) => s.section === 'reading_a').score === 40 && res.sections.find((s: any) => s.section === 'use_of_english').score === 10, '完形 10/10、阅读 A 40/40');
   ok((res.subjects ?? []).length === 6 && res.subjects[0].subject === 'use_of_english', '「分科」= 六个部分', res.subjects);
-  ok(res.pending_self_rating.length === 7, '翻译 5 + 作文 2 待自评/批改', res.pending_self_rating);
+  // 第 12 轮 A：翻译 / 作文没作答的直接 0 分（unanswered），不再待自评；只有作答了的第 46 题待自评
+  ok(JSON.stringify(res.pending_self_rating) === '["english1-2024-46"]', '翻译 / 作文只有作答的第 46 题待自评', res.pending_self_rating);
+  const un = per.filter((p) => p.number >= 47 && p.number <= 52);
+  ok(un.length === 6 && un.every((p) => p.unanswered === true && p.got === 0 && p.self_rating === 'no_idea'), '没作答的 47–52 题：unanswered、0 分', un.map((p) => [p.number, p.unanswered, p.got, p.self_rating]));
 
   // AI 批改（AI_FAKE=1）
   const a1 = await post('/answers', { question_id: 'english1-2099-46', answer: ['如今很多人在家办公，这为他们节省了时间。'] });

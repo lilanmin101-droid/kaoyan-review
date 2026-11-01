@@ -53,13 +53,17 @@ export class WrongQuestionsController {
               q.exam, q.year, q.number, q.type, q.score::float score, q.score_estimated, q.score_by_whole, q.sub_scores_source, ${subScoresSql('q.')}, q.section, q.stem, q.tables, q.errata, q.images, q.options, q.answer, q.sub_questions, q.knowledge_points, q.source->>'assets_dir' AS assets_dir,
               q.id AS qid, q.solution, q.review_status, q.review_checked_by,
               (SELECT e.id FROM ai_explanations e WHERE e.question_id=q.id AND e.status='published' AND e.verified ORDER BY e.version DESC LIMIT 1) AS ai_verified_id,
-              r.text AS reminder
+              r.text AS reminder,
+              -- 模考进来的英语翻译 / 作文：带上那场的自评字数标记（self_grade_flags / word_count / unanswered）
+              (SELECT jsonb_build_object('self_grade_flags', pq->'self_grade_flags', 'word_count', pq->'word_count', 'min_words', pq->'min_words', 'unanswered', pq->'unanswered')
+                 FROM exams ex, jsonb_array_elements(ex.result->'per_question') pq
+                WHERE ex.id=w.source_exam_id AND pq->>'question_id'=w.question_id AND pq ? 'word_count' LIMIT 1) AS self_grade
          FROM wrong_questions w JOIN questions q ON q.id=w.question_id
          LEFT JOIN reminders r ON r.user_id=w.user_id AND r.question_id=w.question_id
         WHERE ${w.join(' AND ')} ORDER BY w.last_wrong_at DESC`, p)).rows
       // 讲解出处 + 是否已核对（verified）
       // due_date / due_relative_day：复习时间落在哪个学习日、相对今天怎么叫（前端不自己算日界）
-      .map((r: any) => { const dd = r.due_at ? studyDate(new Date(r.due_at), day.tz) : null; return { ...r, due_date: dd, due_relative_day: relativeDay(dd, day.date), explanation: explanationInfo({ ...r, id: r.qid }, r.ai_verified_id), reference_answer: referenceAnswer(r) }; });
+      .map((r: any) => { const dd = r.due_at ? studyDate(new Date(r.due_at), day.tz) : null; const { self_grade, ...rest } = r; return { ...rest, ...(self_grade ? { self_grade_flags: self_grade.self_grade_flags ?? [], word_count: self_grade.word_count ?? null, min_words: self_grade.min_words ?? null, unanswered: !!self_grade.unanswered } : {}), due_date: dd, due_relative_day: relativeDay(dd, day.date), explanation: explanationInfo({ ...rest, id: r.qid }, r.ai_verified_id), reference_answer: referenceAnswer(r) }; });
   }
 
   @Get()
