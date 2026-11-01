@@ -19,6 +19,9 @@ type Split = { obj: number; objMax: number; sub: number; subMax: number; low: nu
 const split = reactive<Record<string, Split | null>>({})
 async function loadSplit(id: string) {
   if (id in split) return
+  // 后端列表带了拆分字段就直接用，不再逐场拉详情
+  const it: any = props.items.find(x => x.id === id)
+  if (it?.objective_score != null) { split[id] = { obj: it.objective_score, objMax: it.objective_max ?? 60, sub: it.subjective_ai_score ?? it.subjective_self_score ?? 0, subMax: it.subjective_max ?? 40, low: it.subjective_low_count ?? 0 }; return }
   split[id] = null
   try {
     const e = await api<any>(`/exams/${id}`), r = e.result ?? {}
