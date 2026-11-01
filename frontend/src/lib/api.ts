@@ -14,12 +14,29 @@ function headers(extra: Record<string, string> = {}) {
 }
 // 断网提示：浏览器报离线，或接口是 service worker 从缓存给的
 export const offline = ref(!navigator.onLine)
-addEventListener('online', () => { offline.value = false }); addEventListener('offline', () => { offline.value = true })
+// 联网探测：HEAD 请求不经过 service worker 缓存，能真实反映有没有网（DevTools 只断 SW 时 navigator.onLine 也还是 true）
+// 从断网恢复时发 kaoyan:online，页面据此重新拉数据、考场补传答案
+let probing = false, probeT = 0
+export async function probe() {
+  if (probing) return; probing = true
+  let ok = false
+  try { ok = navigator.onLine && (await fetch(new URL('manifest.webmanifest?probe=' + Date.now(), document.baseURI), { method: 'HEAD', cache: 'no-store' })).ok } catch { ok = false }
+  probing = false
+  setOffline(!ok)
+}
+function setOffline(v: boolean) {
+  const was = offline.value; offline.value = v
+  clearTimeout(probeT); if (v) probeT = window.setTimeout(probe, 5000)
+  if (was && !v) dispatchEvent(new Event('kaoyan:online'))
+}
+addEventListener('online', () => probe()); addEventListener('offline', () => setOffline(true))
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') probe() })
+probe()
 export async function api<T = any>(path: string, init: RequestInit = {}, opts: { noReload?: boolean } = {}): Promise<T> {
   let r: Response
   try { r = await fetch(BASE + path, { ...init, headers: headers(init.headers as any) }) }
-  catch { offline.value = true; throw new ApiError('现在没网，连上再试', 0, undefined, 'offline') }
-  offline.value = r.headers.get('x-sw-cache') === '1'
+  catch { setOffline(true); throw new ApiError('现在没网，连上再试', 0, undefined, 'offline') }
+  if (r.headers.get('x-sw-cache') === '1') setOffline(true); else if (offline.value) setOffline(false)
   if (r.status === 401 && !opts.noReload) { token.set(null); location.reload() }
   if (!r.ok) {
     const j = await r.json().catch(() => ({})), m = j.message

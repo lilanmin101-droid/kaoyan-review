@@ -56,6 +56,9 @@ if (authed.value) { probe(); pollLive() }
 // 进行中的考试：每页顶上挂一条，切页或每分钟刷新一次
 type Live = { id: string; title: string; status: string; remaining_seconds: number }
 // 断网提示：PWA 断网也能打开，内容是上次同步的
+// 断网恢复后把当前页（今日/单词/错题本/我的）重新挂一次，拿回最新数据，提示条随之消失；刷题页不动，免得丢本地作答
+const backOnline = ref(0)
+addEventListener('kaoyan:online', () => { backOnline.value++; pollLive() })
 const live = ref<Live | null>(null), liveLeft = ref(0)
 let liveAt = 0
 async function pollLive() {
@@ -82,7 +85,7 @@ const sub = computed(() => tab.value === 'quiz' ? `${subj.value === 'english1' ?
     <English v-if="tab === 'quiz' && subj === 'english1'" :key="'en' + enYear" :year="enYear" :years="enYears" @nav="nav" @year="setEnYear" @subj="setSubj" />
     <Quiz v-else-if="tab === 'quiz'" :key="'quiz' + year" :year="year" :years="years" @nav="nav" @year="setYear" @subj="setSubj" />
  <Exam v-else-if="tab === 'exam'" :years="mathExamYears" :en-years="enExamYears" @nav="nav" />
-    <component v-else :is="comp" :key="tab" @nav="nav" @passage="openPassage" />
+    <component v-else :is="comp" :key="tab + ':' + backOnline" @nav="nav" @passage="openPassage" />
     <nav v-if="tab !== 'exam'" class="btabs"><a v-for="[k, t] in tabs" :key="k" :href="'#/' + k" :class="{ on: tab === k }" @click.prevent="nav(k)" @auxclick.prevent>{{ t }}</a></nav>
   </div>
   <transition name="fade"><div v-if="toastMsg" class="toast">{{ toastMsg }}</div></transition>

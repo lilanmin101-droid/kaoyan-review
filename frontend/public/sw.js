@@ -1,11 +1,11 @@
 // 研习 PWA：外壳和静态资源可离线；GET 接口联网优先，断网时用上次的结果（按账号分开存）
-const V = 'v3', SHELL = 'shell-' + V, ASSETS = 'assets-' + V, API = 'api-' + V
+const V = 'v4', SHELL = 'shell-' + V, ASSETS = 'assets-' + V, API = 'api-' + V
 const BASE = new URL('./', self.location).href
-const STATIC = ['index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png', 'favicon-64.png']
+const STATIC = ['index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png', 'favicon-64.png']
 self.addEventListener('install', e => e.waitUntil((async () => {
   const c = await caches.open(SHELL)
   const html = await (await fetch(BASE, { cache: 'no-store' })).text()
-  await c.put(BASE + 'index.html', new Response(html, { headers: { 'content-type': 'text/html; charset=utf-8' } }))
+  await c.put(BASE + 'index.html', new Response(html, { headers: { 'content-type': 'text/html; charset=utf-8', 'content-length': String(new TextEncoder().encode(html).byteLength) } }))
   await Promise.all(STATIC.slice(1).map(async p => store(SHELL, BASE + p, await fetch(BASE + p, { cache: 'reload' }).catch(() => null))))
   const urls = [...new Set(html.match(/assets\/[^"' )]+\.(?:js|css)/g) ?? [])]
   // 外壳的 js/css 必须存成功，不然断网打开会没样式
@@ -15,6 +15,7 @@ self.addEventListener('install', e => e.waitUntil((async () => {
 })()))
 self.addEventListener('activate', e => e.waitUntil((async () => {
   for (const k of await caches.keys()) if (![SHELL, ASSETS, API].includes(k)) await caches.delete(k)
+  const idx = await pick(BASE + 'index.html'); if (idx) await prune(await idx.text())
   await self.clients.claim()
 })()))
 self.addEventListener('message', e => { if (e.data === 'clear-api') e.waitUntil(caches.delete(API)) })
@@ -26,6 +27,11 @@ async function store(cacheName, key, r) {
   await (await caches.open(cacheName)).put(key, new Response(body, { status: r.status, statusText: r.statusText, headers: h }))
   return true
 }
+// 只留当前 index.html 引用的 js/css，旧版本的清掉（字体、图标不动）
+async function prune(html) {
+  const keep = new Set((html.match(/assets\/[^"' )]+\.(?:js|css)/g) ?? []).map(u => BASE + u)), a = await caches.open(ASSETS)
+  for (const r of await a.keys()) if (/\.(js|css)$/.test(r.url) && !keep.has(r.url)) await a.delete(r)
+}
 const pick = async u => (await caches.match(u, { ignoreVary: true })) ?? null
 const keyOf = req => { const a = req.headers.get('authorization') ?? ''; return req.url + (req.url.includes('?') ? '&' : '?') + '__u=' + a.slice(-16) }
 const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms))])
@@ -36,7 +42,7 @@ self.addEventListener('fetch', e => {
     e.respondWith((async () => {
       try {
         const r = await withTimeout(fetch(req), 4000)
-        if (r.ok) await store(SHELL, BASE + 'index.html', r.clone())
+        if (r.ok) { const html = await r.clone().text(); await store(SHELL, BASE + 'index.html', r.clone()); e.waitUntil(prune(html)) }
         return r
       } catch { return (await pick(BASE + 'index.html')) ?? Response.error() }
     })())

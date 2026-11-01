@@ -150,11 +150,11 @@ async function flush() {
   } finally { flushing = false }
 }
 const onOnline = () => { online.value = true; flush() }, onOffline = () => { online.value = false }
-addEventListener('online', onOnline); addEventListener('offline', onOffline)
+addEventListener('online', onOnline); addEventListener('offline', onOffline); addEventListener('kaoyan:online', onOnline)
 // 从锁屏/别的 App 回来：立刻按墙上时钟重算，再跟服务端对一次
 const onVis = () => { if (document.visibilityState !== 'visible' || stage.value !== 'run' || paused.value) return; remaining.value = Math.max(0, Math.ceil((deadline - Date.now()) / 1000)); if (remaining.value === 0) toRate(true); else push({}) }
 document.addEventListener('visibilitychange', onVis)
-onBeforeUnmount(() => { clearInterval(tick); clearInterval(beat); removeEventListener('online', onOnline); removeEventListener('offline', onOffline); document.removeEventListener('visibilitychange', onVis) })
+onBeforeUnmount(() => { clearInterval(tick); clearInterval(beat); removeEventListener('online', onOnline); removeEventListener('offline', onOffline); removeEventListener('kaoyan:online', onOnline); document.removeEventListener('visibilitychange', onVis) })
 
 function spentOn(x: Q) { return (answers.value[x.id]?.time_spent_seconds ?? 0) + Math.round((Date.now() - qStart) / 1000) }
 function setAns(x: Q, patch: Ans) {
