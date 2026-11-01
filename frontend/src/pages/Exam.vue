@@ -297,8 +297,9 @@ const splitLine = computed(() => {
   const l: any = trendItems.value.find(x => x.id === e.id) ?? {}
   const g = (k: string) => r[k] ?? e[k] ?? l[k]
   const o = g('objective_score'), sub = g('subjective_self_score'); if (o == null || sub == null) return ''
-  const xp = g('subjective_excluded_points') ?? 0, n = (v: number) => Math.round(v * 10) / 10
-  return `客观 ${n(o)} + 主观自评 ${n(sub + xp)}${xp ? `（其中 ${n(xp)} 分字数不够，不进估分）` : ''} = ${n(o + sub + xp)}`
+  // 名字以统筹者定的 subjective_excluded_points 为准，后端旧名也认
+  const xp = g('subjective_excluded_points') ?? g('subjective_excluded_score') ?? 0, raw = g('subjective_self_raw') ?? sub + xp, n = (v: number) => Math.round(v * 10) / 10
+  return `客观 ${n(o)} + 主观自评 ${n(raw)}${xp ? `（其中 ${n(xp)} 分字数不够，不进估分）` : ''} = ${n(o + raw)}`
 })
 async function loadHist() { api<{ items: any[] }>('/exams?limit=50').then(r => trendItems.value = r.items ?? []).catch(() => {}); try { hist.value = ((await api<{ items: Hist[] }>('/exams?limit=10')).items ?? []).filter(h => h.status === 'submitted' || h.status === 'abandoned') } catch { /* 没有就不显示 */ } }
 onMounted(loadHist)
