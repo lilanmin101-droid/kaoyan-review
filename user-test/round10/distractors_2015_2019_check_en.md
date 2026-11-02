@@ -142,3 +142,33 @@
 - **我有他无（12 对）**：2015-31 D → 35、2016-37 D → 40、2016-38 C → 37/40、2017-24 B → 25、2017-33 A → 35、2018-25 C → 22、2018-36 C → 37、2019-25 D → 21、2019-27 B → 30、2019-27 D → 30、2019-28 D → 30。这些都是 ≤5 个词的短引文（如 “I would raise prices”、“underused PreCheck lanes”、“(and paying tuition)”），他的默认 `--n 6` 抓不到。人工看都不是真泄露，只有 “I would raise prices” → 2016-40 Luxury Good 算弱提示。
 - **误报**：他的清单没有误报，55 条都确实是文字重叠。脚本本身声明只提醒、需人工判断，其中 39 条属于可接受的共用。
 - **建议**：默认保持 6；可以在说明里加一句“`--n 4` 能多抓短引文（全库 88 条，n=5 为 64 条），会多出不少噪音”。以前那两处问题（2016-37 C 原 11 词引文、2017-23 B 原 $85 句）用 n=6 都能抓到。
+
+---
+
+## 追加：复核专家 12e8ef5 的跨题泄露 3 处修改（expert/english1-reading-cross-leak，从 27af6d1 切）
+
+- 时间：2026-11-02 13:28–13:40（北京时间）
+- **基准：origin/coord/integration `2119688`**，已含 12e8ef5 和 f80ace3。12e8ef5..2119688 只多了 f80ace3 对 check_reading_cross_leak.py 说明的 2 行修改。
+- 方法：临时 worktree 读取，用完删除。
+- 脚本来源（都确认非空后才跑）：
+  - `check_cloze_leak.py` 取自 b88dfd1，170 行。
+  - `check_clue_type.py` 取自 1c525c3，49 行。
+  - `check_reading_cross_leak.py` 用 2119688 上的版本，57 行，与 f80ace3 版逐字相同。
+  - `check_quote_verbatim.py` 用 2119688 上的版本，193 行。
+  - `rd_distractor_stats.py`，38 行。
+
+| 项 | 结果 |
+|---|---|
+| 2021-28 D（无中生有） | 新引文 “Indonesia has the third-largest area of tropical forest in the world and one of the highest deforestation rates” 位于第5段第3句，逐字一致；另引的 “was affecting deforestation” 是 28 题自己的定位句。旧的「避免砍伐对减排的价值」句已去掉，**不再露 29 题 C**。无中生有贴切：原文没说 Ferraro 要研究森林在气候变化中的作用。PASS |
+| 2025-27 C（无中生有 → 偷换概念） | 选项 “are hard to handle at present” 借用了原文的 hard（第4段第1句 “It can be hard for scientists to make the case because our work is complex”，逐字一致），但原文难的是向外界讲清科研价值，选项换成了排放难处理。同词换义，**偷换概念贴切**。另引的 “are well spent” 是 27 题自己的定位句。“a price we must pay …” 已去掉，**不再露 30 题 C**。PASS |
+| 2021-24 C（过度推断） | 改引第4段第4句 “addressed in short order” 和 “The threat of nationalisation … will return with a vengeance”，是 24 题自己的定位句，逐字一致（含省略号，quote_verbatim 也过了）。不再引 25 题依据句 “be willing to pay more indefinitely”。“从不满推到少收钱”是过度推断，贴切。PASS |
+| 2021-24 A 的 “more investment is needed” 碰 25 题 | `--n 4` 会提醒（这句在 25 题定位句开头）。但 25 题答案 D “Ever-rising Fares Aren’t Sustainable” 靠的是后半句 “passengers will not be willing to pay more indefinitely …”，“需要更多投资”是作者先让一步，**不指向 D**，也不指向其他选项。**不算泄露**，可以不改。小建议：A 步可补「第4段第3句」定位。 |
+| diff 27af6d1..12e8ef5 | 讲解只改了 2021-24 C、2021-28 D、2025-27 C 这 3 个干扰项步骤，以及这 3 题的 `at`（→ 13:26）；步数和其他字段不变；另有 BOARD 一行。PASS |
+| check_reading_cross_leak 默认（n=6） | exit 0，**55 → 52**。少掉的正好是 2021-24 C → 25、2021-28 D → 29、2025-27 C → 30，其余 52 条与 d2ad7ef 清单一致。PASS |
+| check_reading_cross_leak `--n 4` | exit 0，**88 → 85**。这 3 题只剩 2021-24 A → 25（见上，不算泄露）。PASS |
+| check_cloze_leak（b88dfd1，含 4c）2015–2025 | exit 0，每年 leaks 0，4c 0。2020–2025 有 22 条「中文释义疑似」，只是提醒，不影响退出码，也不是这次改动带来的。 |
+| check_clue_type（1c525c3）2015–2025 | exit 0，每年错误 0 |
+| check_quote_verbatim（默认 + `--all 2015..2025`） | 都是 exit 0，11 年英文引文不符都是 0 |
+| rd_distractor_stats（RD_YEARS=2015-2025） | 660 条：缺类型 0、缺引文 0、引文对不上 0、无英文 0。另：2020–2025 有 246 条干扰项步骤没写「第N段」段落定位（2015–2019 为 0）。这不是本次的验收项，只供专家参考。 |
+
+结论：3 处修改全过，2021-24 A 不算泄露，各项检查都是 0。
