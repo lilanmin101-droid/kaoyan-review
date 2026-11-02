@@ -63,6 +63,7 @@ YEAR_FIXES = {
            ('doom-andgloom', 'doom-and-gloom'), ('computer-to-computeractivities', 'computer-to-computer activities'), ('AIgo ', 'AI go '),
            ('modem Western', 'modern Western'), ('providers’rights', 'providers’ rights'), ('biasfrom', 'bias from'), ('ownenergy', 'own energy'),
            ('One accounting firm, BY, uses', 'One accounting firm, EY, uses'),
+           ('anti- competitive', 'anti-competitive'), ('Apple TV.Yet', 'Apple TV. Yet'),   # Text 4 录入错误（行业专家 2026-11-02 报）
            # 选项措辞按原卷扫描件（gw.xztu，含原卷原样的 deep-root / focus / Victorian’s）
            ('wellbeing', 'well-being'), ('rail travellers.', 'rail travelers.'), ('a deep-rooted belief.', 'a deep-root belief.'),
            ('focuses on trivialities.', 'focus on trivialities.'), ('the Victorians’ notion of public image', 'the Victorian’s notion of public image'),
