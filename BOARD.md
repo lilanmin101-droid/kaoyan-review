@@ -284,3 +284,4 @@
 - 2026-11-02T12:16+08:00 用户：round10 英一 2020–2025 专家讲解抽查 48 题，38 过 10 不过（翻译 6 题缺得分点和常见误译；完形 2020-19/2024-20/2025-20 中文泄题；阅读 2020-24 干扰项没讲），报告在 user-test/round10/，已交行业专家修。
 - 2026-11-02T12:17+08:00 用户：round10 接口复测 5a 周报 E1/E2 6/6 PASS；5b 暂停 10 项 9 PASS 1 FAIL（GET /exams/:id 没有 exam_name，列表有）；跨 04:00 不再标 non_continuous 已按 openapi 判 PASS，HANDOFF §6.4 要改。报告 user-test/round10/api_retest10.md。
 - 2026-11-02T12:31+08:00 用户：复抽行业专家修正 a553cb1：上轮 12 处全部修好；新抽 24 题 22 过 2 不过（2020-13「照此」暗示第 12 空；2025-40 A/B 干扰项没补错因）；check_cloze_leak.py 退出码 0。报告 user-test/round10/explain_recheck_en.md。
+- 2026-11-02T12:33+08:00 用户：round10 5c 离线题包断网刷 5 题，1280/390 六项全过（断网文案、本地判分、F5 保留、联网补传 5 条、错题本、重放 duplicate）；新发现：注册/登录后不拉题包，要刷新页面才有（FAIL），另有 12 条考生视角别扭点。报告 user-test/round10/offline_pack_test.md。
