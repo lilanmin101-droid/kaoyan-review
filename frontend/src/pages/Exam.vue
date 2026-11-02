@@ -122,7 +122,7 @@ async function open(e: Exam) {
   for (const rq of queue) for (const a of rq.answers ?? []) answers.value[a.question_id] = { ...answers.value[a.question_id], ...a }
   idx.value = Math.max(0, qs.value.findIndex(x => x.id === e.progress?.current_question_id))
   setRem(e.remaining_seconds); paused.value = e.status === 'paused'; pzAcc.value = (e as any).paused_seconds ?? 0; pzWarned = pzAcc.value >= PZ_WARN * 60; if (paused.value) { pzStart(); const since = (e as any).paused_at; if (since) pzAt.value = Math.min(Date.now(), Date.parse(since)) }; unsent.value = pendingQs()
-  if (e.status === 'submitted') { stage.value = 'result'; return }
+  if (e.status === 'submitted') { fromServer(e); stage.value = 'result'; return }
   stage.value = 'run'; qStart = Date.now()
   if (paused.value) push({ state: 'running' }), paused.value = false
   clearInterval(tick); clearInterval(beat)
@@ -230,11 +230,11 @@ async function submit() {
   submitting.value = true
   // 已交卷的（交卷后补评/改评）走 self-ratings，可以重复评
   if (ex.value!.status === 'submitted') {
-    try { ex.value = await api<Exam>(`/exams/${ex.value!.id}/self-ratings`, { method: 'POST', body: JSON.stringify({ self_ratings, idempotency_key: uid() }) }); stage.value = 'result'; scrollTo({ top: 0 }); toast('评好了') }
+    try { ex.value = await api<Exam>(`/exams/${ex.value!.id}/self-ratings`, { method: 'POST', body: JSON.stringify({ self_ratings, idempotency_key: uid() }) }); fromServer(ex.value!); stage.value = 'result'; scrollTo({ top: 0 }); toast('评好了') }
     catch (e: any) { toast('没评上：' + e.message) } finally { submitting.value = false }
     return
   }
-  try { ex.value = await api<Exam>(`/exams/${ex.value!.id}/submit`, { method: 'POST', body: JSON.stringify({ self_ratings }) }); localStorage.removeItem(QKEY(ex.value.id)); stage.value = 'result'; scrollTo({ top: 0 }) }
+  try { ex.value = await api<Exam>(`/exams/${ex.value!.id}/submit`, { method: 'POST', body: JSON.stringify({ self_ratings }) }); localStorage.removeItem(QKEY(ex.value.id)); fromServer(ex.value); stage.value = 'result'; scrollTo({ top: 0 }) }
   catch (e: any) { toast('没交上：' + e.message) } finally { submitting.value = false }
 }
 const res = computed(() => ex.value?.result)
@@ -255,6 +255,22 @@ const SHKEY = () => `exam:short:${ex.value?.id}`
 const shortSet = ref<string[]>([])
 watch(() => ex.value?.id, () => { try { shortSet.value = JSON.parse(localStorage.getItem(SHKEY()) ?? '[]') } catch { shortSet.value = [] } }, { immediate: true })
 function markShort(id: string, on: boolean) { const s = new Set(shortSet.value); on ? s.add(id) : s.delete(id); shortSet.value = [...s]; localStorage.setItem(SHKEY(), JSON.stringify(shortSet.value)) }
+// 已交卷的考试（换设备、刷新、从今日卡/成绩页进自评页）：已评的档位从后端 per_question 回填，和成绩页一致——
+// 整题（证明题、英语翻译作文、没小问的解答题）读 self_rating（只有一问的读 sub_scores[0]），计算题按小问读 sub_scores[].self_rating；
+// 「自评·字数不足」以后端 self_grade_flags 为准，写回本机记录；后端没给这个字段的题才保留本机记录
+function fromServer(e: Exam) {
+  const w: Record<string, Rating> = {}, sb: Record<string, Record<number, Rating>> = {}
+  const short = new Set<string>((() => { try { return JSON.parse(localStorage.getItem(`exam:short:${e.id}`) ?? '[]') } catch { return [] } })())
+  for (const p of (e.result?.per_question ?? []) as any[]) {
+    // 只有一问的解答题后端也存成 sub_scores（一项），前端按整题评
+    const one = p.sub_scores?.length === 1 ? p.sub_scores[0].self_rating : null
+    if (p.self_rating || one) w[p.question_id] = p.self_rating || one
+    for (const x of p.sub_scores ?? []) if (x.self_rating) (sb[p.question_id] ??= {})[Number(x.sub_number)] = x.self_rating
+    if (Array.isArray(p.self_grade_flags)) p.self_grade_flags.includes('word_count_low') ? short.add(p.question_id) : short.delete(p.question_id)
+  }
+  whole.value = w; subs.value = sb; pend.value = null
+  shortSet.value = [...short]; localStorage.setItem(`exam:short:${e.id}`, JSON.stringify(shortSet.value))
+}
 const pend = ref<{ id: string; n: number } | null>(null)
 function pickWhole(x: Q, r: Rating) {
   if (noAns(x)) return

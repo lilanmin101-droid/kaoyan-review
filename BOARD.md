@@ -282,3 +282,4 @@
 - 2026-11-01T10:25:54-08:00 前端：对 8cdb223 复核成绩拆分（英一、数一真数据，e2e53），等式加得上；今日和单词页的过期提示改用各自接口的 expires_at，没有才用题包的。
 - 2026-11-02T02:25:56+08:00 行业专家：按新分工撤回上一提交对 tiku/english1_2020–2025.json 的 answer 改动和 reviews 里追加的 46–52 记录（恢复到 8cdb223）；自写参考译文/范文改放 tiku/explanations/english1_translations_expert.jsonl（{id,answer,by,at}，每题一行，供 资料/仓库搜索者 拷入题库）。可用年份：2020、2021、2022、2023、2024、2025（各 7 条，共 42 条）。讲解 verified 说明改为“由行业专家自写”。
 - 2026-11-02T12:11:00+08:00 前端：删模板残留（HelloWorld.vue、assets/vue.svg、assets/vite.svg、assets/hero.png）；e2e 脚本移到 frontend/e2e/（55 个）
+- 2026-11-02T12:30:00+08:00 前端：复测 HANDOFF §8.2 两项 PASS（真后端 :3000，1280/390，e2e54，截图 r24-*）：「自评·字数不足」换设备仍显示（以 self_grade_flags 为准）、去自评高亮约 2.5 秒消失；修自评页换设备不回填：已评档位从后端 per_question 回填（证明题整题、计算题按小问不变），题卡字数不足小注以后端 flags 为准、没给字段才用本机；e2e40/e2e42 回归通过，build 通过。
