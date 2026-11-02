@@ -1,12 +1,12 @@
 # 英语一真题词汇统计（2015–2025）
 
-- 句子单元 2710，计入词次 20718，词元 4280
-- 剔除：stopword 18351，proper 1578，contraction 109，unknown 28
+- 句子单元 2710，计入词次 20709，词元 4278
+- 剔除：stopword 18336，proper 1575，contraction 109，unknown 28
 - 词库（ECDICT ky，4801 词）在真题中出现的：2311 个（48.1%）
-- 真题词次被词库覆盖：10934/20718（52.8%）；真题词元被词库覆盖：2311/4280（54.0%）
-- 不在词库的词元：1969 个；其中出现 ≥3 次的 655 个，跨 ≥2 年的 775 个
+- 真题词次被词库覆盖：10932/20709（52.8%）；真题词元被词库覆盖：2311/4278（54.0%）
+- 不在词库的词元：1967 个；其中出现 ≥3 次的 655 个，跨 ≥2 年的 775 个
 
-- 不在词库的词元按 ECDICT 标签分：beyond 1053，basic 676，cet 240（basic = 中考/高考词，词库 ky 标签本身不含这些基础词；cet = 四六级；beyond = 都不在）
+- 不在词库的词元按 ECDICT 标签分：beyond 1051，basic 676，cet 240（basic = 中考/高考词，词库 ky 标签本身不含这些基础词；cet = 四六级；beyond = 都不在）
 
 ## 不在词库、也不是中考/高考基础词、出现最多的 40 个
 
@@ -35,7 +35,6 @@
 | marketing | beyond | 10 | 3 | There has been some exploration around the use of artificial intelligence (AI) in digital  |
 | hack | beyond | 10 | 1 | Journalists are known to have hacked the phones of up to 5,500 people. |
 | piracy | beyond | 10 | 1 | Initially the rise of legitimate online businesses such as Netflix actually helped curb di |
-| center | beyond | 9 | 6 | Excavations revealed a large number of Minoan-style loom weights, suggesting Pavlopetri wa |
 | particularly | cet | 9 | 6 | His pictures of a Glanville fritillary rising from the sea-pinks beside the chalk cliffs o |
 | environmental | cet | 9 | 5 | This narrowing of the regulatory scope was a victory for builders, mining operators and ot |
 | corporate | cet | 9 | 4 | Female participation on corporate boards may not currently mirror the percentage of women  |
@@ -45,6 +44,7 @@
 | preservation | cet | 9 | 2 | Have you pondered the life cycle of intangible formats, digital information, given that th |
 | dismissal | beyond | 9 | 1 | Nor are highly paid managers themselves immune from the harm caused by the ERA'S unjustifi |
 | recently | cet | 8 | 7 | I was shocked to learn recently that some scientists want to scale back their research in  |
+| center | beyond | 8 | 6 | Excavations revealed a large number of Minoan-style loom weights, suggesting Pavlopetri wa |
 | technological | beyond | 8 | 5 | The carbon emissions from technological research are well spent: ultimately this research  |
 | actually | cet | 8 | 4 | Initially the rise of legitimate online businesses such as Netflix actually helped curb di |
 | forgiveness | beyond | 8 | 1 | But another, related force – a policy often buried deep in course catalogs called "grade f |
@@ -55,4 +55,4 @@
 
 ## 词库内出现最多的 20 个
 
-state(90), author(67), paragraph(65), social(48), tax(47), follow(46), public(44), data(43), research(43), digital(42), publish(41), scientist(41), court(40), increase(39), provide(39), journal(37), measure(36), term(36), law(35), rule(35)
+state(90), author(67), paragraph(65), social(48), tax(47), follow(46), public(44), data(43), research(43), digital(42), publish(41), scientist(41), court(40), increase(39), provide(39), journal(37), measure(36), term(36), rule(35), business(34)

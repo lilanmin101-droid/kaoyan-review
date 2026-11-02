@@ -307,7 +307,7 @@
   },
   {
    "word": "time",
-   "frequency": 87,
+   "frequency": 86,
    "years": [
     2015,
     2016,
@@ -323,7 +323,7 @@
    ],
    "year_count": 11,
    "forms": {
-    "time": 67,
+    "time": 66,
     "times": 20
    },
    "in_word_bank": false,
@@ -854,7 +854,7 @@
   },
   {
    "word": "science",
-   "frequency": 61,
+   "frequency": 60,
    "years": [
     2015,
     2017,
@@ -867,7 +867,7 @@
    ],
    "year_count": 8,
    "forms": {
-    "science": 56,
+    "science": 55,
     "sciences": 5
    },
    "in_word_bank": false,
@@ -1236,10 +1236,10 @@
      "passage_id": "english1-2023-P-text2"
     },
     {
-     "sentence": "The Government has pledged to change the law to introduce a minimum service requirement so that, even when strikes occur, services can continue to operate.",
+     "sentence": "Yet the FCC also ended the investigations of broadband providers that imposed data caps on their rivals' streaming services but not their own.",
      "year": 2021,
      "question_id": null,
-     "passage_id": "english1-2021-P-text1"
+     "passage_id": "english1-2021-P-text4"
     }
    ]
   },
@@ -2026,57 +2026,6 @@
    ]
   },
   {
-   "word": "become",
-   "frequency": 41,
-   "years": [
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ],
-   "year_count": 11,
-   "forms": {
-    "become": 17,
-    "became": 13,
-    "becoming": 7,
-    "becomes": 4
-   },
-   "in_word_bank": false,
-   "ecdict_tags": [
-    "zk",
-    "gk",
-    "ielts"
-   ],
-   "level": "basic",
-   "examples": [
-    {
-     "sentence": "It swiftly became an obsession as he recovered from a successful operation to remove the cancer.",
-     "year": 2025,
-     "question_id": "english1-2025-41",
-     "passage_id": "english1-2025-P-partb"
-    },
-    {
-     "sentence": "Solar panels had a few niche uses until they became cheap; now they are transforming the global energy system.",
-     "year": 2024,
-     "question_id": null,
-     "passage_id": "english1-2024-P-text1"
-    },
-    {
-     "sentence": "Therefore, unless customers are prepared to sign release agreements, the use of AI may become somewhat restricted in the future.",
-     "year": 2023,
-     "question_id": null,
-     "passage_id": "english1-2023-P-translation"
-    }
-   ]
-  },
-  {
    "word": "child",
    "frequency": 41,
    "years": [
@@ -2218,6 +2167,57 @@
      "year": 2023,
      "question_id": null,
      "passage_id": "english1-2023-P-text1"
+    }
+   ]
+  },
+  {
+   "word": "become",
+   "frequency": 40,
+   "years": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "year_count": 11,
+   "forms": {
+    "become": 17,
+    "became": 12,
+    "becoming": 7,
+    "becomes": 4
+   },
+   "in_word_bank": false,
+   "ecdict_tags": [
+    "zk",
+    "gk",
+    "ielts"
+   ],
+   "level": "basic",
+   "examples": [
+    {
+     "sentence": "It swiftly became an obsession as he recovered from a successful operation to remove the cancer.",
+     "year": 2025,
+     "question_id": "english1-2025-41",
+     "passage_id": "english1-2025-P-partb"
+    },
+    {
+     "sentence": "Solar panels had a few niche uses until they became cheap; now they are transforming the global energy system.",
+     "year": 2024,
+     "question_id": null,
+     "passage_id": "english1-2024-P-text1"
+    },
+    {
+     "sentence": "Therefore, unless customers are prepared to sign release agreements, the use of AI may become somewhat restricted in the future.",
+     "year": 2023,
+     "question_id": null,
+     "passage_id": "english1-2023-P-translation"
     }
    ]
   },
@@ -3111,58 +3111,6 @@
    ]
   },
   {
-   "word": "law",
-   "frequency": 35,
-   "years": [
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ],
-   "year_count": 11,
-   "forms": {
-    "law": 20,
-    "laws": 15
-   },
-   "in_word_bank": true,
-   "ecdict_tags": [
-    "zk",
-    "gk",
-    "cet4",
-    "cet6",
-    "ky",
-    "ielts"
-   ],
-   "level": "ky",
-   "examples": [
-    {
-     "sentence": "Ranganathan's foundational Laws of Library Science is \"Save the time of the reader.",
-     "year": 2025,
-     "question_id": null,
-     "passage_id": "english1-2025-P-text4"
-    },
-    {
-     "sentence": "In Maryland, the good news is that there are many state laws in place that provide wetlands protections.",
-     "year": 2024,
-     "question_id": null,
-     "passage_id": "english1-2024-P-text4"
-    },
-    {
-     "sentence": "Grant signed an act into law that established Yellowstone as the world's first national park.",
-     "year": 2023,
-     "question_id": "english1-2023-41",
-     "passage_id": "english1-2023-P-partb"
-    }
-   ]
-  },
-  {
    "word": "researcher",
    "frequency": 35,
    "years": [
@@ -3453,6 +3401,58 @@
      "year": 2021,
      "question_id": null,
      "passage_id": "english1-2021-P-partb"
+    }
+   ]
+  },
+  {
+   "word": "law",
+   "frequency": 34,
+   "years": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "year_count": 11,
+   "forms": {
+    "law": 20,
+    "laws": 14
+   },
+   "in_word_bank": true,
+   "ecdict_tags": [
+    "zk",
+    "gk",
+    "cet4",
+    "cet6",
+    "ky",
+    "ielts"
+   ],
+   "level": "ky",
+   "examples": [
+    {
+     "sentence": "ACE says it's helped shrink the number of illegal streaming services in North America to 126, from more than 1,400 in 2018, aided in part by the MPA's support for a 2020 federal law that made large-scale streaming of copyright material a serious crime.",
+     "year": 2025,
+     "question_id": null,
+     "passage_id": "english1-2025-P-text3"
+    },
+    {
+     "sentence": "In Maryland, the good news is that there are many state laws in place that provide wetlands protections.",
+     "year": 2024,
+     "question_id": null,
+     "passage_id": "english1-2024-P-text4"
+    },
+    {
+     "sentence": "Grant signed an act into law that established Yellowstone as the world's first national park.",
+     "year": 2023,
+     "question_id": "english1-2023-41",
+     "passage_id": "english1-2023-P-partb"
     }
    ]
   },
@@ -3968,7 +3968,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "In 2009 archaeologists Chrysanthi Gallou and Jon Henderson resumed the excavation of Pavlopetri in cooperation with the Greek Ministry of Culture.",
+     "sentence": "In 2009 archaeologists Chrysanthi Gallon and Jon Henderson resumed excavation of Pavlopetri in cooperation with the Greek Ministry of Culture.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -5050,6 +5050,58 @@
    ]
   },
   {
+   "word": "point",
+   "frequency": 28,
+   "years": [
+    2015,
+    2016,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "year_count": 10,
+   "forms": {
+    "point": 15,
+    "points": 11,
+    "pointed": 2
+   },
+   "in_word_bank": true,
+   "ecdict_tags": [
+    "zk",
+    "gk",
+    "cet4",
+    "cet6",
+    "ky",
+    "ielts"
+   ],
+   "level": "ky",
+   "examples": [
+    {
+     "sentence": "Librarians' selfless devotion can act against us when users point to universality of access by holding up a cellphone and saying, \"it's all in here\" as evidence that libraries are less vital for researchers today.",
+     "year": 2025,
+     "question_id": null,
+     "passage_id": "english1-2025-P-text4"
+    },
+    {
+     "sentence": "The price of nails fell by 90% between the late 1700s and mid-1900s, as economist Daniel Sichel points out in a research paper.",
+     "year": 2024,
+     "question_id": null,
+     "passage_id": "english1-2024-P-text1"
+    },
+    {
+     "sentence": "However, short-term rentals also provide housing for tourists, pointed out Ryan Castle, CEO of a local association of realtors.",
+     "year": 2023,
+     "question_id": null,
+     "passage_id": "english1-2023-P-text2"
+    }
+   ]
+  },
+  {
    "word": "problem",
    "frequency": 28,
    "years": [
@@ -5558,58 +5610,6 @@
      "year": 2021,
      "question_id": null,
      "passage_id": "english1-2021-P-text1"
-    }
-   ]
-  },
-  {
-   "word": "point",
-   "frequency": 27,
-   "years": [
-    2015,
-    2016,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ],
-   "year_count": 10,
-   "forms": {
-    "point": 15,
-    "points": 10,
-    "pointed": 2
-   },
-   "in_word_bank": true,
-   "ecdict_tags": [
-    "zk",
-    "gk",
-    "cet4",
-    "cet6",
-    "ky",
-    "ielts"
-   ],
-   "level": "ky",
-   "examples": [
-    {
-     "sentence": "Librarians' selfless devotion can act against us when users point to universality of access by holding up a cellphone and saying, \"it's all in here\" as evidence that libraries are less vital for researchers today.",
-     "year": 2025,
-     "question_id": null,
-     "passage_id": "english1-2025-P-text4"
-    },
-    {
-     "sentence": "The price of nails fell by 90% between the late 1700s and mid-1900s, as economist Daniel Sichel points out in a research paper.",
-     "year": 2024,
-     "question_id": null,
-     "passage_id": "english1-2024-P-text1"
-    },
-    {
-     "sentence": "However, short-term rentals also provide housing for tourists, pointed out Ryan Castle, CEO of a local association of realtors.",
-     "year": 2023,
-     "question_id": null,
-     "passage_id": "english1-2023-P-text2"
     }
    ]
   },
@@ -6731,7 +6731,7 @@
    "level": "basic",
    "examples": [
     {
-     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replaces analog.",
+     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replace analog.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text4"
@@ -6793,7 +6793,7 @@
      "passage_id": "english1-2024-P-cloze"
     },
     {
-     "sentence": "art can off er audiences easy access to science.",
+     "sentence": "art can offer audiences easy access to science.",
      "year": 2022,
      "question_id": "english1-2022-32",
      "passage_id": "english1-2022-P-text3"
@@ -8898,7 +8898,7 @@
    "level": "basic",
    "examples": [
     {
-     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C. and became an important trading center for Mycenaean Greece (1650–1180 B.C.).",
+     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -10014,9 +10014,9 @@
      "passage_id": "english1-2022-P-cloze"
     },
     {
-     "sentence": "Judge Patricia Millett argues that the appeals court's decision",
+     "sentence": "The commission argued that other agencies would protect against anti-competitive behavior, such as a broadband-providing conglomerate like AT&T favoring its own video-streaming service at the expense of Netflix and Apple TV.",
      "year": 2021,
-     "question_id": "english1-2021-39",
+     "question_id": null,
      "passage_id": "english1-2021-P-text4"
     }
    ]
@@ -12381,7 +12381,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "A year later, he returned with a few students to examine the location and map the site.",
+     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -13976,53 +13976,6 @@
    ]
   },
   {
-   "word": "important",
-   "frequency": 15,
-   "years": [
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2022,
-    2023,
-    2024,
-    2025
-   ],
-   "year_count": 10,
-   "forms": {
-    "important": 15
-   },
-   "in_word_bank": false,
-   "ecdict_tags": [
-    "zk",
-    "gk",
-    "ielts"
-   ],
-   "level": "basic",
-   "examples": [
-    {
-     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C. and became an important trading center for Mycenaean Greece (1650–1180 B.C.).",
-     "year": 2025,
-     "question_id": null,
-     "passage_id": "english1-2025-P-cloze"
-    },
-    {
-     "sentence": "The context of any exhibit is more important to me than whether the object being displayed is 2,000 years old or 2 months old.",
-     "year": 2024,
-     "question_id": null,
-     "passage_id": "english1-2024-P-partb"
-    },
-    {
-     "sentence": "Caravanserais were also an important marketplace for commodities and aided in the trade of goods along the Silk Road.",
-     "year": 2023,
-     "question_id": null,
-     "passage_id": "english1-2023-P-cloze"
-    }
-   ]
-  },
-  {
    "word": "influence",
    "frequency": 15,
    "years": [
@@ -14517,7 +14470,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replaces analog.",
+     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replace analog.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text4"
@@ -14809,52 +14762,6 @@
      "year": 2019,
      "question_id": null,
      "passage_id": "english1-2019-P-translation"
-    }
-   ]
-  },
-  {
-   "word": "trade",
-   "frequency": 15,
-   "years": [
-    2019,
-    2020,
-    2023,
-    2025
-   ],
-   "year_count": 4,
-   "forms": {
-    "trade": 11,
-    "traded": 2,
-    "trading": 2
-   },
-   "in_word_bank": true,
-   "ecdict_tags": [
-    "zk",
-    "gk",
-    "cet4",
-    "cet6",
-    "ky",
-    "ielts"
-   ],
-   "level": "ky",
-   "examples": [
-    {
-     "sentence": "Excavations revealed a large number of Minoan-style loom weights, suggesting Pavlopetri was a thriving trade center with a robust textile industry.",
-     "year": 2025,
-     "question_id": null,
-     "passage_id": "english1-2025-P-cloze"
-    },
-    {
-     "sentence": "Caravanserais were also an important marketplace for commodities and aided in the trade of goods along the Silk Road.",
-     "year": 2023,
-     "question_id": null,
-     "passage_id": "english1-2023-P-cloze"
-    },
-    {
-     "sentence": "But it has already sparked significant controversy, with the United States trade representative opening an investigation into whether the tax discriminates against American companies, which in turn could lead to trade sanctions against France.",
-     "year": 2020,
-     "question_id": null,
-     "passage_id": "english1-2020-P-text4"
     }
    ]
   },
@@ -15787,6 +15694,52 @@
    ]
   },
   {
+   "word": "important",
+   "frequency": 14,
+   "years": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2022,
+    2023,
+    2024
+   ],
+   "year_count": 9,
+   "forms": {
+    "important": 14
+   },
+   "in_word_bank": false,
+   "ecdict_tags": [
+    "zk",
+    "gk",
+    "ielts"
+   ],
+   "level": "basic",
+   "examples": [
+    {
+     "sentence": "The context of any exhibit is more important to me than whether the object being displayed is 2,000 years old or 2 months old.",
+     "year": 2024,
+     "question_id": null,
+     "passage_id": "english1-2024-P-partb"
+    },
+    {
+     "sentence": "Caravanserais were also an important marketplace for commodities and aided in the trade of goods along the Silk Road.",
+     "year": 2023,
+     "question_id": null,
+     "passage_id": "english1-2023-P-cloze"
+    },
+    {
+     "sentence": "All of which creates huge headaches for institutions, such as museums, trying to preserve culturally important objects.",
+     "year": 2022,
+     "question_id": null,
+     "passage_id": "english1-2022-P-text1"
+    }
+   ]
+  },
+  {
    "word": "improve",
    "frequency": 14,
    "years": [
@@ -16381,57 +16334,6 @@
    ]
   },
   {
-   "word": "save",
-   "frequency": 14,
-   "years": [
-    2016,
-    2017,
-    2018,
-    2019,
-    2021,
-    2022,
-    2024,
-    2025
-   ],
-   "year_count": 8,
-   "forms": {
-    "save": 8,
-    "saving": 4,
-    "saved": 1,
-    "saves": 1
-   },
-   "in_word_bank": true,
-   "ecdict_tags": [
-    "zk",
-    "gk",
-    "cet4",
-    "cet6",
-    "ky",
-    "toefl"
-   ],
-   "level": "ky",
-   "examples": [
-    {
-     "sentence": "Even when a digital object is preserved, it may only be the carrier that's saved, not the information itself.",
-     "year": 2025,
-     "question_id": null,
-     "passage_id": "english1-2025-P-text4"
-    },
-    {
-     "sentence": "Zoos save people trips to wilderness areas and thus contribute to wildlife conservation.",
-     "year": 2022,
-     "question_id": "english1-2022-41",
-     "passage_id": "english1-2022-P-partb"
-    },
-    {
-     "sentence": "Saving customers money Energy companies can use AI to help customers reduce their electricity bills, saving them money while helping the environment.",
-     "year": 2021,
-     "question_id": null,
-     "passage_id": "english1-2021-P-partb"
-    }
-   ]
-  },
-  {
    "word": "significant",
    "frequency": 14,
    "years": [
@@ -16617,6 +16519,52 @@
      "year": 2022,
      "question_id": "english1-2022-41",
      "passage_id": "english1-2022-P-partb"
+    }
+   ]
+  },
+  {
+   "word": "trade",
+   "frequency": 14,
+   "years": [
+    2019,
+    2020,
+    2023,
+    2025
+   ],
+   "year_count": 4,
+   "forms": {
+    "trade": 11,
+    "traded": 2,
+    "trading": 1
+   },
+   "in_word_bank": true,
+   "ecdict_tags": [
+    "zk",
+    "gk",
+    "cet4",
+    "cet6",
+    "ky",
+    "ielts"
+   ],
+   "level": "ky",
+   "examples": [
+    {
+     "sentence": "Excavations revealed a large number of Minoan-style loom weights, suggesting Pavlopetri was a thriving trade center with a robust textile industry.",
+     "year": 2025,
+     "question_id": null,
+     "passage_id": "english1-2025-P-cloze"
+    },
+    {
+     "sentence": "Caravanserais were also an important marketplace for commodities and aided in the trade of goods along the Silk Road.",
+     "year": 2023,
+     "question_id": null,
+     "passage_id": "english1-2023-P-cloze"
+    },
+    {
+     "sentence": "But it has already sparked significant controversy, with the United States trade representative opening an investigation into whether the tax discriminates against American companies, which in turn could lead to trade sanctions against France.",
+     "year": 2020,
+     "question_id": null,
+     "passage_id": "english1-2020-P-text4"
     }
    ]
   },
@@ -17006,13 +16954,13 @@
      "passage_id": "english1-2021-P-text4"
     },
     {
-     "sentence": "The order also declared that state and local governments couldn't regulate broadband providers either.",
+     "sentence": "Yet the FCC also ended the investigations of broadband providers that imposed data caps on their rivals' streaming services but not their own.",
      "year": 2021,
      "question_id": null,
      "passage_id": "english1-2021-P-text4"
     },
     {
-     "sentence": "On Tuesday, the appeals court unanimously upheld the 2017 order deregulating broadband providers, citing a Supreme Court ruling from 2005 that upheld a similarly deregulatory move.",
+     "sentence": "The order also declared that state and local governments couldn't regulate broadband providers either.",
      "year": 2021,
      "question_id": null,
      "passage_id": "english1-2021-P-text4"
@@ -17381,7 +17329,7 @@
      "passage_id": "english1-2024-P-text4"
     },
     {
-     "sentence": "art can off er audiences easy access to science.",
+     "sentence": "art can offer audiences easy access to science.",
      "year": 2022,
      "question_id": "english1-2022-32",
      "passage_id": "english1-2022-P-text3"
@@ -18208,6 +18156,57 @@
    ]
   },
   {
+   "word": "save",
+   "frequency": 13,
+   "years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2021,
+    2022,
+    2024,
+    2025
+   ],
+   "year_count": 8,
+   "forms": {
+    "save": 7,
+    "saving": 4,
+    "saved": 1,
+    "saves": 1
+   },
+   "in_word_bank": true,
+   "ecdict_tags": [
+    "zk",
+    "gk",
+    "cet4",
+    "cet6",
+    "ky",
+    "toefl"
+   ],
+   "level": "ky",
+   "examples": [
+    {
+     "sentence": "Even when a digital object is preserved, it may only be the carrier that's saved, not the information itself.",
+     "year": 2025,
+     "question_id": null,
+     "passage_id": "english1-2025-P-text4"
+    },
+    {
+     "sentence": "Zoos save people trips to wilderness areas and thus contribute to wildlife conservation.",
+     "year": 2022,
+     "question_id": "english1-2022-41",
+     "passage_id": "english1-2022-P-partb"
+    },
+    {
+     "sentence": "Saving customers money Energy companies can use AI to help customers reduce their electricity bills, saving them money while helping the environment.",
+     "year": 2021,
+     "question_id": null,
+     "passage_id": "english1-2021-P-partb"
+    }
+   ]
+  },
+  {
    "word": "status",
    "frequency": 13,
    "years": [
@@ -18286,16 +18285,16 @@
      "passage_id": "english1-2025-P-text3"
     },
     {
+     "sentence": "Yet the FCC also ended the investigations of broadband providers that imposed data caps on their rivals' streaming services but not their own.",
+     "year": 2021,
+     "question_id": null,
+     "passage_id": "english1-2021-P-text4"
+    },
+    {
      "sentence": "Peretti gives the example of Netflix discontinuing its DVD-mailing service to focus on streaming.",
      "year": 2016,
      "question_id": null,
      "passage_id": "english1-2016-P-text4"
-    },
-    {
-     "sentence": "In 2017 the association formed the Alliance for Creativity and Entertainment (ACE), an enforcement task force of about 100 detectives circling the globe to help local authorities arrest streaming pirates.",
-     "year": 2025,
-     "question_id": null,
-     "passage_id": "english1-2025-P-text3"
     }
    ]
   },
@@ -19945,50 +19944,6 @@
      "year": 2023,
      "question_id": null,
      "passage_id": "english1-2023-P-text1"
-    }
-   ]
-  },
-  {
-   "word": "reader",
-   "frequency": 12,
-   "years": [
-    2015,
-    2016,
-    2018,
-    2020,
-    2022,
-    2025
-   ],
-   "year_count": 6,
-   "forms": {
-    "readers": 8,
-    "reader": 4
-   },
-   "in_word_bank": true,
-   "ecdict_tags": [
-    "cet4",
-    "cet6",
-    "ky"
-   ],
-   "level": "ky",
-   "examples": [
-    {
-     "sentence": "Ranganathan's foundational Laws of Library Science is \"Save the time of the reader.",
-     "year": 2025,
-     "question_id": null,
-     "passage_id": "english1-2025-P-text4"
-    },
-    {
-     "sentence": "These were some of the words that Nature readers used to describe their experience of art-science collaborations in a series of articles on partnerships between artists and researchers.",
-     "year": 2022,
-     "question_id": null,
-     "passage_id": "english1-2022-P-text3"
-    },
-    {
-     "sentence": "Publishers have responded to the demand that they make their product free to readers by charging their writers fees to cover the costs of preparing an article.",
-     "year": 2020,
-     "question_id": null,
-     "passage_id": "english1-2020-P-text2"
     }
    ]
   },
@@ -21917,6 +21872,49 @@
      "year": 2020,
      "question_id": null,
      "passage_id": "english1-2020-P-text3"
+    }
+   ]
+  },
+  {
+   "word": "reader",
+   "frequency": 11,
+   "years": [
+    2015,
+    2016,
+    2018,
+    2020,
+    2022
+   ],
+   "year_count": 5,
+   "forms": {
+    "readers": 8,
+    "reader": 3
+   },
+   "in_word_bank": true,
+   "ecdict_tags": [
+    "cet4",
+    "cet6",
+    "ky"
+   ],
+   "level": "ky",
+   "examples": [
+    {
+     "sentence": "These were some of the words that Nature readers used to describe their experience of art-science collaborations in a series of articles on partnerships between artists and researchers.",
+     "year": 2022,
+     "question_id": null,
+     "passage_id": "english1-2022-P-text3"
+    },
+    {
+     "sentence": "Publishers have responded to the demand that they make their product free to readers by charging their writers fees to cover the costs of preparing an article.",
+     "year": 2020,
+     "question_id": null,
+     "passage_id": "english1-2020-P-text2"
+    },
+    {
+     "sentence": "A survey by Barna research group found the top reason given by Americans for the fake news phenomenon is \"reader error,\" more so than made-up stories or factual mistakes in reporting.",
+     "year": 2018,
+     "question_id": null,
+     "passage_id": "english1-2018-P-text2"
     }
    ]
   },
@@ -24603,6 +24601,55 @@
    ]
   },
   {
+   "word": "offer",
+   "frequency": 10,
+   "years": [
+    2016,
+    2018,
+    2020,
+    2021,
+    2022,
+    2024
+   ],
+   "year_count": 6,
+   "forms": {
+    "offer": 6,
+    "offering": 3,
+    "offered": 1
+   },
+   "in_word_bank": true,
+   "ecdict_tags": [
+    "zk",
+    "gk",
+    "cet4",
+    "cet6",
+    "ky",
+    "toefl",
+    "ielts"
+   ],
+   "level": "ky",
+   "examples": [
+    {
+     "sentence": "We can offer them a visit to Blackwater National Wildlife Refuge in Dorchester County where bald eagles fly over tidal marshes so shallow you could not paddle a boat across them but teaming with aquatic life.",
+     "year": 2024,
+     "question_id": null,
+     "passage_id": "english1-2024-P-text4"
+    },
+    {
+     "sentence": "For wild animals that cannot be returned to their natural habitats, zoos offer the best alternative.",
+     "year": 2022,
+     "question_id": "english1-2022-41",
+     "passage_id": "english1-2022-P-partb"
+    },
+    {
+     "sentence": "The most drastic, and thoroughly illegal, reaction has been the emergence of Sci-Hub, a kind of global photocopier for scientific papers, set up in 2012, which now claims to offer access to every paywalled article published since 2015.",
+     "year": 2020,
+     "question_id": null,
+     "passage_id": "english1-2020-P-text2"
+    }
+   ]
+  },
+  {
    "word": "passenger",
    "frequency": 10,
    "years": [
@@ -25569,7 +25616,7 @@
    "level": "basic",
    "examples": [
     {
-     "sentence": "In 1967 a scientific survey of the Peloponnesian coast was gathering data to analyze changes in sea levels when British oceanographer Nicholas Flemming first spotted the sunken structures.",
+     "sentence": "In 1967, a scientific survey of the Peloponnesian coast was gathering data to analyze changes in sea levels when British oceanographer Nicholas Flemming first spotted the sunken structures.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -25893,49 +25940,6 @@
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text2"
-    }
-   ]
-  },
-  {
-   "word": "center",
-   "frequency": 9,
-   "years": [
-    2015,
-    2019,
-    2021,
-    2022,
-    2023,
-    2025
-   ],
-   "year_count": 6,
-   "forms": {
-    "center": 6,
-    "centered": 2,
-    "centers": 1
-   },
-   "in_word_bank": false,
-   "ecdict_tags": [
-    "ielts"
-   ],
-   "level": "beyond",
-   "examples": [
-    {
-     "sentence": "Excavations revealed a large number of Minoan-style loom weights, suggesting Pavlopetri was a thriving trade center with a robust textile industry.",
-     "year": 2025,
-     "question_id": null,
-     "passage_id": "english1-2025-P-cloze"
-    },
-    {
-     "sentence": "A study last year by the National Center for Science Education, a non-profit group of scientists and teachers, looking at how state public schools across the country address climate change in science classes, gave barely half of US states a grade B+ or higher.",
-     "year": 2023,
-     "question_id": null,
-     "passage_id": "english1-2023-P-text1"
-    },
-    {
-     "sentence": "\"They even claimed that plants have 'brain-like command centers' at their root tips.",
-     "year": 2022,
-     "question_id": null,
-     "passage_id": "english1-2022-P-cloze"
     }
    ]
   },
@@ -26921,10 +26925,10 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "It has become a grimly reliable annual ritual: every January the cost of travelling by train rises, imposing a significant extra burden on those who have no option but to use the rail network to get to work or otherwise.",
+     "sentence": "Yet the FCC also ended the investigations of broadband providers that imposed data caps on their rivals' streaming services but not their own.",
      "year": 2021,
      "question_id": null,
-     "passage_id": "english1-2021-P-text1"
+     "passage_id": "english1-2021-P-text4"
     },
     {
      "sentence": "In order to ensure that elite women have more such opportunities, they have proposed imposing government quotas.",
@@ -27281,7 +27285,7 @@
    "level": "basic",
    "examples": [
     {
-     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C. and became an important trading center for Mycenaean Greece (1650–1180 B.C.).",
+     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -27339,55 +27343,6 @@
      "year": 2018,
      "question_id": null,
      "passage_id": "english1-2018-P-cloze"
-    }
-   ]
-  },
-  {
-   "word": "offer",
-   "frequency": 9,
-   "years": [
-    2016,
-    2018,
-    2020,
-    2021,
-    2022,
-    2024
-   ],
-   "year_count": 6,
-   "forms": {
-    "offer": 5,
-    "offering": 3,
-    "offered": 1
-   },
-   "in_word_bank": true,
-   "ecdict_tags": [
-    "zk",
-    "gk",
-    "cet4",
-    "cet6",
-    "ky",
-    "toefl",
-    "ielts"
-   ],
-   "level": "ky",
-   "examples": [
-    {
-     "sentence": "We can offer them a visit to Blackwater National Wildlife Refuge in Dorchester County where bald eagles fly over tidal marshes so shallow you could not paddle a boat across them but teaming with aquatic life.",
-     "year": 2024,
-     "question_id": null,
-     "passage_id": "english1-2024-P-text4"
-    },
-    {
-     "sentence": "For wild animals that cannot be returned to their natural habitats, zoos offer the best alternative.",
-     "year": 2022,
-     "question_id": "english1-2022-41",
-     "passage_id": "english1-2022-P-partb"
-    },
-    {
-     "sentence": "The most drastic, and thoroughly illegal, reaction has been the emergence of Sci-Hub, a kind of global photocopier for scientific papers, set up in 2012, which now claims to offer access to every paywalled article published since 2015.",
-     "year": 2020,
-     "question_id": null,
-     "passage_id": "english1-2020-P-text2"
     }
    ]
   },
@@ -28127,7 +28082,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "In 1967 a scientific survey of the Peloponnesian coast was gathering data to analyze changes in sea levels when British oceanographer Nicholas Flemming first spotted the sunken structures.",
+     "sentence": "In 1967, a scientific survey of the Peloponnesian coast was gathering data to analyze changes in sea levels when British oceanographer Nicholas Flemming first spotted the sunken structures.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -28783,6 +28738,49 @@
      "year": 2019,
      "question_id": "english1-2019-41",
      "passage_id": "english1-2019-P-partb"
+    }
+   ]
+  },
+  {
+   "word": "center",
+   "frequency": 8,
+   "years": [
+    2015,
+    2019,
+    2021,
+    2022,
+    2023,
+    2025
+   ],
+   "year_count": 6,
+   "forms": {
+    "center": 5,
+    "centered": 2,
+    "centers": 1
+   },
+   "in_word_bank": false,
+   "ecdict_tags": [
+    "ielts"
+   ],
+   "level": "beyond",
+   "examples": [
+    {
+     "sentence": "Excavations revealed a large number of Minoan-style loom weights, suggesting Pavlopetri was a thriving trade center with a robust textile industry.",
+     "year": 2025,
+     "question_id": null,
+     "passage_id": "english1-2025-P-cloze"
+    },
+    {
+     "sentence": "A study last year by the National Center for Science Education, a non-profit group of scientists and teachers, looking at how state public schools across the country address climate change in science classes, gave barely half of US states a grade B+ or higher.",
+     "year": 2023,
+     "question_id": null,
+     "passage_id": "english1-2023-P-text1"
+    },
+    {
+     "sentence": "\"They even claimed that plants have 'brain-like command centers' at their root tips.",
+     "year": 2022,
+     "question_id": null,
+     "passage_id": "english1-2022-P-cloze"
     }
    ]
   },
@@ -29937,48 +29935,6 @@
      "year": 2021,
      "question_id": null,
      "passage_id": "english1-2021-P-translation"
-    }
-   ]
-  },
-  {
-   "word": "library",
-   "frequency": 8,
-   "years": [
-    2016,
-    2018,
-    2020,
-    2025
-   ],
-   "year_count": 4,
-   "forms": {
-    "libraries": 5,
-    "library": 3
-   },
-   "in_word_bank": false,
-   "ecdict_tags": [
-    "zk",
-    "gk",
-    "ielts"
-   ],
-   "level": "basic",
-   "examples": [
-    {
-     "sentence": "Libraries and archives have traditionally shouldered the responsibility of organization, preservation, and access to information.",
-     "year": 2025,
-     "question_id": null,
-     "passage_id": "english1-2025-P-text4"
-    },
-    {
-     "sentence": "Until this century, university libraries were not very price sensitive.",
-     "year": 2020,
-     "question_id": null,
-     "passage_id": "english1-2020-P-text2"
-    },
-    {
-     "sentence": "Completed in 1875, the State Department's south wing was the first to be occupied, with its elegant four-story library (completed in 1876), Diplomatic Reception Room, and Secretary's office decorated with carved wood, Oriental rugs, and stenciled wall patterns.",
-     "year": 2018,
-     "question_id": "english1-2018-41",
-     "passage_id": "english1-2018-P-partb"
     }
    ]
   },
@@ -32866,7 +32822,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C. and became an important trading center for Mycenaean Greece (1650–1180 B.C.).",
+     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -33622,6 +33578,48 @@
      "year": 2020,
      "question_id": "english1-2020-35",
      "passage_id": "english1-2020-P-text3"
+    }
+   ]
+  },
+  {
+   "word": "library",
+   "frequency": 7,
+   "years": [
+    2016,
+    2018,
+    2020,
+    2025
+   ],
+   "year_count": 4,
+   "forms": {
+    "libraries": 5,
+    "library": 2
+   },
+   "in_word_bank": false,
+   "ecdict_tags": [
+    "zk",
+    "gk",
+    "ielts"
+   ],
+   "level": "basic",
+   "examples": [
+    {
+     "sentence": "Libraries and archives have traditionally shouldered the responsibility of organization, preservation, and access to information.",
+     "year": 2025,
+     "question_id": null,
+     "passage_id": "english1-2025-P-text4"
+    },
+    {
+     "sentence": "Until this century, university libraries were not very price sensitive.",
+     "year": 2020,
+     "question_id": null,
+     "passage_id": "english1-2020-P-text2"
+    },
+    {
+     "sentence": "Completed in 1875, the State Department's south wing was the first to be occupied, with its elegant four-story library (completed in 1876), Diplomatic Reception Room, and Secretary's office decorated with carved wood, Oriental rugs, and stenciled wall patterns.",
+     "year": 2018,
+     "question_id": "english1-2018-41",
+     "passage_id": "english1-2018-P-partb"
     }
    ]
   },
@@ -36339,6 +36337,12 @@
      "year": 2017,
      "question_id": null,
      "passage_id": "english1-2017-P-text4"
+    },
+    {
+     "sentence": "The commission argued that other agencies would protect against anti-competitive behavior, such as a broadband-providing conglomerate like AT&T favoring its own video-streaming service at the expense of Netflix and Apple TV.",
+     "year": 2021,
+     "question_id": null,
+     "passage_id": "english1-2021-P-text4"
     }
    ]
   },
@@ -37191,7 +37195,7 @@
    "level": "beyond",
    "examples": [
     {
-     "sentence": "In 2009 archaeologists Chrysanthi Gallou and Jon Henderson resumed the excavation of Pavlopetri in cooperation with the Greek Ministry of Culture.",
+     "sentence": "In 2009 archaeologists Chrysanthi Gallon and Jon Henderson resumed excavation of Pavlopetri in cooperation with the Greek Ministry of Culture.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -38444,7 +38448,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replaces analog.",
+     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replace analog.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text4"
@@ -38868,6 +38872,12 @@
    "level": "cet",
    "examples": [
     {
+     "sentence": "Yet the FCC also ended the investigations of broadband providers that imposed data caps on their rivals' streaming services but not their own.",
+     "year": 2021,
+     "question_id": null,
+     "passage_id": "english1-2021-P-text4"
+    },
+    {
      "sentence": "But it has already sparked significant controversy, with the United States trade representative opening an investigation into whether the tax discriminates against American companies, which in turn could lead to trade sanctions against France.",
      "year": 2020,
      "question_id": null,
@@ -38878,12 +38888,6 @@
      "year": 2019,
      "question_id": null,
      "passage_id": "english1-2019-P-text1"
-    },
-    {
-     "sentence": "It argues that since prosecutors do not consume a company's products as part of their investigations, they could be influenced only by the halo effect.",
-     "year": 2016,
-     "question_id": null,
-     "passage_id": "english1-2016-P-text3"
     }
    ]
   },
@@ -40230,7 +40234,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "From the early days of broadband, advocates for consumers and web-based companies worried that the cable and phone companies selling broadband connections had the power and incentive to favor affiliated websites over their rivals'.",
+     "sentence": "Yet the FCC also ended the investigations of broadband providers that imposed data caps on their rivals' streaming services but not their own.",
      "year": 2021,
      "question_id": null,
      "passage_id": "english1-2021-P-text4"
@@ -40240,6 +40244,12 @@
      "year": 2019,
      "question_id": null,
      "passage_id": "english1-2019-P-text4"
+    },
+    {
+     "sentence": "From the early days of broadband, advocates for consumers and web-based companies worried that the cable and phone companies selling broadband connections had the power and incentive to favor affiliated websites over their rivals'.",
+     "year": 2021,
+     "question_id": null,
+     "passage_id": "english1-2021-P-text4"
     }
    ]
   },
@@ -42368,7 +42378,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replaces analog.",
+     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replace analog.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text4"
@@ -47147,8 +47157,8 @@
    "year_count": 4,
    "forms": {
     "replacing": 2,
-    "replaces": 2,
-    "replace": 1
+    "replace": 2,
+    "replaces": 1
    },
    "in_word_bank": true,
    "ecdict_tags": [
@@ -47161,7 +47171,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replaces analog.",
+     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replace analog.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text4"
@@ -48038,7 +48048,7 @@
    "level": "basic",
    "examples": [
     {
-     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replaces analog.",
+     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replace analog.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text4"
@@ -49695,7 +49705,7 @@
    "level": "beyond",
    "examples": [
     {
-     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replaces analog.",
+     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replace analog.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text4"
@@ -50351,10 +50361,10 @@
      "passage_id": "english1-2022-P-cloze"
     },
     {
-     "sentence": "But some of it remains in the brain, where it influences mood, behavior and physiology.",
-     "year": 2017,
+     "sentence": "The commission argued that other agencies would protect against anti-competitive behavior, such as a broadband-providing conglomerate like AT&T favoring its own video-streaming service at the expense of Netflix and Apple TV.",
+     "year": 2021,
      "question_id": null,
-     "passage_id": "english1-2017-P-cloze"
+     "passage_id": "english1-2021-P-text4"
     }
    ]
   },
@@ -53338,6 +53348,12 @@
    "level": "ky",
    "examples": [
     {
+     "sentence": "The commission argued that other agencies would protect against anti-competitive behavior, such as a broadband-providing conglomerate like AT&T favoring its own video-streaming service at the expense of Netflix and Apple TV.",
+     "year": 2021,
+     "question_id": null,
+     "passage_id": "english1-2021-P-text4"
+    },
+    {
      "sentence": "Copernicus theorized in 1543 that all of the planets that we knew of revolved not around the Earth, but the Sun, a system that was later upheld by Galileo at his own expense.",
      "year": 2020,
      "question_id": null,
@@ -53348,12 +53364,6 @@
      "year": 2019,
      "question_id": null,
      "passage_id": "english1-2019-P-text1"
-    },
-    {
-     "sentence": "It reported a net loss of $5.6 billion for fiscal 2016, the 10th straight year its expenses have exceeded revenue.",
-     "year": 2018,
-     "question_id": null,
-     "passage_id": "english1-2018-P-text4"
     }
    ]
   },
@@ -55620,7 +55630,7 @@
    "level": "basic",
    "examples": [
     {
-     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replaces analog.",
+     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replace analog.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text4"
@@ -58032,7 +58042,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C. and became an important trading center for Mycenaean Greece (1650–1180 B.C.).",
+     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -58208,7 +58218,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "In 1967 a scientific survey of the Peloponnesian coast was gathering data to analyze changes in sea levels when British oceanographer Nicholas Flemming first spotted the sunken structures.",
+     "sentence": "In 1967, a scientific survey of the Peloponnesian coast was gathering data to analyze changes in sea levels when British oceanographer Nicholas Flemming first spotted the sunken structures.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -58458,6 +58468,47 @@
      "sentence": "Suppose you are a librarian in your university.",
      "year": 2016,
      "question_id": "english1-2016-51",
+     "passage_id": null
+    }
+   ]
+  },
+  {
+   "word": "table",
+   "frequency": 4,
+   "years": [
+    2023,
+    2025
+   ],
+   "year_count": 2,
+   "forms": {
+    "table": 3,
+    "tables": 1
+   },
+   "in_word_bank": false,
+   "ecdict_tags": [
+    "zk",
+    "gk",
+    "ielts",
+    "gre"
+   ],
+   "level": "basic",
+   "examples": [
+    {
+     "sentence": "In your essay, you should 1) describe the table briefly, 2) explain its intended meaning, and 3) give your comments.",
+     "year": 2025,
+     "question_id": "english1-2025-52",
+     "passage_id": null
+    },
+    {
+     "sentence": "The trade magazine The Bookseller reported that Waterstones branch managers were being told to remove PRH books from prominent areas such as tables, display spaces and windows, and were \"quietly retiring them to their relevant sections\".",
+     "year": 2023,
+     "question_id": null,
+     "passage_id": "english1-2023-P-text3"
+    },
+    {
+     "sentence": "Write an essay of 160-200 based on the following table.",
+     "year": 2025,
+     "question_id": "english1-2025-52",
      "passage_id": null
     }
    ]
@@ -60362,7 +60413,7 @@
    "level": "beyond",
    "examples": [
     {
-     "sentence": "In 2009 archaeologists Chrysanthi Gallou and Jon Henderson resumed the excavation of Pavlopetri in cooperation with the Greek Ministry of Culture.",
+     "sentence": "In 2009 archaeologists Chrysanthi Gallon and Jon Henderson resumed excavation of Pavlopetri in cooperation with the Greek Ministry of Culture.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -60576,7 +60627,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replaces analog.",
+     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replace analog.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text4"
@@ -62060,6 +62111,12 @@
    ],
    "level": "ky",
    "examples": [
+    {
+     "sentence": "The commission argued that other agencies would protect against anti-competitive behavior, such as a broadband-providing conglomerate like AT&T favoring its own video-streaming service at the expense of Netflix and Apple TV.",
+     "year": 2021,
+     "question_id": null,
+     "passage_id": "english1-2021-P-text4"
+    },
     {
      "sentence": "David Graddol concludes that monoglot English graduates face a bleak economic future as qualified multilingual youngsters from other countries are proving to have a competitive advantage over their British counterparts in global companies and organisations.",
      "year": 2017,
@@ -65221,7 +65278,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replaces analog.",
+     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replace analog.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text4"
@@ -65557,7 +65614,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "In 1967 a scientific survey of the Peloponnesian coast was gathering data to analyze changes in sea levels when British oceanographer Nicholas Flemming first spotted the sunken structures.",
+     "sentence": "In 1967, a scientific survey of the Peloponnesian coast was gathering data to analyze changes in sea levels when British oceanographer Nicholas Flemming first spotted the sunken structures.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -67288,7 +67345,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C. and became an important trading center for Mycenaean Greece (1650–1180 B.C.).",
+     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -68819,7 +68876,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C. and became an important trading center for Mycenaean Greece (1650–1180 B.C.).",
+     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -70424,7 +70481,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "In 2009 archaeologists Chrysanthi Gallou and Jon Henderson resumed the excavation of Pavlopetri in cooperation with the Greek Ministry of Culture.",
+     "sentence": "In 2009 archaeologists Chrysanthi Gallon and Jon Henderson resumed excavation of Pavlopetri in cooperation with the Greek Ministry of Culture.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -72343,47 +72400,6 @@
    ]
   },
   {
-   "word": "table",
-   "frequency": 3,
-   "years": [
-    2023,
-    2025
-   ],
-   "year_count": 2,
-   "forms": {
-    "table": 2,
-    "tables": 1
-   },
-   "in_word_bank": false,
-   "ecdict_tags": [
-    "zk",
-    "gk",
-    "ielts",
-    "gre"
-   ],
-   "level": "basic",
-   "examples": [
-    {
-     "sentence": "In your essay, you should 1) describe the table briefly, 2) explain its intended meaning, and 3) give your comments.",
-     "year": 2025,
-     "question_id": "english1-2025-52",
-     "passage_id": null
-    },
-    {
-     "sentence": "The trade magazine The Bookseller reported that Waterstones branch managers were being told to remove PRH books from prominent areas such as tables, display spaces and windows, and were \"quietly retiring them to their relevant sections\".",
-     "year": 2023,
-     "question_id": null,
-     "passage_id": "english1-2023-P-text3"
-    },
-    {
-     "sentence": "Write an essay of 160-200 based on the following table.",
-     "year": 2025,
-     "question_id": "english1-2025-52",
-     "passage_id": null
-    }
-   ]
-  },
-  {
    "word": "tangible",
    "frequency": 3,
    "years": [
@@ -73717,6 +73733,12 @@
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text3"
+    },
+    {
+     "sentence": "The commission argued that other agencies would protect against anti-competitive behavior, such as a broadband-providing conglomerate like AT&T favoring its own video-streaming service at the expense of Netflix and Apple TV.",
+     "year": 2021,
+     "question_id": null,
+     "passage_id": "english1-2021-P-text4"
     }
    ]
   },
@@ -77057,6 +77079,12 @@
    "level": "ky",
    "examples": [
     {
+     "sentence": "Yet the FCC also ended the investigations of broadband providers that imposed data caps on their rivals' streaming services but not their own.",
+     "year": 2021,
+     "question_id": null,
+     "passage_id": "english1-2021-P-text4"
+    },
+    {
      "sentence": "Eight monumental curving staircases of granite with over 4,000 individually cast bronze balusters are capped by four skylight domes and two stained glass rotundas.",
      "year": 2018,
      "question_id": "english1-2018-41",
@@ -77899,7 +77927,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "In 1967 a scientific survey of the Peloponnesian coast was gathering data to analyze changes in sea levels when British oceanographer Nicholas Flemming first spotted the sunken structures.",
+     "sentence": "In 1967, a scientific survey of the Peloponnesian coast was gathering data to analyze changes in sea levels when British oceanographer Nicholas Flemming first spotted the sunken structures.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -82329,7 +82357,7 @@
    "level": "beyond",
    "examples": [
     {
-     "sentence": "In 2009 archaeologists Chrysanthi Gallou and Jon Henderson resumed the excavation of Pavlopetri in cooperation with the Greek Ministry of Culture.",
+     "sentence": "In 2009 archaeologists Chrysanthi Gallon and Jon Henderson resumed excavation of Pavlopetri in cooperation with the Greek Ministry of Culture.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -93840,7 +93868,7 @@
      "passage_id": "english1-2025-P-cloze"
     },
     {
-     "sentence": "In 1967 a scientific survey of the Peloponnesian coast was gathering data to analyze changes in sea levels when British oceanographer Nicholas Flemming first spotted the sunken structures.",
+     "sentence": "In 1967, a scientific survey of the Peloponnesian coast was gathering data to analyze changes in sea levels when British oceanographer Nicholas Flemming first spotted the sunken structures.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -98484,7 +98512,7 @@
    "level": "beyond",
    "examples": [
     {
-     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replaces analog.",
+     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replace analog.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text4"
@@ -106218,7 +106246,7 @@
    "level": "beyond",
    "examples": [
     {
-     "sentence": "The commission argued that other agencies would protect against anti-competitive behavior, such as a broadband-providing conglomerate like AT&T favoring its own video-streaming service at the expense of Netflix and Apple TV. Yet the FCC also ended the investigations of broadband providers that imposed data caps on their rivals' streaming services but not their own.",
+     "sentence": "The commission argued that other agencies would protect against anti-competitive behavior, such as a broadband-providing conglomerate like AT&T favoring its own video-streaming service at the expense of Netflix and Apple TV.",
      "year": 2021,
      "question_id": null,
      "passage_id": "english1-2021-P-text4"
@@ -112240,28 +112268,6 @@
    ]
   },
   {
-   "word": "er",
-   "frequency": 1,
-   "years": [
-    2022
-   ],
-   "year_count": 1,
-   "forms": {
-    "er": 1
-   },
-   "in_word_bank": false,
-   "ecdict_tags": [],
-   "level": "beyond",
-   "examples": [
-    {
-     "sentence": "art can off er audiences easy access to science.",
-     "year": 2022,
-     "question_id": "english1-2022-32",
-     "passage_id": "english1-2022-P-text3"
-    }
-   ]
-  },
-  {
    "word": "erase",
    "frequency": 1,
    "years": [
@@ -113654,7 +113660,7 @@
    "level": "beyond",
    "examples": [
     {
-     "sentence": "The commission argued that other agencies would protect against anti-competitive behavior, such as a broadband-providing conglomerate like AT&T favoring its own video-streaming service at the expense of Netflix and Apple TV. Yet the FCC also ended the investigations of broadband providers that imposed data caps on their rivals' streaming services but not their own.",
+     "sentence": "The commission argued that other agencies would protect against anti-competitive behavior, such as a broadband-providing conglomerate like AT&T favoring its own video-streaming service at the expense of Netflix and Apple TV.",
      "year": 2021,
      "question_id": null,
      "passage_id": "english1-2021-P-text4"
@@ -114713,28 +114719,6 @@
      "year": 2023,
      "question_id": null,
      "passage_id": "english1-2023-P-text2"
-    }
-   ]
-  },
-  {
-   "word": "foundational",
-   "frequency": 1,
-   "years": [
-    2025
-   ],
-   "year_count": 1,
-   "forms": {
-    "foundational": 1
-   },
-   "in_word_bank": false,
-   "ecdict_tags": [],
-   "level": "beyond",
-   "examples": [
-    {
-     "sentence": "Ranganathan's foundational Laws of Library Science is \"Save the time of the reader.",
-     "year": 2025,
-     "question_id": null,
-     "passage_id": "english1-2025-P-text4"
     }
    ]
   },
@@ -123148,7 +123132,7 @@
    "level": "beyond",
    "examples": [
     {
-     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replaces analog.",
+     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replace analog.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text4"
@@ -124639,7 +124623,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replaces analog.",
+     "sentence": "Without constant migration of digital assets, a nightmare about the foreseeable future is what keeps historians up at night: a historical record that abruptly stops when digital replace analog.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-text4"
@@ -125108,7 +125092,7 @@
    "level": "beyond",
    "examples": [
     {
-     "sentence": "In 1967 a scientific survey of the Peloponnesian coast was gathering data to analyze changes in sea levels when British oceanographer Nicholas Flemming first spotted the sunken structures.",
+     "sentence": "In 1967, a scientific survey of the Peloponnesian coast was gathering data to analyze changes in sea levels when British oceanographer Nicholas Flemming first spotted the sunken structures.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
@@ -133435,7 +133419,7 @@
    "level": "ky",
    "examples": [
     {
-     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C. and became an important trading center for Mycenaean Greece (1650–1180 B.C.).",
+     "sentence": "Located in the southern Peloponnesian peninsula, Pavlopetri (the modern name of the site) emerged as a Neolithic settlement around 3500 B.C.",
      "year": 2025,
      "question_id": null,
      "passage_id": "english1-2025-P-cloze"
