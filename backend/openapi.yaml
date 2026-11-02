@@ -1040,7 +1040,8 @@ paths:
       description: |-
         两种模式：
         - 不带 `exam`/`year`/`question_ids`：作答流水，按时间倒序（可用 `question_id`、`limit` 过滤）。
-        - 带其中任一参数：**每题只返回最新一条**（有小问的大题按 `sub_number` 各一条），响应带 `latest: true`。前端刷新后用它恢复做题进度。参数可组合，`question_ids` 逗号分隔，最多 500 个。没做过的题不出现在 items 里。
+        - 带其中任一参数：**每题只返回最新一条**（有小问的大题按 `sub_number` 各一条），响应带 `latest: true`。前端刷新后用它恢复做题进度。
+        两种模式每条都带 `source`（online / offline_pack）和 `study_date`（算在哪个学习日，当地 04:00 换天）。参数可组合，`question_ids` 逗号分隔，最多 500 个。没做过的题不出现在 items 里。
       parameters:
         - name: question_id
           in: query
@@ -1121,6 +1122,16 @@ paths:
                         answered_at:
                           type: string
                           format: date-time
+                        source:
+                          type: string
+                          enum:
+                            - online
+                            - offline_pack
+                          description: 在线做的 / 离线题包补传的
+                        study_date:
+                          type: string
+                          format: date
+                          description: 这条算在哪个学习日（用户时区，当地 04:00 换天；和 POST /answers 返回的 study_date、/me/stats 的按天统计一致）
               examples:
                 history:
                   summary: 流水模式
@@ -1132,6 +1143,8 @@ paths:
                           - A
                         is_correct: false
                         answered_at: '2026-11-01T11:50:00Z'
+                        source: online
+                        study_date: '2026-11-01'
                 latest:
                   summary: 最新模式（?exam=math1&year=2024）
                   value:
@@ -1146,6 +1159,8 @@ paths:
                         self_rating: null
                         time_spent_seconds: 80
                         answered_at: '2026-11-01T12:05:00Z'
+                        source: offline_pack
+                        study_date: '2026-11-01'
                       - id: 1d2e3f4a-5b6c-4d7e-8f90-a1b2c3d4e5f7
                         question_id: math1-2024-17
                         sub_number: null
@@ -1154,6 +1169,8 @@ paths:
                         self_rating: approach_ok_calc_wrong
                         time_spent_seconds: 600
                         answered_at: '2026-11-01T12:30:00Z'
+                        source: online
+                        study_date: '2026-11-01'
       operationId: getAnswers
   /offline/pack:
     get:
@@ -1200,6 +1217,7 @@ paths:
                   summary: 今天的题包
                   value:
                     version: 3f9a1c2e7b4d5a60
+                    summary: 今天计划里的完形 1 篇，另自动挑了阅读 1 篇（共 25 题），加 2 道错题重做
                     study_date: '2026-11-02'
                     relative_day: 今天
                     timezone: Asia/Shanghai
@@ -1210,6 +1228,10 @@ paths:
                       questions: 27
                       plan_questions: 25
                       wrong_redos: 2
+                      wrong_redo_limit: 10
+                      plan_tasks: 3
+                      plan_passages: 1
+                      auto_passages: 1
                       words: 20
                       assets: 0
                     passages:
@@ -5892,6 +5914,10 @@ components:
         version:
           type: string
           description: 内容的稳定哈希（题、答案、讲解、单词变了才变）
+        summary:
+          type: string
+          description: 按实际内容写的题包说明，前端「没网也能做：…」直接拼这句（今天没排任务时不说「今天任务里的」，错题重做写实际道数，不写上限）
+          example: 今天还没排任务，自动挑了完形 1 篇、阅读 1 篇（共 25 题），加 1 道错题重做
         study_date:
           type: string
           format: date
@@ -5912,7 +5938,11 @@ components:
             passages: {type: integer}
             questions: {type: integer}
             plan_questions: {type: integer}
-            wrong_redos: {type: integer}
+            wrong_redos: {type: integer, description: 实际带了几道错题重做（不是上限）}
+            wrong_redo_limit: {type: integer, description: 错题重做上限（现在 10）}
+            plan_tasks: {type: integer, description: 今天计划里的任务数（不含模考 / 跳过的）；0 = 今天还没排任务}
+            plan_passages: {type: integer, description: 计划点名的文章数}
+            auto_passages: {type: integer, description: 计划没指定、后端自动挑的文章数}
             words: {type: integer}
             assets: {type: integer}
         passages:

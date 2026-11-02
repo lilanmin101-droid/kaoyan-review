@@ -359,16 +359,18 @@ const customize = {
   // expires_at = 题包时区（example 是 Asia/Shanghai）里 study_date 之后的下一个 04:00（第 16 轮：以前直接用 example 的值，和改过的 study_date 对不上）
   'GET /offline/pack': (body) => ({ ...body, study_date: MOCK_STUDY_DATE, generated_at: now(), expires_at: nextStudyDayStart(MOCK_STUDY_DATE, body.timezone || MOCK_TZ), words: body.words && { ...body.words, date: MOCK_STUDY_DATE, study_date: MOCK_STUDY_DATE } }),
   // 带 exam/year/question_ids 时用「每题最新」示例，并按 question_ids 回填
+  // 每条都带 source + study_date（按 answered_at 算学习日，和后端一致）
   'GET /answers': (body, req, op) => {
+    const fill = (b) => b && Array.isArray(b.items) ? { ...b, items: b.items.map((a) => ({ ...a, source: a.source || 'online', study_date: a.answered_at ? studyDate(a.answered_at) : a.study_date ?? null })) } : b;
     const q = req.query || {};
-    if (!(q.exam || q.year || q.question_ids) || req.query.__example) return body;
+    if (!(q.exam || q.year || q.question_ids) || req.query.__example) return fill(body);
     const latest = JSON.parse(JSON.stringify(op?.responses?.['200']?.content?.['application/json']?.examples?.latest?.value || body));
     if (q.question_ids) {
       const ids = String(q.question_ids).split(',').map((s) => s.trim()).filter(Boolean);
       const tpl = latest.items[0];
       latest.items = ids.slice(0, 2).map((id, i) => ({ ...tpl, id: uuid(), question_id: id, is_correct: i === 0 }));
     }
-    return latest;
+    return fill(latest);
   },
   // 开考：按请求回填 exam / year / title；?__status=200 = 同一张卷已开着（resumed=true），?__status=409 = 别的卷没交（code=other_exam_active）
   'POST /exams': (body, req) => {

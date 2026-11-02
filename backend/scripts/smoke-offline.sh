@@ -25,6 +25,8 @@ echo "$PACK" | ok "all(q['explanation_status'] in ('ready','pending') and (q['ex
 echo "$PACK" | ok "all(q['correct_answer'] and q['answer']==q['correct_answer'] for q in d['questions'] if q['objective']) and all(q['section'] not in ('translation','writing_a','writing_b') for q in d['questions'] if q['origin']=='plan')"
 echo "$PACK" | ok "'exam' not in d and 'exams' not in d and all(a.startswith('/api/v1/assets/') for a in d['assets']) and len(d['questions'])<200"
 echo "$PACK" | ok "set(d['words'])>={'review','new','relearn','study_date'} and d['counts']['words']==len(d['words']['review'])+len(d['words']['new'])+len(d['words']['relearn'])"
+# 说明句按实际内容：新号今天没排任务 → 不说「今天任务里的」；错题重做写实际道数（0 道就说没有）
+echo "$PACK" | ok "d['counts']['plan_tasks']==0 and d['summary'].startswith('今天还没排任务') and '今天任务里' not in d['summary'] and '没有要重做的错题' in d['summary'] and d['counts']['wrong_redo_limit']==10 and d['counts']['auto_passages']==len([p for p in d['passages'] if p['pick']=='auto'])"
 V=$(echo "$PACK" | j "d['version']")
 test "$(curl -s -o /dev/null -w '%{http_code}' "${A[@]}" "$B/offline/pack?since_version=$V")" = 304 && echo "ok since_version 相同 → 304"
 test "$(curl -s -o /dev/null -w '%{http_code}' "${A[@]}" -H "If-None-Match: \"$V\"" "$B/offline/pack")" = 304 && echo "ok If-None-Match 相同 → 304"
@@ -62,6 +64,9 @@ print('ok 重发 5 条全 duplicate、同 id 同分' if r else 'FAIL 重发'); s
 curl -sf "${A[@]}" "$B/me/stats" | ok "d['attempts']==5 and d['correct_attempts']==3"
 
 curl -sf "${A[@]}" $B/offline/pack | ok "d['version']=='$V' and d['counts']['wrong_redos']==0"
+# 补传的记录：流水和按题查都带 source=offline_pack + study_date
+curl -sf "${A[@]}" "$B/answers?limit=5" | ok "len(d['items'])==5 and all(i['source']=='offline_pack' and i['study_date'] for i in d['items'])"
+curl -sf "${A[@]}" "$B/answers?question_ids=$(echo "$ITEMS" | j "','.join(i['question_id'] for i in d['items'])")" | ok "d['items'] and all(i['source']=='offline_pack' and i['study_date'] for i in d['items'])"
 echo "== 同样 5 题在线作答（另一个号）：判分、错题本、统计一致"
 ONLINE=$(echo "$ITEMS" | python3 -c "import sys,json;print(json.dumps({'items':[{'question_id':i['question_id'],'answer':i['answer'],'client_id':i['client_id']+'-on'} for i in json.load(sys.stdin)['items']]}))")
 R3=$(curl -sf "${A2[@]}" -XPOST $B/answers -d "$ONLINE")

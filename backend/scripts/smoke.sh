@@ -42,6 +42,11 @@ curl -sf "${A[@]}" -XPOST $B/answers -d '{"items":[{"question_id":"math1-2024-18
   | ok "len(d['items'])==4 and [(i['points'], i['max_points']) for i in d['items']]==[($S1,$S1),($S2/2,$S2),($WQS,$WQS),(0,$Q21)] and d['items'][2].get('sub_number_ignored') is True and d['items'][2]['sub_number'] is None"
 curl -sf "${A[@]}" "$B/answers?question_ids=$WQ" | ok "len([i for i in d['items'] if i['question_id']=='$WQ'])==1 and d['items'][0]['sub_number'] is None and d['items'][0]['points']==d['items'][0]['max_points']"
 curl -sf "${A[@]}" "$B/answers?question_ids=math1-2024-17" | ok "d['items'][0]['points']==5 and d['items'][0]['max_points']==10"
+# 流水和按题查都带 source + study_date（学习日 = POST 返回的那个）
+SD=$(curl -sf "${A[@]}" -XPOST $B/answers -d '{"question_id":"math1-2024-01","answer":["A"],"client_id":"c1"}' | j "d['study_date']")
+curl -sf "${A[@]}" "$B/answers?limit=5" | ok "d['items'] and all(i['source']=='online' and i['study_date']=='$SD' for i in d['items'])"
+curl -sf "${A[@]}" "$B/answers?question_ids=math1-2024-01,math1-2024-17" | ok "len(d['items'])==2 and all(i['source']=='online' and i['study_date']=='$SD' for i in d['items'])"
+curl -sf "${A[@]}" "$B/answers?question_id=math1-2024-01" | ok "d['items'] and all(i['source']=='online' and i['study_date']=='$SD' for i in d['items'])"
 echo "== exam"
 if ! curl -sf "${A[@]}" "$B/questions/years?exam=math1" | python3 -c "import sys,json;d=json.load(sys.stdin);sys.exit(0 if {'exam':'math1','year':2024} in d['ready'] else 1)"; then
   echo "SKIP exam：2024 数一卷当前不是 ready（题库数据正在改，见 /questions/years），跳过整卷模考这一段"
