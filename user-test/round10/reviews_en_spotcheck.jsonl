@@ -82,3 +82,31 @@
 {"id": "english1-2023-38", "status": "pass", "by": "用户", "note": "[recheck a553cb1·新抽] 定位第3段第3句逐字；B/C/D 错因具体，C 引 cite a specific paper。", "at": "2026-11-02T12:30:00+08:00"}
 {"id": "english1-2024-25", "status": "pass", "by": "用户", "note": "[recheck a553cb1·新抽] 定位第6段第3句逐字，并用末段印刷术、太阳能板佐证；B/C/D 错因具体。", "at": "2026-11-02T12:30:00+08:00"}
 {"id": "english1-2025-40", "status": "fail", "by": "用户", "note": "[recheck a553cb1·新抽] 只改了 C；A“artifacts 泛指文物，文章重点是数字信息”、B“馆员的作用是论述的一部分，不是全文主旨”是原样保留：既没标错因类型，也没有原文依据（B 实为以偏概全，馆员只在第3–6段）。", "at": "2026-11-02T12:30:00+08:00"}
+{"id": "english1-2020-13", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·复核] 「照此推理」已删，改为 advice→advisable 同根复现；不再暗示第 12 空 On the basis of。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2025-40", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·复核] A 偷换概念、B 以偏概全，各引原文逐字；librarian 只在第 3、4、6 段出现，更正属实。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2022-09", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·复核] 写明 similar 一句是 Taiz 的反驳；引句略去第 14 空。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2023-32", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·复核] A 改为正反颠倒并引 remove PRH books from prominent areas。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2023-39", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·复核] D 改为无中生有，引第 4 段 a citation database 与 listing in Scopus…targeted。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2024-22", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·复核] B 改为偷换概念，引前一句 blacksmith’s labour 与落点句。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2025-39", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·复核] B 无中生有（引 Without constant migration…）、D 偷换概念（引 analog materials have a chance of surviving）。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2021-36", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·复核] B 点到末段 meddling in the traffic on their network，并说明 meddling≠拖慢。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2021-03", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·抽25之8] 无他空暗示；提醒：标签宜为逻辑连接（让步）。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2021-04", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·抽25之8] 「也说明」→「可见」，引句不带第 9 空 with。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2021-16", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·抽25之8] 「做」（≈第 17 空 take）已去掉。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2023-20", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·抽25之8] 「描述」（=第 4 空 describe）已去掉。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2024-01", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·抽25之8] 改为词义辨析，无他空暗示。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2024-19", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·抽25之8] 「相配」（≈第 17 空 complement）已去掉。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2025-07", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·抽25之8] 「说明」（≈第 19 空 suggesting）已去掉；未带出第 4 空 remains。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2025-11", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·抽25之8] 「也说明」→「也可见」，通顺正确。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2020-14", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·新抽] 逻辑连接；未说出第 15 空 connection。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2020-20", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·新抽] 固定搭配 end up with，排除项具体。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2021-11", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·新抽] 固定搭配 as the years went by。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2021-12", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·新抽] be attributable to 讲清；提醒：四项都是 adj+to，标签宜为词义辨析。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2021-17", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·新抽] 固定搭配 take steps，无他空暗示。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2022-02", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·新抽] 「类比」（≈第 9 空 analogous）改为「相比」；段号正确。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2025-06", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·新抽] 讲解正确；提醒：靠场景判断，标签宜为词义辨析。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2025-17", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·新抽] 固定搭配 bring … to light。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2021-21", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·新抽] 定位第1段第3句逐字；干扰项旧版短句，归 98 道批量。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2022-37", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·新抽] 定位第3段第2句逐字；干扰项旧版，归 98 道批量。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2025-29", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·新抽] 定位第6段第2句+第7段第1句逐字；B/C 旧版，归 98 道批量。", "at": "2026-11-02T12:41:00+08:00"}
+{"id": "english1-2025-34", "status": "pass", "by": "用户", "note": "[recheck2 9139d27·新抽] 定位第6段第2句逐字；B/D 旧版，归 98 道批量。", "at": "2026-11-02T12:41:00+08:00"}
