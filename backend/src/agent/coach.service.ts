@@ -3,7 +3,7 @@ import { randomUUID } from 'crypto';
 import { UserTimeService } from '../common/user-time.service';
 import { Injectable, Logger } from '@nestjs/common';
 import { DbService } from '../db/db.service';
-import { addDays, DAY_START_HOUR, dayLabel as dayLabelOf, studyDaySql, weekOf } from '../common/time';
+import { addDays, DAY_START_HOUR, dayLabel as dayLabelOf, daySpanLabel, studyDaySql, weekOf, weekOpenLabel } from '../common/time';
 import { aiMode, mastraModel } from '../ai/llm';
 import { AgentToolsService, PHASE_CN, ToolCtx, Trigger } from './agent-tools.service';
 import { PlansService } from '../plans/plans.service';
@@ -253,7 +253,7 @@ export class CoachService {
     // 用户说了几道就排几道（一道=1、两道=2、数字照用）；没说数量才默认 3 道
     const asked = parseCount(t);
     const intent = quantityIntent(t);
-    const range = wf ? (wf.from === wf.to ? wf.from.slice(5) : `${wf.from.slice(5)}–${wf.to.slice(5)}`) : '';
+    const range = wf ? daySpanLabel(wf.from, wf.to, wf.label === '这周' || wf.label === '本周') : '';
     const wrong = (await this.tools.getWrongQuestions(ctx, { limit: intent ? 50 : Math.max(asked ?? 0, 3), ...(wf ? { wrong_from: wf.from, wrong_to: wf.to } : {}) })).items;
     const pool = wf ? `${wf.label}做错的` : '错题本里该重做的';
     if (wf) await step(`按做错的日子筛：${wf.label}（${range}）做错的题有 ${wrong.length} 道`);
@@ -369,13 +369,13 @@ export class CoachService {
   }
 
   private async mockWeekly(ctx: ToolCtx & { collected: any[] }, today: string, reason = '每周日 21:30 自动周报'): Promise<RunResult> {
-    const wk = weekOf(today); // 本周 = 自然周（周一–周日），标签写整周范围
+    const wk = weekOf(today); // 本周 = 自然周（周一–周日）；进行中写成「本周（11-02 起）」
     const s = await this.dayStats(ctx.userId, wk.from, today);
     const p = await this.tools.getProfile(ctx);
     const weak = p.weakest_kps.slice(0, 2).map((k: any) => k.kp_path.split('/').pop());
     // 「下周重点：…」存成 {{nextweek:…}}（toPlaceholders 自动换），下周开始后读成「当时定的下周重点：…」
     const head = weak.length ? `下周重点：补「${weak[0]}」。` : s.n ? '下周重点：保持节奏，先清到期错题。' : '下周重点：每天先做 5 道题，把节奏找回来。';
-    const text = `本周（${wk.label}）` + (s.n ? `做了 ${s.n} 题，正确率 ${Math.round((100 * s.correct) / s.n)}%，${minutesText(s.minutes)}。` : '还没有作答记录，也还没有学习时长记录。')
+    const text = `本周（${weekOpenLabel(wk.from)}）` + (s.n ? `做了 ${s.n} 题，正确率 ${Math.round((100 * s.correct) / s.n)}%，${minutesText(s.minutes)}。` : '还没有作答记录，也还没有学习时长记录。')
       + (weak.length ? `最需要补的：${weak.join('、')}。` : '')
       + `当前阶段：${PHASE_CN[p.user.phase]}${p.user.days_left != null ? `，距考试 ${p.user.days_left} 天` : ''}。`;
     await this.tools.writeDailyTip(ctx, { kind: 'weekly', date: today, text: head, details: text, reason, source: 'mock' });
