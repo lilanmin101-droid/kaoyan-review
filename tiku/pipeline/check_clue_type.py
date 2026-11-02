@@ -6,7 +6,7 @@
 讲解 steps 里以「标签：」开头的步骤视为标注；标签可带括号细分，如「逻辑连接（转折）」。
 - 错误（退出码 1）：标签不是四类之一，也不是 本句/排除/答案 这类结构标签，
   例如「上下文呼应」「逻辑关系（因果）」「因果」「转折」。
-- 提醒（不影响退出码）：整题没有任何四类标签。
+- 错误（退出码 1）：整题没有任何四类标签。
 usage: python3 tiku/pipeline/check_clue_type.py [--root TIKU_DIR] [YEAR ...]
 """
 import json, re, sys, os, glob
@@ -31,7 +31,7 @@ def check(T, Y):
             if b in STD: has = True
             elif b in STRUCT or any(b.startswith(x) for x in STRUCT): pass
             else: err.append((d['id'], i, f'非标准线索类型:{lb}'))
-        if not has: warn.append((d['id'], '未标四类线索类型'))
+        if not has: err.append((d['id'], -1, '未标四类线索类型'))
     return err, warn
 def main(a):
     T = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
@@ -41,7 +41,7 @@ def main(a):
     for Y in years:
         e, w = check(T, Y)
         if not e and not w and not os.path.exists(f'{T}/explanations/english1_{Y}_expert.jsonl'): continue
-        print(f'{Y} 非标准 {len(e)} | 未标线索类型（只提醒） {len(w)}')
+        print(f'{Y} 错误 {len(e)}（非标准标签 {sum(1 for x in e if x[1]>=0)}，未标 {sum(1 for x in e if x[1]<0)}）')
         for x in e: print('   !', x)
         for x in w: print('   ?', x)
         bad += len(e)
