@@ -357,7 +357,7 @@ const customize = {
   },
   // 离线题包：日期按 mock 的学习日回填（ETag / 304 / since_version 在下面的中间件里）
   // expires_at = 题包时区（example 是 Asia/Shanghai）里 study_date 之后的下一个 04:00（第 16 轮：以前直接用 example 的值，和改过的 study_date 对不上）
-  'GET /offline/pack': (body) => ({ ...body, study_date: MOCK_STUDY_DATE, generated_at: now(), expires_at: nextStudyDayStart(MOCK_STUDY_DATE, body.timezone || MOCK_TZ), words: body.words && { ...body.words, date: MOCK_STUDY_DATE, study_date: MOCK_STUDY_DATE } }),
+  'GET /offline/pack': (body) => ({ ...body, ...mockPackCounts(body), study_date: MOCK_STUDY_DATE, generated_at: now(), expires_at: nextStudyDayStart(MOCK_STUDY_DATE, body.timezone || MOCK_TZ), words: body.words && { ...body.words, date: MOCK_STUDY_DATE, study_date: MOCK_STUDY_DATE } }),
   // 带 exam/year/question_ids 时用「每题最新」示例，并按 question_ids 回填
   // 每条都带 source + study_date（按 answered_at 算学习日，和后端一致）
   'GET /answers': (body, req, op) => {
@@ -453,6 +453,20 @@ app.use(PREFIX + '/assets', (req, res, next) => {
   res.setHeader('Cache-Control', 'public, max-age=3600');
   fs.createReadStream(file).pipe(res);
 });
+
+// mock 示例只带了几题：counts 和 summary 按示例里实际的 passages/questions 重算，免得「共 25 题」却只有 2 题
+function mockPackCounts(body) {
+  const qs = body.questions || [], ps = body.passages || [];
+  const wrong = qs.filter((q) => q.origin === 'wrong_redo').length;
+  const plan = qs.length - wrong;
+  const counts = { ...(body.counts || {}), passages: ps.length, questions: qs.length, plan_questions: plan, wrong_redos: wrong, plan_passages: Math.min((body.counts || {}).plan_passages ?? ps.length, ps.length) };
+  counts.auto_passages = ps.length - counts.plan_passages;
+  const parts = [];
+  if (counts.plan_passages) parts.push(`今天计划里的 ${counts.plan_passages} 篇`);
+  if (counts.auto_passages) parts.push(`${parts.length ? '另' : '今天还没排任务，'}自动挑了 ${counts.auto_passages} 篇`);
+  const summary = (parts.join('，') || '题包') + `（共 ${plan} 题）` + (wrong ? `，加 ${wrong} 道错题重做` : '');
+  return { counts, summary };
+}
 
 // 离线题包：ETag = "<version>"，If-None-Match 或 ?since_version 和当前一致 → 304
 const MOCK_ANSWERS = new Map();
