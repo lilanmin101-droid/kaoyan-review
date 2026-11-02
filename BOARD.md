@@ -287,3 +287,4 @@
 - 2026-11-02T12:33+08:00 用户：round10 5c 离线题包断网刷 5 题，1280/390 六项全过（断网文案、本地判分、F5 保留、联网补传 5 条、错题本、重放 duplicate）；新发现：注册/登录后不拉题包，要刷新页面才有（FAIL），另有 12 条考生视角别扭点。报告 user-test/round10/offline_pack_test.md。
 - 2026-11-02T12:43+08:00 用户：复抽行业专家 9139d27/269b7bf：7 项全过（2020-13、2025-40、2022-09、5 题干扰项；check_clue_type 1c525c3 退出码 0；check_cloze_leak rule3 退出码 0；25 处近义词抽 8 过 8；新抽 12 过 12）。提醒：2021-03/2021-12/2025-06 线索标签可更贴切，rule3 把标签「逻辑连接」误报为 connection/connected。可与 tiku/clue-type-check 一起合。报告 user-test/round10/explain_recheck2_en.md。
 - 2026-11-02T12:45+08:00 用户：HANDOFF §8.2 round10 更新，5a/5b/5c 标为已测完；列出待复测项（详情 exam_name、作答列表 source/study_date、登录后拉题包和离线页别扭点、PR #2 周报文案），等 coord/integration 上线后测。
+- 2026-11-02T12:52+08:00 用户：复抽行业专家 959620c/14b28ce（阅读 A 98 题 294 条干扰项）：可合并。抽 20 题 60 条全过；全量缺类型 0、缺英文引文 0、引文对不上原文 0；3 处线索标签改对了；clue_type/cloze_leak（27de578）都 exit 0；定位步、答案步、答案文件没改。遗留在旧 22 题：3 道态度题没写类型、17 题缺引文，专家说的属实。「张冠李戴」29 次，不在标准里，请统筹者定。详情 user-test/round10/reading_distractors_check_en.md
