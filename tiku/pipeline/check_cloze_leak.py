@@ -6,7 +6,7 @@ neighbour words (e.g. "faced the possibility" when 'faced' fills blank 7), unles
 word sequence also occurs naturally in the passage outside the blanks; or the answer word appears
 inside a quoted English fragment / 本句 line while never occurring in the passage outside the blanks.
 Rule 3: another blank's answer word mentioned anywhere (4+ letters, not this blank's option, not in passage).
-Chinese paraphrases of another blank's answer are NOT detected; review those by hand.
+Rule 4c (warning only): a 本句 line quoting another blank (k) whose Chinese translation drops (k) -- often just a partial translation, review by hand.\nOther Chinese paraphrases of another blank's answer are NOT reliably detected; review those by hand.
 usage: python3 tiku/pipeline/check_cloze_leak.py [YEAR ...]   (exit 1 on any leak)
 """
 import json, re, sys, glob, os
@@ -145,6 +145,14 @@ def check_cn(Y):
             for t in sorted(g - own):
                 if t in lbody:
                     bad.append((q['id'], k, 'suspect-cn:' + t)); break
+        # 4c：本句列出带别的空（k）的英文，后面附中文整句译文却没保留（k）占位 = 译文把别的空翻出来了
+        for st in d['steps']:
+            if not st.startswith('本句'): continue
+            ks = [k for k in re.findall(r'[（(]\s*(\d{1,2})\s*[）)]', st) if int(k) != q['number'] and 1 <= int(k) <= 20]
+            if not ks or len(re.findall(r'[\u4e00-\u9fff]', st)) < 6: continue
+            for k in sorted(set(ks), key=int):
+                if len(re.findall(r'[（(]\s*%s\s*[）)]' % k, st)) < 2:
+                    bad.append((q['id'], int(k), 'suspect-cn-sent:本句译文没保留（%s）占位' % k))
         for m in re.finditer(r'[“"]([^”"]*___[^”"]*)[”"]\s*[（(]([^）)]*[\u4e00-\u9fff][^）)]*)[）)]', body):
             if not body.startswith('本句') or m.start() > 0:
                 bad.append((q['id'], '?', 'suspect-cn-gloss:' + m.group(2)[:20]))
