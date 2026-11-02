@@ -164,9 +164,15 @@ export function parseJsonLoose<T = any>(text: string): T {
 /** 给 Mastra Agent 用的模型配置（Mastra 自带 OpenAI 兼容路由，不需要额外 SDK） */
 export function mastraModel(p: ProviderId, model?: string) {
   const cfg = providers()[p];
-  // 注意：deepseek-flash 默认开思考模式；带 tools 的多轮请求要回传 reasoning_content，Mastra 是否回传要接上 Key 后实测（见 deploy/README）
+  // 注意：deepseek-flash 默认开思考模式；带 tools 的多轮请求要回传 reasoning_content，Mastra（OpenAI 兼容路由）不回传 → 第二轮 400。
+  // 所以 Agent 调用一律带 mastraProviderOptions('deepseek')，显式关掉思考模式（用 fake-llm FAKE_LLM_THINKING=1 复现过，见 scripts/key-preflight.sh）
   const id = model || cfg.models.chat;
   return { providerId: cfg.id, modelId: p === 'deepseek' ? resolveDeepseekModel(id).model : id, url: cfg.baseURL, apiKey: cfg.apiKey };
+}
+
+/** 传给 agent.stream/generate 的 providerOptions：DeepSeek 关思考模式（会被原样并进请求体 thinking:{type:'disabled'}） */
+export function mastraProviderOptions(p: ProviderId): Record<string, Record<string, any>> {
+  return p === 'deepseek' ? { [providers()[p].id]: { thinking: { type: 'disabled' } } } : {};
 }
 
 /** 给 /health 和 ai:check 看的配置摘要（不含 Key 本身） */

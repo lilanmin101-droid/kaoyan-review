@@ -3,3 +3,4 @@ dist
 .env
 uploads
 dist-e1test
+reports

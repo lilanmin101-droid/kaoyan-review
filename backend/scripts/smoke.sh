@@ -42,6 +42,11 @@ curl -sf "${A[@]}" -XPOST $B/answers -d '{"items":[{"question_id":"math1-2024-18
   | ok "len(d['items'])==4 and [(i['points'], i['max_points']) for i in d['items']]==[($S1,$S1),($S2/2,$S2),($WQS,$WQS),(0,$Q21)] and d['items'][2].get('sub_number_ignored') is True and d['items'][2]['sub_number'] is None"
 curl -sf "${A[@]}" "$B/answers?question_ids=$WQ" | ok "len([i for i in d['items'] if i['question_id']=='$WQ'])==1 and d['items'][0]['sub_number'] is None and d['items'][0]['points']==d['items'][0]['max_points']"
 curl -sf "${A[@]}" "$B/answers?question_ids=math1-2024-17" | ok "d['items'][0]['points']==5 and d['items'][0]['max_points']==10"
+# 流水和按题查都带 source + study_date（学习日 = POST 返回的那个）
+SD=$(curl -sf "${A[@]}" -XPOST $B/answers -d '{"question_id":"math1-2024-01","answer":["A"],"client_id":"c1"}' | j "d['study_date']")
+curl -sf "${A[@]}" "$B/answers?limit=5" | ok "d['items'] and all(i['source']=='online' and i['study_date']=='$SD' for i in d['items'])"
+curl -sf "${A[@]}" "$B/answers?question_ids=math1-2024-01,math1-2024-17" | ok "len(d['items'])==2 and all(i['source']=='online' and i['study_date']=='$SD' for i in d['items'])"
+curl -sf "${A[@]}" "$B/answers?question_id=math1-2024-01" | ok "d['items'] and all(i['source']=='online' and i['study_date']=='$SD' for i in d['items'])"
 echo "== exam"
 if ! curl -sf "${A[@]}" "$B/questions/years?exam=math1" | python3 -c "import sys,json;d=json.load(sys.stdin);sys.exit(0 if {'exam':'math1','year':2024} in d['ready'] else 1)"; then
   echo "SKIP exam：2024 数一卷当前不是 ready（题库数据正在改，见 /questions/years），跳过整卷模考这一段"
@@ -58,6 +63,9 @@ curl -sf "${A[@]}" -XPUT $B/exams/$EX/progress -d '{"idempotency_key":"k1","clie
 curl -sf "${A[@]}" -XPUT $B/exams/$EX/progress -d '{"idempotency_key":"k2","client_seq":3,"answers":[{"question_id":"math1-2024-19","answer":[],"time_spent_seconds":2400}],"state":"paused"}' | j "(d['status'], d['remaining_seconds'])"
 curl -sf "${A[@]}" -XPUT $B/exams/$EX/progress -d '{"idempotency_key":"k-old","client_seq":2,"answers":[{"question_id":"math1-2024-19","answer":["stale"]}]}' | j "('stale=',d['stale'], d['progress']['answers']['math1-2024-19']['answer'])"
 curl -sf "${A[@]}" $B/exams/active | j "(d['exam']['id']=='$EX', d['exam']['status'])"
+# 详情的 exam_name 和列表里同一个值（round10）
+curl -sf "${A[@]}" $B/exams/$EX | ok "d['exam_name']=='数学一'"
+test "$(curl -sf "${A[@]}" "$B/exams?limit=50" | j "[i['exam_name'] for i in d['items'] if i['id']=='$EX'][0]")" = "$(curl -sf "${A[@]}" $B/exams/$EX | j "d['exam_name']")" && echo "ok GET /exams/:id exam_name = 列表里的 exam_name"
 curl -sf "${A[@]}" -XPUT $B/exams/$EX/progress -d '{"idempotency_key":"k3","client_seq":4,"state":"running"}' | j "d['status']"
 curl -sf "${A[@]}" -XPOST $B/exams/$EX/submit -d '{"self_ratings":{"math1-2024-17":"full","math1-2024-18":{"1":"full","2":"approach_ok_calc_wrong"},"math1-2024-19":{"1":"full","2":"no_idea"},"math1-2024-21":"no_idea"}}' \
   | ok "(lambda p: d['status']=='submitted' and p['math1-2024-17']['got']==p['math1-2024-17']['score'] and p['math1-2024-18']['got']==$S1+$S2/2 and [x['got'] for x in p['math1-2024-18']['sub_scores']]==[$S1,$S2/2] and abs(sum(x['score'] for x in p['math1-2024-18']['sub_scores'])-p['math1-2024-18']['score'])<1e-9 and p['math1-2024-19']['got']==$T1 and not p['math1-2024-19']['score_by_whole'] and abs(sum(x['score'] for x in p['math1-2024-19']['sub_scores'])-p['math1-2024-19']['score'])<1e-9 and p['math1-2024-21']['got']==0)({x['question_id']:x for x in d['result']['per_question']})"

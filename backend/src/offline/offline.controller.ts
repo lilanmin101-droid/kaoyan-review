@@ -119,10 +119,18 @@ export class OfflineController {
       study_date: today, passages: passageList, questions,
       words: { review: words.review.map((w: any) => w.id), new: words.new.map((w: any) => w.id), relearn: words.relearn.map((w: any) => w.id) }, assets,
     };
+    // 题包说明（前端那句「没网也能做：…」直接用，不用自己猜）：按实际内容说，计划里没任务就别说「今天任务里的」
+    const kindOf = (id: string) => { const sec = passageQs.find((q: any) => q.passage_id === id)?.section; return PACK_SECTIONS.cloze.includes(sec) ? '完形' : '阅读'; };
+    const listOf = (pick: string) => { const ids = chosen.filter((c) => c.pick === pick).map((c) => c.id); if (!ids.length) return '';
+      const n = (k: string) => ids.filter((id) => kindOf(id) === k).length; return ['完形', '阅读'].filter((k) => n(k)).map((k) => `${k} ${n(k)} 篇`).join('、'); };
+    const planList = listOf('plan'), autoList = listOf('auto');
+    const parts = [planList && `今天计划里的${planList}`, autoList && `${planList ? '另' : tasks.length ? '今天计划里没有阅读 / 完形，' : '今天还没排任务，'}自动挑了${autoList}`].filter(Boolean);
+    const summary = `${parts.join('，') || '今天没有可离线做的阅读 / 完形'}（共 ${passageQs.length} 题），${wrongQs.length ? `加 ${wrongQs.length} 道错题重做` : '没有要重做的错题'}`;
     return {
-      version: packVersion(content), study_date: today, relative_day: '今天', timezone: day.tz,
+      version: packVersion(content), summary, study_date: today, relative_day: '今天', timezone: day.tz,
       generated_at: clockNow().toISOString(), expires_at: day.end.toISOString(), // 用户时区下一个 04:00（同 UserTimeService.day().end）
-      counts: { passages: passageList.length, questions: questions.length, plan_questions: passageQs.length, wrong_redos: wrongQs.length,
+      counts: { passages: passageList.length, questions: questions.length, plan_questions: passageQs.length, wrong_redos: wrongQs.length, wrong_redo_limit: WRONG_REDO_LIMIT,
+        plan_tasks: tasks.length, plan_passages: chosen.filter((c) => c.pick === 'plan').length, auto_passages: chosen.filter((c) => c.pick === 'auto').length,
         words: words.review.length + words.new.length + words.relearn.length, assets: assets.length },
       passages: passageList, questions, words, assets,
     };

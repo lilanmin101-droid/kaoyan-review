@@ -4,7 +4,7 @@ import { UserTimeService } from '../common/user-time.service';
 import { Injectable, Logger } from '@nestjs/common';
 import { DbService } from '../db/db.service';
 import { addDays, DAY_START_HOUR, dayLabel as dayLabelOf, daySpanLabel, studyDaySql, weekOf, weekOpenLabel } from '../common/time';
-import { aiMode, mastraModel } from '../ai/llm';
+import { aiMode, mastraModel, mastraProviderOptions } from '../ai/llm';
 import { AgentToolsService, PHASE_CN, ToolCtx, Trigger } from './agent-tools.service';
 import { PlansService } from '../plans/plans.service';
 import { buildMastraTools, TOOL_LABEL } from './mastra-tools';
@@ -179,7 +179,7 @@ export class CoachService {
       model: mastraModel('deepseek'), tools: buildMastraTools(this.tools, ctx),
     });
     const n = await this.time.now(ctx.userId);
-    const stream = await agent.stream([{ role: 'user', content: `（今天是 ${n.date}，现在 ${n.time}，时区 ${n.tz}）${prompt}` }], { maxSteps: Number(process.env.AGENT_MAX_STEPS || 10) });
+    const stream = await agent.stream([{ role: 'user', content: `（今天是 ${n.date}，现在 ${n.time}，时区 ${n.tz}）${prompt}` }], { maxSteps: Number(process.env.AGENT_MAX_STEPS || 10), providerOptions: mastraProviderOptions('deepseek') });
     let reply = '';
     let steps = 0;
     for await (const chunk of stream.fullStream as AsyncIterable<any>) {

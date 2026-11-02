@@ -5,6 +5,9 @@
  *  3) 行业专家用例 eval/agent_cases.jsonl（没有这个文件就跳过）：能映射成数据检查的断言自动判，其余列出来人工打分
  * 结果写到 eval/report-<时间>.md 和 .json。内置用例或单测失败 → 退出码 1；专家用例的自动判失败只报告（加 --strict 也算失败）。
  * 环境变量：BASE（默认 http://localhost:3000/api/v1）、EVAL_TZ（默认依次跑 America/Los_Angeles 和 Asia/Shanghai）
+ *   EVAL_TZ=Asia/Shanghai：用例按北京时间写，没写 setup.timezone 的专家用例就按北京时间跑（key:preflight 用这个）
+ *   EVAL_CASES：换一份用例文件；EVAL_ONLY：只跑 id 匹配的用例
+ * setup 字段每个都要落进 Agent 工具读的表（applySetup + verifySetup），不认识或没落上的字段 → 退出码 1（见 SETUP_APPLIED / SETUP_DERIVED / SETUP_NO_TABLE）
  */
 import * as fs from 'fs';
 import * as path from 'path';
@@ -19,7 +22,7 @@ loadEnv();
 
 const BASE = process.env.BASE || `http://localhost:${process.env.PORT || 3000}/api/v1`;
 const ROOT = path.resolve(__dirname, '../..');
-const CASES_FILE = path.join(ROOT, 'eval/agent_cases.jsonl');
+const CASES_FILE = process.env.EVAL_CASES ? path.resolve(process.env.EVAL_CASES) : path.join(ROOT, 'eval/agent_cases.jsonl'); // EVAL_CASES：换一份用例文件（自测 setup 检查用）
 const STRICT = process.argv.includes('--strict');
 const TZS = (process.env.EVAL_TZ || 'America/Los_Angeles,Asia/Shanghai').split(',');
 
@@ -1237,33 +1240,285 @@ function debugNowFor(s: Session, nowLocal: string) {
   const m = /^(\d{4}-\d{2}-\d{2})[T ](\d{2}:\d{2})/.exec(nowLocal);
   return m ? localIso(s, m[1], m[2]) : nowLocal;
 }
+/**
+ * setup 字段分三类，每个字段都必须在下面某一类里，否则这条用例直接判失败（SETUP_UNKNOWN）：
+ * - APPLIED：写进 Agent 工具真的会读的表（users / mastery / answer_records / wrong_questions / plans / exams / daily_tips / agent_actions）
+ * - DERIVED：不用单独落库，由别的字段或运行方式推出来（理由写在值里）
+ * - NO_TABLE：产品里没有对应的表或接口，落不了库；报告里列成「前提没落库」，人工打分时这类断言判 blocked
+ * APPLIED 的字段写库失败（题不在题库、知识点找不到……）也直接判失败，不再只写一条 note。
+ */
+const SETUP_APPLIED = ['exam_date', 'target', 'plan_today', 'plan_tomorrow', 'last_command', 'now_local', 'now', 'last_wrong', 'wrong_book', 'recent_attempts', 'wrong_book_count',
+  'unread_nudges', 'weak_kp', 'kp_mastery', 'kp_stats', 'kp_trend', 'weak_kps', 'mock_scores', 'nudges_last_3_days', 'quiet_hours', 'last_active', 'missed_days', 'backlog_tasks',
+  'week_stats', 'today_hours', 'coach_changes', 'attempt', 'student_explanation', 'answer_parts', 'essay'] as const;
+const SETUP_DERIVED: Record<string, string> = {
+  today: '按真实今天平移，日期类字段跟着平移',
+  calendar_date: '由 now_local + 账号时区推出',
+  timezone: '会话的 X-Timezone（写进 settings.timezone）',
+  days_left: '由 exam_date 推出（getProfile.user.days_left），只核对一致',
+  weekday: '周报 job 直接触发，不依赖今天星期几',
+  weekend: '断言里按这次运行那一周的周六、周日换算',
+  kp: '由 current_q 题目的 knowledge_points 带出',
+  current_q: '作为命令的 question_id 传入',
+  self_eval_request: '学生原话（输入）就是自评请求',
+  student_claim: '学生原话就在输入里',
+};
+const SETUP_NO_TABLE: Record<string, string> = {
+  ocr_confidence: '还没有拍题 / OCR 功能，没有存识别置信度的表',
+  models_agree: '还没有拍题 / OCR 功能，没有存双模型是否一致的表',
+  current_method: '库里没有「学习方法」字段',
+  available_min: '库里没有「某天可用时长」字段',
+  selected_text: '命令接口没有 selected_text 字段（前端也不传）',
+};
+class SetupError extends Error {}
+function checkSetupKeys(setup: any) {
+  const keys = Object.keys(setup ?? {});
+  const unknown = keys.filter((k) => !(SETUP_APPLIED as readonly string[]).includes(k) && !(k in SETUP_DERIVED) && !(k in SETUP_NO_TABLE));
+  if (unknown.length) throw new SetupError(`SETUP_UNKNOWN：setup 字段 ${unknown.join('、')} 没有落库逻辑。在 eval-agent.ts 的 applySetup 里写进 Agent 工具读的表，或者在 SETUP_DERIVED / SETUP_NO_TABLE 里写明理由`);
+  return { noTable: keys.filter((k) => k in SETUP_NO_TABLE) };
+}
+const daysBetween = (a: string, b: string) => Math.round((Date.parse(`${b}T12:00:00Z`) - Date.parse(`${a}T12:00:00Z`)) / 86400000);
+/** 知识点名 → 题库里的完整路径（按出现次数取最多的那个） */
+async function kpPath(name: string): Promise<string> {
+  const r = (await db.query(`SELECT k FROM questions, unnest(knowledge_points) k WHERE k LIKE '%'||$1||'%' AND review_status='confirmed' GROUP BY k ORDER BY count(*) DESC, k LIMIT 1`, [name])).rows[0];
+  if (!r) throw new SetupError(`SETUP_UNAPPLIED：知识点「${name}」在题库里找不到`);
+  return r.k;
+}
+async function kpQuestions(path: string) {
+  const ids = (await db.query(`SELECT id FROM questions WHERE $1 = ANY(knowledge_points) AND review_status='confirmed' ORDER BY id`, [path])).rows.map((r: any) => r.id as string);
+  if (!ids.length) throw new SetupError(`SETUP_UNAPPLIED：知识点 ${path} 没有已核对的题`);
+  return ids;
+}
+let seedSeq = 0;
+/** 直接写作答记录（不经 /answers，避免顺带建错题、改掌握度；掌握度单独写） */
+async function seedAnswer(s: Session, q: string, at: string, ok: boolean | null, extra: { seconds?: number; thought?: string; sub?: number | null; answer?: any } = {}) {
+  await db.query(`INSERT INTO answer_records(user_id,question_id,sub_number,answer,is_correct,time_spent_seconds,thought_text,client_id,device,answered_at)
+    VALUES($1,$2,$3,$4,$5,$6,$7,$8,'eval-setup',$9)`,
+  [s.userId, q, extra.sub ?? null, JSON.stringify(extra.answer ?? []), ok, extra.seconds ?? 300, extra.thought ?? null, `eval-setup-${Date.now()}-${seedSeq++}`, at]);
+}
+/** 某知识点在若干天里做了 total 题、错 wrong 题（错的排在前面几天），掌握度按对题率写 */
+async function seedKp(s: Session, name: string, days: string[], total: number, wrong: number, score?: number) {
+  const path = await kpPath(name), qs = await kpQuestions(path);
+  for (let k = 0; k < total; k++) {
+    const day = days[Math.floor((k * days.length) / total)];
+    await seedAnswer(s, qs[k % qs.length], localIso(s, day, `${String(9 + (k % 12)).padStart(2, '0')}:${String((k * 7) % 60).padStart(2, '0')}`), k >= wrong);
+  }
+  const acc = total ? (total - wrong) / total : null;
+  await db.query(`INSERT INTO mastery(user_id,kp_path,score,recent_acc,attempts,correct,last_practiced_at) VALUES($1,$2,$3,$4,$5,$6,$7)
+    ON CONFLICT (user_id,kp_path) DO UPDATE SET score=EXCLUDED.score, recent_acc=EXCLUDED.recent_acc, attempts=EXCLUDED.attempts, correct=EXCLUDED.correct, last_practiced_at=EXCLUDED.last_practiced_at, updated_at=now()`,
+  [s.userId, path, score ?? acc, acc, total, total - wrong, localIso(s, days[days.length - 1], '20:00')]);
+  return path;
+}
+const lastDays = (d: string, n: number, end = 0) => Array.from({ length: n }, (_, k) => addDays(d, end - (n - 1) + k));
+const ESSAY_WORDS = ('In recent years, more and more young people have chosen to spend their weekends volunteering in local communities. As is vividly shown in the picture, ' +
+  'a group of students are helping elderly residents plant trees in a small park, and everyone is smiling. The picture reminds us that helping others is also a way to grow. ' +
+  'There are several reasons for this trend. First, volunteering allows students to step out of the classroom and learn practical skills that books cannot teach. ' +
+  'Second, it builds a sense of responsibility, because people realize that small actions can make a real difference to the lives of others. Third, the experience ' +
+  'helps young people make friends and become more confident when they communicate with strangers. In my opinion, schools should encourage this kind of activity ' +
+  'and offer more chances for students to take part in it. Only in this way can we build a warmer society in which everyone is willing to lend a hand. ' +
+  'To sum up, volunteering benefits both the helpers and the people who receive help, and it deserves our support and active participation.').split(/\s+/);
+
+/** 落库后按 Agent 工具读的口径再查一遍：写了但查不到，也算没落库 */
+async function verifySetup(s: Session, setup: any, d: string, sh: (x: string) => string) {
+  const one = async (sql: string, p: any[] = []) => (await db.query(sql, [s.userId, ...p])).rows[0] ?? {};
+  const bad: string[] = [];
+  const u = await one(`SELECT to_char(exam_date,'YYYY-MM-DD') exam_date, settings FROM users WHERE id=$1`);
+  if (setup.exam_date && u.exam_date !== sh(setup.exam_date)) bad.push(`exam_date 库里是 ${u.exam_date}`);
+  if (setup.target && JSON.stringify(u.settings?.target_scores) !== JSON.stringify(setup.target)) bad.push('target 没写进 settings.target_scores');
+  if ('quiet_hours' in setup && JSON.stringify(u.settings?.quiet_hours ?? null) !== JSON.stringify(setup.quiet_hours)) bad.push('quiet_hours 没写进 settings');
+  const kps = [...(setup.weak_kp ?? []).map((x: any) => x.kp), ...Object.keys(setup.kp_mastery ?? {}), ...(setup.kp_stats ?? []).map((x: any) => x.kp), ...(setup.kp_trend ? [setup.kp_trend.kp] : []), ...(setup.weak_kps ?? [])];
+  for (const k of kps) if (!(await one(`SELECT 1 ok FROM mastery WHERE user_id=$1 AND kp_path LIKE '%'||$2||'%'`, [k])).ok) bad.push(`mastery 里没有 ${k}`);
+  const exams = (setup.mock_scores ?? []).reduce((n: number, m: any) => n + Object.keys(m).filter((k) => k !== 'date').length, 0);
+  if (exams && Number((await one(`SELECT count(*)::int n FROM exams WHERE user_id=$1 AND status='submitted'`)).n) !== exams) bad.push('mock_scores 交卷条数对不上');
+  if (setup.week_stats) { const n = Number((await one(`SELECT count(*)::int n FROM answer_records WHERE user_id=$1 AND answered_at > now() - interval '7 days'`)).n); if (n !== Number(setup.week_stats.questions)) bad.push(`近 7 天作答 ${n} 题，setup 要 ${setup.week_stats.questions}`); }
+  if (setup.today_hours) { const h = Number((await one(`SELECT COALESCE(sum(time_spent_seconds),0)::int sec FROM answer_records WHERE user_id=$1 AND answered_at::date >= $2::date - 1`, [d])).sec) / 3600; if (h < Number(setup.today_hours)) bad.push(`今天作答只有 ${h} 小时`); }
+  if (setup.coach_changes?.length && Number((await one(`SELECT count(*)::int n FROM agent_actions WHERE user_id=$1 AND undone_at IS NULL`)).n) < setup.coach_changes.length) bad.push('coach_changes 没有 agent_actions');
+  if (setup.nudges_last_3_days && Number((await one(`SELECT count(*)::int n FROM daily_tips WHERE user_id=$1 AND tip_date >= $2::date - 3 AND tip_date < $2::date`, [d])).n) !== Number(setup.nudges_last_3_days)) bad.push('nudges_last_3_days 条数对不上');
+  if (setup.backlog_tasks && Number((await one(`SELECT count(*)::int n FROM plan_tasks t JOIN study_plans p ON p.id=t.plan_id WHERE p.user_id=$1 AND p.plan_date < $2::date AND t.status='todo'`, [d])).n) !== Number(setup.backlog_tasks)) bad.push('backlog_tasks 条数对不上');
+  if (setup.last_active && (await one(`SELECT to_char(max(answered_at) AT TIME ZONE $2,'YYYY-MM-DD') d1 FROM answer_records WHERE user_id=$1`, [s.tz])).d1 !== sh(setup.last_active)) bad.push('last_active 对不上');
+  const thoughts = Number(!!setup.attempt) + Number(!!setup.student_explanation) + Object.keys(setup.answer_parts ?? {}).length + Number(!!setup.essay);
+  if (thoughts && Number((await one(`SELECT count(*)::int n FROM answer_records WHERE user_id=$1 AND thought_text IS NOT NULL`)).n) !== thoughts) bad.push('attempt / student_explanation / answer_parts / essay 没落进 answer_records.thought_text');
+  if (setup.wrong_book_count && Number((await one(`SELECT count(*)::int n FROM wrong_questions WHERE user_id=$1 AND status='active'`)).n) < Number(setup.wrong_book_count)) bad.push('错题本条数不够 wrong_book_count');
+  if (bad.length) throw new SetupError(`SETUP_UNAPPLIED：${bad.join('；')}`);
+}
+
 async function applySetup(s: Session, setup: any, firstTurn?: Turn) {
-  const nl = firstTurn?.now_local ?? setup?.now_local;
+  const { noTable } = checkSetupKeys(setup);
+  setup = setup ?? {};
+  const realToday = await today(s);
+  // 用例按 setup.today 写；日期类字段按「真实今天 - setup.today」整体平移
+  const shift = setup.today ? daysBetween(setup.today, realToday) : 0;
+  const sh = (date: string) => addDays(String(date).slice(0, 10), shift);
+  const nl = firstTurn?.now_local ?? setup.now_local;
   if (nl) s.debugNow = debugNowFor(s, nl);
+  else if (setup.now) { // 「现在」：带偏移的绝对时间，日期跟着平移
+    const m = /^(\d{4}-\d{2}-\d{2})(T.*)$/.exec(setup.now);
+    s.debugNow = debugNowFor(s, m ? `${sh(m[1])}${m[2]}` : setup.now);
+  }
   const d = await today(s);
   const notes: string[] = [];
+  const must = async (what: string, r: { status: number; body: any }) => { if (r.status >= 400) throw new SetupError(`SETUP_UNAPPLIED：${what} → ${r.status} ${JSON.stringify(r.body).slice(0, 200)}`); return r; };
+  // 考试日期、目标分、免打扰
+  const settings: any = {};
+  if (setup.exam_date) settings.exam_date = sh(setup.exam_date);
+  if ('quiet_hours' in setup) settings.quiet_hours = setup.quiet_hours;
+  if (setup.target && typeof setup.target === 'object') settings.target_score = Object.values(setup.target).reduce((a: number, b: any) => a + Number(b || 0), 0);
+  if (Object.keys(settings).length) await must('PATCH /me/settings', await s.send('PATCH', '/me/settings', settings));
+  if (setup.target && typeof setup.target === 'object') await db.query(`UPDATE users SET settings = COALESCE(settings,'{}'::jsonb) || jsonb_build_object('target_scores', $2::jsonb) WHERE id=$1`, [s.userId, JSON.stringify(setup.target)]);
+  if (setup.days_left != null && setup.exam_date && setup.today && daysBetween(setup.today, setup.exam_date) !== Number(setup.days_left))
+    notes.push(`setup.days_left=${setup.days_left} 和 exam_date−today=${daysBetween(setup.today, setup.exam_date)} 对不上，库里按 exam_date 算`);
   // 错题任务要真实的错题：按 plan_today 里最大的 count 多备 4 道
-  const maxCount = Math.max(0, ...(setup?.plan_today ?? []).map((t: any) => Number(t.count) || 0));
+  const maxCount = Math.max(0, ...(setup.plan_today ?? []).map((t: any) => Number(t.count) || 0));
   if (maxCount) for (const q of ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'].slice(0, Math.min(12, maxCount + 4))) await s.wrong(`math1-2024-${q}`);
-  if (setup?.plan_today && setup?.last_command?.text) {
+  if (setup.plan_today && setup.last_command?.text) {
     // 「上一句」：先按 result「3→5」的起点排计划，真的发一次上一句，再核对计划是不是 setup 写的样子
     const m = /(\d+)\s*→\s*(\d+)/.exec(setup.last_command.result ?? '');
     if (m) await seedPlan(s, d, setup.plan_today, Number(m[1]));
     await s.command(setup.last_command.text);
     const want = Number(setup.plan_today.find((t: any) => t.count)?.count ?? 0);
     if (want && (await redoQty(s, d)) !== want) { await seedPlan(s, d, setup.plan_today); notes.push('上一句执行后的计划和 setup 不一致，按 setup 重排'); }
-  } else if (setup?.plan_today) await seedPlan(s, d, setup.plan_today);
-  if (setup?.plan_tomorrow) await s.send('POST', '/plans', { plan_date: addDays(d, 1), tasks: setup.plan_tomorrow.map((t: any) => ({ kind: taskKind(t.task), title: t.task, estimated_minutes: t.min })) });
-  const qs = [setup?.last_wrong?.q, ...(setup?.wrong_book ?? []).map((x: any) => x.q), ...(setup?.recent_attempts ?? []).filter((x: any) => !x.ok).map((x: any) => x.q)].filter(Boolean);
-  for (const q of qs) if (!(await s.wrong(q))) notes.push(`题 ${q} 不在题库，没落库`);
-  if (setup?.wrong_book_count && !qs.length) for (const q of ['math1-2024-01', 'math1-2024-02', 'math1-2024-03']) await s.wrong(q);
-  // 没打开的主动消息：最近 N 条按「昨天、前天…」落库（setup 里的日期是专家写用例时的，按真实今天平移）
-  const nudges = (setup?.unread_nudges ?? []) as any[];
+  } else if (setup.plan_today) await seedPlan(s, d, setup.plan_today);
+  if (setup.plan_tomorrow) await must('POST /plans 明天', await s.send('POST', '/plans', { plan_date: addDays(d, 1), tasks: setup.plan_tomorrow.map((t: any) => ({ kind: taskKind(t.task), title: t.task, estimated_minutes: t.min })) }));
+  // 错题：last_wrong / wrong_book / recent_attempts 里做错的题
+  const qs = [setup.last_wrong?.q, ...(setup.wrong_book ?? []).map((x: any) => x.q), ...(setup.recent_attempts ?? []).filter((x: any) => !x.ok).map((x: any) => x.q)].filter(Boolean);
+  for (const q of qs) if (!(await s.wrong(q))) throw new SetupError(`SETUP_UNAPPLIED：题 ${q} 不在题库，错题没落库`);
+  const ERR: Record<string, string> = { 概念: 'concept', 计算: 'calc', 审题: 'reading', 方法: 'method', 手滑: 'careless', 粗心: 'careless' };
+  if (setup.last_wrong?.cause_guess && ERR[setup.last_wrong.cause_guess])
+    await db.query(`UPDATE wrong_questions SET error_type=$3, error_type_by='agent', updated_at=now() WHERE user_id=$1 AND question_id=$2`, [s.userId, setup.last_wrong.q, ERR[setup.last_wrong.cause_guess]]);
+  for (const a of setup.recent_attempts ?? []) if (a.cause) await db.query(`UPDATE wrong_questions SET note=$3, error_type=COALESCE(error_type,'method'), error_type_by=COALESCE(error_type_by,'agent'), updated_at=now() WHERE user_id=$1 AND question_id=$2`, [s.userId, a.q, `错因：${a.cause}`]);
+  if (setup.wrong_book_count) {
+    // 错题本里要有 wrong_book_count 道：题库里按题号取够
+    const have = Number((await db.query(`SELECT count(*)::int n FROM wrong_questions WHERE user_id=$1 AND status='active'`, [s.userId])).rows[0].n);
+    const more = (await db.query(`SELECT id FROM questions WHERE exam='math1' AND review_status='confirmed' AND id NOT IN (SELECT question_id FROM wrong_questions WHERE user_id=$1) ORDER BY year DESC, number LIMIT $2`, [s.userId, Math.max(0, setup.wrong_book_count - have)])).rows;
+    for (const r of more) if (!(await s.wrong(r.id))) throw new SetupError(`SETUP_UNAPPLIED：错题 ${r.id} 没落库`);
+  }
+  // 掌握度 / 近期作答
+  for (const w of setup.weak_kp ?? []) {
+    const m = /(\d+)\s*错\s*(\d+)/.exec(w.recent ?? '');
+    const total = m ? Number(m[1]) : 10, wrong = m ? Number(m[2]) : Math.round(total * (1 - Number(w.acc ?? 0.5)));
+    await seedKp(s, w.kp, lastDays(d, 3), total, wrong, w.acc);
+  }
+  for (const [name, score] of Object.entries(setup.kp_mastery ?? {})) await seedKp(s, name, lastDays(d, 7, -1), 10, Math.round(10 * (1 - Number(score))), Number(score));
+  for (const k of setup.kp_stats ?? []) {
+    const m = /错\s*(\d+)/.exec(k.last10 ?? '');
+    if (!m) throw new SetupError(`SETUP_UNAPPLIED：kp_stats.last10「${k.last10}」看不懂（要「错 N」）`);
+    await seedKp(s, k.kp, lastDays(d, 5), 10, Number(m[1]));
+  }
+  if (setup.kp_trend) {
+    const accs: number[] = setup.kp_trend.acc_by_day ?? [];
+    const path = await kpPath(setup.kp_trend.kp), qs2 = await kpQuestions(path), days = lastDays(d, accs.length);
+    let n = 0, ok = 0;
+    for (const [k, acc] of accs.entries()) for (let j = 0; j < 20; j++) {
+      const good = j < Math.round(acc * 20); ok += good ? 1 : 0; n++;
+      await seedAnswer(s, qs2[(k * 20 + j) % qs2.length], localIso(s, days[k], `${String(9 + (j % 12)).padStart(2, '0')}:${String(j * 3).padStart(2, '0')}`), good);
+    }
+    await db.query(`INSERT INTO mastery(user_id,kp_path,score,recent_acc,attempts,correct,last_practiced_at) VALUES($1,$2,$3,$3,$4,$5,now())
+      ON CONFLICT (user_id,kp_path) DO UPDATE SET score=EXCLUDED.score, recent_acc=EXCLUDED.recent_acc, attempts=EXCLUDED.attempts, correct=EXCLUDED.correct, updated_at=now()`, [s.userId, path, ok / n, n, ok]);
+    notes.push(`kp_trend：${path} 近 ${accs.length} 天每天 20 题，对题率按 ${accs.join('/')} 落库`);
+  }
+  for (const name of setup.weak_kps ?? []) await seedKp(s, name, lastDays(d, 5), 10, 5);
+  if (setup.weak_kps?.length) notes.push(`weak_kps：${setup.weak_kps.join('、')} 各落 10 题错 5（setup 没给具体数）`);
+  // 模考分数 → exams（getProfile.recent_exams 读）
+  for (const m of setup.mock_scores ?? []) for (const [exam, score] of Object.entries(m)) {
+    if (exam === 'date') continue;
+    const at = localIso(s, sh(m.date), '12:00');
+    await db.query(`INSERT INTO exams(user_id,kind,title,exam,question_ids,status,started_at,submitted_at,result) VALUES($1,'custom_mock',$2,$3,'{}','submitted',$4::timestamptz - interval '3 hours',$4,$5)`,
+      [s.userId, `模考 ${sh(m.date).slice(5)}`, exam, at, JSON.stringify({ score: Number(score), max_score: 150 })]);
+  }
+  // 主动消息：没打开的（昨天、前天…）、最近 3 天发过的条数
+  const nudges = (setup.unread_nudges ?? []) as any[];
   for (let k = 1; k <= nudges.length; k++)
     await db.query(`INSERT INTO daily_tips(user_id,tip_date,kind,text,headline,source,delivered_at) VALUES($1,$2,'review','明天先做错题。','明天先做错题。','eval',now()) ON CONFLICT DO NOTHING`, [s.userId, addDays(d, -k)]);
-  if (setup?.last_command?.text && !setup?.plan_today) await s.command(setup.last_command.text);
-  if (setup?.today && setup.today !== d) notes.push(`setup.today=${setup.today} 按真实今天 ${d} 跑`);
-  if (setup?.now_local) notes.push(`X-Debug-Now=${setup.now_local}，账号时区 ${s.tz} 的今天 = ${d}`);
+  if (setup.nudges_last_3_days) {
+    const slots = [1, 2, 3].flatMap((k) => ['review', 'nudge', 'tip'].map((kind) => ({ day: addDays(d, -k), kind }))).slice(0, Number(setup.nudges_last_3_days));
+    if (slots.length < Number(setup.nudges_last_3_days)) throw new SetupError(`SETUP_UNAPPLIED：3 天里最多落 9 条主动消息，setup 要 ${setup.nudges_last_3_days}`);
+    for (const x of slots) await db.query(`INSERT INTO daily_tips(user_id,tip_date,kind,text,headline,source,delivered_at,seen_at) VALUES($1,$2,$3,'今天记得做错题。','今天记得做错题。','eval',$4,$4) ON CONFLICT DO NOTHING`,
+      [s.userId, x.day, x.kind, localIso(s, x.day, '21:00')]);
+  }
+  // 最后一次活跃：那天做过 3 题，之后没有作答
+  if (setup.last_active) { const day = sh(setup.last_active); for (const [k, q] of ['math1-2024-01', 'math1-2024-02', 'math1-2024-03'].entries()) await seedAnswer(s, q, localIso(s, day, `20:${String(k * 10).padStart(2, '0')}`), k !== 1); }
+  // 落下的天：每天一份没做完的计划，backlog_tasks 道任务平均分到这几天
+  if (setup.missed_days?.length) {
+    const days = (setup.missed_days as string[]).map(sh), total = Number(setup.backlog_tasks ?? days.length * 3);
+    for (const [k, day] of days.entries()) {
+      const n = Math.floor(total / days.length) + (k < total % days.length ? 1 : 0);
+      const tasks = Array.from({ length: n }, (_, j) => (j % 2 ? { kind: 'words', title: '英语新词 20', estimated_minutes: 20 } : { kind: 'practice', title: `高数练习 ${j + 1}`, estimated_minutes: 40 }));
+      await must(`POST /plans ${day}`, await s.send('POST', '/plans', { plan_date: day, tasks }));
+    }
+  } else if (setup.backlog_tasks) throw new SetupError('SETUP_UNAPPLIED：backlog_tasks 要和 missed_days 一起给');
+  // 这周统计：questions 题、对题率 acc、共 hours 小时，错题集中在 weakest；上周按 acc_prev 落同样题数
+  if (setup.week_stats) {
+    const w = setup.week_stats, n = Number(w.questions), wrongN = n - Math.round(n * Number(w.acc)), sec = Math.round((Number(w.hours) * 3600) / n);
+    const weakQs = w.weakest ? await kpQuestions(await kpPath(w.weakest)) : [];
+    const other = (await db.query(`SELECT id FROM questions WHERE exam='math1' AND review_status='confirmed' ORDER BY year DESC, number LIMIT 60`)).rows.map((r: any) => r.id);
+    if (!other.length) throw new SetupError('SETUP_UNAPPLIED：题库里没有已核对的数一题，week_stats 落不了库');
+    // 按「现在往前」均匀铺开（别落到未来、也别跨出 7 天窗口）：这周 = 近 6.9 天，上周 = 再往前 7 天
+    const nowMs = s.debugNow ? Date.parse(s.debugNow) : Date.now();
+    const put = async (offsetDays: number, count: number, wrong: number) => {
+      for (let k = 0; k < count; k++) {
+        const bad = Math.floor(((k + 1) * wrong) / count) > Math.floor((k * wrong) / count); // 正好 wrong 道错，均匀分布
+        const q = bad && weakQs.length && k % 3 !== 2 ? weakQs[k % weakQs.length] : other[k % other.length];
+        await seedAnswer(s, q, new Date(nowMs - (offsetDays + ((k + 0.5) / count) * 6.9) * 86400000).toISOString(), !bad, { seconds: sec });
+      }
+    };
+    await put(0, n, wrongN);
+    if (w.acc_prev != null) await put(7, n, n - Math.round(n * Number(w.acc_prev)));
+    const got = (await db.query(`SELECT count(*)::int n, sum(CASE WHEN is_correct THEN 1 ELSE 0 END)::int ok FROM answer_records WHERE user_id=$1 AND answered_at > now() - interval '7 days'`, [s.userId])).rows[0];
+    notes.push(`week_stats：近 7 天落 ${got.n} 题、对 ${got.ok}（setup ${n} 题、对题率 ${w.acc}、${w.hours} 小时）`);
+  }
+  // 今天已经学了几个小时
+  if (setup.today_hours) {
+    const n = Math.max(1, Math.round(Number(setup.today_hours) * 4)); // 每 15 分钟一题
+    for (let k = 0; k < n; k++) await seedAnswer(s, `math1-2024-${String((k % 22) + 1).padStart(2, '0')}`, localIso(s, d, `${String(8 + Math.floor(k / 4)).padStart(2, '0')}:${String((k % 4) * 15).padStart(2, '0')}`), k % 4 !== 0, { seconds: 900 });
+  }
+  // 刚才教练做过的改动：把某任务顺延到明天（两条 agent_actions 同组，撤回时一起撤）
+  for (const ch of setup.coach_changes ?? []) {
+    const title = /把(.+?)顺延/.exec(ch.desc ?? '')?.[1]?.trim();
+    if (!title) throw new SetupError(`SETUP_UNAPPLIED：coach_changes.desc「${ch.desc}」看不懂（要「把 X 顺延到 …」）`);
+    let mine = (await planTasks(s, d)).find((t) => t.title === title);
+    if (!mine) {
+      const cur = (await planTasks(s, d)).map((t) => ({ kind: t.kind, title: t.title, payload: t.payload, estimated_minutes: t.estimated_minutes }));
+      await must('POST /plans 今天', await s.send('POST', '/plans', { plan_date: d, tasks: [...cur, { kind: taskKind(title), title, estimated_minutes: 60 }] }));
+      mine = (await planTasks(s, d)).find((t) => t.title === title);
+    }
+    const tomorrow = addDays(d, 1);
+    const curT = (await planTasks(s, tomorrow)).map((t) => ({ kind: t.kind, title: t.title, payload: t.payload, estimated_minutes: t.estimated_minutes }));
+    await must('POST /plans 明天', await s.send('POST', '/plans', { plan_date: tomorrow, tasks: [...curT, { kind: mine.kind, title, payload: mine.payload, estimated_minutes: mine.estimated_minutes }] }));
+    const moved = (await planTasks(s, tomorrow)).find((t) => t.title === title);
+    const row = (await db.query(`SELECT title,payload,sort_order,status,estimated_minutes,changed_by_agent,why_changed FROM plan_tasks WHERE id=$1`, [mine.id])).rows[0];
+    const why = `顺延到 ${tomorrow.slice(5)}：${ch.reason ?? ''}`;
+    await db.query(`UPDATE plan_tasks SET status='skipped', changed_by_agent=true, why_changed=$2, updated_at=now() WHERE id=$1`, [mine.id, why]);
+    await db.query(`UPDATE plan_tasks SET changed_by_agent=true, why_changed=$2, updated_at=now() WHERE id=$1`, [moved.id, `从 ${d.slice(5)} 顺延来：${ch.reason ?? ''}`]);
+    const g = (await db.query(`SELECT gen_random_uuid() g`)).rows[0].g;
+    const summary = `把${title}顺延到 {{date:${tomorrow}}}`;
+    await db.query(`INSERT INTO agent_actions(user_id,trigger,tool,summary,reason,target_kind,target_id,before,after,group_id) VALUES
+      ($1,'command','updateDailyPlan',$2,$3,'plan_task',$4,$5,$6,$8),($1,'command','updateDailyPlan',$2,$3,'plan_task',$7,NULL,$9,$8)`,
+    [s.userId, summary, ch.reason ?? null, mine.id, JSON.stringify(row), JSON.stringify({ ...row, status: 'skipped', changed_by_agent: true, why_changed: why }), moved.id, g, JSON.stringify({ title, plan_date: tomorrow })]);
+  }
+  // 学生在当前题上写的东西：卡在哪、自己的思路、分问自评 → answer_records.thought_text（getAnswerHistory 读）
+  const cq = setup.current_q;
+  if (setup.attempt || setup.student_explanation || setup.answer_parts) {
+    if (!cq || !(await db.query(`SELECT 1 FROM questions WHERE id=$1`, [cq])).rowCount) throw new SetupError(`SETUP_UNAPPLIED：current_q ${cq} 不在题库，思路 / 草稿落不了库`);
+    const at = localIso(s, d, '20:00');
+    if (setup.attempt) await seedAnswer(s, cq, at, null, { thought: `卡住了：${setup.attempt}` });
+    if (setup.student_explanation) await seedAnswer(s, cq, at, null, { thought: setup.student_explanation });
+    for (const [k, [part, v]] of Object.entries(setup.answer_parts ?? {}).entries()) await seedAnswer(s, cq, at, null, { sub: k + 1, thought: `第（${part}）问自评：${v}` });
+  }
+  // 作文：落一篇 words 词的作答（大作文 = 最近一年英语一的 52 题，小作文 = 51 题）
+  if (setup.essay) {
+    const num = setup.essay.type === 'short' ? 51 : 52;
+    const q = (await db.query(`SELECT id FROM questions WHERE exam='english1' AND type='essay' AND number=$1 ORDER BY year DESC LIMIT 1`, [num])).rows[0]?.id;
+    if (!q) throw new SetupError('SETUP_UNAPPLIED：题库里没有英语一作文题');
+    const n = Number(setup.essay.words) || 150;
+    const text = Array.from({ length: n }, (_, k) => ESSAY_WORDS[k % ESSAY_WORDS.length]).join(' ');
+    await seedAnswer(s, q, localIso(s, d, '19:30'), null, { answer: [text], thought: text, seconds: 1800 });
+    notes.push(`essay：在 ${q} 落了一篇 ${n} 词的作文（要求 ${setup.essay.required_words ?? '—'} 词）`);
+  }
+  if (setup.last_command?.text && !setup.plan_today) await s.command(setup.last_command.text);
+  await verifySetup(s, setup, d, sh);
+  if (setup.today && setup.today !== realToday) notes.push(`setup.today=${setup.today} 按真实今天 ${realToday} 跑（日期字段平移 ${shift} 天）`);
+  if (setup.now_local) notes.push(`X-Debug-Now=${setup.now_local}，账号时区 ${s.tz} 的今天 = ${d}`);
+  else if (setup.now) notes.push(`X-Debug-Now=${s.debugNow}（setup.now=${setup.now}），学习日 = ${d}`);
+  if (noTable.length) notes.push(`前提没落库（产品里没有对应的表）：${noTable.map((k) => `${k}（${SETUP_NO_TABLE[k]}）`).join('；')}`);
   return notes;
 }
 
@@ -1374,7 +1629,7 @@ async function snapshot(s: Session, d: string) {
 async function runFileCase(c: Case, tz: string): Promise<{ checks: Check[]; transcript: string[]; notes: string[] }> {
   const s = await new Session(c.setup?.timezone || tz).init();
   const turns: Turn[] | null = Array.isArray(c.turns) && c.turns.length ? c.turns : null;
-  const notes = await applySetup(s, c.setup, turns?.[0]);
+  const notes = await applySetup(s, c.setup, turns?.[0]).catch((e) => { throw e instanceof SetupError ? e : new SetupError(`SETUP_UNAPPLIED：${e?.message ?? e}`); });
   const d = await today(s);
   const before = await snapshot(s, d);
   const hourOf = async () => Number(((await s.get('/me/settings')).effective?.local_time ?? '').slice(0, 2));
@@ -1427,10 +1682,18 @@ async function main() {
     console.log(`${checks.every((x) => x.status === 'pass') ? 'PASS' : 'FAIL'} [${tz}] ${c.id} ${c.scenario}`);
     for (const x of checks.filter((x) => x.status !== 'pass')) console.log(`     ✗ ${x.assertion} ${x.detail ?? ''}`);
   }
+  // setup 字段先整体过一遍：有没落库逻辑的字段，不用跑就知道这一轮的前提不对
+  const setupErrors: string[] = [];
+  for (const c of fileCases) try { checkSetupKeys(c.setup); } catch (e: any) { setupErrors.push(`${c.id}: ${e.message}`); }
+  if (setupErrors.length) { console.error(`\n✗ setup 字段检查失败：\n  ${setupErrors.join('\n  ')}\n`); process.exit(1); }
   for (const c of fileCases.filter((x: any) => !only || only.test(x.id))) {
     const tz = c.setup?.timezone || TZS[0];
     let r: any;
-    try { r = await runFileCase(c, tz); } catch (e: any) { r = { checks: [{ assertion: '用例跑完', kind: 'expect', status: 'fail', detail: e.message }], transcript: [], notes: [] }; }
+    try { r = await runFileCase(c, tz); } catch (e: any) {
+      const setupErr = e instanceof SetupError;
+      if (setupErr) setupErrors.push(`${c.id}: ${e.message}`);
+      r = { checks: [{ assertion: setupErr ? 'setup 全部落库' : '用例跑完', kind: 'expect', status: 'fail', detail: e.message }], transcript: [], notes: [] };
+    }
     results.push({ id: c.id, tz, source: 'file', scenario: c.scenario, input: c.input, ...r });
     const n = (st: string) => r.checks.filter((x: Check) => x.status === st).length;
     console.log(`${n('fail') ? 'FAIL' : n('manual') ? 'PART' : 'PASS'} [file] ${c.id} ${c.scenario}（自动 ${n('pass')}✓ ${n('fail')}✗，人工 ${n('manual')}）`);
@@ -1452,6 +1715,7 @@ async function main() {
   console.log(`\n单测 ${unit.pass}/${unit.pass + unit.fail}；内置 ${summary.builtin.pass}✓ ${summary.builtin.fail}✗；专家 ${fileCases.length} 例：自动 ${summary.file.pass}✓ ${summary.file.fail}✗，人工 ${summary.file.manual} 条`);
   console.log(`报告：eval/report-${stamp}.md`);
   await db.end();
-  process.exitCode = unit.fail || summary.builtin.fail || (STRICT && summary.file.fail) ? 1 : 0;
+  if (setupErrors.length) console.error(`\n✗ setup 没落库（${setupErrors.length} 例），这一轮的专家用例前提不对：\n  ${setupErrors.join('\n  ')}`);
+  process.exitCode = unit.fail || summary.builtin.fail || setupErrors.length || (STRICT && summary.file.fail) ? 1 : 0;
 }
 main().catch((e) => { console.error(e); process.exit(1); });

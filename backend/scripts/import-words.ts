@@ -93,8 +93,15 @@ async function main() {
     picked.push({ word, ph: r.phonetic?.trim() ? `/${r.phonetic.trim()}/` : null, def, pos: posOf(tr), tags: ['ecdict', ...tags], frq: Number(r.frq) || 0 });
   }
   picked.sort((a, b) => (a.frq || 1e9) - (b.frq || 1e9));
-  const rows = picked.slice(0, limit === Infinity ? undefined : limit);
-  console.log(`扫描 ${scanned} 条，选中 ${picked.length} 条（${all ? '全部' : `tag ∈ ${want.join(',')}`}），本次处理 ${rows.length} 条${dry ? '（dry-run，不写库）' : ''}`);
+  // words 有 lower(word) 唯一索引（015）：ECDICT 里同词不同大小写（China/china）只留一条，优先全小写的
+  const byLower = new Map<string, (typeof picked)[number]>();
+  for (const p of picked) {
+    const k = p.word.toLowerCase(), had = byLower.get(k);
+    if (!had || (had.word !== k && p.word === k)) byLower.set(k, p);
+  }
+  const uniq = picked.filter((p) => byLower.get(p.word.toLowerCase()) === p);
+  const rows = uniq.slice(0, limit === Infinity ? undefined : limit);
+  console.log(`扫描 ${scanned} 条，选中 ${picked.length} 条（${all ? '全部' : `tag ∈ ${want.join(',')}`}），去掉大小写重复 ${picked.length - uniq.length} 条，本次处理 ${rows.length} 条${dry ? '（dry-run，不写库）' : ''}`);
   if (dry) { console.log(rows.slice(0, 5)); return; }
 
   const c = new Client({ connectionString: process.env.DATABASE_URL });
@@ -108,7 +115,7 @@ async function main() {
         `INSERT INTO words(word, phonetic_uk, phonetic_us, definition_cn, pos, tags, frq_rank, examples)
          SELECT t.word, t.ph, t.ph, t.def, t.pos, ARRAY(SELECT json_array_elements_text(t.tags)), NULLIF(t.frq, 0), NULL
            FROM json_to_recordset($1::json) AS t(word text, ph text, def text, pos text, tags json, frq int, ord int) ORDER BY t.ord
-         ON CONFLICT (word) DO UPDATE SET
+         ON CONFLICT ((lower(word))) DO UPDATE SET  -- 按小写判重：先跑过 import-vocab（词形可能是大写）也不会撞唯一索引
            phonetic_uk = COALESCE(EXCLUDED.phonetic_uk, words.phonetic_uk),
            phonetic_us = COALESCE(EXCLUDED.phonetic_us, words.phonetic_us),
            frq_rank = EXCLUDED.frq_rank,

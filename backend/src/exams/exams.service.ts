@@ -232,7 +232,7 @@ export class ExamsService implements OnModuleInit, OnModuleDestroy {
     const split = scoreSplit(r.status === 'submitted' ? result?.per_question : null, r.status === 'submitted' ? result?.score ?? null : null, { objective_max: r.paper_obj_max, subjective_max: (r.max_score ?? 0) - (r.paper_obj_max ?? 0) });
     return {
       ...split,
-      id: r.id, kind: r.kind, title: r.title, exam: r.exam, year: r.year, question_ids: r.question_ids, question_count: r.question_ids.length, max_score: r.max_score,
+      id: r.id, kind: r.kind, title: r.title, exam: r.exam, exam_name: EXAM_CN[r.exam] ?? r.exam, year: r.year, question_ids: r.question_ids, question_count: r.question_ids.length, max_score: r.max_score,
       status: r.status, duration_seconds: r.duration_seconds, elapsed_seconds: elapsed, remaining_seconds: ck.remaining_seconds,
       pause_count: ck.pause_count, paused_seconds: ck.paused_seconds, server_credit_seconds: ck.server_credit_seconds, auto_submitted: !!r.auto_submitted, auto_submit_reason: r.auto_submitted ? (r.auto_submit_reason ?? 'time_up') : null, clock: 'wall',
       paused_at: r.status === 'paused' ? ((r.pause_log ?? []).find((p: PauseEntry) => !p.end)?.start ?? null) : null,
