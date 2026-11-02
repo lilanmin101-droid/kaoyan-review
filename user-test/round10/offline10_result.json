@@ -1,0 +1,882 @@
+[
+ {
+  "width": 1280,
+  "shots": [
+   {
+    "f": "p01.png",
+    "what": "登录页",
+    "cw": 1280,
+    "sw": 1280,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p02.png",
+    "what": "注册成功后的今日页",
+    "cw": 1280,
+    "sw": 1280,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p03.png",
+    "what": "联网刷题页（题包已缓存）",
+    "cw": 1280,
+    "sw": 1280,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": [
+     "span.katex-mathml \"f(x)=∫0xecos⁡tdtf ( x ) = \\int\"",
+     "span.katex-mathml \"g(x)=∫0sin⁡xet2dtg ( x ) = \\in\"",
+     "span.katex-mathml \"f(x)f ( x )\"",
+     "span.katex-mathml \"g(x)g ( x )\"",
+     "span.katex-mathml \"f(x)f ( x )\"",
+     "span.katex-mathml \"g(x)g ( x )\""
+    ]
+   },
+   {
+    "f": "p04.png",
+    "what": "断网后刷题页（离线题包）",
+    "cw": 1280,
+    "sw": 1280,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p05.png",
+    "what": "断网第 1 题答对后的判分",
+    "cw": 1280,
+    "sw": 1280,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p06.png",
+    "what": "断网第 2 题故意答错后的判分",
+    "cw": 1280,
+    "sw": 1280,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p07.png",
+    "what": "断网时 F5 刷新后",
+    "cw": 1280,
+    "sw": 1280,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p08.png",
+    "what": "F5 后回看答错的第 2 题",
+    "cw": 1280,
+    "sw": 1280,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p09.png",
+    "what": "主观题看参考答案（自评前）",
+    "cw": 1280,
+    "sw": 1280,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p10.png",
+    "what": "主观题自评「没思路」后",
+    "cw": 1280,
+    "sw": 1280,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p11.png",
+    "what": "断网做完 5 题（底部统计）",
+    "cw": 1280,
+    "sw": 1280,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p12.png",
+    "what": "恢复联网后",
+    "cw": 1280,
+    "sw": 1280,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": [
+     "span.katex-mathml \"f(x)=∫0xecos⁡tdtf ( x ) = \\int\"",
+     "span.katex-mathml \"g(x)=∫0sin⁡xet2dtg ( x ) = \\in\"",
+     "span.katex-mathml \"f(x)f ( x )\"",
+     "span.katex-mathml \"g(x)g ( x )\"",
+     "span.katex-mathml \"f(x)f ( x )\"",
+     "span.katex-mathml \"g(x)g ( x )\""
+    ]
+   },
+   {
+    "f": "p13.png",
+    "what": "联网后错题本",
+    "cw": 1280,
+    "sw": 1280,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p14.png",
+    "what": "联网后今日页",
+    "cw": 1280,
+    "sw": 1280,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   }
+  ],
+  "checks": {
+   "packWithoutReload": false,
+   "serverWordOffline": false
+  },
+  "log": [
+   "shot p01.png 登录页   ",
+   "shot p02.png 注册成功后的今日页   ",
+   "seed subjective recorded active",
+   "注册后直接进刷题页 6s，题包已存： false",
+   "刷新后题包： 7c0552f99f6b260d 26",
+   "pack {\"version\":\"7c0552f99f6b260d\",\"study_date\":\"2026-11-02\",\"n\":26,\"origins\":[\"plan\",\"wrong_redo\"],\"sw\":true}",
+   "shot p03.png 联网刷题页（题包已缓存）   clipped:span.katex-mathml \"f(x)=∫0xecos⁡tdtf ( x ) = \\int\" | span.katex-mathml \"g(x)=∫0sin⁡xet2dtg ( x ) = \\in\" | span.katex-mathml \"f(x)f ( x )\" | span.katex-mathml \"g(x)g ( x )\" | span.katex-mathml \"f(x)f ( x )\" | span.katex-mathml \"g(x)g ( x )\"",
+   "offbar: 现在没网，连上再试 · 看到的是上次同步的内容 | offq cap: 离 线 题 包 · 2026-11-02做了 0 / 26 | 含「服务器」: false",
+   "shot p04.png 断网后刷题页（离线题包）   ",
+   "答 english1-2025-01 B 正确 B → 对了 / 行业专家参考解答（非官方解析）",
+   "shot p05.png 断网第 1 题答对后的判分   ",
+   "答 english1-2025-02 A 正确 C → 错了，正确答案 C / 行业专家参考解答（非官方解析）",
+   "shot p06.png 断网第 2 题故意答错后的判分   ",
+   "答 english1-2025-03 B 正确 B → 对了 / 行业专家参考解答（非官方解析）",
+   "答 english1-2025-04 C 正确 C → 对了 / 行业专家参考解答（非官方解析）",
+   "F5 前队列 4",
+   "F5 后 {\"offbar\":\"现在没网，连上再试 · 看到的是上次同步的内容\",\"cap\":\"离 线 题 包 · 2026-11-02做了 4 / 26 · 4 道等联网补传\",\"queue\":4,\"done\":4,\"serverWord\":false}",
+   "shot p07.png 断网时 F5 刷新后   ",
+   "F5 后回看第 2 题： 错了，正确答案 C行业专家参考解答（非官方解析）本句：…which caused the city to ___ sink。空格修饰 sink，看城市是怎样沉下去的。上下文复现：下一句马上说 “The slow sea level rise”，slow 与 gradually（逐渐地）同义复现，城市是慢慢下沉的。排除：A accidentally“意外地”、B frequently“频繁地”（城市不会反复下沉）、D temporarily“暂时地”（沉下去后一直在水下），都和 slow 矛盾。答案：C下次记住：副词空先往后读一句，找同义复现（slow → gradually）。这题等联网后补传，教练点评到时候再更新",
+   "shot p08.png F5 后回看答错的第 2 题   ",
+   "翻到主观题点了「下一题」 24 次 错题重做 · 第 47 题 · 2025",
+   "shot p09.png 主观题看参考答案（自评前）   ",
+   "主观题自评后 文：但是，只要借助公众天生的好奇心，让非科学人士直接参与到研究过程中来，就有可能克服其中的许多挑战。 / 下次记住：多个 by doing 方式状语：放在谓语前，按逻辑先后排列。 / 自评：没思路 / 这题等联网后补传，教练点评到时候再更新",
+   "shot p10.png 主观题自评「没思路」后   ",
+   "断网队列 5 离 线 题 包 · 2026-11-02做了 5 / 26 · 5 道等联网补传",
+   "shot p11.png 断网做完 5 题（底部统计）   ",
+   "联网后 {\"barGoneMs\":107,\"queueEmptyMs\":107,\"toasts\":[\"离线做的 5 道题已经补传\"],\"posts\":5,\"view\":\"回到正常刷题页\"}",
+   "shot p12.png 恢复联网后   clipped:span.katex-mathml \"f(x)=∫0xecos⁡tdtf ( x ) = \\int\" | span.katex-mathml \"g(x)=∫0sin⁡xet2dtg ( x ) = \\in\" | span.katex-mathml \"f(x)f ( x )\" | span.katex-mathml \"g(x)g ( x )\" | span.katex-mathml \"f(x)f ( x )\" | span.katex-mathml \"g(x)g ( x )\"",
+   "后端 offline_pack 记录 [{\"qid\":\"english1-2025-47\",\"ans\":\"\",\"self\":\"no_idea\",\"ok\":false,\"t\":5,\"at_bj\":\"2026-11-02 12:27:51\",\"pv\":\"7c0552f99f6b260d\"},{\"qid\":\"english1-2025-04\",\"ans\":\"C\",\"self\":null,\"ok\":true,\"t\":8,\"at_bj\":\"2026-11-02 12:27:37\",\"pv\":\"7c0552f99f6b260d\"},{\"qid\":\"english1-2025-03\",\"ans\":\"B\",\"self\":null,\"ok\":true,\"t\":7,\"at_bj\":\"2026-11-02 12:27:28\",\"pv\":\"7c0552f99f6b260d\"},{\"qid\":\"english1-2025-02\",\"ans\":\"A\",\"self\":null,\"ok\":false,\"t\":5,\"at_bj\":\"2026-11-02 12:27:21\",\"pv\":\"7c0552f99f6b260d\"},{\"qid\":\"english1-2025-01\",\"ans\":\"B\",\"self\":null,\"ok\":true,\"t\":6,\"at_bj\":\"2026-11-02 12:27:15\",\"pv\":\"7c0552f99f6b260d\"}]",
+   "补传请求 [{\"qid\":\"english1-2025-01\",\"keys\":\"answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds\",\"status\":201,\"rs\":\"recorded\",\"dup\":false,\"ok\":true,\"wq\":null,\"clamped\":null},{\"qid\":\"english1-2025-02\",\"keys\":\"answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds\",\"status\":201,\"rs\":\"recorded\",\"dup\":false,\"ok\":false,\"wq\":\"active\",\"clamped\":null},{\"qid\":\"english1-2025-03\",\"keys\":\"answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds\",\"status\":201,\"rs\":\"recorded\",\"dup\":false,\"ok\":true,\"wq\":null,\"clamped\":null},{\"qid\":\"english1-2025-04\",\"keys\":\"answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds\",\"status\":201,\"rs\":\"recorded\",\"dup\":false,\"ok\":true,\"wq\":null,\"clamped\":null},{\"qid\":\"english1-2025-47\",\"keys\":\"answered_at,client_id,pack_version,question_id,self_rating,source,thought_text,time_spent_seconds\",\"status\":201,\"rs\":\"recorded\",\"dup\":false,\"ok\":false,\"wq\":\"active\",\"clamped\":null}]",
+   "错题本 [{\"qid\":\"english1-2025-47\",\"status\":\"active\"},{\"qid\":\"english1-2025-02\",\"status\":\"active\"}]",
+   "重放 [{\"qid\":\"english1-2025-01\",\"status\":\"duplicate\",\"duplicate\":true,\"score\":0.5},{\"qid\":\"english1-2025-02\",\"status\":\"duplicate\",\"duplicate\":true,\"score\":0}] {\"nBefore\":6,\"nAfter\":6,\"statsSame\":true}",
+   "shot p13.png 联网后错题本   ",
+   "shot p14.png 联网后今日页   "
+  ],
+  "user": "r10off_1280_mvyrbx7j",
+  "toastAfterRegister": "注册成功，欢迎你，r10off_1280_mvyrbx7j",
+  "me": {
+   "tz": "Asia/Shanghai",
+   "id": "15e3d2f9-2dce-409d-8647-6ed5dcd08fa4"
+  },
+  "pack": {
+   "version": "7c0552f99f6b260d",
+   "study_date": "2026-11-02",
+   "n": 26,
+   "origins": [
+    "plan",
+    "wrong_redo"
+   ],
+   "sw": true
+  },
+  "offbar": "现在没网，连上再试 · 看到的是上次同步的内容",
+  "offView": "离 线 题 包 · 2026-11-02做了 0 / 26",
+  "answers": [
+   {
+    "qid": "english1-2025-01",
+    "meta": "Section I Use of English · 第 1 题 · 2025",
+    "chose": "B",
+    "correct": "B",
+    "expectRight": true,
+    "verdict": "对了 / 行业专家参考解答（非官方解析） / 本句：This area of the Aegean Sea is ___ to earthquakes and tsunamis。空后是 to + 名词（灾害），考 be ___ to sth. 的形容词搭配。"
+   },
+   {
+    "qid": "english1-2025-02",
+    "meta": "Section I Use of English · 第 2 题 · 2025",
+    "chose": "A",
+    "correct": "C",
+    "expectRight": false,
+    "verdict": "错了，正确答案 C / 行业专家参考解答（非官方解析） / 本句：…which caused the city to ___ sink。空格修饰 sink，看城市是怎样沉下去的。"
+   },
+   {
+    "qid": "english1-2025-03",
+    "meta": "Section I Use of English · 第 3 题 · 2025",
+    "chose": "B",
+    "correct": "B",
+    "expectRight": true,
+    "verdict": "对了 / 行业专家参考解答（非官方解析） / 本句：The slow sea level rise in the Mediterranean ___ the city more than 3,000 years ago。主语是“海平面上升”，宾语是城市。"
+   },
+   {
+    "qid": "english1-2025-04",
+    "meta": "Section I Use of English · 第 4 题 · 2025",
+    "chose": "C",
+    "correct": "C",
+    "expectRight": true,
+    "verdict": "对了 / 行业专家参考解答（非官方解析） / 本句：For millennia, the city’s ___ lay unseen below some 13 feet of water。几千年来躺在水下、看不见的是城市的什么。"
+   }
+  ],
+  "afterF5": {
+   "offbar": "现在没网，连上再试 · 看到的是上次同步的内容",
+   "cap": "离 线 题 包 · 2026-11-02做了 4 / 26 · 4 道等联网补传",
+   "queue": 4,
+   "done": 4,
+   "serverWord": false,
+   "q2": "错了，正确答案 C行业专家参考解答（非官方解析）本句：…which caused the city to ___ sink。空格修饰 sink，看城市是怎样沉下去的。上下文复现：下一句马上说 “The slow sea level rise”，slow 与 gradually（逐渐地）同义复现，城市是慢慢下沉的。排除：A accidentally“意外地”、B frequently“频繁地”（城市不会反复下沉）、D temporarily“暂时地”（沉下去后一直在水下），都和 slow 矛盾。答案：C下次记住：副词空先往后读一句，找同义复现（slow → gradually）。这题等联网后补传，教练点评到时候再更新"
+  },
+  "clicksToSubjective": 24,
+  "subjVerdict": "文：但是，只要借助公众天生的好奇心，让非科学人士直接参与到研究过程中来，就有可能克服其中的许多挑战。 / 下次记住：多个 by doing 方式状语：放在谓语前，按逻辑先后排列。 / 自评：没思路 / 这题等联网后补传，教练点评到时候再更新",
+  "queue": [
+   {
+    "qid": "english1-2025-01",
+    "ans": "B",
+    "t": 6,
+    "at": "2026-11-02T04:27:15.341Z",
+    "local_correct": true,
+    "pack_version": "7c0552f99f6b260d"
+   },
+   {
+    "qid": "english1-2025-02",
+    "ans": "A",
+    "t": 5,
+    "at": "2026-11-02T04:27:21.124Z",
+    "local_correct": false,
+    "pack_version": "7c0552f99f6b260d"
+   },
+   {
+    "qid": "english1-2025-03",
+    "ans": "B",
+    "t": 7,
+    "at": "2026-11-02T04:27:28.375Z",
+    "local_correct": true,
+    "pack_version": "7c0552f99f6b260d"
+   },
+   {
+    "qid": "english1-2025-04",
+    "ans": "C",
+    "t": 8,
+    "at": "2026-11-02T04:27:37.089Z",
+    "local_correct": true,
+    "pack_version": "7c0552f99f6b260d"
+   },
+   {
+    "qid": "english1-2025-47",
+    "ans": "",
+    "rating": "no_idea",
+    "t": 5,
+    "at": "2026-11-02T04:27:51.373Z",
+    "local_correct": false,
+    "pack_version": "7c0552f99f6b260d"
+   }
+  ],
+  "cap": "离 线 题 包 · 2026-11-02做了 5 / 26 · 5 道等联网补传",
+  "online": {
+   "barGoneMs": 107,
+   "queueEmptyMs": 107,
+   "toasts": [
+    "离线做的 5 道题已经补传"
+   ],
+   "posts": 5,
+   "view": "回到正常刷题页"
+  },
+  "server": [
+   {
+    "qid": "english1-2025-47",
+    "ans": "",
+    "self": "no_idea",
+    "ok": false,
+    "t": 5,
+    "at_bj": "2026-11-02 12:27:51",
+    "pv": "7c0552f99f6b260d"
+   },
+   {
+    "qid": "english1-2025-04",
+    "ans": "C",
+    "self": null,
+    "ok": true,
+    "t": 8,
+    "at_bj": "2026-11-02 12:27:37",
+    "pv": "7c0552f99f6b260d"
+   },
+   {
+    "qid": "english1-2025-03",
+    "ans": "B",
+    "self": null,
+    "ok": true,
+    "t": 7,
+    "at_bj": "2026-11-02 12:27:28",
+    "pv": "7c0552f99f6b260d"
+   },
+   {
+    "qid": "english1-2025-02",
+    "ans": "A",
+    "self": null,
+    "ok": false,
+    "t": 5,
+    "at_bj": "2026-11-02 12:27:21",
+    "pv": "7c0552f99f6b260d"
+   },
+   {
+    "qid": "english1-2025-01",
+    "ans": "B",
+    "self": null,
+    "ok": true,
+    "t": 6,
+    "at_bj": "2026-11-02 12:27:15",
+    "pv": "7c0552f99f6b260d"
+   }
+  ],
+  "today": "2026-11-02",
+  "latestMode": {
+   "latest": true,
+   "n": 5
+  },
+  "posts": [
+   {
+    "qid": "english1-2025-01",
+    "keys": "answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds",
+    "status": 201,
+    "rs": "recorded",
+    "dup": false,
+    "ok": true,
+    "wq": null,
+    "clamped": null
+   },
+   {
+    "qid": "english1-2025-02",
+    "keys": "answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds",
+    "status": 201,
+    "rs": "recorded",
+    "dup": false,
+    "ok": false,
+    "wq": "active",
+    "clamped": null
+   },
+   {
+    "qid": "english1-2025-03",
+    "keys": "answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds",
+    "status": 201,
+    "rs": "recorded",
+    "dup": false,
+    "ok": true,
+    "wq": null,
+    "clamped": null
+   },
+   {
+    "qid": "english1-2025-04",
+    "keys": "answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds",
+    "status": 201,
+    "rs": "recorded",
+    "dup": false,
+    "ok": true,
+    "wq": null,
+    "clamped": null
+   },
+   {
+    "qid": "english1-2025-47",
+    "keys": "answered_at,client_id,pack_version,question_id,self_rating,source,thought_text,time_spent_seconds",
+    "status": 201,
+    "rs": "recorded",
+    "dup": false,
+    "ok": false,
+    "wq": "active",
+    "clamped": null
+   }
+  ],
+  "wrongBook": [
+   {
+    "qid": "english1-2025-47",
+    "status": "active"
+   },
+   {
+    "qid": "english1-2025-02",
+    "status": "active"
+   }
+  ],
+  "replay": [
+   {
+    "qid": "english1-2025-01",
+    "status": "duplicate",
+    "duplicate": true,
+    "score": 0.5
+   },
+   {
+    "qid": "english1-2025-02",
+    "status": "duplicate",
+    "duplicate": true,
+    "score": 0
+   }
+  ],
+  "replayCounts": {
+   "nBefore": 6,
+   "nAfter": 6,
+   "statsSame": true
+  }
+ },
+ {
+  "width": 390,
+  "shots": [
+   {
+    "f": "p15.png",
+    "what": "登录页",
+    "cw": 390,
+    "sw": 390,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p16.png",
+    "what": "注册成功后的今日页",
+    "cw": 390,
+    "sw": 390,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p17.png",
+    "what": "联网刷题页（题包已缓存）",
+    "cw": 390,
+    "sw": 390,
+    "hOverflow": false,
+    "outside": [
+     "math. [285,456]",
+     "semantics. [285,456]",
+     "mrow. [285,456]",
+     "msubsup. [354,409]",
+     "mrow. [375,405]",
+     "mi. [375,396]"
+    ],
+    "clipped": [
+     "span.katex-mathml \"f(x)=∫0xecos⁡tdtf ( x ) = \\int\"",
+     "span.katex-mathml \"g(x)=∫0sin⁡xet2dtg ( x ) = \\in\"",
+     "span.katex-mathml \"f(x)f ( x )\"",
+     "span.katex-mathml \"g(x)g ( x )\"",
+     "span.katex-mathml \"f(x)f ( x )\"",
+     "span.katex-mathml \"g(x)g ( x )\""
+    ]
+   },
+   {
+    "f": "p18.png",
+    "what": "断网后刷题页（离线题包）",
+    "cw": 390,
+    "sw": 390,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p19.png",
+    "what": "断网第 1 题答对后的判分",
+    "cw": 390,
+    "sw": 390,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p20.png",
+    "what": "断网第 2 题故意答错后的判分",
+    "cw": 390,
+    "sw": 390,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p21.png",
+    "what": "断网时 F5 刷新后",
+    "cw": 390,
+    "sw": 390,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p22.png",
+    "what": "F5 后回看答错的第 2 题",
+    "cw": 390,
+    "sw": 390,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p23.png",
+    "what": "主观题看参考答案（自评前）",
+    "cw": 390,
+    "sw": 390,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p24.png",
+    "what": "主观题自评「没思路」后",
+    "cw": 390,
+    "sw": 390,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p25.png",
+    "what": "断网做完 5 题（底部统计）",
+    "cw": 390,
+    "sw": 390,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p26.png",
+    "what": "恢复联网后",
+    "cw": 390,
+    "sw": 390,
+    "hOverflow": false,
+    "outside": [
+     "math. [285,456]",
+     "semantics. [285,456]",
+     "mrow. [285,456]",
+     "msubsup. [354,409]",
+     "mrow. [375,405]",
+     "mi. [375,396]"
+    ],
+    "clipped": [
+     "span.katex-mathml \"f(x)=∫0xecos⁡tdtf ( x ) = \\int\"",
+     "span.katex-mathml \"g(x)=∫0sin⁡xet2dtg ( x ) = \\in\"",
+     "span.katex-mathml \"f(x)f ( x )\"",
+     "span.katex-mathml \"g(x)g ( x )\"",
+     "span.katex-mathml \"f(x)f ( x )\"",
+     "span.katex-mathml \"g(x)g ( x )\""
+    ]
+   },
+   {
+    "f": "p27.png",
+    "what": "联网后错题本",
+    "cw": 390,
+    "sw": 390,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   },
+   {
+    "f": "p28.png",
+    "what": "联网后今日页",
+    "cw": 390,
+    "sw": 390,
+    "hOverflow": false,
+    "outside": [],
+    "clipped": []
+   }
+  ],
+  "checks": {
+   "packWithoutReload": false,
+   "serverWordOffline": false
+  },
+  "log": [
+   "shot p15.png 登录页   ",
+   "shot p16.png 注册成功后的今日页   ",
+   "seed subjective recorded active",
+   "注册后直接进刷题页 6s，题包已存： false",
+   "刷新后题包： 3d80632518e0dded 26",
+   "pack {\"version\":\"3d80632518e0dded\",\"study_date\":\"2026-11-02\",\"n\":26,\"origins\":[\"plan\",\"wrong_redo\"],\"sw\":true}",
+   "shot p17.png 联网刷题页（题包已缓存）  outside:math. [285,456] | semantics. [285,456] | mrow. [285,456] | msubsup. [354,409] | mrow. [375,405] | mi. [375,396] clipped:span.katex-mathml \"f(x)=∫0xecos⁡tdtf ( x ) = \\int\" | span.katex-mathml \"g(x)=∫0sin⁡xet2dtg ( x ) = \\in\" | span.katex-mathml \"f(x)f ( x )\" | span.katex-mathml \"g(x)g ( x )\" | span.katex-mathml \"f(x)f ( x )\" | span.katex-mathml \"g(x)g ( x )\"",
+   "offbar: 现在没网，连上再试 · 看到的是上次同步的内容 | offq cap: 离 线 题 包 · 2026-11-02做了 0 / 26 | 含「服务器」: false",
+   "shot p18.png 断网后刷题页（离线题包）   ",
+   "答 english1-2025-01 B 正确 B → 对了 / 行业专家参考解答（非官方解析）",
+   "shot p19.png 断网第 1 题答对后的判分   ",
+   "答 english1-2025-02 A 正确 C → 错了，正确答案 C / 行业专家参考解答（非官方解析）",
+   "shot p20.png 断网第 2 题故意答错后的判分   ",
+   "答 english1-2025-03 B 正确 B → 对了 / 行业专家参考解答（非官方解析）",
+   "答 english1-2025-04 C 正确 C → 对了 / 行业专家参考解答（非官方解析）",
+   "F5 前队列 4",
+   "F5 后 {\"offbar\":\"现在没网，连上再试 · 看到的是上次同步的内容\",\"cap\":\"离 线 题 包 · 2026-11-02做了 4 / 26 · 4 道等联网补传\",\"queue\":4,\"done\":4,\"serverWord\":false}",
+   "shot p21.png 断网时 F5 刷新后   ",
+   "F5 后回看第 2 题： 错了，正确答案 C行业专家参考解答（非官方解析）本句：…which caused the city to ___ sink。空格修饰 sink，看城市是怎样沉下去的。上下文复现：下一句马上说 “The slow sea level rise”，slow 与 gradually（逐渐地）同义复现，城市是慢慢下沉的。排除：A accidentally“意外地”、B frequently“频繁地”（城市不会反复下沉）、D temporarily“暂时地”（沉下去后一直在水下），都和 slow 矛盾。答案：C下次记住：副词空先往后读一句，找同义复现（slow → gradually）。这题等联网后补传，教练点评到时候再更新",
+   "shot p22.png F5 后回看答错的第 2 题   ",
+   "翻到主观题点了「下一题」 24 次 错题重做 · 第 47 题 · 2025",
+   "shot p23.png 主观题看参考答案（自评前）   ",
+   "主观题自评后 文：但是，只要借助公众天生的好奇心，让非科学人士直接参与到研究过程中来，就有可能克服其中的许多挑战。 / 下次记住：多个 by doing 方式状语：放在谓语前，按逻辑先后排列。 / 自评：没思路 / 这题等联网后补传，教练点评到时候再更新",
+   "shot p24.png 主观题自评「没思路」后   ",
+   "断网队列 5 离 线 题 包 · 2026-11-02做了 5 / 26 · 5 道等联网补传",
+   "shot p25.png 断网做完 5 题（底部统计）   ",
+   "联网后 {\"barGoneMs\":107,\"queueEmptyMs\":108,\"toasts\":[\"离线做的 5 道题已经补传\"],\"posts\":5,\"view\":\"回到正常刷题页\"}",
+   "shot p26.png 恢复联网后  outside:math. [285,456] | semantics. [285,456] | mrow. [285,456] | msubsup. [354,409] | mrow. [375,405] | mi. [375,396] clipped:span.katex-mathml \"f(x)=∫0xecos⁡tdtf ( x ) = \\int\" | span.katex-mathml \"g(x)=∫0sin⁡xet2dtg ( x ) = \\in\" | span.katex-mathml \"f(x)f ( x )\" | span.katex-mathml \"g(x)g ( x )\" | span.katex-mathml \"f(x)f ( x )\" | span.katex-mathml \"g(x)g ( x )\"",
+   "后端 offline_pack 记录 [{\"qid\":\"english1-2025-47\",\"ans\":\"\",\"self\":\"no_idea\",\"ok\":false,\"t\":5,\"at_bj\":\"2026-11-02 12:29:27\",\"pv\":\"3d80632518e0dded\"},{\"qid\":\"english1-2025-04\",\"ans\":\"C\",\"self\":null,\"ok\":true,\"t\":8,\"at_bj\":\"2026-11-02 12:29:12\",\"pv\":\"3d80632518e0dded\"},{\"qid\":\"english1-2025-03\",\"ans\":\"B\",\"self\":null,\"ok\":true,\"t\":7,\"at_bj\":\"2026-11-02 12:29:03\",\"pv\":\"3d80632518e0dded\"},{\"qid\":\"english1-2025-02\",\"ans\":\"A\",\"self\":null,\"ok\":false,\"t\":5,\"at_bj\":\"2026-11-02 12:28:56\",\"pv\":\"3d80632518e0dded\"},{\"qid\":\"english1-2025-01\",\"ans\":\"B\",\"self\":null,\"ok\":true,\"t\":6,\"at_bj\":\"2026-11-02 12:28:50\",\"pv\":\"3d80632518e0dded\"}]",
+   "补传请求 [{\"qid\":\"english1-2025-01\",\"keys\":\"answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds\",\"status\":201,\"rs\":\"recorded\",\"dup\":false,\"ok\":true,\"wq\":null,\"clamped\":null},{\"qid\":\"english1-2025-02\",\"keys\":\"answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds\",\"status\":201,\"rs\":\"recorded\",\"dup\":false,\"ok\":false,\"wq\":\"active\",\"clamped\":null},{\"qid\":\"english1-2025-03\",\"keys\":\"answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds\",\"status\":201,\"rs\":\"recorded\",\"dup\":false,\"ok\":true,\"wq\":null,\"clamped\":null},{\"qid\":\"english1-2025-04\",\"keys\":\"answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds\",\"status\":201,\"rs\":\"recorded\",\"dup\":false,\"ok\":true,\"wq\":null,\"clamped\":null},{\"qid\":\"english1-2025-47\",\"keys\":\"answered_at,client_id,pack_version,question_id,self_rating,source,thought_text,time_spent_seconds\",\"status\":201,\"rs\":\"recorded\",\"dup\":false,\"ok\":false,\"wq\":\"active\",\"clamped\":null}]",
+   "错题本 [{\"qid\":\"english1-2025-47\",\"status\":\"active\"},{\"qid\":\"english1-2025-02\",\"status\":\"active\"}]",
+   "重放 [{\"qid\":\"english1-2025-01\",\"status\":\"duplicate\",\"duplicate\":true,\"score\":0.5},{\"qid\":\"english1-2025-02\",\"status\":\"duplicate\",\"duplicate\":true,\"score\":0}] {\"nBefore\":6,\"nAfter\":6,\"statsSame\":true}",
+   "shot p27.png 联网后错题本   ",
+   "shot p28.png 联网后今日页   "
+  ],
+  "user": "r10off_390_mvyrdbsl",
+  "toastAfterRegister": "注册成功，欢迎你，r10off_390_mvyrdbsl",
+  "me": {
+   "tz": "Asia/Shanghai",
+   "id": "41f47eda-7c7b-488d-bf88-6ed98b752775"
+  },
+  "pack": {
+   "version": "3d80632518e0dded",
+   "study_date": "2026-11-02",
+   "n": 26,
+   "origins": [
+    "plan",
+    "wrong_redo"
+   ],
+   "sw": true
+  },
+  "offbar": "现在没网，连上再试 · 看到的是上次同步的内容",
+  "offView": "离 线 题 包 · 2026-11-02做了 0 / 26",
+  "answers": [
+   {
+    "qid": "english1-2025-01",
+    "meta": "Section I Use of English · 第 1 题 · 2025",
+    "chose": "B",
+    "correct": "B",
+    "expectRight": true,
+    "verdict": "对了 / 行业专家参考解答（非官方解析） / 本句：This area of the Aegean Sea is ___ to earthquakes and tsunamis。空后是 to + 名词（灾害），考 be ___ to sth. 的形容词搭配。"
+   },
+   {
+    "qid": "english1-2025-02",
+    "meta": "Section I Use of English · 第 2 题 · 2025",
+    "chose": "A",
+    "correct": "C",
+    "expectRight": false,
+    "verdict": "错了，正确答案 C / 行业专家参考解答（非官方解析） / 本句：…which caused the city to ___ sink。空格修饰 sink，看城市是怎样沉下去的。"
+   },
+   {
+    "qid": "english1-2025-03",
+    "meta": "Section I Use of English · 第 3 题 · 2025",
+    "chose": "B",
+    "correct": "B",
+    "expectRight": true,
+    "verdict": "对了 / 行业专家参考解答（非官方解析） / 本句：The slow sea level rise in the Mediterranean ___ the city more than 3,000 years ago。主语是“海平面上升”，宾语是城市。"
+   },
+   {
+    "qid": "english1-2025-04",
+    "meta": "Section I Use of English · 第 4 题 · 2025",
+    "chose": "C",
+    "correct": "C",
+    "expectRight": true,
+    "verdict": "对了 / 行业专家参考解答（非官方解析） / 本句：For millennia, the city’s ___ lay unseen below some 13 feet of water。几千年来躺在水下、看不见的是城市的什么。"
+   }
+  ],
+  "afterF5": {
+   "offbar": "现在没网，连上再试 · 看到的是上次同步的内容",
+   "cap": "离 线 题 包 · 2026-11-02做了 4 / 26 · 4 道等联网补传",
+   "queue": 4,
+   "done": 4,
+   "serverWord": false,
+   "q2": "错了，正确答案 C行业专家参考解答（非官方解析）本句：…which caused the city to ___ sink。空格修饰 sink，看城市是怎样沉下去的。上下文复现：下一句马上说 “The slow sea level rise”，slow 与 gradually（逐渐地）同义复现，城市是慢慢下沉的。排除：A accidentally“意外地”、B frequently“频繁地”（城市不会反复下沉）、D temporarily“暂时地”（沉下去后一直在水下），都和 slow 矛盾。答案：C下次记住：副词空先往后读一句，找同义复现（slow → gradually）。这题等联网后补传，教练点评到时候再更新"
+  },
+  "clicksToSubjective": 24,
+  "subjVerdict": "文：但是，只要借助公众天生的好奇心，让非科学人士直接参与到研究过程中来，就有可能克服其中的许多挑战。 / 下次记住：多个 by doing 方式状语：放在谓语前，按逻辑先后排列。 / 自评：没思路 / 这题等联网后补传，教练点评到时候再更新",
+  "queue": [
+   {
+    "qid": "english1-2025-01",
+    "ans": "B",
+    "t": 6,
+    "at": "2026-11-02T04:28:50.800Z",
+    "local_correct": true,
+    "pack_version": "3d80632518e0dded"
+   },
+   {
+    "qid": "english1-2025-02",
+    "ans": "A",
+    "t": 5,
+    "at": "2026-11-02T04:28:56.650Z",
+    "local_correct": false,
+    "pack_version": "3d80632518e0dded"
+   },
+   {
+    "qid": "english1-2025-03",
+    "ans": "B",
+    "t": 7,
+    "at": "2026-11-02T04:29:03.966Z",
+    "local_correct": true,
+    "pack_version": "3d80632518e0dded"
+   },
+   {
+    "qid": "english1-2025-04",
+    "ans": "C",
+    "t": 8,
+    "at": "2026-11-02T04:29:12.732Z",
+    "local_correct": true,
+    "pack_version": "3d80632518e0dded"
+   },
+   {
+    "qid": "english1-2025-47",
+    "ans": "",
+    "rating": "no_idea",
+    "t": 5,
+    "at": "2026-11-02T04:29:27.615Z",
+    "local_correct": false,
+    "pack_version": "3d80632518e0dded"
+   }
+  ],
+  "cap": "离 线 题 包 · 2026-11-02做了 5 / 26 · 5 道等联网补传",
+  "online": {
+   "barGoneMs": 107,
+   "queueEmptyMs": 108,
+   "toasts": [
+    "离线做的 5 道题已经补传"
+   ],
+   "posts": 5,
+   "view": "回到正常刷题页"
+  },
+  "server": [
+   {
+    "qid": "english1-2025-47",
+    "ans": "",
+    "self": "no_idea",
+    "ok": false,
+    "t": 5,
+    "at_bj": "2026-11-02 12:29:27",
+    "pv": "3d80632518e0dded"
+   },
+   {
+    "qid": "english1-2025-04",
+    "ans": "C",
+    "self": null,
+    "ok": true,
+    "t": 8,
+    "at_bj": "2026-11-02 12:29:12",
+    "pv": "3d80632518e0dded"
+   },
+   {
+    "qid": "english1-2025-03",
+    "ans": "B",
+    "self": null,
+    "ok": true,
+    "t": 7,
+    "at_bj": "2026-11-02 12:29:03",
+    "pv": "3d80632518e0dded"
+   },
+   {
+    "qid": "english1-2025-02",
+    "ans": "A",
+    "self": null,
+    "ok": false,
+    "t": 5,
+    "at_bj": "2026-11-02 12:28:56",
+    "pv": "3d80632518e0dded"
+   },
+   {
+    "qid": "english1-2025-01",
+    "ans": "B",
+    "self": null,
+    "ok": true,
+    "t": 6,
+    "at_bj": "2026-11-02 12:28:50",
+    "pv": "3d80632518e0dded"
+   }
+  ],
+  "today": "2026-11-02",
+  "latestMode": {
+   "latest": true,
+   "n": 5
+  },
+  "posts": [
+   {
+    "qid": "english1-2025-01",
+    "keys": "answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds",
+    "status": 201,
+    "rs": "recorded",
+    "dup": false,
+    "ok": true,
+    "wq": null,
+    "clamped": null
+   },
+   {
+    "qid": "english1-2025-02",
+    "keys": "answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds",
+    "status": 201,
+    "rs": "recorded",
+    "dup": false,
+    "ok": false,
+    "wq": "active",
+    "clamped": null
+   },
+   {
+    "qid": "english1-2025-03",
+    "keys": "answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds",
+    "status": 201,
+    "rs": "recorded",
+    "dup": false,
+    "ok": true,
+    "wq": null,
+    "clamped": null
+   },
+   {
+    "qid": "english1-2025-04",
+    "keys": "answer,answered_at,client_id,pack_version,question_id,source,time_spent_seconds",
+    "status": 201,
+    "rs": "recorded",
+    "dup": false,
+    "ok": true,
+    "wq": null,
+    "clamped": null
+   },
+   {
+    "qid": "english1-2025-47",
+    "keys": "answered_at,client_id,pack_version,question_id,self_rating,source,thought_text,time_spent_seconds",
+    "status": 201,
+    "rs": "recorded",
+    "dup": false,
+    "ok": false,
+    "wq": "active",
+    "clamped": null
+   }
+  ],
+  "wrongBook": [
+   {
+    "qid": "english1-2025-47",
+    "status": "active"
+   },
+   {
+    "qid": "english1-2025-02",
+    "status": "active"
+   }
+  ],
+  "replay": [
+   {
+    "qid": "english1-2025-01",
+    "status": "duplicate",
+    "duplicate": true,
+    "score": 0.5
+   },
+   {
+    "qid": "english1-2025-02",
+    "status": "duplicate",
+    "duplicate": true,
+    "score": 0
+   }
+  ],
+  "replayCounts": {
+   "nBefore": 6,
+   "nAfter": 6,
+   "statsSame": true
+  }
+ }
+]
