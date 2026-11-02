@@ -245,3 +245,6 @@
 {"id": "english1-2017-32", "status": "pass", "by": "用户", "note": "[rdA1519fix d2ad7ef] D 补 annoyed policymakers 逐字", "at": "2026-11-02T13:45:00+08:00"}
 {"id": "english1-2021-28", "status": "fail", "by": "用户", "note": "[crossleak d2ad7ef] D 引避免砍伐减排价值句，露 29 答案 C", "at": "2026-11-02T13:45:00+08:00"}
 {"id": "english1-2025-27", "status": "fail", "by": "用户", "note": "[crossleak d2ad7ef] C 引 a price we must pay…，露 30 答案 C", "at": "2026-11-02T13:45:00+08:00"}
+{"id": "english1-2021-28", "status": "pass", "by": "用户", "note": "[crossleakfix 2119688] D 无中生有，新引文逐字，不再露 29 C", "at": "2026-11-02T13:40:00+08:00"}
+{"id": "english1-2025-27", "status": "pass", "by": "用户", "note": "[crossleakfix 2119688] C 改偷换概念贴切（hard 换义），引文逐字，不再露 30 C", "at": "2026-11-02T13:40:00+08:00"}
+{"id": "english1-2021-24", "status": "pass", "by": "用户", "note": "[crossleakfix 2119688] C 过度推断，引本题依据句，不再碰 25；A 的 more investment is needed 不算泄露", "at": "2026-11-02T13:40:00+08:00"}
