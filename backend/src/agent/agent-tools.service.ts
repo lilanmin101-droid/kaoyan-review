@@ -90,8 +90,10 @@ export class AgentToolsService {
 
   async getProfile(ctx: ToolCtx) {
     const today = await this.time.today(ctx.userId); // 学习日（04:00 换天）
-    const u = await this.db.one(`SELECT username, display_name, to_char(exam_date,'YYYY-MM-DD') exam_date, phase FROM users WHERE id=$1`, [ctx.userId]);
+    const u = await this.db.one(`SELECT username, display_name, to_char(exam_date,'YYYY-MM-DD') exam_date, phase,
+        settings->'target_score' target_score, settings->'target_scores' target_scores, settings->>'target_school' target_school FROM users WHERE id=$1`, [ctx.userId]);
     if (!u) throw new NotFoundException('用户不存在');
+    const { target_score, target_scores, target_school, ...user } = u;
     const daysLeft = u.exam_date ? Math.round((Date.parse(u.exam_date) - Date.parse(today)) / 86400000) : null;
     const weakest = (await this.db.query(
       `SELECT kp_path, score::float, recent_acc::float, attempts, correct, last_practiced_at FROM mastery
@@ -109,7 +111,14 @@ export class AgentToolsService {
               (SELECT count(*)::int FROM answer_records WHERE user_id=$1 AND answered_at > now()-interval '7 days') answers_7d,
               (SELECT round(avg(CASE WHEN is_correct THEN 1 ELSE 0 END)::numeric,3)::float FROM answer_records WHERE user_id=$1 AND is_correct IS NOT NULL AND answered_at > now()-interval '7 days') acc_7d`,
       [ctx.userId]);
-    return { today, user: { ...u, days_left: daysLeft, phase_cn: PHASE_CN[u.phase] }, weakest_kps: weakest, error_profile: errors, best_hours: habits, active_goals: goals, stats };
+    // 最近交卷的模考 / 真题套卷（分数原样给，Agent 引用分数时以这里为准）
+    const tz = await this.time.tz(ctx.userId);
+    const recentExams = (await this.db.query(
+      `SELECT id, kind, exam, year, title, to_char(submitted_at AT TIME ZONE $2,'YYYY-MM-DD') date,
+              (result->>'score')::float score, (result->>'max_score')::float max_score
+         FROM exams WHERE user_id=$1 AND status='submitted' ORDER BY submitted_at DESC LIMIT 8`, [ctx.userId, tz])).rows;
+    const targets = { total: target_score ?? null, by_subject: target_scores ?? null, school: target_school ?? null };
+    return { today, user: { ...user, days_left: daysLeft, phase_cn: PHASE_CN[u.phase] }, targets, weakest_kps: weakest, error_profile: errors, best_hours: habits, active_goals: goals, recent_exams: recentExams, stats };
   }
 
   /** wrong_from / wrong_to（YYYY-MM-DD，按用户时区）：只要这段日子里做错的题（首次或最近一次做错落在这段时间）——「昨天的错题」「上周的错题」 */
@@ -144,7 +153,7 @@ export class AgentToolsService {
               sum(CASE WHEN a.is_correct THEN 1 ELSE 0 END)::int correct, sum(COALESCE(a.time_spent_seconds,0))::int seconds
          FROM answer_records a JOIN questions q ON q.id=a.question_id WHERE ${w} GROUP BY 1 ORDER BY 1`, p)).rows;
     const recent = (await this.db.query(
-      `SELECT a.question_id, q.year, q.number, q.knowledge_points, a.answer, a.is_correct, a.self_rating, a.time_spent_seconds, a.answered_at
+      `SELECT a.question_id, a.sub_number, q.year, q.number, q.knowledge_points, a.answer, a.is_correct, a.self_rating, a.time_spent_seconds, a.thought_text, a.answered_at
          FROM answer_records a JOIN questions q ON q.id=a.question_id WHERE ${w}
         ORDER BY a.answered_at DESC LIMIT ${Math.min(Math.max(Number(i.limit) || 30, 1), 100)}`, p.slice(0, -1))).rows;
     return { days, by_day: byDay, recent };

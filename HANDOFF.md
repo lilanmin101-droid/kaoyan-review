@@ -115,7 +115,9 @@
 
 **换到一台全新的机器**：
 1. `git clone` 仓库，然后 `cd backend && npm install && npm run db:init && npm run migrate`。迁移时 pgvector 不可用会自动跳过 `002`。
-2. 下载 ECDICT 到 `data/ecdict/ecdict.csv`，然后 `npm run build && npm run import:all && npm run import:words -- ../data/ecdict/ecdict.csv --tags ky`。
+   - `pg-runtime/` 不在 git 里。`db:init` 现在会自己建目录、写一个最小的 `package.json`（没有它 npm 会装到仓库根），装 `@embedded-postgres/linux-x64`，再手动跑一次它的 postinstall：`cd pg-runtime/node_modules/@embedded-postgres/linux-x64 && node scripts/hydrate-symlinks.js`（还原 lib 软链接；npm 有时不跑 postinstall，不跑的话 initdb 找不到 .so）。旧版 db.sh 没这几步，要手动做。
+2. 下载 ECDICT：用 `https://raw.githubusercontent.com/skywind3000/ECDICT/master/ecdict.csv`（约 63 MB）放到 `data/ecdict/ecdict.csv`；GitHub release 里的 zip 链接现在 404。然后 `npm run build && npm run import:all && npm run import:words -- ../data/ecdict/ecdict.csv --tags ky`，**再**跑 `import-vocab`（真题词汇）。
+   - 顺序：先 `import:words` 后 `import-vocab`。以前反过来会撞 `words_word_lower_idx`（vocab 先插了词，ECDICT 再插同词不同大小写就报唯一键冲突）；`be/key-preflight` 分支里 `import-words` 已改成按 `lower(word)` 判重、同批去重，反过来也不报错了，但还是按这个顺序跑。
 3. `cp .env.example .env`，把 `JWT_SECRET` 改成随机串，`ASSETS_DIR` 指向仓库的 `tiku/`。
 4. 前端：`cd frontend && npm install && npm run build`。
 5. 原卷 PDF（`tiku/src/`）不在 git 里，见 §5.6。
@@ -277,10 +279,12 @@
 后端的习惯：在**旁路端口**（例如 3108）和**独立的库副本**上跑完测试，再重启 :3000，并确认进行中考试的指纹前后一致。
 
 ### 7.4 讲解预生成（key 到手后第一件事）
-- `npm run gen:explanations`，先加 `--dry-run` 估算，不调模型。待生成的是 **572 道英一题**；数学 248 道已有官方解析或专家讲解，默认不生成。DeepSeek 加通义千问合计约 **1.3–2.2 美元**（deploy/README 和脚本的估算）。可以断点续跑，可以限速（`--concurrency 3 --rpm 30`），其他参数有 `--retry-failed`、`--force`、`--ids`、`--limit`、`--include-official`。脚本分别估算 DeepSeek 高峰和低峰价格，尽量在低峰时段跑（具体时段以 DeepSeek 官网为准，**【未核实】**）。
+- `npm run gen:explanations`，先加 `--dry-run` 估算，不调模型。**默认跳过已有专家讲解（345 道：英一 312、数一 33）和只有官方解析的（215 道）**，实际待生成 **260 道**（820 道里），DeepSeek 加通义千问约 **0.60–0.99 美元**（2026-11-02 dry-run）。要连专家讲解的题也生成就加 `--include-expert`，官方解析的加 `--include-official`。可以断点续跑，可以限速（`--concurrency 3 --rpm 30`），其他参数有 `--retry-failed`、`--force`、`--ids`、`--limit`、`--include-official`。脚本分别估算 DeepSeek 高峰和低峰价格，尽量在低峰时段跑（具体时段以 DeepSeek 官网为准，**【未核实】**）。
 - 质检：答案字母和标准答案一致；证据句必须在原文里找得到，并标出第 N 段第 M 句；步骤数和长度在范围内。不合格的存为「待核对」，不当作正常讲解显示。完形可以用空格所在的句子作证据，并且要点出 kp_tags `evidence` 里的「上下文复现」（新题型的规则不变）。**这部分正在做，还没提交**（`ai/cloze-recurrence.ts`）。
 - 有 key 而某题没讲解时，讲解接口会现场生成一次并入库，同一题并发请求也只生成一次。`EXPLAIN_ON_DEMAND=0` 可以关。
 - 部署机上的命令写在 `deploy/README.md` 的「拿到 Key 之后：预生成讲解」一节。
+- **Key 到了先跑一键预检**：`cd backend && npm run key:preflight`（`scripts/key-preflight.sh`，说明在 `backend/README.md`「Key 到位后：一键预检」）。依次：查 Key → tsc → `ai:check`（含 `/models` 预检和模型名）→ 复制一份临时库、起临时后端（:3108）真模型发一条教练消息（查有没有 400 / mock）→ 讲解 dry-run + 真生成 2 题 → `eval:grading` → `eval:agent`（`EVAL_TZ=Asia/Shanghai`）。结束自动关临时后端、删临时库，不碰 :3000 和主库。没 Key 时 `npm run key:preflight -- --fake` 用假模型演练过，**全流程通过（2026-11-02）**。
+- 演练中修的坑：`deepseek-flash` 默认开思考模式，多轮工具调用要回传 `reasoning_content`，Mastra 不回传 → 第二轮 400。Agent 请求现在统一带 `thinking:{type:"disabled"}`（`src/ai/llm.ts` 的 `mastraProviderOptions`）。讲解生成不受影响。
 
 ---
 
@@ -317,7 +321,7 @@
 5c. **离线题包**：前端按 §6.4.1 四点修正 → 用户浏览器断网 5 题测试。
 
 **P1（key 或服务器到手后）**
-5. 拿到 key：填进 `.env` → `npm run ai:check` → 看 `/models` 预检日志，确定模型名 → 用真模型发一条教练消息，确认没有 400 → `gen:explanations --dry-run`，然后正式跑 → `eval:grading` 真模型跑 → `eval:agent` 在真 AI 模式下跑一遍，并做人工打分（108 条）。
+5. 拿到 key：填进 `backend/.env` → **`npm run key:preflight`**（一条命令做完 ai:check、真模型教练消息、讲解 2 题、eval:grading、eval:agent，见 §7.4；`--fake` 演练已通过）→ 全过再 `gen:explanations` 正式跑（默认 260 道）→ eval:agent 的人工打分（108 条）。
 6. 拿到服务器：按 `deploy/README.md` 操作，`./deploy.sh user@host --dry-run` 后正式部署，再 `./smoke-remote.sh https://域名`。配好域名才有 HTTPS，加到主屏和麦克风都要 HTTPS；大陆服务器需要备案。
 7. 「这周（11-02 起）」的文案；复测「自评·字数不足」换设备后的显示和高亮 2 秒。
 

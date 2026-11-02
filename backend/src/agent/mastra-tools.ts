@@ -32,7 +32,7 @@ export function buildMastraTools(svc: AgentToolsService, ctx: ToolCtx) {
   return {
     getProfile: createTool({
       id: 'getProfile',
-      description: '读取学习档案：考试日期与剩余天数、当前阶段、最弱的知识点、错因统计、高效时段、目标、近 7 天作答统计。做任何计划调整前先调用。',
+      description: '读取学习档案：考试日期与剩余天数、当前阶段、最弱的知识点、错因统计、高效时段、目标分（targets：总分和分科）、最近交卷的模考分数（recent_exams）、近 7 天作答统计。做任何计划调整前先调用。引用分数、天数时只用这里返回的数。',
       inputSchema: z.object({}),
       execute: safe(() => svc.getProfile(ctx)),
     }),
@@ -50,7 +50,7 @@ export function buildMastraTools(svc: AgentToolsService, ctx: ToolCtx) {
     }),
     getAnswerHistory: createTool({
       id: 'getAnswerHistory',
-      description: '读取最近 N 天的作答：按天汇总（题数、对题数、用时）和最近的作答明细。',
+      description: '读取最近 N 天的作答：按天汇总（题数、对题数、用时）和最近的作答明细（thought_text 是学生写下的思路 / 草稿 / 作文原文，sub_number 是小问号）。',
       inputSchema: z.object({
         days: z.number().int().min(1).max(90).optional(),
         kp_prefix: z.string().optional(),

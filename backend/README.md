@@ -18,6 +18,7 @@ npm run test:smoke        # curl 跑一遍主流程，最后打印 ALL OK
 npm run test:tools        # Agent 每个写工具 + 撤回还原，最后打印 TOOLS OK
 npm run test:sources      # 讲解/思路来源 expert/pending（另起 :3002），最后打印 SOURCES OK
 npm run ai:check          # 看 AI 配置：没 Key 显示 mock；有 Key 每个模型发 1 token 测连通
+npm run key:preflight     # Key 到位后一键预检（ai:check → 临时后端真模型 → 讲解 dry-run/2 题 → eval:grading → eval:agent），见下文
 ```
 
 第一次在新机器上：`npm run setup`（= db:init + migrate + import:2024 + seed:words）。
@@ -77,13 +78,28 @@ npm run mock              # http://localhost:4010/api/v1 ，MOCK_PORT 可改端�
 
 Key 放进 `backend/.env`（不要发到群里），重启后端即生效；`npm run ai:check` 检查。没 Key 时一切照常跑，只是走规则版 / 题库内容。
 
+### Key 到位后：一键预检
+
+```bash
+cd backend && npm run key:preflight            # 填好 DEEPSEEK_API_KEY / DASHSCOPE_API_KEY 后跑这一条
+npm run key:preflight -- --fake                # 没 Key 时演练整套流程（起 test/fake-llm.js，模拟 DeepSeek 思考模式）
+```
+
+按顺序检查：① 两个 Key 有没有配（不打印 Key）② 编译 ③ `ai:check`（`/models` 预检模型名 + 每个模型 1 token）④ 在 `PREFLIGHT_PORT`（默认 3108）起一个临时后端：启动日志的 `/models` 预检不能有 ⚠，再用真模型跑一条教练指令（不能 400、不能退回规则版 `mock=true`）⑤ `gen:explanations --dry-run`（看要生成多少题、多少钱），再真生成 2 题 ⑥ `eval:grading`（两个模型都不能报错）⑦ `eval:agent`（AI 模式，`EVAL_TZ=Asia/Shanghai`）。每步打印 ✓ / ✗ / ⚠，最后列出「要改什么」（比如「DEEPSEEK_API_KEY 无效 → 重新复制」「QWEN_MODEL 不在 /models 列表 → 改成列表里的名字」）。全部 ✓（⚠ 只是提醒）退出码 0。
+
+- 不碰正在跑的服务：临时后端单独端口；数据库用 `.env` 那个库的临时拷贝（需要 `pg_dump` / `pg_restore`，结束删除）。没装就加 `--no-db-copy` 用原库（会写入 2 条讲解和几个测试号）。
+- 其他选项：`--gen-limit N`（第 5 步真生成几题，0 = 只 dry-run）、`--skip-eval`（跳过 ⑥⑦，省钱）、`--keep`（不清理，排查用）。日志和评测报告都放 `/tmp/kaoyan-key-preflight-<时间>/`，不弄脏仓库。
+- `eval:agent` 的自动项有不通过时记 ⚠ 而不是 ✗：那是真模型的行为问题（交给后端 / 行业专家看报告），不是 Key 配置问题；但模型调用报错（400/401/429）或用例前提没落库会记 ✗。
+- 已知坑（演练时复现并修了）：DeepSeek `deepseek-flash` 默认开思考模式，多轮工具调用要回传 `reasoning_content`，Mastra 不回传 → 第二轮 400。现在 Agent 请求统一带 `thinking:{type:"disabled"}`（`src/ai/llm.ts` 的 `mastraProviderOptions`）。
+- 在服务器（docker compose）上：镜像里没有 tsc、test/ 和这个脚本，整套预检在开发机的仓库里跑；服务器上只验 Key：`cd deploy && docker compose exec backend node dist/scripts/ai-check.js`（改了 deploy/.env 要先 `docker compose up -d backend` 让新 Key 生效）。
+
 | 变量 | 默认 | 说明 |
 |---|---|---|
 | `DEEPSEEK_API_KEY` | 空 | **必填才开 AI**：Agent、夜间/周报、讲解生成 |
 | `DASHSCOPE_API_KEY` | 空 | 通义千问（核对讲解用的第二个模型）；`ai:explain` 需要两个 Key 都有 |
 | `DEEPSEEK_BASE_URL` | `https://api.deepseek.com` | |
-| `DEEPSEEK_CHAT_MODEL` | `deepseek-chat` | Agent、追问 |
-| `DEEPSEEK_REASONER_MODEL` | `deepseek-reasoner` | 讲解生成 |
+| `DEEPSEEK_CHAT_MODEL` | `deepseek-flash` | Agent、追问（旧名 `deepseek-chat` 自动换成 flash + 关思考） |
+| `DEEPSEEK_REASONER_MODEL` | `deepseek-flash` | 讲解生成（开思考模式；旧名 `deepseek-reasoner` 自动换） |
 | `DASHSCOPE_BASE_URL` | `https://dashscope.aliyuncs.com/compatible-mode/v1` | |
 | `QWEN_MODEL` | `qwen-max` | 独立解答 + 判等价 / 审证明 |
 | `AI_MOCK` | 空 | 设 `1` 时即使有 Key 也走规则版 |
@@ -101,6 +117,7 @@ Key 放进 `backend/.env`（不要发到群里），重启后端即生效；`npm
 
 - **讲解 / 给个思路**（`POST|GET /questions/{id}/explain`、`GET /questions/{id}/hint`）：来源 `source` 优先级 `ai`（已过双模型核对）> `expert`（`/workspace/tiku/explanations/*_expert.jsonl`，「行业专家参考解答（非官方解析）」，文件追加后自动生效）> `official`（questions.solution）> `pending`（讲解「讲解生成中」/ 思路「思路生成中」，不推内容）。**没 Key 时从不输出示例内容**；有 Key 时追问由 AI 以专家/官方讲解为底稿回答。
 - **讲解生成**：`npm run ai:explain -- --exam math1 --year 2024 [--ids math1-2024-17] [--force] [--dry-run]`。deepseek-reasoner 以专家/官方讲解为底稿写分步讲解，qwen 独立解答再和题库答案比对（证明题改为逐步审证明），一致才 `published`，否则 `needs_review`（前端显示「这题讲解待核对」）；报告写到 `ai_explain_report_<exam>_<year>.md`。缺任一 Key 直接跳过。
+- **讲解预生成**：`npm run gen:explanations -- --dry-run` 先看要生成多少题和估算费用。默认跳过已有专家讲解（`tiku/explanations/*_expert.jsonl`）和只有官方解析的题，dry-run 会分别列出两类各跳过多少；`--include-expert` / `--include-official` 连这些也生成。
 - **Agent**（`POST /agent/commands`）：Mastra Agent + deepseek-chat。读工具 getProfile / getWrongQuestions / getAnswerHistory / searchQuestions（按知识点路径 + 年份题号，没用向量）；写工具 updateDailyPlan / addReviewCard / upsertReminder / switchPhase / writeDailyTip，每次写都记 AgentAction 可撤回；不删作答记录和笔记。没 Key 时是规则版（`done.mock = true`）。
 - **定时任务**（`GET /agent/jobs`）：每晚 23:00 复盘 + 明日任务、周日 21:30 周报、每天 00:10 阶段检查（只往前切）。同一用户同一天同一任务只跑一次（`job_runs`）。
 - **本地验证 AI 路径**：`npm run fake-llm` 起假模型（:4020），再用 `DEEPSEEK_API_KEY=fake DEEPSEEK_BASE_URL=http://127.0.0.1:4020 DASHSCOPE_API_KEY=fake DASHSCOPE_BASE_URL=http://127.0.0.1:4020 DEEPSEEK_REASONER_MODEL=fake-reasoner DEEPSEEK_CHAT_MODEL=fake-chat QWEN_MODEL=fake-qwen PORT=3001 node dist/src/main.js` 起一个后端。假模型写进 `ai_explanations` 的行 `model LIKE 'fake%'`，测完删掉。

@@ -437,7 +437,7 @@ export function runUnitTests() {
     eq('resolveDeepseekModel 旧名映射', [resolveDeepseekModel('deepseek-reasoner'), resolveDeepseekModel('deepseek-chat'), resolveDeepseekModel('deepseek-flash', true)],
       [{ model: 'deepseek-flash', thinking: true }, { model: 'deepseek-flash', thinking: false }, { model: 'deepseek-flash', thinking: true }]);
     const ga = parseGenArgs(['--subject', 'english1', '--year', '2015-2025', '--dry-run', '--concurrency', '5']);
-    eq('gen:explanations 参数', [ga.subject, ga.years, ga.dry, ga.force, ga.concurrency, parseGenArgs(['--year', '2022']).years], ['english1', [2015, 2025], true, false, 5, [2022, 2022]]);
+    eq('gen:explanations 参数', [ga.subject, ga.years, ga.dry, ga.force, ga.concurrency, parseGenArgs(['--year', '2022']).years, ga.includeExpert, parseGenArgs(['--include-expert']).includeExpert], ['english1', [2015, 2025], true, false, 5, [2022, 2022], false, true]);
     eq('referenceAnswer', [referenceAnswer({ type: 'translation', answer: ['译文'] }), referenceAnswer({ type: 'essay', answer: ['Dear', 'Sir'] }), referenceAnswer({ type: 'choice', answer: ['C'] }), referenceAnswer({ type: 'match', answer: ['E'] }), referenceAnswer({ type: 'fill_blank', answer: ['1'] }), referenceAnswer({ type: 'essay', answer: [] })],
       ['译文', 'Dear\n\nSir', null, null, null, null]);
   }

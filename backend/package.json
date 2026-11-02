@@ -22,6 +22,7 @@
     "import:all": "node dist/scripts/import-questions.js --tree ../tiku/knowledge_tree.json --questions ../tiku --report-dir import_reports && node dist/scripts/import-vocab.js",
     "import:vocab": "tsc -p tsconfig.json && node dist/scripts/import-vocab.js",
     "ai:check": "tsc -p tsconfig.json && node dist/scripts/ai-check.js",
+    "key:preflight": "bash scripts/key-preflight.sh",
     "ai:explain": "tsc -p tsconfig.json && node dist/scripts/ai-explain.js",
     "gen:explanations": "tsc -p tsconfig.json && node dist/scripts/gen-explanations.js",
     "import:words": "tsc -p tsconfig.json && node dist/scripts/import-words.js",

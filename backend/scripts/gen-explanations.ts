@@ -1,11 +1,12 @@
 /**
  * 批量预生成讲解并入库：npm run gen:explanations -- [--subject english1|math1] [--year 2022 | 2015-2025] [--dry-run] [--force]
- *   [--concurrency 3] [--rpm 30] [--limit N] [--ids a,b] [--retry-failed] [--include-official] [--report path]
- * - 选题：review_status=confirmed，没有「已核对」AI 讲解，也没有官方 / 专家解析（--include-official 连这些也生成）
+ *   [--concurrency 3] [--rpm 30] [--limit N] [--ids a,b] [--retry-failed] [--include-expert] [--include-official] [--report path]
+ * - 选题：review_status=confirmed，没有「已核对」AI 讲解，也没有专家讲解（tiku/explanations/*_expert.jsonl）或官方解析
+ * - 有专家讲解的题默认跳过（前端直接展示专家讲解，不花钱）；--include-expert 连这些也生成；--include-official 连只有官方解析的也生成
  * - 已有当前提示词版本（PROMPT_VERSION）的讲解（通过或待核对）→ 跳过；--retry-failed 重做待核对的；--force 全部重做
  * - 出错（网络 / 429 / 解析失败）的题不写库，下次运行自动续上 → 幂等、可断点续跑；Ctrl-C 等在途的题做完再停
  * - 顺序：english1 2015–2025 → math1；质检不过关的存为 needs_review（前端「这题讲解待核对」），不会当好讲解发出
- * - --dry-run：只统计要生成多少题、估算 token 和费用，不调模型不写库
+ * - --dry-run：只统计要生成多少题（分别列出因专家讲解 / 官方解析跳过多少）、估算 token 和费用，不调模型不写库
  * - 没有 Key（且没开 AI_FAKE=1）时等同 --dry-run
  */
 import * as fs from 'fs';
@@ -16,6 +17,7 @@ import { aiStatus, isConfigured, preflightModels, providers, resolveDeepseekMode
 import { ChatFn, officialSolution, PROMPT_VERSION, QuestionRow } from '../src/ai/explain';
 import { aiFake, estimateQuestion, fakeChatFor, generateChecked, loadExplainQuestions, prices, storeExplanation } from '../src/ai/explanation-gen';
 import { chat } from '../src/ai/llm';
+import { expertExplanations } from '../src/ai/expert-explanations';
 
 function args(argv = process.argv.slice(2)) {
   const get = (k: string) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : undefined; };
@@ -25,7 +27,7 @@ function args(argv = process.argv.slice(2)) {
   return {
     subject: get('subject') ?? get('exam'), years, ids: get('ids')?.split(',').map((s) => s.trim()).filter(Boolean),
     limit: get('limit') ? Number(get('limit')) : undefined, force: argv.includes('--force'), dry: argv.includes('--dry-run'),
-    retryFailed: argv.includes('--retry-failed'), includeOfficial: argv.includes('--include-official'),
+    retryFailed: argv.includes('--retry-failed'), includeOfficial: argv.includes('--include-official'), includeExpert: argv.includes('--include-expert'),
     concurrency: Math.max(1, Number(get('concurrency') ?? 3)), rpm: Math.max(1, Number(get('rpm') ?? 30)), report: get('report'),
   };
 }
@@ -68,13 +70,16 @@ async function main() {
             (array_agg(status ORDER BY version DESC) FILTER (WHERE prompt_version=$1))[1] current
        FROM ai_explanations GROUP BY question_id`, [PROMPT_VERSION])).rows.map((r) => [r.question_id, r]));
 
-  const skip = { verified_ai: 0, official: 0, done_current: 0, failed_current: 0 };
+  const skip = { verified_ai: 0, expert: 0, official: 0, done_current: 0, failed_current: 0 };
+  const experts = expertExplanations();
+  const expertBy = new Map<string, number>();
   let todo: QuestionRow[] = [];
   for (const q of all) {
     const e = ex.get(q.id);
     if (!o.force) {
       if (e?.verified_ai && !(e.current === 'needs_review' && o.retryFailed)) { skip.verified_ai++; continue; }
-      if (!o.includeOfficial && officialSolution(q)) { skip.official++; continue; }
+      if (!o.includeExpert && experts.has(q.id)) { skip.expert++; expertBy.set(q.exam, (expertBy.get(q.exam) ?? 0) + 1); continue; }
+      if (!o.includeOfficial && !experts.has(q.id) && officialSolution(q)) { skip.official++; continue; }
       if (e?.current === 'needs_review' && !o.retryFailed) { skip.failed_current++; continue; }
       if (e?.current && e.current !== 'needs_review') { skip.done_current++; continue; }
     }
@@ -96,7 +101,7 @@ async function main() {
   const usd = (i: number, out: number, pp: { input: number; output: number }) => (i * pp.input + out * pp.output) / 1e6;
   const ps = providers();
   console.log(`提示词版本 ${PROMPT_VERSION}｜生成模型 ${fake ? 'fake-explainer-v1（AI_FAKE=1）' : `${resolveDeepseekModel(ps.deepseek.models.reasoner, true).model}（思考模式；配置名 ${ps.deepseek.models.reasoner}）`}｜核对模型 ${fake ? 'fake-verifier-v1' : ps.qwen.models.chat}`);
-  console.log(`符合条件 ${all.length} 题；跳过：已有核对通过的 AI 讲解 ${skip.verified_ai}、已有官方/专家解析 ${skip.official}、当前版本已生成 ${skip.done_current}、当前版本待核对 ${skip.failed_current}（--retry-failed 重做）`);
+  console.log(`符合条件 ${all.length} 题；跳过：已有核对通过的 AI 讲解 ${skip.verified_ai}、有专家讲解 ${skip.expert}${expertBy.size ? `（${[...expertBy].map(([k, n]) => `${k} ${n}`).join('、')}；--include-expert 也生成）` : ''}、只有官方解析 ${skip.official}、当前版本已生成 ${skip.done_current}、当前版本待核对 ${skip.failed_current}（--retry-failed 重做）`);
   console.log(`要生成 ${todo.length} 题：`);
   for (const [k, t] of by) console.log(`  ${k.padEnd(28)} ${String(t.n).padStart(4)} 题  DeepSeek 入 ${t.ds_in.toLocaleString()} / 出 ${t.ds_out.toLocaleString()} tok`);
   const peak = usd(tot.ds_in, tot.ds_out, pr.deepseek_peak), offp = usd(tot.ds_in, tot.ds_out, pr.deepseek_offpeak), qw = usd(tot.qw_in, tot.qw_out, pr.qwen);
