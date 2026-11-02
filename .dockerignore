@@ -1,0 +1,11 @@
+# web 镜像（context 为仓库根）只需要 frontend/ 和 deploy/
+.git
+tiku/
+data/
+user-test/
+backend/
+pg-runtime/
+pgdata/
+**/node_modules
+**/.env
+**/.env.*
