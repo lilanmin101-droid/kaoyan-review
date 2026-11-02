@@ -57,6 +57,13 @@ export function subKeyOf(k: unknown, subs: string[]): string | null {
 
 /** 开考后多少秒内、一道没答就放弃 → 整场删掉（不留记录） */
 export const DISCARD_WINDOW_SECONDS = 120;
+/**
+ * 放弃时整场删除：开考 2 分钟内（ageMs ≤ 120_000）、一道没答、库里也没有这场的作答记录。
+ * 答过、超过 2 分钟、或已经有作答记录 → false，照旧记 abandoned。
+ */
+export function discardFreshExam(answeredCount: number, ageMs: number, hasAnswerRecords: boolean): boolean {
+  return answeredCount === 0 && !hasAnswerRecords && ageMs <= DISCARD_WINDOW_SECONDS * 1000;
+}
 
 @Injectable()
 export class ExamsService implements OnModuleInit, OnModuleDestroy {
@@ -594,12 +601,12 @@ export class ExamsService implements OnModuleInit, OnModuleDestroy {
       if (e.status === 'submitted') throw new ConflictException({ message: '已经交卷，不能放弃', status: e.status });
       const answered = Object.values<any>(e.answers ?? {}).filter((x) => Array.isArray(x?.answer) && x.answer.some((v: any) => String(v ?? '').trim())).length;
       const ageMs = examNow().getTime() - new Date(e.started_at).getTime();
-      if (answered === 0 && ageMs <= DISCARD_WINDOW_SECONDS * 1000) {
-        const rec = (await c.query(`SELECT 1 FROM answer_records WHERE exam_id=$1 LIMIT 1`, [examId])).rows[0];
-        if (!rec) {
-          await c.query(`DELETE FROM exams WHERE id=$1 AND user_id=$2`, [examId, userId]); // exam_progress / 幂等记录级联删除
-          return true;
-        }
+      const hasRec = answered === 0 && ageMs <= DISCARD_WINDOW_SECONDS * 1000
+        ? !!(await c.query(`SELECT 1 FROM answer_records WHERE exam_id=$1 LIMIT 1`, [examId])).rows[0]
+        : false;
+      if (discardFreshExam(answered, ageMs, hasRec)) {
+        await c.query(`DELETE FROM exams WHERE id=$1 AND user_id=$2`, [examId, userId]); // exam_progress / 幂等记录级联删除
+        return true;
       }
       const ck = await this.clockOf(e);
       const elapsed = Math.min(ck.elapsed_seconds, e.duration_seconds);

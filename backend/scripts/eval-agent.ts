@@ -11,7 +11,7 @@ import * as path from 'path';
 import { Client } from 'pg';
 import { loadEnv } from './env';
 import { runUnitTests } from './test-unit';
-import { badDayLabels, renderDates } from '../src/common/time';
+import { badDayLabels, renderDates, weekOf, weekOpenLabel } from '../src/common/time';
 const TEST_PW = process.env.TEST_PW || require('crypto').randomBytes(12).toString('hex'); // 测试号密码：不写死在仓库里
 /** 学生文字里不该有的标点连用（和 src/agent/coach.service.ts badPunct 一致） */
 const BAD_PUNCT = /[。，；、：][。，；、]|[！？][，；、]|，[！？]/;
@@ -977,7 +977,7 @@ const BUILTIN: Case[] = [
   {
     id: 'r14-week-countdown-tense', scenario: '第 14 轮：旧周报 8 天后再读，「本周（range）」→「那周（range）」，「距考试 N 天」→「当时距考试 N 天」；当天读不变',
     input: 'weekly（force）→ 当天读 → X-Debug-Now +8 天再读', source: 'builtin',
-    expect: ['库里是 {{week}} / {{countdown}} 占位符', '当天读：本周（range）、距考试 N 天', '8 天后读：那周（range）、当时距考试 N 天'], must_not: ['8 天后还写本周 / 距考试（没加当时）'],
+    expect: ['库里是 {{week}} / {{countdown}} 占位符', '当天读：本周（MM-DD 起）、距考试 N 天', '8 天后读：那周（range）、当时距考试 N 天'], must_not: ['8 天后还写本周 / 距考试（没加当时）'],
     run: async (s) => {
       const d = await today(s);
       await s.send('PATCH', '/me/settings', { exam_date: addDays(d, 47) });
@@ -991,7 +991,7 @@ const BUILTIN: Case[] = [
       const bad8 = badDayLabels(t8, addDays(d, 8), d);
       return [
         pass('库里是 {{week}} / {{countdown}} 占位符', 'expect', /\{\{week:\d{4}-\d{2}-\d{2}\|本周\}\}/.test(raw?.details ?? '') && /\{\{countdown:\d+\|asof=/.test(raw?.details ?? ''), raw?.details),
-        pass('当天读：本周（range）、距考试 N 天', 'expect', /^本周（\d{2}-\d{2}–\d{2}-\d{2}）/.test(t0) && /(?<!当时)距考试 \d+ 天/.test(t0) && !badDayLabels(t0, d, d).length, t0),
+        pass('当天读：本周（MM-DD 起）、距考试 N 天', 'expect', /^本周（\d{2}-\d{2} 起）/.test(t0) && /(?<!当时)距考试 \d+ 天/.test(t0) && !badDayLabels(t0, d, d).length, t0),
         pass('8 天后读：那周（range）、当时距考试 N 天', 'expect', /^那周（\d{2}-\d{2}–\d{2}-\d{2}）/.test(t8) && /当时距考试 \d+ 天/.test(t8), t8),
         pass('8 天后还写本周 / 距考试（没加当时）', 'must_not', bad8.length === 0, bad8.join(',')),
       ];
@@ -1094,7 +1094,7 @@ const BUILTIN: Case[] = [
         pass('今天还要做什么：列出计划里没做的任务和总分钟', 'expect', q2.done?.question_kind === 'todo' && r(q2).includes('还要做 2 项，共约 41 分钟') && r(q2).includes('练 5 道极限（25 分钟）'), r(q2)),
         pass('错题还剩几道：和错题本 active 数一致', 'expect', q3.done?.question_kind === 'wrong_left' && r(q3).startsWith(`错题还剩 ${active} 道`) && r(q3).includes('已经排了 2 道重做'), r(q3)),
         pass('离考试还有几天：按学习日算的天数', 'expect', q4.done?.question_kind === 'exam_days' && r(q4).includes(`还有 47 天`) && r(q4).includes(exam), r(q4)),
-        pass('这周进度：题数和正确率是真实的', 'expect', q5.done?.question_kind === 'week' && r(q5).includes(`做了 ${ans.n} 题，正确率 ${Math.round((100 * ans.c) / ans.n)}%`), r(q5)),
+        pass('这周进度：题数和正确率是真实的', 'expect', q5.done?.question_kind === 'week' && r(q5).includes(`这周（${weekOpenLabel(weekOf(d).from)}）`) && r(q5).includes(`做了 ${ans.n} 题，正确率 ${Math.round((100 * ans.c) / ans.n)}%`) && !/这周（\d{2}-\d{2}）/.test(r(q5)), r(q5)),
         pass('同一个问题连问两次都回答（不去重）', 'expect', q6.done?.deduped === false && r(q6) === r(q3), r(q6)),
         pass('问题改了计划 / 写了改动记录', 'must_not', acts1 === acts0 && plan1 === plan0 && all.every((c) => c.done?.action_count === 0 && !(c.actions ?? []).length), `${acts0}→${acts1}`),
         pass('回答成「计划里已经有…」', 'must_not', all.every((c) => !/计划里已经有/.test(r(c)) && !badDayLabels(r(c), d).length)),

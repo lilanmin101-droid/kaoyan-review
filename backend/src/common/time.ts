@@ -87,14 +87,26 @@ export function dayLabel(date: string, today: string): string {
 export function badDayLabels(text: string, today: string, writtenOn?: string): string[] {
   const out: string[] = [];
   // 第 14 轮：周的时态——整周已过还写「本周/这周（range）」，或当周写成「那周」
+  const mmYear = (mm: string) => {
+    let y = Number(today.slice(0, 4));
+    if (today.slice(5, 7) === '01' && mm === '12') y--;
+    if (today.slice(5, 7) === '12' && mm === '01') y++;
+    return y;
+  };
   for (const m of text.matchAll(/(本周|这周|那周)（(\d{2})-(\d{2})[–-](\d{2})-(\d{2})）/g)) {
-    let y = Number(today.slice(0, 4)); if (today.slice(5, 7) === '01' && m[4] === '12') y--;
-    const to = `${y}-${m[4]}-${m[5]}`, past = to < today;
+    const to = `${mmYear(m[4])}-${m[4]}-${m[5]}`, past = to < today;
     if (past !== (m[1] === '那周')) out.push(m[0]);
   }
+  // 进行中的周写成「这周（11-02 起）」；过了还写「起」、或「那周」配「起」、或只标一天「这周（11-02）」都不对
+  for (const m of text.matchAll(/(本周|这周|那周)（(\d{2})-(\d{2}) 起）/g)) {
+    const wk = weekOf(`${mmYear(m[2])}-${m[2]}-${m[3]}`);
+    if (wk.to < today || m[1] === '那周' || wk.from.slice(5) !== `${m[2]}-${m[3]}`) out.push(m[0]);
+  }
+  for (const m of text.matchAll(/(本周|这周)（\d{2}-\d{2}）/g)) out.push(m[0]);
   // 倒计时时态：文字写在更早的学习日，还写「距考试 N 天」（没加「当时」）
-  // 第 15 轮：同一段里「本周（range）」那周还没过完 → 倒计时应是现算的，不算错
-  const curWeek = [...text.matchAll(/(本周|这周)（(\d{2})-(\d{2})[–-](\d{2})-(\d{2})）/g)].some((m) => { let y = Number(today.slice(0, 4)); if (today.slice(5, 7) === '01' && m[4] === '12') y--; return `${y}-${m[4]}-${m[5]}` >= today; });
+  // 第 15 轮：同一段里这周还没过完（「本周（range）」或「本周（MM-DD 起）」）→ 倒计时应是现算的，不算错
+  const curWeek = [...text.matchAll(/(本周|这周)（(\d{2})-(\d{2})[–-](\d{2})-(\d{2})）/g)].some((m) => `${mmYear(m[4])}-${m[4]}-${m[5]}` >= today)
+    || [...text.matchAll(/(本周|这周)（(\d{2})-(\d{2}) 起）/g)].some((m) => weekOf(`${mmYear(m[2])}-${m[2]}-${m[3]}`).to >= today);
   if (writtenOn && writtenOn < today && !curWeek) for (const m of text.matchAll(/(?<!当时)(距考试还有|距考试|离考试还有) ?\d+ ?天/g)) out.push(m[0]);
   for (const m of text.matchAll(/\{\{(week|countdown|nextweek|wkt|dyt):[^}]*\}\}/g)) out.push(m[0]);
   // 第 17 轮：说的是已经过去的那天（「昨天（11-01）」「10-31（周六）」），还写「还没有…记录」
@@ -147,7 +159,7 @@ function withYear(mm: string, dd: string, ref: string) {
 }
 const LABEL = '(?:今天|明天|后天|昨天|前天|周[一二三四五六日])';
 // 「今天（11-02）」「周三（11-04）」「11-20（周五）」「11-02」→ 占位符；日期区间（10-26–11-01）、「还算 11-01 这一天」、题号 2024-01、完整日期不动
-const TO_PH_RE = new RegExp(`${LABEL}（(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])）|(?<![\\w\\-–:/.]|还算 )(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])(?:（周[一二三四五六日]）)?(?![\\w\\-–:/.])`, 'g');
+const TO_PH_RE = new RegExp(`${LABEL}（(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])）|(?<![\\w\\-–:/.]|还算 )(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])(?:（周[一二三四五六日]）)?(?![\\w\\-–:/.]|\\s*起)`, 'g');
 /** 写库前：文字里相对写法 / 裸日期都换成占位符（ref = 写的时候的学习日） */
 export function toPlaceholders(text: string | null | undefined, ref: string): string | null | undefined {
   if (!text) return text;
@@ -155,7 +167,7 @@ export function toPlaceholders(text: string | null | undefined, ref: string): st
   return text
     .replace(TO_PH_RE, (m, m1, d1, m2, d2, off, str) => { const d = withYear(m1 ?? m2, d1 ?? d2, ref); return str[off + m.length] === '先' ? `{{date:${d}|plan}}` : datePh(d); })
     .replace(/\{\{date:(\d{4}-\d{2}-\d{2})\}\}(?=先)/g, '{{date:$1|plan}}')
-    // 周/倒计时（第 14 轮）：「本周（11-02–11-08）」→ {{week:2026-11-02|本周}}；「距考试 47 天」→ {{countdown:47|asof=ref|距考试}}
+    // 周/倒计时（第 14 轮）：「本周（11-02–11-08）」或「本周（11-02 起）」→ {{week:2026-11-02|本周}}；「距考试 47 天」→ {{countdown:47|asof=ref|距考试}}
     .replace(WEEK_RE, (m, w, m1, d1) => { const st = withYear(m1, d1, ref); return weekOf(st).from === st ? `{{week:${st}|${w}}}` : m; })
     .replace(CD_RE, (_m, pre, n) => `{{countdown:${n}|asof=${ref}|${pre}}}`)
     // 第 15 轮：「下周重点补…」「下周最重要的一件事是…」→ {{nextweek:下周一|下周重点}}：…（下周开始后读成「当时定的下周重点：…」）
@@ -201,12 +213,12 @@ function weekTense(text: string): string {
 }
 const NEXTWEEK_RE = /(?<![|\w])下周(?:重点|最重要的(?:一件)?事)(?:是|[：:]\s*)?/g;
 export const nextweekPh = (start: string, word = '下周重点') => `{{nextweek:${start}|${word}}}`;
-const WEEK_RE = /(本周|这周)（(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])[–-](?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])）/g;
+const WEEK_RE = /(本周|这周)（(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])(?:[–-](?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])| 起)）/g;
 const CD_RE = /(?<!当时)(距考试还有|距考试|离考试(?:（[^（）]*）)?还有) ?(\d+) ?天/g;
 export const weekPh = (start: string, word = '本周') => `{{week:${start}|${word}}}`;
 export const countdownPh = (n: number, asof: string, pre = '距考试') => `{{countdown:${n}|asof=${asof}|${pre}}}`;
 /** 周 / 倒计时 / 下周占位符按读者学习日渲染（第 15 轮统一时态）：
- * - {{week:START|本周}}：那周还没过完 →「本周（range）」；整周已过 →「那周（range）」
+ * - {{week:START|本周}}：那周还没过完 →「本周（MM-DD 起）」；整周已过 →「那周（range）」
  * - {{countdown:N|asof=D|距考试}}：同一段文字里有还没过完的那周（周报当周再看）→ 按今天现算「距考试 N' 天」（N' = N − (今天 − D)，和 days_left 同口径）；
  *   没有周、或那周已过 → 生成日早于今天就写「当时距考试 N 天」，不再现算
  * - {{nextweek:START|下周重点}}：START 是「下周」的周一；还没到 →「下周重点」；那周已经开始 / 过去 →「当时定的下周重点」 */
@@ -215,7 +227,7 @@ function renderWeekCd(text: string, today: string): string {
   const liveWeek = weeks.length > 0 && weeks.every((wk) => wk.to >= today);
   const diff = (a: string, b: string) => Math.round((Date.parse(`${b}T12:00:00Z`) - Date.parse(`${a}T12:00:00Z`)) / 86400000);
   return text
-    .replace(/\{\{week:(\d{4}-\d{2}-\d{2})\|([^}]*)\}\}/g, (_m, st, w) => { const wk = weekOf(st); return `${wk.to < today ? '那周' : (w || '本周')}（${wk.label}）`; })
+    .replace(/\{\{week:(\d{4}-\d{2}-\d{2})\|([^}]*)\}\}/g, (_m, st, w) => { const wk = weekOf(st); return wk.to < today ? `那周（${wk.label}）` : `${w || '本周'}（${weekOpenLabel(wk.from)}）`; })
     .replace(/\{\{countdown:(\d+)\|asof=(\d{4}-\d{2}-\d{2})\|?([^}]*)\}\}/g, (_m, n, asof, pre) => {
       if (asof >= today) return `${pre || '距考试'} ${n} 天`;
       if (liveWeek) return `${pre || '距考试'} ${Math.max(0, Number(n) - diff(asof, today))} 天`;
@@ -273,7 +285,17 @@ export function renderDeep(v: any, today: string, quotes = false): any {
   return v;
 }
 
-/** 自然周（周一到周日）：from / to（YYYY-MM-DD）+ 标签「11-02–11-08」。「这周 / 本周」一律写整周范围 */
+/** 进行中的周，学生看到的叫法：「11-02 起」（从周一起，不写成「11-02」只标一天）。整周过了再用 weekOf().label「11-02–11-08」 */
+export const weekOpenLabel = (from: string) => `${from.slice(5)} 起`;
+/**
+ * 括号里的日子：单日「11-02」；跨天「11-02–11-04」。
+ * openWeek：这周 / 本周只落到一天（周一）时写成「11-02 起」，避免看起来只有这一天。
+ */
+export function daySpanLabel(from: string, to: string, openWeek = false): string {
+  if (from === to) return openWeek ? weekOpenLabel(from) : from.slice(5);
+  return `${from.slice(5)}–${to.slice(5)}`;
+}
+/** 自然周（周一到周日）：from / to（YYYY-MM-DD）+ 已结束时的标签「11-02–11-08」。进行中对学生写成 weekOpenLabel */
 export function weekOf(d: string) {
   const wd = new Date(`${d}T12:00:00Z`).getUTCDay();
   const from = addDays(d, -((wd + 6) % 7)), to = addDays(from, 6);

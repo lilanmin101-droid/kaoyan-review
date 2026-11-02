@@ -11,7 +11,7 @@ import { validateErrata, cleanErrata } from './import-questions';
 import { normalizeCommand } from '../src/agent/agent.controller';
 import { EXPLICIT_DAY_RE, planDedupeKey, nextQuantity, taskQuantity } from '../src/agent/agent-tools.service';
 import { isValidTz } from '../src/common/user-time.service';
-import { appendNote, bareDates, earlyNote, nestQuotes, renderDates, toPlaceholders, wantsEarlyNote, withEarlyNote, badDayLabels, dayLabel, DAY_START_HOUR, localDate, relativeDay, startOfLocalDay, startOfStudyDay, studyDate, studyDaySql, weekOf } from '../src/common/time';
+import { appendNote, bareDates, daySpanLabel, earlyNote, nestQuotes, renderDates, toPlaceholders, wantsEarlyNote, weekOpenLabel, withEarlyNote, badDayLabels, dayLabel, DAY_START_HOUR, localDate, relativeDay, startOfLocalDay, startOfStudyDay, studyDate, studyDaySql, weekOf } from '../src/common/time';
 import { coachFrequency, inQuiet, minutesUntilQuietEnds, quietHours, UserInputError, validateSettingsPatch } from '../src/common/reminders';
 import { streakOf } from '../src/auth/me-stats.service';
 import { intentSummary } from '../src/agent/jobs.service';
@@ -29,7 +29,7 @@ import { questionKind } from '../src/agent/coach-answers';
 import { selfGradeCheck, selfGradeFields } from '../src/exams/self-grade-check';
 import { countUnits } from '../src/english/ai-grader';
 import { referenceAnswer } from '../src/questions/reference-answer';
-import { tickSeconds, HEARTBEAT_CAP_SECONDS } from '../src/exams/exams.service';
+import { discardFreshExam, DISCARD_WINDOW_SECONDS, tickSeconds, HEARTBEAT_CAP_SECONDS } from '../src/exams/exams.service';
 import { parseGenArgs } from './gen-explanations';
 
 let fail = 0, pass = 0;
@@ -314,7 +314,11 @@ export function runUnitTests() {
   // 第 14 轮：周 / 倒计时时态（8 天后读旧周报）
   { const ph = toPlaceholders('本周（11-02–11-08）做了 3 题，当前阶段：基础，距考试 47 天。这周（11-02–11-08）', '2026-11-08') as string;
     eq('周/倒计时 占位符', ph, '{{week:2026-11-02|本周}}做了 3 题，{{wkt:2026-11-02|当前阶段|当时阶段}}：基础，{{countdown:47|asof=2026-11-08|距考试}}。{{week:2026-11-02|这周}}');
-    eq('周/倒计时 渲染', ['2026-11-08', '2026-11-16'].map((d) => renderDates(ph, d)), ['本周（11-02–11-08）做了 3 题，当前阶段：基础，距考试 47 天。这周（11-02–11-08）', '那周（11-02–11-08）做了 3 题，当时阶段：基础，当时距考试 47 天。那周（11-02–11-08）']);
+    eq('周/倒计时 渲染', ['2026-11-08', '2026-11-16'].map((d) => renderDates(ph, d)), ['本周（11-02 起）做了 3 题，当前阶段：基础，距考试 47 天。这周（11-02 起）', '那周（11-02–11-08）做了 3 题，当时阶段：基础，当时距考试 47 天。那周（11-02–11-08）']);
+    eq('起 写成占位符', toPlaceholders('本周（11-02 起）做了 3 题。这周（11-02 起）', '2026-11-04'), '{{week:2026-11-02|本周}}做了 3 题。{{week:2026-11-02|这周}}');
+    eq('这周只标一天算错', badDayLabels('这周（11-02）还没有作答记录', '2026-11-02'), ['这周（11-02）']);
+    eq('进行中写起、过了还写起', [badDayLabels('本周（11-02 起）', '2026-11-04'), badDayLabels('本周（11-02 起）', '2026-11-16'), badDayLabels('那周（11-02 起）', '2026-11-04')], [[], ['本周（11-02 起）'], ['那周（11-02 起）']]);
+    eq('周一筛这周写成起', [daySpanLabel('2026-11-02', '2026-11-02', true), daySpanLabel('2026-11-02', '2026-11-04', true), daySpanLabel('2026-11-01', '2026-11-01', false), weekOpenLabel('2026-11-02')], ['11-02 起', '11-02–11-04', '11-01', '11-02 起']);
     eq('周/倒计时 幂等', toPlaceholders(ph, '2026-11-16'), ph);
     eq('离考试（…）还有', renderDates(toPlaceholders('离考试（2026-12-19，周六）还有 47 天', '2026-11-02') as string, '2026-11-10'), '当时离考试（2026-12-19，周六）还有 47 天');
     eq('扫描：旧周报', badDayLabels('本周（11-02–11-08）…距考试 47 天', '2026-11-16', '2026-11-02'), ['本周（11-02–11-08）', '距考试 47 天']);
@@ -326,8 +330,8 @@ export function runUnitTests() {
     eq('E2 旧写法也换', toPlaceholders('下周重点补「变限积分」。', '2026-11-04'), '{{nextweek:2026-11-09|下周重点}}：补「变限积分」。');
     eq('E2 幂等', toPlaceholders(head, '2026-11-12'), head);
     const R = (d: string) => [renderDates(head, d), renderDates(det, d)];
-    eq('E1 当周（11-05）', R('2026-11-05'), ['下周重点：补「变限积分」。', '本周（11-02–11-08）做了 12 题，正确率 50%。当前阶段：强化，距考试 44 天。']);
-    eq('E1 周日（11-08）', R('2026-11-08')[1], '本周（11-02–11-08）做了 12 题，正确率 50%。当前阶段：强化，距考试 41 天。');
+    eq('E1 当周（11-05）', R('2026-11-05'), ['下周重点：补「变限积分」。', '本周（11-02 起）做了 12 题，正确率 50%。当前阶段：强化，距考试 44 天。']);
+    eq('E1 周日（11-08）', R('2026-11-08')[1], '本周（11-02 起）做了 12 题，正确率 50%。当前阶段：强化，距考试 41 天。');
     eq('E1 周过了（11-09）', R('2026-11-09'), ['当时定的下周重点：补「变限积分」。', '那周（11-02–11-08）做了 12 题，正确率 50%。当时阶段：强化，当时距考试 45 天。']);
     eq('E1/E2 8 天后（11-12）', R('2026-11-12'), ['当时定的下周重点：补「变限积分」。', '那周（11-02–11-08）做了 12 题，正确率 50%。当时阶段：强化，当时距考试 45 天。']);
     eq('扫描：当周现算不报错', badDayLabels(R('2026-11-05')[1], '2026-11-05', '2026-11-04'), []);
@@ -338,8 +342,8 @@ export function runUnitTests() {
   { const det = toPlaceholders('本周（11-02–11-08）还没有作答记录，也还没有学习时长记录。当前阶段：基础，距考试 45 天。', '2026-11-04') as string;
     eq('G1 占位符', det, '{{week:2026-11-02|本周}}{{wkt:2026-11-02|还没有作答记录，也还没有学习时长记录|没有作答记录，也没有学习时长记录}}。{{wkt:2026-11-02|当前阶段|当时阶段}}：基础，{{countdown:45|asof=2026-11-04|距考试}} 天。'.replace(' 天。', '。'));
     eq('G1 幂等', toPlaceholders(det, '2026-11-12'), det);
-    eq('G1 当周（11-05）', renderDates(det, '2026-11-05'), '本周（11-02–11-08）还没有作答记录，也还没有学习时长记录。当前阶段：基础，距考试 44 天。');
-    eq('G1 周日（11-08 晚）', renderDates(det, '2026-11-08'), '本周（11-02–11-08）还没有作答记录，也还没有学习时长记录。当前阶段：基础，距考试 41 天。');
+    eq('G1 当周（11-05）', renderDates(det, '2026-11-05'), '本周（11-02 起）还没有作答记录，也还没有学习时长记录。当前阶段：基础，距考试 44 天。');
+    eq('G1 周日（11-08 晚）', renderDates(det, '2026-11-08'), '本周（11-02 起）还没有作答记录，也还没有学习时长记录。当前阶段：基础，距考试 41 天。');
     eq('G1 周过了（11-09）', renderDates(det, '2026-11-09'), '那周（11-02–11-08）没有作答记录，也没有学习时长记录。当时阶段：基础，当时距考试 45 天。');
     const d2 = toPlaceholders('本周（11-02–11-08）做了 10 题，正确率 20%，还没有学习时长记录。最需要补的：极限。当前阶段：基础，距考试 45 天。', '2026-11-04') as string;
     eq('G1 只缺时长（11-12）', renderDates(d2, '2026-11-12'), '那周（11-02–11-08）做了 10 题，正确率 20%，没有学习时长记录。最需要补的：极限。当时阶段：基础，当时距考试 45 天。');
@@ -385,6 +389,15 @@ export function runUnitTests() {
     eq('机判题型', ['single_choice', 'multiple_choice', 'fill_blank', 'match', 'essay', 'translation'].map(isObjectiveType), [true, true, true, true, false, false]); }
   eq('tickSeconds', [tickSeconds('2026-11-02T00:00:00Z', Date.parse('2026-11-02T00:00:30Z')), tickSeconds('2026-11-02T00:00:00Z', Date.parse('2026-11-02T01:00:00Z')),
     tickSeconds('2026-11-02T00:10:00Z', Date.parse('2026-11-02T00:00:00Z')), tickSeconds(null, Date.now())], [30, HEARTBEAT_CAP_SECONDS, 0, 0]);
+  eq('2 分钟内没答放弃即删除', [
+    discardFreshExam(0, DISCARD_WINDOW_SECONDS * 1000, false), discardFreshExam(0, DISCARD_WINDOW_SECONDS * 1000 + 1, false),
+    discardFreshExam(1, 1_000, false), discardFreshExam(0, 1_000, true), discardFreshExam(0, 119_000, false),
+  ], [true, false, false, false, true]);
+  eq('scorePlan 余数给第一问', [
+    scorePlan({ score: 11, type: 'essay', sub_questions: [{ number: 1 }, { number: 2 }, { number: 3 }] }).subs.map((s: any) => s.score),
+    scorePlan({ score: 8, type: 'essay', sub_questions: [{ number: 1 }, { number: 2 }, { number: 3 }] }).subs.map((s: any) => s.score),
+    scorePlan({ score: 10, type: 'proof', sub_questions: [{ number: 1 }, { number: 2 }] }).subs.map((s: any) => s.score),
+  ], [[4, 3.5, 3.5], [3, 2.5, 2.5], [null, null]]);
   eq('errata 合格', validateErrata([{ printed: 'a', correct: 'b', note: 'n' }]).length, 0);
   eq('errata 不是数组', validateErrata({}).map((x) => x.type), ['errata_invalid']);
   eq('errata 缺 correct / 多字段', validateErrata([{ printed: 'a' }, { printed: 'a', correct: 'b', x: 1 }]).map((x) => x.field), ['errata[0]', 'errata[1]']);
@@ -463,7 +476,35 @@ export function runUnitTests() {
       eq('英一专家：数学文件照常', expertExplanations().has('math1-2099-01'), true);
       const v1 = packVersion({ questions: qs.map((x, i) => ({ id: x.id, explanation_status: after[i] ? 'ready' : 'pending', solution: stepsText(after[i]?.steps) })) });
       eq('英一专家：包版本跟着变', v0 !== v1, true);
+      fs.writeFileSync(path.join(dir, 'english1_2099_expert.jsonl'), qs.map((x) => JSON.stringify({ id: x.id, steps: [`${x.section} 第一步`, '第二步'], remember: '记住' })).join('\n') + '\n');
+      fs.writeFileSync(path.join(dir, 'english1_translations_expert.jsonl'), [
+        JSON.stringify({ id: 'english1-2099-46', steps: ['译文不该覆盖讲解'], answer: ['译文'] }),
+        JSON.stringify({ id: 'english1-2099-99', answer: ['只有译文'] }),
+      ].join('\n') + '\n');
+      const kept = expertExplanations().get('english1-2099-46');
+      eq('译文文件不覆盖同年讲解、也不当成讲解', [kept?.steps?.[0], expertExplanations().has('english1-2099-99')], ['translation 第一步', false]);
     } finally { if (prev == null) delete process.env.EXPLANATIONS_DIR; else process.env.EXPLANATIONS_DIR = prev; fs.rmSync(dir, { recursive: true, force: true }); } }
+  // 真题库：英一 2020–2025 专家讲解（source=expert）；translations 文件只有 answer，不进讲解
+  { const fs = require('fs'), path = require('path');
+    const { expertExplanations, EXPERT_FILE_RE } = require('../src/ai/expert-explanations');
+    const { explanationInfo } = require('../src/ai/explain');
+    const dir = path.resolve(__dirname, '../../../tiku/explanations');
+    const prev = process.env.EXPLANATIONS_DIR;
+    process.env.EXPLANATIONS_DIR = dir;
+    try {
+      eq('讲解文件名', [EXPERT_FILE_RE.test('english1_2024_expert.jsonl'), EXPERT_FILE_RE.test('english1_translations_expert.jsonl'), EXPERT_FILE_RE.test('math1_2024_expert.jsonl')], [true, false, true]);
+      const map = expertExplanations();
+      const ids: string[] = [];
+      for (let y = 2020; y <= 2025; y++) for (let n = 1; n <= 52; n++) ids.push(`english1-${y}-${String(n).padStart(2, '0')}`);
+      const missing = ids.filter((id) => !(map.get(id)?.steps?.length > 0));
+      eq('英一 2020–2025 专家讲解 312 题都有步骤', missing, []);
+      const q = (id: string, type: string) => ({ id, exam: 'english1', year: Number(id.slice(9, 13)), number: Number(id.slice(-2)), type, stem: '', options: [], answer: ['x'], sub_questions: [], solution: '官方解析不该盖过专家', knowledge_points: [] });
+      const info = (id: string, type: string) => explanationInfo(q(id, type), null);
+      eq('讲解来源 source=expert', [info('english1-2020-01', 'choice'), info('english1-2024-04', 'choice'), info('english1-2025-46', 'translation'), info('english1-2025-52', 'essay')].map((x) => [x.source, x.source_label]),
+        [['expert', '行业专家参考解答（非官方解析）'], ['expert', '行业专家参考解答（非官方解析）'], ['expert', '行业专家参考解答（非官方解析）'], ['expert', '行业专家参考解答（非官方解析）']]);
+      const tr = fs.readFileSync(path.join(dir, 'english1_translations_expert.jsonl'), 'utf8').trim().split('\n').map((l: string) => JSON.parse(l));
+      eq('译文文件 42 条都不替代讲解步骤', tr.every((row: any) => map.get(row.id)?.steps?.length > 0 && map.get(row.id).steps[0] !== row.answer?.[0]), true);
+    } finally { if (prev == null) delete process.env.EXPLANATIONS_DIR; else process.env.EXPLANATIONS_DIR = prev; } }
   // 第 16 轮：题包 expires_at = 用户时区下一个 04:00
   { const { studyDayEnd } = require('../src/common/time');
     const E = (at: string, tz: string) => [studyDate(new Date(at), tz), studyDayEnd(new Date(at), tz).toISOString()];
