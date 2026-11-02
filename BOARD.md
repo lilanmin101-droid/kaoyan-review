@@ -286,4 +286,4 @@
 - 2026-11-02T12:31+08:00 用户：复抽行业专家修正 a553cb1：上轮 12 处全部修好；新抽 24 题 22 过 2 不过（2020-13「照此」暗示第 12 空；2025-40 A/B 干扰项没补错因）；check_cloze_leak.py 退出码 0。报告 user-test/round10/explain_recheck_en.md。
 - 2026-11-02T12:33+08:00 用户：round10 5c 离线题包断网刷 5 题，1280/390 六项全过（断网文案、本地判分、F5 保留、联网补传 5 条、错题本、重放 duplicate）；新发现：注册/登录后不拉题包，要刷新页面才有（FAIL），另有 12 条考生视角别扭点。报告 user-test/round10/offline_pack_test.md。
 - 2026-11-02T12:43+08:00 用户：复抽行业专家 9139d27/269b7bf：7 项全过（2020-13、2025-40、2022-09、5 题干扰项；check_clue_type 1c525c3 退出码 0；check_cloze_leak rule3 退出码 0；25 处近义词抽 8 过 8；新抽 12 过 12）。提醒：2021-03/2021-12/2025-06 线索标签可更贴切，rule3 把标签「逻辑连接」误报为 connection/connected。可与 tiku/clue-type-check 一起合。报告 user-test/round10/explain_recheck2_en.md。
-| 11-02 12:45 | 用户 | HANDOFF §8.2 round10 更新：5a/5b/5c 已测完，列出待复测项（exam_name、source/study_date、离线页修复、PR #2 文案） | user/round10 |
+- 2026-11-02T12:45+08:00 用户：HANDOFF §8.2 round10 更新，5a/5b/5c 标为已测完；列出待复测项（详情 exam_name、作答列表 source/study_date、登录后拉题包和离线页别扭点、PR #2 周报文案），等 coord/integration 上线后测。
