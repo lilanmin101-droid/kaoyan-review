@@ -282,3 +282,4 @@
 - 2026-11-01T10:25:54-08:00 前端：对 8cdb223 复核成绩拆分（英一、数一真数据，e2e53），等式加得上；今日和单词页的过期提示改用各自接口的 expires_at，没有才用题包的。
 - 2026-11-02T02:25:56+08:00 行业专家：按新分工撤回上一提交对 tiku/english1_2020–2025.json 的 answer 改动和 reviews 里追加的 46–52 记录（恢复到 8cdb223）；自写参考译文/范文改放 tiku/explanations/english1_translations_expert.jsonl（{id,answer,by,at}，每题一行，供 资料/仓库搜索者 拷入题库）。可用年份：2020、2021、2022、2023、2024、2025（各 7 条，共 42 条）。讲解 verified 说明改为“由行业专家自写”。
 - 2026-11-02T12:16+08:00 用户：round10 英一 2020–2025 专家讲解抽查 48 题，38 过 10 不过（翻译 6 题缺得分点和常见误译；完形 2020-19/2024-20/2025-20 中文泄题；阅读 2020-24 干扰项没讲），报告在 user-test/round10/，已交行业专家修。
+- 2026-11-02T12:17+08:00 用户：round10 接口复测 5a 周报 E1/E2 6/6 PASS；5b 暂停 10 项 9 PASS 1 FAIL（GET /exams/:id 没有 exam_name，列表有）；跨 04:00 不再标 non_continuous 已按 openapi 判 PASS，HANDOFF §6.4 要改。报告 user-test/round10/api_retest10.md。

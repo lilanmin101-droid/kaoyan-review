@@ -1,0 +1,5 @@
+# 第10轮接口复测工具（用户）。用法：source lib10.sh；reg <用户名>；DN=<ISO 时间> req <METHOD> <path> [json]
+B=${B:-http://localhost:3000/api/v1}; L=${L:-raw10.log}
+req(){ m=$1; p=$2; d=$3; echo "### $m $p $d ${DN:+[X-Debug-Now: $DN]}" >>$L; if [ -n "$d" ]; then r=$(curl -s -w '\n[HTTP %{http_code}]' -X $m "$B$p" -H "Authorization: Bearer $T" ${DN:+-H "X-Debug-Now: $DN"} -H 'Content-Type: application/json' -d "$d"); else r=$(curl -s -w '\n[HTTP %{http_code}]' -X $m "$B$p" -H "Authorization: Bearer $T" ${DN:+-H "X-Debug-Now: $DN"}); fi; echo "$r" >>$L; echo >>$L; echo "$r"; }
+reg(){ echo "## ===== $1 =====" >>$L; R=$(curl -s -X POST $B/auth/register -H 'Content-Type: application/json' $2 -d "{\"username\":\"$1\",\"password\":\"${TEST_PW:-$(cat /workspace/.kaoyan_testpw)}\",\"timezone\":\"Asia/Shanghai\"}"); echo "### register $1 $2" >>$L; echo "$R" | sed 's/"access_token":"[^"]*"/"access_token":"…"/;s/"refresh_token":"[^"]*"/"refresh_token":"…"/' >>$L; T=$(echo "$R"|jq -r .access_token); echo "$R"|jq -c '{tz:(.user.timezone // .timezone), id:(.user.id)}'; }
+body(){ sed '$d'; }   # 去掉最后一行 [HTTP nnn]
