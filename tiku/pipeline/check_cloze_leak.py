@@ -86,8 +86,16 @@ def ecdict(words):
     global _EC
     if _EC is None:
         _EC = {}
-        f = os.environ.get('ECDICT_CSV') or os.path.join(T, '..', 'data', 'ecdict', 'ecdict.csv')
-        if not os.path.exists(f):
+        cands = [os.environ.get('ECDICT_CSV'), os.path.join(T, '..', 'data', 'ecdict', 'ecdict.csv')]
+        try:  # 在 git worktree 里跑时，去主工作区（后端已下好的那份）找
+            import subprocess
+            gc = subprocess.run(['git', '-C', T, 'rev-parse', '--path-format=absolute', '--git-common-dir'],
+                                capture_output=True, text=True).stdout.strip()
+            if gc: cands.append(os.path.join(os.path.dirname(gc), 'data', 'ecdict', 'ecdict.csv'))
+        except Exception:
+            pass
+        f = next((c for c in cands if c and os.path.exists(c)), '')
+        if not f:
             print('  (没有 data/ecdict/ecdict.csv，也没设 ECDICT_CSV，规则 4a 只用讲解里的释义)', file=sys.stderr)
             return set()
         import csv
