@@ -5157,6 +5157,9 @@ components:
           type: string
         exam:
           type: string
+        exam_name:
+          type: string
+          description: 科目中文名（数学一 / 英语一…），和 GET /exams 列表里的 exam_name 同一个值
         year:
           type:
             - integer
