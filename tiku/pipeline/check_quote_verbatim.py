@@ -10,6 +10,12 @@
      去掉后不含英文字母的引号内容（纯中文引号）不算英文引文，不校验。
 段号校验：形如「第N段第M句：“…”」「第N段：“…”」的定位引文，若原文能找到但不在本题库 passage
   的第 N 段（按空行分段），记为段号不符。
+句号校验：形如「第N段第M句：“…”」的定位引文，引文开头必须落在第 N 段第 M 句。计数口径（split_sents）：
+  按本题库 passage 文本分句，句末 . ! ? （可带后引号/括号）后接空白和大写字母、数字或引号处断句；
+  缩写不断句（U.S.、Ms.、Dr.、v.、e.g. 等，以及单个大写字母加点的人名缩写如 Karen R.）；
+  新题型的段首编号标题（如 “41.”）不算句；空位 {{N}} 不算句，但空位前后各自断句（空位相当于一个被抽走的句子），
+  紧挨空位且自身没有句末标点的引导语（如 In addition, {{41}}）算在被抽走的那句里，也不计数；
+  没有句号的小标题（如 Better hiring practices）并入下一句。
 退出码：0 = 全过；1 = 有不符。
 usage: python3 tiku/pipeline/check_quote_verbatim.py [--root TIKU_DIR] [--all] [YEAR ...]
   --all  同时校验完形（Q1-20），默认只查 Q21-45
@@ -71,6 +77,46 @@ def check_quote(q, hay):
 
 
 PARA_REF = re.compile(r'第(\d+)段(?:第\d+句)?[：:]\s*\u201c')
+SENT_REF = re.compile(r'第(\d+)段第(\d+)句[：:]\s*\u201c')
+ABBR = re.compile(r'(?:\b(?:Mr|Mrs|Ms|Dr|Prof|St|Jr|Sr|vs?|e\.g|i\.e|a\.m|p\.m|Inc|Corp|Ltd|Gov|Sen|Rep)|\b[A-Z])\.$')
+HEAD = re.compile(r'\d{1,2}\.\s+')
+BLANK = re.compile(r'\{\{\d+\}\}')
+
+
+def split_sents(para):
+    """按计数口径把一段（已 norm）切成句子，返回 [(start, end)]，不含标题和空位。"""
+    cuts = []  # 不计数区间
+    m = HEAD.match(para)
+    if m: cuts.append((0, m.end()))
+    cuts += [(b.start(), b.end()) for b in BLANK.finditer(para)]
+    bounds = {0, len(para)}
+    for a, b in cuts: bounds |= {a, b}
+    for e in re.finditer(r'[.!?]["\')]?(?=\s+["\'(]?[A-Z0-9])', para):
+        if para[e.start()] == '.' and ABBR.search(para[:e.start() + 1]): continue
+        bounds.add(e.end())
+    bounds = sorted(bounds); out = []
+    blank_starts = {c0 for c0, _ in cuts[1 if m else 0:]}
+    for a, b in zip(bounds, bounds[1:]):
+        if any(a >= c0 and b <= c1 for c0, c1 in cuts): continue
+        seg = para[a:b]
+        if not re.search(r'[A-Za-z]', seg): continue
+        # 紧挨空位、自身没有句末标点的引导语（如 In addition, {{41}}）属于被抽走的那句，不单独计数
+        if b in blank_starts and not re.search(r'[.!?]["\')]?\s*["\']?\s*$', seg): continue
+        out.append((a, b))
+    return out
+
+
+def sent_of(q, para):
+    """引文首段在该段的第几句（1 起），找不到返回 None。"""
+    q = ANNOT.sub('', q)
+    if CJK.search(q): return None
+    pcs = [x for x in (norm(x).strip(EDGE) for x in ELL.split(q)) if re.search(r'[A-Za-z]', x)]
+    if not pcs: return None
+    m = re.search(piece_regex(pcs[0]), para)
+    if not m: return None
+    for k, (a, b) in enumerate(split_sents(para), 1):
+        if a <= m.start() < b: return k
+    return None
 
 
 def para_of(q, paras):
@@ -115,6 +161,13 @@ def check(T, Y, lo):
                 pn = int(m.group(1)); hit = para_of(qs[0], paras)
                 if hit and pn not in hit:
                     err.append((d['id'], i, f'段号不符：写第{pn}段，原文在第{"、".join(map(str, sorted(hit)))}段', qs[0][:60]))
+            for m in SENT_REF.finditer(s):
+                qs = quotes(s[m.end() - 1:])
+                pn, sn = int(m.group(1)), int(m.group(2))
+                if not qs or pn > len(paras): continue
+                k = sent_of(qs[0], paras[pn - 1])
+                if k is not None and k != sn:
+                    err.append((d['id'], i, f'句号不符：写第{pn}段第{sn}句，按口径是第{k}句', qs[0][:60]))
     return err, n
 
 
