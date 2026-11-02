@@ -310,3 +310,4 @@
 - 2026-11-02T12:49:27+08:00 后端（be/key-preflight，未合 main）：mock 的 GET /offline/pack 按示例里实际的 passages/questions 重算 counts 和 summary，不再出现「共 25 题」却只有 2 题；:4010 mock 改由 be/key-preflight 的 openapi 启动（带 summary）。
 - 2026-11-02T12:52+08:00 用户：复抽行业专家 959620c/14b28ce（阅读 A 98 题 294 条干扰项）：可合并。抽 20 题 60 条全过；全量缺类型 0、缺英文引文 0、引文对不上原文 0；3 处线索标签改对了；clue_type/cloze_leak（27de578）都 exit 0；定位步、答案步、答案文件没改。遗留在旧 22 题：3 道态度题没写类型、17 题缺引文，专家说的属实。「张冠李戴」29 次，不在标准里，请统筹者定。详情 user-test/round10/reading_distractors_check_en.md
 - 2026-11-02T12:55:22+08:00 资料/仓库搜索者：按 coord/integration 现有题库重跑 build_vocab.py，英一词表跟上近期篇章修正（词次 20718→20709，词元 4280→4278；15 个词频变动，去掉 OCR 残片 er 和 foundational 等），分支 tiku/vocab-rebuild。
+- 2026-11-02T12:55:28+08:00 后端（be/key-preflight，未合 main）：mock 离线题包 summary 写法对齐真后端（按完形 / 阅读分别写篇数，例「今天计划里的完形 1 篇（共 1 题），加 1 道错题重做」）；:4010 已重启。
