@@ -80,3 +80,65 @@
 - **a06afd5**：只改了 2015-16、2015-17、2015-20、2019-13 的步骤，以及 77 题的 `at`。
 - **题库、passages、翻译、图片**：0 diff。
 - **2020–2025 讲解和 check_quote_verbatim.py**：只有 05d854d 的改动，上一轮已复核。
+
+---
+
+## 追加：复核专家 d2ad7ef 的 5 处修改（含 abd6532，快进）+ 跨题泄题清单（740afbc）人工分类
+
+- 时间：2026-11-02 13:21–13:45（北京时间）
+- **基准：origin/coord/integration `d2ad7ef`**。集成分支最新提交就是 d2ad7ef。
+- 方法：临时 worktree 读取，用完删除。
+
+### 结论
+
+| 项 | 结果 |
+|---|---|
+| 2016-37 C | 新引文是第4段第1句 “only if they go about doing it the right way”，逐字一致。这句本来就是 37 题自己的定位句，**不再露 38 题答案**。PASS。小意见：选项“开拓新读者来源”和原文“用正确方式转型”的对应稍弱，标无中生有也说得通，不判错。 |
+| 2019-32 C | 已改标**无中生有**；引文 “similar to those recently depicted on popular sci-fi TV series” 逐字一致。PASS |
+| 2017-23 B | 去掉了 $85 句，改引第5段第4句 “focus on travelers who are higher risk, saving time for everyone involved”（23 题自己的定位句），**不再暗示 24 题 D**。「把快换成便宜」：expedited 原文省的是时间，选项换成了钱，偷换概念贴切。PASS |
+| 2018-31 C | 已改标张冠李戴：病人的 expectations of privacy 被安到 the latter（DeepMind）头上。PASS |
+| 2017-32 D | 补的 “has annoyed policymakers for over half a century” 与第2段第1句逐字一致，解释“只是困扰、没说不再重视”到位。PASS |
+| 改动范围（abd6532..d2ad7ef） | 只改了上面 5 条干扰项步骤和这 5 题的 `at`（→13:19），步数和其他字段不变；另有 BOARD 一行。PASS |
+| 我的重叠扫描（/tmp/xleak.py）重跑 2015–2019 | 51 → 49 条，少掉的正是 2016-37 C→38 和 2017-23 B→24；**这 5 处没有任何重叠**。PASS |
+| check_cloze_leak（b88dfd1 版，含 4c）2015–2019 | exit 0，每年 leaks 0、提醒 0 |
+| check_clue_type（1c525c3 版） | exit 0，每年错误 0 |
+| check_quote_verbatim（默认 + `--all 2015..2019`） | 都是 exit 0。英文引文 123/122/117/120/119 条，不符 0（2017 年因 2017-32 D 多 1 条） |
+| rd_distractor_stats（RD_YEARS=2015-2019） | 300 条：缺类型 0、缺引文 0、引文对不上 0、无段落定位 0 |
+
+更正：上一节第 1 项说三项检查用的是「_ccl4c.py / _clue1c.py」，实际取的是 b88dfd1 和 1c525c3 版的 `check_cloze_leak.py` 和 `check_clue_type.py`。这次按正确路径重跑，结果同上全为 0。
+
+### check_reading_cross_leak.py（分支 tiku/reading-cross-leak 740afbc）在 d2ad7ef 上
+
+- 我自己在 d2ad7ef 上跑了一遍：exit 0，共 55 条提醒（2015–2019 39 条、2020–2025 16 条）。输出与 `/workspace/kaoyan-pending/reading_cross_leak_d2ad7ef.txt` **完全一致**，**这 5 处都不在清单里**。
+- 55 条人工分类：**真泄露 2、弱提示 14、共用依据句可接受 39**。2015–2019 的 39 条里：真泄露 0、弱提示 10、可接受 29。
+
+**真泄露（2 条，都在 2020–2025，指向后面的题，建议专家改）：**
+- **2021-28 D → 29**：引 “the value of the avoided deforestation just for carbon dioxide emissions alone is more than the program costs”，并解释为「避免砍伐对减排的价值」。这正是 29 题的依据，答案 C “it can protect the environment”。
+- **2025-27 C → 30**：引 “a price we must pay for understanding the world”。这直接对应 30 题答案 C “Energy-intensive research work is inevitable”。
+
+**弱提示（14 条，可不改；其中 2021-24 C 最强，建议顺手换）：**
+- 2021-24 C → 25：“will not be willing to pay more indefinitely”，接近 25 题标题答案 D “Ever-rising Fares Aren’t Sustainable”。
+- 指向后面的题：
+  - 2015-38 C → 40
+  - 2016-36 D → 37
+  - 2017-21 B → 25（“increasingly massive security lines”接近标题 C）
+  - 2017-31 A → 32
+  - 2017-38 D → 40（supportive）
+  - 2018-22 A → 25（帮扶政策 → solutions）
+  - 2018-31 A → 35（cautious）
+  - 2019-21 B → 25
+  - 2024-36 B → 37
+- 指向前面的题，学生已作答，影响小：
+  - 2015-28 A → 27：「作者称之为 lame 并要求抛弃」就是 27 题的 disapproval。
+  - 2016-32 A → 31
+  - 2020-27 D → 26
+  - 2024-30 D → 28
+
+**共用依据句可接受（39 条）**：大多是标题题、主旨题、态度题（如 2015-35、2017-35、2018-40、2019-40、2025-35、2025-40 等），它们本来就要引各段依据；或者引的是本题自己的论据，与他题定位句重叠但不指向对方答案（如 2016-24 A/B/D → 23、2018-37 C → 36、2019-26 A/C → 30）。
+
+### 与我上次的 51 条重叠扫描对比（同在 d2ad7ef、2015–2019：我的 49 条、去重后 48 对；他的 39 条）
+
+- **他有我无（3 条）**：2015-28 A → 27、2017-25 A → 22、2019-39 D → 40。原因是引文中间有 “…” 省略或只部分重叠，我用的整段子串匹配会漏，他的 6 连词匹配能抓到。这 3 条是**我的漏报**。
+- **我有他无（12 对）**：2015-31 D → 35、2016-37 D → 40、2016-38 C → 37/40、2017-24 B → 25、2017-33 A → 35、2018-25 C → 22、2018-36 C → 37、2019-25 D → 21、2019-27 B → 30、2019-27 D → 30、2019-28 D → 30。这些都是 ≤5 个词的短引文（如 “I would raise prices”、“underused PreCheck lanes”、“(and paying tuition)”），他的默认 `--n 6` 抓不到。人工看都不是真泄露，只有 “I would raise prices” → 2016-40 Luxury Good 算弱提示。
+- **误报**：他的清单没有误报，55 条都确实是文字重叠。脚本本身声明只提醒、需人工判断，其中 39 条属于可接受的共用。
+- **建议**：默认保持 6；可以在说明里加一句“`--n 4` 能多抓短引文（全库 88 条，n=5 为 64 条），会多出不少噪音”。以前那两处问题（2016-37 C 原 11 词引文、2017-23 B 原 $85 句）用 n=6 都能抓到。
