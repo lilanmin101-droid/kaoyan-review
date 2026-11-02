@@ -183,6 +183,19 @@
 - 真题词汇：`tiku/vocab/english1_exam_vocab.json`（2015–2025 年共 4280 个词元，ky 词库覆盖 48.1%），由 `pipeline/build_vocab.py` 生成，后端用 `import:vocab` 导入频次、年份和例句。基础词（basic）默认不进今日新词。规则：**不放自拟内容**，例句只用真题原句，没有就是 null。
 - 原卷 PDF 和 OCR 原始材料在 `tiku/src/`（约 137 MB，37 个 PDF）。**不进 git，也不用 LFS**。部署后靠每日备份（`tiku-src-*.tar`）留底。⚠️ 现在**只有这台 box 上有一份**（服务器还没给），换机器前要先打包带走，或者按 SOURCES.md 重新下载。
 
+### 5.7 资料角色现状（资料/仓库搜索者维护，2026-11-02 12:20 北京时间）
+- **工作目录**：`/workspace/kaoyan-wt-tiku`（`git worktree`，不在 `/workspace/kaoyan` 里切分支；那份留给后端在 main 上跑服务和 watcher）。提交作者沿用仓库现有的 `lilanmin101-droid` noreply 邮箱，用 `git -c user.name=… -c user.email=… commit`，本机没设全局 git 身份。
+- **待合分支**（统筹者已审，等 Tony「可以合」）：
+  - `tiku/eng1-2024-04-kp`（`edd1e6a`）：`english1-2024-04` 补「英语/完形填空/词义辨析」+「英语/完形填空/逻辑关系与连接词」（行业专家结论）。合进 main 后 watcher 自动重导，导入报告里 english1-2024 唯一的 ❌ 消失。
+  - `tiku/cloze-leak-rule3`：`pipeline/check_cloze_leak.py` 在原有规则 1、2（答案词挨着原文邻词、引号/本句里出现）之外新增：
+    - 规则 3：讲解任何位置提到同篇其他空的答案词（4 个字母以上，不是本空选项，原文空外没出现）→ 报错；
+    - 规则 4b：引用带别的空（`___`）的英文原句并附（中文译文）→ 报错；
+    - 规则 4a：其他空答案的中文释义（讲解里「词“释义”」+ ECDICT）出现在本空讲解 → 只提醒，不影响退出码，误报多，需人工看。
+    - 用法：`ECDICT_CSV=/workspace/kaoyan/data/ecdict/ecdict.csv python3 tiku/pipeline/check_cloze_leak.py [年份…]`（ECDICT 不进 git，后端导词库时会下载；不设就只用讲解里的释义）。退出码 1 = 有泄题。
+    - 当前结果：报错 3 处（2024-17 suit、2024-20 中文译文、2025-16 中文译文），疑似 43 处，清单 `/workspace/kaoyan-pending/cloze_leak_report.txt`，交行业专家在 `expert/english1-2020-2025-explain-fix` 修。**查不出**：用近义中文暗示答案（如 2025-20 用「说明」暗示 suggesting），只能人工看。
+- **原卷 PDF**：换机后 `tiku/src/` 丢失，正在 `/workspace/kaoyan` 里跑 `python3 tiku/pipeline/verify_sources.py --fetch` 按 SOURCES.md 重下并核对 sha256，日志 `/workspace/verify_sources_fetch.log`。脚本的 urllib 下载没设超时，个别站点会卡住，卡住就杀掉重跑（已下的文件会跳过）。
+- **规则不变**：题目 JSON 只由资料角色改，用 `tiku/pipeline/*.py`；其他角色的核对结论追加到 `tiku/reviews/*.jsonl`，标签结论交给资料落库。
+
 ---
 
 ## 6. 关键产品规则与已定裁决（都已落地，除非标了「进行中」）
