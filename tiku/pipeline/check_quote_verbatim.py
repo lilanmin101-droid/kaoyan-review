@@ -152,8 +152,9 @@ def check(T, Y, lo):
             for qt in quotes(s):
                 r = check_quote(qt, hay)
                 if r is None:
-                    if not CJK.search(ANNOT.sub('', qt)): n += 1
+                    if not CJK.search(ANNOT.sub('', qt)) and re.search(r'[A-Za-z]{2,}', qt): n += 1
                     continue
+                n += 1  # 对不上的引文也算一条
                 err.append((d['id'], i, '原文找不到', r[:120]))
             for m in PARA_REF.finditer(s):
                 qs = quotes(s[m.end() - 1:])
@@ -182,7 +183,7 @@ def main(a):
         r = check(T, Y, lo)
         if r is None: continue
         e, n = r
-        print(f'{Y} 英文引文 {n + len(e)} 条，不符 {len(e)}')
+        print(f'{Y} 英文引文 {n} 条，不符 {len(e)}')
         for x in e: print('   !', x)
         bad += len(e)
     print('全过' if not bad else f'共 {bad} 处不符')
