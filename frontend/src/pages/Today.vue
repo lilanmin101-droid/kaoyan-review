@@ -3,7 +3,7 @@ import { computed, onMounted, ref } from 'vue'
 import { api, sse, uid } from '../lib/api'
 import { toast } from '../lib/toast'
 import { offline } from '../lib/api'
-import { packStale } from '../lib/offline'
+import { packStale, pack, packFresh, packSummary } from '../lib/offline'
 type Task = { id: string; kind: string; title: string; estimated_minutes?: number; status: string; changed_by_agent?: boolean }
 type Action = { id: string; action_count?: number; summary: string; reason?: string; created_at: string; undoable?: boolean; undone_at?: string | null; trigger?: string }
 type Plan = { date: string; plan: { plan_date?: string; tasks: Task[]; progress: { done: number; total: number } } | null; why_changed: string | null; days_to_exam?: number | null; exam_date?: string | null
@@ -35,6 +35,11 @@ async function load() {
   } catch (e: any) { err.value = e.message }
 }
 onMounted(load)
+// 今天做了几题（含离线补传，后端按 answered_at 算学习日）：/me/stats 的 last_7 里今天那天的 questions
+const todayN = ref<number | null>(null)
+onMounted(async () => { try { const s = await api<any>('/me/stats'); const d = (s.last_7?.series ?? []).find((x: any) => x.date === s.today); todayN.value = d ? (d.questions ?? null) : null } catch { todayN.value = null } })
+// 没排计划时，离线题包是后端自动挑的文章；今日页照实说，别和题包说法打架
+const packLine = computed(() => pack.value && packFresh() ? packSummary(pack.value).replace(/[。.；;，,\s]+$/, '') : '')
 const target: Record<string, string> = { practice: 'quiz', redo_wrong: 'wrong', words: 'words', review: 'wrong' }
 // 教练排的模考：跳到刷题页顶上的「整卷模考」卡，科目和年份按任务标题预选好
 function openTask(t: { kind: string; title: string; payload?: any }) {
@@ -154,6 +159,7 @@ const shownActions = computed(() => showUndone.value ? actions.value : actions.v
           <span v-if="pending" class="ask"><span class="cy" :class="{ dim: deciding }" @click="decide(true)">确认，改吧</span><span class="cn" @click="decide(false)">不用了</span></span>
         </div>
         <p v-if="data.why_changed && tasks.length" class="why"><span class="k">计划改过</span><span class="more" @click="openWhy = !openWhy">{{ openWhy ? '收起' : '为什么' }}</span><span v-if="openWhy" class="det">{{ data.why_changed }}</span></p>
+        <p v-if="todayN" class="sub donetoday">今天已经做了 {{ todayN }} 题（离线做的补传后也算在里面）</p>
         <div v-if="tasks.length">
           <div class="cap sm">今天要做的 · {{ data.plan!.progress.done }} / {{ data.plan!.progress.total }}<span v-if="left" class="cd">还剩约 {{ left }} 分钟</span></div>
           <div class="tasks">
@@ -166,6 +172,7 @@ const shownActions = computed(() => showUndone.value ? actions.value : actions.v
         </div>
         <div v-else class="empty">
           <p class="sub">今天还没排任务，可以在上面跟教练说一句让它排，或者先做这些：</p>
+          <p v-if="packLine" class="sub packline">离线题包已备好：{{ packLine }}。没网时在「刷题」页能做。</p>
           <div class="tasks">
             <div class="task" @click="emit('nav', 'quiz')"><span class="tt">接着刷数学一真题</span></div>
             <div class="task" @click="emit('nav', 'wrong')"><span class="tt">回看错题本</span></div>

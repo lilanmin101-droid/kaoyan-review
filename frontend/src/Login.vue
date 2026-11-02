@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { api, token, ApiError } from './lib/api'
 import { toast } from './lib/toast'
+import { afterLogin } from './lib/offline'
 const emit = defineEmits<{ done: [] }>()
 const username = ref(''), password = ref(''), err = ref(''), mode = ref<'login' | 'register'>('login'), busy = ref(false)
 function explain(e: unknown) {
@@ -20,6 +21,7 @@ async function submit() {
     token.set(r.access_token)
     toast(mode.value === 'register' ? `注册成功，欢迎你，${username.value.trim()}` : '已登录，接着上次的进度')
     emit('done')
+    afterLogin()
   } catch (e) { err.value = explain(e) } finally { busy.value = false }
 }
 </script>

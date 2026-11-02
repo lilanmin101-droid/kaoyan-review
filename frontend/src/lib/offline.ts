@@ -1,4 +1,5 @@
-// 离线题包：联网时预存今天的题（今日任务里的阅读/完形 + 10 道错题重做，带答案和解析），每天 04:00 换新
+// 离线题包：联网时预存今天的题（计划里的阅读/完形，没排计划时后端自动挑文章；外加最多 10 道错题重做，带答案和解析），每天 04:00 换新
+// 题包里实际有什么以后端的 summary / counts 为准，前端不写死
 // 离线作答先存本机（客户端时间 + client_id 幂等），联网后逐条走 POST /answers 补传（source:'offline_pack'），不会重复计分
 import { ref } from 'vue'
 import { api, offline, uid } from './api'
@@ -10,7 +11,8 @@ export type PQ = { id: string; number?: number | string; type: string; section?:
   passage_id?: string | null; tables?: any[] | null; exam?: string; year?: number | string; origin?: string; explanation?: PExp | string | null; explanation_status?: string; objective?: boolean; reference_answer?: string | string[] | null; sub_questions?: { stem: string; score?: number; answer?: string[]; number?: number }[] }
 export type PExp = { source?: string; source_label?: string | null; verified?: boolean; steps?: { n?: number; text: string }[]; text?: string | null }
 export type PPassage = { id: string; title?: string; directions?: string; text: string; options?: POpt[] }
-export type Pack = { version: string; study_date?: string; expires_at?: string; fetched_at: number; questions: PQ[]; passages: PPassage[] }
+export type PackCounts = { questions?: number; plan_questions?: number; wrong_redos?: number; wrong_redo_limit?: number; plan_tasks?: number; plan_passages?: number; auto_passages?: number }
+export type Pack = { version: string; study_date?: string; expires_at?: string; fetched_at: number; questions: PQ[]; passages: PPassage[]; summary?: string | null; counts?: PackCounts }
 export type Pending = { client_id: string; question_id: string; answer: string[]; answered_at: string; pack_version: string; local_correct: boolean | null ; time_spent_seconds?: number; self_rating?: string; thought_text?: string }
 
 const PK = 'offline:pack', QK = 'offline:queue', DK = 'offline:done'
@@ -28,15 +30,32 @@ export const packFresh = () => !!pack.value && (pack.value.study_date ?? studyDa
 function normalize(r: any): Pack {
   const qs: PQ[] = r.questions ?? r.items ?? (r.groups ?? []).flatMap((g: any) => g.questions ?? [])
   const ps: PPassage[] = r.passages ?? (r.groups ?? []).map((g: any) => g.passage).filter(Boolean)
-  return { version: String(r.version ?? r.pack_version ?? ''), study_date: r.study_date, expires_at: r.expires_at, fetched_at: Date.now(), questions: qs, passages: ps }
+  return { version: String(r.version ?? r.pack_version ?? ''), study_date: r.study_date, expires_at: r.expires_at, fetched_at: Date.now(), questions: qs, passages: ps, summary: r.summary ?? null, counts: r.counts }
+}
+export const isRedo = (x: PQ) => x.origin === 'wrong_redo' || x.origin === 'wrong'
+// 题包说明：优先用后端按实际内容生成的 summary；老后端没有 summary 就按真实数量拼一句（不再写死「今天任务里的… + 10 道错题」）
+export function packSummary(p: Pack | null): string {
+  if (!p) return ''
+  if (p.summary) return p.summary
+  const c = p.counts ?? {}, redo = p.questions.filter(isRedo).length, today = p.questions.length - redo
+  const parts: string[] = []
+  if (today) {
+    if (c.plan_tasks === 0 || (c.plan_passages === 0 && c.auto_passages)) parts.push(`今天还没排任务，先自动挑了 ${c.auto_passages ?? p.passages.length} 篇文章（共 ${today} 题）`)
+    else if (c.plan_passages != null && c.auto_passages) parts.push(`今天计划里的文章 ${c.plan_passages} 篇，另自动挑了 ${c.auto_passages} 篇（共 ${today} 题）`)
+    else if (c.plan_passages != null) parts.push(`今天计划里的文章 ${c.plan_passages} 篇（共 ${today} 题）`)
+    else parts.push(`文章 ${p.passages.length} 篇（共 ${today} 题）`)
+  }
+  if (redo) parts.push(`${today ? '加 ' : ''}${redo} 道错题重做`)
+  return parts.join('，') || `共 ${p.questions.length} 题`
 }
 let loading = false
-export async function refreshPack(force = false) {
+// force：不管本机包新不新都重拉；full：连 since_version 也不带（刚登录，本机的包可能是上一个账号的）
+export async function refreshPack(force = false, full = false) {
   if (loading || offline.value || (!force && packFresh())) return
   loading = true
   try {
     const v = pack.value?.version
-    const r = await api<any>('/offline/pack' + (v && packFresh() ? `?since_version=${encodeURIComponent(v)}` : ''), {}, { noReload: true })
+    const r = await api<any>('/offline/pack' + (v && packFresh() && !full ? `?since_version=${encodeURIComponent(v)}` : ''), {}, { noReload: true })
     if (r && r.not_modified) return
     const p = normalize(r)
     if (!p.questions.length) return
@@ -85,6 +104,15 @@ export async function flushQueue() {
   } catch { /* 失败：指数退避重试，2s 起翻倍，最多 5 分钟 */ clearTimeout(retryT); retryT = window.setTimeout(flushQueue, Math.min(300e3, 2000 * 2 ** tries++)) } finally { flushing = false }
 }
 
+// 注册/登录成功后马上拉一次题包（以前要等刷新页面才拉，登录完直接断网就没有题包）
+let packT = 0
+export function afterLogin() {
+  flushQueue()
+  if (loading) { clearTimeout(packT); packT = window.setTimeout(afterLogin, 500); return }
+  refreshPack(true, true)
+}
+// 离线页正在做的题，给顶栏显示「离线题包 · 2025 英语一」
+export const offCur = ref<{ year?: number | string; exam?: string } | null>(null)
 addEventListener('kaoyan:online', () => { flushQueue(); refreshPack() })
 setTimeout(() => { flushQueue(); refreshPack() }, 1500)
 setInterval(() => { if (!packFresh()) refreshPack() }, 10 * 60e3)

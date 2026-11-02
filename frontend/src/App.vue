@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { computed, onUnmounted, ref } from 'vue'
 import { api, token, offline } from './lib/api'
-import { pack } from './lib/offline'
+import { pack, offCur } from './lib/offline'
 import OfflineQuiz from './components/OfflineQuiz.vue'
-const offQ = computed(() => offline.value && !!pack.value?.questions?.length)
+// 恢复联网时如果正在离线题包页，先留在这页（顶上给「回到在线刷题」），不自动跳去在线的某一年试卷
+const keepOff = ref(false)
+const offQ = computed(() => (offline.value || keepOff.value) && !!pack.value?.questions?.length)
+function leaveOff() { keepOff.value = false; scrollTo({ top: 0 }) }
 import { toastMsg } from './lib/toast'
 import { updReady, lastInput, applyUpdate } from './lib/update'
 const nowU = ref(Date.now()); setInterval(() => { nowU.value = Date.now() }, 15000)
@@ -27,8 +30,8 @@ const authed = ref(!!token.get())
 // 考场不占底部标签：刷题页顶上有「整卷模考」卡；考试进行中时每页顶上挂一条「继续」
 const parse = (): Tab => location.hash.startsWith('#/exam') ? 'exam' : (tabs.find(t => '#/' + t[0] === location.hash)?.[0] ?? 'today')
 const tab = ref<Tab>(parse())
-addEventListener('hashchange', () => { tab.value = parse(); toastMsg.value = '' })
-function nav(t: string) { location.hash = '/' + t; scrollTo({ top: 0 }) }
+addEventListener('hashchange', () => { tab.value = parse(); toastMsg.value = ''; keepOff.value = false })
+function nav(t: string) { keepOff.value = false; location.hash = '/' + t; scrollTo({ top: 0 }) }
 const comp = computed(() => ({ today: Today, quiz: Quiz, words: Words, wrong: Wrong, me: Me, exam: Me })[tab.value])
 const year = ref(Number(localStorage.getItem('paper:year') ?? 2024))
 const years = ref<number[]>([2024])
@@ -65,7 +68,7 @@ type Live = { id: string; title: string; status: string; remaining_seconds: numb
 // 断网提示：PWA 断网也能打开，内容是上次同步的
 // 断网恢复后把当前页（今日/单词/错题本/我的）重新挂一次，拿回最新数据，提示条随之消失；刷题页不动，免得丢本地作答
 const backOnline = ref(0)
-addEventListener('kaoyan:online', () => { backOnline.value++; pollLive() })
+addEventListener('kaoyan:online', () => { if (tab.value === 'quiz' && pack.value?.questions?.length) keepOff.value = true; backOnline.value++; pollLive() })
 const live = ref<Live | null>(null), liveLeft = ref(0)
 let liveAt = 0
 async function pollLive() {
@@ -75,7 +78,8 @@ async function pollLive() {
 addEventListener('hashchange', () => { if (tab.value !== 'exam') pollLive() })
 const liveT = setInterval(() => { if (live.value?.status === 'in_progress') liveLeft.value = Math.max(0, (live.value.remaining_seconds ?? 0) - (Date.now() - liveAt) / 1000); if (Date.now() - liveAt > 60000 && tab.value !== 'exam') pollLive() }, 1000)
 onUnmounted(() => clearInterval(liveT))
-const sub = computed(() => tab.value === 'quiz' ? `${subj.value === 'english1' ? enYear.value : year.value} 真题` : tab.value === 'exam' ? '考场模式' : '')
+const EXN: Record<string, string> = { math1: '数学一', english1: '英语一' }
+const sub = computed(() => tab.value === 'quiz' && offQ.value ? `离线题包${offCur.value?.year ? ' · ' + offCur.value.year : ''}${offCur.value?.exam ? ' ' + (EXN[offCur.value.exam] ?? '') : ''}` : tab.value === 'quiz' ? `${subj.value === 'english1' ? enYear.value : year.value} 真题` : tab.value === 'exam' ? '考场模式' : '')
 </script>
 
 <template>
@@ -84,13 +88,13 @@ const sub = computed(() => tab.value === 'quiz' ? `${subj.value === 'english1' ?
     <header v-if="tab !== 'exam'" class="top">
       <div class="wm">研习<em>{{ sub }}</em></div>
       <nav class="tabs"><a v-for="[k, t] in deskTabs" :key="k" :href="'#/' + k" :class="{ on: tab === k }" @click.prevent="nav(k)" @auxclick.prevent>{{ t }}</a></nav>
-      <div class="cd"><span v-if="tab === 'quiz'" class="seg subj"><span :class="{ on: subj === 'math1' }" @click="setSubj('math1')">数学一</span><span :class="{ on: subj === 'english1' }" @click="setSubj('english1')">英语一</span></span></div>
+      <div class="cd"><span v-if="tab === 'quiz' && !offQ" class="seg subj"><span :class="{ on: subj === 'math1' }" @click="setSubj('math1')">数学一</span><span :class="{ on: subj === 'english1' }" @click="setSubj('english1')">英语一</span></span></div>
     </header>
     <div v-if="offline" class="offbar">现在没网，连上再试 · 看到的是上次同步的内容</div>
     <div v-if="showUpd" class="updbar" @click="applyUpdate">有新版本，点一下更新</div>
     <div v-if="live && tab !== 'exam'" class="examlive" @click="nav('exam/go')"><span class="dot"></span>考试进行中 · {{ live.title }} · {{ live.status === 'paused' ? '已暂停' : `剩 ${Math.max(0, Math.floor(liveLeft / 60))} 分钟` }}<span class="go">继续</span></div>
     <ExamCard v-if="tab === 'quiz' && !offQ" :years="mathExamYears" :en-years="enExamYears" @nav="nav" />
-    <OfflineQuiz v-if="tab === 'quiz' && offQ" />
+    <OfflineQuiz v-if="tab === 'quiz' && offQ" :back="!offline" @leave="leaveOff" />
     <English v-else-if="tab === 'quiz' && subj === 'english1'" :key="'en' + enYear" :year="enYear" :years="enYears" @nav="nav" @year="setEnYear" @subj="setSubj" />
     <Quiz v-else-if="tab === 'quiz'" :key="'quiz' + year" :year="year" :years="years" @nav="nav" @year="setYear" @subj="setSubj" />
     <Exam v-else-if="tab === 'exam'" :years="mathExamYears" :en-years="enExamYears" @nav="nav" />
