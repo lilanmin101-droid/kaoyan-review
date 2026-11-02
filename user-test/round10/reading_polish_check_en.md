@@ -111,3 +111,16 @@ notype 0 | noquote distractors 1 items 1 [2023-32] | quote miss 0 | no quoted an
 python3 tiku/pipeline/check_quote_verbatim.py [--root X/tiku] ; python3 <1c525c3>/check_clue_type.py ; ECDICT_CSV=... python3 <27de578>/check_cloze_leak.py 2020 … 2025
 python3 user-test/round10/rd_distractor_stats.py 1 X/tiku
 ```
+
+## 复核更新：以 origin/coord/integration `241ccc1` 为准（含 05d854d），13:15 北京时间
+
+- 2023-32：D 已补逐字引文（"quietly retiring them to their relevant sections"），B 已改成「张冠李戴」，并引了 "Waterstones branch managers were being told to remove PRH books"。**PASS**
+- 2024-38 D：改成「作者的判断是 “That seems unlikely.”，即其他州不太可能都提供保护」，不会再读反。**PASS**
+- 241ccc1 上重跑：
+  - `rd_distractor_stats.py 1`（2020–2025）：缺类型 0、缺引文 0、引文对不上 0。
+  - check_quote_verbatim：exit 0，全过。
+  - 反例：把 2025-35 的段号改成第4段，exit 1，2025 计数 118 条，不再多算 1（05d854d 的计数修正有效）。
+  - 2020–2025 答案步、定位步 0 改动，题库 0 diff。
+- 七类表：张冠李戴一行加了 2023-32 B 的例子，清楚。
+- 05d854d 改的 29 题，`at` 都更新为 2026-11-02T13:04+08:00。
+- **结论：上轮 2 处未过已修好，reading-polish 全部 PASS。**
