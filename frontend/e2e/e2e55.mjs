@@ -12,7 +12,7 @@ const tap=async(p,e)=>{await e.evaluate(x=>x.scrollIntoView({block:'center'}));a
 const byText=async(sel,t)=>{for(const e of await p.$$(sel))if((await e.evaluate(x=>x.textContent.trim()))===t)return e;return null}
 const overflow=()=>p.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth+1)
 const hdr=()=>p.$eval('.top .wm em',e=>e.textContent.trim()).catch(()=>'')
-const shot=n=>p.screenshot({path:`${OUT}/r25-${n}-${W}.png`})
+const shot=n=>p.screenshot({path:`${OUT}/r25-${process.env.E2E_TAG||""}${n}-${W}.png`})
 const user=`fe_r25_${W}_${Date.now().toString(36)}`,pw=crypto.randomBytes(12).toString('base64url')
 
 // ---------- 1. UI 注册 → 不刷新就拉到题包 ----------
@@ -89,6 +89,8 @@ await p.evaluate(()=>{const a=[...document.querySelectorAll('.btabs a, .tabs a')
 const td=await p.evaluate(()=>({done:document.querySelector('.today .donetoday')?.textContent||'',empty:document.querySelector('.today .empty')?.textContent||'',pl:document.querySelector('.today .packline')?.textContent||''}))
 console.log('[⑦] 今日页',JSON.stringify(td))
 ok(/今天已经做了 [1-9]\d* 题/.test(td.done),'[⑦] 今日页显示今天已经做了几题（含补传）')
+ok(((td.done+td.empty).match(/今天还没排任务/g)||[]).length<=1,'[⑦] 今日页「今天还没排任务」最多出现一次（summary 开头那句去掉了）')
+ok(!td.pl||/^离线题包已备好：[^，,。：]/.test(td.pl),'[⑦] 题包那句读得通：「离线题包已备好：…」后面直接接内容')
 ok(!td.empty||(td.pl&&!/今天任务里/.test(td.pl)),'[⑦] 没排任务时题包那句照实说（自动挑的），不说「今天任务里的」')
 ok(!(await overflow()),'[7] 无横向溢出');await shot('h-today')
 ok(errs===0,'无 pageerror')

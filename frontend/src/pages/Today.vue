@@ -39,7 +39,8 @@ onMounted(load)
 const todayN = ref<number | null>(null)
 onMounted(async () => { try { const s = await api<any>('/me/stats'); const d = (s.last_7?.series ?? []).find((x: any) => x.date === s.today); todayN.value = d ? (d.questions ?? null) : null } catch { todayN.value = null } })
 // 没排计划时，离线题包是后端自动挑的文章；今日页照实说，别和题包说法打架
-const packLine = computed(() => pack.value && packFresh() ? packSummary(pack.value).replace(/[。.；;，,\s]+$/, '') : '')
+// 这句只在「今天还没排任务」下面出现，后端 summary 自己也以这句开头时去掉，免得一屏说两遍
+const packLine = computed(() => pack.value && packFresh() ? packSummary(pack.value).replace(/[。.；;，,\s]+$/, '').replace(/^今天还没排任务[，,、；;。.:：\s]*/, '') : '')
 const target: Record<string, string> = { practice: 'quiz', redo_wrong: 'wrong', words: 'words', review: 'wrong' }
 // 教练排的模考：跳到刷题页顶上的「整卷模考」卡，科目和年份按任务标题预选好
 function openTask(t: { kind: string; title: string; payload?: any }) {
