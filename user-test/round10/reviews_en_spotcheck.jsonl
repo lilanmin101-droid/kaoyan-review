@@ -238,3 +238,10 @@
 {"id": "english1-2019-26", "status": "pass", "by": "用户", "note": "[rdA1519 c57e2d9·种子20261108] 3 条干扰项类型贴切、可读", "at": "2026-11-02T13:35:00+08:00"}
 {"id": "english1-2019-30", "status": "pass", "by": "用户", "note": "[rdA1519 c57e2d9·种子20261108] 3 条干扰项类型贴切、可读", "at": "2026-11-02T13:35:00+08:00"}
 {"id": "english1-2019-38", "status": "pass", "by": "用户", "note": "[rdA1519 c57e2d9·种子20261108] 3 条干扰项类型贴切、可读", "at": "2026-11-02T13:35:00+08:00"}
+{"id": "english1-2016-37", "status": "pass", "by": "用户", "note": "[rdA1519fix d2ad7ef] C 新引文逐字、不再露 38", "at": "2026-11-02T13:45:00+08:00"}
+{"id": "english1-2019-32", "status": "pass", "by": "用户", "note": "[rdA1519fix d2ad7ef] C 改无中生有、引文逐字", "at": "2026-11-02T13:45:00+08:00"}
+{"id": "english1-2017-23", "status": "pass", "by": "用户", "note": "[rdA1519fix d2ad7ef] B 去 $85 句，不再暗示 24；偷换概念贴切", "at": "2026-11-02T13:45:00+08:00"}
+{"id": "english1-2018-31", "status": "pass", "by": "用户", "note": "[rdA1519fix d2ad7ef] C 改张冠李戴成立", "at": "2026-11-02T13:45:00+08:00"}
+{"id": "english1-2017-32", "status": "pass", "by": "用户", "note": "[rdA1519fix d2ad7ef] D 补 annoyed policymakers 逐字", "at": "2026-11-02T13:45:00+08:00"}
+{"id": "english1-2021-28", "status": "fail", "by": "用户", "note": "[crossleak d2ad7ef] D 引避免砍伐减排价值句，露 29 答案 C", "at": "2026-11-02T13:45:00+08:00"}
+{"id": "english1-2025-27", "status": "fail", "by": "用户", "note": "[crossleak d2ad7ef] C 引 a price we must pay…，露 30 答案 C", "at": "2026-11-02T13:45:00+08:00"}
