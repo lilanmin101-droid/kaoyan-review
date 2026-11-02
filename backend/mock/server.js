@@ -461,10 +461,12 @@ function mockPackCounts(body) {
   const plan = qs.length - wrong;
   const counts = { ...(body.counts || {}), passages: ps.length, questions: qs.length, plan_questions: plan, wrong_redos: wrong, plan_passages: Math.min((body.counts || {}).plan_passages ?? ps.length, ps.length) };
   counts.auto_passages = ps.length - counts.plan_passages;
-  const parts = [];
-  if (counts.plan_passages) parts.push(`今天计划里的 ${counts.plan_passages} 篇`);
-  if (counts.auto_passages) parts.push(`${parts.length ? '另' : '今天还没排任务，'}自动挑了 ${counts.auto_passages} 篇`);
-  const summary = (parts.join('，') || '题包') + `（共 ${plan} 题）` + (wrong ? `，加 ${wrong} 道错题重做` : '');
+  // 写法和真后端 offline.controller 一致：按完形 / 阅读分别数篇数
+  const kind = (p) => (p.section === 'use_of_english' ? '完形' : '阅读');
+  const listOf = (arr) => ['完形', '阅读'].map((k) => [k, arr.filter((p) => kind(p) === k).length]).filter(([, n]) => n).map(([k, n]) => `${k} ${n} 篇`).join('、');
+  const planList = listOf(ps.slice(0, counts.plan_passages)), autoList = listOf(ps.slice(counts.plan_passages));
+  const parts = [planList && `今天计划里的${planList}`, autoList && `${planList ? '另' : '今天还没排任务，'}自动挑了${autoList}`].filter(Boolean);
+  const summary = `${parts.join('，') || '今天没有可离线做的阅读 / 完形'}（共 ${plan} 题），${wrong ? `加 ${wrong} 道错题重做` : '没有要重做的错题'}`;
   return { counts, summary };
 }
 
