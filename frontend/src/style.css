@@ -502,3 +502,14 @@ html{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 
 .stale { margin: 6px 0 2px; padding: 6px 10px; border-left: 2px solid var(--accent, #c8442e); font-size: 13px; }
 .updbar { margin: 8px auto 0; max-width: 960px; padding: 8px 14px; font-size: 13px; text-align: center; cursor: pointer; border: 1px solid var(--line, #ddd); border-radius: 8px; background: var(--card, #fff); }
+/* 离线题包 r25：原文按段渲染、完形当前空、选错整行标红、恢复联网后的回到在线入口、手机自评按钮让开底栏 */
+.offq .ptext .pt{white-space:normal}.offq .ptext .pt p{margin:0 0 10px}
+.offq mark.curb{background:rgba(168,56,42,.12);color:var(--zhu);font-weight:600;padding:0 2px;border-bottom:1.5px solid var(--zhu)}
+.offq .othb{color:var(--sub);opacity:.6}
+.offq u.uq{text-decoration:underline;text-underline-offset:3px}.offq u.uq sup{font-size:11px;color:var(--sub);text-decoration:none}.offq u.uq.cur{background:rgba(47,79,63,.08)}
+.offq .opts .op.bad{background:rgba(168,56,42,.08)}.offq .opts .op.ok{background:rgba(47,79,63,.12)}.offq .opts .op.ok .l{color:var(--lv);font-weight:700}
+.offq .backon{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;justify-content:space-between;border:1px solid var(--hair);padding:8px 12px;margin-bottom:14px;font-size:13px;color:var(--sub)}.offq .backon .link{color:var(--ink);cursor:pointer;border-bottom:1px solid var(--ink)}
+.offq .rates,.offq .offv{scroll-margin-bottom:24px}
+@media (max-width:760px){.main.offq{padding-bottom:40px}.offq .rates,.offq .offv{scroll-margin-bottom:96px}}
+.offq .ogrp{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}.offq .ogrp .chip{cursor:pointer}
+.today .donetoday{margin:4px 0 10px;font-size:13px}.today .packline{font-size:13px;margin:6px 0 10px}
