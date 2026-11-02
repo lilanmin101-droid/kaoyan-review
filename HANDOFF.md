@@ -425,3 +425,10 @@ node ../tiku/check_questions.mjs                         # 入库质检（用法
 - **`.gitignore` 要点**：`node_modules/`、`dist/`、`dist-*/`、日志、`tmp/`；`.env` 和 `.env.*`（保留 `.env.example`）、`*.pem`、`*.key`、`id_rsa*`、`.ssh/`、`secrets/`、`*.token`；`pgdata/`、`pg-runtime/`、`pg-build/`、`pglogs/`、备份和 dump；`data/audio/`、`backend/uploads/`、`data/ecdict/ecdict.csv`；`tiku/src/`、`tiku/img_tmp/`、`tiku/**/*.pdf`、`user-test/**/*.pdf`。
 - 推送前扫一遍密钥，比如 `git diff --cached | grep -nE 'sk-[A-Za-z0-9]{20,}|API_KEY=.+|BEGIN (RSA|OPENSSH) PRIVATE'`，确认没有 key、`.env` 和 PDF。首次推送时扫描结果是干净的。测试脚本里的 JWT 已经改成读环境变量。
 - 更新本文：每个里程碑都改，修改顶部的「最后更新」（北京时间），然后提交。
+
+### 11.1 集成分支与上 main 流程（统筹者维护，北京时间 2026-11-02 12:58）
+- **现在的做法**：各角色在自己的 `git worktree` 和分支上做（不要在 `/workspace/kaoyan` 里切分支，那份是 main，跑 :3000/:4173 和 watcher）。统筹者在 `/workspace/kaoyan-integ` 把各分支合进 **`coord/integration`**，冲突时 BOARD.md 和 HANDOFF.md 两边的行都保留，合完跑检查再推送。**合进 main 必须有 Tony 明确说「可以合」**（Auto-review 会拦自动推 main）。Tony 同意后：`main` 快进到 `coord/integration` → 后端重启 :3000/:4173、重导词表、跑 smoke → @用户 复测。
+- **`coord/integration` 最新 `2bbf607`**（已推送）。已包含：PR #1、PR #2、`fe/retest-r10`、`fe/offline-polish`(74a79f5)、`be/key-preflight`(到 c1f639e)、`tiku/eng1-2024-04-kp`、`tiku/cloze-leak-rule3`(27de578)、`tiku/clue-type-check`、`tiku/eng1-2021-text4-typo`(d75e4da)、`tiku/eng1-2015-2019-expert-answers`(5f25177，含 4fee95d)、`tiku/vocab-rebuild`(40b5b8c)、`expert/english1-2020-2025-explain-fix`、`expert/english1-reading-distractors`(959620c/14b28ce)、`expert/eng1-2021-text4-quote`(24592db)、`expert/eval-human-scoring`、`user/round10`(到 0a7f103)、`coord/handoff`。
+- **已验证**：泄题检查、线索类型检查 exit 0；后端 test:unit 318 全过；前端构建、vue-tsc，以及 e2e42/54/55/55-mock 在 1280/390 两种宽度全过（前端在 ac8788b 上跑）。**在跑**：后端在旁路 :3109（库 kaoyan_int）上跑 smoke/e2e/eval。
+- **合 main 之前还差这些**：行业专家修 2015–2019 完形 6 处中文泄题（2017-01、2018-19、2015-07、2017-09、2017-11、2018-03，2017-19 疑似）并补 2015-21 那句 Juan Carl 说明（分支 `expert/english1-2015-2019-explanations`），然后用户复测。
+- **之后再排的分支**：`expert/english1-reading-polish`（「张冠李戴」写进错因标准，统筹者已同意；用户提的四条小改；2025-35 和 2025-31 的引文；`check_quote_verbatim.py`）、`fe/today-summary-dedupe`、资料角色给 `check_cloze_leak` 加的中文意译规则。2015–2019 的 298 条干扰项改成引英文原句，排在最后。
