@@ -17,7 +17,7 @@
 7. 模型名**不要写死**。key 到手后先调一次 `GET {base}/models`，用实际返回的名字定默认模型。代码里的 `deepseek-flash` 是推测，**【未核实】**。
 8. 团队本来是 6 个 agent 在群里协作，现在由你一个人承担全部角色，详见 §3。协作看板是 `BOARD.md`，只追加、不改旧行，每完成一项记一行。
 9. 提交规则：在 `/workspace/kaoyan` 里用**一句中文说明**提交到 `main`。**不准 force push**，不准提交 `.env`、key 或原卷 PDF。
-10. 未完成事项按优先级列在 §8.3。最重要的几项：PWA v4 已通过（等 HTTPS 真机）；离线题包和墙钟模考已上线；key 到手后要先跑讲解预生成并实测 Agent；部署。
+10. 未完成事项按优先级列在 §8.3。最重要的几项：PWA v4 已通过（等 HTTPS 真机）；离线题包和墙钟模考已上线；key 到手后下一步是**真模型验证**（先 `npm run key:preflight`，再实测几次 Agent 和批改），**不是批量生成讲解**：按现在的题库默认 `gen:explanations` 要生成 0 题，`--include-expert`（605 道，约 1.44–2.40 美元）可选，见 §7.4；部署。
 
 ---
 
@@ -278,12 +278,12 @@
 
 后端的习惯：在**旁路端口**（例如 3108）和**独立的库副本**上跑完测试，再重启 :3000，并确认进行中考试的指纹前后一致。
 
-### 7.4 讲解预生成（key 到手后第一件事）
-- `npm run gen:explanations`，先加 `--dry-run` 估算，不调模型。**默认跳过已有专家讲解（345 道：英一 312、数一 33）和只有官方解析的（215 道）**，实际待生成 **260 道**（820 道里），DeepSeek 加通义千问约 **0.60–0.99 美元**（2026-11-02 dry-run）。要连专家讲解的题也生成就加 `--include-expert`，官方解析的加 `--include-official`。可以断点续跑，可以限速（`--concurrency 3 --rpm 30`），其他参数有 `--retry-failed`、`--force`、`--ids`、`--limit`、`--include-official`。脚本分别估算 DeepSeek 高峰和低峰价格，尽量在低峰时段跑（具体时段以 DeepSeek 官网为准，**【未核实】**）。
+### 7.4 讲解预生成（key 到手后先做真模型验证，不是批量生成）
+- `npm run gen:explanations`，先加 `--dry-run` 估算，不调模型。**默认跳过已有专家讲解（605 道：英一 572、数一 33）和只有官方解析的（215 道）**，按现在的题库（集成分支 fc81df6）默认要生成 **0 道**（820 道里）。所以 key 到了的下一步是真模型验证：先 `npm run key:preflight`，再实测几次 Agent 对话和英语批改，不是批量生成。`--include-expert` 可选：605 道，DeepSeek 加通义千问约 **1.44–2.40 美元**（2026-11-02 dry-run）。官方解析的题加 `--include-official`。官方解析的加 `--include-official`。可以断点续跑，可以限速（`--concurrency 3 --rpm 30`），其他参数有 `--retry-failed`、`--force`、`--ids`、`--limit`、`--include-official`。脚本分别估算 DeepSeek 高峰和低峰价格，尽量在低峰时段跑（具体时段以 DeepSeek 官网为准，**【未核实】**）。
 - 质检：答案字母和标准答案一致；证据句必须在原文里找得到，并标出第 N 段第 M 句；步骤数和长度在范围内。不合格的存为「待核对」，不当作正常讲解显示。完形可以用空格所在的句子作证据，并且要点出 kp_tags `evidence` 里的「上下文复现」（新题型的规则不变）。**这部分正在做，还没提交**（`ai/cloze-recurrence.ts`）。
 - 有 key 而某题没讲解时，讲解接口会现场生成一次并入库，同一题并发请求也只生成一次。`EXPLAIN_ON_DEMAND=0` 可以关。
 - 部署机上的命令写在 `deploy/README.md` 的「拿到 Key 之后：预生成讲解」一节。
-- **Key 到了先跑一键预检**：`cd backend && npm run key:preflight`（`scripts/key-preflight.sh`，说明在 `backend/README.md`「Key 到位后：一键预检」）。依次：查 Key → tsc → `ai:check`（含 `/models` 预检和模型名）→ 复制一份临时库、起临时后端（:3108）真模型发一条教练消息（查有没有 400 / mock）→ 讲解 dry-run + 真生成 2 题 → `eval:grading` → `eval:agent`（`EVAL_TZ=Asia/Shanghai`）。结束自动关临时后端、删临时库，不碰 :3000 和主库。没 Key 时 `npm run key:preflight -- --fake` 用假模型演练过，**全流程通过（2026-11-02）**。
+- **Key 到了先跑一键预检**：`cd backend && npm run key:preflight`（`scripts/key-preflight.sh`，说明在 `backend/README.md`「Key 到位后：一键预检」）。依次：查 Key → tsc → `ai:check`（含 `/models` 预检和模型名）→ 复制一份临时库、起临时后端（:3108）真模型发一条教练消息（查有没有 400 / mock）→ 讲解 dry-run + 真生成 2 题（默认范围 0 题时在临时库上加 `--include-expert`，一题没生成算 ✗）→ `eval:grading` → `eval:agent`（`EVAL_TZ=Asia/Shanghai`）。结束自动关临时后端、删临时库，不碰 :3000 和主库。没 Key 时 `npm run key:preflight -- --fake` 用假模型演练过，**全流程通过（2026-11-02）**。
 - 演练中修的坑：`deepseek-flash` 默认开思考模式，多轮工具调用要回传 `reasoning_content`，Mastra 不回传 → 第二轮 400。Agent 请求现在统一带 `thinking:{type:"disabled"}`（`src/ai/llm.ts` 的 `mastraProviderOptions`）。讲解生成不受影响。
 
 ---
@@ -321,7 +321,7 @@
 5c. **离线题包**：前端按 §6.4.1 四点修正 → 用户浏览器断网 5 题测试。
 
 **P1（key 或服务器到手后）**
-5. 拿到 key：填进 `backend/.env` → **`npm run key:preflight`**（一条命令做完 ai:check、真模型教练消息、讲解 2 题、eval:grading、eval:agent，见 §7.4；`--fake` 演练已通过）→ 全过再 `gen:explanations` 正式跑（默认 260 道）→ eval:agent 的人工打分（108 条）。
+5. 拿到 key：填进 `backend/.env` → **`npm run key:preflight`**（一条命令做完 ai:check、真模型教练消息、讲解 2 题、eval:grading、eval:agent，见 §7.4；`--fake` 演练已通过）→ 全过再实测几次 Agent 和批改（默认 `gen:explanations` 现在是 0 道，不用批量跑；`--include-expert` 605 道约 1.44–2.40 美元，可选）→ eval:agent 的人工打分（108 条）。
 6. 拿到服务器：按 `deploy/README.md` 操作，`./deploy.sh user@host --dry-run` 后正式部署，再 `./smoke-remote.sh https://域名`。配好域名才有 HTTPS，加到主屏和麦克风都要 HTTPS；大陆服务器需要备案。
 7. 「这周（11-02 起）」的文案；复测「自评·字数不足」换设备后的显示和高亮 2 秒。
 

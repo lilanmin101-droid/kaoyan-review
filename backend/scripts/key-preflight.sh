@@ -2,7 +2,7 @@
 # Key 到位后的一键预检：npm run key:preflight（= bash scripts/key-preflight.sh）
 #
 # 把 DeepSeek / 通义千问（DashScope）Key 填进 backend/.env 后跑一次，按顺序检查（HANDOFF §8.3）：
-#   1. Key 是否配置（只看有没有，不打印 Key）        5. 讲解预生成：gen:explanations --dry-run，再真生成 2 题
+#   1. Key 是否配置（只看有没有，不打印 Key）        5. 讲解预生成：gen:explanations --dry-run，再真生成 2 题（默认范围 0 题时在临时库上加 --include-expert）
 #   2. 编译                                          6. 英语批改评测 eval:grading（两个模型都不能报错）
 #   3. ai:check：/models 预检模型名 + 每个模型 1 token  7. Agent 评测 eval:agent（AI 模式，EVAL_TZ=Asia/Shanghai）
 #   4. 起一个临时后端：启动日志 /models 预检无 ⚠；真模型跑一条教练指令（不能 400、不能退回规则版）
@@ -178,14 +178,32 @@ step "5/7 讲解预生成 gen:explanations"
 node dist/scripts/gen-explanations.js --dry-run > "$LOG_DIR/gen-dry.log" 2>&1
 if [ $? = 0 ]; then grep -E '符合条件|要生成|估算费用' "$LOG_DIR/gen-dry.log" | sed 's/^/    /'; ok "dry-run 通过（有专家讲解的题默认跳过）"; else tail -5 "$LOG_DIR/gen-dry.log" | sed 's/^/    /'; bad "gen:explanations --dry-run 失败（见 $LOG_DIR/gen-dry.log）" "看日志；常见：DATABASE_URL 连不上"; fi
 if [ "$GEN_LIMIT" != 0 ]; then
-  node dist/scripts/gen-explanations.js --limit "$GEN_LIMIT" --concurrency 1 --report "$LOG_DIR/gen-explanations.md" > "$LOG_DIR/gen-real.log" 2>&1
+  # 默认范围可能一题都不剩（题库全有专家讲解/官方解析）——那样真生成什么都不跑，链路等于没测。
+  # 这时只在临时库上加 --include-expert 生成 $GEN_LIMIT 题（临时库结束就删，不碰 .env 的库）。
+  TODO_N=$(grep -oP '要生成 \K[0-9]+' "$LOG_DIR/gen-dry.log" | tail -1)
+  GEN_EXTRA=(); GEN_SKIP=""
+  if [ "${TODO_N:-0}" = 0 ]; then
+    if [ -n "$COPY_DB" ] && [ "$DB_URL" != "$BASE_URL_DB" ]; then
+      GEN_EXTRA=(--include-expert)
+      echo "    默认范围要生成 0 题 → 在临时库 $COPY_DB 上加 --include-expert 真生成 $GEN_LIMIT 题，只为验证链路"
+    else
+      GEN_SKIP=1
+      warn "默认范围要生成 0 题，又没有临时库：不在 .env 的库上加 --include-expert 生成，讲解生成链路没测到" "装 pg_dump/pg_restore 后去掉 --no-db-copy 再跑，预检会在临时库上验证生成"
+    fi
+  fi
+  if [ -z "$GEN_SKIP" ]; then
+  node dist/scripts/gen-explanations.js --limit "$GEN_LIMIT" --concurrency 1 "${GEN_EXTRA[@]}" --report "$LOG_DIR/gen-explanations.md" > "$LOG_DIR/gen-real.log" 2>&1
   GEN_RC=$?
-  grep -E '^\[ai:gen|完成：' "$LOG_DIR/gen-real.log" | sed 's/^/    /'
+  grep -E '^\[ai:gen|要生成|完成：' "$LOG_DIR/gen-real.log" | sed 's/^/    /'
   ERRN=$(grep -oP '出错未写库 \K[0-9]+' "$LOG_DIR/gen-real.log" | tail -1); PUBN=$(grep -oP '通过并发布 \K[0-9]+' "$LOG_DIR/gen-real.log" | tail -1); REVN=$(grep -oP '（needs_review）\K[0-9]+' "$LOG_DIR/gen-real.log" | tail -1)
-  if [ "$GEN_RC" != 0 ] || [ "${ERRN:-x}" != 0 ]; then bad "真生成 $GEN_LIMIT 题出错（见 $LOG_DIR/gen-real.log）" "看日志里的模型报错（401/404/超时/JSON 格式）"
+  GOTN=$(( ${PUBN:-0} + ${REVN:-0} )); WHAT="真生成 $GEN_LIMIT 题${GEN_EXTRA[*]:+（--include-expert，临时库）}"
+  if [ "$GEN_RC" != 0 ] || [ "${ERRN:-x}" != 0 ]; then bad "$WHAT 出错（见 $LOG_DIR/gen-real.log）" "看日志里的模型报错（401/404/超时/JSON 格式）"
   elif grep -q '⚠' "$LOG_DIR/gen-real.log"; then bad "生成前 /models 预检有警告" "按 gen-real.log 里 ⚠ 那行改模型名"
-  elif [ "${PUBN:-0}" = 0 ] && [ "${REVN:-0}" != 0 ]; then warn "真生成 $GEN_LIMIT 题：链路通，但全部待核对（needs_review $REVN）" "抽看 $LOG_DIR/gen-explanations.md，确认是题目本身难核对而不是格式问题"
-  else ok "真生成 $GEN_LIMIT 题：发布 ${PUBN:-0}，待核对 ${REVN:-0}，出错 0"; fi
+  elif [ "$GOTN" = 0 ]; then bad "$WHAT：实际一题都没生成，链路没测到（见 $LOG_DIR/gen-real.log）" "看 gen-real.log 的「符合条件 / 要生成」：是不是题库为空或全被跳过"
+  elif [ "${PUBN:-0}" = 0 ]; then warn "$WHAT：实际生成 $GOTN 题，链路通，但全部待核对（needs_review $REVN）" "抽看 $LOG_DIR/gen-explanations.md，确认是题目本身难核对而不是格式问题"
+  elif [ "$GOTN" -lt "$GEN_LIMIT" ]; then warn "$WHAT：只生成了 $GOTN 题（发布 ${PUBN:-0}，待核对 ${REVN:-0}）" "看 gen-real.log 的「要生成」是不是不到 $GEN_LIMIT 题"
+  else ok "$WHAT：实际生成 $GOTN 题，发布 ${PUBN:-0}，待核对 ${REVN:-0}，出错 0"; fi
+  fi
 fi
 
 # 评测报告默认写进 eval/，预检产生的挪到日志目录，不弄脏仓库

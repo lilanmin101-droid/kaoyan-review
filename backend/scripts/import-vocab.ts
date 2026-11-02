@@ -5,7 +5,10 @@
  * 1) 已有单词（按词元 word 不区分大小写匹配；词元没匹配上时再试它的词形 forms）：
  *    frequency ← 真题出现次数，exam_years ← 出现年份，examples ← 保留原有例句，再补真题例句（每词最多 5 条，优先补没有的年份，同句去重）
  * 2) 补词：词库里没有、真题出现 ≥ --min-freq（默认 3）次的词，去掉专有名词，source='exam' 入库；
- *    中文释义 / 音标 / 词性 / 词频排名取本地 ECDICT（data/ecdict/ecdict.csv）；没有中文释义的 needs_definition=true，不进学习队列
+ *    中文释义 / 音标 / 词性 / 词频排名取本地 ECDICT；没有中文释义的 needs_definition=true，不进学习队列
+ *    ECDICT 路径：--ecdict > ECDICT_CSV > 本 worktree 的 data/ecdict/ecdict.csv > 主仓库（git rev-parse --git-common-dir 的上一级）的 data/ecdict/ecdict.csv
+ * 3) 补释义：词库里释义为空的词（比如上次没找到 ECDICT 时补进来的），这次 ECDICT 里有就填上释义（音标 / 词性 / 词频排名为空的也一起填），
+ *    needs_definition 改回 false；已有释义的一律不覆盖
  *    新词 added_at=now()：当天新增的词不进当天的「今日单词」，不打乱已排好的每日快照
  * 专有名词判断：真题原文（题干、选项、文章）里这个词的所有出现都是句中大写、从没小写出现过；或 ECDICT 只收了大写词条；或释义以 [人名]/[地名] 开头
  * 幂等：重复跑结果一样；不删词、不动学习进度；词库里有但真题没出现的词不改
@@ -14,6 +17,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as readline from 'readline';
 import { Client } from 'pg';
+import { execFileSync } from 'child_process';
 import { loadEnv } from './env';
 
 const TIKU = process.env.TIKU_DIR || '/workspace/kaoyan/tiku';
@@ -34,6 +38,24 @@ function parseCsvLine(line: string): string[] | null {
   }
   if (q) return null;
   out.push(cur); return out;
+}
+
+/** ECDICT 在哪：--ecdict > ECDICT_CSV > 本 worktree data/ecdict > 主仓库 data/ecdict（worktree 里 data/ecdict 不在 git 里，常常只有主仓库有） */
+export function resolveEcdict(explicit?: string): { file: string | null; tried: string[] } {
+  const tried: string[] = [];
+  const pick = (f?: string | null) => { if (!f) return null; const abs = path.resolve(f); if (!tried.includes(abs)) tried.push(abs); return fs.existsSync(abs) ? abs : null; };
+  if (explicit) return { file: pick(explicit), tried }; // 明确指定的找不到就算找不到，不偷偷换别的
+  if (process.env.ECDICT_CSV) return { file: pick(process.env.ECDICT_CSV), tried };
+  const here = pick(path.resolve(__dirname, '../../../data/ecdict/ecdict.csv'));
+  if (here) return { file: here, tried };
+  try {
+    const repo = path.resolve(__dirname, '../../..');
+    const common = execFileSync('git', ['rev-parse', '--git-common-dir'], { cwd: repo, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+    const main = path.dirname(path.resolve(repo, common));
+    const f = pick(path.join(main, 'data/ecdict/ecdict.csv'));
+    if (f) return { file: f, tried };
+  } catch { /* 不是 git 仓库（比如 Docker 镜像）就算了 */ }
+  return { file: null, tried };
 }
 
 /** 只取需要的词条（小写精确 + 大写变体），ECDICT 77 万行流式读一遍 */
@@ -137,7 +159,10 @@ const posOf = (tr: string) => {
 async function main() {
   loadEnv();
   const file = opt('--file', path.join(TIKU, 'vocab', 'english1_exam_vocab.json'))!;
-  const ecdict = opt('--ecdict', process.env.ECDICT_CSV || path.resolve(__dirname, '../../../data/ecdict/ecdict.csv'))!;
+  const ecRes = resolveEcdict(opt('--ecdict'));
+  const ecdict = ecRes.file ?? ecRes.tried[0] ?? 'ecdict.csv';
+  if (ecRes.file) console.log(`ECDICT：${ecRes.file}`);
+  else console.warn(`⚠️ 没找到 ECDICT（找过：${ecRes.tried.join('、')}）。新补的词会没有中文释义（needs_definition），已有空释义的词也补不上；\n   下载 https://raw.githubusercontent.com/skywind3000/ECDICT/master/ecdict.csv 放到 data/ecdict/，或用 --ecdict <csv> / ECDICT_CSV 指定后重跑`);
   const minFreq = Number(opt('--min-freq', '3'));
   const dry = args.includes('--dry-run');
   const reportFile = opt('--report', path.resolve(__dirname, '../../import_reports/import_report_vocab.md'))!;
@@ -222,8 +247,26 @@ async function main() {
       await c.query('COMMIT');
     }
     // 3) 基础词 basic：ECDICT 标签有 zk/gk 且没有 ky，或 ECDICT 词频排名 / BNC 排名 ≤ BASIC_RANK（默认 1500）；整表按规则重算（幂等）
-    const all = dry ? [] : (await c.query('SELECT id, word, tags, frq_rank, basic FROM words')).rows;
+    const all = dry ? [] : (await c.query('SELECT id, word, tags, frq_rank, basic, definition_cn, pos, phonetic_uk, phonetic_us FROM words')).rows;
     const ecAll = dry ? null : await ecdictLookup(ecdict, new Set(all.map((r) => r.word.toLowerCase())));
+    // 3a) 补释义（在算 basic 之前，basic 要用补上的 frq_rank）：释义为空、ECDICT 有释义的词填上；已有释义的不碰（SQL 里再判一次，防并发改过）
+    const fill = ecAll && !ecAll.missing ? all.flatMap((r) => {
+      if ((r.definition_cn ?? '').trim()) return [];
+      const e = ecAll.hit.get(r.word.toLowerCase()); const def = (e?.translation ?? '').replace(/\\n/g, '\n').replace(/\\r/g, '').trim();
+      if (!def) return [];
+      const ph = e?.phonetic?.trim() ? `/${e.phonetic.trim()}/` : null;
+      return [{ id: r.id, def, pos: posOf(def), ph, frq: Number(e?.frq) || null }];
+    }) : [];
+    let filled = 0;
+    if (fill.length) {
+      const r = await c.query(
+        `UPDATE words w SET definition_cn=t.def, pos=COALESCE(NULLIF(w.pos,''), t.pos), phonetic_uk=COALESCE(NULLIF(w.phonetic_uk,''), t.ph), phonetic_us=COALESCE(NULLIF(w.phonetic_us,''), t.ph),
+                frq_rank=COALESCE(w.frq_rank, t.frq), needs_definition=false
+           FROM json_to_recordset($1::json) AS t(id int, def text, pos text, ph text, frq int)
+          WHERE w.id=t.id AND COALESCE(btrim(w.definition_cn),'')=''`, [JSON.stringify(fill)]);
+      filled = r.rowCount ?? 0; changed += filled;
+      const byId = new Map(fill.map((f) => [f.id, f])); for (const row of all) { const f = byId.get(row.id); if (f && row.frq_rank == null) row.frq_rank = f.frq; } // basic 按补上的词频排名算，一次跑完就收敛
+    }
     const basicFlags = all.map((r) => ({ id: r.id, basic: isBasic(r.tags ?? [], r.frq_rank, Number(ecAll?.hit.get(r.word.toLowerCase())?.bnc) || null), was: r.basic }));
     const basicChanged = basicFlags.filter((x) => x.basic !== x.was);
     if (basicChanged.length) await c.query(`UPDATE words w SET basic=t.basic FROM json_to_recordset($1::json) AS t(id int, basic boolean) WHERE w.id=t.id`, [JSON.stringify(basicChanged)]);
@@ -235,11 +278,12 @@ async function main() {
       matched: matched.size, matched_by_lemma: viaLemma, matched_by_form: matched.size - viaLemma, matched_ecdict_words: matchedEcdict, matched_exam_words: matched.size - matchedEcdict,
       unmatched: stillUnmatched.length, unmatched_below_min_freq: stillUnmatched.length - cand.length,
       candidates: cand.length, added: dry ? 0 : inserted, would_add: newRows.length, skipped_proper_nouns: skipped.length, needs_definition: needDef,
-      rows_changed: changed, basic: basicCount, basic_changed: basicChanged.length, ecdict_missing: ec.missing,
+      rows_changed: changed, definitions_filled: filled, basic: basicCount, basic_changed: basicChanged.length, ecdict_missing: ec.missing,
     };
     console.log(`import:vocab${dry ? '（dry-run）' : ''}：真题词元 ${sum.entries} 个；词库 ${sum.word_bank} 词`);
     console.log(`  匹配已有单词 ${sum.matched}（词元 ${sum.matched_by_lemma}，词形 ${sum.matched_by_form}；其中之前补进来的真题词 ${sum.matched_exam_words}），本次有变化 ${changed}`);
     console.log(`  没匹配上 ${sum.unmatched}（出现 <${minFreq} 次 ${sum.unmatched_below_min_freq}，候选补词 ${sum.candidates}）`);
+    if (!dry) console.log(`  补释义：之前释义为空、这次从 ECDICT 填上 ${filled} 个（已有释义的不覆盖）${ecAll?.missing ? '；⚠️ 没找到 ECDICT，没法补' : ''}`);
     if (!dry) console.log(`  基础词 basic=${basicCount}（本次改了 ${basicChanged.length}；默认不进今日新词队列）`);
     console.log(`  补词 ${dry ? `将新增 ${newRows.length}` : `新增 ${inserted}`}，跳过专有名词 ${skipped.length}，缺中文释义（needs_definition，不进学习队列）${needDef}${ec.missing ? '；⚠️ 没找到 ECDICT，新词都没有释义' : ''}`);
     if (!dry) {

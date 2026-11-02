@@ -85,7 +85,7 @@ cd backend && npm run key:preflight            # 填好 DEEPSEEK_API_KEY / DASHS
 npm run key:preflight -- --fake                # 没 Key 时演练整套流程（起 test/fake-llm.js，模拟 DeepSeek 思考模式）
 ```
 
-按顺序检查：① 两个 Key 有没有配（不打印 Key）② 编译 ③ `ai:check`（`/models` 预检模型名 + 每个模型 1 token）④ 在 `PREFLIGHT_PORT`（默认 3108）起一个临时后端：启动日志的 `/models` 预检不能有 ⚠，再用真模型跑一条教练指令（不能 400、不能退回规则版 `mock=true`）⑤ `gen:explanations --dry-run`（看要生成多少题、多少钱），再真生成 2 题 ⑥ `eval:grading`（两个模型都不能报错）⑦ `eval:agent`（AI 模式，`EVAL_TZ=Asia/Shanghai`）。每步打印 ✓ / ✗ / ⚠，最后列出「要改什么」（比如「DEEPSEEK_API_KEY 无效 → 重新复制」「QWEN_MODEL 不在 /models 列表 → 改成列表里的名字」）。全部 ✓（⚠ 只是提醒）退出码 0。
+按顺序检查：① 两个 Key 有没有配（不打印 Key）② 编译 ③ `ai:check`（`/models` 预检模型名 + 每个模型 1 token）④ 在 `PREFLIGHT_PORT`（默认 3108）起一个临时后端：启动日志的 `/models` 预检不能有 ⚠，再用真模型跑一条教练指令（不能 400、不能退回规则版 `mock=true`）⑤ `gen:explanations --dry-run`（看要生成多少题、多少钱），再真生成 2 题（按现在的题库默认范围是 0 题，这时在**临时库**上自动加 `--include-expert` 生成 2 题，只为验证链路；`--no-db-copy` 时不在原库上这么做，只给 ⚠；一题都没生成算 ✗）⑥ `eval:grading`（两个模型都不能报错）⑦ `eval:agent`（AI 模式，`EVAL_TZ=Asia/Shanghai`）。每步打印 ✓ / ✗ / ⚠，最后列出「要改什么」（比如「DEEPSEEK_API_KEY 无效 → 重新复制」「QWEN_MODEL 不在 /models 列表 → 改成列表里的名字」）。全部 ✓（⚠ 只是提醒）退出码 0。
 
 - 不碰正在跑的服务：临时后端单独端口；数据库用 `.env` 那个库的临时拷贝（需要 `pg_dump` / `pg_restore`，结束删除）。没装就加 `--no-db-copy` 用原库（会写入 2 条讲解和几个测试号）。
 - 其他选项：`--gen-limit N`（第 5 步真生成几题，0 = 只 dry-run）、`--skip-eval`（跳过 ⑥⑦，省钱）、`--keep`（不清理，排查用）。日志和评测报告都放 `/tmp/kaoyan-key-preflight-<时间>/`，不弄脏仓库。
@@ -117,7 +117,7 @@ npm run key:preflight -- --fake                # 没 Key 时演练整套流程�
 
 - **讲解 / 给个思路**（`POST|GET /questions/{id}/explain`、`GET /questions/{id}/hint`）：来源 `source` 优先级 `ai`（已过双模型核对）> `expert`（`/workspace/tiku/explanations/*_expert.jsonl`，「行业专家参考解答（非官方解析）」，文件追加后自动生效）> `official`（questions.solution）> `pending`（讲解「讲解生成中」/ 思路「思路生成中」，不推内容）。**没 Key 时从不输出示例内容**；有 Key 时追问由 AI 以专家/官方讲解为底稿回答。
 - **讲解生成**：`npm run ai:explain -- --exam math1 --year 2024 [--ids math1-2024-17] [--force] [--dry-run]`。deepseek-reasoner 以专家/官方讲解为底稿写分步讲解，qwen 独立解答再和题库答案比对（证明题改为逐步审证明），一致才 `published`，否则 `needs_review`（前端显示「这题讲解待核对」）；报告写到 `ai_explain_report_<exam>_<year>.md`。缺任一 Key 直接跳过。
-- **讲解预生成**：`npm run gen:explanations -- --dry-run` 先看要生成多少题和估算费用。默认跳过已有专家讲解（`tiku/explanations/*_expert.jsonl`）和只有官方解析的题，dry-run 会分别列出两类各跳过多少；`--include-expert` / `--include-official` 连这些也生成。
+- **讲解预生成**：`npm run gen:explanations -- --dry-run` 先看要生成多少题和估算费用。默认跳过已有专家讲解（`tiku/explanations/*_expert.jsonl`）和只有官方解析的题，dry-run 会分别列出两类各跳过多少；`--include-expert` / `--include-official` 连这些也生成。按现在的题库（集成分支 fc81df6：英一 572 道全有专家讲解，数一 33 道）默认要生成 **0 题**；`--include-expert` 是 605 道、约 **1.44–2.40 美元**（DeepSeek 加通义千问，2026-11-02 dry-run），可选。
 - **Agent**（`POST /agent/commands`）：Mastra Agent + deepseek-chat。读工具 getProfile / getWrongQuestions / getAnswerHistory / searchQuestions（按知识点路径 + 年份题号，没用向量）；写工具 updateDailyPlan / addReviewCard / upsertReminder / switchPhase / writeDailyTip，每次写都记 AgentAction 可撤回；不删作答记录和笔记。没 Key 时是规则版（`done.mock = true`）。
 - **定时任务**（`GET /agent/jobs`）：每晚 23:00 复盘 + 明日任务、周日 21:30 周报、每天 00:10 阶段检查（只往前切）。同一用户同一天同一任务只跑一次（`job_runs`）。
 - **本地验证 AI 路径**：`npm run fake-llm` 起假模型（:4020），再用 `DEEPSEEK_API_KEY=fake DEEPSEEK_BASE_URL=http://127.0.0.1:4020 DASHSCOPE_API_KEY=fake DASHSCOPE_BASE_URL=http://127.0.0.1:4020 DEEPSEEK_REASONER_MODEL=fake-reasoner DEEPSEEK_CHAT_MODEL=fake-chat QWEN_MODEL=fake-qwen PORT=3001 node dist/src/main.js` 起一个后端。假模型写进 `ai_explanations` 的行 `model LIKE 'fake%'`，测完删掉。
@@ -127,6 +127,7 @@ npm run key:preflight -- --fake                # 没 Key 时演练整套流程�
 
 - `npm run import:words -- <ecdict.csv | stardict.db> [--tags ky] [--all] [--limit N] [--dry-run]`，词库是 [ECDICT](https://github.com/skywind3000/ECDICT)（MIT），已下载到 `/workspace/kaoyan/data/ecdict/ecdict.csv`。
 - 默认只导 tag 含 `ky`（考研）的约 4800 个；按 word upsert：音标/释义/词性/`frq_rank`（ECDICT 词频排名）用 ECDICT 的，`frequency`（真题出现次数，暂无来源，为 0）、`examples`、学习进度保留，tags 取并集（加 `ecdict`）。「今日新词」按 `frequency DESC, frq_rank ASC NULLS LAST, id` 取，先出常见词。
+- `npm run import:vocab`（真题词汇 → words）：ECDICT 路径依次找 `--ecdict` → `ECDICT_CSV` → 本 worktree 的 `data/ecdict/ecdict.csv` → 主仓库（`git rev-parse --git-common-dir`）的 `data/ecdict/ecdict.csv`；都找不到会在开头打 ⚠ 并列出找过的路径。重跑时会给**释义为空**的词补上 ECDICT 释义（音标 / 词性 / `frq_rank` 空的一起补，`needs_definition` 改回 false），已有释义的不覆盖。
 - **不放自拟内容**：`examples` 在有真实例句来源（真题原句）或 AI Key 之前为 `null`；原来 12 个示例单词的自拟例句、自拟词频已删除，数据改用 ECDICT（`004_words_ecdict.sql`）。
 
 ## 环境说明 / 已知问题
