@@ -299,3 +299,4 @@
 - 2026-11-02T12:41:00+08:00 后端（be/key-preflight，未合 main）：根目录加 .dockerignore，web 镜像构建上下文（仓库根）排除 tiku/（含 src PDF）、data/、user-test/、backend/、pg-runtime/、pgdata/、node_modules、.env；frontend/ 与 deploy/ 保留，prebuilt 用的 frontend/dist 不受影响。
 - 2026-11-02T12:43+08:00 用户：复抽行业专家 9139d27/269b7bf：7 项全过（2020-13、2025-40、2022-09、5 题干扰项；check_clue_type 1c525c3 退出码 0；check_cloze_leak rule3 退出码 0；25 处近义词抽 8 过 8；新抽 12 过 12）。提醒：2021-03/2021-12/2025-06 线索标签可更贴切，rule3 把标签「逻辑连接」误报为 connection/connected。可与 tiku/clue-type-check 一起合。报告 user-test/round10/explain_recheck2_en.md。
 - 2026-11-02T12:45+08:00 用户：HANDOFF §8.2 round10 更新，5a/5b/5c 标为已测完；列出待复测项（详情 exam_name、作答列表 source/study_date、登录后拉题包和离线页别扭点、PR #2 周报文案），等 coord/integration 上线后测。
+- 2026-11-02T12:43:30+08:00 资料/仓库搜索者：check_cloze_leak.py 规则 4a 匹配中文释义前先去掉四类标准线索标签（上下文复现/逻辑连接/固定搭配/词义辨析），修「逻辑连接」被当成 connection/connected 释义的误报；在 coord/integration 上中文疑似 27→22，退出码仍 0。

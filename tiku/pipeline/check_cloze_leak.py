@@ -115,6 +115,7 @@ def ecdict(words):
     return out
 def glosses_in(expl, word):
     return set(re.findall(re.escape(word) + r'\s*[“"]([\u4e00-\u9fff]{2,6})', expl, re.I))
+CLUE_LABELS = ('上下文复现', '逻辑连接', '固定搭配', '词义辨析')
 def check_cn(Y):
     Q = json.load(open(f'{T}/english1_{Y}.json'))
     f = f'{T}/explanations/english1_{Y}_expert.jsonl'
@@ -138,10 +139,11 @@ def check_cn(Y):
         own = set()
         for o in q['options']:
             own |= ecdict(o['content'].lower().split()) | glosses_in(body, o['content'])
+        lbody = re.sub('|'.join(CLUE_LABELS), '〔线索〕', body)  # 四类标准线索标签不算释义
         for k, g in G.items():
             if k == q['number']: continue
             for t in sorted(g - own):
-                if t in body:
+                if t in lbody:
                     bad.append((q['id'], k, 'suspect-cn:' + t)); break
         for m in re.finditer(r'[“"]([^”"]*___[^”"]*)[”"]\s*[（(]([^）)]*[\u4e00-\u9fff][^）)]*)[）)]', body):
             if not body.startswith('本句') or m.start() > 0:
