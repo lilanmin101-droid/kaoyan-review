@@ -5,6 +5,8 @@ A leak = the explanation contains another blank's answer adjacent to that blank'
 neighbour words (e.g. "faced the possibility" when 'faced' fills blank 7), unless the same
 word sequence also occurs naturally in the passage outside the blanks; or the answer word appears
 inside a quoted English fragment / 本句 line while never occurring in the passage outside the blanks.
+Rule 3: another blank's answer word mentioned anywhere (4+ letters, not this blank's option, not in passage).
+Chinese paraphrases of another blank's answer are NOT detected; review those by hand.
 usage: python3 tiku/pipeline/check_cloze_leak.py [YEAR ...]   (exit 1 on any leak)
 """
 import json, re, sys, glob, os
@@ -60,6 +62,17 @@ def check(Y):
             if re.search(r'(?<![a-z])' + re.escape(a) + r'(?![a-z])', quoted) and \
                not re.search(r'(?<![a-z])' + re.escape(a) + r'(?![a-z])', norm(re.sub(r'\{\{\d+\}\}', ' ', text))):
                 bad.append((q['id'], k, 'quoted:' + a))
+        # rule 3: another blank's answer (content word, 4+ letters) mentioned anywhere in the
+        # explanation, unless it is one of this blank's own options or occurs in the passage
+        # outside the blanks (e.g. 2024-17 写「match / suit / complement」, suit 是 19 空答案)
+        own = {norm(o['content']) for o in q['options']}
+        outside = norm(re.sub(r'\{\{\d+\}\}', ' ', text))
+        for k, a in answord.items():
+            if k == q['number'] or len(a) < 4 or a in own: continue
+            if re.search(r'(?<![a-z])' + re.escape(a) + r'(?![a-z])', body) and \
+               not re.search(r'(?<![a-z])' + re.escape(a) + r'(?![a-z])', outside) and \
+               not any(x[0] == q['id'] and x[1] == k for x in bad):
+                bad.append((q['id'], k, 'mention:' + a))
     return bad
 if __name__ == '__main__':
     ys = sys.argv[1:] or sorted({re.search(r'english1_(\d{4})_expert', f).group(1) for f in glob.glob(f'{T}/explanations/english1_[0-9][0-9][0-9][0-9]_expert.jsonl')})
