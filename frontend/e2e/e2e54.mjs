@@ -44,7 +44,7 @@ const overflow=p=>p.evaluate(()=>document.documentElement.scrollWidth>innerWidth
 {const{ctx,p}=await fresh();const ls=await p.evaluate(()=>Object.keys(localStorage));console.log('[a] 打开前 localStorage keys',JSON.stringify(ls));await nav(p,`#/exam/${EID}/result`)
  ok(!ls.some(k=>k.startsWith('exam:short:')),'[a] 新配置里没有本机字数记录 exam:short:*')
  console.log('[a] hash',await p.evaluate(()=>location.hash),'cap',await p.$eval('.cap',e=>e.textContent).catch(()=>'none'))
- await p.screenshot({path:`${OUT}/r24-a-result-${W}.png`})
+ await p.screenshot({path:`${OUT}/r24-${process.env.E2E_TAG||""}a-result-${W}.png`})
  await openEach(p)
  const rows=await p.$$eval('table.each tr',l=>l.slice(1).map(tr=>({n:tr.firstElementChild.textContent.trim(),score:tr.lastElementChild.textContent.trim(),tag:!!tr.querySelector('.shortag')})))
  console.log('[a] 逐题对照',JSON.stringify(rows))
@@ -52,7 +52,7 @@ const overflow=p=>p.evaluate(()=>document.documentElement.scrollWidth>innerWidth
  ok(t(46)===true,'[a] 46（flags=word_count_low）显示「自评·字数不足」');ok(t(51)===true,'[a] 51（flags=word_count_low）显示「自评·字数不足」')
  const others=rows.filter(r=>!['46','51'].includes(r.n)&&r.tag);ok(others.length===0&&t(47)===false&&t(52)===false,'[a] 其余题（47 flags=[]、52 待自评、没作答的、客观题）都不显示'+(others.length?' 多出:'+others.map(r=>r.n):''))
  ok(!(await overflow(p)),'[a] 无横向溢出')
- await p.evaluate(()=>{const t=document.querySelector('table.each .shortag');(t?.closest('tr')||document.querySelector('table.each')).scrollIntoView({block:'center'})});await S(300);await p.screenshot({path:`${OUT}/r24-a-each-${W}.png`})
+ await p.evaluate(()=>{const t=document.querySelector('table.each .shortag');(t?.closest('tr')||document.querySelector('table.each')).scrollIntoView({block:'center'})});await S(300);await p.screenshot({path:`${OUT}/r24-${process.env.E2E_TAG||""}a-each-${W}.png`})
  await ctx.close()}
 // 反向：本机记录说 47、52 字数不足，46 不在本机记录里；后端 flags 为准
 {const{ctx,p}=await fresh({[`exam:short:${EID}`]:JSON.stringify([ID(47),ID(52)])});await nav(p,`#/exam/${EID}/result`)
@@ -68,7 +68,7 @@ const cards=p=>p.$$eval('.rq',l=>l.map(e=>({id:e.id.replace(/^rq-.*-(\d+)$/,'$1'
  ok(['46','47','51'].every(n=>g(n).rows?.[0]==='基本到位'),'[c] 新配置自评页 46/47/51 回填「基本到位」选中')
  ok(g(52).rows?.[0]===null,'[c] 52（待自评）没有选中档')
  ok(g(46).short&&g(51).short&&!g(47).short&&!g(52).short,'[c] 自评页「自评·字数不足」只在 46/51（后端 flags）')
- await p.evaluate(()=>document.getElementById('rq-english1-2022-46')?.scrollIntoView({block:'start'}));await S(300);await p.screenshot({path:`${OUT}/r24-c-rate-en-${W}.png`})
+ await p.evaluate(()=>document.getElementById('rq-english1-2022-46')?.scrollIntoView({block:'start'}));await S(300);await p.screenshot({path:`${OUT}/r24-${process.env.E2E_TAG||""}c-rate-en-${W}.png`})
  ok(!(await overflow(p)),'[c] 自评页无横向溢出');await ctx.close()}
 {const{ctx,p}=await fresh({[`exam:short:${EID}`]:JSON.stringify([ID(47),ID(52)])});await nav(p,`#/exam/${EID}/rate`)
  const c=await cards(p),g=n=>c.find(x=>x.id===String(n))||{}
@@ -83,7 +83,7 @@ if(REAL&&MID){const{ctx,p}=await fresh();await nav(p,`#/exam/${MID}/rate`)
  ok(JSON.stringify(g(21).rows)==='["全对","没思路",null]','[c-math] 计算题 21 按小问三行：(1)全对 (2)没思路 (3)未评')
  ok(JSON.stringify(g(17).rows)==='["全对"]','[c-math] 只有一问的 17 整题回填「全对」')
  ok(JSON.stringify(g(18).rows)==='[null]','[c-math] 待自评的 18 没有选中档')
- await p.evaluate(()=>document.getElementById('rq-math1-2022-20')?.scrollIntoView({block:'start'}));await S(300);await p.screenshot({path:`${OUT}/r24-c-rate-math-${W}.png`})
+ await p.evaluate(()=>document.getElementById('rq-math1-2022-20')?.scrollIntoView({block:'start'}));await S(300);await p.screenshot({path:`${OUT}/r24-${process.env.E2E_TAG||""}c-rate-math-${W}.png`})
  // 补评 18「全对」后点「评好了」：回填的档位一起提交，不丢
  const chip=(await p.$$('#rq-math1-2022-18 .chip'))[0];await tap(p,chip);await S(300)
  const resp=p.waitForResponse(r=>r.url().includes(`/exams/${MID}/self-ratings`)&&r.request().method()==='POST',{timeout:8000})
@@ -99,16 +99,16 @@ async function watchHot(p,label,shot){const t0=Date.now();let on=null,off=null,i
  while(Date.now()-t0<7000){const h=await p.evaluate(()=>{const e=document.querySelector('.rq.hot');if(!e)return null;const r=e.getBoundingClientRect();return{id:e.id,top:Math.round(r.top),vis:r.top<innerHeight&&r.bottom>0}})
   const t=Date.now()-t0
   if(h&&on==null){on=t;id=h.id;inView=h}
-  if(h&&!shotDone&&t-on>300){await p.screenshot({path:`${OUT}/r24-b-${shot}-hot-${W}.png`});shotDone=true}
+  if(h&&!shotDone&&t-on>300){await p.screenshot({path:`${OUT}/r24-${process.env.E2E_TAG||""}b-${shot}-hot-${W}.png`});shotDone=true}
   if(!h&&on!=null){off=t;break}
   await S(50)}
- await p.screenshot({path:`${OUT}/r24-b-${shot}-after-${W}.png`})
+ await p.screenshot({path:`${OUT}/r24-${process.env.E2E_TAG||""}b-${shot}-after-${W}.png`})
  const dur=on!=null&&off!=null?off-on:null
  console.log(`[b] ${label}: 点后 ${on}ms 出现高亮 id=${id} top=${inView?.top} 在视口=${inView?.vis}；${off}ms 消失；持续 ${dur}ms`)
  ok(id===`rq-${ID(52)}`,`[b] ${label} 高亮的是目标题 52`);ok(inView?.vis===true,`[b] ${label} 目标题滚进视口`);ok(dur!=null&&dur>=1900&&dur<=2800,`[b] ${label} 高亮约 2–2.5 秒后消失（${dur}ms）`)}
 {const{ctx,p}=await fresh();await nav(p,'#/')
  const card=await p.$('.pendex');const txt=await card?.evaluate(e=>e.textContent);console.log('[b] 今日页卡片',txt)
- ok(!!card&&/还有 20 分待自评/.test(txt||''),'[b] 今日页出现「还有 20 分待自评 · 去自评」卡');await p.screenshot({path:`${OUT}/r24-b-today-${W}.png`})
+ ok(!!card&&/还有 20 分待自评/.test(txt||''),'[b] 今日页出现「还有 20 分待自评 · 去自评」卡');await p.screenshot({path:`${OUT}/r24-${process.env.E2E_TAG||""}b-today-${W}.png`})
  await tap(p,await p.$('.pendex .go')||card);await watchHot(p,'今日页卡→自评页','today')
  console.log('[b] hash',await p.evaluate(()=>location.hash));await ctx.close()}
 {const{ctx,p}=await fresh();await nav(p,`#/exam/${EID}/result`)
@@ -116,5 +116,5 @@ async function watchHot(p,label,shot){const t0=Date.now();let on=null,off=null,i
  const rl=await p.$$('table.each .rl');console.log('[b] 成绩页「去自评」个数',rl.length);ok(rl.length===1,'[b] 成绩页逐题对照里只有 52 带「去自评」')
  await tap(p,rl[0]);await watchHot(p,'成绩页「去自评」→自评页','result')
  ok(!(await overflow(p)),'[b] 自评页无横向溢出');await ctx.close()}
-console.log(REAL?'mode real :3000':'mode mock+stub '+JSON.stringify(hits),fails?`FAILS ${fails}`:'ALL PASS')
+console.log(REAL?`mode real ${BASE}${process.env.E2E_API?` (API ${process.env.E2E_API})`:''}`:'mode mock+stub '+JSON.stringify(hits),fails?`FAILS ${fails}`:'ALL PASS')
 await b.close();process.exit(fails?1:0)
