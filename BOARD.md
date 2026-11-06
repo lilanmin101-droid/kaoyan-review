@@ -283,3 +283,4 @@
 - 2026-11-02T02:25:56+08:00 行业专家：按新分工撤回上一提交对 tiku/english1_2020–2025.json 的 answer 改动和 reviews 里追加的 46–52 记录（恢复到 8cdb223）；自写参考译文/范文改放 tiku/explanations/english1_translations_expert.jsonl（{id,answer,by,at}，每题一行，供 资料/仓库搜索者 拷入题库）。可用年份：2020、2021、2022、2023、2024、2025（各 7 条，共 42 条）。讲解 verified 说明改为“由行业专家自写”。
 - 2026-11-02T12:11:00+08:00 前端：删模板残留（HelloWorld.vue、assets/vue.svg、assets/vite.svg、assets/hero.png）；e2e 脚本移到 frontend/e2e/（55 个）
 - 2026-11-02T12:18+08:00 后端：进行中的周报和「这周进度」改成「这周（11-02 起）」（整周过了仍读成「那周（11-02–11-08）」）；讲解来源只读 `<科目>_<年份>_expert.jsonl`，`english1_translations_expert.jsonl` 是译文/范文、不当讲解，避免盖掉 2020–2025 的分步讲解（source=expert，312 题已测）；`scorePlan` 注释改成余数给第一问。openapi 说明已改，字段没变，mock 示例里没有这条文案所以没改 mock。前端不用跟：周文案是后端渲染的；过期建议和 2 分钟内放弃删除前端已经适配。english1-2024-04 知识点标签没做（资料负责，未改 tiku JSON）。
+- 2026-11-06T15:25+08:00 Lumo：英一 2019 专家讲解 52 题 + 翻译作文参考答案 7 条入库并推送；english1-2024-04 知识点补「词义辨析」，自动导入后 english1_2024 错误级 0（`36208f1`）。
