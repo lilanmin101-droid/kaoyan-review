@@ -1,6 +1,6 @@
 # 考研复习项目 · 交接文档（HANDOFF）
 
-> **最后更新：2026-11-02 01:55（北京时间，UTC+8）** · 写给零上下文的新接手 agent，换了机器也能用
+> **最后更新：2026-11-02 12:11（北京时间，UTC+8）** · 写给零上下文的新接手 agent，换了机器也能用
 > 仓库：<https://github.com/lilanmin101-droid/kaoyan-review>（私有，分支 `main`）· 写这份文档时的 HEAD：`6158cf6`（不含本文）
 > 本文所有事实都来自仓库文件、运行中的服务和 git 记录；查不到的标了 **【未核实】**。和代码冲突时以代码为准，并顺手把本文改对。
 
@@ -28,7 +28,7 @@
 | 目标 | 说明 |
 |---|---|
 | 质量 | 按大厂水准打磨：交互细节、边界状态（断网、5xx、409、刷新、凌晨跨日）都要处理好，每轮由「用户」角色在 1280 和 390 两个宽度下复测 |
-| 风格 | 纸张和朱批风格，不能有「AI 感」。Tony 定的方向是**墨绿主色 + 朱红批注**。**实际代码**（`frontend/src/style.css`）现在的色板是：`--desk:#EDE7DA` 桌面底、`--paper:#FBF8F1` 纸、`--ink:#22201C` 墨、`--sub:#8A8376`、`--hair:#DED6C6` 细线、`--zhu:#A8382A` 朱红。CSS 里**没有墨绿色变量**，主色目前是墨黑，**和「墨绿主色」不一致，要核对或补上**。字体：正文 Source Han Serif SC / Noto Serif CJK SC，界面 Noto Sans CJK SC，大号数字 Cormorant Garamond，依赖里有 lxgw-wenkai-webfont。朱红**只用于批改、错误和需要动手的地方**（统筹者定），提示类文字用灰色小字 |
+| 风格 | 纸张和朱批风格，不能有「AI 感」。Tony 定的方向是**墨绿主色 + 朱红批注**。**实际代码**（`frontend/src/style.css`）现在的色板是：`--lv:#2F4F3F` 墨绿（导航选中、主要操作、选中态、进度条）、`--desk:#EDE7DA` 桌面底、`--paper:#FBF8F1` 纸、`--ink:#22201C` 墨、`--sub:#8A8376`、`--hair:#DED6C6` 细线、`--zhu:#A8382A` 朱红。字体：正文 Source Han Serif SC / Noto Serif CJK SC，界面 Noto Sans CJK SC，大号数字 Cormorant Garamond，依赖里有 lxgw-wenkai-webfont。朱红**只用于批改、错误和需要动手的地方**（统筹者定），提示类文字用灰色小字 |
 | 重点 | **内置 AI 教练 Agent**，要做到懂你、主动、能动手、会教（§7） |
 | 范围 | 数学一（150 分、180 分钟）、英语一（100 分、180 分钟、52 题）。题库 2015–2025 年，共 22 套、820 题 |
 
@@ -53,7 +53,7 @@
 | 角色 | 原职责 | 你独自接手时怎么做 |
 |---|---|---|
 | **统筹者** | 排期、拍板取舍、汇总给 Tony、统一建仓和推送 | 每轮先看 BOARD 和 §8.3 待办，自己定优先级；所有裁定写进 BOARD 变更记录 |
-| **前端** | Vue 3 页面、PWA、e2e 截图自测 | 改完要在 1280 和 390 两个宽度下跑对应的 `frontend/e2e*.mjs`，然后 `npm run build`。preview 服务读的是 dist，不重新 build 就看不到改动 |
+| **前端** | Vue 3 页面、PWA、e2e 截图自测 | 改完要在 1280 和 390 两个宽度下跑对应的 `frontend/e2e/e2e*.mjs`，然后 `npm run build`。preview 服务读的是 dist，不重新 build 就看不到改动 |
 | **后端** | NestJS 接口、迁移、Agent、定时任务、部署套件 | 改了接口要同步改 `openapi.yaml` 和 `mock/server.js`，然后跑单测、smoke 和 eval，全绿后才重启 :3000。重启前先确认进行中的考试不受影响 |
 | **行业专家** | 知识点树、讲解合格标准、eval 用例、数学大题核对、专家讲解 | 新的教练行为先写成 `backend/eval/agent_cases.jsonl` 里的用例，再改实现；讲解标准见 `tiku/explanation_review_standard*.md` |
 | **用户**（模拟考生） | 以考生视角试用、复测，记录写在 `user-test/roundN/` | 每改完一批，自己用真实流程走一遍（新注册账号，用 `X-Debug-Now` 拨时间），记录写进 `user-test/round9/` 或新开 round10 |
@@ -92,8 +92,8 @@
 | `backend/openapi.yaml` | 接口契约，约 6000 行，60 个操作（§4.5） |
 | `backend/import_reports/` | 每卷导入报告、`watch.log`、`watch_last.md`（自动导入汇总表） |
 | `backend/test/fake-llm.js` | 本地假 LLM（:4020），没 key 时验证 AI 路径用 |
-| `frontend/src/` | `App.vue`（导航、hash 路由、考试进行中横条）、`Login.vue`、`pages/`（Today 今日、Quiz 刷题、English 英一练习、Exam 考场/自评/成绩、Words 单词、Wrong 错题本、Me 我的）、`components/`（EnPaper 英语整卷、ExamCard 整卷模考卡、Errata 勘误；HelloWorld 是模板残留）、`lib/`（api.ts、tap.ts 统一点按层、tex.ts、passage.ts、draghint.ts、toast.ts）、`style.css` |
-| `frontend/e2e*.mjs` | puppeteer 端到端脚本（e2e … e2e42），用法：`node e2eNN.mjs <宽度>` |
+| `frontend/src/` | `App.vue`（导航、hash 路由、考试进行中横条）、`Login.vue`、`pages/`（Today 今日、Quiz 刷题、English 英一练习、Exam 考场/自评/成绩、Words 单词、Wrong 错题本、Me 我的）、`components/`（EnPaper 英语整卷、ExamCard 整卷模考卡、Errata 勘误）、`lib/`（api.ts、tap.ts 统一点按层、tex.ts、passage.ts、draghint.ts、toast.ts）、`style.css` |
+| `frontend/e2e/` | puppeteer 端到端脚本（`e2e.mjs`、`e2e2`–`e2e53`、`e2e-fig.mjs`）和宽公式扫描 `find-wide.mjs`。在 `frontend/` 下用法：`node e2e/e2eNN.mjs <宽度>` |
 | `tiku/` | 题库（§5）。`/workspace/tiku` 是指向这里的**软链接**，**不能删**：编译后的后端和各种脚本里还写着旧路径，后端日志显示 `assets: /workspace/tiku` |
 | `deploy/` | docker-compose.yml、deploy.sh、server-up.sh、smoke-remote.sh、backup*.sh、Caddyfile、web*.Dockerfile、README.md |
 | `data/ecdict/` | ECDICT 词库 csv，约 63 MB，**不进 git**，换机器要从 <https://github.com/skywind3000/ECDICT>（MIT）重新下载 |
@@ -325,7 +325,7 @@
 8. 变式题生成（双模型解题 + SymPy 验算，三方一致才入库）、考前 30 天专属模拟卷、事件触发（某科连续 3 天没练、某知识点正确率连续下滑）。
 9. 费曼「讲给它听」接真实的转写和判断；TTS 语音复盘。
 10. 部署机上启用 pgvector，`searchQuestions` 改成向量检索（本机装不上，生产镜像自带）。
-11. 落实墨绿主色（见 §1），删掉模板残留的 `HelloWorld.vue` 和 `assets/vue.svg`、`vite.svg`、`hero.png`；把 `e2e*.mjs` 整理到 `frontend/e2e/` 目录。
+11. ~~落实墨绿主色（见 §1），删掉模板残留的 `HelloWorld.vue` 和 `assets/vue.svg`、`vite.svg`、`hero.png`；把 `e2e*.mjs` 整理到 `frontend/e2e/` 目录。~~ **已完成**：`--lv:#2F4F3F` 已在 `frontend/src/style.css`；模板残留已删；脚本在 `frontend/e2e/`（`cd frontend && node e2e/e2eNN.mjs <宽度>`）。`e2e51.mjs` 读写的 service worker 改为相对脚本定位 `frontend/dist/sw.js`。
 12. 修正 `scorePlan` 的注释（写的是「最后一问补齐」，实际是余数给第一问）。
 
 ### 8.4 已知问题和风险
@@ -376,8 +376,8 @@ npm run eval:agent       # 单测 + 内置 406/0 + 专家 62/0；有一条不过
 # 3. 前端
 cd ../frontend && npm run build          # vue-tsc + vite build，不能有报错
 # e2e：先注册或登录拿 token 写到 /tmp/tok，再按 1280 和 390 两个宽度跑，例如
-node e2e37.mjs 1280 && node e2e37.mjs 390   # 整卷模考卡、考试条、待评
-node e2e42.mjs 1280 && node e2e42.mjs 390   # 今日页待自评卡
+node e2e/e2e37.mjs 1280 && node e2e/e2e37.mjs 390   # 整卷模考卡、考试条、待评
+node e2e/e2e42.mjs 1280 && node e2e/e2e42.mjs 390   # 今日页待自评卡
 
 # 4. 题库
 cat ../backend/import_reports/watch_last.md | head -40   # 22 卷，只有 english1-2024 一个 ❌（Q4 缺知识点）
