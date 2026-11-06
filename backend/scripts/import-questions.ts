@@ -293,7 +293,7 @@ export type ReviewIssue = { line: number; kind: 'bad_line' | 'unknown_id' | 'leg
 /**
  * 小问分值（只改入库副本，题库源文件不动）：
  * - 证明题（isProofQuestion：任一小问是证明 / 整题是证明）不拆，缺的小问分值留 null，题目 score_by_whole=true，自评只按整题算
- * - 计算题：缺分值的小问按整题分值平均拆开（0.5 取整，最后一问补齐），标 score_estimated=true
+ * - 计算题：缺分值的小问按整题分值平均拆开（0.5 取整，余数给第一问），标 score_estimated=true
  */
 export function scorePlan(q: any): { subs: any[]; score_by_whole: boolean; score_estimated: boolean } {
   const subs = (q.sub_questions ?? []).map((x: any) => ({ ...x }));

@@ -4,8 +4,11 @@
 set -euo pipefail
 PW="${TEST_PW:-$(openssl rand -hex 12)}"  # 测试号密码：TEST_PW 或每次随机生成（不要写死在仓库里）
 cd "$(dirname "$0")/.."
+ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+TIKU="${TIKU_DIR:-$ROOT/tiku}"
+if [ ! -f "$TIKU/explanations/math1_2024_expert.jsonl" ] && [ -f /workspace/kaoyan/tiku/explanations/math1_2024_expert.jsonl ]; then TIKU=/workspace/kaoyan/tiku; fi
 TMP=$(mktemp -d); PORT=3002; B=http://127.0.0.1:$PORT/api/v1
-grep '"math1-2024-19"' /workspace/kaoyan/tiku/explanations/math1_2024_expert.jsonl > "$TMP/math1_2024_expert.jsonl"
+grep '"math1-2024-19"' "$TIKU/explanations/math1_2024_expert.jsonl" > "$TMP/math1_2024_expert.jsonl"
 mkdir -p "$TMP/reviews"
 # 2024 格式（verdict，无 kind）：q19 先 fail 后 pass → 最新一条 pass
 printf '%s\n' '{"id":"math1-2024-19","verdict":"pass","by":"t","at":"2026-11-01T05:05"}' '{"id":"math1-2024-19","verdict":"fail","by":"t","at":"2026-11-01T05:00"}' > "$TMP/reviews/explanations_math1_2024.jsonl"
@@ -19,7 +22,7 @@ chk "explain q19 expert" "$(curl -sfN "${H[@]}" $B/questions/math1-2024-19/expla
 chk "explain q03 pending" "$(curl -sfN "${H[@]}" $B/questions/math1-2024-03/explain | grep -c '"type":"step"' || true)" '^0$'
 chk "explain q03 done" "$(curl -sfN "${H[@]}" -XPOST -H 'content-type: application/json' -d '{"selectedText":"x"}' $B/questions/math1-2024-03/explain | grep '"type":"done"')" '"status":"pending","source":"pending".*讲解生成中'
 chk "hint q03 pending" "$(curl -sf "${H[@]}" "$B/questions/math1-2024-03/hint?step=2")" '"hints":\[\],"status":"pending","source":"pending".*思路生成中'
-grep '"math1-2024-03"' /workspace/kaoyan/tiku/explanations/math1_2024_expert.jsonl >> "$TMP/math1_2024_expert.jsonl"
+grep '"math1-2024-03"' "$TIKU/explanations/math1_2024_expert.jsonl" >> "$TMP/math1_2024_expert.jsonl"
 chk "hint q03 after append" "$(curl -sf "${H[@]}" "$B/questions/math1-2024-03/hint")" '"source":"expert"'
 # verified：最新 at 取胜（不看文件顺序；带时区 / 裸时间按太平洋时间）
 chk "q19 verified (latest pass)" "$(curl -sf "${H[@]}" "$B/questions/math1-2024-19/hint")" '"source":"expert","verified":true'

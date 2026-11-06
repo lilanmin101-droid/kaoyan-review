@@ -1,7 +1,7 @@
 import { DbService } from '../db/db.service';
 import { UserTimeService } from '../common/user-time.service';
 import { PlansService } from '../plans/plans.service';
-import { addDays, dayLabel, studyDaySql, weekOf } from '../common/time';
+import { addDays, dayLabel, studyDaySql, weekOf, weekOpenLabel } from '../common/time';
 import { clockNow } from '../common/clock';
 
 /**
@@ -151,7 +151,7 @@ export class CoachAnswers {
            FROM answer_records WHERE user_id=$1 AND ${studyDaySql('answered_at', '$4')} BETWEEN $2::date AND $3::date`, [userId, a, b, tz]))!;
       const s = await stat(from, today), p = await stat(addDays(from, -7), addDays(today, -7));
       const elapsed = Math.round((Date.parse(today) - Date.parse(from)) / 86400000) + 1;
-      const range = wk.label; // 整周范围（周一–周日），如「这周（11-02–11-08）」
+      const range = weekOpenLabel(wk.from); // 进行中的这周：「这周（11-02 起）」，不写成单日
       if (!s.n) return { steps, reply: `这周（${range}）还没有作答记录${p.n ? `；上周同期做了 ${p.n} 题` : ''}。${budget ? `${bText}，就从计划里第一项开始。` : '今天先做 5 道题把节奏找回来。'}` };
       const acc = Math.round((100 * s.correct) / s.n);
       const cmp = p.n ? `，上周同期 ${p.n} 题${p.n ? `、正确率 ${Math.round((100 * p.correct) / p.n)}%` : ''}` : '';
