@@ -1,5 +1,7 @@
 import puppeteer from 'puppeteer-core'; import fs from 'fs'
-const tok=fs.readFileSync('/tmp/tok','utf8').trim(), SW='dist/sw.js', orig=fs.readFileSync(SW,'utf8')
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+const tok=fs.readFileSync('/tmp/tok','utf8').trim(), SW=path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist', 'sw.js'), orig=fs.readFileSync(SW,'utf8')
 const b=await puppeteer.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']}); const p=await b.newPage()
 const S=ms=>new Promise(r=>setTimeout(r,ms))
 try{
